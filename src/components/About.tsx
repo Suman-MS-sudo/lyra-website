@@ -64,10 +64,10 @@ export default function About() {
               Trusted by Institutions.
             </h2>
             <p className="text-lg text-gray-500 leading-relaxed">
-              Since 2020, Lyra Enterprise has been at the forefront of feminine
-              hygiene infrastructure in India — crafting precision-engineered
-              vending machines and incinerators that prioritize privacy,
-              reliability, and sustainability.
+              Lyra Enterprise is at the forefront of feminine hygiene
+              infrastructure in India — crafting precision-engineered vending
+              machines and incinerators that prioritize privacy, reliability,
+              and sustainability.
             </p>
           </div>
         </FadeUp>

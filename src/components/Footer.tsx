@@ -89,7 +89,7 @@ export default function Footer() {
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               India&apos;s leading manufacturer of sanitary napkin vending machines
-              and incinerators. Empowering women&apos;s health since 2020.
+              and incinerators. Empowering women&apos;s health across India.
             </p>
             <div className="flex gap-4">
               {["facebook", "instagram", "linkedin"].map((social) => (
