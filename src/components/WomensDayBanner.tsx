@@ -74,20 +74,20 @@ export default function WomensDayBanner() {
       />
       <style>{`@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }`}</style>
 
-      <div className="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-x-6 gap-y-1.5">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-1.5 sm:py-2 flex items-center justify-between gap-2">
         {/* Left — Offer text */}
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-sm select-none">🌸</span>
-          <span className="text-white font-bold text-xs sm:text-sm">
-            Women&apos;s Day Offer — <span className="underline decoration-pink-300 decoration-2 underline-offset-2">₹1,000 OFF</span> on all machines
+        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+          <span className="text-xs sm:text-sm select-none flex-shrink-0">🌸</span>
+          <span className="text-white font-bold text-[11px] sm:text-sm truncate">
+            <span className="sm:hidden">₹1,000 OFF — Women&apos;s Day</span>
+            <span className="hidden sm:inline">Women&apos;s Day Offer — <span className="underline decoration-pink-300 decoration-2 underline-offset-2">₹1,000 OFF</span> on all machines</span>
           </span>
-          <span className="hidden sm:inline text-white/60 text-xs">·</span>
-          <span className="hidden sm:inline text-white/80 text-xs font-medium">March 8, 2026</span>
+          <span className="hidden sm:inline text-white/60 text-xs flex-shrink-0">· March 8, 2026</span>
         </div>
 
-        {/* Center — Countdown */}
-        <div className="flex items-center gap-3">
-          <span className="text-white/70 text-[10px] font-bold uppercase tracking-widest hidden sm:block">Ends in</span>
+        {/* Center — Countdown (hidden on mobile) */}
+        <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
+          <span className="text-white/70 text-[10px] font-bold uppercase tracking-widest">Ends in</span>
           <div className="flex items-end gap-1.5">
             <Tick value={t.days} label="d" />
             <span className="text-white/60 font-bold text-sm mb-3">:</span>
@@ -100,21 +100,21 @@ export default function WomensDayBanner() {
         </div>
 
         {/* Right — CTA + Dismiss */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
           <Link
             href={`https://wa.me/918122378860?text=${encodeURIComponent("Hi! I want to claim the Women's Day ₹1,000 offer on a Lyra vending machine / incinerator.")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-1.5 bg-white text-[#A0268A] font-bold text-xs rounded-full shadow hover:shadow-md hover:-translate-y-0.5 transition-all whitespace-nowrap"
+            className="px-3 sm:px-4 py-1 sm:py-1.5 bg-white text-[#A0268A] font-bold text-[10px] sm:text-xs rounded-full shadow hover:shadow-md hover:-translate-y-0.5 transition-all whitespace-nowrap"
           >
-            Claim Offer →
+            Claim →
           </Link>
           <button
             onClick={() => setDismissed(true)}
             aria-label="Dismiss"
-            className="w-6 h-6 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center text-white transition-colors flex-shrink-0"
+            className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center text-white transition-colors flex-shrink-0"
           >
-            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
