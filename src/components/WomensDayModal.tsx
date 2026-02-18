@@ -73,15 +73,15 @@ export default function WomensDayModal() {
             <div className="absolute -top-16 -left-16 w-48 h-48 rounded-full bg-white/5" />
             <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-white/5" />
 
-            {/* Flower decorations — top-right */}
-            <div className="absolute top-4 right-4 opacity-30 select-none pointer-events-none text-5xl">🌸</div>
+            {/* Flower decorations */}
+            <div className="absolute top-4 right-14 opacity-30 select-none pointer-events-none text-4xl">🌸</div>
             <div className="absolute bottom-16 right-40 opacity-25 select-none pointer-events-none text-3xl">🌺</div>
             <div className="absolute bottom-8 right-24 opacity-20 select-none pointer-events-none text-2xl">🌸</div>
 
             {/* Close button */}
             <button
               onClick={close}
-              className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center text-white transition-colors duration-200"
+              className="absolute top-4 right-4 z-30 w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center text-white transition-colors duration-200"
               aria-label="Close"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

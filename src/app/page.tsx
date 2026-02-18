@@ -9,10 +9,12 @@ import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import WomensDayModal from "@/components/WomensDayModal";
 import FloatingContact from "@/components/FloatingContact";
+import JsonLd from "@/components/JsonLd";
 
 export default function Home() {
   return (
     <>
+      <JsonLd />
       <WomensDayModal />
       <ScrollProgress />
       <Navbar />

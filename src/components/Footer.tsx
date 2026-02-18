@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const footerLinks = {
   Company: [
@@ -12,11 +13,11 @@ const footerLinks = {
     { label: "Contact", href: "#contact" },
   ],
   Products: [
-    { label: "Push-Button Machine", href: "#products" },
-    { label: "Coin-Operated", href: "#products" },
-    { label: "WiFi / Smart", href: "#products" },
-    { label: "Ethernet Pro", href: "#products" },
-    { label: "Incinerators", href: "#products" },
+    { label: "Push-Button Machine", href: "/products/push-button-vending-machine" },
+    { label: "Coin-Operated", href: "/products/solo-coin-vending-machine" },
+    { label: "WiFi / Smart", href: "/products/solo-wifi-vending-machine" },
+    { label: "Ethernet Pro", href: "/products/solo-ethernet-vending-machine" },
+    { label: "Incinerators", href: "/products/sanitary-napkin-incinerators" },
   ],
   Contact: [
     { label: "+91-81223 78860", href: "tel:+918122378860" },
@@ -74,11 +75,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="#home" className="flex items-center gap-3 mb-5 group">
-              <div className="relative w-10 h-10">
-                <div className="absolute inset-0 bg-purple-gradient rounded-xl" />
-                <div className="absolute inset-0 flex items-center justify-center text-white font-display font-bold text-lg">
-                  L
-                </div>
+              <div className="relative w-10 h-10 flex-shrink-0">
+                <Image
+                  src="/images/logo.png"
+                  alt="Lyra Enterprise Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <span className="font-display font-bold text-white text-xl">
                 Lyra Enterprise

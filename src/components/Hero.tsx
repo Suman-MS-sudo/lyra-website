@@ -5,6 +5,36 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+const particles = [
+  { x: 7,  y: 72, size: 9,  opacity: 0.7, dist: 90,  duration: 8,  delay: 0,   color: "#d946ef" },
+  { x: 14, y: 38, size: 5,  opacity: 0.5, dist: 65,  duration: 10, delay: 1.5, color: "#a855f7" },
+  { x: 24, y: 82, size: 11, opacity: 0.6, dist: 100, duration: 12, delay: 0.8, color: "#e879f9" },
+  { x: 44, y: 58, size: 6,  opacity: 0.5, dist: 75,  duration: 9,  delay: 2.1, color: "#c084fc" },
+  { x: 58, y: 78, size: 13, opacity: 0.5, dist: 110, duration: 13, delay: 3,   color: "#f0abfc" },
+  { x: 70, y: 28, size: 7,  opacity: 0.6, dist: 70,  duration: 9,  delay: 0.5, color: "#d946ef" },
+  { x: 83, y: 62, size: 5,  opacity: 0.5, dist: 80,  duration: 11, delay: 2.5, color: "#a855f7" },
+  { x: 91, y: 18, size: 10, opacity: 0.4, dist: 60,  duration: 8,  delay: 1.1, color: "#e879f9" },
+  { x: 33, y: 13, size: 6,  opacity: 0.5, dist: 90,  duration: 11, delay: 3.5, color: "#c084fc" },
+  { x: 52, y: 43, size: 8,  opacity: 0.4, dist: 75,  duration: 9,  delay: 1.3, color: "#f0abfc" },
+  { x: 19, y: 52, size: 4,  opacity: 0.6, dist: 65,  duration: 10, delay: 4,   color: "#d946ef" },
+  { x: 77, y: 88, size: 8,  opacity: 0.5, dist: 85,  duration: 11, delay: 2.3, color: "#a855f7" },
+  { x: 63, y: 12, size: 5,  opacity: 0.5, dist: 70,  duration: 8,  delay: 0.7, color: "#e879f9" },
+  { x: 3,  y: 30, size: 7,  opacity: 0.4, dist: 60,  duration: 12, delay: 1.8, color: "#c084fc" },
+];
+
+const stars = [
+  { x: 10, y: 20, delay: 0   },
+  { x: 30, y: 8,  delay: 0.8 },
+  { x: 55, y: 15, delay: 1.6 },
+  { x: 75, y: 5,  delay: 2.4 },
+  { x: 88, y: 35, delay: 0.4 },
+  { x: 42, y: 90, delay: 1.2 },
+  { x: 68, y: 95, delay: 2   },
+  { x: 95, y: 75, delay: 3   },
+  { x: 22, y: 95, delay: 0.6 },
+  { x: 80, y: 55, delay: 1.9 },
+];
+
 const stats = [
   { value: "200+", label: "Machines Installed" },
   { value: "4", label: "States Served" },
@@ -47,6 +77,91 @@ export default function Hero() {
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="orb w-[300px] h-[300px] bg-primary-300/20 top-[30%] left-[30%]"
+      />
+
+      {/* Floating glowing particles */}
+      {particles.map((p, i) => (
+        <motion.div
+          key={i}
+          animate={{
+            y: [0, -p.dist, 0],
+            opacity: [0, p.opacity, 0],
+            scale: [0.6, 1.2, 0.6],
+          }}
+          transition={{
+            duration: p.duration,
+            repeat: Infinity,
+            delay: p.delay,
+            ease: "easeInOut",
+          }}
+          className="absolute rounded-full pointer-events-none blur-[2px]"
+          style={{
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            width: p.size,
+            height: p.size,
+            background: `radial-gradient(circle, ${p.color}, transparent)`,
+            boxShadow: `0 0 ${p.size * 2}px ${p.color}88`,
+          }}
+        />
+      ))}
+
+      {/* Twinkling stars */}
+      {stars.map((s, i) => (
+        <motion.div
+          key={i}
+          animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5] }}
+          transition={{ duration: 3, repeat: Infinity, delay: s.delay, ease: "easeInOut" }}
+          className="absolute pointer-events-none text-primary-300"
+          style={{ left: `${s.x}%`, top: `${s.y}%`, fontSize: "10px" }}
+        >
+          ✦
+        </motion.div>
+      ))}
+
+      {/* Slow rotating decorative ring */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        className="absolute pointer-events-none"
+        style={{
+          width: 700,
+          height: 700,
+          top: "50%",
+          left: "50%",
+          marginTop: -350,
+          marginLeft: -350,
+          border: "1px dashed rgba(181,101,167,0.12)",
+          borderRadius: "50%",
+        }}
+      />
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        className="absolute pointer-events-none"
+        style={{
+          width: 1000,
+          height: 1000,
+          top: "50%",
+          left: "50%",
+          marginTop: -500,
+          marginLeft: -500,
+          border: "1px dashed rgba(181,101,167,0.07)",
+          borderRadius: "50%",
+        }}
+      />
+
+      {/* Diagonal shimmer sweep */}
+      <motion.div
+        animate={{ x: ["-100%", "200%"] }}
+        transition={{ duration: 6, repeat: Infinity, repeatDelay: 8, ease: "easeInOut" }}
+        className="absolute inset-y-0 pointer-events-none"
+        style={{
+          width: "40%",
+          background:
+            "linear-gradient(105deg, transparent 40%, rgba(240,171,252,0.06) 50%, rgba(181,101,167,0.04) 55%, transparent 65%)",
+          transform: "skewX(-15deg)",
+        }}
       />
 
       {/* Noise texture */}
