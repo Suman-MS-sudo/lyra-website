@@ -1,5 +1,5 @@
-export const SITE = {
-  name: "Lyra Enterprise",
+﻿export const SITE = {
+  name: "Lyra Enterprises",
   tagline: "#1 Vending Machine & Incinerator Manufacturer India",
   url: "https://www.lyraenterprise.co.in",
   phone: "+91-8122378860",
@@ -82,7 +82,7 @@ export const products: Product[] = [
       "napkin dispenser machine school",
     ],
     metaTitle:
-      "Push Button Sanitary Napkin Vending Machine — Buy Online India | Lyra Enterprise",
+      "Push Button Sanitary Napkin Vending Machine — Buy Online India | Lyra Enterprises",
     metaDescription:
       "Buy Lyra Push Button sanitary napkin vending machine at ₹10,000. Manual dispensing, 30-napkin capacity. Best for schools, hostels & government facilities. Chennai manufacturer. Call +91-8122378860.",
   },
@@ -133,7 +133,7 @@ export const products: Product[] = [
       "public toilet napkin machine india",
     ],
     metaTitle:
-      "Coin Operated Sanitary Napkin Vending Machine — ₹5 Coin | Lyra Enterprise India",
+      "Coin Operated Sanitary Napkin Vending Machine — ₹5 Coin | Lyra Enterprises India",
     metaDescription:
       "Buy Lyra Solo Coin sanitary napkin vending machine at ₹11,500. ₹5 coin acceptor, 30-napkin capacity. Best for malls, railway stations & offices. Chennai manufacturer. Call +91-8122378860.",
   },
@@ -190,7 +190,7 @@ export const products: Product[] = [
       "touch screen vending machine india",
     ],
     metaTitle:
-      "WiFi UPI QR Sanitary Napkin Vending Machine — Smart IoT | Lyra Enterprise India",
+      "WiFi UPI QR Sanitary Napkin Vending Machine — Smart IoT | Lyra Enterprises India",
     metaDescription:
       "Buy Lyra Solo WiFi smart vending machine at ₹23,500. UPI QR + coin payment, WiFi IoT, cloud reports. Best for IT parks, hospitals & smart campuses. Chennai manufacturer. Call +91-8122378860.",
   },
@@ -244,7 +244,7 @@ export const products: Product[] = [
       "vending machine government hospital",
     ],
     metaTitle:
-      "Ethernet UPI QR Sanitary Napkin Vending Machine — Wired IoT | Lyra Enterprise",
+      "Ethernet UPI QR Sanitary Napkin Vending Machine — Wired IoT | Lyra Enterprises",
     metaDescription:
       "Buy Lyra Solo Ethernet vending machine at ₹23,500. Stable LAN connection, UPI QR + coin, cloud reports. Best for government hospitals & large institutions. Call +91-8122378860.",
   },
@@ -367,7 +367,7 @@ export const products: Product[] = [
     description:
       "High-capacity sanitary napkin incinerator for 25–50 napkins per cycle. Designed for hospitals, large institutions and industrial use.",
     longDescription:
-      "The Lyra Maxi is the highest-capacity sanitary napkin incinerator in Lyra Enterprise's range, handling 25–50 napkins per cycle — essential for large hospitals, government medical colleges, industrial facilities and large institutional campuses with high daily sanitary waste volumes. The top-loading design allows quick restocking. Robust 900×500×500 mm stainless steel construction is built for continuous operation. Fully compliant with Biomedical Waste Management Rules 2016. Includes remote temperature logging for hospital facility management teams.",
+      "The Lyra Maxi is the highest-capacity sanitary napkin incinerator in Lyra Enterprisess' range, handling 25–50 napkins per cycle — essential for large hospitals, government medical colleges, industrial facilities and large institutional campuses with high daily sanitary waste volumes. The top-loading design allows quick restocking. Robust 900×500×500 mm stainless steel construction is built for continuous operation. Fully compliant with Biomedical Waste Management Rules 2016. Includes remote temperature logging for hospital facility management teams.",
     features: [
       "25–50 napkins per cycle",
       "100+ napkins/day capacity",
@@ -439,12 +439,12 @@ export const cities: StateLocation[] = [
     stateCode: "TN",
     capital: "Chennai",
     description:
-      "Lyra Enterprise is headquartered in Chennai, Tamil Nadu. We supply and install sanitary napkin vending machines and incinerators across all major cities and districts in Tamil Nadu.",
+      "Lyra Enterprises is headquartered in Chennai, Tamil Nadu. We supply and install sanitary napkin vending machines and incinerators across all major cities and districts in Tamil Nadu.",
     cities: ["Chennai", "Coimbatore", "Madurai", "Trichy", "Salem", "Tirunelveli", "Vellore", "Erode", "Thanjavur", "Tiruppur"],
     metaTitle:
-      "Sanitary Napkin Vending Machine in Tamil Nadu — Buy & Install | Lyra Enterprise",
+      "Sanitary Napkin Vending Machine in Tamil Nadu — Buy & Install | Lyra Enterprises",
     metaDescription:
-      "Buy sanitary napkin vending machines & incinerators in Tamil Nadu. Lyra Enterprise Chennai manufacturer supplies to Chennai, Coimbatore, Madurai, Trichy & all districts. Call +91-8122378860.",
+      "Buy sanitary napkin vending machines & incinerators in Tamil Nadu. Lyra Enterprises Chennai manufacturer supplies to Chennai, Coimbatore, Madurai, Trichy & all districts. Call +91-8122378860.",
     keywords: [
       "vending machine tamil nadu",
       "napkin vending machine tamil nadu",
@@ -462,12 +462,12 @@ export const cities: StateLocation[] = [
     stateCode: "KL",
     capital: "Thiruvananthapuram",
     description:
-      "Serving schools, hospitals, IT campuses and government offices across Kerala. Lyra Enterprise delivers to all 14 districts of Kerala with same-week dispatch.",
+      "Serving schools, hospitals, IT campuses and government offices across Kerala. Lyra Enterprises delivers to all 14 districts of Kerala with same-week dispatch.",
     cities: ["Kochi", "Thiruvananthapuram", "Kozhikode", "Thrissur", "Kollam", "Palakkad", "Alappuzha", "Kannur", "Kottayam", "Malappuram"],
     metaTitle:
-      "Sanitary Napkin Vending Machine in Kerala — Buy & Install | Lyra Enterprise",
+      "Sanitary Napkin Vending Machine in Kerala — Buy & Install | Lyra Enterprises",
     metaDescription:
-      "Buy sanitary napkin vending machines & incinerators in Kerala. Lyra Enterprise supplies to Kochi, Thiruvananthapuram, Kozhikode, Thrissur & all districts. Call +91-8122378860.",
+      "Buy sanitary napkin vending machines & incinerators in Kerala. Lyra Enterprises supplies to Kochi, Thiruvananthapuram, Kozhikode, Thrissur & all districts. Call +91-8122378860.",
     keywords: [
       "vending machine kerala",
       "napkin vending machine kerala",
@@ -488,9 +488,9 @@ export const cities: StateLocation[] = [
       "Supplying and installing sanitary napkin vending machines and incinerators across Andhra Pradesh — from Visakhapatnam to Tirupati. Ideal for schools, colleges, hospitals and government facilities.",
     cities: ["Visakhapatnam", "Vijayawada", "Tirupati", "Guntur", "Kakinada", "Nellore", "Kurnool", "Rajahmundry", "Kadapa", "Anantapur"],
     metaTitle:
-      "Sanitary Napkin Vending Machine in Andhra Pradesh — Buy & Install | Lyra Enterprise",
+      "Sanitary Napkin Vending Machine in Andhra Pradesh — Buy & Install | Lyra Enterprises",
     metaDescription:
-      "Buy sanitary napkin vending machines & incinerators in Andhra Pradesh. Lyra Enterprise supplies to Visakhapatnam, Vijayawada, Tirupati & all districts. Call +91-8122378860.",
+      "Buy sanitary napkin vending machines & incinerators in Andhra Pradesh. Lyra Enterprises supplies to Visakhapatnam, Vijayawada, Tirupati & all districts. Call +91-8122378860.",
     keywords: [
       "vending machine andhra pradesh",
       "napkin vending machine andhra pradesh",
@@ -508,12 +508,12 @@ export const cities: StateLocation[] = [
     stateCode: "KA",
     capital: "Bengaluru",
     description:
-      "Serving IT parks, hospitals, educational institutions and government offices across Karnataka. Lyra Enterprise supplies to Bengaluru, Mysuru, Hubli, Mangaluru and all major Karnataka districts.",
+      "Serving IT parks, hospitals, educational institutions and government offices across Karnataka. Lyra Enterprises supplies to Bengaluru, Mysuru, Hubli, Mangaluru and all major Karnataka districts.",
     cities: ["Bengaluru", "Mysuru", "Hubli", "Mangaluru", "Belagavi", "Davangere", "Ballari", "Tumkur", "Shivamogga", "Udupi"],
     metaTitle:
-      "Sanitary Napkin Vending Machine in Karnataka — Buy & Install | Lyra Enterprise",
+      "Sanitary Napkin Vending Machine in Karnataka — Buy & Install | Lyra Enterprises",
     metaDescription:
-      "Buy sanitary napkin vending machines & incinerators in Karnataka. Lyra Enterprise supplies to Bengaluru, Mysuru, Hubli, Mangaluru & all districts. Call +91-8122378860.",
+      "Buy sanitary napkin vending machines & incinerators in Karnataka. Lyra Enterprises supplies to Bengaluru, Mysuru, Hubli, Mangaluru & all districts. Call +91-8122378860.",
     keywords: [
       "vending machine karnataka",
       "napkin vending machine karnataka",
@@ -534,9 +534,9 @@ export const cities: StateLocation[] = [
       "Supplying and installing vending machines and incinerators across Telangana — from Hyderabad's IT corridors to schools and hospitals in Warangal, Nizamabad and Karimnagar.",
     cities: ["Hyderabad", "Secunderabad", "Warangal", "Nizamabad", "Karimnagar", "Khammam", "Ramagundam", "Mahbubnagar", "Nalgonda", "Adilabad"],
     metaTitle:
-      "Sanitary Napkin Vending Machine in Telangana — Buy & Install | Lyra Enterprise",
+      "Sanitary Napkin Vending Machine in Telangana — Buy & Install | Lyra Enterprises",
     metaDescription:
-      "Buy sanitary napkin vending machines & incinerators in Telangana. Lyra Enterprise supplies to Hyderabad, Warangal, Nizamabad & all districts. Call +91-8122378860.",
+      "Buy sanitary napkin vending machines & incinerators in Telangana. Lyra Enterprises supplies to Hyderabad, Warangal, Nizamabad & all districts. Call +91-8122378860.",
     keywords: [
       "vending machine telangana",
       "napkin vending machine telangana",
@@ -560,7 +560,7 @@ export const blogPosts = [
     readTime: "5 min read",
     category: "Education",
     metaTitle:
-      "Why Every School Needs a Sanitary Napkin Vending Machine | Lyra Enterprise",
+      "Why Every School Needs a Sanitary Napkin Vending Machine | Lyra Enterprises",
     metaDescription:
       "Discover why installing a sanitary napkin vending machine in schools reduces absenteeism and promotes menstrual health among girls in India.",
     keywords: [
@@ -580,7 +580,7 @@ export const blogPosts = [
     metaTitle:
       "UPI vs Coin Vending Machine — Complete Comparison Guide India 2026",
     metaDescription:
-      "Compare UPI QR code vs coin-operated sanitary napkin vending machines. Price, features, maintenance costs — full guide to help you choose. Lyra Enterprise India.",
+      "Compare UPI QR code vs coin-operated sanitary napkin vending machines. Price, features, maintenance costs — full guide to help you choose. Lyra Enterprises India.",
     keywords: [
       "upi vending machine vs coin",
       "best vending machine india 2026",
@@ -596,9 +596,9 @@ export const blogPosts = [
     readTime: "5 min read",
     category: "Hygiene Guide",
     metaTitle:
-      "Napkin Incinerator vs Sanitary Bio Bin — Which is Better? | Lyra Enterprise",
+      "Napkin Incinerator vs Sanitary Bio Bin — Which is Better? | Lyra Enterprises",
     metaDescription:
-      "Incinerator vs bio bin for sanitary waste disposal in India. Health risks, compliance, cost comparison — full guide. Lyra Enterprise Chennai manufacturer.",
+      "Incinerator vs bio bin for sanitary waste disposal in India. Health risks, compliance, cost comparison — full guide. Lyra Enterprises Chennai manufacturer.",
     keywords: [
       "napkin incinerator vs bio bin",
       "best sanitary waste disposal india",

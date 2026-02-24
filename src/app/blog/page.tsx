@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
@@ -6,9 +6,9 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { blogPosts, SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Blog — Menstrual Hygiene, Vending Machines & Incinerators India | Lyra Enterprise",
+  title: "Blog — Menstrual Hygiene, Vending Machines & Incinerators India | Lyra Enterprises",
   description:
-    "Expert articles on menstrual hygiene management, vending machine buying guides and incinerator comparisons. By Lyra Enterprise — India's #1 manufacturer.",
+    "Expert articles on menstrual hygiene management, vending machine buying guides and incinerator comparisons. By Lyra Enterprises — India's #1 manufacturer.",
   keywords: [
     "menstrual hygiene india blog",
     "vending machine buying guide india",

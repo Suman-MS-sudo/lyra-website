@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
@@ -6,9 +6,9 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Sanitary Napkin Incinerator vs Bio Bin — Which is Better for India? | Lyra Enterprise",
+  title: "Sanitary Napkin Incinerator vs Bio Bin — Which is Better for India? | Lyra Enterprises",
   description:
-    "Comparing sanitary napkin incinerators vs bio bins for India institutions. Health risks, legal compliance, cost analysis — complete guide. Lyra Enterprise Chennai manufacturer.",
+    "Comparing sanitary napkin incinerators vs bio bins for India institutions. Health risks, legal compliance, cost analysis — complete guide. Lyra Enterprises Chennai manufacturer.",
   keywords: [
     "napkin incinerator vs bio bin india",
     "best sanitary waste disposal india",
@@ -24,8 +24,8 @@ const articleSchema = {
   "@type": "Article",
   headline: "Sanitary Napkin Incinerator vs Bio Bin — Which is Better for India?",
   description: "Bio bins create infection risk and require manual disposal. Incinerators eliminate waste completely.",
-  author: { "@type": "Organization", name: "Lyra Enterprise" },
-  publisher: { "@type": "Organization", name: "Lyra Enterprise", url: SITE.url },
+  author: { "@type": "Organization", name: "Lyra Enterprises" },
+  publisher: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
   datePublished: "2026-02-05",
   url: `${SITE.url}/blog/napkin-incinerator-vs-sanitary-bin`,
 };
@@ -70,7 +70,7 @@ export default function BlogPost3() {
 
             <h2 className="text-2xl font-bold text-gray-900">How incinerators solve all of this</h2>
             <p>
-              A Lyra Enterprise sanitary napkin incinerator burns napkins at high temperature inside the unit — in the toilet itself, immediately after disposal. This means:
+              A Lyra Enterprises sanitary napkin incinerator burns napkins at high temperature inside the unit — in the toilet itself, immediately after disposal. This means:
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Zero manual handling</strong> — no human touches the waste at any point.</li>

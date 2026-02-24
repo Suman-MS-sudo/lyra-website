@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
@@ -6,19 +6,19 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { vendingMachines, incinerators, SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "All Sanitary Napkin Vending Machines & Incinerators — Lyra Enterprise India",
+  title: "All Sanitary Napkin Vending Machines & Incinerators — Lyra Enterprises India",
   description:
-    "Browse all Lyra Enterprise products — sanitary napkin vending machines (coin, UPI, WiFi, IoT) and incinerators. Best prices, pan-India delivery. Manufacturer in Chennai.",
+    "Browse all Lyra Enterprises products — sanitary napkin vending machines (coin, UPI, WiFi, IoT) and incinerators. Best prices, pan-India delivery. Manufacturer in Chennai.",
   keywords: [
     "sanitary napkin vending machine india",
     "napkin vending machine price india",
     "incinerator india",
     "vending machine manufacturer india",
-    "lyra enterprise products",
+    "Lyra Enterprises products",
   ],
   alternates: { canonical: `${SITE.url}/products` },
   openGraph: {
-    title: "All Products — Lyra Enterprise Vending Machines & Incinerators",
+    title: "All Products — Lyra Enterprises Vending Machines & Incinerators",
     description: "Browse coin, UPI, WiFi vending machines and compact/high-capacity incinerators. Pan-India delivery from Chennai manufacturer.",
     url: `${SITE.url}/products`,
   },
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Lyra Enterprise Products — Vending Machines & Incinerators",
+  name: "Lyra Enterprises Products — Vending Machines & Incinerators",
   url: `${SITE.url}/products`,
-  description: "All Lyra Enterprise sanitary napkin vending machine and incinerator models",
+  description: "All Lyra Enterprises sanitary napkin vending machine and incinerator models",
   breadcrumb: {
     "@type": "BreadcrumbList",
     itemListElement: [

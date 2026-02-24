@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
@@ -22,11 +22,11 @@ export const metadata: Metadata = {
 
   title: {
     default:
-      "Lyra Enterprise | #1 Vending Machine & Incinerator Manufacturer India",
-    template: "%s | Lyra Enterprise",
+      "Lyra Enterprises | #1 Vending Machine & Incinerator Manufacturer India",
+    template: "%s | Lyra Enterprises",
   },
   description:
-    "Buy sanitary napkin vending machines & incinerators from Lyra Enterprise — India's #1 manufacturer based in Chennai. Coin, UPI, WiFi & IoT models. Trusted by 200+ schools, hospitals & offices across India. Best price guaranteed.",
+    "Buy sanitary napkin vending machines & incinerators from Lyra Enterprises — India's #1 manufacturer based in Chennai. Coin, UPI, WiFi & IoT models. Trusted by 200+ schools, hospitals & offices across India. Best price guaranteed.",
 
   keywords: [
     // Primary product keywords
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     "WiFi vending machine",
     "smart vending machine India",
     // Brand + broad
-    "Lyra Enterprise",
+    "Lyra Enterprises",
     "Lyra vending machine",
     "Lyra incinerator",
     "women hygiene machine India",
@@ -74,9 +74,9 @@ export const metadata: Metadata = {
     "school toilet napkin machine",
   ],
 
-  authors: [{ name: "Lyra Enterprise", url: SITE_URL }],
-  creator: "Lyra Enterprise",
-  publisher: "Lyra Enterprise",
+  authors: [{ name: "Lyra Enterprises", url: SITE_URL }],
+  creator: "Lyra Enterprises",
+  publisher: "Lyra Enterprises",
 
   category: "Manufacturing",
 
@@ -86,11 +86,11 @@ export const metadata: Metadata = {
 
   openGraph: {
     title:
-      "Lyra Enterprise | #1 Vending Machine & Incinerator Manufacturer India",
+      "Lyra Enterprises | #1 Vending Machine & Incinerator Manufacturer India",
     description:
       "India's most trusted manufacturer of sanitary napkin vending machines & incinerators. Coin, UPI, WiFi & IoT models. 200+ installations across India. Get best price from Chennai.",
     url: SITE_URL,
-    siteName: "Lyra Enterprise",
+    siteName: "Lyra Enterprises",
     locale: "en_IN",
     type: "website",
     images: [
@@ -98,7 +98,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/images/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "Lyra Enterprise — Sanitary Napkin Vending Machine & Incinerator Manufacturer India",
+        alt: "Lyra Enterprises — Sanitary Napkin Vending Machine & Incinerator Manufacturer India",
       },
     ],
   },
@@ -106,7 +106,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Lyra Enterprise | #1 Vending Machine & Incinerator Manufacturer India",
+      "Lyra Enterprises | #1 Vending Machine & Incinerator Manufacturer India",
     description:
       "Buy sanitary napkin vending machines & incinerators from India's #1 manufacturer. Coin, UPI, WiFi & IoT models. Best price, 200+ installations.",
     images: [`${SITE_URL}/images/og-image.jpg`],
@@ -135,7 +135,7 @@ export const metadata: Metadata = {
     "geo.position": "13.0827;80.2707",
     ICBM: "13.0827, 80.2707",
     "DC.language": "en",
-    "DC.publisher": "Lyra Enterprise",
+    "DC.publisher": "Lyra Enterprises",
   },
 };
 

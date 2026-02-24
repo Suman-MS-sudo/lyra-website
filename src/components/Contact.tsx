@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -37,7 +37,7 @@ function FadeUp({
   );
 }
 
-const WA_TEXT = encodeURIComponent("Hi! I'm interested in Lyra Enterprise's sanitary napkin vending machines / incinerators. Please share more details.");
+const WA_TEXT = encodeURIComponent("Hi! I'm interested in Lyra Enterprisess' sanitary napkin vending machines / incinerators. Please share more details.");
 
 const contactInfo = [
   {
@@ -88,7 +88,7 @@ export default function Contact() {
     const form = new FormData();
     Object.entries(data).forEach(([k, v]) => form.append(k, v));
     form.append("_captcha", "false");
-    form.append("_subject", "New Inquiry from Lyra Enterprise Website");
+    form.append("_subject", "New Inquiry from Lyra Enterprises Website");
     try {
       await fetch("https://formsubmit.co/sales@lyraenterprise.co.in", {
         method: "POST",
@@ -362,7 +362,7 @@ export default function Contact() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Lyra Enterprise Location"
+                  title="Lyra Enterprises Location"
                   className="w-full h-full"
                 />
               </div>

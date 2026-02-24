@@ -1,5 +1,5 @@
-/**
- * JSON-LD Structured Data for Lyra Enterprise
+﻿/**
+ * JSON-LD Structured Data for Lyra Enterprises
  * Covers: Organization, LocalBusiness, ItemList (Products), FAQPage, BreadcrumbList
  * These schemas help Google understand the site and improve rich results ranking.
  */
@@ -10,8 +10,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": ["Organization", "LocalBusiness", "Store"],
   "@id": `${SITE_URL}/#organization`,
-  name: "Lyra Enterprise",
-  alternateName: ["Lyra Vending", "Lyra Enterprise Chennai"],
+  name: "Lyra Enterprises",
+  alternateName: ["Lyra Vending", "Lyra Enterprises Chennai"],
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",
@@ -157,9 +157,9 @@ const incineratorProducts = [
 const productListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Lyra Enterprise — Sanitary Napkin Vending Machines & Incinerators",
+  name: "Lyra Enterprises — Sanitary Napkin Vending Machines & Incinerators",
   description:
-    "Complete range of sanitary napkin vending machines (coin, UPI, WiFi, IoT) and incinerators manufactured in Chennai, India by Lyra Enterprise.",
+    "Complete range of sanitary napkin vending machines (coin, UPI, WiFi, IoT) and incinerators manufactured in Chennai, India by Lyra Enterprises.",
   url: SITE_URL,
   numberOfItems: vendingMachineProducts.length + incineratorProducts.length,
   itemListElement: [
@@ -173,7 +173,7 @@ const productListSchema = {
         sku: p.sku,
         description: p.description,
         keywords: p.keywords,
-        brand: { "@type": "Brand", name: "Lyra Enterprise" },
+        brand: { "@type": "Brand", name: "Lyra Enterprises" },
         manufacturer: { "@id": `${SITE_URL}/#organization` },
         category: "Sanitary Napkin Vending Machine",
         url: `${SITE_URL}/#products`,
@@ -222,7 +222,7 @@ const productListSchema = {
         sku: p.sku,
         description: p.description,
         keywords: p.keywords,
-        brand: { "@type": "Brand", name: "Lyra Enterprise" },
+        brand: { "@type": "Brand", name: "Lyra Enterprises" },
         manufacturer: { "@id": `${SITE_URL}/#organization` },
         category: "Sanitary Napkin Incinerator",
         url: `${SITE_URL}/#products`,
@@ -250,7 +250,7 @@ const faqSchema = {
       name: "What is the price of a sanitary napkin vending machine in India?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Lyra Enterprise sanitary napkin vending machines start from ₹10,000 for the push-button model up to ₹23,500 for advanced WiFi/UPI models. Prices vary based on payment mode (coin, UPI, WiFi, IoT). Contact us at +91-8122378860 for bulk pricing.",
+        text: "Lyra Enterprises sanitary napkin vending machines start from ₹10,000 for the push-button model up to ₹23,500 for advanced WiFi/UPI models. Prices vary based on payment mode (coin, UPI, WiFi, IoT). Contact us at +91-8122378860 for bulk pricing.",
       },
     },
     {
@@ -258,7 +258,7 @@ const faqSchema = {
       name: "Where can I buy a sanitary napkin vending machine in India?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Lyra Enterprise manufactures and sells sanitary napkin vending machines across India. We are based in Chennai, Tamil Nadu and deliver to all states including Delhi, Mumbai, Bangalore, Hyderabad, Kochi and more. Reach us at sales@lyraenterprise.co.in or call +91-8122378860.",
+        text: "Lyra Enterprises manufactures and sells sanitary napkin vending machines across India. We are based in Chennai, Tamil Nadu and deliver to all states including Delhi, Mumbai, Bangalore, Hyderabad, Kochi and more. Reach us at sales@lyraenterprise.co.in or call +91-8122378860.",
       },
     },
     {
@@ -266,7 +266,7 @@ const faqSchema = {
       name: "Which is the best sanitary napkin vending machine manufacturer in India?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Lyra Enterprise is India's #1 sanitary napkin vending machine manufacturer based in Chennai, Tamil Nadu. With 200+ installations across schools, hospitals and offices in 4+ states, we offer coin-operated, UPI, WiFi and IoT-enabled models with after-sales support.",
+        text: "Lyra Enterprises is India's #1 sanitary napkin vending machine manufacturer based in Chennai, Tamil Nadu. With 200+ installations across schools, hospitals and offices in 4+ states, we offer coin-operated, UPI, WiFi and IoT-enabled models with after-sales support.",
       },
     },
     {
@@ -274,7 +274,7 @@ const faqSchema = {
       name: "What is a sanitary napkin incinerator and how much does it cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A sanitary napkin incinerator is a machine that safely burns and disposes of used sanitary pads, maintaining hygiene in toilet facilities. Lyra Enterprise incinerators start from ₹12,500 (Micro) to ₹38,500 (Maxi high-capacity). They come in wall-mountable designs with digital temperature control.",
+        text: "A sanitary napkin incinerator is a machine that safely burns and disposes of used sanitary pads, maintaining hygiene in toilet facilities. Lyra Enterprises incinerators start from ₹12,500 (Micro) to ₹38,500 (Maxi high-capacity). They come in wall-mountable designs with digital temperature control.",
       },
     },
     {
@@ -282,7 +282,7 @@ const faqSchema = {
       name: "Do Lyra vending machines support UPI and QR code payments?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Lyra Enterprise's Solo WiFi (Lyra/SNVM/W-QR-SC) and Solo Ethernet (Lyra/SNVM/ET-QR-SC) models support UPI QR code payments in addition to coin operation. They also have WiFi/Ethernet connectivity for cloud-based monitoring and reports.",
+        text: "Yes. Lyra Enterprisess' Solo WiFi (Lyra/SNVM/W-QR-SC) and Solo Ethernet (Lyra/SNVM/ET-QR-SC) models support UPI QR code payments in addition to coin operation. They also have WiFi/Ethernet connectivity for cloud-based monitoring and reports.",
       },
     },
     {
@@ -290,15 +290,15 @@ const faqSchema = {
       name: "Are Lyra vending machines suitable for schools and colleges?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Lyra Enterprise vending machines are widely installed in schools, colleges, hostels, hospitals and corporate offices across India. The compact 700×160×160 mm design fits standard toilet cubicles. The push-button and coin models are especially popular for educational institutions.",
+        text: "Yes. Lyra Enterprises vending machines are widely installed in schools, colleges, hostels, hospitals and corporate offices across India. The compact 700×160×160 mm design fits standard toilet cubicles. The push-button and coin models are especially popular for educational institutions.",
       },
     },
     {
       "@type": "Question",
-      name: "Does Lyra Enterprise provide installation and after-sales service?",
+      name: "Does Lyra Enterprises provide installation and after-sales service?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Lyra Enterprise provides installation support, user training and after-sales service across India. We service Tamil Nadu, Kerala, Karnataka, Andhra Pradesh, Telangana, Maharashtra and Delhi NCR. Call +91-8122378860 or email sales@lyraenterprise.co.in.",
+        text: "Yes. Lyra Enterprises provides installation support, user training and after-sales service across India. We service Tamil Nadu, Kerala, Karnataka, Andhra Pradesh, Telangana, Maharashtra and Delhi NCR. Call +91-8122378860 or email sales@lyraenterprise.co.in.",
       },
     },
     {
@@ -317,7 +317,7 @@ const websiteSchema = {
   "@type": "WebSite",
   "@id": `${SITE_URL}/#website`,
   url: SITE_URL,
-  name: "Lyra Enterprise",
+  name: "Lyra Enterprises",
   description:
     "India's #1 manufacturer of sanitary napkin vending machines and incinerators",
   publisher: { "@id": `${SITE_URL}/#organization` },

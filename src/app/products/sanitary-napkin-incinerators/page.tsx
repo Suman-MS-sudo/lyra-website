@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { incinerators, SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Sanitary Napkin Incinerators — All Models & Prices India | Lyra Enterprise",
+  title: "Sanitary Napkin Incinerators — All Models & Prices India | Lyra Enterprises",
   description:
     "Buy sanitary napkin incinerators in India. Compare Micro (1–5), Mini (5–15) and Maxi (25–50 napkins/cycle). CPCB & SWM compliant. Prices from ₹12,500. Pan-India delivery. Call +91-8122378860.",
   keywords: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: `${SITE.url}/products/sanitary-napkin-incinerators` },
   openGraph: {
-    title: "Sanitary Napkin Incinerators — All Models India | Lyra Enterprise",
+    title: "Sanitary Napkin Incinerators — All Models India | Lyra Enterprises",
     description: "Micro, Mini & Maxi incinerators. CPCB & SWM compliant. Prices from ₹12,500. Pan-India delivery from Chennai.",
     url: `${SITE.url}/products/sanitary-napkin-incinerators`,
   },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Sanitary Napkin Incinerators — Lyra Enterprise",
+  name: "Sanitary Napkin Incinerators — Lyra Enterprises",
   url: `${SITE.url}/products/sanitary-napkin-incinerators`,
   numberOfItems: incinerators.length,
   itemListElement: incinerators.map((p, i) => ({

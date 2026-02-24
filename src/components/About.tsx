@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -64,7 +64,7 @@ export default function About() {
               Trusted by Institutions.
             </h2>
             <p className="text-lg text-gray-500 leading-relaxed">
-              Lyra Enterprise is at the forefront of feminine hygiene
+              Lyra Enterprises is at the forefront of feminine hygiene
               infrastructure in India — crafting precision-engineered vending
               machines and incinerators that prioritize privacy, reliability,
               and sustainability.

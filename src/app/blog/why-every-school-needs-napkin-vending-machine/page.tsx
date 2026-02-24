@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Why Every School in India Needs a Sanitary Napkin Vending Machine | Lyra Enterprise",
+  title: "Why Every School in India Needs a Sanitary Napkin Vending Machine | Lyra Enterprises",
   description:
     "Menstrual hygiene in schools directly impacts girls' attendance and learning outcomes. Discover why sanitary napkin vending machines are the most effective solution for Indian schools.",
   keywords: [
@@ -29,8 +29,8 @@ const articleSchema = {
   "@type": "Article",
   headline: "Why Every School in India Needs a Sanitary Napkin Vending Machine",
   description: "Menstrual hygiene in schools directly impacts girls' attendance and learning outcomes.",
-  author: { "@type": "Organization", name: "Lyra Enterprise" },
-  publisher: { "@type": "Organization", name: "Lyra Enterprise", url: SITE.url },
+  author: { "@type": "Organization", name: "Lyra Enterprises" },
+  publisher: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
   datePublished: "2026-01-15",
   url: `${SITE.url}/blog/why-every-school-needs-napkin-vending-machine`,
 };
@@ -80,7 +80,7 @@ export default function BlogPost1() {
 
             <h2 className="text-2xl font-bold text-gray-900">Which vending machine model works best for schools?</h2>
             <p>
-              For most schools, two Lyra Enterprise models work best:
+              For most schools, two Lyra Enterprises models work best:
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li>
@@ -104,7 +104,7 @@ export default function BlogPost1() {
 
             <h2 className="text-2xl font-bold text-gray-900">How to install one at your school</h2>
             <p>
-              Lyra Enterprise supplies and delivers pan-India. Installation requires a standard power outlet and a flat wall surface. The entire process — from order to installed machine — takes less than a week for most locations.
+              Lyra Enterprises supplies and delivers pan-India. Installation requires a standard power outlet and a flat wall surface. The entire process — from order to installed machine — takes less than a week for most locations.
             </p>
             <p>
               Call us at <Link href="tel:+918122378860" className="text-primary-600 font-semibold hover:underline">{SITE.phoneDisplay}</Link> or <Link href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="text-green-600 font-semibold hover:underline">WhatsApp us</Link> to get a quote for your school.

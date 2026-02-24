@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { vendingMachines, SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Sanitary Napkin Vending Machines — All Models & Prices India | Lyra Enterprise",
+  title: "Sanitary Napkin Vending Machines — All Models & Prices India | Lyra Enterprises",
   description:
     "Buy sanitary napkin vending machines in India. Compare push-button, coin, UPI QR WiFi and Ethernet models. Prices from ₹10,000. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
   keywords: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: `${SITE.url}/products/sanitary-napkin-vending-machines` },
   openGraph: {
-    title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprise",
+    title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
     description: "Compare all 4 models: push-button, coin, WiFi UPI and Ethernet. Prices from ₹10,000. Pan-India delivery.",
     url: `${SITE.url}/products/sanitary-napkin-vending-machines`,
   },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Sanitary Napkin Vending Machines — Lyra Enterprise",
+  name: "Sanitary Napkin Vending Machines — Lyra Enterprises",
   url: `${SITE.url}/products/sanitary-napkin-vending-machines`,
   numberOfItems: vendingMachines.length,
   itemListElement: vendingMachines.map((p, i) => ({

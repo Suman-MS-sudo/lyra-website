@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
@@ -6,9 +6,9 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "UPI QR vs Coin Vending Machine — Which One Should You Buy? India 2026 | Lyra Enterprise",
+  title: "UPI QR vs Coin Vending Machine — Which One Should You Buy? India 2026 | Lyra Enterprises",
   description:
-    "Complete comparison of UPI QR code vs coin-operated sanitary napkin vending machines. Price, features, maintenance, best use cases — full buying guide for India 2026. Lyra Enterprise.",
+    "Complete comparison of UPI QR code vs coin-operated sanitary napkin vending machines. Price, features, maintenance, best use cases — full buying guide for India 2026. Lyra Enterprises.",
   keywords: [
     "upi vending machine vs coin india",
     "best vending machine india 2026",
@@ -24,8 +24,8 @@ const articleSchema = {
   "@type": "Article",
   headline: "UPI QR vs Coin Vending Machine — Which One Should You Buy?",
   description: "Complete comparison of UPI and coin vending machines for India.",
-  author: { "@type": "Organization", name: "Lyra Enterprise" },
-  publisher: { "@type": "Organization", name: "Lyra Enterprise", url: SITE.url },
+  author: { "@type": "Organization", name: "Lyra Enterprises" },
+  publisher: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
   datePublished: "2026-01-28",
   url: `${SITE.url}/blog/upi-vs-coin-vending-machine`,
 };
@@ -70,7 +70,7 @@ export default function BlogPost2() {
           <div className="mt-10 space-y-6 text-gray-700 leading-relaxed">
             <h2 className="text-2xl font-bold text-gray-900">What&apos;s the difference?</h2>
             <p>
-              Both are sanitary napkin vending machines from Lyra Enterprise that dispense one napkin per transaction. The key difference is payment method and connectivity:
+              Both are sanitary napkin vending machines from Lyra Enterprises that dispense one napkin per transaction. The key difference is payment method and connectivity:
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Coin machine (Solo Coin, ₹11,500)</strong> — accepts ₹5 coin. No internet. No app. Simple mechanical + electronic operation.</li>

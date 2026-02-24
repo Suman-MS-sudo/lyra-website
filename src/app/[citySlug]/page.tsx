@@ -1,225 +1,143 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
-import { cities, products, SITE } from "@/lib/data";
+import { vendingMachines, incinerators, SITE } from "@/lib/data";
 
-type Props = { params: { citySlug: string } };
+export const metadata: Metadata = {
+  title: "All Sanitary Napkin Vending Machines & Incinerators — Lyra Enterprises India",
+  description:
+    "Browse all Lyra Enterprises products — sanitary napkin vending machines (coin, UPI, WiFi, IoT) and incinerators. Best prices, pan-India delivery. Manufacturer in Chennai.",
+  keywords: [
+    "sanitary napkin vending machine india",
+    "napkin vending machine price india",
+    "incinerator india",
+    "vending machine manufacturer india",
+    "Lyra Enterprises products",
+  ],
+  alternates: { canonical: `${SITE.url}/products` },
+  openGraph: {
+    title: "All Products — Lyra Enterprises Vending Machines & Incinerators",
+    description: "Browse coin, UPI, WiFi vending machines and compact/high-capacity incinerators. Pan-India delivery from Chennai manufacturer.",
+    url: `${SITE.url}/products`,
+  },
+};
 
-export async function generateStaticParams() {
-  return cities.map((s) => ({ citySlug: s.slug }));
-}
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Lyra Enterprises Products — Vending Machines & Incinerators",
+  url: `${SITE.url}/products`,
+  description: "All Lyra Enterprises sanitary napkin vending machine and incinerator models",
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+      { "@type": "ListItem", position: 2, name: "Products", item: `${SITE.url}/products` },
+    ],
+  },
+};
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const loc = cities.find((s) => s.slug === params.citySlug);
-  if (!loc) return {};
-  return {
-    title: loc.metaTitle,
-    description: loc.metaDescription,
-    keywords: loc.keywords,
-    alternates: { canonical: `${SITE.url}/${loc.slug}` },
-    openGraph: {
-      title: loc.metaTitle,
-      description: loc.metaDescription,
-      url: `${SITE.url}/${loc.slug}`,
-    },
-  };
-}
-
-export default function StatePage({ params }: Props) {
-  const loc = cities.find((s) => s.slug === params.citySlug);
-  if (!loc) notFound();
-
-  const stateSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: `Lyra Enterprise — ${loc.state}`,
-    description: `Lyra Enterprise supplies and installs sanitary napkin vending machines and incinerators across ${loc.state}.`,
-    url: `${SITE.url}/${loc.slug}`,
-    telephone: SITE.phone,
-    email: SITE.email,
-    areaServed: { "@type": "State", name: loc.state },
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Chennai",
-      addressRegion: "Tamil Nadu",
-      addressCountry: "IN",
-    },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
-        { "@type": "ListItem", position: 2, name: `Vending Machine ${loc.state}`, item: `${SITE.url}/${loc.slug}` },
-      ],
-    },
-  };
-
+export default function ProductsPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(stateSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <PageNavbar />
-      <main className="pt-16 min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      <main className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50">
         {/* Hero */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pt-12 pb-10">
-          <Breadcrumb crumbs={[
-            { label: "Home", href: "/" },
-            { label: `Vending Machine ${loc.state}` },
-          ]} />
-          <div className="mt-6 inline-flex items-center gap-2 px-3 py-1.5 bg-primary-100 text-primary-700 rounded-full text-xs font-bold uppercase tracking-widest">
-            Serving all of {loc.state}
-          </div>
-          {/* Women's Day offer pill */}
-          <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-[#6B1FA8]/10 to-[#E8477A]/10 border border-[#A0268A]/25 rounded-full text-xs font-bold text-[#6B1FA8]">
-            🌸 Women&apos;s Day — ₹1,000 OFF till March 8, 2026
-          </div>
-          <h1 className="mt-4 font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-            Sanitary Napkin Vending Machine in{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">
-              {loc.state}
-            </span>
+        <section className="max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-10">
+          <Breadcrumb crumbs={[{ label: "Home", href: "/" }, { label: "Products" }]} />
+          <h1 className="mt-8 font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
+            All <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">Products</span>
           </h1>
-          <p className="mt-4 text-gray-600 text-lg max-w-2xl leading-relaxed">
-            Lyra Enterprise — India&apos;s #1 manufacturer — supplies and installs sanitary napkin vending machines and incinerators across {loc.state}. Coin, UPI/QR and WiFi IoT models available. Same-week delivery and installation.
+          <p className="mt-4 text-gray-600 text-lg max-w-2xl">
+            India&apos;s most complete range of sanitary napkin vending machines and incinerators. Every model is manufactured at our Chennai facility with 1-year warranty and pan-India service.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href={`https://wa.me/918122378860?text=${encodeURIComponent(`Hi! I need a sanitary napkin vending machine in ${loc.state}. Please share details.`)}`}
-              target="_blank" rel="noopener noreferrer"
-              className="px-6 py-3 bg-green-500 text-white font-bold rounded-full shadow hover:-translate-y-0.5 transition-all"
-            >
-              WhatsApp — Get {loc.state} Price
-            </Link>
-            <Link href="tel:+918122378860" className="px-6 py-3 bg-gradient-to-r from-primary-600 to-pink-500 text-white font-bold rounded-full shadow hover:-translate-y-0.5 transition-all">
-              Call Now
-            </Link>
+          <div className="mt-6 flex flex-wrap gap-3 text-sm font-medium">
+            <a href="#vending-machines" className="px-4 py-2 rounded-full bg-primary-100 text-primary-700 hover:bg-primary-200 transition-colors">Vending Machines ↓</a>
+            <a href="#incinerators" className="px-4 py-2 rounded-full bg-primary-100 text-primary-700 hover:bg-primary-200 transition-colors">Incinerators ↓</a>
           </div>
         </section>
 
-        {/* Cities covered */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-10">
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-            <h2 className="font-bold text-gray-900 mb-3">Cities &amp; Districts we serve in {loc.state}</h2>
-            <div className="flex flex-wrap gap-2">
-              {loc.cities.map((city) => (
-                <span key={city} className="px-3 py-1.5 bg-primary-50 text-primary-700 rounded-full text-sm font-medium border border-primary-100">
-                  📍 {city}
-                </span>
-              ))}
+        {/* Vending Machines */}
+        <section id="vending-machines" className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
+          <div className="flex items-center gap-4 mb-8">
+            <div>
+              <p className="text-xs font-bold text-primary-500 uppercase tracking-widest mb-1">Category</p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Sanitary Napkin Vending Machines</h2>
             </div>
-            <p className="mt-4 text-sm text-gray-500">
-              Don&apos;t see your city? We deliver to all locations in {loc.state}. Call us at {SITE.phoneDisplay}.
-            </p>
+            <Link href="/products/sanitary-napkin-vending-machines" className="ml-auto text-sm text-primary-600 font-semibold hover:underline whitespace-nowrap">
+              View All →
+            </Link>
           </div>
-        </section>
-
-        {/* Products */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <h2 className="font-bold text-2xl text-gray-900 mb-6">
-            Available Products for {loc.state}
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {products.map((p) => (
-              <Link key={p.slug} href={`/products/${p.slug}`} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all overflow-hidden">
-                <div className={`h-1.5 bg-gradient-to-r ${p.accent}`} />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {vendingMachines.map((p) => (
+              <Link key={p.slug} href={`/products/${p.slug}`} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
                 <div className="p-5">
-                  <p className="text-[9px] text-gray-400 uppercase font-semibold tracking-widest mb-1">
-                    {p.category === "vending-machine" ? "Vending Machine" : "Incinerator"}
-                  </p>
-                  <h3 className="font-bold text-gray-900 group-hover:text-primary-600 transition-colors">{p.name}</h3>
-                  <p className="text-xs text-gray-500 mt-1 mb-3 leading-snug">{p.tagline}</p>
-                  <p className="text-lg font-bold text-primary-600">₹{p.discountedPrice.toLocaleString("en-IN")}</p>
-                  <p className="text-xs text-gray-400">Free delivery to {loc.state}</p>
-                  <span className="mt-3 block text-xs text-primary-600 group-hover:underline">View Details →</span>
+                  {p.popular && (
+                    <span className="inline-block mb-2 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-primary-100 text-primary-700 rounded-full">Most Popular</span>
+                  )}
+                  <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">{p.code}</p>
+                  <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
+                  <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug">{p.tagline}</p>
+                  <div className="flex items-end gap-2">
+                    <span className="text-xl font-bold text-primary-600">₹{p.discountedPrice.toLocaleString("en-IN")}</span>
+                    <span className="text-sm text-gray-400 line-through">₹{p.price.toLocaleString("en-IN")}</span>
+                  </div>
+                  <p className="text-[10px] text-[#A0268A] font-semibold mt-0.5">🌸 Women&apos;s Day — Save ₹{(p.price - p.discountedPrice).toLocaleString("en-IN")}</p>
+                  <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details →</span>
                 </div>
               </Link>
             ))}
           </div>
         </section>
 
-        {/* Why Lyra */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <div className="bg-gradient-to-br from-primary-50 to-pink-50 rounded-2xl border border-primary-100 p-6 sm:p-8">
-            <h2 className="font-bold text-2xl text-gray-900 mb-6">Why institutions in {loc.state} choose Lyra Enterprise</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { title: "Pan-India manufacturer", desc: `We manufacture in Chennai and deliver directly to ${loc.state} — no middlemen, best price guaranteed.` },
-                { title: "Same-week delivery", desc: `Most orders in ${loc.state} are delivered within 5–7 working days. Express delivery available.` },
-                { title: "1-Year warranty", desc: "Every machine comes with 1-year manufacturer warranty and dedicated after-sales support." },
-                { title: "200+ installations", desc: "Trusted by schools, hospitals, IT parks and government offices across South India including your state." },
-                { title: "All payment modes", desc: "Coin, UPI QR, WiFi IoT models available to match your facility and visitor demographics." },
-                { title: "Free consultation", desc: "Our team will assess your requirements and recommend the right machine for your institution." },
-              ].map((item) => (
-                <div key={item.title} className="bg-white rounded-xl p-4 border border-primary-100/50">
-                  <p className="font-semibold text-gray-900 mb-1">✓ {item.title}</p>
-                  <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
+        {/* Incinerators */}
+        <section id="incinerators" className="max-w-7xl mx-auto px-5 sm:px-8 pb-20">
+          <div className="flex items-center gap-4 mb-8">
+            <div>
+              <p className="text-xs font-bold text-primary-500 uppercase tracking-widest mb-1">Category</p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Sanitary Napkin Incinerators</h2>
             </div>
+            <Link href="/products/sanitary-napkin-incinerators" className="ml-auto text-sm text-primary-600 font-semibold hover:underline whitespace-nowrap">
+              View All →
+            </Link>
           </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="max-w-3xl mx-auto px-5 sm:px-8 pb-16">
-          <h2 className="font-bold text-2xl text-gray-900 mb-6">Frequently Asked Questions — {loc.state}</h2>
-          <div className="space-y-4">
-            {[
-              {
-                q: `How do I buy a sanitary napkin vending machine in ${loc.state}?`,
-                a: `Call us at ${SITE.phoneDisplay} or WhatsApp — we process your order, arrange delivery to ${loc.state} and provide installation support. No local showroom visit needed.`,
-              },
-              {
-                q: `What is the price of a vending machine in ${loc.state}?`,
-                a: `Prices start from ₹10,000 (push button) to ₹23,500 (WiFi UPI model). Delivery to ${loc.state} is included. Women's Day offer active — save ₹1,000 on all models.`,
-              },
-              {
-                q: `Do you install the machine in ${loc.state}?`,
-                a: `We provide detailed installation guides and video support for ${loc.state}. For large orders (5+ machines), our team can arrange on-site installation assistance.`,
-              },
-              {
-                q: `Do you supply incinerators in ${loc.state}?`,
-                a: `Yes. We ship all 3 Lyra incinerator models (Micro, Mini, Maxi) to ${loc.state}. CPCB-compliant sanitary waste disposal for schools, hospitals and offices.`,
-              },
-            ].map((faq, i) => (
-              <details key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm group">
-                <summary className="px-5 py-4 font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center">
-                  {faq.q}
-                  <span className="text-primary-500 ml-3 flex-shrink-0">+</span>
-                </summary>
-                <p className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{faq.a}</p>
-              </details>
-            ))}
-          </div>
-        </section>
-
-        {/* Other states */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <h2 className="font-bold text-xl text-gray-900 mb-4">We also serve</h2>
-          <div className="flex flex-wrap gap-3">
-            {cities.filter((s) => s.slug !== loc.slug).map((s) => (
-              <Link key={s.slug} href={`/${s.slug}`} className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm text-gray-700 font-medium hover:border-primary-300 hover:text-primary-600 transition-all shadow-sm">
-                {s.state}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {incinerators.map((p) => (
+              <Link key={p.slug} href={`/products/${p.slug}`} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
+                <div className="p-5">
+                  <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">{p.code}</p>
+                  <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
+                  <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug">{p.tagline}</p>
+                  <div className="flex items-end gap-2">
+                    <span className="text-xl font-bold text-primary-600">₹{p.discountedPrice.toLocaleString("en-IN")}</span>
+                    <span className="text-sm text-gray-400 line-through">₹{p.price.toLocaleString("en-IN")}</span>
+                  </div>
+                  <p className="text-[10px] text-[#A0268A] font-semibold mt-0.5">🌸 Women&apos;s Day — Save ₹{(p.price - p.discountedPrice).toLocaleString("en-IN")}</p>
+                  <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details →</span>
+                </div>
               </Link>
             ))}
           </div>
         </section>
 
         {/* CTA */}
-        <section className="bg-gradient-to-r from-primary-600 to-pink-500 py-14 text-white text-center px-5">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3">Get your machine delivered to {loc.state}</h2>
-          <p className="text-white/80 mb-6 max-w-xl mx-auto">Talk to our team — quote, delivery timeline and installation support in one call.</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              href={`https://wa.me/918122378860?text=${encodeURIComponent(`Hi! I want to order a vending machine for ${loc.state}. Please share details.`)}`}
-              target="_blank" rel="noopener noreferrer"
-              className="px-8 py-3 bg-white text-primary-700 font-bold rounded-full"
-            >
-              WhatsApp Us
-            </Link>
-            <Link href="tel:+918122378860" className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full">
-              Call {SITE.phoneDisplay}
-            </Link>
+        <section className="relative overflow-hidden bg-gradient-to-r from-[#6B1FA8] via-[#A0268A] to-[#E8477A] py-14 text-white text-center px-5">
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 border border-white/30 mb-4">
+              <span className="text-sm">🌸</span>
+              <span className="text-xs font-bold text-white tracking-widest uppercase">Women&apos;s Day 2026 · Save ₹1,000 on Every Machine</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3">Need help choosing the right machine?</h2>
+            <p className="text-white/80 mb-6 max-w-xl mx-auto">Our team will recommend the perfect model for your facility — with Women&apos;s Day pricing. Free consultation, no obligation.</p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link href={`https://wa.me/918122378860?text=${encodeURIComponent("Hi! I want to claim the Women's Day ₹1,000 offer on a Lyra machine.")}`} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#A0268A] font-bold rounded-full shadow hover:-translate-y-0.5 transition-all">WhatsApp — Claim Offer</Link>
+              <Link href="tel:+918122378860" className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full hover:-translate-y-0.5 transition-all">Call Now</Link>
+            </div>
           </div>
         </section>
       </main>
@@ -227,4 +145,3 @@ export default function StatePage({ params }: Props) {
     </>
   );
 }
-

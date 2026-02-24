@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -17,10 +17,10 @@ export default function PageNavbar() {
           <div className="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
               <div className="relative w-9 h-9 flex-shrink-0">
-                <Image src="/images/logo.png" alt="Lyra Enterprise" fill className="object-contain" />
+                <Image src="/images/logo.png" alt="Lyra Enterprises" fill className="object-contain" />
               </div>
               <div>
-                <p className="font-bold text-gray-900 text-base leading-none">Lyra Enterprise</p>
+                <p className="font-bold text-gray-900 text-base leading-none">Lyra Enterprises</p>
                 <p className="text-[9px] text-primary-500 font-semibold tracking-widest uppercase mt-0.5">#1 in India</p>
               </div>
             </Link>

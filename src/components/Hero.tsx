@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -294,7 +294,7 @@ export default function Hero() {
                 <div className="relative w-72 h-96 lg:w-[340px] lg:h-[460px]">
                   <Image
                     src="/images/products/lyra-vending-machine.png"
-                    alt="Lyra Enterprise Vending Machine"
+                    alt="Lyra Enterprises Vending Machine"
                     fill
                     className="object-contain drop-shadow-2xl"
                     priority

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -50,7 +50,7 @@ export default function Footer() {
                 Ready to empower your space?
               </h2>
               <p className="text-gray-400 text-base">
-                Join 200+ institutions who already trust Lyra Enterprise machines.
+                Join 200+ institutions who already trust Lyra Enterprises machines.
               </p>
             </div>
             <div className="flex flex-wrap gap-4 flex-shrink-0">
@@ -78,13 +78,13 @@ export default function Footer() {
               <div className="relative w-10 h-10 flex-shrink-0">
                 <Image
                   src="/images/logo.png"
-                  alt="Lyra Enterprise Logo"
+                  alt="Lyra Enterprises Logo"
                   fill
                   className="object-contain"
                 />
               </div>
               <span className="font-display font-bold text-white text-xl">
-                Lyra Enterprise
+                Lyra Enterprises
               </span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
@@ -131,7 +131,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500 text-sm">
-          <p>© 2026 Lyra Enterprise. All rights reserved.</p>
+          <p>© 2026 Lyra Enterprises. All rights reserved.</p>
           <p className="text-xs">
             10/21, Vasuki Street, Cholapuram, Ambattur, Chennai – 600053, India
           </p>

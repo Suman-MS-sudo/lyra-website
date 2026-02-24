@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const PHONE = "+918122378860";
 const EMAIL = "sales@lyraenterprise.co.in";
 const WA_MESSAGE = encodeURIComponent(
-  "Hi! I'm interested in Lyra Enterprise's sanitary napkin vending machines / incinerators. Please share more details."
+  "Hi! I'm interested in Lyra Enterprisess' sanitary napkin vending machines / incinerators. Please share more details."
 );
 
 export default function FloatingContact() {
@@ -37,7 +37,7 @@ export default function FloatingContact() {
             <a
               href={`tel:${PHONE}`}
               className="flex flex-col items-center justify-center py-3.5 gap-1.5 active:bg-primary-50 transition-colors border-r border-gray-100"
-              aria-label="Call Lyra Enterprise"
+              aria-label="Call Lyra Enterprises"
             >
               <div className="w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center">
                 <svg
@@ -65,7 +65,7 @@ export default function FloatingContact() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center justify-center py-3.5 gap-1.5 active:bg-green-50 transition-colors border-r border-gray-100"
-              aria-label="WhatsApp Lyra Enterprise"
+              aria-label="WhatsApp Lyra Enterprises"
             >
               <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center">
                 <svg
@@ -85,7 +85,7 @@ export default function FloatingContact() {
             <a
               href={`mailto:${EMAIL}`}
               className="flex flex-col items-center justify-center py-3.5 gap-1.5 active:bg-indigo-50 transition-colors"
-              aria-label="Email Lyra Enterprise"
+              aria-label="Email Lyra Enterprises"
             >
               <div className="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center">
                 <svg
