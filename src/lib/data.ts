@@ -139,59 +139,6 @@ export const products: Product[] = [
       "Buy Lyra Solo Coin sanitary napkin vending machine at \u20b912,500. \u20b95 coin acceptor, 25-napkin capacity. Best for malls, railway stations & offices. Chennai manufacturer. Call +91-8122378860.",
   },
   {
-    slug: "qr-vending-machine",
-    name: "QR-Based",
-    fullName: "QR-Based Sanitary Napkin Vending Machine",
-    code: "Lyra/SNVM/QR",
-    category: "vending-machine",
-    price: 18000,
-    discountedPrice: 18000,
-    badge: "Digital",
-    tagline: "Cashless UPI QR dispensing via mobile data",
-    description:
-      "QR-code only sanitary napkin vending machine. Accepts UPI payments (GPay, PhonePe etc.) via SIM-based connectivity. No coin required.",
-    longDescription:
-      "The Lyra QR-Based sanitary napkin vending machine is designed for fully cashless environments. Users scan a QR code and pay via any UPI app \u2014 GPay, PhonePe, Paytm and more. The machine connects over a SIM card (monthly recharge by customer), making it easy to deploy anywhere without needing WiFi infrastructure. The compact 700\u00d7160\u00d7160 mm sheet metal cabinet with epoxy coating is ideal for offices, malls and institutions that want a fully digital, coin-free dispensing solution.",
-    features: [
-      "UPI QR payment (GPay, PhonePe, Paytm)",
-      "25 napkins capacity",
-      "Electronic operation",
-      "Transparent view panel",
-      "SIM-based connectivity",
-      "No coin required",
-    ],
-    specs: [
-      { label: "Dimensions", value: "700 \u00d7 160 \u00d7 160 mm" },
-      { label: "Capacity", value: "25 napkins" },
-      { label: "Payment", value: "UPI QR (GPay, PhonePe, Paytm)" },
-      { label: "Connectivity", value: "SIM card (customer-managed recharge)" },
-      { label: "Weight", value: "10 kg" },
-      { label: "Material", value: "Sheet metal, epoxy coated" },
-      { label: "Loading", value: "Vertical" },
-      { label: "Mounting", value: "Wall mount" },
-      { label: "Model Code", value: "Lyra/SNVM/QR" },
-    ],
-    useCases: [
-      "Cashless corporate offices",
-      "Shopping malls",
-      "Colleges & universities",
-      "Hospitals & clinics",
-      "Smart city public restrooms",
-    ],
-    accent: "from-violet-400 to-primary-500",
-    keywords: [
-      "qr vending machine india",
-      "upi vending machine india",
-      "cashless napkin vending machine",
-      "gpay vending machine india",
-      "phonepe vending machine india",
-    ],
-    metaTitle:
-      "QR-Based Sanitary Napkin Vending Machine \u2014 UPI Payment | Lyra Enterprises India",
-    metaDescription:
-      "Buy Lyra QR-Based sanitary napkin vending machine at \u20b918,000. UPI QR (GPay/PhonePe), 25-napkin capacity, SIM connectivity. Best for cashless offices & institutions. Chennai manufacturer. Call +91-8122378860.",
-  },
-  {
     slug: "solo-wifi-vending-machine",
     name: "Solo WiFi",
     fullName: "Solo WiFi UPI QR Sanitary Napkin Vending Machine",
@@ -664,3 +611,4 @@ export const blogPosts = [
     ],
   },
 ];
+

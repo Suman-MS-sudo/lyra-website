@@ -44,20 +44,6 @@ const vendingMachines: Product[] = [
     accent: "from-primary-400 to-primary-600",
   },
   {
-    name: "QR-Based",
-    code: "Lyra/SNVM/QR",
-    price: "₹18,000",
-    badge: "Digital",
-    features: [
-      "UPI QR payment only",
-      "25 napkins capacity",
-      "SIM-based connectivity",
-      "Electronic operation",
-      "700×160×160 mm",
-    ],
-    accent: "from-violet-400 to-primary-500",
-  },
-  {
     name: "Solo WiFi",
     code: "Lyra/SNVM/W-QR-SC",
     price: "₹22,500",
