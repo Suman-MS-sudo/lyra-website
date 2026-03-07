@@ -105,9 +105,7 @@ export default function IncineratorsPage() {
                   </ul>
                   <div className="mt-5 pt-4 border-t border-gray-100 flex items-end justify-between">
                     <div>
-                      <p className="text-xs text-gray-400 line-through">₹{p.price.toLocaleString("en-IN")}</p>
-                      <p className="text-xl font-bold text-primary-600">₹{p.discountedPrice.toLocaleString("en-IN")}</p>
-                      <p className="text-[10px] text-[#A0268A] font-semibold mt-0.5">🌸 Save ₹{(p.price - p.discountedPrice).toLocaleString("en-IN")}</p>
+                      <p className="text-xl font-bold text-primary-600">₹{p.price.toLocaleString("en-IN")}</p>
                     </div>
                     <span className="text-xs font-semibold text-primary-600 group-hover:underline">Details →</span>
                   </div>
@@ -129,14 +127,10 @@ export default function IncineratorsPage() {
         {/* CTA */}
         <section className="relative overflow-hidden bg-gradient-to-r from-[#6B1FA8] via-[#A0268A] to-[#E8477A] py-14 text-white text-center px-5">
           <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 border border-white/30 mb-4">
-              <span className="text-sm">🌸</span>
-              <span className="text-xs font-bold text-white tracking-widest uppercase">Women&apos;s Day 2026 · Save ₹1,000</span>
-            </div>
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">Get the right incinerator for your facility</h2>
-            <p className="text-white/80 mb-6 max-w-xl mx-auto">Tell us your daily user count — we&apos;ll recommend Micro, Mini or Maxi with Women&apos;s Day pricing.</p>
+            <p className="text-white/80 mb-6 max-w-xl mx-auto">Tell us your daily user count — we&apos;ll recommend Micro, Mini or Maxi for your needs.</p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link href={`https://wa.me/918122378860?text=${encodeURIComponent("Hi! I want the Women's Day offer on a Lyra incinerator. Please share details.")}`} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#A0268A] font-bold rounded-full">WhatsApp — Claim Offer</Link>
+              <Link href="https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20a%20Lyra%20incinerator.%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#A0268A] font-bold rounded-full">WhatsApp Us</Link>
               <Link href="tel:+918122378860" className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full">Call +91-81223 78860</Link>
             </div>
           </div>

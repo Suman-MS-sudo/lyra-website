@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import WomensDayBanner from "@/components/WomensDayBanner";
 
 export default function PageNavbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -12,7 +11,6 @@ export default function PageNavbar() {
   return (
     <>
       <div className="fixed top-0 left-0 right-0 z-50">
-        <WomensDayBanner />
         <header className="bg-white/95 backdrop-blur-md border-b border-primary-100/50 shadow-sm">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">

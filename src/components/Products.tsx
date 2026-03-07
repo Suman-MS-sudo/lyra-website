@@ -8,7 +8,6 @@ type Product = {
   name: string;
   code: string;
   price: string;
-  discountedPrice: string;
   badge: string;
   popular?: boolean;
   features: string[];
@@ -19,12 +18,11 @@ const vendingMachines: Product[] = [
   {
     name: "Push Button",
     code: "Lyra/SNVM/PB",
-    price: "₹11,000",
-    discountedPrice: "₹10,000",
+    price: "₹11,500",
     badge: "Essential",
     features: [
       "Manual dispensing",
-      "30 napkins capacity",
+      "25 napkins capacity",
       "Electronic operation",
       "700×160×160 mm",
       "View panel provided",
@@ -35,11 +33,10 @@ const vendingMachines: Product[] = [
     name: "Solo Coin",
     code: "Lyra/SNVM/SC",
     price: "₹12,500",
-    discountedPrice: "₹11,500",
     badge: "Standard",
     features: [
       "₹5 coin acceptor",
-      "30 napkins capacity",
+      "25 napkins capacity",
       "Electronic operation",
       "700×160×160 mm",
       "View panel provided",
@@ -47,16 +44,30 @@ const vendingMachines: Product[] = [
     accent: "from-primary-400 to-primary-600",
   },
   {
+    name: "QR-Based",
+    code: "Lyra/SNVM/QR",
+    price: "₹18,000",
+    badge: "Digital",
+    features: [
+      "UPI QR payment only",
+      "25 napkins capacity",
+      "SIM-based connectivity",
+      "Electronic operation",
+      "700×160×160 mm",
+    ],
+    accent: "from-violet-400 to-primary-500",
+  },
+  {
     name: "Solo WiFi",
     code: "Lyra/SNVM/W-QR-SC",
-    price: "₹24,500",
-    discountedPrice: "₹23,500",
+    price: "₹22,500",
     badge: "Most Popular",
     popular: true,
     features: [
       "UPI QR + Coin payment",
+      "25 napkins capacity",
+      "No SIM card needed",
       "WiFi connectivity",
-      "Touch display panel",
       "Cloud-based reports",
       "700×160×160 mm",
     ],
@@ -66,12 +77,12 @@ const vendingMachines: Product[] = [
     name: "Solo Ethernet",
     code: "Lyra/SNVM/ET-QR-SC",
     price: "₹24,500",
-    discountedPrice: "₹23,500",
     badge: "Premium",
     features: [
       "UPI QR + Coin payment",
+      "25 napkins capacity",
+      "No SIM card needed",
       "Ethernet connectivity",
-      "Touch display panel",
       "Cloud-based reports",
       "700×160×160 mm",
     ],
@@ -84,7 +95,6 @@ const incinerators: Product[] = [
     name: "Lyra Micro",
     code: "Lyra/SND",
     price: "₹13,500",
-    discountedPrice: "₹12,500",
     badge: "Compact",
     features: [
       "1–5 napkin capacity",
@@ -99,7 +109,6 @@ const incinerators: Product[] = [
     name: "Lyra Mini",
     code: "Lyra/SND",
     price: "₹18,500",
-    discountedPrice: "₹17,500",
     badge: "Standard",
     features: [
       "5–15 napkins capacity",
@@ -114,7 +123,6 @@ const incinerators: Product[] = [
     name: "Lyra Maxi",
     code: "Lyra/SND",
     price: "₹39,500",
-    discountedPrice: "₹38,500",
     badge: "High Capacity",
     features: [
       "25–50 napkins capacity",
@@ -176,24 +184,15 @@ function ProductCard({
         <p className="text-xs text-gray-400 font-mono mb-5">{product.code}</p>
 
         {/* Price */}
-        <div className="mb-3">
+        <div className="mb-5">
           <div className="flex items-baseline gap-2 flex-wrap">
             <span className="font-display text-4xl font-bold text-gradient">
-              {product.discountedPrice}
-            </span>
-            <span className="text-base text-gray-400 line-through font-medium">
               {product.price}
             </span>
           </div>
           <div className="flex items-center gap-2 mt-1.5">
             <span className="text-sm text-gray-400 font-medium">+ 18% GST</span>
           </div>
-        </div>
-
-        {/* Women's Day tag */}
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#6B1FA8]/10 to-[#E8477A]/10 border border-[#A0268A]/20 mb-5 w-fit">
-          <span className="text-xs">🌸</span>
-          <span className="text-xs font-bold text-[#A0268A]">Women&apos;s Day — ₹1,000 OFF</span>
         </div>
 
         {/* Features */}

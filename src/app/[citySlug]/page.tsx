@@ -83,10 +83,8 @@ export default function ProductsPage() {
                   <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
                   <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug">{p.tagline}</p>
                   <div className="flex items-end gap-2">
-                    <span className="text-xl font-bold text-primary-600">₹{p.discountedPrice.toLocaleString("en-IN")}</span>
-                    <span className="text-sm text-gray-400 line-through">₹{p.price.toLocaleString("en-IN")}</span>
+                    <span className="text-xl font-bold text-primary-600">₹{p.price.toLocaleString("en-IN")}</span>
                   </div>
-                  <p className="text-[10px] text-[#A0268A] font-semibold mt-0.5">🌸 Women&apos;s Day — Save ₹{(p.price - p.discountedPrice).toLocaleString("en-IN")}</p>
                   <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details →</span>
                 </div>
               </Link>
@@ -114,10 +112,8 @@ export default function ProductsPage() {
                   <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
                   <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug">{p.tagline}</p>
                   <div className="flex items-end gap-2">
-                    <span className="text-xl font-bold text-primary-600">₹{p.discountedPrice.toLocaleString("en-IN")}</span>
-                    <span className="text-sm text-gray-400 line-through">₹{p.price.toLocaleString("en-IN")}</span>
+                    <span className="text-xl font-bold text-primary-600">₹{p.price.toLocaleString("en-IN")}</span>
                   </div>
-                  <p className="text-[10px] text-[#A0268A] font-semibold mt-0.5">🌸 Women&apos;s Day — Save ₹{(p.price - p.discountedPrice).toLocaleString("en-IN")}</p>
                   <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details →</span>
                 </div>
               </Link>
@@ -128,14 +124,10 @@ export default function ProductsPage() {
         {/* CTA */}
         <section className="relative overflow-hidden bg-gradient-to-r from-[#6B1FA8] via-[#A0268A] to-[#E8477A] py-14 text-white text-center px-5">
           <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 border border-white/30 mb-4">
-              <span className="text-sm">🌸</span>
-              <span className="text-xs font-bold text-white tracking-widest uppercase">Women&apos;s Day 2026 · Save ₹1,000 on Every Machine</span>
-            </div>
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">Need help choosing the right machine?</h2>
-            <p className="text-white/80 mb-6 max-w-xl mx-auto">Our team will recommend the perfect model for your facility — with Women&apos;s Day pricing. Free consultation, no obligation.</p>
+            <p className="text-white/80 mb-6 max-w-xl mx-auto">Our team will recommend the perfect model for your facility. Free consultation, no obligation.</p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link href={`https://wa.me/918122378860?text=${encodeURIComponent("Hi! I want to claim the Women's Day ₹1,000 offer on a Lyra machine.")}`} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#A0268A] font-bold rounded-full shadow hover:-translate-y-0.5 transition-all">WhatsApp — Claim Offer</Link>
+              <Link href="https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20Lyra%27s%20vending%20machines%20%2F%20incinerators.%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#A0268A] font-bold rounded-full shadow hover:-translate-y-0.5 transition-all">WhatsApp Us</Link>
               <Link href="tel:+918122378860" className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full hover:-translate-y-0.5 transition-all">Call Now</Link>
             </div>
           </div>

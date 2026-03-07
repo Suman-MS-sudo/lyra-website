@@ -8,7 +8,7 @@ import { vendingMachines, SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Sanitary Napkin Vending Machines — All Models & Prices India | Lyra Enterprises",
   description:
-    "Buy sanitary napkin vending machines in India. Compare push-button, coin, UPI QR WiFi and Ethernet models. Prices from ₹10,000. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
+    "Buy sanitary napkin vending machines in India. Compare push-button, coin, QR, WiFi UPI and Ethernet models. Prices from ₹11,500. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
   keywords: [
     "sanitary napkin vending machine india",
     "napkin vending machine price india",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/products/sanitary-napkin-vending-machines` },
   openGraph: {
     title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
-    description: "Compare all 4 models: push-button, coin, WiFi UPI and Ethernet. Prices from ₹10,000. Pan-India delivery.",
+    description: "Compare all 5 models: push-button, coin, QR-based, WiFi UPI and Ethernet. Prices from ₹11,500. Pan-India delivery.",
     url: `${SITE.url}/products/sanitary-napkin-vending-machines`,
   },
 };
@@ -41,12 +41,12 @@ const schema = {
 };
 
 const comparison = [
-  { label: "Payment", pb: "Manual", sc: "₹5 Coin", wifi: "UPI QR + Coin", eth: "UPI QR + Coin" },
-  { label: "Connectivity", pb: "None", sc: "None", wifi: "WiFi 2.4GHz", eth: "Ethernet/LAN" },
-  { label: "Cloud Reports", pb: "No", sc: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Touch Display", pb: "No", sc: "No", wifi: "Yes", eth: "Yes" },
-  { label: "IoT Monitoring", pb: "No", sc: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Price (Offer)", pb: "₹10,000", sc: "₹11,500", wifi: "₹23,500", eth: "₹23,500" },
+  { label: "Payment", pb: "Manual", sc: "₹5 Coin", qr: "UPI QR (SIM)", wifi: "UPI QR + Coin", eth: "UPI QR + Coin" },
+  { label: "Connectivity", pb: "None", sc: "None", qr: "SIM card", wifi: "WiFi 2.4GHz", eth: "Ethernet/LAN" },
+  { label: "Cloud Reports", pb: "No", sc: "No", qr: "Yes", wifi: "Yes", eth: "Yes" },
+  { label: "Touch Display", pb: "No", sc: "No", qr: "No", wifi: "Yes", eth: "Yes" },
+  { label: "IoT Monitoring", pb: "No", sc: "No", qr: "No", wifi: "Yes", eth: "Yes" },
+  { label: "Price", pb: "₹11,500", sc: "₹12,500", qr: "₹18,000", wifi: "₹22,500", eth: "₹24,500" },
 ];
 
 export default function VendingMachinesPage() {
@@ -66,7 +66,7 @@ export default function VendingMachinesPage() {
             Sanitary Napkin <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">Vending Machines</span>
           </h1>
           <p className="mt-4 text-gray-600 text-lg max-w-2xl">
-            4 models to match every budget and facility — from simple push-button dispensers to IoT-enabled smart machines with UPI payments and cloud analytics. Manufactured in Chennai, delivered across India.
+            5 models to match every budget and facility — from simple push-button dispensers to IoT-enabled smart machines with UPI payments and cloud analytics. Manufactured in Chennai, delivered across India.
           </p>
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ 1-Year Warranty</span>
@@ -77,7 +77,7 @@ export default function VendingMachinesPage() {
 
         {/* Product Cards */}
         <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {vendingMachines.map((p) => (
               <Link key={p.slug} href={`/products/${p.slug}`} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col">
                 <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
@@ -99,9 +99,7 @@ export default function VendingMachinesPage() {
                   </ul>
                   <div className="mt-5 pt-4 border-t border-gray-100 flex items-end justify-between">
                     <div>
-                      <p className="text-xs text-gray-400 line-through">₹{p.price.toLocaleString("en-IN")}</p>
-                      <p className="text-xl font-bold text-primary-600">₹{p.discountedPrice.toLocaleString("en-IN")}</p>
-                      <p className="text-[10px] text-[#A0268A] font-semibold mt-0.5">🌸 Save ₹{(p.price - p.discountedPrice).toLocaleString("en-IN")}</p>
+                      <p className="text-xl font-bold text-primary-600">₹{p.price.toLocaleString("en-IN")}</p>
                     </div>
                     <span className="text-xs font-semibold text-primary-600 group-hover:underline">Details →</span>
                   </div>
@@ -128,7 +126,7 @@ export default function VendingMachinesPage() {
                 {comparison.map((row, i) => (
                   <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
                     <td className="px-4 py-3 text-gray-600 font-medium">{row.label}</td>
-                    {([row.pb, row.sc, row.wifi, row.eth] as string[]).map((val, j) => (
+                    {([row.pb, row.sc, row.qr, row.wifi, row.eth] as string[]).map((val, j) => (
                       <td key={j} className={`px-4 py-3 text-center ${val === "Yes" ? "text-green-600 font-semibold" : val === "No" ? "text-gray-400" : "text-gray-700"}`}>
                         {val}
                       </td>
@@ -143,14 +141,10 @@ export default function VendingMachinesPage() {
         {/* CTA */}
         <section className="relative overflow-hidden bg-gradient-to-r from-[#6B1FA8] via-[#A0268A] to-[#E8477A] py-14 text-white text-center px-5">
           <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 border border-white/30 mb-4">
-              <span className="text-sm">🌸</span>
-              <span className="text-xs font-bold text-white tracking-widest uppercase">Women&apos;s Day 2026 · Save ₹1,000</span>
-            </div>
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">Not sure which model to choose?</h2>
-            <p className="text-white/80 mb-6 max-w-xl mx-auto">Tell us your facility type and budget — our team will recommend the right machine with Women&apos;s Day pricing within 30 minutes.</p>
+            <p className="text-white/80 mb-6 max-w-xl mx-auto">Tell us your facility type and budget — our team will recommend the right machine within 30 minutes.</p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link href={`https://wa.me/918122378860?text=${encodeURIComponent("Hi! I want to claim the Women's Day ₹1,000 offer on a Lyra vending machine. Please help me choose the right model.")}`} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#A0268A] font-bold rounded-full">WhatsApp — Claim Offer</Link>
+              <Link href="https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20a%20Lyra%20vending%20machine.%20Please%20help%20me%20choose%20the%20right%20model." target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#A0268A] font-bold rounded-full">WhatsApp Us</Link>
               <Link href="tel:+918122378860" className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full">Call +91-81223 78860</Link>
             </div>
           </div>

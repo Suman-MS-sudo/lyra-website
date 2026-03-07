@@ -41,17 +41,17 @@ export const products: Product[] = [
     fullName: "Push Button Sanitary Napkin Vending Machine",
     code: "Lyra/SNVM/PB",
     category: "vending-machine",
-    price: 11000,
-    discountedPrice: 10000,
+    price: 11500,
+    discountedPrice: 11500,
     badge: "Essential",
     tagline: "Simple, reliable dispensing for every facility",
     description:
       "Manual push-button sanitary napkin vending machine. Ideal for schools, hostels and budget-conscious institutions.",
     longDescription:
-      "The Lyra Push Button sanitary napkin vending machine is the most affordable and reliable dispensing solution for educational institutions, government facilities and small offices across India. With a straightforward manual operation, it requires zero maintenance and works without any electricity-based payment system. The tamper-proof stainless steel body and transparent view panel make restocking easy for facility managers. Trusted by 50+ schools and government institutions across Tamil Nadu and Kerala.",
+      "The Lyra Push Button sanitary napkin vending machine is the most affordable and reliable dispensing solution for educational institutions, government facilities and small offices across India. With a straightforward manual operation, it requires zero maintenance and works without any electricity-based payment system. The tamper-proof sheet metal cabinet with epoxy coating and transparent view panel make restocking easy for facility managers. Trusted by 50+ schools and government institutions across Tamil Nadu and Kerala.",
     features: [
       "Manual push-button dispensing",
-      "30 napkins capacity",
+      "25 napkins capacity",
       "Electronic operation",
       "Transparent view panel",
       "Tamper-proof body",
@@ -59,10 +59,11 @@ export const products: Product[] = [
     ],
     specs: [
       { label: "Dimensions", value: "700 × 160 × 160 mm" },
-      { label: "Capacity", value: "30 napkins" },
+      { label: "Capacity", value: "25 napkins" },
       { label: "Operation", value: "Manual push-button" },
-      { label: "Power", value: "Not required" },
-      { label: "Material", value: "Powder-coated steel" },
+      { label: "Weight", value: "10 kg" },
+      { label: "Material", value: "Sheet metal, epoxy coated" },
+      { label: "Loading", value: "Vertical" },
       { label: "Mounting", value: "Wall mount" },
       { label: "Model Code", value: "Lyra/SNVM/PB" },
     ],
@@ -84,7 +85,7 @@ export const products: Product[] = [
     metaTitle:
       "Push Button Sanitary Napkin Vending Machine — Buy Online India | Lyra Enterprises",
     metaDescription:
-      "Buy Lyra Push Button sanitary napkin vending machine at ₹10,000. Manual dispensing, 30-napkin capacity. Best for schools, hostels & government facilities. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Push Button sanitary napkin vending machine at ₹11,500. Manual dispensing, 25-napkin capacity. Best for schools, hostels & government facilities. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-coin-vending-machine",
@@ -93,7 +94,7 @@ export const products: Product[] = [
     code: "Lyra/SNVM/SC",
     category: "vending-machine",
     price: 12500,
-    discountedPrice: 11500,
+    discountedPrice: 12500,
     badge: "Standard",
     tagline: "Coin-operated hygiene on demand, 24×7",
     description:
@@ -102,7 +103,7 @@ export const products: Product[] = [
       "The Lyra Solo Coin sanitary napkin vending machine is India's best-selling coin-operated dispensing solution. Accepting ₹5 coins, it provides hygienic, on-demand access to sanitary napkins in public restrooms, shopping malls, railway stations, corporate offices and educational institutions. The robust coin acceptor is tested for 100,000+ cycles. The compact 700×160×160 mm body fits standard wall spaces. No internet or electricity payment infrastructure required — making it ideal for locations with basic amenities.",
     features: [
       "₹5 coin acceptor",
-      "30 napkins capacity",
+      "25 napkins capacity",
       "Electronic operation",
       "Transparent view panel",
       "Anti-jam mechanism",
@@ -110,7 +111,7 @@ export const products: Product[] = [
     ],
     specs: [
       { label: "Dimensions", value: "700 × 160 × 160 mm" },
-      { label: "Capacity", value: "30 napkins" },
+      { label: "Capacity", value: "25 napkins" },
       { label: "Payment", value: "₹5 coin" },
       { label: "Power", value: "230V AC / Battery backup" },
       { label: "Material", value: "Powder-coated steel" },
@@ -135,7 +136,60 @@ export const products: Product[] = [
     metaTitle:
       "Coin Operated Sanitary Napkin Vending Machine — ₹5 Coin | Lyra Enterprises India",
     metaDescription:
-      "Buy Lyra Solo Coin sanitary napkin vending machine at ₹11,500. ₹5 coin acceptor, 30-napkin capacity. Best for malls, railway stations & offices. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Solo Coin sanitary napkin vending machine at \u20b912,500. \u20b95 coin acceptor, 25-napkin capacity. Best for malls, railway stations & offices. Chennai manufacturer. Call +91-8122378860.",
+  },
+  {
+    slug: "qr-vending-machine",
+    name: "QR-Based",
+    fullName: "QR-Based Sanitary Napkin Vending Machine",
+    code: "Lyra/SNVM/QR",
+    category: "vending-machine",
+    price: 18000,
+    discountedPrice: 18000,
+    badge: "Digital",
+    tagline: "Cashless UPI QR dispensing via mobile data",
+    description:
+      "QR-code only sanitary napkin vending machine. Accepts UPI payments (GPay, PhonePe etc.) via SIM-based connectivity. No coin required.",
+    longDescription:
+      "The Lyra QR-Based sanitary napkin vending machine is designed for fully cashless environments. Users scan a QR code and pay via any UPI app \u2014 GPay, PhonePe, Paytm and more. The machine connects over a SIM card (monthly recharge by customer), making it easy to deploy anywhere without needing WiFi infrastructure. The compact 700\u00d7160\u00d7160 mm sheet metal cabinet with epoxy coating is ideal for offices, malls and institutions that want a fully digital, coin-free dispensing solution.",
+    features: [
+      "UPI QR payment (GPay, PhonePe, Paytm)",
+      "25 napkins capacity",
+      "Electronic operation",
+      "Transparent view panel",
+      "SIM-based connectivity",
+      "No coin required",
+    ],
+    specs: [
+      { label: "Dimensions", value: "700 \u00d7 160 \u00d7 160 mm" },
+      { label: "Capacity", value: "25 napkins" },
+      { label: "Payment", value: "UPI QR (GPay, PhonePe, Paytm)" },
+      { label: "Connectivity", value: "SIM card (customer-managed recharge)" },
+      { label: "Weight", value: "10 kg" },
+      { label: "Material", value: "Sheet metal, epoxy coated" },
+      { label: "Loading", value: "Vertical" },
+      { label: "Mounting", value: "Wall mount" },
+      { label: "Model Code", value: "Lyra/SNVM/QR" },
+    ],
+    useCases: [
+      "Cashless corporate offices",
+      "Shopping malls",
+      "Colleges & universities",
+      "Hospitals & clinics",
+      "Smart city public restrooms",
+    ],
+    accent: "from-violet-400 to-primary-500",
+    keywords: [
+      "qr vending machine india",
+      "upi vending machine india",
+      "cashless napkin vending machine",
+      "gpay vending machine india",
+      "phonepe vending machine india",
+    ],
+    metaTitle:
+      "QR-Based Sanitary Napkin Vending Machine \u2014 UPI Payment | Lyra Enterprises India",
+    metaDescription:
+      "Buy Lyra QR-Based sanitary napkin vending machine at \u20b918,000. UPI QR (GPay/PhonePe), 25-napkin capacity, SIM connectivity. Best for cashless offices & institutions. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-wifi-vending-machine",
@@ -143,8 +197,8 @@ export const products: Product[] = [
     fullName: "Solo WiFi UPI QR Sanitary Napkin Vending Machine",
     code: "Lyra/SNVM/W-QR-SC",
     category: "vending-machine",
-    price: 24500,
-    discountedPrice: 23500,
+    price: 22500,
+    discountedPrice: 22500,
     badge: "Most Popular",
     popular: true,
     tagline: "Smart UPI + coin machine with cloud analytics",
@@ -155,6 +209,8 @@ export const products: Product[] = [
     features: [
       "UPI QR code payment",
       "₹5 coin acceptor",
+      "25 napkins capacity",
+      "No SIM card needed",
       "WiFi connectivity",
       "Touch display panel",
       "Cloud-based reports",
@@ -164,9 +220,9 @@ export const products: Product[] = [
     ],
     specs: [
       { label: "Dimensions", value: "700 × 160 × 160 mm" },
-      { label: "Capacity", value: "30 napkins" },
+      { label: "Capacity", value: "25 napkins" },
       { label: "Payment", value: "UPI QR code + ₹5 coin" },
-      { label: "Connectivity", value: "WiFi 2.4GHz" },
+      { label: "Connectivity", value: "WiFi 2.4GHz (no SIM)" },
       { label: "Display", value: "Touch screen panel" },
       { label: "Power", value: "230V AC" },
       { label: "Mounting", value: "Wall mount" },
@@ -192,7 +248,7 @@ export const products: Product[] = [
     metaTitle:
       "WiFi UPI QR Sanitary Napkin Vending Machine — Smart IoT | Lyra Enterprises India",
     metaDescription:
-      "Buy Lyra Solo WiFi smart vending machine at ₹23,500. UPI QR + coin payment, WiFi IoT, cloud reports. Best for IT parks, hospitals & smart campuses. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Solo WiFi smart vending machine at \u20b922,500. UPI QR + coin payment, WiFi IoT, cloud reports. No SIM card needed. Best for IT parks, hospitals & smart campuses. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-ethernet-vending-machine",
@@ -201,7 +257,7 @@ export const products: Product[] = [
     code: "Lyra/SNVM/ET-QR-SC",
     category: "vending-machine",
     price: 24500,
-    discountedPrice: 23500,
+    discountedPrice: 24500,
     badge: "Premium",
     tagline: "Wired reliability for high-traffic institutions",
     description:
@@ -211,6 +267,8 @@ export const products: Product[] = [
     features: [
       "UPI QR code payment",
       "₹5 coin acceptor",
+      "25 napkins capacity",
+      "No SIM card needed",
       "Ethernet (LAN) connectivity",
       "Touch display panel",
       "Cloud-based reports",
@@ -220,9 +278,9 @@ export const products: Product[] = [
     ],
     specs: [
       { label: "Dimensions", value: "700 × 160 × 160 mm" },
-      { label: "Capacity", value: "30 napkins" },
+      { label: "Capacity", value: "25 napkins" },
       { label: "Payment", value: "UPI QR code + ₹5 coin" },
-      { label: "Connectivity", value: "Ethernet / LAN" },
+      { label: "Connectivity", value: "Ethernet / LAN (no SIM)" },
       { label: "Display", value: "Touch screen panel" },
       { label: "Power", value: "230V AC" },
       { label: "Mounting", value: "Wall mount" },
@@ -246,7 +304,7 @@ export const products: Product[] = [
     metaTitle:
       "Ethernet UPI QR Sanitary Napkin Vending Machine — Wired IoT | Lyra Enterprises",
     metaDescription:
-      "Buy Lyra Solo Ethernet vending machine at ₹23,500. Stable LAN connection, UPI QR + coin, cloud reports. Best for government hospitals & large institutions. Call +91-8122378860.",
+      "Buy Lyra Solo Ethernet vending machine at \u20b924,500. Stable LAN connection, UPI QR + coin, cloud reports. No SIM card. Best for government hospitals & large institutions. Call +91-8122378860.",
   },
 
   // ─── INCINERATORS ────────────────────────────────────────────
@@ -257,7 +315,7 @@ export const products: Product[] = [
     code: "Lyra/SND/Micro",
     category: "incinerator",
     price: 13500,
-    discountedPrice: 12500,
+    discountedPrice: 13500,
     badge: "Compact",
     tagline: "Compact, safe disposal for small facilities",
     description:
@@ -300,7 +358,7 @@ export const products: Product[] = [
     metaTitle:
       "Lyra Micro Sanitary Napkin Incinerator — Compact Wall Mount | Buy India",
     metaDescription:
-      "Buy Lyra Micro sanitary napkin incinerator at ₹12,500. 1–5 napkins/cycle, 100/day, digital temp control. Best for small schools & clinics. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Micro sanitary napkin incinerator at \u20b913,500. 1\u20135 napkins/cycle, 100/day, digital temp control. Best for small schools & clinics. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "lyra-mini-incinerator",
@@ -309,7 +367,7 @@ export const products: Product[] = [
     code: "Lyra/SND/Mini",
     category: "incinerator",
     price: 18500,
-    discountedPrice: 17500,
+    discountedPrice: 18500,
     badge: "Standard",
     tagline: "Mid-capacity disposal for colleges and offices",
     description:
@@ -352,7 +410,7 @@ export const products: Product[] = [
     metaTitle:
       "Lyra Mini Sanitary Napkin Incinerator — 5 to 15 Napkins/Cycle | India",
     metaDescription:
-      "Buy Lyra Mini sanitary napkin incinerator at ₹17,500. 5–15 napkins/cycle, 100/day, digital temp. Best for colleges & offices. SWM compliant. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Mini sanitary napkin incinerator at \u20b918,500. 5\u201315 napkins/cycle, 100/day, digital temp. Best for colleges & offices. SWM compliant. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "lyra-maxi-incinerator",
@@ -361,7 +419,7 @@ export const products: Product[] = [
     code: "Lyra/SND/Maxi",
     category: "incinerator",
     price: 39500,
-    discountedPrice: 38500,
+    discountedPrice: 39500,
     badge: "High Capacity",
     tagline: "Industrial-grade disposal for hospitals & institutions",
     description:
@@ -405,7 +463,7 @@ export const products: Product[] = [
     metaTitle:
       "Lyra Maxi High Capacity Sanitary Napkin Incinerator — Hospital Grade | India",
     metaDescription:
-      "Buy Lyra Maxi high-capacity napkin incinerator at ₹38,500. 25–50 napkins/cycle. Hospital & industrial grade. Biomedical Waste Rules compliant. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Maxi high-capacity napkin incinerator at \u20b939,500. 25\u201350 napkins/cycle. Hospital & industrial grade. Biomedical Waste Rules compliant. Chennai manufacturer. Call +91-8122378860.",
   },
 ];
 
