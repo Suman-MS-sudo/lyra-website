@@ -46,7 +46,7 @@ const comparison = [
   { label: "Cloud Reports", pb: "No", sm: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
   { label: "Touch Display", pb: "No", sm: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
   { label: "IoT Monitoring", pb: "No", sm: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Price", pb: "₹11,500", sm: "₹11,500", sc: "₹12,500", rf: "₹12,500", wifi: "₹22,500", eth: "₹24,500" },
+  { label: "Price", pb: "₹11,500", sm: "₹5,000", sc: "₹12,500", rf: "₹12,500", wifi: "₹22,500", eth: "₹24,500" },
 ];
 
 export default function VendingMachinesPage() {

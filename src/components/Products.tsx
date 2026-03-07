@@ -29,7 +29,7 @@ const vendingMachines: Product[] = [
     name: "Solo Manual",
     slug: "solo-manual-vending-machine",
     code: "Lyra/SNVM/SM",
-    price: "₹11,500",
+    price: "₹5,000",
     badge: "Free Vend",
     features: ["Push-to-dispense, no payment", "25 napkins capacity", "For sponsored facilities"],
     accent: "from-slate-400 to-slate-600",

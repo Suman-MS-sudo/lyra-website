@@ -93,8 +93,8 @@ export const products: Product[] = [
     fullName: "Solo Manual Free-Vend Sanitary Napkin Vending Machine",
     code: "Lyra/SNVM/SM",
     category: "vending-machine",
-    price: 11500,
-    discountedPrice: 11500,
+    price: 5000,
+    discountedPrice: 5000,
     badge: "Free Vend",
     tagline: "Push-to-dispense sponsored hygiene for every facility",
     description:
@@ -137,7 +137,7 @@ export const products: Product[] = [
     metaTitle:
       "Solo Manual Free-Vend Sanitary Napkin Vending Machine | Lyra Enterprises India",
     metaDescription:
-      "Buy Lyra Solo Manual sanitary napkin vending machine at ₹11,500. Free-vend dispensing, 25-napkin capacity. Best for factories, schools & CSR programmes. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Solo Manual sanitary napkin vending machine at ₹5,000. Free-vend dispensing, 25-napkin capacity. Best for factories, schools & CSR programmes. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-coin-vending-machine",
