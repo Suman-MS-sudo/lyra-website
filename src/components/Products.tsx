@@ -6,6 +6,7 @@ import Link from "next/link";
 
 type Product = {
   name: string;
+  slug: string;
   code: string;
   price: string;
   badge: string;
@@ -17,61 +18,57 @@ type Product = {
 const vendingMachines: Product[] = [
   {
     name: "Push Button",
+    slug: "push-button-vending-machine",
     code: "Lyra/SNVM/PB",
     price: "₹11,500",
     badge: "Essential",
-    features: [
-      "Manual dispensing",
-      "25 napkins capacity",
-      "Electronic operation",
-      "700×160×160 mm",
-      "View panel provided",
-    ],
+    features: ["Manual dispensing", "25 napkins capacity", "Tamper-proof body"],
     accent: "from-gray-400 to-gray-600",
   },
   {
+    name: "Solo Manual",
+    slug: "solo-manual-vending-machine",
+    code: "Lyra/SNVM/SM",
+    price: "₹11,500",
+    badge: "Free Vend",
+    features: ["Push-to-dispense, no payment", "25 napkins capacity", "For sponsored facilities"],
+    accent: "from-slate-400 to-slate-600",
+  },
+  {
     name: "Solo Coin",
+    slug: "solo-coin-vending-machine",
     code: "Lyra/SNVM/SC",
     price: "₹12,500",
     badge: "Standard",
-    features: [
-      "₹5 coin acceptor",
-      "25 napkins capacity",
-      "Electronic operation",
-      "700×160×160 mm",
-      "View panel provided",
-    ],
+    features: ["₹5 coin acceptor", "25 napkins capacity", "Anti-jam mechanism"],
     accent: "from-primary-400 to-primary-600",
   },
   {
+    name: "Solo RFID",
+    slug: "solo-rfid-vending-machine",
+    code: "Lyra/SNVM/RF",
+    price: "₹12,500",
+    badge: "Contactless",
+    features: ["RFID / smart card tap", "25 napkins capacity", "ISO 14443/15693 compatible"],
+    accent: "from-teal-400 to-cyan-600",
+  },
+  {
     name: "Solo WiFi",
+    slug: "solo-wifi-vending-machine",
     code: "Lyra/SNVM/W-QR-SC",
     price: "₹22,500",
     badge: "Most Popular",
     popular: true,
-    features: [
-      "UPI QR + Coin payment",
-      "25 napkins capacity",
-      "No SIM card needed",
-      "WiFi connectivity",
-      "Cloud-based reports",
-      "700×160×160 mm",
-    ],
+    features: ["UPI QR + Coin payment", "WiFi connectivity", "Cloud-based reports"],
     accent: "from-pink-400 to-primary-500",
   },
   {
     name: "Solo Ethernet",
+    slug: "solo-ethernet-vending-machine",
     code: "Lyra/SNVM/ET-QR-SC",
     price: "₹24,500",
     badge: "Premium",
-    features: [
-      "UPI QR + Coin payment",
-      "25 napkins capacity",
-      "No SIM card needed",
-      "Ethernet connectivity",
-      "Cloud-based reports",
-      "700×160×160 mm",
-    ],
+    features: ["UPI QR + Coin payment", "Ethernet / LAN", "99.9% uptime"],
     accent: "from-fuchsia-400 to-primary-600",
   },
 ];
@@ -79,44 +76,29 @@ const vendingMachines: Product[] = [
 const incinerators: Product[] = [
   {
     name: "Lyra Micro",
-    code: "Lyra/SND",
+    slug: "lyra-micro-incinerator",
+    code: "Lyra/SND/Micro",
     price: "₹13,500",
     badge: "Compact",
-    features: [
-      "1–5 napkin capacity",
-      "100 napkins/day",
-      "Digital temperature",
-      "520×230×230 mm",
-      "Wall mounting",
-    ],
+    features: ["1–5 napkins/cycle", "Front loading", "230V, 1.25kW"],
     accent: "from-primary-300 to-primary-500",
   },
   {
     name: "Lyra Mini",
-    code: "Lyra/SND",
+    slug: "lyra-mini-incinerator",
+    code: "Lyra/SND/Mini",
     price: "₹18,500",
     badge: "Standard",
-    features: [
-      "5–15 napkins capacity",
-      "100 napkins/day",
-      "Digital temperature",
-      "650×330×330 mm",
-      "Wall mounting",
-    ],
+    features: ["5–15 napkins/cycle", "IoT WiFi add-on", "Front loading"],
     accent: "from-primary-400 to-primary-600",
   },
   {
     name: "Lyra Maxi",
-    code: "Lyra/SND",
+    slug: "lyra-maxi-incinerator",
+    code: "Lyra/SND/Maxi",
     price: "₹39,500",
     badge: "High Capacity",
-    features: [
-      "25–50 napkins capacity",
-      "100 napkins/day",
-      "Digital temperature",
-      "900×500×500 mm",
-      "Top loading",
-    ],
+    features: ["25–50 napkins/cycle", "Top loading", "IoT WiFi add-on"],
     accent: "from-pink-400 to-primary-700",
   },
 ];
@@ -133,101 +115,114 @@ function ProductCard({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`relative group rounded-3xl overflow-hidden bg-white border transition-all duration-500 hover:-translate-y-2 hover:shadow-purple-lg ${
-        product.popular
-          ? "border-primary-300 shadow-purple"
-          : "border-gray-100 shadow-sm"
-      }`}
+      transition={{ duration: 0.45, delay: index * 0.06 }}
+      className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-primary-100 transition-all duration-300 overflow-hidden flex flex-col"
     >
-      {product.popular && (
-        <div
-          className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${product.accent}`}
-        />
-      )}
-
-      <div className="p-7">
-        {/* Badge */}
-        <div className="flex items-center justify-between mb-5">
-          <span
-            className={`px-3 py-1 text-xs font-bold text-white rounded-full bg-gradient-to-r ${product.accent}`}
-          >
+      {/* Visual header */}
+      <div className={`relative h-36 bg-gradient-to-br ${product.accent} overflow-hidden`}>
+        <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-white/10" />
+        <div className="absolute -bottom-6 -left-6 w-28 h-28 rounded-full bg-white/10" />
+        <div className="absolute top-3 left-3">
+          <span className="px-2.5 py-1 bg-white/20 backdrop-blur-sm border border-white/30 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
             {product.badge}
           </span>
-          {product.popular && (
-            <span className="text-xs font-semibold text-primary-600 bg-primary-50 px-3 py-1 rounded-full border border-primary-200">
+        </div>
+        {product.popular && (
+          <div className="absolute top-3 right-3">
+            <span className="px-2.5 py-1 bg-yellow-400 text-yellow-900 text-[10px] font-bold rounded-full">
               ★ Popular
             </span>
-          )}
+          </div>
+        )}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <span className="text-white/15 text-7xl font-black tracking-tighter leading-none select-none">
+            {product.name.split(" ").pop()}
+          </span>
         </div>
+      </div>
 
-        {/* Name & Code */}
-        <h3 className="font-display text-2xl font-bold text-gray-900 mb-1">
+      {/* Product info */}
+      <div className="p-5 flex flex-col flex-1">
+        <p className="text-[10px] text-gray-400 font-mono uppercase tracking-widest">{product.code}</p>
+        <h3 className="mt-1 font-bold text-lg text-gray-900 group-hover:text-primary-600 transition-colors leading-tight">
           {product.name}
         </h3>
-        <p className="text-xs text-gray-400 font-mono mb-5">{product.code}</p>
 
-        {/* Price */}
-        <div className="mb-5">
-          <div className="flex items-baseline gap-2 flex-wrap">
-            <span className="font-display text-4xl font-bold text-gradient">
-              {product.price}
-            </span>
-          </div>
-          <div className="flex items-center gap-2 mt-1.5">
-            <span className="text-sm text-gray-400 font-medium">+ 18% GST</span>
-          </div>
-        </div>
-
-        {/* Features */}
-        <ul className="space-y-2.5 mb-8">
+        <ul className="mt-3 space-y-1.5 flex-1">
           {product.features.map((feat) => (
-            <li key={feat} className="flex items-center gap-3 text-sm text-gray-600">
-              <div className={`w-4 h-4 rounded-full bg-gradient-to-br ${product.accent} flex-shrink-0 flex items-center justify-center`}>
-                <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
+            <li key={feat} className="flex items-center gap-2 text-xs text-gray-500">
+              <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${product.accent} flex-shrink-0`} />
               {feat}
             </li>
           ))}
         </ul>
 
-        {/* CTA */}
-        <Link
-          href="#contact"
-          className={`w-full py-3.5 rounded-2xl text-sm font-semibold transition-all duration-300 block text-center ${
-            product.popular
-              ? `text-white bg-gradient-to-r ${product.accent} shadow-purple hover:shadow-purple-lg hover:-translate-y-0.5`
-              : "text-primary-600 bg-primary-50 border border-primary-200 hover:bg-primary-100"
-          }`}
-        >
-          Request Quote
-        </Link>
+        <div className="mt-4 pt-4 border-t border-gray-100">
+          <div className="flex items-end justify-between mb-3">
+            <div>
+              <p className="text-2xl font-bold text-gray-900">{product.price}</p>
+              <p className="text-[11px] text-gray-400 mt-0.5">+ 18% GST applicable</p>
+            </div>
+            <Link
+              href={`/products/${product.slug}`}
+              className="text-xs font-semibold text-primary-500 hover:text-primary-700 hover:underline"
+            >
+              Details →
+            </Link>
+          </div>
+          <Link
+            href="#contact"
+            className={`w-full py-2.5 text-center text-sm font-bold rounded-xl bg-gradient-to-r ${product.accent} text-white hover:opacity-90 hover:shadow-lg transition-all duration-200 block`}
+          >
+            Get Quote
+          </Link>
+        </div>
       </div>
     </motion.div>
   );
 }
 
-function CategoryHeader({ title, sub }: { title: string; sub: string }) {
+function CategoryHeader({
+  title,
+  sub,
+  count,
+  href,
+}: {
+  title: string;
+  sub: string;
+  count?: number;
+  href?: string;
+}) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: -30 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6 }}
-      className="flex items-center gap-6 mb-10"
+      initial={{ opacity: 0, y: -20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5 }}
+      className="flex items-center justify-between mb-8"
     >
-      <div>
-        <h3 className="font-display text-2xl lg:text-3xl font-bold text-gray-900">
-          {title}
-        </h3>
-        <p className="text-sm text-gray-500 mt-1">{sub}</p>
+      <div className="flex items-center gap-4">
+        <div className="w-1 h-10 rounded-full bg-gradient-to-b from-primary-400 to-pink-400 flex-shrink-0" />
+        <div>
+          <div className="flex items-center gap-2.5 flex-wrap">
+            <h3 className="font-display text-2xl lg:text-3xl font-bold text-gray-900">{title}</h3>
+            {count && (
+              <span className="px-2.5 py-0.5 text-xs font-bold text-primary-600 bg-primary-50 border border-primary-200 rounded-full">
+                {count} models
+              </span>
+            )}
+          </div>
+          <p className="text-sm text-gray-500 mt-0.5">{sub}</p>
+        </div>
       </div>
-      <div className="flex-1 h-px bg-gradient-to-r from-primary-200 to-transparent" />
+      {href && (
+        <Link href={href} className="text-sm font-semibold text-primary-600 hover:underline hidden sm:flex items-center gap-1">
+          View All →
+        </Link>
+      )}
     </motion.div>
   );
 }
@@ -270,8 +265,10 @@ export default function Products() {
         <CategoryHeader
           title="Vending Machines"
           sub="Sanitary napkin dispensers for every environment"
+          count={6}
+          href="/products/sanitary-napkin-vending-machines"
         />
-        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
           {vendingMachines.map((p, i) => (
             <ProductCard key={p.name} product={p} index={i} />
           ))}
@@ -281,8 +278,10 @@ export default function Products() {
         <CategoryHeader
           title="Sanitary Napkin Incinerators"
           sub="Eco-friendly, safe disposal systems"
+          count={3}
+          href="/products/sanitary-napkin-incinerators"
         />
-        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-3 gap-5">
           {incinerators.map((p, i) => (
             <ProductCard key={p.name} product={p} index={i} />
           ))}

@@ -8,7 +8,7 @@ import { vendingMachines, SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Sanitary Napkin Vending Machines — All Models & Prices India | Lyra Enterprises",
   description:
-    "Buy sanitary napkin vending machines in India. Compare push-button, coin, WiFi UPI and Ethernet models. Prices from ₹11,500. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
+    "Buy sanitary napkin vending machines in India. Compare push-button, manual, coin, RFID, WiFi UPI and Ethernet models. Prices from ₹11,500. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
   keywords: [
     "sanitary napkin vending machine india",
     "napkin vending machine price india",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/products/sanitary-napkin-vending-machines` },
   openGraph: {
     title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
-    description: "Compare all 4 models: push-button, coin, WiFi UPI and Ethernet. Prices from ₹11,500. Pan-India delivery.",
+    description: "Compare all 6 models: push-button, manual, coin, RFID, WiFi UPI and Ethernet. Prices from ₹11,500. Pan-India delivery.",
     url: `${SITE.url}/products/sanitary-napkin-vending-machines`,
   },
 };
@@ -41,12 +41,12 @@ const schema = {
 };
 
 const comparison = [
-  { label: "Payment", pb: "Manual", sc: "₹5 Coin", wifi: "UPI QR + Coin", eth: "UPI QR + Coin" },
-  { label: "Connectivity", pb: "None", sc: "None", wifi: "WiFi 2.4GHz", eth: "Ethernet/LAN" },
-  { label: "Cloud Reports", pb: "No", sc: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Touch Display", pb: "No", sc: "No", wifi: "Yes", eth: "Yes" },
-  { label: "IoT Monitoring", pb: "No", sc: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Price", pb: "₹11,500", sc: "₹12,500", wifi: "₹22,500", eth: "₹24,500" },
+  { label: "Payment", pb: "Manual", sm: "Free (no payment)", sc: "₹5 Coin", rf: "RFID Card", wifi: "UPI QR + Coin", eth: "UPI QR + Coin" },
+  { label: "Connectivity", pb: "None", sm: "None", sc: "None", rf: "None", wifi: "WiFi 2.4GHz", eth: "Ethernet/LAN" },
+  { label: "Cloud Reports", pb: "No", sm: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+  { label: "Touch Display", pb: "No", sm: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+  { label: "IoT Monitoring", pb: "No", sm: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+  { label: "Price", pb: "₹11,500", sm: "₹11,500", sc: "₹12,500", rf: "₹12,500", wifi: "₹22,500", eth: "₹24,500" },
 ];
 
 export default function VendingMachinesPage() {
@@ -66,7 +66,7 @@ export default function VendingMachinesPage() {
             Sanitary Napkin <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">Vending Machines</span>
           </h1>
           <p className="mt-4 text-gray-600 text-lg max-w-2xl">
-            4 models to match every budget and facility — from simple push-button dispensers to IoT-enabled smart machines with UPI payments and cloud analytics. Manufactured in Chennai, delivered across India.
+            6 models to match every budget and facility — from simple push-button dispensers to IoT-enabled smart machines with UPI payments and cloud analytics. Manufactured in Chennai, delivered across India.
           </p>
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ 1-Year Warranty</span>
@@ -77,7 +77,7 @@ export default function VendingMachinesPage() {
 
         {/* Product Cards */}
         <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {vendingMachines.map((p) => (
               <Link key={p.slug} href={`/products/${p.slug}`} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col">
                 <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
@@ -126,7 +126,7 @@ export default function VendingMachinesPage() {
                 {comparison.map((row, i) => (
                   <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
                     <td className="px-4 py-3 text-gray-600 font-medium">{row.label}</td>
-                    {([row.pb, row.sc, row.wifi, row.eth] as string[]).map((val, j) => (
+                    {([row.pb, row.sm, row.sc, row.rf, row.wifi, row.eth] as string[]).map((val, j) => (
                       <td key={j} className={`px-4 py-3 text-center ${val === "Yes" ? "text-green-600 font-semibold" : val === "No" ? "text-gray-400" : "text-gray-700"}`}>
                         {val}
                       </td>

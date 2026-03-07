@@ -71,7 +71,7 @@ export default function ProductsPage() {
               View All →
             </Link>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {vendingMachines.map((p) => (
               <Link key={p.slug} href={`/products/${p.slug}`} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                 <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
