@@ -152,9 +152,9 @@ function ProductCard({
       </div>
 
       {/* Content */}
-      <div className="p-5 flex flex-col flex-1">
+      <div className="p-3 sm:p-5 flex flex-col flex-1">
         <p className="text-[10px] text-gray-400 font-mono tracking-widest uppercase">{product.code}</p>
-        <h3 className="mt-1 text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors leading-tight">
+        <h3 className="mt-1 text-base sm:text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors leading-tight">
           {product.name}
         </h3>
 
@@ -174,7 +174,7 @@ function ProductCard({
         <div className="mt-5 pt-4 border-t border-gray-100">
           <div className="flex items-end justify-between mb-3.5">
             <div>
-              <p className="text-2xl font-extrabold text-gray-900 tracking-tight">{product.price}</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-gray-900 tracking-tight">{product.price}</p>
               <p className="text-[11px] text-gray-400 mt-0.5">excl. 18% GST</p>
             </div>
             <Link
@@ -259,7 +259,7 @@ export default function Products() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center max-w-3xl mx-auto mb-16 sm:mb-20"
+          className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 lg:mb-20"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-semibold tracking-wider uppercase mb-6">
             Product Range
@@ -289,7 +289,7 @@ export default function Products() {
           count={6}
           href="/products/sanitary-napkin-vending-machines"
         />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 mb-14 sm:mb-20">
           {vendingMachines.map((p, i) => (
             <ProductCard key={p.name} product={p} index={i} />
           ))}
@@ -302,7 +302,7 @@ export default function Products() {
           count={3}
           href="/products/sanitary-napkin-incinerators"
         />
-        <div className="grid sm:grid-cols-3 gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5">
           {incinerators.map((p, i) => (
             <ProductCard key={p.name} product={p} index={i} />
           ))}

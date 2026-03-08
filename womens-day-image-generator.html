@@ -16,7 +16,24 @@
       padding: 30px 20px 80px;
     }
     h1 { color: #fff; font-size: 17px; margin-bottom: 6px; font-weight: 600; }
-    p.hint { color: rgba(255,255,255,0.4); font-size: 13px; margin-bottom: 22px; }
+    p.hint { color: rgba(255,255,255,0.4); font-size: 13px; margin-bottom: 16px; }
+
+    /* Tab switcher */
+    .tab-row { display:flex; gap:10px; margin-bottom:18px; }
+    .tab-btn {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.5);
+      padding: 9px 24px; border-radius: 100px;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      letter-spacing: 0.03em; transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg,#A0268A,#E8477A);
+      border-color: transparent; color: #fff;
+      box-shadow: 0 6px 22px rgba(232,71,122,0.4);
+    }
+
     #download-btn {
       background: linear-gradient(135deg, #A0268A, #E8477A);
       color: #fff;
@@ -229,11 +246,251 @@
     .float-badge .fb-label { font-size:9px; font-weight:800; color:rgba(255,255,255,0.65); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:2px; }
     .float-badge .fb-amount { font-size:28px; font-weight:900; color:#fff; line-height:1; letter-spacing:-1px; }
     .float-badge .fb-sub { font-size:9px; font-weight:700; color:rgba(255,255,255,0.6); margin-top:2px; }
+
+    /* ────────────────────────────────────────────────────
+       COMBO CARD
+    ──────────────────────────────────────────────────── */
+    #combo-card {
+      width: 1200px;
+      height: 630px;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+    .combo-bg {
+      position:absolute; inset:0;
+      background: linear-gradient(135deg,#1a0230 0%,#2d0545 30%,#3b0a30 60%,#1e0120 100%);
+    }
+    /* reuse blob/petal/dots/ribbon from card */
+
+    /* TOP BAND */
+    .combo-top-band {
+      position:absolute; top:0; left:0; right:0;
+      height:52px; padding:0 44px;
+      display:flex; align-items:center; justify-content:space-between;
+      background:linear-gradient(90deg,rgba(107,31,168,0.6),rgba(160,38,138,0.4));
+      border-bottom:1px solid rgba(244,114,182,0.2);
+      z-index:20;
+    }
+    .combo-brand { font-size:16px; font-weight:900; color:#fff; letter-spacing:0.02em; }
+    .combo-brand em {
+      font-style:normal;
+      background:linear-gradient(90deg,#e879f9,#f472b6,#fb7185);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    }
+    .combo-wd-pill {
+      display:inline-flex; align-items:center; gap:7px;
+      background:linear-gradient(135deg,rgba(244,114,182,0.22),rgba(232,71,122,0.15));
+      border:1px solid rgba(244,114,182,0.4);
+      padding:5px 16px; border-radius:100px;
+      font-size:11px; font-weight:700; color:#fda4af; letter-spacing:0.1em; text-transform:uppercase;
+    }
+    .combo-contact-mini { font-size:11px; font-weight:700; color:rgba(255,255,255,0.6); }
+    .combo-contact-mini strong { color:#fff; }
+
+    /* MAIN BODY */
+    .combo-body {
+      position:absolute; top:52px; left:0; right:0; bottom:0;
+      display:flex; flex-direction:row; z-index:10;
+    }
+
+    /* ── LEFT PANEL ── */
+    .combo-left {
+      width:360px; flex-shrink:0;
+      padding:18px 20px 16px 40px;
+      display:flex; flex-direction:column; justify-content:space-between;
+    }
+    .combo-left-top { display:flex; flex-direction:column; }
+    .combo-special-tag {
+      display:inline-flex; align-items:center; gap:7px;
+      background:linear-gradient(135deg,#f59e0b,#f97316);
+      padding:5px 14px; border-radius:100px;
+      font-size:9.5px; font-weight:800; color:#fff; letter-spacing:0.14em; text-transform:uppercase;
+      margin-bottom:10px; width:fit-content;
+      box-shadow:0 4px 18px rgba(245,158,11,0.45);
+    }
+    .combo-headline-sub { font-size:10px; font-weight:700; color:rgba(253,164,175,0.6); letter-spacing:0.16em; text-transform:uppercase; margin-bottom:3px; }
+    .combo-headline {
+      font-size:42px; font-weight:900; line-height:0.92; letter-spacing:-2px; margin-bottom:10px;
+    }
+    .combo-headline .ch-line1 { color:#fff; }
+    .combo-headline .ch-line2 {
+      background:linear-gradient(90deg,#e879f9,#f472b6,#fb7185);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    }
+
+    .combo-price-box {
+      background:linear-gradient(135deg,rgba(160,38,138,0.25),rgba(232,71,122,0.18));
+      border:1px solid rgba(244,114,182,0.45);
+      border-radius:14px; padding:12px 18px; margin-bottom:10px;
+      box-shadow:0 0 0 1px rgba(244,114,182,0.1),inset 0 1px 0 rgba(244,114,182,0.18);
+    }
+    .combo-was { font-size:11px; color:rgba(255,255,255,0.35); text-decoration:line-through; margin-bottom:1px; }
+    .combo-now { font-size:40px; font-weight:900; line-height:1; letter-spacing:-2px;
+      background:linear-gradient(90deg,#e879f9,#f472b6,#fb7185);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    }
+    .combo-save {
+      display:inline-flex; align-items:center; gap:5px; margin-top:5px;
+      background:rgba(244,114,182,0.12); border:1px solid rgba(244,114,182,0.25);
+      border-radius:100px; padding:3px 12px;
+      font-size:10.5px; font-weight:800; color:#f472b6;
+    }
+
+    .combo-includes {
+      font-size:9px; font-weight:700; color:rgba(253,164,175,0.5); letter-spacing:0.14em;
+      text-transform:uppercase; margin-bottom:6px;
+    }
+    .combo-item-row { display:flex; align-items:flex-start; gap:7px; margin-bottom:6px; }
+    .combo-item-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; margin-top:3px; }
+    .combo-item-dot.vm { background:#e879f9; }
+    .combo-item-dot.inc { background:#fb7185; }
+    .combo-item-name { font-size:11px; font-weight:800; color:#fff; line-height:1.2; }
+    .combo-item-code { font-size:8.5px; color:rgba(255,255,255,0.35); letter-spacing:0.08em; margin-top:1px; }
+
+    /* Feature bullets */
+    .combo-features { display:flex; flex-wrap:wrap; gap:5px; margin-top:8px; margin-bottom:8px; }
+    .combo-feat-chip {
+      background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+      border-radius:100px; padding:3px 10px;
+      font-size:8.5px; font-weight:700; color:rgba(255,255,255,0.55); white-space:nowrap;
+    }
+    .combo-feat-chip.highlight {
+      background:rgba(244,114,182,0.1); border-color:rgba(244,114,182,0.25);
+      color:#f9a8d4;
+    }
+
+    /* Bottom contact row */
+    .combo-contact-row { display:flex; gap:14px; align-items:center; }
+    .combo-c-item .combo-c-lbl { font-size:7.5px; font-weight:700; color:rgba(253,164,175,0.4); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:1px; }
+    .combo-c-item .combo-c-val { font-size:10.5px; font-weight:800; color:#fff; }
+    .combo-c-sep { width:1px; height:24px; background:rgba(244,114,182,0.15); }
+
+    .combo-valid {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(244,114,182,0.08); border:1px solid rgba(244,114,182,0.2);
+      border-radius:100px; padding:4px 12px;
+      font-size:9px; font-weight:600; color:rgba(255,255,255,0.4);
+    }
+    .combo-valid strong { color:#f472b6; font-weight:800; }
+
+    /* ── RIGHT: two product columns ── */
+    .combo-right {
+      flex:1; display:flex; flex-direction:row;
+      align-items:stretch;
+      padding:0; gap:0;
+      position:relative;
+    }
+
+    /* thin vertical divider between left and right */
+    .combo-vdiv {
+      width:1px; flex-shrink:0; align-self:stretch;
+      background:linear-gradient(to bottom,transparent,rgba(244,114,182,0.25) 20%,rgba(244,114,182,0.25) 80%,transparent);
+      margin:0;
+    }
+
+    /* each product column */
+    .combo-prod-col {
+      flex:1; display:flex; flex-direction:column;
+      align-items:center; padding:14px 12px 12px;
+      position:relative;
+    }
+    .combo-prod-col.vm-col {
+      border-right:1px solid rgba(244,114,182,0.1);
+    }
+
+    /* Top spec chips row */
+    .cpc-chips { display:flex; flex-wrap:wrap; gap:4px; justify-content:center; margin-bottom:8px; }
+    .cpc-chip {
+      padding:3px 9px; border-radius:100px;
+      font-size:8px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase;
+    }
+    .cpc-chip.vm { background:rgba(232,121,249,0.12); border:1px solid rgba(232,121,249,0.28); color:#e879f9; }
+    .cpc-chip.inc { background:rgba(251,113,133,0.12); border:1px solid rgba(251,113,133,0.28); color:#fb7185; }
+
+    /* product image area */
+    .cpc-img-area {
+      flex:1; width:100%;
+      display:flex; align-items:flex-end; justify-content:center;
+      position:relative; min-height:0;
+    }
+    .cpc-img-area img {
+      max-height:340px; max-width:100%; width:auto;
+      object-fit:contain;
+      filter:drop-shadow(0 16px 40px rgba(0,0,0,0.75));
+      position:relative; z-index:2;
+    }
+    .cpc-glow {
+      position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+      width:200px; height:200px; border-radius:50%; pointer-events:none; z-index:1;
+    }
+    .cpc-glow.vm { background:radial-gradient(circle,rgba(232,121,249,0.35) 0%,transparent 65%); }
+    .cpc-glow.inc { background:radial-gradient(circle,rgba(232,71,122,0.32) 0%,transparent 65%); }
+
+    /* bottom label */
+    .cpc-label {
+      width:100%;
+      background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.09);
+      border-radius:10px; padding:8px 14px; text-align:center; margin-top:8px;
+    }
+    .cpc-label .cpl-name { font-size:12px; font-weight:800; color:#fff; }
+    .cpc-label .cpl-code { font-size:9px; color:rgba(255,255,255,0.35); letter-spacing:0.08em; margin-top:1px; }
+    .cpc-label .cpl-price {
+      font-size:10px; font-weight:700; color:rgba(255,255,255,0.3); margin-top:3px;
+    }
+    .cpc-label .cpl-price span {
+      color:#f472b6; font-weight:800;
+    }
+
+    /* connector column between the two products */
+    .combo-connector {
+      width:80px; flex-shrink:0;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      gap:6px; position:relative; z-index:10;
+    }
+    .combo-plus-circle {
+      width:44px; height:44px; border-radius:50%;
+      background:linear-gradient(135deg,#A0268A,#E8477A);
+      display:flex; align-items:center; justify-content:center;
+      font-size:24px; font-weight:900; color:#fff; line-height:1;
+      box-shadow:0 6px 24px rgba(232,71,122,0.6);
+      border:2px solid rgba(255,255,255,0.2); flex-shrink:0;
+    }
+    .combo-conn-line {
+      width:1px; height:60px;
+      background:linear-gradient(to bottom,transparent,rgba(244,114,182,0.3),transparent);
+    }
+    .combo-conn-tag {
+      background:linear-gradient(135deg,rgba(160,38,138,0.3),rgba(232,71,122,0.2));
+      border:1px solid rgba(244,114,182,0.3);
+      border-radius:6px; padding:4px 6px; text-align:center;
+      font-size:7px; font-weight:800; color:#fda4af; letter-spacing:0.1em; text-transform:uppercase;
+      width:76px;
+    }
+
+    /* ── Save badge (inside connector column) ── */
+    .combo-float-badge {
+      background:linear-gradient(135deg,#6B1FA8,#A0268A,#E8477A);
+      border-radius:10px; padding:7px 8px; text-align:center;
+      box-shadow:0 8px 28px rgba(160,38,138,0.55);
+      border:1px solid rgba(244,114,182,0.3);
+      width:76px; flex-shrink:0; box-sizing:border-box;
+    }
+    .combo-float-badge .cfb-label { font-size:6.5px; font-weight:800; color:rgba(255,255,255,0.65); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:2px; }
+    .combo-float-badge .cfb-amount { font-size:12px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.3px; white-space:nowrap; }
+    .combo-float-badge .cfb-sub { font-size:6px; font-weight:700; color:rgba(255,255,255,0.6); margin-top:3px; line-height:1.3; }
   </style>
 </head>
 <body>
   <h1>Lyra Enterprises &mdash; Women's Day Campaign Image</h1>
   <p class="hint">Click below to download a high-quality 1200 &times; 630 PNG ready to send on WhatsApp</p>
+
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="switchTab('main')">&#127381; Main Offer Card</button>
+    <button class="tab-btn" onclick="switchTab('combo')">&#127873; Combo Special Offer</button>
+  </div>
+
   <button id="download-btn" onclick="downloadImage()">Download Image (PNG)</button>
 
   <div id="card-wrapper">
@@ -401,22 +658,200 @@
   </div><!-- /card -->
   </div><!-- /wrapper -->
 
+  <!-- ═══════════════════════════════════════════════
+       COMBO CARD WRAPPER
+  ════════════════════════════════════════════════ -->
+  <div id="combo-wrapper" style="display:none; transform:scale(0.7); transform-origin:top center; margin-bottom:-190px;">
+  <div id="combo-card">
+
+    <!-- Backgrounds (reuse same elements) -->
+    <div class="combo-bg"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="petal p1"></div>
+    <div class="petal p2"></div>
+    <div class="petal p3"></div>
+    <div class="petal p4"></div>
+    <div class="dots"></div>
+    <div class="ribbon"></div>
+
+    <!-- TOP BAND -->
+    <div class="combo-top-band">
+      <div class="combo-brand">Lyra <em>Enterprise</em></div>
+      <div class="combo-wd-pill">&#10047;&nbsp; Women's Day Special &mdash; March 8, 2026</div>
+      <div class="combo-contact-mini">WhatsApp / Call: <strong>+91-81223 78860</strong></div>
+    </div>
+
+    <!-- BODY -->
+    <div class="combo-body">
+
+      <!-- LEFT: pricing & details -->
+      <div class="combo-left">
+        <div class="combo-left-top">
+          <div class="combo-special-tag">&#127873;&nbsp; Combo Bundle Offer</div>
+
+          <div class="combo-headline-sub">Women's Day Exclusive</div>
+          <div class="combo-headline">
+            <div class="ch-line1">Bundle</div>
+            <div class="ch-line2">&amp; Save!</div>
+          </div>
+
+          <div class="combo-price-box">
+            <div class="combo-was">Actual Price: Rs.24,500</div>
+            <div class="combo-now">Rs.19,999</div>
+            <div class="combo-save">&#9733;&nbsp; You Save Rs.4,501 &nbsp;&#9733;</div>
+          </div>
+
+          <div class="combo-includes">&#11835;&nbsp; What's Included</div>
+
+          <div class="combo-item-row">
+            <div class="combo-item-dot vm"></div>
+            <div>
+              <div class="combo-item-name">Push Button Vending Machine</div>
+              <div class="combo-item-code">Lyra/SNVM/PB &nbsp;&middot;&nbsp; 30-napkin capacity</div>
+            </div>
+          </div>
+
+          <div class="combo-item-row">
+            <div class="combo-item-dot inc"></div>
+            <div>
+              <div class="combo-item-name">Lyra Micro Incinerator</div>
+              <div class="combo-item-code">Lyra/SND/Micro &nbsp;&middot;&nbsp; 100 napkins/day</div>
+            </div>
+          </div>
+
+          <div class="combo-features">
+            <span class="combo-feat-chip highlight">&#10003;&nbsp;Govt Mandate</span>
+            <span class="combo-feat-chip highlight">&#10003;&nbsp;NAAC Compliant</span>
+            <span class="combo-feat-chip">&#10003;&nbsp;Zero Maintenance</span>
+            <span class="combo-feat-chip">&#10003;&nbsp;Free Installation</span>
+            <span class="combo-feat-chip">&#10003;&nbsp;Pan-India Shipping</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="combo-valid" style="margin-bottom:8px;">
+            &#128197;&nbsp;Valid till&nbsp;<strong>March 8, 2026</strong>&nbsp;&middot;&nbsp;Limited Stock
+          </div>
+          <div class="combo-contact-row">
+            <div class="combo-c-item">
+              <div class="combo-c-lbl">Call / WhatsApp</div>
+              <div class="combo-c-val">+91-81223 78860</div>
+            </div>
+            <div class="combo-c-sep"></div>
+            <div class="combo-c-item">
+              <div class="combo-c-lbl">Website</div>
+              <div class="combo-c-val">lyraenterprise.co.in</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- thin divider -->
+      <div class="combo-vdiv"></div>
+
+      <!-- RIGHT: two product columns + connector -->
+      <div class="combo-right">
+
+        <!-- VM Column -->
+        <div class="combo-prod-col vm-col">
+          <div class="cpc-chips">
+            <span class="cpc-chip vm">Electric</span>
+            <span class="cpc-chip vm">30 Napkins</span>
+            <span class="cpc-chip vm">Tamper-Proof</span>
+            <span class="cpc-chip vm">Wall Mount</span>
+          </div>
+          <div class="cpc-img-area">
+            <div class="cpc-glow vm"></div>
+            <img src="images/products/lyra-vending-machine.png" alt="Push Button Vending Machine" />
+          </div>
+          <div class="cpc-label">
+            <div class="cpl-name">Push Button Vending Machine</div>
+            <div class="cpl-code">Lyra/SNVM/PB</div>
+            <div class="cpl-price">MRP Rs.11,000 &rarr; <span>Combo Price Included</span></div>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="combo-connector">
+          <div class="combo-conn-line"></div>
+          <div class="combo-conn-tag">Perfect<br>Combo</div>
+          <div class="combo-plus-circle">+</div>
+          <div class="combo-float-badge">
+            <div class="cfb-label">You Save</div>
+            <div class="cfb-amount">Rs.4,501</div>
+            <div class="cfb-sub">on this combo</div>
+          </div>
+          <div class="combo-conn-tag">Complete<br>Solution</div>
+          <div class="combo-conn-line"></div>
+        </div>
+
+        <!-- Incinerator Column -->
+        <div class="combo-prod-col">
+          <div class="cpc-chips">
+            <span class="cpc-chip inc">Electric</span>
+            <span class="cpc-chip inc">100/Day</span>
+            <span class="cpc-chip inc">CPCB Approved</span>
+            <span class="cpc-chip inc">Odour-Free</span>
+          </div>
+          <div class="cpc-img-area">
+            <div class="cpc-glow inc"></div>
+            <img src="images/products/lyra-micro-incinerator.png" alt="Lyra Micro Incinerator" />
+          </div>
+          <div class="cpc-label">
+            <div class="cpl-name">Lyra Micro Incinerator</div>
+            <div class="cpl-code">Lyra/SND/Micro</div>
+            <div class="cpl-price">MRP Rs.13,500 &rarr; <span>Combo Price Included</span></div>
+          </div>
+        </div>
+
+      </div><!-- /combo-right -->
+
+    </div><!-- /combo-body -->
+
+  </div><!-- /combo-card -->
+  </div><!-- /combo-wrapper -->
+
   <script>
+    var activeTab = 'main';
+
+    function switchTab(tab) {
+      activeTab = tab;
+      var mainWrapper = document.getElementById('card-wrapper');
+      var comboWrapper = document.getElementById('combo-wrapper');
+      var btns = document.querySelectorAll('.tab-btn');
+      if (tab === 'main') {
+        mainWrapper.style.display = '';
+        comboWrapper.style.display = 'none';
+        btns[0].classList.add('active');
+        btns[1].classList.remove('active');
+      } else {
+        mainWrapper.style.display = 'none';
+        comboWrapper.style.display = '';
+        btns[0].classList.remove('active');
+        btns[1].classList.add('active');
+      }
+    }
+
     function downloadImage() {
-      const btn = document.getElementById('download-btn');
+      var btn = document.getElementById('download-btn');
       btn.textContent = 'Generating...';
       btn.disabled = true;
-      html2canvas(document.getElementById('card'), {
+      var cardId = activeTab === 'combo' ? 'combo-card' : 'card';
+      var fileName = activeTab === 'combo' ? 'lyra-womens-day-combo-offer.png' : 'lyra-womens-day-offer.png';
+      html2canvas(document.getElementById(cardId), {
         scale: 2, useCORS: true, logging: false,
         backgroundColor: null, width: 1200, height: 630
-      }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'lyra-womens-day-offer.png';
+      }).then(function(canvas) {
+        var link = document.createElement('a');
+        link.download = fileName;
         link.href = canvas.toDataURL('image/png');
         link.click();
         btn.textContent = 'Download Image (PNG)';
         btn.disabled = false;
-      }).catch(err => {
+      }).catch(function(err) {
         alert('Error: ' + err.message);
         btn.textContent = 'Download Image (PNG)';
         btn.disabled = false;

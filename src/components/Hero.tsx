@@ -176,8 +176,8 @@ export default function Hero() {
       />
 
       <motion.div style={{ y, opacity }} className="relative z-10 w-full">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 pb-16">
-          <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-6 sm:pb-16">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-12 xl:gap-20 items-center">
             {/* Left Content */}
             <div>
               {/* Badge */}
@@ -185,7 +185,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-sm border border-primary-200/50 shadow-sm mb-8"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-sm border border-primary-200/50 shadow-sm mb-4 sm:mb-8"
               >
                 <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
                 <span className="text-xs font-semibold text-primary-700 tracking-wider uppercase">
@@ -275,51 +275,48 @@ export default function Hero() {
               </motion.div>
             </div>
 
-            {/* Right — Product Image */}
+            {/* Right — Product Images (Vending Machine + Incinerator) */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, delay: 0.3 }}
-              className="relative flex items-center justify-center"
+              className="relative flex items-end justify-center gap-0 pb-4 overflow-hidden"
             >
               {/* Glow ring */}
-              <div className="absolute w-80 h-80 lg:w-[450px] lg:h-[450px] rounded-full bg-gradient-radial from-primary-200/50 to-transparent animate-pulse-glow" />
+              <div className="absolute w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] lg:w-[900px] lg:h-[900px] rounded-full bg-gradient-radial from-primary-200/50 to-transparent animate-pulse-glow" />
 
-              {/* Product image container */}
+              {/* Vending Machine — taller */}
               <motion.div
-                animate={{ y: [0, -12, 0] }}
+                animate={{ y: [0, -14, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10"
+                className="relative z-20"
               >
-                <div className="relative w-72 h-96 lg:w-[340px] lg:h-[460px]">
+                <div className="relative w-36 sm:w-52 lg:w-[480px] h-52 sm:h-72 lg:h-[780px]">
                   <Image
-                    src="/images/products/lyra-vending-machine.png"
-                    alt="Lyra Enterprises Vending Machine"
+                    src="/images/products/VendingMachine.png"
+                    alt="Lyra Sanitary Napkin Vending Machine"
                     fill
                     className="object-contain drop-shadow-2xl"
                     priority
-                    onError={() => {}}
                   />
                 </div>
+              </motion.div>
 
-                {/* Feature Badges */}
-                {badges.map((badge, i) => (
-                  <motion.div
-                    key={badge.text}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.8 + i * 0.2 }}
-                    style={{
-                      position: "absolute",
-                      top: i === 0 ? "10%" : i === 1 ? "45%" : "75%",
-                      left: i === 1 ? "auto" : "-20%",
-                      right: i === 1 ? "-20%" : "auto",
-                    }}
-                    className={`hidden sm:block px-4 py-2 rounded-2xl text-white text-xs font-bold bg-gradient-to-br ${badge.color} shadow-lg backdrop-blur-sm`}
-                  >
-                    {badge.text}
-                  </motion.div>
-                ))}
+              {/* Incinerator — squarish, same bottom alignment */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+                className="relative z-10 self-end -ml-6 sm:-ml-10 lg:-ml-28"
+              >
+                <div className="relative w-32 sm:w-48 lg:w-[465px] h-44 sm:h-64 lg:h-[645px]">
+                  <Image
+                    src="/images/products/Incinerator.png"
+                    alt="Lyra Sanitary Napkin Incinerator"
+                    fill
+                    className="object-contain drop-shadow-2xl"
+                    priority
+                  />
+                </div>
               </motion.div>
             </motion.div>
           </div>

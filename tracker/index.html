@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lyra — Send Tracker</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: #f5f0fa;
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+    .page-header {
+      max-width: 960px;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand { font-size: 22px; font-weight: 900; color: #1a0a2e; }
+    .brand span { background: linear-gradient(135deg, #6B1FA8, #E8477A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .subtitle { font-size: 12px; color: #8a7090; margin-top: 3px; }
+    .db-badge { display: inline-flex; align-items: center; gap: 6px; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 100px; padding: 5px 14px; font-size: 11px; font-weight: 700; color: #15803d; }
+    .db-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    /* Summary */
+    .summary-row { max-width: 960px; margin: 0 auto 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+    .summary-card { background: #fff; border-radius: 14px; padding: 18px 20px; box-shadow: 0 4px 20px rgba(107,31,168,0.08); border: 1.5px solid #ede0f5; text-align: center; }
+    .summary-card .label { font-size: 10px; font-weight: 700; color: #8a7090; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+    .summary-card .count { font-size: 42px; font-weight: 900; line-height: 1; }
+    .count.email { background: linear-gradient(135deg, #6B1FA8, #A0268A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .count.wa    { background: linear-gradient(135deg, #25D366, #128C7E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .count.total { background: linear-gradient(135deg, #E8477A, #6B1FA8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .summary-card .sublabel { font-size: 10px; color: #b0a0ba; margin-top: 4px; }
+
+    /* Controls */
+    .controls { max-width: 960px; margin: 0 auto 20px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .btn { padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 700; cursor: pointer; border: none; outline: none; transition: opacity 0.15s; }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: linear-gradient(135deg, #6B1FA8, #E8477A); color: #fff; }
+    .btn-danger  { background: #fee2e2; color: #b91c1c; border: 1.5px solid #fca5a5; }
+    .btn-export  { background: #f0fdf4; color: #15803d; border: 1.5px solid #86efac; }
+    .search-box { flex: 1; min-width: 180px; padding: 10px 16px; border-radius: 100px; border: 1.5px solid #ede0f5; font-size: 13px; outline: none; background: #fff; color: #1a0a2e; }
+    .search-box:focus { border-color: #A0268A; }
+
+    /* Table */
+    .table-wrap { max-width: 960px; margin: 0 auto 24px; background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(107,31,168,0.08); overflow: hidden; border: 1.5px solid #ede0f5; }
+    table { width: 100%; border-collapse: collapse; }
+    thead tr { background: #1a0a2e; }
+    thead th { padding: 12px 14px; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; text-align: left; }
+    tbody tr { border-bottom: 1px solid #f0e8f8; transition: background 0.1s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #fdf9ff; }
+    td { padding: 11px 14px; font-size: 13px; color: #1a0a2e; vertical-align: middle; }
+    td.name { font-weight: 700; }
+    td.org, td.email-addr { color: #8a7090; font-size: 12px; }
+
+    /* Counter */
+    .counter-cell { display: flex; align-items: center; gap: 8px; }
+    .counter-btn { width: 26px; height: 26px; border-radius: 50%; border: none; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.1s; }
+    .counter-btn:active { transform: scale(0.88); }
+    .counter-btn.minus { background: #fee2e2; color: #b91c1c; }
+    .counter-btn.email-plus { background: #ede0f5; color: #6B1FA8; }
+    .counter-btn.wa-plus   { background: #d1fae5; color: #065f46; }
+    .counter-val { min-width: 28px; text-align: center; font-size: 18px; font-weight: 900; }
+    .counter-val.email { color: #6B1FA8; }
+    .counter-val.wa    { color: #25D366; }
+    .last-sent { font-size: 10px; color: #b0a0ba; display: block; margin-top: 2px; }
+    .del-btn { background: none; border: none; cursor: pointer; color: #fca5a5; font-size: 16px; padding: 4px; border-radius: 6px; transition: color 0.15s; }
+    .del-btn:hover { color: #b91c1c; }
+    .empty { text-align: center; padding: 40px 20px; color: #b0a0ba; font-size: 13px; }
+
+    /* Add form */
+    .add-row { max-width: 960px; margin: 0 auto 24px; background: #fff; border-radius: 16px; padding: 20px 24px; box-shadow: 0 4px 20px rgba(107,31,168,0.08); border: 1.5px solid #ede0f5; }
+    .add-row h3 { font-size: 14px; font-weight: 800; color: #1a0a2e; margin-bottom: 14px; }
+    .add-form { display: flex; gap: 10px; flex-wrap: wrap; }
+    .add-form input { flex: 1; min-width: 140px; padding: 9px 14px; border-radius: 10px; border: 1.5px solid #ede0f5; font-size: 13px; outline: none; color: #1a0a2e; }
+    .add-form input:focus { border-color: #A0268A; }
+    .add-form input::placeholder { color: #c0b0cc; }
+
+    /* Log */
+    .log-wrap { max-width: 960px; margin: 0 auto 40px; background: #fff; border-radius: 16px; padding: 20px 24px; box-shadow: 0 4px 20px rgba(107,31,168,0.08); border: 1.5px solid #ede0f5; }
+    .log-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .log-header h3 { font-size: 14px; font-weight: 800; color: #1a0a2e; }
+    .log-list { list-style: none; max-height: 240px; overflow-y: auto; }
+    .log-list li { font-size: 12px; color: #6b4a7e; padding: 7px 0; border-bottom: 1px solid #f5f0fa; display: flex; gap: 10px; flex-wrap: wrap; }
+    .log-list li:last-child { border-bottom: none; }
+    .log-time { color: #b0a0ba; min-width: 130px; font-size: 11px; }
+    .log-type { font-weight: 700; }
+    .log-type.email { color: #6B1FA8; }
+    .log-type.whatsapp { color: #25D366; }
+
+    /* Toast */
+    #toast { position: fixed; bottom: 24px; right: 24px; background: #1a0a2e; color: #fff; font-size: 13px; font-weight: 600; padding: 12px 20px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.25); opacity: 0; transform: translateY(10px); transition: all 0.25s; pointer-events: none; z-index: 9999; }
+    #toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 600px) {
+      thead th:nth-child(3), td:nth-child(3),
+      thead th:nth-child(4), td:nth-child(4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="toast"></div>
+
+<div class="page-header">
+  <div>
+    <div class="brand">Lyra <span>Enterprise</span> &mdash; Send Tracker</div>
+    <div class="subtitle">All data saved to SQLite database &mdash; permanent, refresh-safe.</div>
+  </div>
+  <div class="db-badge"><span class="db-dot"></span> SQLite DB</div>
+</div>
+
+<!-- Summary -->
+<div class="summary-row">
+  <div class="summary-card">
+    <div class="label">Emails Sent</div>
+    <div class="count email" id="total-email">—</div>
+    <div class="sublabel">total</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">WhatsApp Sent</div>
+    <div class="count wa" id="total-wa">—</div>
+    <div class="sublabel">total</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Contacts</div>
+    <div class="count total" id="total-contacts">—</div>
+    <div class="sublabel">in database</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Reached</div>
+    <div class="count total" id="total-reached">—</div>
+    <div class="sublabel">at least 1 message</div>
+  </div>
+</div>
+
+<!-- Controls -->
+<div class="controls">
+  <input class="search-box" type="text" id="search" placeholder="Search by name, org or email…" oninput="renderTable()" />
+  <button class="btn btn-export" onclick="exportCSV()">Export CSV</button>
+  <button class="btn btn-danger" onclick="resetAll()">Reset All Counts</button>
+</div>
+
+<!-- Table -->
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Organisation</th>
+        <th>Email</th>
+        <th>📧 Emails Sent</th>
+        <th>💬 WhatsApp Sent</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="contact-tbody"><tr><td colspan="7"><div class="empty">Loading…</div></td></tr></tbody>
+  </table>
+</div>
+
+<!-- Add Contact -->
+<div class="add-row">
+  <h3>Add Contact</h3>
+  <div class="add-form">
+    <input type="text"  id="inp-name"  placeholder="Name *" />
+    <input type="text"  id="inp-org"   placeholder="Organisation" />
+    <input type="email" id="inp-email" placeholder="Email" />
+    <input type="text"  id="inp-place" placeholder="Place" />
+    <input type="text"  id="inp-phone" placeholder="Phone" />
+    <button class="btn btn-primary" onclick="addContact()">Add Contact</button>
+  </div>
+</div>
+
+<!-- Activity Log -->
+<div class="log-wrap">
+  <div class="log-header">
+    <h3>Activity Log <span style="font-size:11px;color:#b0a0ba;font-weight:400;">(latest 200 entries)</span></h3>
+    <button class="btn btn-danger" style="padding:6px 14px;font-size:11px;" onclick="clearLog()">Clear Log</button>
+  </div>
+  <ul class="log-list" id="activity-log"><li><span class="log-time">—</span><span>Loading…</span></li></ul>
+</div>
+
+<script>
+  const API = 'http://localhost:3737/api';
+  let allContacts = [];
+
+  // ── helpers ──────────────────────────────────────────────────────────────
+  function toast(msg, err = false) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.background = err ? '#b91c1c' : '#1a0a2e';
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2200);
+  }
+
+  async function apiFetch(url, opts = {}) {
+    try {
+      const r = await fetch(API + url, {
+        headers: { 'Content-Type': 'application/json' },
+        ...opts
+      });
+      if (!r.ok) throw new Error(await r.text());
+      return await r.json();
+    } catch (e) {
+      toast('Server error: ' + e.message, true);
+      throw e;
+    }
+  }
+
+  // ── render ────────────────────────────────────────────────────────────────
+  function renderTable() {
+    const q = document.getElementById('search').value.toLowerCase();
+    const filtered = allContacts.filter(c =>
+      c.name.toLowerCase().includes(q) ||
+      (c.org || '').toLowerCase().includes(q) ||
+      (c.email || '').toLowerCase().includes(q)
+    );
+    const tbody = document.getElementById('contact-tbody');
+    if (!filtered.length) {
+      tbody.innerHTML = `<tr><td colspan="7"><div class="empty">No contacts yet. Add one below ↓</div></td></tr>`;
+      return;
+    }
+    tbody.innerHTML = filtered.map((c, i) => `
+      <tr>
+        <td>${i + 1}</td>
+        <td class="name">${c.name}${c.place ? `<span class="last-sent">${c.place}</span>` : ''}</td>
+        <td class="org">${c.org || '—'}</td>
+        <td class="email-addr">${c.email || '—'}</td>
+        <td>
+          <div class="counter-cell">
+            <button class="counter-btn minus"      onclick="send(${c.id},'email',false)" title="Undo">−</button>
+            <span class="counter-val email">${c.emailCount || 0}</span>
+            <button class="counter-btn email-plus" onclick="send(${c.id},'email',true)"  title="Log email sent">+</button>
+          </div>
+          ${c.lastEmail ? `<span class="last-sent">Last: ${fmt(c.lastEmail)}</span>` : ''}
+        </td>
+        <td>
+          <div class="counter-cell">
+            <button class="counter-btn minus"   onclick="send(${c.id},'whatsapp',false)" title="Undo">−</button>
+            <span class="counter-val wa">${c.waCount || 0}</span>
+            <button class="counter-btn wa-plus" onclick="send(${c.id},'whatsapp',true)"  title="Log WhatsApp sent">+</button>
+          </div>
+          ${c.lastWa ? `<span class="last-sent">Last: ${fmt(c.lastWa)}</span>` : ''}
+        </td>
+        <td><button class="del-btn" onclick="deleteContact(${c.id},'${c.name.replace(/'/g,'')}')" title="Remove">✕</button></td>
+      </tr>`
+    ).join('');
+  }
+
+  function fmt(dt) {
+    if (!dt) return '';
+    const d = new Date(dt);
+    return d.toLocaleDateString('en-IN', { day:'2-digit', month:'short' })
+      + ' ' + d.toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
+  }
+
+  async function loadStats() {
+    try {
+      const s = await apiFetch('/stats');
+      document.getElementById('total-email').textContent    = s.totalEmail;
+      document.getElementById('total-wa').textContent       = s.totalWa;
+      document.getElementById('total-contacts').textContent = s.totalContacts;
+      document.getElementById('total-reached').textContent  = s.reached;
+    } catch {}
+  }
+
+  async function loadContacts() {
+    try {
+      allContacts = await apiFetch('/contacts');
+      renderTable();
+      loadStats();
+    } catch {}
+  }
+
+  async function loadLog() {
+    try {
+      const rows = await apiFetch('/log');
+      const ul = document.getElementById('activity-log');
+      if (!rows.length) {
+        ul.innerHTML = '<li><span class="log-time">—</span><span>No activity yet.</span></li>';
+        return;
+      }
+      ul.innerHTML = rows.map(e => `
+        <li>
+          <span class="log-time">${fmt(e.sent_at)}</span>
+          <span class="log-type ${e.type}">${e.type === 'email' ? '📧 Email' : '💬 WhatsApp'}</span>
+          <span>→ <strong>${e.name}</strong>${e.org ? ` <span style="color:#b0a0ba;">(${e.org})</span>` : ''}${e.note ? ` — ${e.note}` : ''}</span>
+        </li>`
+      ).join('');
+    } catch {}
+  }
+
+  // ── actions ───────────────────────────────────────────────────────────────
+  async function send(id, type, add) {
+    try {
+      if (add) {
+        await apiFetch(`/contacts/${id}/send`, { method: 'POST', body: JSON.stringify({ type }) });
+        toast(`${type === 'email' ? '📧 Email' : '💬 WhatsApp'} logged`);
+      } else {
+        const c = allContacts.find(x => x.id === id);
+        const count = type === 'email' ? c.emailCount : c.waCount;
+        if (!count) return;
+        await apiFetch(`/contacts/${id}/send`, { method: 'DELETE', body: JSON.stringify({ type }) });
+        toast(`↩ ${type === 'email' ? 'Email' : 'WhatsApp'} undone`);
+      }
+      loadContacts();
+      loadLog();
+    } catch {}
+  }
+
+  async function addContact() {
+    const name = document.getElementById('inp-name').value.trim();
+    if (!name) { document.getElementById('inp-name').focus(); return; }
+    await apiFetch('/contacts', {
+      method: 'POST',
+      body: JSON.stringify({
+        name,
+        org:   document.getElementById('inp-org').value.trim(),
+        email: document.getElementById('inp-email').value.trim(),
+        place: document.getElementById('inp-place').value.trim(),
+        phone: document.getElementById('inp-phone').value.trim(),
+      })
+    });
+    ['inp-name','inp-org','inp-email','inp-place','inp-phone'].forEach(id =>
+      document.getElementById(id).value = ''
+    );
+    toast('Contact added');
+    loadContacts();
+  }
+
+  async function deleteContact(id, name) {
+    if (!confirm(`Remove "${name}" from tracker? All their send history will be deleted.`)) return;
+    await apiFetch(`/contacts/${id}`, { method: 'DELETE' });
+    toast('Contact removed');
+    loadContacts();
+    loadLog();
+  }
+
+  async function resetAll() {
+    if (!confirm('Reset ALL email & WhatsApp counts to 0?\n(Contacts are kept, send log is cleared)')) return;
+    await apiFetch('/log', { method: 'DELETE' });
+    toast('All counts reset');
+    loadContacts();
+    loadLog();
+  }
+
+  async function clearLog() {
+    if (!confirm('Clear the activity log?')) return;
+    await apiFetch('/log', { method: 'DELETE' });
+    toast('Log cleared');
+    loadLog();
+    loadContacts();
+  }
+
+  function exportCSV() {
+    if (!allContacts.length) { toast('No contacts to export', true); return; }
+    const header = ['Name','Organisation','Place','Email','Phone','Emails Sent','WhatsApp Sent','Last Email','Last WhatsApp'];
+    const rows = allContacts.map(c => [
+      c.name, c.org||'', c.place||'', c.email||'', c.phone||'',
+      c.emailCount||0, c.waCount||0,
+      c.lastEmail ? fmt(c.lastEmail) : '',
+      c.lastWa    ? fmt(c.lastWa)    : ''
+    ]);
+    const csv = [header, ...rows].map(r => r.map(v => `"${v}"`).join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `lyra-send-tracker-${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+  }
+
+  // Enter key in add form
+  document.addEventListener('keydown', e => {
+    const ids = ['inp-name','inp-org','inp-email','inp-place','inp-phone'];
+    if (e.key === 'Enter' && ids.includes(e.target?.id)) addContact();
+  });
+
+  // Init
+  loadContacts();
+  loadLog();
+</script>
+</body>
+</html>

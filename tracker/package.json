@@ -1,0 +1,14 @@
+{
+  "name": "lyra-send-tracker",
+  "version": "1.0.0",
+  "description": "Persistent email & WhatsApp send tracker for Lyra Enterprises campaigns",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.3"
+  }
+}

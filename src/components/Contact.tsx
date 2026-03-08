@@ -141,7 +141,7 @@ export default function Contact() {
         </motion.div>
 
         {/* Contact Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-16">
           {contactInfo.map((info, i) => (
             <FadeUp key={info.label} delay={i * 0.1}>
               <a
@@ -177,7 +177,7 @@ export default function Contact() {
         <div className="grid lg:grid-cols-5 gap-8">
           {/* Form */}
           <FadeUp delay={0.1} className="lg:col-span-3">
-            <div className="rounded-3xl bg-white border border-gray-100 shadow-sm p-8 lg:p-10">
+            <div className="rounded-3xl bg-white border border-gray-100 shadow-sm p-5 sm:p-8 lg:p-10">
               <h3 className="font-display text-2xl font-bold text-gray-900 mb-2">
                 Send Us a Message
               </h3>

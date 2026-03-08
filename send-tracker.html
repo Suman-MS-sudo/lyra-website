@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lyra — Email & WhatsApp Send Tracker</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: #f5f0fa;
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+    .page-header {
+      max-width: 900px;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand { font-size: 22px; font-weight: 900; color: #1a0a2e; }
+    .brand span { background: linear-gradient(135deg, #6B1FA8, #E8477A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .subtitle { font-size: 12px; color: #8a7090; margin-top: 2px; }
+
+    /* Summary Cards */
+    .summary-row {
+      max-width: 900px;
+      margin: 0 auto 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+    .summary-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: 0 4px 20px rgba(107,31,168,0.08);
+      border: 1.5px solid #ede0f5;
+      text-align: center;
+    }
+    .summary-card .label { font-size: 10px; font-weight: 700; color: #8a7090; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+    .summary-card .count { font-size: 42px; font-weight: 900; line-height: 1; }
+    .summary-card .count.email { background: linear-gradient(135deg, #6B1FA8, #A0268A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .summary-card .count.wa { background: linear-gradient(135deg, #25D366, #128C7E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .summary-card .count.total { background: linear-gradient(135deg, #E8477A, #6B1FA8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .summary-card .sublabel { font-size: 10px; color: #b0a0ba; margin-top: 4px; }
+
+    /* Controls */
+    .controls {
+      max-width: 900px;
+      margin: 0 auto 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn {
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: linear-gradient(135deg, #6B1FA8, #E8477A); color: #fff; }
+    .btn-danger { background: #fee2e2; color: #b91c1c; border: 1.5px solid #fca5a5; }
+    .btn-export { background: #f0fdf4; color: #15803d; border: 1.5px solid #86efac; }
+    .search-box {
+      flex: 1;
+      min-width: 180px;
+      padding: 10px 16px;
+      border-radius: 100px;
+      border: 1.5px solid #ede0f5;
+      font-size: 13px;
+      outline: none;
+      background: #fff;
+      color: #1a0a2e;
+    }
+    .search-box:focus { border-color: #A0268A; }
+
+    /* Table */
+    .table-wrap {
+      max-width: 900px;
+      margin: 0 auto 24px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(107,31,168,0.08);
+      overflow: hidden;
+      border: 1.5px solid #ede0f5;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead tr { background: #1a0a2e; }
+    thead th {
+      padding: 12px 14px;
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: left;
+    }
+    tbody tr { border-bottom: 1px solid #f0e8f8; transition: background 0.1s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #fdf9ff; }
+    td { padding: 12px 14px; font-size: 13px; color: #1a0a2e; vertical-align: middle; }
+    td.name { font-weight: 700; }
+    td.org { color: #8a7090; font-size: 12px; }
+    td.email-addr { color: #6B1FA8; font-size: 12px; }
+
+    /* Counter cells */
+    .counter-cell { display: flex; align-items: center; gap: 8px; }
+    .counter-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: none;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: transform 0.1s;
+    }
+    .counter-btn:active { transform: scale(0.9); }
+    .counter-btn.minus { background: #fee2e2; color: #b91c1c; }
+    .counter-btn.plus.email-plus { background: #ede0f5; color: #6B1FA8; }
+    .counter-btn.plus.wa-plus { background: #d1fae5; color: #065f46; }
+    .counter-val {
+      min-width: 28px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .counter-val.email { color: #6B1FA8; }
+    .counter-val.wa { color: #25D366; }
+
+    /* Last sent badge */
+    .last-sent {
+      font-size: 10px;
+      color: #b0a0ba;
+      display: block;
+      margin-top: 2px;
+    }
+    .badge-sent {
+      display: inline-block;
+      background: #ede0f5;
+      color: #6B1FA8;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 100px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .badge-sent.wa { background: #d1fae5; color: #065f46; }
+
+    /* Delete row */
+    .del-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #fca5a5;
+      font-size: 16px;
+      padding: 4px;
+      border-radius: 6px;
+      transition: color 0.15s;
+    }
+    .del-btn:hover { color: #b91c1c; }
+
+    /* Add contact row */
+    .add-row {
+      max-width: 900px;
+      margin: 0 auto 32px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: 0 4px 20px rgba(107,31,168,0.08);
+      border: 1.5px solid #ede0f5;
+    }
+    .add-row h3 { font-size: 14px; font-weight: 800; color: #1a0a2e; margin-bottom: 14px; }
+    .add-form { display: flex; gap: 10px; flex-wrap: wrap; }
+    .add-form input {
+      flex: 1;
+      min-width: 140px;
+      padding: 9px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #ede0f5;
+      font-size: 13px;
+      outline: none;
+      color: #1a0a2e;
+    }
+    .add-form input:focus { border-color: #A0268A; }
+    .add-form input::placeholder { color: #c0b0cc; }
+
+    /* Empty state */
+    .empty {
+      text-align: center;
+      padding: 40px 20px;
+      color: #b0a0ba;
+      font-size: 13px;
+    }
+
+    /* Log section */
+    .log-wrap {
+      max-width: 900px;
+      margin: 0 auto 32px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: 0 4px 20px rgba(107,31,168,0.08);
+      border: 1.5px solid #ede0f5;
+    }
+    .log-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .log-header h3 { font-size: 14px; font-weight: 800; color: #1a0a2e; }
+    .log-list { list-style: none; max-height: 220px; overflow-y: auto; }
+    .log-list li {
+      font-size: 12px;
+      color: #6b4a7e;
+      padding: 6px 0;
+      border-bottom: 1px solid #f5f0fa;
+      display: flex;
+      gap: 10px;
+    }
+    .log-list li:last-child { border-bottom: none; }
+    .log-list .log-time { color: #b0a0ba; min-width: 130px; font-size: 11px; }
+    .log-list .log-type { font-weight: 700; }
+    .log-list .log-type.email { color: #6B1FA8; }
+    .log-list .log-type.wa { color: #25D366; }
+
+    @media (max-width: 600px) {
+      thead th:nth-child(3), td:nth-child(3) { display: none; }
+      .add-form input { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div>
+    <div class="brand">Lyra <span>Enterprise</span> — Send Tracker</div>
+    <div class="subtitle">Tracks emails &amp; WhatsApp messages sent to each contact. Data saved locally in your browser.</div>
+  </div>
+</div>
+
+<!-- Summary Cards -->
+<div class="summary-row">
+  <div class="summary-card">
+    <div class="label">Emails Sent</div>
+    <div class="count email" id="total-email">0</div>
+    <div class="sublabel">total</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">WhatsApp Sent</div>
+    <div class="count wa" id="total-wa">0</div>
+    <div class="sublabel">total</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Contacts</div>
+    <div class="count total" id="total-contacts">0</div>
+    <div class="sublabel">in list</div>
+  </div>
+  <div class="summary-card">
+    <div class="label">Reached</div>
+    <div class="count total" id="total-reached">0</div>
+    <div class="sublabel">at least 1 message</div>
+  </div>
+</div>
+
+<!-- Controls -->
+<div class="controls">
+  <input class="search-box" type="text" id="search" placeholder="Search by name, org or email…" oninput="renderTable()" />
+  <button class="btn btn-export" onclick="exportCSV()">Export CSV</button>
+  <button class="btn btn-danger" onclick="resetAll()">Reset All Counts</button>
+</div>
+
+<!-- Contacts Table -->
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Organisation</th>
+        <th>Email</th>
+        <th>📧 Emails Sent</th>
+        <th>💬 WhatsApp Sent</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="contact-tbody"></tbody>
+  </table>
+</div>
+
+<!-- Add Contact -->
+<div class="add-row">
+  <h3>Add Contact</h3>
+  <div class="add-form">
+    <input type="text" id="inp-name" placeholder="Name *" />
+    <input type="text" id="inp-org" placeholder="Organisation" />
+    <input type="email" id="inp-email" placeholder="Email" />
+    <input type="text" id="inp-place" placeholder="Place" />
+    <button class="btn btn-primary" onclick="addContact()">Add Contact</button>
+  </div>
+</div>
+
+<!-- Activity Log -->
+<div class="log-wrap">
+  <div class="log-header">
+    <h3>Activity Log</h3>
+    <button class="btn btn-danger" style="padding:6px 14px;font-size:11px;" onclick="clearLog()">Clear Log</button>
+  </div>
+  <ul class="log-list" id="activity-log">
+    <li><span class="log-time">—</span><span>No activity yet.</span></li>
+  </ul>
+</div>
+
+<script>
+  const STORAGE_KEY = 'lyra_send_tracker_v1';
+  const LOG_KEY = 'lyra_send_log_v1';
+
+  function loadData() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch { return []; }
+  }
+  function saveData(data) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+  function loadLog() {
+    try { return JSON.parse(localStorage.getItem(LOG_KEY)) || []; }
+    catch { return []; }
+  }
+  function saveLog(log) {
+    localStorage.setItem(LOG_KEY, JSON.stringify(log.slice(0, 200)));
+  }
+  function addLog(name, type, action) {
+    const log = loadLog();
+    const now = new Date();
+    const ts = now.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'2-digit' })
+      + ' ' + now.toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
+    log.unshift({ ts, name, type, action });
+    saveLog(log);
+    renderLog();
+  }
+
+  function renderLog() {
+    const log = loadLog();
+    const ul = document.getElementById('activity-log');
+    if (!log.length) {
+      ul.innerHTML = '<li><span class="log-time">—</span><span>No activity yet.</span></li>';
+      return;
+    }
+    ul.innerHTML = log.map(e =>
+      `<li>
+        <span class="log-time">${e.ts}</span>
+        <span class="log-type ${e.type}">${e.type === 'email' ? '📧 Email' : '💬 WhatsApp'}</span>
+        <span>${e.action} → <strong>${e.name}</strong></span>
+      </li>`
+    ).join('');
+  }
+
+  function renderTable() {
+    const data = loadData();
+    const q = document.getElementById('search').value.toLowerCase();
+    const tbody = document.getElementById('contact-tbody');
+
+    const filtered = data.filter(c =>
+      c.name.toLowerCase().includes(q) ||
+      (c.org || '').toLowerCase().includes(q) ||
+      (c.email || '').toLowerCase().includes(q)
+    );
+
+    if (!filtered.length) {
+      tbody.innerHTML = `<tr><td colspan="7"><div class="empty">No contacts yet. Add one below ↓</div></td></tr>`;
+      updateSummary(data);
+      return;
+    }
+
+    tbody.innerHTML = filtered.map((c, i) => {
+      const realIdx = data.findIndex(d => d.id === c.id);
+      return `
+        <tr>
+          <td>${i + 1}</td>
+          <td class="name">${c.name}
+            ${c.place ? `<span class="last-sent">${c.place}</span>` : ''}
+          </td>
+          <td class="org">${c.org || '—'}</td>
+          <td class="email-addr">${c.email || '—'}</td>
+          <td>
+            <div class="counter-cell">
+              <button class="counter-btn minus" onclick="decrement(${realIdx},'email')" title="Undo email">−</button>
+              <span class="counter-val email">${c.emailCount || 0}</span>
+              <button class="counter-btn plus email-plus" onclick="increment(${realIdx},'email')" title="Log email sent">+</button>
+            </div>
+            ${c.lastEmail ? `<span class="last-sent">Last: ${c.lastEmail}</span>` : ''}
+          </td>
+          <td>
+            <div class="counter-cell">
+              <button class="counter-btn minus" onclick="decrement(${realIdx},'wa')" title="Undo WhatsApp">−</button>
+              <span class="counter-val wa">${c.waCount || 0}</span>
+              <button class="counter-btn plus wa-plus" onclick="increment(${realIdx},'wa')" title="Log WhatsApp sent">+</button>
+            </div>
+            ${c.lastWa ? `<span class="last-sent">Last: ${c.lastWa}</span>` : ''}
+          </td>
+          <td>
+            <button class="del-btn" onclick="deleteContact(${realIdx})" title="Remove contact">✕</button>
+          </td>
+        </tr>`;
+    }).join('');
+
+    updateSummary(data);
+  }
+
+  function updateSummary(data) {
+    const totalEmail = data.reduce((s, c) => s + (c.emailCount || 0), 0);
+    const totalWa = data.reduce((s, c) => s + (c.waCount || 0), 0);
+    const reached = data.filter(c => (c.emailCount || 0) + (c.waCount || 0) > 0).length;
+    document.getElementById('total-email').textContent = totalEmail;
+    document.getElementById('total-wa').textContent = totalWa;
+    document.getElementById('total-contacts').textContent = data.length;
+    document.getElementById('total-reached').textContent = reached;
+  }
+
+  function increment(idx, type) {
+    const data = loadData();
+    const c = data[idx];
+    const now = new Date().toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'2-digit' })
+      + ' ' + new Date().toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
+    if (type === 'email') {
+      c.emailCount = (c.emailCount || 0) + 1;
+      c.lastEmail = now;
+    } else {
+      c.waCount = (c.waCount || 0) + 1;
+      c.lastWa = now;
+    }
+    saveData(data);
+    addLog(c.name, type, 'Sent');
+    renderTable();
+  }
+
+  function decrement(idx, type) {
+    const data = loadData();
+    const c = data[idx];
+    if (type === 'email' && (c.emailCount || 0) > 0) {
+      c.emailCount--;
+      addLog(c.name, type, 'Undone');
+    } else if (type === 'wa' && (c.waCount || 0) > 0) {
+      c.waCount--;
+      addLog(c.name, type, 'Undone');
+    }
+    saveData(data);
+    renderTable();
+  }
+
+  function addContact() {
+    const name = document.getElementById('inp-name').value.trim();
+    if (!name) { document.getElementById('inp-name').focus(); return; }
+    const data = loadData();
+    data.push({
+      id: Date.now(),
+      name,
+      org: document.getElementById('inp-org').value.trim(),
+      email: document.getElementById('inp-email').value.trim(),
+      place: document.getElementById('inp-place').value.trim(),
+      emailCount: 0,
+      waCount: 0,
+      lastEmail: null,
+      lastWa: null
+    });
+    saveData(data);
+    ['inp-name','inp-org','inp-email','inp-place'].forEach(id => document.getElementById(id).value = '');
+    renderTable();
+  }
+
+  function deleteContact(idx) {
+    const data = loadData();
+    if (!confirm(`Remove "${data[idx].name}" from tracker?`)) return;
+    data.splice(idx, 1);
+    saveData(data);
+    renderTable();
+  }
+
+  function resetAll() {
+    if (!confirm('Reset ALL email and WhatsApp counts to 0? (Contacts are kept)')) return;
+    const data = loadData().map(c => ({ ...c, emailCount: 0, waCount: 0, lastEmail: null, lastWa: null }));
+    saveData(data);
+    renderTable();
+  }
+
+  function clearLog() {
+    if (!confirm('Clear activity log?')) return;
+    saveLog([]);
+    renderLog();
+  }
+
+  function exportCSV() {
+    const data = loadData();
+    if (!data.length) { alert('No contacts to export.'); return; }
+    const header = ['Name', 'Organisation', 'Place', 'Email', 'Emails Sent', 'WhatsApp Sent', 'Last Email', 'Last WhatsApp'];
+    const rows = data.map(c => [
+      c.name, c.org || '', c.place || '', c.email || '',
+      c.emailCount || 0, c.waCount || 0,
+      c.lastEmail || '', c.lastWa || ''
+    ]);
+    const csv = [header, ...rows].map(r => r.map(v => `"${v}"`).join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `lyra-send-tracker-${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+  }
+
+  // Keyboard shortcut: Enter on add form
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && ['inp-name','inp-org','inp-email','inp-place'].includes(e.target.id)) {
+      addContact();
+    }
+  });
+
+  // Init
+  renderTable();
+  renderLog();
+</script>
+</body>
+</html>

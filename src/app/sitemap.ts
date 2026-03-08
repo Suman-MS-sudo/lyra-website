@@ -29,6 +29,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "why-every-school-needs-napkin-vending-machine",
     "upi-vs-coin-vending-machine",
     "napkin-incinerator-vs-sanitary-bin",
+    "manual-vs-automatic-napkin-vending-machine",
+    "solid-waste-management-rules-2016-india-guide",
+  ];
+
+  const solutionSlugs = [
+    "schools-colleges",
+    "hospitals",
+    "offices",
   ];
 
   return [
@@ -63,5 +71,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
+    // Solution / Industry pages
+    ...solutionSlugs.map((slug) => ({
+      url: `${SITE_URL}/solutions/${slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    // Bundle page
+    { url: `${SITE_URL}/products/vending-incinerator-bundle`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   ];
 }

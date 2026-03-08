@@ -53,7 +53,7 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <FadeUp>
-          <div className="max-w-3xl mb-12 sm:mb-20">
+          <div className="max-w-3xl mb-10 sm:mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-semibold tracking-wider uppercase mb-6">
               India&apos;s #1 Vending Machine Manufacturer
             </div>

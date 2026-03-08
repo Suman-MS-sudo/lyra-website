@@ -6,8 +6,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 const vendingDropdown = [
+  { label: "Solo Manual", href: "/products/solo-manual-vending-machine" },
   { label: "Push Button", href: "/products/push-button-vending-machine" },
   { label: "Solo Coin", href: "/products/solo-coin-vending-machine" },
+  { label: "Solo RFID", href: "/products/solo-rfid-vending-machine" },
   { label: "Solo WiFi (UPI)", href: "/products/solo-wifi-vending-machine" },
   { label: "Solo Ethernet", href: "/products/solo-ethernet-vending-machine" },
 ];
