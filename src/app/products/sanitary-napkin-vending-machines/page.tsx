@@ -6,22 +6,25 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { vendingMachines, SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Sanitary Napkin Vending Machines — All Models & Prices India | Lyra Enterprises",
+  title: "Sanitary Napkin Vending Machines — All 6 Models & Prices India | Lyra Enterprises",
   description:
-    "Buy sanitary napkin vending machines in India. Compare push-button, manual, coin, RFID, WiFi UPI and Ethernet models. Prices from ₹11,500. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
+    "Buy sanitary napkin vending machines in India. 6 models: free-vend, push-button, coin, RFID, WiFi UPI and Ethernet. Prices from ₹5,000. 1-year warranty. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
   keywords: [
     "sanitary napkin vending machine india",
     "napkin vending machine price india",
-    "coin vending machine india",
-    "upi vending machine india",
-    "wifi vending machine india",
-    "vending machine manufacturer india",
-    "napkin machine for schools hospitals offices",
+    "free vend sanitary napkin machine india",
+    "coin operated napkin vending machine india",
+    "upi qr napkin vending machine india",
+    "wifi iot napkin vending machine india",
+    "rfid napkin vending machine india",
+    "vending machine manufacturer chennai india",
+    "sanitary napkin machine for schools hospitals offices",
+    "best napkin vending machine india",
   ],
   alternates: { canonical: `${SITE.url}/products/sanitary-napkin-vending-machines` },
   openGraph: {
     title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
-    description: "Compare all 6 models: push-button, manual, coin, RFID, WiFi UPI and Ethernet. Prices from ₹11,500. Pan-India delivery.",
+    description: "Compare all 6 models: free-vend, push-button, coin, RFID, WiFi UPI and Ethernet. Prices from ₹5,000. Pan-India delivery.",
     url: `${SITE.url}/products/sanitary-napkin-vending-machines`,
   },
 };
@@ -66,7 +69,7 @@ export default function VendingMachinesPage() {
             Sanitary Napkin <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">Vending Machines</span>
           </h1>
           <p className="mt-4 text-gray-600 text-lg max-w-2xl">
-            6 models to match every budget and facility — from simple push-button dispensers to IoT-enabled smart machines with UPI payments and cloud analytics. Manufactured in Chennai, delivered across India.
+          6 models to match every budget and facility — from free-vend dispensers to IoT-enabled smart machines with UPI payments and cloud analytics. Prices from ₹5,000. Manufactured in Chennai, delivered across India.
           </p>
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ 1-Year Warranty</span>

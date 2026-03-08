@@ -6,8 +6,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
 
   const productSlugs = [
+    "solo-manual-vending-machine",
     "push-button-vending-machine",
     "solo-coin-vending-machine",
+    "solo-rfid-vending-machine",
     "solo-wifi-vending-machine",
     "solo-ethernet-vending-machine",
     "lyra-micro-incinerator",
