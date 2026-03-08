@@ -280,7 +280,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, delay: 0.3 }}
-              className="relative flex items-end justify-center gap-0 pb-4 overflow-hidden"
+              className="relative flex items-end justify-center gap-0 pb-4"
             >
               {/* Glow ring */}
               <div className="absolute w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] lg:w-[900px] lg:h-[900px] rounded-full bg-gradient-radial from-primary-200/50 to-transparent animate-pulse-glow" />
@@ -291,7 +291,7 @@ export default function Hero() {
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 className="relative z-20"
               >
-                <div className="relative w-36 sm:w-52 lg:w-[480px] h-52 sm:h-72 lg:h-[780px]">
+                <div className="relative w-36 sm:w-52 lg:w-[280px] h-52 sm:h-72 lg:h-[450px]">
                   <Image
                     src="/images/products/VendingMachine.png"
                     alt="Lyra Sanitary Napkin Vending Machine"
@@ -306,9 +306,9 @@ export default function Hero() {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-                className="relative z-10 self-end -ml-6 sm:-ml-10 lg:-ml-28"
+                className="relative z-10 self-end -ml-6 sm:-ml-10 lg:-ml-20"
               >
-                <div className="relative w-32 sm:w-48 lg:w-[465px] h-44 sm:h-64 lg:h-[645px]">
+                <div className="relative w-32 sm:w-48 lg:w-[265px] h-44 sm:h-64 lg:h-[370px]">
                   <Image
                     src="/images/products/Incinerator.png"
                     alt="Lyra Sanitary Napkin Incinerator"
