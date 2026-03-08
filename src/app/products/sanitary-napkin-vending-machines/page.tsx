@@ -41,12 +41,12 @@ const schema = {
 };
 
 const comparison = [
-  { label: "Payment", pb: "Manual", sm: "Free (no payment)", sc: "₹5 Coin", rf: "RFID Card", wifi: "UPI QR + Coin", eth: "UPI QR + Coin" },
-  { label: "Connectivity", pb: "None", sm: "None", sc: "None", rf: "None", wifi: "WiFi 2.4GHz", eth: "Ethernet/LAN" },
-  { label: "Cloud Reports", pb: "No", sm: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Touch Display", pb: "No", sm: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "IoT Monitoring", pb: "No", sm: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Price", pb: "₹11,500", sm: "₹5,000", sc: "₹12,500", rf: "₹12,500", wifi: "₹22,500", eth: "₹24,500" },
+  { label: "Payment", sm: "Free (no payment)", pb: "Manual", sc: "₹5 Coin", rf: "RFID Card", wifi: "UPI QR + Coin", eth: "UPI QR + Coin" },
+  { label: "Connectivity", sm: "None", pb: "None", sc: "None", rf: "None", wifi: "WiFi 2.4GHz", eth: "Ethernet/LAN" },
+  { label: "Cloud Reports", sm: "No", pb: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+  { label: "Touch Display", sm: "No", pb: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+  { label: "IoT Monitoring", sm: "No", pb: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+  { label: "Price", sm: "₹5,000", pb: "₹11,500", sc: "₹12,500", rf: "₹12,500", wifi: "₹22,500", eth: "₹24,500" },
 ];
 
 export default function VendingMachinesPage() {
@@ -126,7 +126,7 @@ export default function VendingMachinesPage() {
                 {comparison.map((row, i) => (
                   <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
                     <td className="px-4 py-3 text-gray-600 font-medium">{row.label}</td>
-                    {([row.pb, row.sm, row.sc, row.rf, row.wifi, row.eth] as string[]).map((val, j) => (
+                    {([row.sm, row.pb, row.sc, row.rf, row.wifi, row.eth] as string[]).map((val, j) => (
                       <td key={j} className={`px-4 py-3 text-center ${val === "Yes" ? "text-green-600 font-semibold" : val === "No" ? "text-gray-400" : "text-gray-700"}`}>
                         {val}
                       </td>

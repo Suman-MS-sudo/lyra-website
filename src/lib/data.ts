@@ -35,60 +35,7 @@ export type Product = {
 
 export const products: Product[] = [
   // ─── VENDING MACHINES ───────────────────────────────────────
-  {
-    slug: "push-button-vending-machine",
-    name: "Push Button",
-    fullName: "Push Button Sanitary Napkin Vending Machine",
-    code: "Lyra/SNVM/PB",
-    category: "vending-machine",
-    price: 11500,
-    discountedPrice: 11500,
-    badge: "Essential",
-    tagline: "Simple, reliable dispensing for every facility",
-    description:
-      "Manual push-button sanitary napkin vending machine. Ideal for schools, hostels and budget-conscious institutions.",
-    longDescription:
-      "The Lyra Push Button sanitary napkin vending machine is the most affordable and reliable dispensing solution for educational institutions, government facilities and small offices across India. With a straightforward manual operation, it requires zero maintenance and works without any electricity-based payment system. The tamper-proof sheet metal cabinet with epoxy coating and transparent view panel make restocking easy for facility managers. Trusted by 50+ schools and government institutions across Tamil Nadu and Kerala.",
-    features: [
-      "Manual push-button dispensing",
-      "25 napkins capacity",
-      "Electronic operation",
-      "Transparent view panel",
-      "Tamper-proof body",
-      "Wall-mountable design",
-    ],
-    specs: [
-      { label: "Dimensions", value: "700 × 160 × 160 mm" },
-      { label: "Capacity", value: "25 napkins" },
-      { label: "Operation", value: "Manual push-button" },
-      { label: "Weight", value: "10 kg" },
-      { label: "Material", value: "Sheet metal, epoxy coated" },
-      { label: "Loading", value: "Vertical" },
-      { label: "Mounting", value: "Wall mount" },
-      { label: "Model Code", value: "Lyra/SNVM/PB" },
-    ],
-    useCases: [
-      "Government schools & colleges",
-      "Hostels & dormitories",
-      "Rural health centres",
-      "Small offices & workshops",
-      "Public restrooms",
-    ],
-    accent: "from-gray-400 to-gray-600",
-    keywords: [
-      "push button vending machine india",
-      "manual napkin vending machine",
-      "sanitary napkin machine for schools",
-      "cheap napkin vending machine india",
-      "napkin dispenser machine school",
-    ],
-    metaTitle:
-      "Push Button Sanitary Napkin Vending Machine — Buy Online India | Lyra Enterprises",
-    metaDescription:
-      "Buy Lyra Push Button sanitary napkin vending machine at ₹11,500. Manual dispensing, 25-napkin capacity. Best for schools, hostels & government facilities. Chennai manufacturer. Call +91-8122378860.",
-  },
-  {
-    slug: "solo-manual-vending-machine",
+  {    slug: "solo-manual-vending-machine",
     name: "Solo Manual",
     fullName: "Solo Manual Free-Vend Sanitary Napkin Vending Machine",
     code: "Lyra/SNVM/SM",
@@ -138,6 +85,57 @@ export const products: Product[] = [
       "Solo Manual Free-Vend Sanitary Napkin Vending Machine | Lyra Enterprises India",
     metaDescription:
       "Buy Lyra Solo Manual sanitary napkin vending machine at ₹5,000. Free-vend dispensing, 25-napkin capacity. Best for factories, schools & CSR programmes. Chennai manufacturer. Call +91-8122378860.",
+  },
+  {    slug: "push-button-vending-machine",
+    name: "Push Button",
+    fullName: "Push Button Sanitary Napkin Vending Machine",
+    code: "Lyra/SNVM/PB",
+    category: "vending-machine",
+    price: 11500,
+    discountedPrice: 11500,
+    badge: "Essential",
+    tagline: "Simple, reliable dispensing for every facility",
+    description:
+      "Manual push-button sanitary napkin vending machine. Ideal for schools, hostels and budget-conscious institutions.",
+    longDescription:
+      "The Lyra Push Button sanitary napkin vending machine is the most affordable and reliable dispensing solution for educational institutions, government facilities and small offices across India. With a straightforward manual operation, it requires zero maintenance and works without any electricity-based payment system. The tamper-proof sheet metal cabinet with epoxy coating and transparent view panel make restocking easy for facility managers. Trusted by 50+ schools and government institutions across Tamil Nadu and Kerala.",
+    features: [
+      "Manual push-button dispensing",
+      "25 napkins capacity",
+      "Electronic operation",
+      "Transparent view panel",
+      "Tamper-proof body",
+      "Wall-mountable design",
+    ],
+    specs: [
+      { label: "Dimensions", value: "700 × 160 × 160 mm" },
+      { label: "Capacity", value: "25 napkins" },
+      { label: "Operation", value: "Manual push-button" },
+      { label: "Weight", value: "10 kg" },
+      { label: "Material", value: "Sheet metal, epoxy coated" },
+      { label: "Loading", value: "Vertical" },
+      { label: "Mounting", value: "Wall mount" },
+      { label: "Model Code", value: "Lyra/SNVM/PB" },
+    ],
+    useCases: [
+      "Government schools & colleges",
+      "Hostels & dormitories",
+      "Rural health centres",
+      "Small offices & workshops",
+      "Public restrooms",
+    ],
+    accent: "from-gray-400 to-gray-600",
+    keywords: [
+      "push button vending machine india",
+      "manual napkin vending machine",
+      "sanitary napkin machine for schools",
+      "cheap napkin vending machine india",
+      "napkin dispenser machine school",
+    ],
+    metaTitle:
+      "Push Button Sanitary Napkin Vending Machine — Buy Online India | Lyra Enterprises",
+    metaDescription:
+      "Buy Lyra Push Button sanitary napkin vending machine at ₹11,500. Manual dispensing, 25-napkin capacity. Best for schools, hostels & government facilities. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-coin-vending-machine",
