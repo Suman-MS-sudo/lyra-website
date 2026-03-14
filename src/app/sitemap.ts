@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
 
   const productSlugs = [
-    "solo-manual-vending-machine",
+    "solo-qr-vending-machine",
     "push-button-vending-machine",
     "solo-coin-vending-machine",
     "solo-rfid-vending-machine",

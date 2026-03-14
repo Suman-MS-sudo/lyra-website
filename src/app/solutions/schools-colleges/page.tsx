@@ -8,7 +8,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Sanitary Napkin Vending Machine for Schools & Colleges India | Lyra Enterprises",
   description:
-    "Install sanitary napkin vending machines and incinerators in school & college washrooms. Reduce girl student absenteeism, meet Swachh Bharat & SWM Rules 2016 compliance. GeM vendor. From ₹5,000.",
+    "Install sanitary napkin vending machines and incinerators in school & college washrooms. Reduce girl student absenteeism, meet Swachh Bharat & SWM Rules 2016 compliance. GeM vendor. From ₹9,000.",
   keywords: [
     "sanitary napkin vending machine for schools india",
     "napkin vending machine for colleges india",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sanitary Napkin Vending Machine for Schools & Colleges | Lyra Enterprises India",
     description:
-      "Lyra vending machines reduce girl absenteeism, meet Swachh Bharat compliance, and are available on GeM for direct government procurement. Prices from ₹5,000.",
+      "Lyra vending machines reduce girl absenteeism, meet Swachh Bharat compliance, and are available on GeM for direct government procurement. Prices from ₹9,000.",
     url: `${SITE.url}/solutions/schools-colleges`,
   },
 };
@@ -56,7 +56,7 @@ const faqSchema = {
       name: "Which vending machine is best for a school or college?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "For most schools, the Lyra Solo Manual (₹5,000) is the most affordable option and works without electricity. For colleges and hostels with higher footfall, the Push Button (₹11,500) or Solo Coin (₹12,500) are recommended.",
+        text: "For most schools, the Push Button (₹9,000) is the most affordable compliant option. For colleges and hostels with higher footfall, the Solo Coin (₹9,500) or Solo QR (₹15,000) are recommended.",
       },
     },
     {
@@ -106,39 +106,39 @@ const features = [
   },
   {
     icon: "💰",
-    heading: "Starts at ₹5,000",
-    body: "The Solo Manual vending machine at ₹5,000 is the most affordable compliant solution in India. Push Button coin machines start at ₹11,500.",
+    heading: "Starts at ₹9,000",
+    body: "The Push Button vending machine at ₹9,000 is the most affordable compliant solution in India. Coin-operated Solo Coin machines start at ₹9,500.",
   },
 ];
 
 const products = [
   {
-    name: "Solo Manual",
-    price: "₹5,000",
-    slug: "solo-manual-vending-machine",
-    tag: "Most Affordable",
-    desc: "Manual push-access, no electricity required. Best for rural schools and small government schools.",
-    badge: "bg-green-100 text-green-700",
-  },
-  {
     name: "Push Button",
-    price: "₹11,500",
+    price: "₹9,000",
     slug: "push-button-vending-machine",
-    tag: "Best Seller",
-    desc: "Simple coin-free push-button dispenser. Ideal for most schools, hostels and government institutions.",
+    tag: "Most Affordable",
+    desc: "Simple push-button dispenser, no coins needed. Best for schools, hostels and government institutions.",
     badge: "bg-primary-100 text-primary-700",
   },
   {
     name: "Solo Coin",
-    price: "₹12,500",
+    price: "₹9,500",
     slug: "solo-coin-vending-machine",
     tag: "Revenue Generating",
     desc: "Coin-operated dispenser — recovers cost through small per-use fee. Perfect for attended hostels and PU colleges.",
     badge: "bg-amber-100 text-amber-700",
   },
   {
+    name: "Solo QR (UPI)",
+    price: "₹15,000",
+    slug: "solo-qr-vending-machine",
+    tag: "Cashless",
+    desc: "UPI QR + coin payment. Ideal for urban schools and colleges wanting a cashless menstrual hygiene solution.",
+    badge: "bg-blue-100 text-blue-700",
+  },
+  {
     name: "Lyra Micro Incinerator",
-    price: "₹13,500",
+    price: "₹9,500",
     slug: "lyra-micro-incinerator",
     tag: "SWM Compliant",
     desc: "Compact wall-mount incinerator for girls' toilet. CPCB-compliant, smoke-free, ash tray included.",

@@ -97,24 +97,40 @@ const vendingMachineProducts = [
     name: "Push Button Sanitary Napkin Vending Machine",
     sku: "Lyra/SNVM/PB",
     description:
-      "Manual push button sanitary napkin vending machine with 30-napkin capacity. Ideal for schools, hostels and small offices. Electronic operation, view panel provided.",
-    price: "10000",
+      "Manual push button sanitary napkin vending machine with 25-napkin capacity. Ideal for schools, hostels and small offices. Electronic operation, view panel provided.",
+    price: "9000",
     keywords: "push button vending machine, manual napkin vending machine, school vending machine",
   },
   {
     name: "Solo Coin Operated Sanitary Napkin Vending Machine",
     sku: "Lyra/SNVM/SC",
     description:
-      "Coin operated sanitary napkin vending machine with ₹5 coin acceptor. 30-napkin capacity, electronic operation. Perfect for public toilets, malls and offices.",
-    price: "11500",
+      "Coin operated sanitary napkin vending machine with ₹5 coin acceptor. 25-napkin capacity, electronic operation. Perfect for public toilets, malls and offices.",
+    price: "9500",
     keywords: "coin vending machine india, coin operated napkin vending machine",
+  },
+  {
+    name: "Solo QR UPI Sanitary Napkin Vending Machine",
+    sku: "Lyra/SNVM/QR",
+    description:
+      "UPI QR code sanitary napkin vending machine with ₹5 coin acceptor. SIM-based connectivity managed by customer. 25-napkin capacity. Ideal for campuses and offices.",
+    price: "15000",
+    keywords: "upi qr vending machine india, sim based napkin vending machine, qr code napkin machine",
+  },
+  {
+    name: "Solo RFID Sanitary Napkin Vending Machine",
+    sku: "Lyra/SNVM/RF",
+    description:
+      "RFID card/tag operated sanitary napkin vending machine. No coins, no QR — tap and dispense. 25-napkin capacity. Ideal for corporate campuses and hostels.",
+    price: "13000",
+    keywords: "rfid vending machine india, contactless napkin vending machine, rfid card napkin machine",
   },
   {
     name: "Solo WiFi UPI QR Sanitary Napkin Vending Machine",
     sku: "Lyra/SNVM/W-QR-SC",
     description:
       "Smart WiFi-enabled sanitary napkin vending machine with UPI QR code and coin payment. Touch display, cloud-based reports and IoT monitoring. Best seller across India.",
-    price: "23500",
+    price: "22500",
     keywords: "UPI vending machine, QR code vending machine, WiFi vending machine India, smart vending machine",
   },
   {
@@ -122,7 +138,7 @@ const vendingMachineProducts = [
     sku: "Lyra/SNVM/ET-QR-SC",
     description:
       "Ethernet-connected sanitary napkin vending machine with UPI QR code and coin payment. Touch display panel, cloud-based analytics. Ideal for hospitals and large offices.",
-    price: "23500",
+    price: "24500",
     keywords: "ethernet vending machine, UPI vending machine, cloud vending machine India",
   },
 ];
@@ -132,8 +148,8 @@ const incineratorProducts = [
     name: "Lyra Micro Sanitary Napkin Incinerator",
     sku: "Lyra/SND/Micro",
     description:
-      "Compact sanitary napkin incinerator for 1–5 napkins per cycle. 100 napkins/day capacity, digital temperature control, wall mounting. Best for schools and small offices.",
-    price: "12500",
+      "Compact sanitary napkin incinerator for 1–5 napkins per cycle. Up to 100 napkins/day, automatic temperature controller, wall mounting. Best for schools and small offices.",
+    price: "9500",
     keywords: "micro incinerator, napkin incinerator for schools, compact incinerator india",
   },
   {
@@ -141,7 +157,7 @@ const incineratorProducts = [
     sku: "Lyra/SND/Mini",
     description:
       "Mid-size sanitary napkin incinerator for 5–15 napkins per cycle. 100 napkins/day, digital temperature display, wall mounting. Ideal for colleges and medium offices.",
-    price: "17500",
+    price: "12500",
     keywords: "mini incinerator, napkin incinerator for colleges, sanitary waste incinerator",
   },
   {
@@ -149,7 +165,7 @@ const incineratorProducts = [
     sku: "Lyra/SND/Maxi",
     description:
       "High-capacity sanitary napkin incinerator for 25–50 napkins per cycle. Designed for hospitals, large institutions and industrial use. Digital temperature, wall mountable.",
-    price: "38500",
+    price: "30000",
     keywords: "high capacity incinerator, hospital incinerator, industrial napkin incinerator india",
   },
 ];
@@ -250,7 +266,7 @@ const faqSchema = {
       name: "What is the price of a sanitary napkin vending machine in India?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Lyra Enterprises sanitary napkin vending machines start from ₹10,000 for the push-button model up to ₹23,500 for advanced WiFi/UPI models. Prices vary based on payment mode (coin, UPI, WiFi, IoT). Contact us at +91-8122378860 for bulk pricing.",
+        text: "Lyra Enterprises sanitary napkin vending machines start from ₹9,000 for the push-button model up to ₹24,500 for advanced WiFi/UPI models. Prices vary based on payment mode (coin, UPI, WiFi, IoT). Contact us at +91-8122378860 for bulk pricing.",
       },
     },
     {
@@ -274,7 +290,7 @@ const faqSchema = {
       name: "What is a sanitary napkin incinerator and how much does it cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A sanitary napkin incinerator is a machine that safely burns and disposes of used sanitary pads, maintaining hygiene in toilet facilities. Lyra Enterprises incinerators start from ₹12,500 (Micro) to ₹38,500 (Maxi high-capacity). They come in wall-mountable designs with digital temperature control.",
+        text: "A sanitary napkin incinerator is a machine that safely burns and disposes of used sanitary pads, maintaining hygiene in toilet facilities. Lyra Enterprises incinerators start from ₹9,500 (Micro) to ₹30,000 (Maxi high-capacity). They come in wall-mountable designs with digital temperature control.",
       },
     },
     {

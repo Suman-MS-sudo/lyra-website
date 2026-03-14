@@ -84,10 +84,10 @@ export default function BlogPost1() {
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li>
-                <strong>Lyra Push Button (₹10,000)</strong> — For government schools and budget-constrained institutions where napkins are supplied free to students. No payment required — staff simply stock the machine regularly.
+                <strong>Lyra Push Button (₹9,000)</strong> — For government schools and budget-constrained institutions where napkins are supplied free to students. No payment required — staff simply stock the machine regularly.
               </li>
               <li>
-                <strong>Lyra Solo Coin (₹11,500)</strong> — For private schools where students pay ₹5 per napkin. Revenue from the machine covers the cost of napkins, making the program self-sustaining.
+                <strong>Lyra Solo Coin (₹9,500)</strong> — For private schools where students pay ₹5 per napkin. Revenue from the machine covers the cost of napkins, making the program self-sustaining.
               </li>
             </ul>
             <p>
@@ -123,7 +123,7 @@ export default function BlogPost1() {
           {/* CTA */}
           <div className="mt-10 bg-gradient-to-r from-primary-50 to-pink-50 rounded-2xl border border-primary-100 p-6 text-center">
             <h3 className="font-bold text-gray-900 mb-2">Install a vending machine at your school</h3>
-            <p className="text-sm text-gray-600 mb-4">Starting from ₹10,000. Pan-India delivery. 1-year warranty.</p>
+            <p className="text-sm text-gray-600 mb-4">Starting from ₹9,000. Pan-India delivery. 1-year warranty.</p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link href="/products/push-button-vending-machine" className="px-5 py-2.5 bg-gradient-to-r from-primary-600 to-pink-500 text-white font-bold rounded-full text-sm">View School Models</Link>
               <Link href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-green-500 text-white font-bold rounded-full text-sm">WhatsApp Us</Link>

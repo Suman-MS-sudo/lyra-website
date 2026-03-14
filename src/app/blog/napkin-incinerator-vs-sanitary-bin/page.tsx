@@ -91,7 +91,7 @@ export default function BlogPost3() {
                 </thead>
                 <tbody>
                   {[
-                    { factor: "Upfront cost", bin: "₹800–2,000", inc: "₹12,500–₹38,500" },
+                    { factor: "Upfront cost", bin: "₹800–2,000", inc: "₹9,500–₹30,000" },
                     { factor: "Annual liner cost", bin: "₹2,000–5,000", inc: "None" },
                     { factor: "Manual handling", bin: "Daily (infection risk)", inc: "Zero" },
                     { factor: "Downstream disposal", bin: "Problem — non-compliant", inc: "Solved — sterile ash" },
@@ -116,9 +116,9 @@ export default function BlogPost3() {
 
             <h2 className="text-2xl font-bold text-gray-900">Which Lyra incinerator is right for your facility?</h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li><Link href="/products/lyra-micro-incinerator" className="text-primary-600 font-semibold hover:underline">Lyra Micro (₹12,500)</Link> — Small schools, clinics, offices under 50 women. 1–5 napkins/cycle.</li>
-              <li><Link href="/products/lyra-mini-incinerator" className="text-primary-600 font-semibold hover:underline">Lyra Mini (₹17,500)</Link> — Colleges, medium offices, community centres. 5–15 napkins/cycle.</li>
-              <li><Link href="/products/lyra-maxi-incinerator" className="text-primary-600 font-semibold hover:underline">Lyra Maxi (₹38,500)</Link> — Hospitals, large campuses, industrial facilities. 25–50 napkins/cycle.</li>
+              <li><Link href="/products/lyra-micro-incinerator" className="text-primary-600 font-semibold hover:underline">Lyra Micro (₹9,500)</Link> — Small schools, clinics, offices under 50 women. 1–5 napkins/cycle.</li>
+              <li><Link href="/products/lyra-mini-incinerator" className="text-primary-600 font-semibold hover:underline">Lyra Mini (₹12,500)</Link> — Colleges, medium offices, community centres. 5–15 napkins/cycle.</li>
+              <li><Link href="/products/lyra-maxi-incinerator" className="text-primary-600 font-semibold hover:underline">Lyra Maxi (₹30,000)</Link> — Hospitals, large campuses, industrial facilities. 25–50 napkins/cycle.</li>
             </ul>
 
             <p>
@@ -136,7 +136,7 @@ export default function BlogPost3() {
 
           <div className="mt-10 bg-gradient-to-r from-primary-50 to-pink-50 rounded-2xl border border-primary-100 p-6 text-center">
             <h3 className="font-bold text-gray-900 mb-2">Browse Lyra Incinerators</h3>
-            <p className="text-sm text-gray-600 mb-4">Micro, Mini and Maxi — all CPCB & SWM compliant. From ₹12,500.</p>
+            <p className="text-sm text-gray-600 mb-4">Micro, Mini and Maxi — all CPCB & SWM compliant. From ₹9,500.</p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link href="/products/sanitary-napkin-incinerators" className="px-5 py-2.5 bg-gradient-to-r from-primary-600 to-pink-500 text-white font-bold rounded-full text-sm">View Incinerators</Link>
               <Link href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-green-500 text-white font-bold rounded-full text-sm">WhatsApp Us</Link>

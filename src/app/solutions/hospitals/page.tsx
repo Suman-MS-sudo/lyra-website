@@ -8,7 +8,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Sanitary Napkin Vending Machine for Hospitals & Clinics India | Lyra Enterprises",
   description:
-    "Supply sanitary napkin vending machines and CPCB-compliant incinerators to hospitals, clinics and healthcare facilities. Biomedical Waste Rules 2016 compliant. GeM vendor. From ₹11,500.",
+    "Supply sanitary napkin vending machines and CPCB-compliant incinerators to hospitals, clinics and healthcare facilities. Biomedical Waste Rules 2016 compliant. GeM vendor. From ₹9,000.",
   keywords: [
     "sanitary napkin vending machine for hospitals india",
     "napkin vending machine for clinics india",
@@ -56,7 +56,7 @@ const faqSchema = {
       name: "Which Lyra incinerator is best for hospitals?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "For most hospitals, the Lyra Maxi (₹39,500) is recommended — it handles 25–50 napkins per cycle, includes remote temperature logging for compliance monitoring, and meets Biomedical Waste Management Rules 2016. Medium clinics and day-care hospitals can use the Lyra Mini (₹18,500).",
+        text: "For most hospitals, the Lyra Maxi (₹30,000) is recommended — it handles 25–50 napkins per cycle, includes remote temperature logging for compliance monitoring, and meets Biomedical Waste Management Rules 2016. Medium clinics and day-care hospitals can use the Lyra Mini (₹12,500).",
       },
     },
     {
@@ -114,7 +114,7 @@ const features = [
 const products = [
   {
     name: "Solo Coin",
-    price: "₹12,500",
+    price: "₹9,500",
     slug: "solo-coin-vending-machine",
     tag: "Small Clinics",
     desc: "Coin-operated vending machine for clinics, nursing homes and small hospitals. Easy to use, durable SS body.",
@@ -130,7 +130,7 @@ const products = [
   },
   {
     name: "Lyra Mini Incinerator",
-    price: "₹18,500",
+    price: "₹12,500",
     slug: "lyra-mini-incinerator",
     tag: "Mid-Size Hospitals",
     desc: "5–15 napkins per cycle. SWM Rules 2016 compliant. Ideal for community health centres and nursing homes.",
@@ -138,7 +138,7 @@ const products = [
   },
   {
     name: "Lyra Maxi Incinerator",
-    price: "₹39,500",
+    price: "₹30,000",
     slug: "lyra-maxi-incinerator",
     tag: "Large Hospitals",
     desc: "25–50 napkins per cycle, remote temperature logging, Biomedical Waste Rules compliant. For large hospitals and medical colleges.",

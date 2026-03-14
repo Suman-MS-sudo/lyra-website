@@ -8,7 +8,7 @@ import { vendingMachines, incinerators, SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "All Sanitary Napkin Vending Machines & Incinerators — Lyra Enterprises India",
   description:
-    "Browse all Lyra Enterprises products — sanitary napkin vending machines (free-vend, coin, RFID, UPI, WiFi, IoT) and incinerators. Prices from ₹5,000. 1-year warranty. Pan-India delivery. Manufacturer in Chennai. Call +91-8122378860.",
+    "Browse all Lyra Enterprises products — sanitary napkin vending machines (coin, QR/UPI, RFID, WiFi, IoT) and incinerators. Prices from ₹9,000. 1-year warranty. Pan-India delivery. Manufacturer in Chennai. Call +91-8122378860.",
   keywords: [
     "sanitary napkin vending machine india",
     "napkin vending machine price india",

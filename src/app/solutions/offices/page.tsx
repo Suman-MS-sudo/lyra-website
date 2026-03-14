@@ -8,7 +8,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Sanitary Napkin Vending Machine for Offices & Corporates India | Lyra Enterprises",
   description:
-    "Install smart sanitary napkin vending machines in corporate offices. UPI / coin / IoT models. POSH-compliant workplace hygiene. From ₹12,500. GeM vendor. Pan-India delivery.",
+    "Install smart sanitary napkin vending machines in corporate offices. UPI / coin / IoT models. POSH-compliant workplace hygiene. From ₹9,000. GeM vendor. Pan-India delivery.",
   keywords: [
     "sanitary napkin vending machine for offices india",
     "napkin vending machine for corporate india",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sanitary Napkin Vending Machine for Offices | Lyra Enterprises India",
     description:
-      "Smart, UPI-enabled vending machines for corporate offices, IT parks and factories. POSH-compliant, remote monitoring, usage analytics. From ₹12,500.",
+      "Smart, UPI-enabled vending machines for corporate offices, IT parks and factories. POSH-compliant, remote monitoring, usage analytics. From ₹9,000.",
     url: `${SITE.url}/solutions/offices`,
   },
 };
@@ -56,7 +56,7 @@ const faqSchema = {
       name: "Which vending machine is best for a corporate office?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "For small to mid-size offices (20–100 women), the Solo Coin (₹12,500) or Push Button (₹11,500) works well. For large corporate campuses, IT parks or multi-floor offices, the Solo WiFi UPI (₹22,500) or Solo Ethernet (₹24,500) with remote monitoring and usage analytics is recommended.",
+        text: "For small to mid-size offices (20–100 women), the Solo Coin (₹9,500) or Push Button (₹9,000) works well. For large corporate campuses, IT parks or multi-floor offices, the Solo WiFi UPI (₹22,500) or Solo Ethernet (₹24,500) with remote monitoring and usage analytics is recommended.",
       },
     },
     {
@@ -107,14 +107,14 @@ const features = [
   {
     icon: "♻️",
     heading: "Add Incinerator for Full Compliance",
-    body: "Pair with a Lyra Mini incinerator (₹18,500) for SWM Rules 2016 compliant sanitary waste disposal — complete the hygiene loop in your office washroom.",
+    body: "Pair with a Lyra Mini incinerator (₹12,500) for SWM Rules 2016 compliant sanitary waste disposal — complete the hygiene loop in your office washroom.",
   },
 ];
 
 const products = [
   {
     name: "Push Button",
-    price: "₹11,500",
+    price: "₹9,000",
     slug: "push-button-vending-machine",
     tag: "Small Offices",
     desc: "Simple push-button dispenser, no electricity needed. Best for small offices up to 50 women.",
@@ -122,7 +122,7 @@ const products = [
   },
   {
     name: "Solo Coin",
-    price: "₹12,500",
+    price: "₹9,500",
     slug: "solo-coin-vending-machine",
     tag: "Mid Offices",
     desc: "Coin-operated vending machine. Recovers cost through per-use fee. Ideal for mid-size offices and factories.",

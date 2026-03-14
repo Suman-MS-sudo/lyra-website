@@ -8,7 +8,7 @@ import { incinerators, SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Sanitary Napkin Incinerators — All Models & Prices India | Lyra Enterprises",
   description:
-    "Buy sanitary napkin incinerators in India. Compare Micro (1–5), Mini (5–15) and Maxi (25–50 napkins/cycle). CPCB & SWM compliant. Prices from ₹12,500. Pan-India delivery. Call +91-8122378860.",
+    "Buy sanitary napkin incinerators in India. Compare Micro (1–5), Mini (5–15) and Maxi (25–50 napkins/cycle). CPCB & SWM compliant. Prices from ₹9,500. Pan-India delivery. Call +91-8122378860.",
   keywords: [
     "sanitary napkin incinerator india",
     "napkin incinerator price india",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/products/sanitary-napkin-incinerators` },
   openGraph: {
     title: "Sanitary Napkin Incinerators — All Models India | Lyra Enterprises",
-    description: "Micro, Mini & Maxi incinerators. CPCB & SWM compliant. Prices from ₹12,500. Pan-India delivery from Chennai.",
+    description: "Micro, Mini & Maxi incinerators. CPCB & SWM compliant. Prices from ₹9,500. Pan-India delivery from Chennai.",,
     url: `${SITE.url}/products/sanitary-napkin-incinerators`,
   },
 };

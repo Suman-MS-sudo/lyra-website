@@ -17,19 +17,10 @@ type Product = {
 
 const vendingMachines: Product[] = [
   {
-    name: "Solo Manual",
-    slug: "solo-manual-vending-machine",
-    code: "Lyra/SNVM/SM",
-    price: "₹5,000",
-    badge: "Free Vend",
-    features: ["Push-to-dispense, no payment", "25 napkins capacity", "For sponsored facilities"],
-    accent: "from-slate-400 to-slate-600",
-  },
-  {
     name: "Push Button",
     slug: "push-button-vending-machine",
     code: "Lyra/SNVM/PB",
-    price: "₹11,500",
+    price: "₹9,000",
     badge: "Essential",
     features: ["Manual dispensing", "25 napkins capacity", "Tamper-proof body"],
     accent: "from-gray-400 to-gray-600",
@@ -38,18 +29,27 @@ const vendingMachines: Product[] = [
     name: "Solo Coin",
     slug: "solo-coin-vending-machine",
     code: "Lyra/SNVM/SC",
-    price: "₹12,500",
+    price: "₹9,500",
     badge: "Standard",
     features: ["₹5 coin acceptor", "25 napkins capacity", "Anti-jam mechanism"],
     accent: "from-primary-400 to-primary-600",
   },
   {
+    name: "Solo QR",
+    slug: "solo-qr-vending-machine",
+    code: "Lyra/SNVM/QR",
+    price: "₹15,000",
+    badge: "QR + Coin",
+    features: ["UPI QR + coin payment", "25 napkins capacity", "SIM-based connectivity"],
+    accent: "from-pink-400 to-rose-500",
+  },
+  {
     name: "Solo RFID",
     slug: "solo-rfid-vending-machine",
     code: "Lyra/SNVM/RF",
-    price: "₹12,500",
-    badge: "Contactless",
-    features: ["RFID / smart card tap", "25 napkins capacity", "ISO 14443/15693 compatible"],
+    price: "₹13,000",
+    badge: "RFID",
+    features: ["RFID card / tag access", "25 napkins capacity", "Contactless dispensing"],
     accent: "from-teal-400 to-cyan-600",
   },
   {
@@ -78,7 +78,7 @@ const incinerators: Product[] = [
     name: "Lyra Micro",
     slug: "lyra-micro-incinerator",
     code: "Lyra/SND/Micro",
-    price: "₹13,500",
+    price: "₹9,500",
     badge: "Compact",
     features: ["1–5 napkins/cycle", "Front loading", "230V, 1.25kW"],
     accent: "from-primary-300 to-primary-500",
@@ -87,7 +87,7 @@ const incinerators: Product[] = [
     name: "Lyra Mini",
     slug: "lyra-mini-incinerator",
     code: "Lyra/SND/Mini",
-    price: "₹18,500",
+    price: "₹12,500",
     badge: "Standard",
     features: ["5–15 napkins/cycle", "IoT WiFi add-on", "Front loading"],
     accent: "from-primary-400 to-primary-600",
@@ -96,7 +96,7 @@ const incinerators: Product[] = [
     name: "Lyra Maxi",
     slug: "lyra-maxi-incinerator",
     code: "Lyra/SND/Maxi",
-    price: "₹39,500",
+    price: "₹30,000",
     badge: "High Capacity",
     features: ["25–50 napkins/cycle", "Top loading", "IoT WiFi add-on"],
     accent: "from-pink-400 to-primary-700",
@@ -278,7 +278,7 @@ export default function Products() {
             <span className="text-gray-300">·</span>
             <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">3 Incinerators</span>
             <span className="text-gray-300">·</span>
-            <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm text-primary-600 font-semibold">From ₹5,000</span>
+            <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm text-primary-600 font-semibold">From ₹9,000</span>
           </div>
         </motion.div>
 

@@ -8,15 +8,15 @@ import { vendingMachines, SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Sanitary Napkin Vending Machines — All 6 Models & Prices India | Lyra Enterprises",
   description:
-    "Buy sanitary napkin vending machines in India. 6 models: free-vend, push-button, coin, RFID, WiFi UPI and Ethernet. Prices from ₹5,000. 1-year warranty. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
+    "Buy sanitary napkin vending machines in India. 6 models: push-button, coin, QR/UPI, RFID, WiFi and Ethernet. Prices from ₹9,000. 1-year warranty. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
   keywords: [
     "sanitary napkin vending machine india",
     "napkin vending machine price india",
-    "free vend sanitary napkin machine india",
     "coin operated napkin vending machine india",
     "upi qr napkin vending machine india",
     "wifi iot napkin vending machine india",
     "rfid napkin vending machine india",
+    "push button napkin vending machine india",
     "vending machine manufacturer chennai india",
     "sanitary napkin machine for schools hospitals offices",
     "best napkin vending machine india",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/products/sanitary-napkin-vending-machines` },
   openGraph: {
     title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
-    description: "Compare all 6 models: free-vend, push-button, coin, RFID, WiFi UPI and Ethernet. Prices from ₹5,000. Pan-India delivery.",
+    description: "Compare all 6 models: push-button, coin, QR/UPI, RFID, WiFi and Ethernet. Prices from ₹9,000. Pan-India delivery.",
     url: `${SITE.url}/products/sanitary-napkin-vending-machines`,
   },
 };
@@ -44,12 +44,12 @@ const schema = {
 };
 
 const comparison = [
-  { label: "Payment", sm: "Free (no payment)", pb: "Manual", sc: "₹5 Coin", rf: "RFID Card", wifi: "UPI QR + Coin", eth: "UPI QR + Coin" },
-  { label: "Connectivity", sm: "None", pb: "None", sc: "None", rf: "None", wifi: "WiFi 2.4GHz", eth: "Ethernet/LAN" },
-  { label: "Cloud Reports", sm: "No", pb: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Touch Display", sm: "No", pb: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "IoT Monitoring", sm: "No", pb: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Price", sm: "₹5,000", pb: "₹11,500", sc: "₹12,500", rf: "₹12,500", wifi: "₹22,500", eth: "₹24,500" },
+  { label: "Payment", pb: "Manual", sc: "₹5 Coin", qr: "UPI QR + Coin", rf: "RFID Card", wifi: "UPI QR + Coin", eth: "UPI QR + Coin" },
+  { label: "Connectivity", pb: "None", sc: "None", qr: "SIM-based", rf: "None", wifi: "WiFi 2.4GHz", eth: "Ethernet/LAN" },
+  { label: "Cloud Reports", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+  { label: "Touch Display", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+  { label: "IoT Monitoring", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+  { label: "Price", pb: "₹9,000", sc: "₹9,500", qr: "₹15,000", rf: "₹13,000", wifi: "₹22,500", eth: "₹24,500" },
 ];
 
 export default function VendingMachinesPage() {
@@ -69,7 +69,7 @@ export default function VendingMachinesPage() {
             Sanitary Napkin <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">Vending Machines</span>
           </h1>
           <p className="mt-4 text-gray-600 text-lg max-w-2xl">
-          6 models to match every budget and facility — from free-vend dispensers to IoT-enabled smart machines with UPI payments and cloud analytics. Prices from ₹5,000. Manufactured in Chennai, delivered across India.
+          6 models to match every budget and facility — from push-button dispensers to IoT-enabled smart machines with UPI payments and cloud analytics. Prices from ₹9,000. Manufactured in Chennai, delivered across India.
           </p>
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ 1-Year Warranty</span>
@@ -129,7 +129,7 @@ export default function VendingMachinesPage() {
                 {comparison.map((row, i) => (
                   <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
                     <td className="px-4 py-3 text-gray-600 font-medium">{row.label}</td>
-                    {([row.sm, row.pb, row.sc, row.rf, row.wifi, row.eth] as string[]).map((val, j) => (
+                    {([row.pb, row.sc, row.qr, row.rf, row.wifi, row.eth] as string[]).map((val, j) => (
                       <td key={j} className={`px-4 py-3 text-center ${val === "Yes" ? "text-green-600 font-semibold" : val === "No" ? "text-gray-400" : "text-gray-700"}`}>
                         {val}
                       </td>

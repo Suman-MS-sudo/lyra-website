@@ -43,12 +43,12 @@ export async function generateMetadata({
 
 /* ─── Comparison table data (VMs only) ─────────────────────── */
 const comparison = [
-  { label: "Payment", sm: "Free (no payment)", pb: "Manual", sc: "₹5 Coin", rf: "RFID Card", wifi: "UPI QR + Coin", eth: "UPI QR + Coin" },
-  { label: "Connectivity", sm: "None", pb: "None", sc: "None", rf: "None", wifi: "WiFi 2.4GHz", eth: "Ethernet/LAN" },
-  { label: "Cloud Reports", sm: "No", pb: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Touch Display", sm: "No", pb: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "IoT Monitoring", sm: "No", pb: "No", sc: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Price", sm: "₹5,000", pb: "₹11,500", sc: "₹12,500", rf: "₹12,500", wifi: "₹22,500", eth: "₹24,500" },
+  { label: "Payment", pb: "Manual", sc: "₹5 Coin", qr: "UPI QR + Coin", rf: "RFID Card", wifi: "UPI QR + Coin", eth: "UPI QR + Coin" },
+  { label: "Connectivity", pb: "None", sc: "None", qr: "SIM-based", rf: "None", wifi: "WiFi 2.4GHz", eth: "Ethernet/LAN" },
+  { label: "Cloud Reports", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+  { label: "Touch Display", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+  { label: "IoT Monitoring", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+  { label: "Price", pb: "₹9,000", sc: "₹9,500", qr: "₹15,000", rf: "₹13,000", wifi: "₹22,500", eth: "₹24,500" },
 ];
 
 /* ─── FAQ content per product ──────────────────────────────── */
@@ -61,10 +61,6 @@ function getFaqs(slug: string) {
   ];
 
   const productFaqs: Record<string, { q: string; a: string }[]> = {
-    "solo-manual-vending-machine": [
-      { q: "What is a free-vend sanitary napkin vending machine?", a: "A free-vend machine dispenses napkins at no cost to the user — the organisation stocks it and users simply press a button to collect. Ideal for CSR programmes, factories, schools and NGOs." },
-      { q: "Who should buy the Solo Manual?", a: "Any organisation running a sponsored hygiene programme — factories, NGOs, government schools, hospitals — where napkins are provided free to women." },
-    ],
     "push-button-vending-machine": [
       { q: "Does the Push Button machine need electricity?", a: "Yes, it runs on 230V AC mains power for the dispensing mechanism. However, it does not need any internet, SIM or payment processing infrastructure." },
       { q: "How many napkins can it hold?", a: "The Push Button machine holds 25 sanitary napkins per fill." },
@@ -343,7 +339,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   {comparison.map((row, i) => (
                     <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
                       <td className="px-4 py-3 text-gray-600 font-medium">{row.label}</td>
-                      {([row.sm, row.pb, row.sc, row.rf, row.wifi, row.eth] as string[]).map((val, j) => {
+                      {([row.pb, row.sc, row.qr, row.rf, row.wifi, row.eth] as string[]).map((val, j) => {
                         const isActive = vendingMachines[j]?.slug === product.slug;
                         return (
                           <td key={j} className={`px-4 py-3 text-center font-medium ${isActive ? "bg-primary-50/60 text-primary-800" : val === "Yes" ? "text-green-600" : val === "No" ? "text-gray-400" : "text-gray-700"}`}>
