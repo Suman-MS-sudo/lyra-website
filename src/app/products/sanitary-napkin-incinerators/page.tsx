@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/products/sanitary-napkin-incinerators` },
   openGraph: {
     title: "Sanitary Napkin Incinerators — All Models India | Lyra Enterprises",
-    description: "Micro, Mini & Maxi incinerators. CPCB & SWM compliant. Prices from ₹9,500. Pan-India delivery from Chennai.",,
+    description: "Micro, Mini & Maxi incinerators. CPCB & SWM compliant. Prices from ₹9,500. Pan-India delivery from Chennai.",
     url: `${SITE.url}/products/sanitary-napkin-incinerators`,
   },
 };
