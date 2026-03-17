@@ -62,46 +62,34 @@ export default function Hero() {
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-pink-blush via-white to-pink-light" />
 
-      {/* Animated Orbs */}
-      <motion.div
-        animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="orb w-[600px] h-[600px] bg-primary-200/30 top-[-200px] right-[-100px]"
-      />
-      <motion.div
-        animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="orb w-[400px] h-[400px] bg-pink-soft/20 bottom-[-100px] left-[-100px]"
-      />
-      <motion.div
-        animate={{ scale: [1, 1.1, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="orb w-[300px] h-[300px] bg-primary-300/20 top-[30%] left-[30%]"
-      />
+      {/* Subtle Background Patterns */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(181,101,167,0.05)_0%,transparent_50%)]" />
+        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,rgba(226,152,211,0.04)_0%,transparent_50%)]" />
+      </div>
 
-      {/* Floating glowing particles */}
-      {particles.map((p, i) => (
+      {/* Subtle floating elements - reduced count */}
+      {particles.slice(0, 6).map((p, i) => (
         <motion.div
           key={i}
           animate={{
-            y: [0, -p.dist, 0],
-            opacity: [0, p.opacity, 0],
-            scale: [0.6, 1.2, 0.6],
+            y: [0, -p.dist * 0.3, 0],
+            opacity: [0, p.opacity * 0.4, 0],
+            scale: [0.8, 1, 0.8],
           }}
           transition={{
-            duration: p.duration,
+            duration: p.duration * 2,
             repeat: Infinity,
             delay: p.delay,
             ease: "easeInOut",
           }}
-          className="absolute rounded-full pointer-events-none blur-[2px]"
+          className="absolute rounded-full pointer-events-none blur-[1px]"
           style={{
             left: `${p.x}%`,
             top: `${p.y}%`,
-            width: p.size,
-            height: p.size,
-            background: `radial-gradient(circle, ${p.color}, transparent)`,
-            boxShadow: `0 0 ${p.size * 2}px ${p.color}88`,
+            width: p.size * 0.5,
+            height: p.size * 0.5,
+            background: `radial-gradient(circle, ${p.color}30, transparent)`,
           }}
         />
       ))}
@@ -119,34 +107,18 @@ export default function Hero() {
         </motion.div>
       ))}
 
-      {/* Slow rotating decorative ring */}
+      {/* Minimal decorative elements */}
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        className="absolute pointer-events-none"
+        transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+        className="absolute pointer-events-none opacity-20"
         style={{
-          width: 700,
-          height: 700,
+          width: 400,
+          height: 400,
           top: "50%",
-          left: "50%",
-          marginTop: -350,
-          marginLeft: -350,
-          border: "1px dashed rgba(181,101,167,0.12)",
-          borderRadius: "50%",
-        }}
-      />
-      <motion.div
-        animate={{ rotate: -360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        className="absolute pointer-events-none"
-        style={{
-          width: 1000,
-          height: 1000,
-          top: "50%",
-          left: "50%",
-          marginTop: -500,
-          marginLeft: -500,
-          border: "1px dashed rgba(181,101,167,0.07)",
+          right: "10%",
+          marginTop: -200,
+          border: "1px dashed rgba(181,101,167,0.1)",
           borderRadius: "50%",
         }}
       />
@@ -275,43 +247,26 @@ export default function Hero() {
               </motion.div>
             </div>
 
-            {/* Right — Product Images (Vending Machine + Incinerator) */}
+            {/* Right — Hero Image */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, delay: 0.3 }}
-              className="relative flex items-end justify-center gap-0 pb-4"
+              className="relative flex items-center justify-center"
             >
-              {/* Glow ring */}
-              <div className="absolute w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] lg:w-[900px] lg:h-[900px] rounded-full bg-gradient-radial from-primary-200/50 to-transparent animate-pulse-glow" />
+              {/* Enhanced glow ring */}
+              <div className="absolute w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] lg:w-[350px] lg:h-[350px] rounded-full bg-gradient-radial from-primary-200/40 to-transparent animate-pulse-glow" />
 
-              {/* Vending Machine — taller */}
+              {/* Main Hero Image — reduced size */}
               <motion.div
-                animate={{ y: [0, -14, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 className="relative z-20"
               >
-                <div className="relative w-36 sm:w-52 lg:w-[280px] h-52 sm:h-72 lg:h-[450px]">
+                <div className="relative w-32 sm:w-40 lg:w-[250px] xl:w-[300px] h-32 sm:h-40 lg:h-[250px] xl:h-[300px]">
                   <Image
-                    src="/images/products/VendingMachine.png"
-                    alt="Lyra Sanitary Napkin Vending Machine"
-                    fill
-                    className="object-contain drop-shadow-2xl"
-                    priority
-                  />
-                </div>
-              </motion.div>
-
-              {/* Incinerator — squarish, same bottom alignment */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-                className="relative z-10 self-end -ml-6 sm:-ml-10 lg:-ml-20"
-              >
-                <div className="relative w-32 sm:w-48 lg:w-[265px] h-44 sm:h-64 lg:h-[370px]">
-                  <Image
-                    src="/images/products/Incinerator.png"
-                    alt="Lyra Sanitary Napkin Incinerator"
+                    src="/images/products/Hero Img.png"
+                    alt="Lyra Enterprises - Sanitary Napkin Solutions"
                     fill
                     className="object-contain drop-shadow-2xl"
                     priority

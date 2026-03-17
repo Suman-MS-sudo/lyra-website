@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
+import Image from "next/image";
 
 type Product = {
   name: string;
@@ -13,6 +14,7 @@ type Product = {
   popular?: boolean;
   features: string[];
   accent: string;
+  image: string;
 };
 
 const vendingMachines: Product[] = [
@@ -24,6 +26,7 @@ const vendingMachines: Product[] = [
     badge: "Essential",
     features: ["Manual dispensing", "25 napkins capacity", "Tamper-proof body"],
     accent: "from-gray-400 to-gray-600",
+    image: "/images/products/push-button-vm.png",
   },
   {
     name: "Solo Coin",
@@ -33,6 +36,7 @@ const vendingMachines: Product[] = [
     badge: "Standard",
     features: ["₹5 coin acceptor", "25 napkins capacity", "Anti-jam mechanism"],
     accent: "from-primary-400 to-primary-600",
+    image: "/images/products/solo-coin.png",
   },
   {
     name: "Solo RFID",
@@ -42,6 +46,7 @@ const vendingMachines: Product[] = [
     badge: "RFID",
     features: ["RFID card / tag access", "25 napkins capacity", "Contactless dispensing"],
     accent: "from-teal-400 to-cyan-600",
+    image: "/images/products/solo-rfid.png",
   },
   {
     name: "Solo QR",
@@ -51,6 +56,7 @@ const vendingMachines: Product[] = [
     badge: "QR + Coin",
     features: ["UPI QR + coin payment", "25 napkins capacity", "SIM-based connectivity"],
     accent: "from-pink-400 to-rose-500",
+    image: "/images/products/solo-qr.png",
   },
   {
     name: "Solo WiFi",
@@ -61,6 +67,7 @@ const vendingMachines: Product[] = [
     popular: true,
     features: ["UPI QR + Coin payment", "WiFi connectivity", "Cloud-based reports"],
     accent: "from-pink-400 to-primary-500",
+    image: "/images/products/solo-wifi.png",
   },
   {
     name: "Solo Ethernet",
@@ -70,6 +77,7 @@ const vendingMachines: Product[] = [
     badge: "Premium",
     features: ["UPI QR + Coin payment", "Ethernet / LAN", "99.9% uptime"],
     accent: "from-fuchsia-400 to-primary-600",
+    image: "/images/products/solo-ethernet.png",
   },
 ];
 
@@ -82,6 +90,7 @@ const incinerators: Product[] = [
     badge: "Compact",
     features: ["1–5 napkins/cycle", "Front loading", "230V, 1.25kW"],
     accent: "from-primary-300 to-primary-500",
+    image: "/images/products/lyra-micro.png",
   },
   {
     name: "Lyra Mini",
@@ -91,6 +100,7 @@ const incinerators: Product[] = [
     badge: "Standard",
     features: ["5–15 napkins/cycle", "IoT WiFi add-on", "Front loading"],
     accent: "from-primary-400 to-primary-600",
+    image: "/images/products/lyra-mini.png",
   },
   {
     name: "Lyra Maxi",
@@ -100,6 +110,7 @@ const incinerators: Product[] = [
     badge: "High Capacity",
     features: ["25–50 napkins/cycle", "Top loading", "IoT WiFi add-on"],
     accent: "from-pink-400 to-primary-700",
+    image: "/images/products/lyra-maxi.png",
   },
 ];
 
@@ -118,77 +129,114 @@ function ProductCard({
       initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.45, delay: index * 0.06 }}
-      className={`group relative bg-white rounded-3xl overflow-hidden flex flex-col transition-all duration-300
+      className={`group relative bg-white rounded-3xl overflow-hidden flex flex-col transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2
         ${product.popular
-          ? "shadow-xl hover:shadow-2xl ring-2 ring-primary-400 ring-offset-2"
-          : "shadow-sm hover:shadow-xl border border-gray-100 hover:border-primary-100"
+          ? "shadow-3xl hover:shadow-3xl ring-2 ring-primary-400/50 ring-offset-4 shadow-glow"
+          : "shadow-card hover:shadow-card-hover border border-gray-100/50 hover:border-primary-200"
         }`}
     >
-      {/* Gradient header panel */}
-      <div className={`relative h-40 bg-gradient-to-br ${product.accent} overflow-hidden`}>
-        <div className="absolute -top-8 -right-8 w-36 h-36 rounded-full bg-white/10" />
-        <div className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-white/10" />
-        {/* Ghost name watermark */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <span className="text-white/[0.12] text-8xl font-black tracking-tight leading-none select-none">
-            {product.name.split(" ").pop()}
-          </span>
+      {/* Modern gradient header with large image */}
+      <div className={`relative h-52 bg-gradient-to-br ${product.accent} overflow-hidden`}>
+        {/* Animated gradient orbs */}
+        <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/8 animate-pulse" />
+        <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-white/8 animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white/5 animate-pulse delay-500" />
+        
+        {/* Large centered product image */}
+        <div className="absolute inset-0 flex items-center justify-center p-6">
+          <div className="relative w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 group-hover:scale-110 transition-transform duration-500">
+            {/* Enhanced image background with glow effect */}
+            <div className="absolute inset-0 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-2xl group-hover:bg-white/25 transition-all duration-500"></div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent"></div>
+            <div className="absolute inset-0 rounded-2xl shadow-inner"></div>
+            
+            {/* Product image */}
+            <div className="absolute inset-3">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                className="object-contain drop-shadow-2xl"
+                sizes="(max-width: 640px) 128px, (max-width: 1024px) 144px, 160px"
+              />
+            </div>
+            
+            {/* Subtle glow effect */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-transparent via-transparent to-white/10 group-hover:to-white/20 transition-all duration-500"></div>
+          </div>
         </div>
-        {/* Badge */}
-        <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 bg-black/20 backdrop-blur-sm border border-white/20 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
+        
+        {/* Modern badge with better styling */}
+        <div className="absolute top-4 left-4 z-10">
+          <span className="px-4 py-2 bg-black/25 backdrop-blur-md border border-white/30 text-white text-xs font-bold uppercase tracking-wider rounded-2xl shadow-lg">
             {product.badge}
           </span>
         </div>
+        
+        {/* Popular badge with animation */}
         {product.popular && (
-          <div className="absolute top-4 right-4">
-            <span className="px-3 py-1 bg-yellow-400 text-yellow-900 text-xs font-bold rounded-full shadow">
-              ★ Popular
+          <div className="absolute top-4 right-4 z-10">
+            <span className="px-4 py-2 bg-yellow-400 text-yellow-900 text-xs font-bold rounded-2xl shadow-lg animate-bounce">
+              ⭐ Popular
             </span>
           </div>
         )}
-        {/* Bottom fade */}
-        <div className="absolute bottom-0 inset-x-0 h-6 bg-gradient-to-t from-black/10 to-transparent" />
+        
+        {/* Modern bottom gradient */}
+        <div className="absolute bottom-0 inset-x-0 h-8 bg-gradient-to-t from-black/20 to-transparent"></div>
       </div>
 
-      {/* Content */}
-      <div className="p-3 sm:p-5 flex flex-col flex-1">
-        <p className="text-[10px] text-gray-400 font-mono tracking-widest uppercase">{product.code}</p>
-        <h3 className="mt-1 text-base sm:text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors leading-tight">
+      {/* Enhanced content section */}
+      <div className="p-4 sm:p-6 flex flex-col flex-1 bg-gradient-to-b from-gray-50/50 to-white">
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-xs text-gray-500 font-mono tracking-wider uppercase bg-gray-100 px-2 py-1 rounded-lg">{product.code}</p>
+          <div className="flex items-center gap-1 text-yellow-500">
+            {"⭐".repeat(5)}
+          </div>
+        </div>
+        
+        <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors leading-tight mb-4">
           {product.name}
         </h3>
 
-        <ul className="mt-4 space-y-2 flex-1">
-          {product.features.map((feat) => (
-            <li key={feat} className="flex items-start gap-2.5 text-sm text-gray-600">
-              <span className={`mt-0.5 flex-shrink-0 w-4 h-4 rounded-full bg-gradient-to-br ${product.accent} flex items-center justify-center`}>
-                <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 10 10">
-                  <path d="M2 5l2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <ul className="space-y-3 flex-1">
+          {product.features.slice(0, 3).map((feat, idx) => (
+            <li key={feat} className="flex items-start gap-3 text-sm text-gray-700">
+              <span className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-lg bg-gradient-to-br ${product.accent} flex items-center justify-center shadow-sm`}>
+                <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 12 12">
+                  <path d="M2.5 6l2.5 2.5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
-              {feat}
+              <span className="font-medium leading-snug">{feat}</span>
             </li>
           ))}
         </ul>
 
-        <div className="mt-5 pt-4 border-t border-gray-100">
-          <div className="flex items-end justify-between mb-3.5">
-            <div>
-              <p className="text-xl sm:text-2xl font-extrabold text-gray-900 tracking-tight">{product.price}</p>
-              <p className="text-[11px] text-gray-400 mt-0.5">excl. 18% GST</p>
+        <div className="mt-6 pt-5 border-t border-gray-200/60">
+          <div className="flex items-end justify-between mb-4">
+            <div className="flex flex-col">
+              <p className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">{product.price}</p>
+              <p className="text-xs text-gray-500 mt-0.5 font-medium">excl. 18% GST</p>
             </div>
             <Link
               href={`/products/${product.slug}`}
-              className="text-xs font-semibold text-primary-500 hover:text-primary-700 transition-colors"
+              className="flex items-center gap-1 text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors group/link"
             >
-              View Details →
+              Details 
+              <svg className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           </div>
+          
           <Link
             href="#contact"
-            className={`w-full py-2.5 text-center text-sm font-bold rounded-xl bg-gradient-to-r ${product.accent} text-white hover:opacity-90 hover:shadow-md active:scale-[0.98] transition-all duration-200 block`}
+            className={`group/btn w-full py-3.5 px-4 text-center text-sm font-bold rounded-2xl bg-gradient-to-r ${product.accent} text-white hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2`}
           >
             Get Quote
+            <svg className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
           </Link>
         </div>
       </div>

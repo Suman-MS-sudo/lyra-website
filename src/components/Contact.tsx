@@ -70,14 +70,6 @@ const contactInfo = [
     image: "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=80&auto=format&fit=crop&q=80",
     isExternal: true,
   },
-  {
-    label: "Headquarters",
-    value: "Cholapuram, Ambattur",
-    href: "https://maps.app.goo.gl/CS3hP8SezcS4EFDQ9",
-    sub: "Chennai – 600053, India",
-    image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=80&auto=format&fit=crop&q=80",
-    isExternal: true,
-  },
 ];
 
 export default function Contact() {

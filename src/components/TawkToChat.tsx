@@ -1,6 +1,13 @@
-'use client'
+'use client';
 
 import { useState, useEffect } from 'react'
+
+// TypeScript declaration for Tawk_API
+declare global {
+  interface Window {
+    Tawk_API?: any;
+  }
+}
 
 export default function TawkToChat() {
   const [isOpen, setIsOpen] = useState(false)
@@ -323,147 +330,6 @@ What would you like to know about our vending machines and incinerators?`
       </div>
     </div>
   )
-}
-          // Set up visitor attributes
-          window.Tawk_API.setAttributes({
-            'website': 'Lyra Enterprises',
-            'source': 'Website Chat'
-          })
-
-          // Custom chatbot responses for product recommendations
-          window.Tawk_API.onLoad = function() {
-            // Add custom CSS for better branding
-            window.Tawk_API.customStyle = {
-              visibility: {
-                desktop: {
-                  position: 'br',
-                  xOffset: '20px',
-                  yOffset: '20px'
-                },
-                mobile: {
-                  position: 'br',
-                  xOffset: '10px', 
-                  yOffset: '10px'
-                }
-              }
-            }
-
-            // Pre-chat form to collect requirements
-            window.Tawk_API.setAttributes({
-              'name': '',
-              'email': '',
-              'phone': '',
-              'organization': '',
-              'requirement_type': '',
-              'budget_range': '',
-              'installation_location': '',
-              'user_count': ''
-            }, function(error: any) {
-              // Handle any errors
-            })
-          }
-
-          // Auto-greet with product recommendation questions
-          window.Tawk_API.onChatStarted = function() {
-            const welcomeMessage = `
-🙏 Welcome to Lyra Enterprises! 
-
-I'm here to help you find the perfect sanitary napkin vending machine or incinerator for your needs.
-
-To give you the best recommendation, could you please share:
-
-1️⃣ **Type of facility?**
-   • School/College
-   • Hospital/Clinic  
-   • Office/Corporate
-   • Public restroom
-   • Other
-
-2️⃣ **Expected daily usage?**
-   • 1-25 users
-   • 25-50 users
-   • 50-100 users
-   • 100+ users
-
-3️⃣ **Budget range?**
-   • Under ₹10,000
-   • ₹10,000 - ₹15,000
-   • ₹15,000 - ₹25,000
-   • Above ₹25,000
-
-4️⃣ **Payment preference?**
-   • Manual/Free dispensing
-   • Coin operated
-   • UPI/Digital payments
-   • RFID cards
-
-Based on your answers, I'll recommend the perfect solution! 💡
-            `
-            
-            setTimeout(() => {
-              window.Tawk_API.addEvent({
-                event: 'welcome_message_sent',
-                message: welcomeMessage
-              })
-            }, 2000)
-          }
-
-          // Handle visitor messages for smart responses
-          window.Tawk_API.onMessageFromVisitor = function(message: any) {
-            const lowerMessage = message.message.toLowerCase()
-            
-            // Auto-respond to common product questions
-            if (lowerMessage.includes('price') || lowerMessage.includes('cost')) {
-              setTimeout(() => {
-                window.Tawk_API.addEvent({
-                  event: 'price_inquiry',
-                  automated_response: getProductRecommendations('price')
-                })
-              }, 1000)
-            }
-            
-            if (lowerMessage.includes('school') || lowerMessage.includes('college')) {
-              setTimeout(() => {
-                window.Tawk_API.addEvent({
-                  event: 'school_inquiry', 
-                  automated_response: getProductRecommendations('school')
-                })
-              }, 1000)
-            }
-
-            if (lowerMessage.includes('hospital') || lowerMessage.includes('clinic')) {
-              setTimeout(() => {
-                window.Tawk_API.addEvent({
-                  event: 'hospital_inquiry',
-                  automated_response: getProductRecommendations('hospital')
-                })
-              }, 1000)
-            }
-
-            if (lowerMessage.includes('office') || lowerMessage.includes('corporate')) {
-              setTimeout(() => {
-                window.Tawk_API.addEvent({
-                  event: 'office_inquiry',
-                  automated_response: getProductRecommendations('office') 
-                })
-              }, 1000)
-            }
-
-            if (lowerMessage.includes('incinerator') || lowerMessage.includes('disposal')) {
-              setTimeout(() => {
-                window.Tawk_API.addEvent({
-                  event: 'incinerator_inquiry',
-                  automated_response: getProductRecommendations('incinerator')
-                })
-              }, 1000)
-            }
-          }
-        }
-      }
-    }
-  }, [])
-
-  return null
 }
 
 // Smart product recommendation logic

@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -250,11 +251,32 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             <div className={`relative rounded-3xl overflow-hidden bg-gradient-to-br ${product.accent} h-72 lg:h-96 flex items-center justify-center shadow-2xl`}>
               <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-white/10" />
               <div className="absolute -bottom-12 -left-12 w-40 h-40 rounded-full bg-white/10" />
-              <div className="text-center text-white relative z-10 px-8">
-                <p className="text-7xl font-black tracking-tight opacity-20 leading-none">{product.name.split(" ").pop()}</p>
-                <p className="text-2xl font-bold mt-2">{product.name}</p>
-                <p className="text-white/70 text-sm mt-1">{product.tagline}</p>
-                <p className="mt-4 text-3xl font-extrabold">₹{product.discountedPrice.toLocaleString("en-IN")}</p>
+              
+              {/* Product Image */}
+              <div className="absolute inset-0 flex items-center justify-center z-20">
+                <div className="relative w-40 h-40 lg:w-48 lg:h-48">
+                  <Image
+                    src={product.image}
+                    alt={product.fullName}
+                    fill
+                    className="object-contain drop-shadow-2xl"
+                    sizes="(max-width: 1024px) 160px, 192px"
+                  />
+                </div>
+              </div>
+              
+              {/* Ghost text behind image */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+                <p className="text-7xl font-black tracking-tight opacity-[0.08] leading-none text-white select-none">
+                  {product.name.split(" ").pop()}
+                </p>
+              </div>
+              
+              {/* Product info overlay */}
+              <div className="absolute bottom-6 left-6 right-6 text-white z-10">
+                <p className="text-lg lg:text-xl font-bold">{product.name}</p>
+                <p className="text-white/80 text-sm mt-1">{product.tagline}</p>
+                <p className="mt-2 text-2xl lg:text-3xl font-extrabold">₹{product.discountedPrice.toLocaleString("en-IN")}</p>
               </div>
             </div>
           </div>

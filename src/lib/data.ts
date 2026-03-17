@@ -33,6 +33,7 @@ export type Product = {
   specs: { label: string; value: string }[];
   useCases: string[];
   accent: string;
+  image: string;
   keywords: string[];
   metaTitle: string;
   metaDescription: string;
@@ -79,6 +80,7 @@ export const products: Product[] = [
       "Public restrooms",
     ],
     accent: "from-gray-400 to-gray-600",
+    image: "/images/products/push-button-vm.png",
     keywords: [
       "push button sanitary napkin vending machine india",
       "sanitary napkin vending machine price 9000",
@@ -135,6 +137,7 @@ export const products: Product[] = [
       "Public restrooms",
     ],
     accent: "from-primary-400 to-primary-600",
+    image: "/images/products/solo-coin.png",
     keywords: [
       "coin operated sanitary napkin vending machine india",
       "5 rupee coin napkin vending machine",
@@ -190,7 +193,8 @@ export const products: Product[] = [
       "Controlled-access restrooms",
       "Institutions with RFID systems",
     ],
-    accent: "from-cyan-500 to-purple-600",
+    accent: "from-teal-400 to-cyan-600",
+    image: "/images/products/solo-rfid.png",
     keywords: [
       "rfid sanitary napkin vending machine india",
       "rfid napkin dispenser india",
@@ -244,6 +248,7 @@ export const products: Product[] = [
       "Public restrooms",
     ],
     accent: "from-pink-400 to-rose-500",
+    image: "/images/products/solo-qr.png",
     keywords: [
       "qr code sanitary napkin vending machine india",
       "upi sanitary napkin machine india",
@@ -304,6 +309,7 @@ export const products: Product[] = [
       "Corporate headquarters",
     ],
     accent: "from-pink-400 to-primary-500",
+    image: "/images/products/solo-wifi.png",
     keywords: [
       "wifi upi sanitary napkin vending machine india",
       "upi qr napkin vending machine india",
@@ -366,6 +372,7 @@ export const products: Product[] = [
       "Defence & PSU facilities",
     ],
     accent: "from-fuchsia-400 to-primary-600",
+    image: "/images/products/solo-ethernet.png",
     keywords: [
       "ethernet upi sanitary napkin vending machine india",
       "wired napkin vending machine india",
@@ -435,6 +442,7 @@ export const products: Product[] = [
       "Rural health centres",
     ],
     accent: "from-primary-300 to-primary-500",
+    image: "/images/products/lyra-micro.png",
     keywords: [
       "sanitary napkin incinerator india",
       "micro sanitary napkin incinerator india",
@@ -502,6 +510,7 @@ export const products: Product[] = [
       "NGO & social sector facilities",
     ],
     accent: "from-primary-400 to-primary-600",
+    image: "/images/products/lyra-mini.png",
     keywords: [
       "sanitary napkin incinerator for colleges india",
       "mini sanitary napkin incinerator india",
@@ -570,6 +579,7 @@ export const products: Product[] = [
       "Defence establishments",
     ],
     accent: "from-pink-400 to-primary-700",
+    image: "/images/products/lyra-maxi.png",
     keywords: [
       "high capacity sanitary napkin incinerator india",
       "hospital grade napkin incinerator india",
