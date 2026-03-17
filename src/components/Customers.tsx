@@ -35,6 +35,36 @@ const customers = [
     logo: "/images/customers/mar-baselios.png",
     category: "Education",
   },
+  {
+    name: "Integra",
+    short: "INT",
+    logo: "/images/customers/integra.png",
+    category: "Technology",
+  },
+  {
+    name: "Vels University",
+    short: "VU",
+    logo: "/images/customers/vels-university.png",
+    category: "Education",
+  },
+  {
+    name: "Maxenra",
+    short: "MX",
+    logo: "/images/customers/maxenra.png",
+    category: "Corporate",
+  },
+  {
+    name: "Srikrish School",
+    short: "SKS",
+    logo: "/images/customers/Srikrish school.png",
+    category: "Education",
+  },
+  {
+    name: "Vivekanandha Educational Institutions",
+    short: "VEI",
+    logo: "/images/customers/Vivekanandha Educational Institutions.png",
+    category: "Education",
+  },
 ];
 
 const testimonials = [
