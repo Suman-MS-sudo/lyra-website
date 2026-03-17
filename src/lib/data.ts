@@ -9,6 +9,11 @@
   city: "Chennai",
   state: "Tamil Nadu",
   whatsapp: "https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20Lyra%20Enterprise%27s%20vending%20machines%20%2F%20incinerators.%20Please%20share%20details.",
+  social: {
+    instagram: "https://www.instagram.com/lyraenterprises_/",
+    facebook: "https://www.facebook.com/profile.php?id=61578649496806",
+    linkedin: "https://www.linkedin.com/company/lyra-enterprises/"
+  }
 };
 
 export type Product = {

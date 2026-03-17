@@ -1,0 +1,94 @@
+{
+  "name": "Lyra Enterprises Product Recommendation Bot",
+  "description": "Smart chatbot for sanitary napkin vending machine and incinerator recommendations",
+  "version": "1.0",
+  "triggers": [
+    {
+      "name": "Welcome Message",
+      "conditions": {
+        "event": "chat_started"
+      },
+      "delay": 2,
+      "message": "🙏 Welcome to Lyra Enterprises!\n\nI'm here to help you find the perfect vending machine or incinerator for your needs.\n\nTo give you the best recommendation, please share:\n\n1️⃣ **What type of facility?**\n   • School/College\n   • Hospital/Clinic\n   • Office/Corporate\n   • Public restroom\n   • Other\n\n2️⃣ **Expected daily users?**\n   • 1-25 users\n   • 25-50 users  \n   • 50-100 users\n   • 100+ users\n\n3️⃣ **Budget range?**\n   • Under ₹10,000\n   • ₹10,000-₹15,000\n   • ₹15,000-₹25,000\n   • Above ₹25,000\n\nI'll recommend the perfect solution! 💡"
+    },
+    {
+      "name": "School Inquiry Auto-Response",
+      "conditions": {
+        "message_contains": ["school", "college", "student", "education"]
+      },
+      "delay": 1,
+      "message": "🏫 **Perfect for Schools & Colleges:**\n\n**Recommended: Push Button - ₹9,000**\n✅ Free for students (no coins needed)\n✅ 25 napkin capacity\n✅ Zero maintenance\n✅ Trusted by 50+ schools\n\n**+ Disposal: Lyra Micro Incinerator - ₹9,500**\n✅ Safe waste management\n✅ No infection risk\n\n📞 Call +91-8122378860 for school discounts!"
+    },
+    {
+      "name": "Hospital Inquiry Auto-Response", 
+      "conditions": {
+        "message_contains": ["hospital", "clinic", "medical", "healthcare"]
+      },
+      "delay": 1,
+      "message": "🏥 **Hospital-Grade Solutions:**\n\n**Recommended: Solo Ethernet - ₹24,500**\n✅ 99.9% uptime (wired connection)\n✅ UPI + coin payments\n✅ Cloud monitoring\n✅ Touch screen\n\n**+ Lyra Mini Incinerator - ₹12,500**\n✅ 5-15 napkins/cycle\n✅ Digital controls\n✅ SWM Rules compliant\n\n📞 Hospital packages available!"
+    },
+    {
+      "name": "Office Inquiry Auto-Response",
+      "conditions": {
+        "message_contains": ["office", "corporate", "company", "workplace"]
+      },
+      "delay": 1,
+      "message": "🏢 **Corporate Solutions:**\n\n**Most Popular: Solo WiFi - ₹22,500** ⭐\n✅ UPI payments (GPay/PhonePe)\n✅ Smart analytics\n✅ No SIM needed\n✅ Touch interface\n\n**Budget Option: Solo Coin - ₹9,500**\n✅ Simple & reliable\n✅ ₹5 coin operation\n\n📞 Corporate discounts available!"
+    },
+    {
+      "name": "Price Inquiry Auto-Response",
+      "conditions": {
+        "message_contains": ["price", "cost", "rate", "quote", "budget"]
+      },
+      "delay": 1,
+      "message": "💰 **Complete Price List:**\n\n**🔹 VENDING MACHINES:**\n• Push Button - ₹9,000\n• Solo Coin - ₹9,500\n• Solo RFID - ₹13,000\n• Solo QR - ₹15,000\n• Solo WiFi - ₹22,500 ⭐\n• Solo Ethernet - ₹24,500\n\n**🔹 INCINERATORS:**\n• Lyra Micro - ₹9,500\n• Lyra Mini - ₹12,500\n\n🚚 Free installation + 1-year warranty\n📞 Call +91-8122378860 for quotes!"
+    },
+    {
+      "name": "Incinerator Inquiry Auto-Response",
+      "conditions": {
+        "message_contains": ["incinerator", "disposal", "waste", "burn", "destroy"]
+      },
+      "delay": 1,
+      "message": "🔥 **Waste Disposal Solutions:**\n\n**Lyra Micro - ₹9,500**\n✅ Compact design\n✅ 1-5 napkins/cycle\n✅ Wall mountable\n\n**Lyra Mini - ₹12,500**\n✅ Higher capacity\n✅ 5-15 napkins/cycle  \n✅ Digital display\n\n**Benefits:**\n✅ Zero infection risk\n✅ CPCB compliant\n✅ No manual handling\n✅ Eco-friendly\n\n📞 Which capacity suits your needs?"
+    },
+    {
+      "name": "UPI Payment Inquiry",
+      "conditions": {
+        "message_contains": ["upi", "gpay", "phonepe", "paytm", "digital", "cashless", "qr"]
+      },
+      "delay": 1,
+      "message": "📱 **UPI Payment Options:**\n\n**Solo QR - ₹15,000**\n✅ UPI QR + coin (SIM-based)\n✅ GPay, PhonePe compatible\n\n**Solo WiFi - ₹22,500** ⭐\n✅ UPI QR + coin (WiFi)\n✅ Smart analytics\n✅ No SIM needed\n\n**Solo Ethernet - ₹24,500**\n✅ UPI QR + coin (LAN)\n✅ 99.9% uptime\n\nAll accept major UPI apps! Which connectivity suits you?"
+    }
+  ],
+  "quick_responses": {
+    "!contact": "📞 **Quick Contact:**\n• Phone: +91-8122378860\n• Email: sales@lyraenterprise.co.in\n• WhatsApp: https://wa.me/918122378860\n• Location: Chennai, Tamil Nadu\n\n🚚 Free installation across India\n💰 EMI options available",
+    
+    "!vending": "🔹 **VENDING MACHINES:**\n• Push Button - ₹9,000 (Schools)\n• Solo Coin - ₹9,500 (Public)\n• Solo RFID - ₹13,000 (Corporate cards)\n• Solo QR - ₹15,000 (UPI payments)\n• Solo WiFi - ₹22,500 (Smart IoT)\n• Solo Ethernet - ₹24,500 (Hospital grade)\n\nWhat's your facility type?",
+    
+    "!incinerator": "🔥 **INCINERATORS:**\n• Lyra Micro - ₹9,500 (1-5 napkins)\n• Lyra Mini - ₹12,500 (5-15 napkins)\n\n✅ CPCB compliant\n✅ 1-year warranty\n✅ Digital controls\n\nDaily usage requirement?",
+    
+    "!school": "🏫 **SCHOOL PACKAGE:**\n\n• Push Button - ₹9,000\n• Lyra Micro - ₹9,500\n\n**Total: ₹18,500**\n*15% education discount available*\n\n✅ Free for students\n✅ Safe disposal\n✅ Zero maintenance\n✅ Complete hygiene solution",
+    
+    "!hospital": "🏥 **HOSPITAL PACKAGE:**\n\n• Solo Ethernet - ₹24,500\n• Lyra Mini - ₹12,500\n\n**Total: ₹37,000**\n*Bulk pricing available*\n\n✅ 99.9% uptime\n✅ High capacity\n✅ Infection control\n✅ Cloud monitoring",
+    
+    "!office": "🏢 **OFFICE PACKAGE:**\n\n• Solo WiFi - ₹22,500\n• Lyra Mini - ₹12,500\n\n**Total: ₹35,000**\n*Corporate rates available*\n\n✅ Modern UPI payments\n✅ Smart analytics\n✅ Professional design\n✅ Remote monitoring",
+    
+    "!features": "⭐ **KEY FEATURES:**\n\n**Payment Options:**\n• Free dispensing\n• Coin operated (₹5)\n• UPI/QR codes\n• RFID cards\n\n**Connectivity:**\n• Basic (offline)\n• SIM-based\n• WiFi enabled\n• Ethernet/LAN\n\n**Capacity:**\n• 25 napkins (all models)\n• Multiple payment methods\n• Tamper-proof design",
+    
+    "!warranty": "🛡️ **WARRANTY & SUPPORT:**\n\n✅ 1-year comprehensive warranty\n✅ Free installation & training\n✅ 24/7 technical support\n✅ Spare parts availability\n✅ Annual maintenance contracts\n✅ On-site service across India\n\n📞 Support: +91-8122378860",
+    
+    "!installation": "🔧 **INSTALLATION PROCESS:**\n\n1️⃣ **Site Survey** (Free)\n2️⃣ **Wall mounting preparation**\n3️⃣ **Machine installation**\n4️⃣ **Testing & commissioning**\n5️⃣ **Staff training**\n6️⃣ **Handover with warranty**\n\n⏱️ Complete in 2-4 hours\n🚚 Pan-India installation team\n📞 Schedule: +91-8122378860"
+  },
+  "offline_message": "Thanks for visiting Lyra Enterprises! 🙏\n\nWe're currently offline but will respond within 2 hours.\n\n📞 **Urgent inquiries:**\nCall: +91-8122378860\nWhatsApp: https://wa.me/918122378860\n\n💡 **Quick Info:**\n• Vending machines from ₹9,000\n• Incinerators from ₹9,500\n• Free installation across India\n• 1-year warranty\n\nLeave your message and we'll get back to you soon!",
+  
+  "business_hours": {
+    "timezone": "Asia/Kolkata",
+    "monday": "09:00-19:00",
+    "tuesday": "09:00-19:00", 
+    "wednesday": "09:00-19:00",
+    "thursday": "09:00-19:00",
+    "friday": "09:00-19:00",
+    "saturday": "09:00-17:00",
+    "sunday": "closed"
+  }
+}

@@ -63,6 +63,14 @@ const contactInfo = [
     image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=80&auto=format&fit=crop&q=80",
   },
   {
+    label: "Follow Us",
+    value: "Social Media",
+    href: "https://www.instagram.com/lyraenterprises_/",
+    sub: "Instagram • Facebook • LinkedIn",
+    image: "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=80&auto=format&fit=crop&q=80",
+    isExternal: true,
+  },
+  {
     label: "Headquarters",
     value: "Cholapuram, Ambattur",
     href: "https://maps.app.goo.gl/CS3hP8SezcS4EFDQ9",

@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import FloatingActionButtons from "@/components/FloatingActionButtons";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -136,6 +137,11 @@ export const metadata: Metadata = {
     ICBM: "13.0827, 80.2707",
     "DC.language": "en",
     "DC.publisher": "Lyra Enterprises",
+    // Social Media Profiles for SEO
+    "facebook-domain-verification": "Lyra Enterprises",
+    "fb:page_id": "61578649496806",
+    "instagram:profile": "lyraenterprises_",
+    "linkedin:company": "lyra-enterprises",
   },
 };
 
@@ -155,6 +161,7 @@ export default function RootLayout({
         className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-white text-gray-900 overflow-x-hidden`}
       >
         {children}
+        <FloatingActionButtons />
       </body>
     </html>
   );

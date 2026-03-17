@@ -67,6 +67,9 @@ const organizationSchema = {
   ],
   sameAs: [
     "https://wa.me/918122378860",
+    "https://www.facebook.com/profile.php?id=61578649496806",
+    "https://www.instagram.com/lyraenterprises_/",
+    "https://www.linkedin.com/company/lyra-enterprises/",
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
