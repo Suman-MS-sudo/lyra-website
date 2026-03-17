@@ -322,30 +322,6 @@ export const products: Product[] = [
     metaDescription:
       "Buy Lyra Solo WiFi smart IoT sanitary napkin vending machine at ₹22,500. UPI QR (GPay/PhonePe) + coin, WiFi IoT, cloud reports, LED indicators. No SIM needed. Best for IT parks, hospitals & smart campuses. Chennai manufacturer. Call +91-8122378860.",
   },
-    ],
-    useCases: [
-      "Digital-first campuses",
-      "Corporate offices",
-      "Shopping malls",
-      "Colleges & universities",
-      "Public restrooms",
-    ],
-    accent: "from-pink-400 to-rose-500",
-    keywords: [
-      "qr code sanitary napkin vending machine india",
-      "upi sanitary napkin machine india",
-      "gpay phonepe napkin vending machine india",
-      "cashless napkin dispenser india",
-      "sanitary napkin vending machine price 15000",
-      "digital payment napkin vending machine",
-      "sim based napkin vending machine india",
-      "qr napkin machine for offices india",
-    ],
-    metaTitle:
-      "QR-Based Sanitary Napkin Vending Machine ₹15,000 | UPI GPay PhonePe | Lyra Enterprises",
-    metaDescription:
-      "Buy Lyra Solo QR sanitary napkin vending machine at ₹15,000. UPI QR + coin payment, 25-napkin capacity, SIM-based. Best for campuses, offices & malls. Chennai manufacturer. Call +91-8122378860.",
-  },
   {
     slug: "solo-ethernet-vending-machine",
     name: "Solo Ethernet",
