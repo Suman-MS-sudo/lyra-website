@@ -110,7 +110,7 @@ Would you like a detailed quote for your school?`
 ✅ 99.9% uptime with wired connection
 ✅ UPI + coin payments
 ✅ Cloud analytics & monitoring
-✅ Touch screen display
+✅ LED indicator display
 ✅ Perfect for high-traffic areas
 
 **For Disposal: Lyra Mini Incinerator - ₹12,500**
@@ -130,7 +130,7 @@ Hospital installations include staff training & maintenance support.`
 ✅ UPI payments (GPay, PhonePe)
 ✅ No SIM card needed
 ✅ Real-time analytics
-✅ Touch screen interface
+✅ LED indicator display
 ✅ Perfect for modern offices
 
 **Budget Option: Solo Coin - ₹9,500**  

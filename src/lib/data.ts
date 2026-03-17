@@ -270,16 +270,16 @@ export const products: Product[] = [
     popular: true,
     tagline: "Smart UPI + coin machine with cloud analytics",
     description:
-      "WiFi-enabled sanitary napkin vending machine with UPI QR code & coin payment. Touch display, IoT monitoring and cloud reports.",
+      "WiFi-enabled sanitary napkin vending machine with UPI QR code & coin payment. LED indicators, IoT monitoring and cloud reports.",
     longDescription:
-      "The Lyra Solo WiFi is India's most advanced sanitary napkin vending machine — combining UPI QR code payments, coin operation, WiFi connectivity and a touch display panel in one compact unit. Real-time cloud-based reports let facility managers track dispensing count, revenue and refill alerts remotely. The IoT-enabled architecture integrates with existing building management systems. This is the #1 choice for technology-forward hospitals, IT parks, premium malls and smart campuses across India.",
+      "The Lyra Solo WiFi is India's most advanced sanitary napkin vending machine — combining UPI QR code payments, coin operation, WiFi connectivity and LED indicator panel in one compact unit. Real-time cloud-based reports let facility managers track dispensing count, revenue and refill alerts remotely. The IoT-enabled architecture integrates with existing building management systems. This is the #1 choice for technology-forward hospitals, IT parks, premium malls and smart campuses across India.",
     features: [
       "UPI QR code payment",
       "₹5 coin acceptor",
       "25 napkins capacity",
       "No SIM card needed",
       "WiFi connectivity",
-      "Touch display panel",
+      "LED indicator panel",
       "Cloud-based reports",
       "IoT remote monitoring",
       "Low stock alerts",
@@ -290,7 +290,7 @@ export const products: Product[] = [
       { label: "Capacity", value: "25 napkins" },
       { label: "Payment", value: "UPI QR code + ₹5 coin" },
       { label: "Connectivity", value: "WiFi 2.4GHz (no SIM)" },
-      { label: "Display", value: "Touch screen panel" },
+      { label: "Display", value: "LED indicator panel" },
       { label: "Power", value: "230V AC" },
       { label: "Mounting", value: "Wall mount" },
       { label: "Model Code", value: "Lyra/SNVM/W-QR-SC" },
@@ -309,7 +309,7 @@ export const products: Product[] = [
       "smart sanitary napkin vending machine india",
       "iot sanitary napkin machine india",
       "cloud connected napkin vending machine",
-      "touch screen sanitary napkin dispenser india",
+      "led display sanitary napkin dispenser india",
       "sanitary napkin vending machine price 22500",
       "gpay phonepe napkin machine india",
       "wifi napkin machine for it park india",
@@ -318,7 +318,7 @@ export const products: Product[] = [
     metaTitle:
       "WiFi UPI QR Smart Sanitary Napkin Vending Machine ₹22,500 | IoT | Lyra Enterprises",
     metaDescription:
-      "Buy Lyra Solo WiFi smart sanitary napkin vending machine at ₹22,500. UPI QR (GPay/PhonePe) + coin, WiFi IoT, cloud reports, touch display. No SIM needed. Best for IT parks, hospitals & smart campuses. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Solo WiFi smart sanitary napkin vending machine at ₹22,500. UPI QR (GPay/PhonePe) + coin, WiFi IoT, cloud reports, LED indicators. No SIM needed. Best for IT parks, hospitals & smart campuses. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-ethernet-vending-machine",
@@ -331,16 +331,16 @@ export const products: Product[] = [
     badge: "Premium",
     tagline: "Wired reliability for high-traffic institutions",
     description:
-      "Ethernet-connected UPI QR vending machine for hospitals and large institutions requiring stable wired connectivity and cloud analytics.",
+      "Ethernet-connected UPI QR vending machine for hospitals and large institutions requiring stable wired connectivity with LED status indicators.",
     longDescription:
-      "The Lyra Solo Ethernet sanitary napkin vending machine offers the same smart features as the WiFi model — UPI QR payments, touch display and cloud analytics — but over a stable wired Ethernet connection. This makes it the preferred choice for hospitals, government buildings and large institutions where WiFi signals may be unreliable or security policies restrict wireless devices. The LAN connection ensures 99.9% uptime for payment processing and data reporting.",
+      "The Lyra Solo Ethernet sanitary napkin vending machine offers the same smart features as the WiFi model — UPI QR payments, LED indicators and cloud analytics — but over a stable wired Ethernet connection. This makes it the preferred choice for hospitals, government buildings and large institutions where WiFi signals may be unreliable or security policies restrict wireless devices. The LAN connection ensures 99.9% uptime for payment processing and data reporting.",
     features: [
       "UPI QR code payment",
       "₹5 coin acceptor",
       "25 napkins capacity",
       "No SIM card needed",
       "Ethernet (LAN) connectivity",
-      "Touch display panel",
+      "LED indicator panel",
       "Cloud-based reports",
       "99.9% payment uptime",
       "Remote monitoring",
@@ -351,7 +351,7 @@ export const products: Product[] = [
       { label: "Capacity", value: "25 napkins" },
       { label: "Payment", value: "UPI QR code + ₹5 coin" },
       { label: "Connectivity", value: "Ethernet / LAN (no SIM)" },
-      { label: "Display", value: "Touch screen panel" },
+      { label: "Display", value: "LED indicator panel" },
       { label: "Power", value: "230V AC" },
       { label: "Mounting", value: "Wall mount" },
       { label: "Model Code", value: "Lyra/SNVM/ET-QR-SC" },
@@ -379,7 +379,7 @@ export const products: Product[] = [
     metaTitle:
       "Ethernet UPI QR Sanitary Napkin Vending Machine ₹24,500 | Wired IoT | Lyra Enterprises",
     metaDescription:
-      "Buy Lyra Solo Ethernet sanitary napkin vending machine at ₹24,500. Stable LAN/Ethernet, UPI QR + coin, 99.9% uptime, cloud reports. No SIM. Best for hospitals, universities & govt institutions. Chennai. Call +91-8122378860.",
+      "Buy Lyra Solo Ethernet sanitary napkin vending machine at ₹24,500. Stable LAN/Ethernet, UPI QR + coin, 99.9% uptime, cloud reports. LED indicators. No SIM. Best for hospitals, universities & govt institutions. Chennai. Call +91-8122378860.",
   },
 
   // ─── INCINERATORS ────────────────────────────────────────────
