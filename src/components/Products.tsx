@@ -35,15 +35,6 @@ const vendingMachines: Product[] = [
     accent: "from-primary-400 to-primary-600",
   },
   {
-    name: "Solo QR",
-    slug: "solo-qr-vending-machine",
-    code: "Lyra/SNVM/QR",
-    price: "₹15,000",
-    badge: "QR + Coin",
-    features: ["UPI QR + coin payment", "25 napkins capacity", "SIM-based connectivity"],
-    accent: "from-pink-400 to-rose-500",
-  },
-  {
     name: "Solo RFID",
     slug: "solo-rfid-vending-machine",
     code: "Lyra/SNVM/RF",
@@ -51,6 +42,15 @@ const vendingMachines: Product[] = [
     badge: "RFID",
     features: ["RFID card / tag access", "25 napkins capacity", "Contactless dispensing"],
     accent: "from-teal-400 to-cyan-600",
+  },
+  {
+    name: "Solo QR",
+    slug: "solo-qr-vending-machine",
+    code: "Lyra/SNVM/QR",
+    price: "₹15,000",
+    badge: "QR + Coin",
+    features: ["UPI QR + coin payment", "25 napkins capacity", "SIM-based connectivity"],
+    accent: "from-pink-400 to-rose-500",
   },
   {
     name: "Solo WiFi",
