@@ -109,7 +109,7 @@ Would you like a detailed quote for your school?`
 **Recommended: Solo Ethernet - ₹24,500**
 ✅ 99.9% uptime with wired connection
 ✅ UPI + coin payments
-✅ Cloud analytics & monitoring
+✅ IoT cloud analytics & monitoring
 ✅ LED indicator display
 ✅ Perfect for high-traffic areas
 
@@ -129,7 +129,7 @@ Hospital installations include staff training & maintenance support.`
 **Recommended: Solo WiFi - ₹22,500** ⭐ Most Popular
 ✅ UPI payments (GPay, PhonePe)
 ✅ No SIM card needed
-✅ Real-time analytics
+✅ IoT real-time analytics
 ✅ LED indicator display
 ✅ Perfect for modern offices
 
@@ -151,7 +151,7 @@ Corporate packages include bulk discounts & annual maintenance.`
 • Solo QR - ₹15,000 (UPI payments)
 • Solo RFID - ₹13,000 (Card access)
 • Solo WiFi - ₹22,500 (Smart IoT, most popular)
-• Solo Ethernet - ₹24,500 (Premium, hospital grade)
+• Solo Ethernet - ₹24,500 (Premium IoT, hospital grade)
 
 **🔹 INCINERATORS:**
 • Lyra Micro - ₹9,500 (Compact, 1-5 napkins/cycle)

@@ -268,11 +268,11 @@ export const products: Product[] = [
     discountedPrice: 22500,
     badge: "Most Popular",
     popular: true,
-    tagline: "Smart UPI + coin machine with cloud analytics",
+    tagline: "Smart IoT UPI + coin machine with cloud analytics",
     description:
-      "WiFi-enabled sanitary napkin vending machine with UPI QR code & coin payment. LED indicators, IoT monitoring and cloud reports.",
+      "WiFi-enabled IoT sanitary napkin vending machine with UPI QR code & coin payment. LED indicators, IoT monitoring and cloud reports.",
     longDescription:
-      "The Lyra Solo WiFi is India's most advanced sanitary napkin vending machine — combining UPI QR code payments, coin operation, WiFi connectivity and LED indicator panel in one compact unit. Real-time cloud-based reports let facility managers track dispensing count, revenue and refill alerts remotely. The IoT-enabled architecture integrates with existing building management systems. This is the #1 choice for technology-forward hospitals, IT parks, premium malls and smart campuses across India.",
+      "The Lyra Solo WiFi is India's most advanced IoT-enabled sanitary napkin vending machine — combining UPI QR code payments, coin operation, WiFi connectivity and LED indicator panel in one compact unit. Real-time cloud-based reports let facility managers track dispensing count, revenue and refill alerts remotely via IoT dashboard. The IoT-enabled architecture integrates with existing building management systems for complete digital oversight. This is the #1 choice for technology-forward hospitals, IT parks, premium malls and smart campuses across India.",
     features: [
       "UPI QR code payment",
       "₹5 coin acceptor",
@@ -306,7 +306,8 @@ export const products: Product[] = [
     keywords: [
       "wifi upi sanitary napkin vending machine india",
       "upi qr napkin vending machine india",
-      "smart sanitary napkin vending machine india",
+      "iot enabled sanitary napkin vending machine india",
+      "smart iot napkin vending machine india",
       "iot sanitary napkin machine india",
       "cloud connected napkin vending machine",
       "led display sanitary napkin dispenser india",
@@ -318,7 +319,7 @@ export const products: Product[] = [
     metaTitle:
       "WiFi UPI QR Smart Sanitary Napkin Vending Machine ₹22,500 | IoT | Lyra Enterprises",
     metaDescription:
-      "Buy Lyra Solo WiFi smart sanitary napkin vending machine at ₹22,500. UPI QR (GPay/PhonePe) + coin, WiFi IoT, cloud reports, LED indicators. No SIM needed. Best for IT parks, hospitals & smart campuses. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Solo WiFi smart IoT sanitary napkin vending machine at ₹22,500. UPI QR (GPay/PhonePe) + coin, WiFi IoT, cloud reports, LED indicators. No SIM needed. Best for IT parks, hospitals & smart campuses. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-ethernet-vending-machine",
@@ -329,11 +330,11 @@ export const products: Product[] = [
     price: 24500,
     discountedPrice: 24500,
     badge: "Premium",
-    tagline: "Wired reliability for high-traffic institutions",
+    tagline: "Wired IoT reliability for high-traffic institutions",
     description:
-      "Ethernet-connected UPI QR vending machine for hospitals and large institutions requiring stable wired connectivity with LED status indicators.",
+      "Ethernet-connected IoT UPI QR vending machine for hospitals and large institutions requiring stable wired connectivity with LED status indicators.",
     longDescription:
-      "The Lyra Solo Ethernet sanitary napkin vending machine offers the same smart features as the WiFi model — UPI QR payments, LED indicators and cloud analytics — but over a stable wired Ethernet connection. This makes it the preferred choice for hospitals, government buildings and large institutions where WiFi signals may be unreliable or security policies restrict wireless devices. The LAN connection ensures 99.9% uptime for payment processing and data reporting.",
+      "The Lyra Solo Ethernet sanitary napkin vending machine offers the same smart IoT features as the WiFi model — UPI QR payments, LED indicators and cloud analytics — but over a stable wired Ethernet connection. IoT monitoring provides real-time data via secure LAN connectivity. This makes it the preferred choice for hospitals, government buildings and large institutions where WiFi signals may be unreliable or security policies restrict wireless devices. The LAN connection ensures 99.9% uptime for payment processing and IoT data reporting.",
     features: [
       "UPI QR code payment",
       "₹5 coin acceptor",
@@ -343,7 +344,7 @@ export const products: Product[] = [
       "LED indicator panel",
       "Cloud-based reports",
       "99.9% payment uptime",
-      "Remote monitoring",
+      "IoT remote monitoring",
       "Low stock alerts",
     ],
     specs: [
@@ -367,7 +368,8 @@ export const products: Product[] = [
     keywords: [
       "ethernet upi sanitary napkin vending machine india",
       "wired napkin vending machine india",
-      "lan sanitary napkin machine india",
+      "ethernet iot sanitary napkin vending machine india",
+      "lan iot napkin vending machine india",
       "upi napkin vending machine hospital india",
       "sanitary napkin vending machine government hospital",
       "sanitary napkin vending machine price 24500",
@@ -379,7 +381,7 @@ export const products: Product[] = [
     metaTitle:
       "Ethernet UPI QR Sanitary Napkin Vending Machine ₹24,500 | Wired IoT | Lyra Enterprises",
     metaDescription:
-      "Buy Lyra Solo Ethernet sanitary napkin vending machine at ₹24,500. Stable LAN/Ethernet, UPI QR + coin, 99.9% uptime, cloud reports. LED indicators. No SIM. Best for hospitals, universities & govt institutions. Chennai. Call +91-8122378860.",
+      "Buy Lyra Solo Ethernet sanitary napkin vending machine at ₹24,500. Stable LAN/Ethernet IoT, UPI QR + coin, 99.9% uptime, cloud reports. LED indicators. No SIM. Best for hospitals, universities & govt institutions. Chennai. Call +91-8122378860.",
   },
 
   // ─── INCINERATORS ────────────────────────────────────────────
