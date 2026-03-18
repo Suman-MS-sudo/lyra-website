@@ -227,32 +227,32 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.65 }}
-                className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
+                className="flex flex-row flex-wrap gap-3 sm:gap-4"
               >
                 <Link
                   href="#products"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-purple-gradient text-white font-semibold rounded-full shadow-purple hover:shadow-purple-lg hover:-translate-y-1 active:translate-y-0 transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-2 flex-1 min-w-0 px-4 sm:px-8 py-4 bg-purple-gradient text-white font-semibold rounded-full shadow-purple hover:shadow-purple-lg hover:-translate-y-1 active:translate-y-0 transition-all duration-300 text-sm sm:text-base"
                 >
-                  View Products
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <span className="truncate">View Products</span>
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
                 <Link
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary-600 font-semibold rounded-full border-2 border-primary-200 hover:border-primary-400 hover:bg-pink-blush hover:-translate-y-1 transition-all duration-300 shadow-sm"
+                  className="inline-flex items-center justify-center gap-2 flex-1 min-w-0 px-4 sm:px-8 py-4 bg-white text-primary-600 font-semibold rounded-full border-2 border-primary-200 hover:border-primary-400 hover:bg-pink-blush hover:-translate-y-1 transition-all duration-300 shadow-sm text-sm sm:text-base"
                 >
-                  Get Best Price
+                  <span className="truncate">Get Best Price</span>
                 </Link>
               </motion.div>
             </div>
 
-            {/* Right — Hero Image */}
+            {/* Right — Hero Image - Hidden on mobile */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, delay: 0.3 }}
-              className="relative flex items-center justify-center"
+              className="relative hidden lg:flex items-center justify-center"
             >
               {/* Enhanced glow ring */}
               <div className="absolute w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] lg:w-[350px] lg:h-[350px] rounded-full bg-gradient-radial from-primary-200/40 to-transparent animate-pulse-glow" />
