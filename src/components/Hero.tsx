@@ -68,7 +68,7 @@ export default function Hero() {
         <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,rgba(226,152,211,0.04)_0%,transparent_50%)]" />
       </div>
 
-      {/* Subtle floating elements - reduced count */}
+      {/* Subtle floating elements - reduced count and proper z-index */}
       {particles.slice(0, 6).map((p, i) => (
         <motion.div
           key={i}
@@ -83,7 +83,7 @@ export default function Hero() {
             delay: p.delay,
             ease: "easeInOut",
           }}
-          className="absolute rounded-full pointer-events-none blur-[1px]"
+          className="absolute rounded-full pointer-events-none blur-[1px] z-0"
           style={{
             left: `${p.x}%`,
             top: `${p.y}%`,
@@ -100,7 +100,7 @@ export default function Hero() {
           key={i}
           animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5] }}
           transition={{ duration: 3, repeat: Infinity, delay: s.delay, ease: "easeInOut" }}
-          className="absolute pointer-events-none text-primary-300"
+          className="absolute pointer-events-none text-primary-300 z-0"
           style={{ left: `${s.x}%`, top: `${s.y}%`, fontSize: "10px" }}
         >
           ✦
@@ -111,7 +111,7 @@ export default function Hero() {
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-        className="absolute pointer-events-none opacity-20"
+        className="absolute pointer-events-none opacity-20 z-0"
         style={{
           width: 400,
           height: 400,
@@ -127,7 +127,7 @@ export default function Hero() {
       <motion.div
         animate={{ x: ["-100%", "200%"] }}
         transition={{ duration: 6, repeat: Infinity, repeatDelay: 8, ease: "easeInOut" }}
-        className="absolute inset-y-0 pointer-events-none"
+        className="absolute inset-y-0 pointer-events-none z-0"
         style={{
           width: "40%",
           background:
@@ -137,18 +137,18 @@ export default function Hero() {
       />
 
       {/* Noise texture */}
-      <div className="absolute inset-0 noise opacity-50 pointer-events-none" />
+      <div className="absolute inset-0 noise opacity-50 pointer-events-none z-0" />
 
       {/* Grid pattern */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.03] z-0"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B565A7' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}
       />
 
-      <motion.div style={{ y, opacity }} className="relative z-10 w-full">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-6 sm:pb-16">
+      <motion.div style={{ y, opacity }} className="relative z-20 w-full">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-12 sm:pb-24">
           <div className="grid lg:grid-cols-2 gap-6 sm:gap-12 xl:gap-20 items-center">
             {/* Left Content */}
             <div>

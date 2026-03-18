@@ -15,11 +15,15 @@ export default function Home() {
       <JsonLd />
       <ScrollProgress />
       <Navbar />
-      <main>
+      <main className="relative">
         <Hero />
+        <div className="section-divider" />
         <About />
+        <div className="section-divider" />
         <Products />
+        <div className="section-divider" />
         <Customers />
+        <div className="section-divider" />
         <Contact />
       </main>
       <Footer />

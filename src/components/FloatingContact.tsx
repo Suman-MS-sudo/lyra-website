@@ -8,6 +8,9 @@ const EMAIL = "sales@lyraenterprise.co.in";
 const WA_MESSAGE = encodeURIComponent(
   "Hi! I'm interested in Lyra Enterprisess' sanitary napkin vending machines / incinerators. Please share more details."
 );
+const EMAIL_MESSAGE = encodeURIComponent(
+  "Hi! I'm interested in Lyra Enterprises' sanitary napkin vending machines and incinerators. Please share more details about your products, pricing, and installation process. Looking forward to hearing from you."
+);
 
 export default function FloatingContact() {
   const [visible, setVisible] = useState(false);
@@ -83,7 +86,7 @@ export default function FloatingContact() {
 
             {/* Email */}
             <a
-              href={`mailto:${EMAIL}`}
+              href={`mailto:${EMAIL}?subject=Product Inquiry - Lyra Enterprises&body=${EMAIL_MESSAGE}`}
               className="flex flex-col items-center justify-center py-3.5 gap-1.5 active:bg-indigo-50 transition-colors"
               aria-label="Email Lyra Enterprises"
             >

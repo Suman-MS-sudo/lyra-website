@@ -22,8 +22,8 @@ const footerLinks = {
   ],
   Contact: [
     { label: "+91-81223 78860", href: "tel:+918122378860" },
-    { label: "sales@lyraenterprise.co.in", href: "mailto:sales@lyraenterprise.co.in" },
-    { label: "Cholapuram, Ambattur, Chennai 600053", href: "#" },
+    { label: "sales@lyraenterprise.co.in", href: "mailto:sales@lyraenterprise.co.in?subject=Product Inquiry - Lyra Enterprises&body=" + encodeURIComponent("Hi! I'm interested in Lyra Enterprises' sanitary napkin vending machines and incinerators. Please share more details about your products, pricing, and installation process. Looking forward to hearing from you.") },
+    { label: "Cholapuram, Ambattur, Chennai 600053", href: "https://maps.google.com/maps?q=10/21,+Vasuki+Street,+Cholapuram,+Ambattur,+Chennai+600053,+India" },
   ],
 };
 
@@ -140,12 +140,23 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-400 text-sm hover:text-primary-300 transition-colors duration-200 leading-relaxed block"
-                    >
-                      {link.label}
-                    </Link>
+                    {link.href.startsWith('http') || link.href.startsWith('tel:') || link.href.startsWith('mailto:') ? (
+                      <a
+                        href={link.href}
+                        target={link.href.startsWith('http') ? "_blank" : undefined}
+                        rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                        className="text-gray-400 text-sm hover:text-primary-300 transition-colors duration-200 leading-relaxed block"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-gray-400 text-sm hover:text-primary-300 transition-colors duration-200 leading-relaxed block"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -156,9 +167,14 @@ export default function Footer() {
         {/* Bottom */}
         <div className="py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500 text-sm">
           <p>© 2026 Lyra Enterprises. All rights reserved.</p>
-          <p className="text-xs">
-            10/21, Vasuki Street, Cholapuram, Ambattur, Chennai – 600053, India
-          </p>
+          <a 
+            href="https://maps.google.com/maps?q=10/21,+Vasuki+Street,+Cholapuram,+Ambattur,+Chennai+600053,+India" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-xs text-gray-500 hover:text-primary-600 transition-colors hover:underline"
+          >
+            📍 10/21, Vasuki Street, Cholapuram, Ambattur, Chennai – 600053, India
+          </a>
         </div>
       </div>
     </footer>

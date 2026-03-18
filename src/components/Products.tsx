@@ -231,7 +231,7 @@ function ProductCard({
           
           <Link
             href="#contact"
-            className={`group/btn w-full py-3.5 px-4 text-center text-sm font-bold rounded-2xl bg-gradient-to-r ${product.accent} text-white hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2`}
+            className="group/btn w-full py-3.5 px-4 text-center text-sm font-bold rounded-2xl bg-gray-900 hover:bg-gray-800 text-white hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
           >
             Get Quote
             <svg className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">

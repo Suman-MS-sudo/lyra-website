@@ -37,7 +37,8 @@ function FadeUp({
   );
 }
 
-const WA_TEXT = encodeURIComponent("Hi! I'm interested in Lyra Enterprisess' sanitary napkin vending machines / incinerators. Please share more details.");
+const WA_TEXT = encodeURIComponent("Hi! I'm interested in Lyra Enterprises' sanitary napkin vending machines / incinerators. Please share more details.");
+const EMAIL_TEXT = encodeURIComponent("Hi! I'm interested in Lyra Enterprises' sanitary napkin vending machines and incinerators. Please share more details about your products, pricing, and installation process. Looking forward to hearing from you.");
 
 const contactInfo = [
   {
@@ -58,7 +59,7 @@ const contactInfo = [
   {
     label: "Email Us",
     value: "sales@lyraenterprise.co.in",
-    href: "mailto:sales@lyraenterprise.co.in",
+    href: `mailto:sales@lyraenterprise.co.in?subject=Product Inquiry - Lyra Enterprises&body=${EMAIL_TEXT}`,
     sub: "24/7 Response Guaranteed",
     image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=80&auto=format&fit=crop&q=80",
   },
@@ -75,15 +76,28 @@ const contactInfo = [
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submittedEmails, setSubmittedEmails] = useState<Set<string>>(new Set());
+  const [submittedPhones, setSubmittedPhones] = useState<Set<string>>(new Set());
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
+    setError,
   } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
+    // Check for duplicate submissions
+    if (submittedEmails.has(data.email)) {
+      setError('email', { message: 'This email has already been used for a submission.' });
+      return;
+    }
+    if (submittedPhones.has(data.phone)) {
+      setError('phone', { message: 'This phone number has already been used for a submission.' });
+      return;
+    }
+
     setSubmitting(true);
     const form = new FormData();
     Object.entries(data).forEach(([k, v]) => form.append(k, v));
@@ -95,6 +109,8 @@ export default function Contact() {
         body: form,
         headers: { Accept: "application/json" },
       });
+      setSubmittedEmails(prev => new Set([...prev, data.email]));
+      setSubmittedPhones(prev => new Set([...prev, data.phone]));
       setSubmitted(true);
       reset();
     } catch {
@@ -227,7 +243,21 @@ export default function Contact() {
                         Full Name
                       </label>
                       <input
-                        {...register("name", { required: "Name is required" })}
+                        {...register("name", {
+                          required: "Name is required",
+                          pattern: {
+                            value: /^[A-Za-z\s.'-]+$/,
+                            message: "Name should only contain alphabets and spaces"
+                          },
+                          minLength: {
+                            value: 2,
+                            message: "Name must be at least 2 characters long"
+                          },
+                          maxLength: {
+                            value: 50,
+                            message: "Name must not exceed 50 characters"
+                          }
+                        })}
                         placeholder="Your full name"
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all placeholder:text-gray-300"
                       />
@@ -245,9 +275,15 @@ export default function Contact() {
                         {...register("email", {
                           required: "Email is required",
                           pattern: {
-                            value: /\S+@\S+\.\S+/,
-                            message: "Please enter a valid email",
+                            value: /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9.-]*[a-zA-Z0-9]\.[a-zA-Z]{2,}$/,
+                            message: "Please enter a valid email address (e.g., user@domain.com)",
                           },
+                          validate: (value) => {
+                            if (value.includes('..') || value.includes('.@') || value.includes('@.')) {
+                              return "Invalid email format - consecutive dots not allowed";
+                            }
+                            return true;
+                          }
                         })}
                         type="email"
                         placeholder="your@email.com"
@@ -268,7 +304,23 @@ export default function Contact() {
                       </label>
                       <input
                         {...register("phone", {
-                          required: "Phone is required",
+                          required: "Phone number is required",
+                          pattern: {
+                            value: /^[6-9]\d{9}$/,
+                            message: "Please enter exactly 10 digits starting with 6, 7, 8, or 9"
+                          },
+                          validate: (value) => {
+                            if (!/^\d+$/.test(value)) {
+                              return "Phone number should contain only digits";
+                            }
+                            if (value.length !== 10) {
+                              return "Phone number must be exactly 10 digits";
+                            }
+                            if (!/^[6-9]/.test(value)) {
+                              return "Phone number must start with 6, 7, 8, or 9";
+                            }
+                            return true;
+                          }
                         })}
                         type="tel"
                         placeholder="+91 XXXXX XXXXX"
@@ -323,10 +375,19 @@ export default function Contact() {
                     <textarea
                       {...register("message", {
                         required: "Please enter your message",
+                        minLength: {
+                          value: 10,
+                          message: "Message must be at least 10 characters long"
+                        },
+                        maxLength: {
+                          value: 1000,
+                          message: "Message must not exceed 1000 characters"
+                        }
                       })}
                       rows={4}
-                      placeholder="Tell us about your requirements..."
+                      placeholder="Tell us about your requirements... (10-1000 characters)"
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all resize-none placeholder:text-gray-300"
+                      maxLength={1000}
                     />
                     {errors.message && (
                       <p className="text-red-500 text-xs mt-1">
