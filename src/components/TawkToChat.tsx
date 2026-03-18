@@ -240,7 +240,7 @@ What would you like to know about our vending machines and incinerators?`
 
   if (!isOpen) {
     return (
-      <div className="fixed bottom-4 right-4 z-[60]">
+      <div className="fixed bottom-4 right-4 z-[100]">
         <button
           onClick={() => setIsOpen(true)}
           className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse"
@@ -257,7 +257,7 @@ What would you like to know about our vending machines and incinerators?`
   }
 
   return (
-    <div className="fixed bottom-4 right-4 z-[60] w-80 h-96 bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col">
+    <div className="fixed bottom-4 right-4 z-[100] w-80 h-96 bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col">
       {/* Header */}
       <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4 rounded-t-lg flex justify-between items-center">
         <div>
