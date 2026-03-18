@@ -57,24 +57,26 @@ Based on your answers, I'll recommend the perfect solution! 💡`,
     if (!inputText.trim()) return
 
     const newMessage = {
-      text: inputText,
+      text: inputText.trim(),
       sender: 'user' as const,
       time: new Date().toLocaleTimeString()
     }
 
     setMessages(prev => [...prev, newMessage])
     
+    // Clear input immediately for better UX
+    const currentInput = inputText.toLowerCase().trim()
+    setInputText('')
+    
     // Generate bot response
     setTimeout(() => {
-      const botResponse = generateResponse(inputText.toLowerCase())
+      const botResponse = generateResponse(currentInput)
       setMessages(prev => [...prev, {
         text: botResponse,
         sender: 'bot',
         time: new Date().toLocaleTimeString()
       }])
     }, 1000)
-
-    setInputText('')
   }
 
   const generateResponse = (userInput: string): string => {
@@ -309,24 +311,37 @@ What would you like to know about our vending machines and incinerators?`
 
       {/* Input */}
       <div className="p-3 border-t bg-white rounded-b-lg">
-        <div className="flex space-x-2">
+        <form onSubmit={(e) => { e.preventDefault(); sendMessage(); }} className="flex space-x-2">
           <input
             type="text"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
             placeholder="Type your message..."
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
+            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm min-h-[40px]"
+            maxLength={500}
           />
           <button
-            onClick={sendMessage}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors"
+            type="submit"
+            disabled={!inputText.trim()}
+            className={`${!inputText.trim() ? 'bg-gray-400 cursor-not-allowed' : 'bg-purple-600 hover:bg-purple-700'} text-white px-4 py-2 rounded-lg transition-colors flex items-center justify-center min-w-[48px] min-h-[44px]`}
+            title="Send message"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            <svg 
+              className="w-4 h-4" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" 
+              />
             </svg>
           </button>
-        </div>
+        </form>
       </div>
     </div>
   )

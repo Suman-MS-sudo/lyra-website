@@ -60,8 +60,8 @@ const customers = [
     category: "Education",
   },
   {
-    name: "Vivekanandha Educational Institutions",
-    short: "VEI",
+    name: "Vivekanandha Institutions",
+    short: "VI",
     logo: "/images/customers/Vivekanandha Educational Institutions.png",
     category: "Education",
   },
