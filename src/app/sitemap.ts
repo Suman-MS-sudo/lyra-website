@@ -80,5 +80,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     // Bundle page
     { url: `${SITE_URL}/products/vending-incinerator-bundle`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    // Business and policy pages
+    { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/privacy-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
+    { url: `${SITE_URL}/terms-and-conditions`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
+    { url: `${SITE_URL}/cancellation-refund-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
+    { url: `${SITE_URL}/shipping-delivery-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
   ];
 }

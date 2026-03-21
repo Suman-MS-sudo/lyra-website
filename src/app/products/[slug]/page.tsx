@@ -5,6 +5,7 @@ import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import ProductPurchasePanel from "@/components/ProductPurchasePanel";
 import { products, vendingMachines, getProductBySlug, SITE } from "@/lib/data";
 
 /* ─── Static params for all product pages ─────────────────── */
@@ -231,6 +232,12 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               {/* CTA buttons */}
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
+                  href="#buy-now"
+                  className="px-6 py-3 rounded-xl bg-gray-900 text-white font-bold text-sm hover:bg-gray-800 shadow hover:shadow-lg transition-all"
+                >
+                  Buy Online with Razorpay
+                </Link>
+                <Link
                   href={`https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20${encodeURIComponent(product.fullName)}.%20Please%20share%20pricing%20and%20delivery%20details.`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -281,6 +288,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             </div>
           </div>
         </section>
+
+        <ProductPurchasePanel product={product} />
 
         {/* ── Features ─────────────────────────────────────── */}
         <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
@@ -406,6 +415,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               Get a confirmed quote and place your order today. Pan-India delivery in 3–7 business days.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
+              <Link href="#buy-now" className="px-8 py-3 bg-white text-[#A0268A] font-bold rounded-full hover:bg-gray-50 transition-colors">
+                Buy Online Now
+              </Link>
               <Link
                 href={`https://wa.me/918122378860?text=Hi%21%20I%27d%20like%20to%20order%20the%20${encodeURIComponent(product.fullName)}.%20Please%20confirm%20price%20%26%20availability.`}
                 target="_blank"

@@ -21,7 +21,7 @@ export type Product = {
   name: string;
   fullName: string;
   code: string;
-  category: "vending-machine" | "incinerator";
+  category: "vending-machine" | "incinerator" | "napkin";
   price: number;
   discountedPrice: number;
   badge: string;
@@ -599,6 +599,110 @@ export const products: Product[] = [
     metaDescription:
       "Buy Lyra Maxi high-capacity sanitary napkin incinerator at ₹30,000. 25–50 napkins/cycle, biomedical waste compliant, top-loading, remote temp logging. Best for hospitals, medical colleges & large institutions. Chennai. Call +91-8122378860.",
   },
+
+  // ─── SANITARY NAPKINS ────────────────────────────────────────
+  {
+    slug: "xl-sanitary-napkin",
+    name: "XL Napkin",
+    fullName: "Lyra XL Sanitary Napkin (280 mm)",
+    code: "Lyra/SN/XL",
+    category: "napkin",
+    price: 5,
+    discountedPrice: 5,
+    badge: "XL",
+    tagline: "Soft, leak-proof protection — 280 mm",
+    description:
+      "Lyra XL sanitary napkin — 280 mm regular-flow pad, individually wrapped, compatible with all Lyra vending machines.",
+    longDescription:
+      "Lyra XL sanitary napkins are manufactured to strict hygiene standards and are designed for compatibility with all Lyra vending machines. The 280 mm pad offers dependable regular-flow protection with a soft, breathable top sheet and leak-proof base. Individually wrapped for hygiene. Each napkin is priced at ₹5, making it affordable for every user. Ideal for schools, hostels, offices and public facilities where Lyra vending machines are installed.",
+    features: [
+      "280 mm length",
+      "Regular-flow protection",
+      "Soft breathable top sheet",
+      "Leak-proof base layer",
+      "Individually wrapped",
+      "Compatible with all Lyra vending machines",
+    ],
+    specs: [
+      { label: "Length", value: "280 mm" },
+      { label: "Type", value: "Regular flow" },
+      { label: "Wrapping", value: "Individual hygienic wrap" },
+      { label: "Price per unit", value: "₹5" },
+      { label: "Model Code", value: "Lyra/SN/XL" },
+    ],
+    useCases: [
+      "Schools & colleges",
+      "Corporate offices",
+      "Hostels & dormitories",
+      "Public restrooms",
+      "Hospitals & clinics",
+    ],
+    accent: "from-pink-300 to-rose-400",
+    image: "/images/products/xl-napkin.png",
+    keywords: [
+      "xl sanitary napkin india",
+      "sanitary napkin 280mm india",
+      "sanitary napkin for vending machine india",
+      "lyra xl napkin price 5 rupees",
+      "individually wrapped sanitary napkin india",
+      "napkin for coin vending machine india",
+    ],
+    metaTitle:
+      "Lyra XL Sanitary Napkin 280mm ₹5 | Vending Machine Compatible | India",
+    metaDescription:
+      "Buy Lyra XL sanitary napkin (280 mm) at ₹5. Soft, leak-proof, individually wrapped. Compatible with all Lyra vending machines. Best for schools, offices & public facilities. Chennai manufacturer.",
+  },
+  {
+    slug: "xxl-sanitary-napkin",
+    name: "XXL Napkin",
+    fullName: "Lyra XXL Sanitary Napkin (320 mm)",
+    code: "Lyra/SN/XXL",
+    category: "napkin",
+    price: 10,
+    discountedPrice: 10,
+    badge: "XXL",
+    tagline: "Extra-long overnight protection — 320 mm",
+    description:
+      "Lyra XXL sanitary napkin — 320 mm heavy-flow/overnight pad, individually wrapped, compatible with all Lyra vending machines.",
+    longDescription:
+      "Lyra XXL sanitary napkins offer extra-length 320 mm coverage for heavy flow and overnight use. The wider, longer design with reinforced leak guards provides all-round protection. Soft breathable top sheet keeps users comfortable during extended wear. Individually wrapped for hygiene. Compatible with all Lyra vending machines and priced at ₹10 per unit. Ideal for hospitals, women's hostels and any facility where complete overnight protection is needed.",
+    features: [
+      "320 mm length",
+      "Heavy-flow / overnight protection",
+      "Reinforced leak guards",
+      "Soft breathable top sheet",
+      "Individually wrapped",
+      "Compatible with all Lyra vending machines",
+    ],
+    specs: [
+      { label: "Length", value: "320 mm" },
+      { label: "Type", value: "Heavy flow / overnight" },
+      { label: "Wrapping", value: "Individual hygienic wrap" },
+      { label: "Price per unit", value: "₹10" },
+      { label: "Model Code", value: "Lyra/SN/XXL" },
+    ],
+    useCases: [
+      "Women's hostels & dormitories",
+      "Hospitals & maternity wards",
+      "Colleges & universities",
+      "Corporate offices",
+      "Public restrooms",
+    ],
+    accent: "from-fuchsia-300 to-pink-500",
+    image: "/images/products/xxl-napkin.png",
+    keywords: [
+      "xxl sanitary napkin india",
+      "sanitary napkin 320mm india",
+      "overnight sanitary napkin vending machine india",
+      "lyra xxl napkin price 10 rupees",
+      "heavy flow sanitary napkin india",
+      "extra long napkin for vending machine india",
+    ],
+    metaTitle:
+      "Lyra XXL Sanitary Napkin 320mm ₹10 | Overnight Protection | Vending Machine Compatible",
+    metaDescription:
+      "Buy Lyra XXL sanitary napkin (320 mm) at ₹10. Heavy-flow overnight, reinforced leak guards, individually wrapped. Compatible with all Lyra vending machines. Chennai manufacturer.",
+  },
 ];
 
 export const vendingMachines = products.filter(
@@ -606,6 +710,9 @@ export const vendingMachines = products.filter(
 );
 export const incinerators = products.filter(
   (p) => p.category === "incinerator"
+);
+export const napkins = products.filter(
+  (p) => p.category === "napkin"
 );
 
 export function getProductBySlug(slug: string): Product | undefined {

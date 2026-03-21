@@ -76,7 +76,7 @@ export default function ProductsPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {vendingMachines.map((p) => (
-              <Link key={p.slug} href={`/products/${p.slug}`} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              <div key={p.slug} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                 <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
                 <div className="p-5">
                   {p.popular && (
@@ -88,9 +88,16 @@ export default function ProductsPage() {
                   <div className="flex items-end gap-2">
                     <span className="text-xl font-bold text-primary-600">₹{p.price.toLocaleString("en-IN")}</span>
                   </div>
-                  <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details →</span>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    <Link href={`/products/${p.slug}`} className="text-xs font-semibold text-primary-600 hover:underline">
+                      View Details →
+                    </Link>
+                    <Link href={`/products/${p.slug}#buy-now`} className="text-xs font-semibold text-gray-900 hover:underline">
+                      Buy Online →
+                    </Link>
+                  </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </section>
@@ -108,7 +115,7 @@ export default function ProductsPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {incinerators.map((p) => (
-              <Link key={p.slug} href={`/products/${p.slug}`} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              <div key={p.slug} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                 <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
                 <div className="p-5">
                   <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">{p.code}</p>
@@ -117,9 +124,16 @@ export default function ProductsPage() {
                   <div className="flex items-end gap-2">
                     <span className="text-xl font-bold text-primary-600">₹{p.price.toLocaleString("en-IN")}</span>
                   </div>
-                  <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details →</span>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    <Link href={`/products/${p.slug}`} className="text-xs font-semibold text-primary-600 hover:underline">
+                      View Details →
+                    </Link>
+                    <Link href={`/products/${p.slug}#buy-now`} className="text-xs font-semibold text-gray-900 hover:underline">
+                      Buy Online →
+                    </Link>
+                  </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </section>

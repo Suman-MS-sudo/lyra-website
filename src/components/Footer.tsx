@@ -11,7 +11,7 @@ const footerLinks = {
     { label: "About Us", href: "#about" },
     { label: "Products", href: "#products" },
     { label: "Customers", href: "#customers" },
-    { label: "Contact", href: "#contact" },
+    { label: "Contact", href: "/contact" },
   ],
   Products: [
     { label: "Push-Button Machine", href: "/products/push-button-vending-machine" },
@@ -24,6 +24,12 @@ const footerLinks = {
     { label: "+91-81223 78860", href: "tel:+918122378860" },
     { label: "sales@lyraenterprise.co.in", href: "mailto:sales@lyraenterprise.co.in?subject=Product Inquiry - Lyra Enterprises&body=" + encodeURIComponent("Hi! I'm interested in Lyra Enterprises' sanitary napkin vending machines and incinerators. Please share more details about your products, pricing, and installation process. Looking forward to hearing from you.") },
     { label: "Cholapuram, Ambattur, Chennai 600053", href: "https://maps.google.com/maps?q=10/21,+Vasuki+Street,+Cholapuram,+Ambattur,+Chennai+600053,+India" },
+  ],
+  Policies: [
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms & Conditions", href: "/terms-and-conditions" },
+    { label: "Cancellation & Refund", href: "/cancellation-refund-policy" },
+    { label: "Shipping & Delivery", href: "/shipping-delivery-policy" },
   ],
 };
 
@@ -72,7 +78,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Footer Grid */}
-        <div className="py-16 grid grid-cols-2 md:grid-cols-4 gap-10 border-b border-white/5">
+        <div className="py-16 grid grid-cols-2 md:grid-cols-5 gap-10 border-b border-white/5">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="#home" className="flex items-center gap-3 mb-5 group">

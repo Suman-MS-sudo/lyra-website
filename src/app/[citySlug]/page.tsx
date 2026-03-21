@@ -85,7 +85,7 @@ export default function ProductsPage() {
                   <div className="flex items-end gap-2">
                     <span className="text-xl font-bold text-primary-600">₹{p.price.toLocaleString("en-IN")}</span>
                   </div>
-                  <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details →</span>
+                  <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details / Buy Online →</span>
                 </div>
               </Link>
             ))}
@@ -114,7 +114,7 @@ export default function ProductsPage() {
                   <div className="flex items-end gap-2">
                     <span className="text-xl font-bold text-primary-600">₹{p.price.toLocaleString("en-IN")}</span>
                   </div>
-                  <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details →</span>
+                  <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details / Buy Online →</span>
                 </div>
               </Link>
             ))}

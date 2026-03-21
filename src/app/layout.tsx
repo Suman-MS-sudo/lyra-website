@@ -2,6 +2,8 @@
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import FloatingActionButtons from "@/components/FloatingActionButtons";
+import { CartProvider } from "@/context/CartContext";
+import CartDrawer from "@/components/CartDrawer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -160,8 +162,11 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-white text-gray-900 overflow-x-hidden`}
       >
-        {children}
-        <FloatingActionButtons />
+        <CartProvider>
+          {children}
+          <CartDrawer />
+          <FloatingActionButtons />
+        </CartProvider>
       </body>
     </html>
   );

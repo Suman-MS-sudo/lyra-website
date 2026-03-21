@@ -229,10 +229,10 @@ export default function SchoolsSolutionPage() {
                   <p className="text-primary-600 font-semibold text-base mb-3">{p.price}</p>
                   <p className="text-gray-500 text-sm flex-1 mb-5">{p.desc}</p>
                   <Link
-                    href={`/products/${p.slug}`}
+                    href={`/products/${p.slug}#buy-now`}
                     className="mt-auto text-center py-2.5 px-4 rounded-xl bg-primary-50 text-primary-700 font-semibold text-sm hover:bg-primary-100 transition-colors"
                   >
-                    View Details →
+                    Buy Online →
                   </Link>
                 </div>
               ))}

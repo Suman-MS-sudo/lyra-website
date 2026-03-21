@@ -59,6 +59,21 @@ export default function PageFooter() {
               ))}
             </ul>
           </div>
+
+          <div>
+            <p className="font-semibold text-sm mb-4 tracking-wide">Policies</p>
+            <ul className="space-y-2 text-sm text-gray-400">
+              {[
+                ["Contact Us", "/contact"],
+                ["Privacy Policy", "/privacy-policy"],
+                ["Terms & Conditions", "/terms-and-conditions"],
+                ["Refund Policy", "/cancellation-refund-policy"],
+                ["Shipping Policy", "/shipping-delivery-policy"],
+              ].map(([label, href]) => (
+                <li key={href}><Link href={href} className="hover:text-primary-300 transition-colors">{label}</Link></li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500 text-sm">

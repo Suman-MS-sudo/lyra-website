@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
 import Image from "next/image";
+import { useCart } from "@/context/CartContext";
+import { products } from "@/lib/data";
 
 type Product = {
   name: string;
@@ -113,6 +116,139 @@ const incinerators: Product[] = [
     image: "/images/products/lyra-maxi.png",
   },
 ];
+
+const napkins: Product[] = [
+  {
+    name: "XL Napkin",
+    slug: "xl-sanitary-napkin",
+    code: "Lyra/SN/XL",
+    price: "₹5 / napkin",
+    badge: "XL",
+    features: ["280 mm length", "Regular-flow protection", "Individually wrapped"],
+    accent: "from-pink-300 to-rose-400",
+    image: "/images/products/xl-napkin.png",
+  },
+  {
+    name: "XXL Napkin",
+    slug: "xxl-sanitary-napkin",
+    code: "Lyra/SN/XXL",
+    price: "₹10 / napkin",
+    badge: "XXL",
+    features: ["320 mm length", "Heavy-flow / overnight", "Individually wrapped"],
+    accent: "from-fuchsia-300 to-pink-500",
+    image: "/images/products/xxl-napkin.png",
+  },
+];
+
+function CartSection({ slug }: { slug: string }) {
+  const { addToCart, items, updateQuantity } = useCart();
+  const fullProduct = products.find((p) => p.slug === slug);
+  const cartItem = items.find((i) => i.product.slug === slug);
+  const [added, setAdded] = useState(false);
+
+  if (!fullProduct) return null;
+
+  const isNapkin = fullProduct?.category === "napkin";
+
+  function handleAdd() {
+    addToCart(fullProduct!, isNapkin ? 100 : 1);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1800);
+  }
+
+  /* ── In-cart state: show qty stepper ── */
+  if (cartItem) {
+    return (
+      <div className="space-y-2">
+        {isNapkin ? (
+          <div className="flex items-center gap-2 rounded-2xl border-2 border-primary-500 bg-primary-50 px-4 py-2.5">
+            <span className="text-xs font-semibold text-primary-700 flex-shrink-0">Qty</span>
+            <input
+              type="number"
+              min={100}
+              step={100}
+              value={cartItem.quantity}
+              onChange={(e) => { const v = parseInt(e.target.value); if (!isNaN(v) && v >= 1) updateQuantity(slug, v); }}
+              onBlur={(e) => { const v = parseInt(e.target.value) || 100; updateQuantity(slug, Math.max(100, Math.round(v / 100) * 100)); }}
+              className="flex-1 min-w-0 text-center text-sm font-bold text-primary-800 bg-transparent border-none outline-none"
+            />
+            <span className="text-xs font-semibold text-primary-600 flex-shrink-0">pcs</span>
+          </div>
+        ) : (
+          <div className="flex items-center rounded-2xl border-2 border-primary-500 bg-primary-50 overflow-hidden">
+            <button
+              onClick={() => updateQuantity(slug, cartItem.quantity - 1)}
+              className="px-4 py-3 font-bold text-lg text-primary-700 hover:bg-primary-100 transition-colors"
+              aria-label="Decrease quantity"
+            >
+              −
+            </button>
+            <span className="flex-1 text-center text-sm font-bold text-primary-800">
+              {cartItem.quantity} in cart
+            </span>
+            <button
+              onClick={() => updateQuantity(slug, cartItem.quantity + 1)}
+              className="px-4 py-3 font-bold text-lg text-primary-700 hover:bg-primary-100 transition-colors"
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
+          </div>
+        )}
+        <div className="grid grid-cols-2 gap-2">
+          <Link
+            href="/cart"
+            className="py-2.5 text-center text-xs font-bold text-primary-700 bg-primary-50 border border-primary-200 rounded-xl hover:bg-primary-100 transition-colors"
+          >
+            Go to Cart →
+          </Link>
+          <Link
+            href={`/products/${slug}#buy-now`}
+            className="py-2.5 text-center text-xs font-bold text-gray-700 bg-gray-50 border border-gray-200 rounded-xl hover:bg-gray-100 transition-colors"
+          >
+            Buy Now →
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  /* ── Default: Add to Cart button ── */
+  return (
+    <div className="space-y-2">
+      <button
+        onClick={handleAdd}
+        className={`w-full py-3.5 flex items-center justify-center gap-2 text-sm font-bold rounded-2xl transition-all duration-300 shadow-md ${
+          added
+            ? "bg-green-500 text-white shadow-green-200/50 scale-[0.99]"
+            : "bg-gradient-to-r from-primary-600 to-pink-500 hover:from-primary-700 hover:to-pink-600 text-white hover:shadow-lg hover:shadow-primary-200/40 hover:scale-[1.02] active:scale-[0.98]"
+        }`}
+      >
+        {added ? (
+          <>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            Added to Cart!
+          </>
+        ) : (
+          <>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            Add to Cart
+          </>
+        )}
+      </button>
+      <Link
+        href={`/products/${slug}#buy-now`}
+        className="block w-full py-2.5 text-center text-xs font-semibold text-gray-500 border border-gray-200 rounded-xl hover:bg-gray-50 hover:text-gray-800 transition-colors"
+      >
+        Buy Now with Razorpay →
+      </Link>
+    </div>
+  );
+}
 
 function ProductCard({
   product,
@@ -229,15 +365,7 @@ function ProductCard({
             </Link>
           </div>
           
-          <Link
-            href="#contact"
-            className="group/btn w-full py-3.5 px-4 text-center text-sm font-bold rounded-2xl bg-gray-900 hover:bg-gray-800 text-white hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
-          >
-            Get Quote
-            <svg className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-            </svg>
-          </Link>
+          <CartSection slug={product.slug} />
         </div>
       </div>
     </motion.div>
@@ -326,7 +454,9 @@ export default function Products() {
             <span className="text-gray-300">·</span>
             <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">3 Incinerators</span>
             <span className="text-gray-300">·</span>
-            <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm text-primary-600 font-semibold">From ₹9,000</span>
+            <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">2 Napkin Variants</span>
+            <span className="text-gray-300">·</span>
+            <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm text-primary-600 font-semibold">From ₹5</span>
           </div>
         </motion.div>
 
@@ -350,8 +480,20 @@ export default function Products() {
           count={3}
           href="/products/sanitary-napkin-incinerators"
         />
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5 mb-14 sm:mb-20">
           {incinerators.map((p, i) => (
+            <ProductCard key={p.name} product={p} index={i} />
+          ))}
+        </div>
+
+        {/* Sanitary Napkins */}
+        <CategoryHeader
+          title="Sanitary Napkins"
+          sub="Compatible with all Lyra vending machines — XL & XXL variants"
+          count={2}
+        />
+        <div className="grid grid-cols-2 gap-3 sm:gap-5">
+          {napkins.map((p, i) => (
             <ProductCard key={p.name} product={p} index={i} />
           ))}
         </div>

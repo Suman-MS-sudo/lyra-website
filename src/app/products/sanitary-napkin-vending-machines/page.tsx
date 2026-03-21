@@ -82,7 +82,7 @@ export default function VendingMachinesPage() {
         <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {vendingMachines.map((p) => (
-              <Link key={p.slug} href={`/products/${p.slug}`} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col">
+              <div key={p.slug} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col">
                 <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
                 <div className="p-6 flex flex-col flex-1">
                   {p.popular && (
@@ -104,10 +104,13 @@ export default function VendingMachinesPage() {
                     <div>
                       <p className="text-xl font-bold text-primary-600">₹{p.price.toLocaleString("en-IN")}</p>
                     </div>
-                    <span className="text-xs font-semibold text-primary-600 group-hover:underline">Details →</span>
+                    <div className="flex flex-wrap gap-3 text-xs font-semibold">
+                      <Link href={`/products/${p.slug}`} className="text-primary-600 hover:underline">Details →</Link>
+                      <Link href={`/products/${p.slug}#buy-now`} className="text-gray-900 hover:underline">Buy Online →</Link>
+                    </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </section>
