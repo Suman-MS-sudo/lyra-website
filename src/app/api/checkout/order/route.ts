@@ -6,21 +6,55 @@ import {
   getRazorpayInstance,
   parseCheckoutPayload,
 } from "@/lib/razorpay";
+import { getProductBySlug } from "@/lib/data";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   try {
     const payload = await request.json();
+    const body = payload as Record<string, unknown>;
     const { product, quantity, customer } = parseCheckoutPayload(payload);
-    const gstRate = product.category === "napkin" ? 0 : undefined;
-    const { subtotal, gst, total, amountPaise } = calculateOrderAmounts(
-      product.discountedPrice,
-      quantity,
-      gstRate
-    );
     const razorpay = getRazorpayInstance();
     const { keyId } = getRazorpayCredentials();
+
+    // ── Multi-item cart: calculate totals across all items ──────────────────
+    let subtotal: number;
+    let gst: number;
+    let total: number;
+    let amountPaise: number;
+
+    const rawCartItems = Array.isArray(body.cartItems)
+      ? (body.cartItems as Array<{ slug?: string; quantity?: number; unitPrice?: number }>)
+      : null;
+
+    if (rawCartItems && rawCartItems.length > 0) {
+      subtotal = 0;
+      let taxableSubtotal = 0;
+
+      for (const item of rawCartItems) {
+        const itemProduct = typeof item.slug === "string" ? getProductBySlug(item.slug) : null;
+        const unitPrice = itemProduct?.discountedPrice ?? Number(item.unitPrice ?? 0);
+        const qty = Math.max(1, Number(item.quantity ?? 1));
+        const lineTotal = unitPrice * qty;
+        subtotal += lineTotal;
+        if (itemProduct?.category !== "napkin") {
+          taxableSubtotal += lineTotal;
+        }
+      }
+
+      gst = Math.round(taxableSubtotal * 0.18);
+      total = subtotal + gst;
+      amountPaise = total * 100;
+    } else {
+      // Single-product purchase (ProductPurchasePanel)
+      const gstRate = product.category === "napkin" ? 0 : undefined;
+      ({ subtotal, gst, total, amountPaise } = calculateOrderAmounts(
+        product.discountedPrice,
+        quantity,
+        gstRate
+      ));
+    }
 
     const order = await razorpay.orders.create({
       amount: amountPaise,
