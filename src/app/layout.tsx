@@ -1,10 +1,11 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import FloatingActionButtons from "@/components/FloatingActionButtons";
 import { CartProvider } from "@/context/CartContext";
 import CartDrawer from "@/components/CartDrawer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -181,6 +182,7 @@ export default function RootLayout({
           <CartDrawer />
           <FloatingActionButtons />
         </CartProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
