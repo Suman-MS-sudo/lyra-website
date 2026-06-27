@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
 import Image from "next/image";
-import { useCart } from "@/context/CartContext";
 import { products } from "@/lib/data";
 
 type Product = {
@@ -140,111 +138,14 @@ const napkins: Product[] = [
   },
 ];
 
-function CartSection({ slug }: { slug: string }) {
-  const { addToCart, items, updateQuantity } = useCart();
-  const fullProduct = products.find((p) => p.slug === slug);
-  const cartItem = items.find((i) => i.product.slug === slug);
-  const [added, setAdded] = useState(false);
-
-  if (!fullProduct) return null;
-
-  const isNapkin = fullProduct?.category === "napkin";
-
-  function handleAdd() {
-    addToCart(fullProduct!, isNapkin ? 100 : 1);
-    setAdded(true);
-    setTimeout(() => setAdded(false), 1800);
-  }
-
-  /* ── In-cart state: show qty stepper ── */
-  if (cartItem) {
-    return (
-      <div className="space-y-2">
-        {isNapkin ? (
-          <div className="flex items-center gap-2 rounded-2xl border-2 border-primary-500 bg-primary-50 px-4 py-2.5">
-            <span className="text-xs font-semibold text-primary-700 flex-shrink-0">Qty</span>
-            <input
-              type="number"
-              min={100}
-              step={100}
-              value={cartItem.quantity}
-              onChange={(e) => { const v = parseInt(e.target.value); if (!isNaN(v) && v >= 1) updateQuantity(slug, v); }}
-              onBlur={(e) => { const v = parseInt(e.target.value) || 100; updateQuantity(slug, Math.max(100, Math.round(v / 100) * 100)); }}
-              className="flex-1 min-w-0 text-center text-sm font-bold text-primary-800 bg-transparent border-none outline-none"
-            />
-            <span className="text-xs font-semibold text-primary-600 flex-shrink-0">pcs</span>
-          </div>
-        ) : (
-          <div className="flex items-center rounded-2xl border-2 border-primary-500 bg-primary-50 overflow-hidden">
-            <button
-              onClick={() => updateQuantity(slug, cartItem.quantity - 1)}
-              className="px-4 py-3 font-bold text-lg text-primary-700 hover:bg-primary-100 transition-colors"
-              aria-label="Decrease quantity"
-            >
-              −
-            </button>
-            <span className="flex-1 text-center text-sm font-bold text-primary-800">
-              {cartItem.quantity} in cart
-            </span>
-            <button
-              onClick={() => updateQuantity(slug, cartItem.quantity + 1)}
-              className="px-4 py-3 font-bold text-lg text-primary-700 hover:bg-primary-100 transition-colors"
-              aria-label="Increase quantity"
-            >
-              +
-            </button>
-          </div>
-        )}
-        <div className="grid grid-cols-2 gap-2">
-          <Link
-            href="/cart"
-            className="py-2.5 text-center text-xs font-bold text-primary-700 bg-primary-50 border border-primary-200 rounded-xl hover:bg-primary-100 transition-colors"
-          >
-            Go to Cart →
-          </Link>
-          <Link
-            href={`/products/${slug}#buy-now`}
-            className="py-2.5 text-center text-xs font-bold text-gray-700 bg-gray-50 border border-gray-200 rounded-xl hover:bg-gray-100 transition-colors"
-          >
-            Buy Now →
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  /* ── Default: Add to Cart button ── */
+function EnquiryButton({ slug }: { slug: string }) {
   return (
     <div className="space-y-2">
-      <button
-        onClick={handleAdd}
-        className={`w-full py-3.5 flex items-center justify-center gap-2 text-sm font-bold rounded-2xl transition-all duration-300 shadow-md ${
-          added
-            ? "bg-green-500 text-white shadow-green-200/50 scale-[0.99]"
-            : "bg-gradient-to-r from-primary-600 to-pink-500 hover:from-primary-700 hover:to-pink-600 text-white hover:shadow-lg hover:shadow-primary-200/40 hover:scale-[1.02] active:scale-[0.98]"
-        }`}
-      >
-        {added ? (
-          <>
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-            Added to Cart!
-          </>
-        ) : (
-          <>
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-            Add to Cart
-          </>
-        )}
-      </button>
       <Link
-        href={`/products/${slug}#buy-now`}
-        className="block w-full py-2.5 text-center text-xs font-semibold text-gray-500 border border-gray-200 rounded-xl hover:bg-gray-50 hover:text-gray-800 transition-colors"
+        href={`/products/${slug}#enquiry`}
+        className="block w-full py-3.5 text-center text-sm font-bold rounded-2xl bg-gradient-to-r from-primary-600 to-pink-500 hover:from-primary-700 hover:to-pink-600 text-white transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
       >
-        Buy Now with Razorpay →
+        Send Enquiry for Rate
       </Link>
     </div>
   );
@@ -351,21 +252,20 @@ function ProductCard({
         <div className="mt-6 pt-5 border-t border-gray-200/60">
           <div className="flex items-end justify-between mb-4">
             <div className="flex flex-col">
-              <p className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">{product.price}</p>
-              <p className="text-xs text-gray-500 mt-0.5 font-medium">excl. 18% GST</p>
+              <p className="text-sm font-semibold text-primary-600">Contact for pricing</p>
             </div>
             <Link
               href={`/products/${product.slug}`}
               className="flex items-center gap-1 text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors group/link"
             >
-              Details 
+              Details
               <svg className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
               </svg>
             </Link>
           </div>
-          
-          <CartSection slug={product.slug} />
+
+          <EnquiryButton slug={product.slug} />
         </div>
       </div>
     </motion.div>

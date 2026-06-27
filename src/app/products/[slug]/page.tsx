@@ -212,18 +212,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               <p className="mt-2 text-sm text-gray-400 font-mono">{product.code}</p>
               <p className="mt-4 text-lg text-gray-600 leading-relaxed">{product.description}</p>
 
-              {/* Price block */}
-              <div className="mt-6 flex items-end gap-4 flex-wrap">
-                <div>
-                  <p className="text-4xl font-extrabold text-gray-900 tracking-tight">
-                    ₹{product.discountedPrice.toLocaleString("en-IN")}
-                  </p>
-                  <p className="text-sm text-gray-400 mt-1">+ 18% GST applicable &nbsp;·&nbsp; 1-Year Warranty</p>
-                </div>
-              </div>
-
               {/* Trust badges */}
-              <div className="mt-5 flex flex-wrap gap-3 text-sm">
+              <div className="mt-6 flex flex-wrap gap-3 text-sm">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ 1-Year Warranty</span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Pan-India Delivery</span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 text-purple-700 rounded-full border border-purple-200 font-medium">✓ Free Installation Support</span>
@@ -232,10 +222,10 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               {/* CTA buttons */}
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
-                  href="#buy-now"
-                  className="px-6 py-3 rounded-xl bg-gray-900 text-white font-bold text-sm hover:bg-gray-800 shadow hover:shadow-lg transition-all"
+                  href="#enquiry"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 to-pink-500 text-white font-bold text-sm hover:from-primary-700 hover:to-pink-600 shadow hover:shadow-lg transition-all"
                 >
-                  Buy Online with Razorpay
+                  Send Enquiry for Rate
                 </Link>
                 <Link
                   href={`https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20${encodeURIComponent(product.fullName)}.%20Please%20share%20pricing%20and%20delivery%20details.`}
@@ -283,7 +273,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               <div className="absolute bottom-6 left-6 right-6 text-white z-10">
                 <p className="text-lg lg:text-xl font-bold">{product.name}</p>
                 <p className="text-white/80 text-sm mt-1">{product.tagline}</p>
-                <p className="mt-2 text-2xl lg:text-3xl font-extrabold">₹{product.discountedPrice.toLocaleString("en-IN")}</p>
+                <p className="mt-2 text-sm font-semibold text-white/70">Contact us for pricing</p>
               </div>
             </div>
           </div>
