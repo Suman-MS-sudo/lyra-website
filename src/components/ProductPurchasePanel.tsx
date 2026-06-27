@@ -77,7 +77,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
               <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary-500">Send Enquiry</p>
               <h2 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">Get Rate & Availability Info</h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-600 sm:text-base">
-                Fill in your details and we'll send you pricing, GST details and delivery timelines for <strong>{product.fullName}</strong> within 24 hours.
+                Fill in your details and we&apos;ll send you pricing, GST details and delivery timelines for <strong>{product.fullName}</strong> within 24 hours.
               </p>
             </div>
             <div className="rounded-2xl bg-green-50 px-4 py-3 text-sm font-semibold text-green-700">
@@ -160,7 +160,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
           {success && (
             <div className="mt-6 rounded-2xl border border-green-200 bg-green-50 px-4 py-4 text-sm text-green-800">
               <p className="font-bold text-green-900">Enquiry sent successfully!</p>
-              <p className="mt-1">We've received your rate enquiry. Our team will contact you within 24 hours with pricing and delivery details.</p>
+              <p className="mt-1">We&apos;ve received your rate enquiry. Our team will contact you within 24 hours with pricing and delivery details.</p>
             </div>
           )}
 
