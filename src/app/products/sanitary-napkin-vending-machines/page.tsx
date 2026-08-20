@@ -27,6 +27,11 @@ export const metadata: Metadata = {
     description: "Compare all 6 models: push-button, coin, QR/UPI, RFID, WiFi and Ethernet. Prices from ₹9,000. Pan-India delivery.",
     url: `${SITE.url}/products/sanitary-napkin-vending-machines`,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
+    description: "Compare all 6 models: push-button, coin, QR/UPI, RFID, WiFi and Ethernet. Prices from ₹9,000. Pan-India delivery.",
+  },
 };
 
 const schema = {

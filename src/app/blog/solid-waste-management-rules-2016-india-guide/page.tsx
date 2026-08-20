@@ -26,6 +26,11 @@ export const metadata: Metadata = {
     description: "India's SWM Rules 2016 legally mandate segregated menstrual waste disposal. Non-compliance risks fines. Here's what your institution must do.",
     url: `${SITE.url}/blog/solid-waste-management-rules-2016-india-guide`,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Solid Waste Management Rules 2016 — Menstrual Waste Compliance Guide India",
+    description: "India's SWM Rules 2016 legally mandate segregated menstrual waste disposal. Non-compliance risks fines. Here's what your institution must do.",
+  },
 };
 
 const articleSchema = {

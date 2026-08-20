@@ -24,6 +24,11 @@ export const metadata: Metadata = {
     description: "Micro, Mini & Maxi incinerators. CPCB & SWM compliant. Prices from ₹9,500. Pan-India delivery from Chennai.",
     url: `${SITE.url}/products/sanitary-napkin-incinerators`,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sanitary Napkin Incinerators — All Models India | Lyra Enterprises",
+    description: "Micro, Mini & Maxi incinerators. CPCB & SWM compliant. Prices from ₹9,500. Pan-India delivery from Chennai.",
+  },
 };
 
 const schema = {

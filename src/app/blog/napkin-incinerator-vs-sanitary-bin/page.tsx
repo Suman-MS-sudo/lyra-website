@@ -17,6 +17,16 @@ export const metadata: Metadata = {
     "CPCB napkin disposal india",
   ],
   alternates: { canonical: `${SITE.url}/blog/napkin-incinerator-vs-sanitary-bin` },
+  openGraph: {
+    title: "Sanitary Napkin Incinerator vs Bio Bin — Which is Better for India?",
+    description: "Bio bins create infection risk and require manual disposal. Incinerators eliminate waste completely. See the full comparison.",
+    url: `${SITE.url}/blog/napkin-incinerator-vs-sanitary-bin`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sanitary Napkin Incinerator vs Bio Bin — Which is Better for India?",
+    description: "Bio bins create infection risk and require manual disposal. Incinerators eliminate waste completely. See the full comparison.",
+  },
 };
 
 const articleSchema = {

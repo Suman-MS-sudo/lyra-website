@@ -17,6 +17,16 @@ export const metadata: Metadata = {
     "smart vending machine vs coin",
   ],
   alternates: { canonical: `${SITE.url}/blog/upi-vs-coin-vending-machine` },
+  openGraph: {
+    title: "UPI QR vs Coin Vending Machine — Which One Should You Buy? India 2026",
+    description: "Coin machines are cheaper upfront, smart UPI machines pay back in operational savings. Here's a full comparison to help you decide.",
+    url: `${SITE.url}/blog/upi-vs-coin-vending-machine`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "UPI QR vs Coin Vending Machine — Which One Should You Buy? India 2026",
+    description: "Coin machines are cheaper upfront, smart UPI machines pay back in operational savings. Here's a full comparison to help you decide.",
+  },
 };
 
 const articleSchema = {

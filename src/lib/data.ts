@@ -1,7 +1,7 @@
 ﻿export const SITE = {
   name: "Lyra Enterprises",
   tagline: "#1 Vending Machine & Incinerator Manufacturer India",
-  url: "https://www.lyraenterprise.co.in",
+  url: "https://lyraenterprise.co.in",
   phone: "+91-8122378860",
   phoneDisplay: "+91-81223 78860",
   email: "sales@lyraenterprise.co.in",
@@ -12,7 +12,8 @@
   social: {
     instagram: "https://www.instagram.com/lyraenterprises_/",
     facebook: "https://www.facebook.com/profile.php?id=61578649496806",
-    linkedin: "https://www.linkedin.com/company/lyra-enterprises/"
+    linkedin: "https://www.linkedin.com/company/lyra-enterprises/",
+    indiamart: "https://www.indiamart.com/lyraenterprises-chennai/"
   }
 };
 

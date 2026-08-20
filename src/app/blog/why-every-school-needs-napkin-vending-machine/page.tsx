@@ -22,6 +22,11 @@ export const metadata: Metadata = {
     description: "36% of Indian girls miss school during menstruation. Vending machines solve this directly. See how.",
     url: `${SITE.url}/blog/why-every-school-needs-napkin-vending-machine`,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Why Every School in India Needs a Sanitary Napkin Vending Machine",
+    description: "36% of Indian girls miss school during menstruation. Vending machines solve this directly. See how.",
+  },
 };
 
 const articleSchema = {

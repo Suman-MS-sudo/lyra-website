@@ -25,6 +25,11 @@ export const metadata: Metadata = {
     description: "Browse coin, UPI, WiFi vending machines and compact/high-capacity incinerators. Pan-India delivery from Chennai manufacturer.",
     url: `${SITE.url}/products`,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "All Products — Lyra Enterprises Vending Machines & Incinerators",
+    description: "Browse coin, UPI, WiFi vending machines and compact/high-capacity incinerators. Pan-India delivery from Chennai manufacturer.",
+  },
 };
 
 const productSchema = {

@@ -16,6 +16,18 @@ export const metadata: Metadata = {
     "sanitary napkin machine schools",
   ],
   alternates: { canonical: `${SITE.url}/blog` },
+  openGraph: {
+    title: "Blog — Menstrual Hygiene, Vending Machines & Incinerators India | Lyra Enterprises",
+    description:
+      "Expert articles on menstrual hygiene management, vending machine buying guides and incinerator comparisons. By Lyra Enterprises — India's #1 manufacturer.",
+    url: `${SITE.url}/blog`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog — Menstrual Hygiene, Vending Machines & Incinerators India | Lyra Enterprises",
+    description:
+      "Expert articles on menstrual hygiene management, vending machine buying guides and incinerator comparisons. By Lyra Enterprises — India's #1 manufacturer.",
+  },
 };
 
 export default function BlogPage() {

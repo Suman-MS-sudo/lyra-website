@@ -8,6 +8,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "lyraenterprise.co.in",
+      },
+      {
+        protocol: "https",
         hostname: "www.lyraenterprise.co.in",
       },
       {
@@ -15,6 +19,16 @@ const nextConfig = {
         hostname: "cdni.iconscout.com",
       },
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.lyraenterprise.co.in" }],
+        destination: "https://lyraenterprise.co.in/:path*",
+        permanent: true,
+      },
+    ];
   },
 };
 

@@ -1,5 +1,6 @@
 ﻿import Link from "next/link";
 import Image from "next/image";
+import { SITE } from "@/lib/data";
 
 export default function PageFooter() {
   return (
@@ -81,6 +82,7 @@ export default function PageFooter() {
           <div className="flex gap-4">
             <Link href="tel:+918122378860" className="hover:text-primary-300 transition-colors">+91-81223 78860</Link>
             <Link href="mailto:sales@lyraenterprise.co.in" className="hover:text-primary-300 transition-colors">sales@lyraenterprise.co.in</Link>
+            <a href={SITE.social.indiamart} target="_blank" rel="noopener noreferrer" className="hover:text-primary-300 transition-colors">IndiaMART</a>
           </div>
         </div>
       </div>

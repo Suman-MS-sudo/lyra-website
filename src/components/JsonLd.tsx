@@ -4,7 +4,7 @@
  * These schemas help Google understand the site and improve rich results ranking.
  */
 
-const SITE_URL = "https://www.lyraenterprise.co.in";
+const SITE_URL = "https://lyraenterprise.co.in";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -70,6 +70,7 @@ const organizationSchema = {
     "https://www.facebook.com/profile.php?id=61578649496806",
     "https://www.instagram.com/lyraenterprises_/",
     "https://www.linkedin.com/company/lyra-enterprises/",
+    "https://www.indiamart.com/lyraenterprises-chennai/",
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -93,6 +94,26 @@ const organizationSchema = {
   openingHours: "Mo-Sa 09:00-18:00",
   paymentAccepted: ["Cash", "UPI", "Bank Transfer", "Cheque"],
   currenciesAccepted: "INR",
+  review: [
+    {
+      "@type": "Review",
+      reviewBody:
+        "Lyra's vending machine has been a game-changer for our female employees. Reliable, discreet, and zero maintenance issues in 2 years.",
+      author: { "@type": "Person", name: "Facilities Manager, Leading IT Corporation, Chennai" },
+    },
+    {
+      "@type": "Review",
+      reviewBody:
+        "We installed Lyra machines in all 12 women's restrooms across campus. The students love it, and the college administration is extremely satisfied.",
+      author: { "@type": "Person", name: "Principal, Women's College, Tamil Nadu" },
+    },
+    {
+      "@type": "Review",
+      reviewBody:
+        "Exceptional product quality and after-sales support. The IoT dashboard helps us monitor all machines remotely. Highly recommended.",
+      author: { "@type": "Person", name: "Hospital Administrator, Multi-specialty Hospital, Bangalore" },
+    },
+  ],
 };
 
 const vendingMachineProducts = [
@@ -326,6 +347,22 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text: "All Lyra sanitary napkin vending machines hold 30 napkins per load. They are designed to accommodate standard-size sanitary napkins and can be refilled easily by maintenance staff. Dimensions are 700×160×160 mm fitting standard wall spaces.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Which is the best sanitary napkin vending machine manufacturer in South India?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Lyra Enterprises, headquartered in Chennai, Tamil Nadu, is the leading sanitary napkin vending machine and incinerator manufacturer serving South India — Tamil Nadu, Kerala, Karnataka, Andhra Pradesh and Telangana — with 200+ installations, same-week dispatch, on-site installation support and a 1-year warranty on every machine.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where can I find a sanitary napkin vending machine supplier near me in Chennai, Bengaluru, Kochi or Hyderabad?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Lyra Enterprises manufactures in Chennai and delivers and installs sanitary napkin vending machines and incinerators across Chennai, Coimbatore, Bengaluru/Bangalore, Mysuru, Kochi, Thiruvananthapuram, Hyderabad, Visakhapatnam, Vijayawada and all other major South Indian cities. Call or WhatsApp +91-8122378860 to get connected with the nearest installation team.",
       },
     },
   ],

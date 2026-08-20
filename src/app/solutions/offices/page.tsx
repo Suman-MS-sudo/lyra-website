@@ -28,6 +28,12 @@ export const metadata: Metadata = {
       "Smart, UPI-enabled vending machines for corporate offices, IT parks and factories. POSH-compliant, remote monitoring, usage analytics. From ₹9,000.",
     url: `${SITE.url}/solutions/offices`,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sanitary Napkin Vending Machine for Offices | Lyra Enterprises India",
+    description:
+      "Smart, UPI-enabled vending machines for corporate offices, IT parks and factories. POSH-compliant, remote monitoring, usage analytics. From ₹9,000.",
+  },
 };
 
 const schemaLD = {

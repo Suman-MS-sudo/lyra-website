@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const SITE_URL = "https://www.lyraenterprise.co.in";
+const SITE_URL = "https://lyraenterprise.co.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -76,6 +76,29 @@ export const metadata: Metadata = {
     "women hygiene machine India",
     "girls toilet vending machine",
     "school toilet napkin machine",
+    // South India coverage
+    "sanitary napkin vending machine South India",
+    "sanitary napkin vending machine Tamil Nadu",
+    "sanitary napkin vending machine Kerala",
+    "sanitary napkin vending machine Karnataka",
+    "sanitary napkin vending machine Andhra Pradesh",
+    "sanitary napkin vending machine Telangana",
+    "sanitary napkin incinerator South India",
+    "vending machine manufacturer Bengaluru",
+    "vending machine manufacturer Hyderabad",
+    "vending machine manufacturer Kochi",
+    "vending machine manufacturer Coimbatore",
+    "vending machine manufacturer Vijayawada",
+    // Near-me / local intent
+    "sanitary napkin vending machine near me",
+    "sanitary napkin incinerator near me",
+    "buy sanitary napkin vending machine near me",
+    "napkin vending machine dealer near me",
+    // Best / top intent
+    "best sanitary napkin vending machine manufacturer India",
+    "best sanitary napkin incinerator manufacturer India",
+    "top sanitary napkin vending machine company South India",
+    "No.1 sanitary napkin vending machine manufacturer Chennai",
   ],
 
   authors: [{ name: "Lyra Enterprises", url: SITE_URL }],

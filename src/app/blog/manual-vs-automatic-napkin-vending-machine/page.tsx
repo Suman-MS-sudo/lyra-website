@@ -23,6 +23,11 @@ export const metadata: Metadata = {
     description: "Push Button free-vend machines cost ₹9,000. Coin/UPI automatics start at ₹9,500. Here’s exactly when to choose each — and how to avoid the wrong pick.",
     url: `${SITE.url}/blog/manual-vs-automatic-napkin-vending-machine`,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Manual vs Automatic Sanitary Napkin Vending Machine India 2026",
+    description: "Push Button free-vend machines cost ₹9,000. Coin/UPI automatics start at ₹9,500. Here’s exactly when to choose each — and how to avoid the wrong pick.",
+  },
 };
 
 const articleSchema = {
