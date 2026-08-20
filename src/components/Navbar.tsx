@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { useCart } from "@/context/CartContext";
 
 const vendingDropdown = [
   { label: "Push Button", href: "/products/push-button-vending-machine" },
@@ -16,7 +15,7 @@ const vendingDropdown = [
 ];
 
 const EMAIL_MESSAGE = encodeURIComponent(
-  "Hi! I'm interested in Lyra Enterprises' sanitary napkin vending machines and incinerators. Please share more details about your products, pricing, and installation process. Looking forward to hearing from you."
+  "Hi! I'm interested in Lyra Enterprises' sanitary napkin vending machines and incinerators. Please share more details about your products and installation process. Looking forward to hearing from you."
 );
 const incineratorDropdown = [
   { label: "Lyra Micro", href: "/products/lyra-micro-incinerator" },
@@ -74,26 +73,6 @@ function Dropdown({ label, items }: { label: string; items: { label: string; hre
         )}
       </AnimatePresence>
     </div>
-  );
-}
-
-function CartButton({ mobile }: { mobile?: boolean }) {
-  const { totalItems, openDrawer } = useCart();
-  return (
-    <button
-      onClick={openDrawer}
-      aria-label={`Cart (${totalItems} items)`}
-      className={`relative flex items-center justify-center rounded-full transition-colors ${mobile ? "p-2 md:hidden text-gray-700 hover:bg-gray-100" : "p-2 text-gray-700 hover:bg-gray-100"}`}
-    >
-      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-      {totalItems > 0 && (
-        <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-primary-600 text-[10px] font-bold text-white flex items-center justify-center">
-          {totalItems > 9 ? "9+" : totalItems}
-        </span>
-      )}
-    </button>
   );
 }
 
@@ -198,7 +177,6 @@ export default function Navbar() {
             >
               +91-81223 78860
             </Link>
-            <CartButton />
             <Link
               href="#contact"
               className="px-5 py-2.5 text-sm font-semibold text-white bg-gray-900 hover:bg-gray-700 hover:text-white rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
@@ -208,7 +186,6 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Toggle */}
-          <CartButton mobile />
           <button
             className="md:hidden flex flex-col gap-1.5 p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -288,10 +265,6 @@ export default function Navbar() {
                   <span className="text-[10px] font-bold text-indigo-700 uppercase tracking-wide">Email</span>
                 </a>
               </div>
-              <Link href="/cart" onClick={() => setMobileOpen(false)} className="mt-2 flex items-center justify-center gap-2 py-3 rounded-xl bg-gray-50 border border-gray-200 text-sm font-semibold text-gray-700 hover:bg-gray-100 transition-colors">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                View Cart
-              </Link>
               <Link href="#contact" onClick={() => setMobileOpen(false)} className="mt-2 mb-1 px-5 py-3 text-sm font-semibold text-white bg-gray-900 hover:bg-gray-700 hover:text-white rounded-full text-center shadow-lg transition-all duration-300">
                 Get a Quote
               </Link>

@@ -22,7 +22,7 @@ export default function ShippingDeliveryPolicyPage() {
       <p>Lyra Enterprises ships products across India, subject to transporter availability and delivery access at the destination address.</p>
 
       <h2>Dispatch Timeline</h2>
-      <p>Standard orders are typically dispatched within 1 to 2 business days after payment confirmation and order verification. Bulk, customized or out-of-stock items may require additional lead time.</p>
+      <p>Standard orders are typically dispatched within 1 to 2 business days after order confirmation. Bulk, customized or out-of-stock items may require additional lead time.</p>
 
       <h2>Transit Timeline</h2>
       <p>Typical transit time is 3 to 7 business days, depending on destination city, transporter schedule and local conditions.</p>

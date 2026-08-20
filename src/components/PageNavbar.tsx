@@ -4,27 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { useCart } from "@/context/CartContext";
-
-function CartIconBtn() {
-  const { totalItems, openDrawer } = useCart();
-  return (
-    <button
-      onClick={openDrawer}
-      aria-label={`Cart (${totalItems} items)`}
-      className="relative p-2 text-gray-700 hover:bg-gray-100 rounded-full transition-colors"
-    >
-      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-      {totalItems > 0 && (
-        <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-primary-600 text-[10px] font-bold text-white flex items-center justify-center">
-          {totalItems > 9 ? "9+" : totalItems}
-        </span>
-      )}
-    </button>
-  );
-}
 
 export default function PageNavbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -50,7 +29,6 @@ export default function PageNavbar() {
               <Link href="/products/sanitary-napkin-vending-machines" className="hover:text-primary-600 transition-colors">Vending Machines</Link>
               <Link href="/products/sanitary-napkin-incinerators" className="hover:text-primary-600 transition-colors">Incinerators</Link>
               <Link href="/blog" className="hover:text-primary-600 transition-colors">Blog</Link>
-              <CartIconBtn />
               <Link href="/#contact" className="px-5 py-2 bg-gradient-to-r from-primary-600 to-pink-500 text-white rounded-full shadow hover:-translate-y-0.5 transition-all duration-200">
                 Get Quote
               </Link>
@@ -58,7 +36,6 @@ export default function PageNavbar() {
 
             {/* Mobile: CTA + Hamburger */}
             <div className="md:hidden flex items-center gap-2">
-              <CartIconBtn />
               <Link href="/#contact" className="px-3 py-1.5 bg-gradient-to-r from-primary-600 to-pink-500 text-white text-xs font-semibold rounded-full">
                 Get Quote
               </Link>
