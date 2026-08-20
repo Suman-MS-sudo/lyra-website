@@ -143,6 +143,15 @@ export default function Footer() {
               >
                 IM
               </a>
+              <a
+                href={SITE.social.justdial}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-red-600/80 transition-all duration-200 text-[10px] font-bold"
+                aria-label="Justdial"
+              >
+                JD
+              </a>
             </div>
           </div>
 

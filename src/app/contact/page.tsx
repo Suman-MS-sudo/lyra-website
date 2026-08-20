@@ -37,6 +37,7 @@ export default function ContactPage() {
         <li><strong>Address:</strong> 10/21, Vasuki Street, Cholapuram, Ambattur, Chennai - 600053, Tamil Nadu, India</li>
         <li><strong>Website:</strong> https://lyraenterprise.co.in</li>
         <li><strong>IndiaMART:</strong> <Link href={SITE.social.indiamart} target="_blank" rel="noopener noreferrer">lyraenterprises-chennai on IndiaMART</Link> (GST verified, TrustSEAL supplier)</li>
+        <li><strong>Justdial:</strong> <Link href={SITE.social.justdial} target="_blank" rel="noopener noreferrer">Lyra Enterprises on Justdial</Link> (Ambattur, Chennai)</li>
       </ul>
 
       <h2>Support Hours</h2>

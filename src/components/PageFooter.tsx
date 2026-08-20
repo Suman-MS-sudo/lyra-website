@@ -83,6 +83,7 @@ export default function PageFooter() {
             <Link href="tel:+918122378860" className="hover:text-primary-300 transition-colors">+91-81223 78860</Link>
             <Link href="mailto:sales@lyraenterprise.co.in" className="hover:text-primary-300 transition-colors">sales@lyraenterprise.co.in</Link>
             <a href={SITE.social.indiamart} target="_blank" rel="noopener noreferrer" className="hover:text-primary-300 transition-colors">IndiaMART</a>
+            <a href={SITE.social.justdial} target="_blank" rel="noopener noreferrer" className="hover:text-primary-300 transition-colors">Justdial</a>
           </div>
         </div>
       </div>

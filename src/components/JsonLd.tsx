@@ -71,6 +71,7 @@ const organizationSchema = {
     "https://www.instagram.com/lyraenterprises_/",
     "https://www.linkedin.com/company/lyra-enterprises/",
     "https://www.indiamart.com/lyraenterprises-chennai/",
+    "https://www.justdial.com/Chennai/Lyra-Enterprises-Municipal-School-Ambattur/044PXX44-XX44-260521175245-A8M4_BZDET",
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",

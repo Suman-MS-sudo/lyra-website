@@ -13,7 +13,8 @@
     instagram: "https://www.instagram.com/lyraenterprises_/",
     facebook: "https://www.facebook.com/profile.php?id=61578649496806",
     linkedin: "https://www.linkedin.com/company/lyra-enterprises/",
-    indiamart: "https://www.indiamart.com/lyraenterprises-chennai/"
+    indiamart: "https://www.indiamart.com/lyraenterprises-chennai/",
+    justdial: "https://www.justdial.com/Chennai/Lyra-Enterprises-Municipal-School-Ambattur/044PXX44-XX44-260521175245-A8M4_BZDET"
   }
 };
 
