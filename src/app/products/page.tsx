@@ -8,7 +8,7 @@ import { vendingMachines, incinerators, SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "All Sanitary Napkin Vending Machines & Incinerators — Lyra Enterprises India",
   description:
-    "Browse all Lyra Enterprises products — sanitary napkin vending machines (coin, QR/UPI, RFID, WiFi, IoT) and incinerators. Prices from ₹9,000. 1-year warranty. Pan-India delivery. Manufacturer in Chennai. Call +91-8122378860.",
+    "Browse all Lyra Enterprises products — sanitary napkin vending machines (coin, QR/UPI, RFID, WiFi, IoT) and incinerators. 1-year warranty. Pan-India delivery. Manufacturer in Chennai. Call +91-8122378860.",
   keywords: [
     "sanitary napkin vending machine india",
     "napkin vending machine price india",
@@ -91,7 +91,7 @@ export default function ProductsPage() {
                   <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
                   <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug">{p.tagline}</p>
                   <div className="flex items-end gap-2">
-                    <span className="text-xl font-bold text-primary-600">₹{p.price.toLocaleString("en-IN")}</span>
+                    <span className="text-sm font-semibold text-primary-600">Contact for pricing</span>
                   </div>
                   <div className="mt-4 flex flex-wrap gap-3">
                     <Link href={`/products/${p.slug}`} className="text-xs font-semibold text-primary-600 hover:underline">
@@ -127,7 +127,7 @@ export default function ProductsPage() {
                   <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
                   <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug">{p.tagline}</p>
                   <div className="flex items-end gap-2">
-                    <span className="text-xl font-bold text-primary-600">₹{p.price.toLocaleString("en-IN")}</span>
+                    <span className="text-sm font-semibold text-primary-600">Contact for pricing</span>
                   </div>
                   <div className="mt-4 flex flex-wrap gap-3">
                     <Link href={`/products/${p.slug}`} className="text-xs font-semibold text-primary-600 hover:underline">

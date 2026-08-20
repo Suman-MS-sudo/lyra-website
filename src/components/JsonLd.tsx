@@ -90,7 +90,6 @@ const organizationSchema = {
     "Women Health Products",
   ],
   slogan: "Empowering Women's Health Across India",
-  priceRange: "₹₹",
   openingHours: "Mo-Sa 09:00-18:00",
   paymentAccepted: ["Cash", "UPI", "Bank Transfer", "Cheque"],
   currenciesAccepted: "INR",
@@ -220,9 +219,6 @@ const productListSchema = {
         image: `${SITE_URL}/images/og-image.jpg`,
         offers: {
           "@type": "Offer",
-          priceCurrency: "INR",
-          price: p.price,
-          priceValidUntil: "2027-03-31",
           availability: "https://schema.org/InStock",
           seller: { "@id": `${SITE_URL}/#organization` },
           url: `${SITE_URL}/#contact`,
@@ -269,9 +265,6 @@ const productListSchema = {
         image: `${SITE_URL}/images/og-image.jpg`,
         offers: {
           "@type": "Offer",
-          priceCurrency: "INR",
-          price: p.price,
-          priceValidUntil: "2027-03-31",
           availability: "https://schema.org/InStock",
           seller: { "@id": `${SITE_URL}/#organization` },
           url: `${SITE_URL}/#contact`,
@@ -290,7 +283,7 @@ const faqSchema = {
       name: "What is the price of a sanitary napkin vending machine in India?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Lyra Enterprises sanitary napkin vending machines start from ₹9,000 for the push-button model up to ₹24,500 for advanced WiFi/UPI models. Prices vary based on payment mode (coin, UPI, WiFi, IoT). Contact us at +91-8122378860 for bulk pricing.",
+        text: "Lyra Enterprises sanitary napkin vending machine pricing varies by model — push-button, coin, UPI, WiFi and IoT. Contact Lyra Enterprises at +91-8122378860 for current pricing.",
       },
     },
     {
@@ -314,7 +307,7 @@ const faqSchema = {
       name: "What is a sanitary napkin incinerator and how much does it cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A sanitary napkin incinerator is a machine that safely burns and disposes of used sanitary pads, maintaining hygiene in toilet facilities. Lyra Enterprises incinerators start from ₹9,500 (Micro) to ₹30,000 (Maxi high-capacity). They come in wall-mountable designs with digital temperature control.",
+        text: "A sanitary napkin incinerator is a machine that safely burns and disposes of used sanitary pads, maintaining hygiene in toilet facilities. Lyra Enterprises offers Micro, Mini and Maxi high-capacity models in wall-mountable designs with digital temperature control. Contact Lyra Enterprises at +91-8122378860 for current pricing.",
       },
     },
     {

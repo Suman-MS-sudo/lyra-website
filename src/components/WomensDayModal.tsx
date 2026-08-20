@@ -116,13 +116,13 @@ export default function WomensDayModal() {
               {/* Offer */}
               <div className="flex items-center gap-4 mb-6">
                 <div className="flex-shrink-0 px-5 py-4 rounded-2xl bg-white text-center shadow-lg">
-                  <p className="text-[#A0268A] text-xs font-bold uppercase tracking-wider mb-1">Save</p>
-                  <p className="font-sans text-4xl font-black text-[#6B1FA8] leading-none">₹1,000</p>
+                  <p className="text-[#A0268A] text-xs font-bold uppercase tracking-wider mb-1">Special</p>
+                  <p className="font-sans text-2xl sm:text-3xl font-black text-[#6B1FA8] leading-none">Offer</p>
                   <p className="text-[#A0268A]/70 text-xs font-semibold mt-1">per machine</p>
                 </div>
                 <p className="text-pink-100 text-sm sm:text-base leading-relaxed">
                   Celebrate Women&apos;s Day with dignity. Get{" "}
-                  <strong className="text-white">₹1,000 off</strong> on all
+                  <strong className="text-white">a special discount</strong> on all
                   Vending Machines &amp; Incinerators. Valid till{" "}
                   <strong className="text-white">March 8, 2026</strong>.
                 </p>

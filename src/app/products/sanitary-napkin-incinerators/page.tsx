@@ -8,7 +8,7 @@ import { incinerators, SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Sanitary Napkin Incinerators — All Models & Prices India | Lyra Enterprises",
   description:
-    "Buy sanitary napkin incinerators in India. Compare Micro (1–5), Mini (5–15) and Maxi (25–50 napkins/cycle). CPCB & SWM compliant. Prices from ₹9,500. Pan-India delivery. Call +91-8122378860.",
+    "Buy sanitary napkin incinerators in India. Compare Micro (1–5), Mini (5–15) and Maxi (25–50 napkins/cycle). CPCB & SWM compliant. Pan-India delivery. Call +91-8122378860.",
   keywords: [
     "sanitary napkin incinerator india",
     "napkin incinerator price india",
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/products/sanitary-napkin-incinerators` },
   openGraph: {
     title: "Sanitary Napkin Incinerators — All Models India | Lyra Enterprises",
-    description: "Micro, Mini & Maxi incinerators. CPCB & SWM compliant. Prices from ₹9,500. Pan-India delivery from Chennai.",
+    description: "Micro, Mini & Maxi incinerators. CPCB & SWM compliant. Pan-India delivery from Chennai.",
     url: `${SITE.url}/products/sanitary-napkin-incinerators`,
   },
   twitter: {
     card: "summary_large_image",
     title: "Sanitary Napkin Incinerators — All Models India | Lyra Enterprises",
-    description: "Micro, Mini & Maxi incinerators. CPCB & SWM compliant. Prices from ₹9,500. Pan-India delivery from Chennai.",
+    description: "Micro, Mini & Maxi incinerators. CPCB & SWM compliant. Pan-India delivery from Chennai.",
   },
 };
 
@@ -110,11 +110,11 @@ export default function IncineratorsPage() {
                   </ul>
                   <div className="mt-5 pt-4 border-t border-gray-100 flex items-end justify-between">
                     <div>
-                      <p className="text-xl font-bold text-primary-600">₹{p.price.toLocaleString("en-IN")}</p>
+                      <p className="text-sm font-semibold text-primary-600">Contact for pricing</p>
                     </div>
                     <div className="flex flex-wrap gap-3 text-xs font-semibold">
                       <Link href={`/products/${p.slug}`} className="text-primary-600 hover:underline">Details →</Link>
-                      <Link href={`/products/${p.slug}#buy-now`} className="text-gray-900 hover:underline">Buy Online →</Link>
+                      <Link href={`/products/${p.slug}#enquiry`} className="text-gray-900 hover:underline">Enquire →</Link>
                     </div>
                   </div>
                 </div>
