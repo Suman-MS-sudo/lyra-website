@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Lyra Enterprises",
   },
   description:
-    "Buy sanitary napkin vending machines & incinerators from Lyra Enterprises — India's #1 manufacturer based in Chennai. Coin, UPI, WiFi & IoT models. Trusted by 200+ schools, hospitals & offices across India. Best price guaranteed.",
+    "Buy sanitary napkin vending machines & incinerators from Lyra Enterprises — India's #1 manufacturer based in Chennai. Coin, UPI, WiFi & IoT models. Trusted by 200+ schools, hospitals & offices across India.",
 
   keywords: [
     // Primary product keywords
@@ -113,7 +113,7 @@ export const metadata: Metadata = {
     title:
       "Lyra Enterprises | #1 Vending Machine & Incinerator Manufacturer India",
     description:
-      "India's most trusted manufacturer of sanitary napkin vending machines & incinerators. Coin, UPI, WiFi & IoT models. 200+ installations across India. Get best price from Chennai.",
+      "India's most trusted manufacturer of sanitary napkin vending machines & incinerators. Coin, UPI, WiFi & IoT models. 200+ installations across India. Manufactured in Chennai.",
     url: SITE_URL,
     siteName: "Lyra Enterprises",
     locale: "en_IN",
@@ -133,7 +133,7 @@ export const metadata: Metadata = {
     title:
       "Lyra Enterprises | #1 Vending Machine & Incinerator Manufacturer India",
     description:
-      "Buy sanitary napkin vending machines & incinerators from India's #1 manufacturer. Coin, UPI, WiFi & IoT models. Best price, 200+ installations.",
+      "Buy sanitary napkin vending machines & incinerators from India's #1 manufacturer. Coin, UPI, WiFi & IoT models. 200+ installations across India.",
     images: [`${SITE_URL}/images/og-image.jpg`],
   },
 
@@ -150,8 +150,7 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    // Add your Google Search Console verification token here once you have it
-    // google: "YOUR_GOOGLE_SEARCH_CONSOLE_TOKEN",
+    google: "b80724af728d3dc1",
   },
 
   other: {
