@@ -112,7 +112,7 @@ export default function WomensDayCampaign() {
             <p className="text-pink-100 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl mb-6 sm:mb-8">
               This March, we&apos;re giving back. Get{" "}
               <strong className="text-white underline decoration-pink-300 decoration-2 underline-offset-2">
-                ₹1,000 off
+                a special discount
               </strong>{" "}
               on every Vending Machine and Incinerator — because every woman deserves dignity.
             </p>

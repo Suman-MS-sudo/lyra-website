@@ -8,7 +8,7 @@ import { vendingMachines, SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Sanitary Napkin Vending Machines — All 6 Models & Prices India | Lyra Enterprises",
   description:
-    "Buy sanitary napkin vending machines in India. 6 models: push-button, coin, QR/UPI, RFID, WiFi and Ethernet. Prices from ₹9,000. 1-year warranty. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
+    "Buy sanitary napkin vending machines in India. 6 models: push-button, coin, QR/UPI, RFID, WiFi and Ethernet. 1-year warranty. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
   keywords: [
     "sanitary napkin vending machine india",
     "napkin vending machine price india",
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/products/sanitary-napkin-vending-machines` },
   openGraph: {
     title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
-    description: "Compare all 6 models: push-button, coin, QR/UPI, RFID, WiFi and Ethernet. Prices from ₹9,000. Pan-India delivery.",
+    description: "Compare all 6 models: push-button, coin, QR/UPI, RFID, WiFi and Ethernet. Pan-India delivery.",
     url: `${SITE.url}/products/sanitary-napkin-vending-machines`,
   },
   twitter: {
     card: "summary_large_image",
     title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
-    description: "Compare all 6 models: push-button, coin, QR/UPI, RFID, WiFi and Ethernet. Prices from ₹9,000. Pan-India delivery.",
+    description: "Compare all 6 models: push-button, coin, QR/UPI, RFID, WiFi and Ethernet. Pan-India delivery.",
   },
 };
 
@@ -54,7 +54,6 @@ const comparison = [
   { label: "Cloud Reports", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
   { label: "Touch Display", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
   { label: "IoT Monitoring", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Price", pb: "₹9,000", sc: "₹9,500", qr: "₹15,000", rf: "₹13,000", wifi: "₹22,500", eth: "₹24,500" },
 ];
 
 export default function VendingMachinesPage() {
@@ -74,7 +73,7 @@ export default function VendingMachinesPage() {
             Sanitary Napkin <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">Vending Machines</span>
           </h1>
           <p className="mt-4 text-gray-600 text-lg max-w-2xl">
-          6 models to match every budget and facility — from push-button dispensers to IoT-enabled smart machines with UPI payments and cloud analytics. Prices from ₹9,000. Manufactured in Chennai, delivered across India.
+          6 models to match every budget and facility — from push-button dispensers to IoT-enabled smart machines with UPI payments and cloud analytics. Manufactured in Chennai, delivered across India.
           </p>
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ 1-Year Warranty</span>
@@ -107,11 +106,11 @@ export default function VendingMachinesPage() {
                   </ul>
                   <div className="mt-5 pt-4 border-t border-gray-100 flex items-end justify-between">
                     <div>
-                      <p className="text-xl font-bold text-primary-600">₹{p.price.toLocaleString("en-IN")}</p>
+                      <p className="text-sm font-semibold text-primary-600">Contact for pricing</p>
                     </div>
                     <div className="flex flex-wrap gap-3 text-xs font-semibold">
                       <Link href={`/products/${p.slug}`} className="text-primary-600 hover:underline">Details →</Link>
-                      <Link href={`/products/${p.slug}#buy-now`} className="text-gray-900 hover:underline">Buy Online →</Link>
+                      <Link href={`/products/${p.slug}#enquiry`} className="text-gray-900 hover:underline">Enquire →</Link>
                     </div>
                   </div>
                 </div>

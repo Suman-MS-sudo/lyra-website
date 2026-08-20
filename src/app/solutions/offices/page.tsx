@@ -8,7 +8,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Sanitary Napkin Vending Machine for Offices & Corporates India | Lyra Enterprises",
   description:
-    "Install smart sanitary napkin vending machines in corporate offices. UPI / coin / IoT models. POSH-compliant workplace hygiene. From ₹9,000. GeM vendor. Pan-India delivery.",
+    "Install smart sanitary napkin vending machines in corporate offices. UPI / coin / IoT models. POSH-compliant workplace hygiene. GeM vendor. Pan-India delivery.",
   keywords: [
     "sanitary napkin vending machine for offices india",
     "napkin vending machine for corporate india",
@@ -25,14 +25,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sanitary Napkin Vending Machine for Offices | Lyra Enterprises India",
     description:
-      "Smart, UPI-enabled vending machines for corporate offices, IT parks and factories. POSH-compliant, remote monitoring, usage analytics. From ₹9,000.",
+      "Smart, UPI-enabled vending machines for corporate offices, IT parks and factories. POSH-compliant, remote monitoring, usage analytics.",
     url: `${SITE.url}/solutions/offices`,
   },
   twitter: {
     card: "summary_large_image",
     title: "Sanitary Napkin Vending Machine for Offices | Lyra Enterprises India",
     description:
-      "Smart, UPI-enabled vending machines for corporate offices, IT parks and factories. POSH-compliant, remote monitoring, usage analytics. From ₹9,000.",
+      "Smart, UPI-enabled vending machines for corporate offices, IT parks and factories. POSH-compliant, remote monitoring, usage analytics.",
   },
 };
 
@@ -62,7 +62,7 @@ const faqSchema = {
       name: "Which vending machine is best for a corporate office?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "For small to mid-size offices (20–100 women), the Solo Coin (₹9,500) or Push Button (₹9,000) works well. For large corporate campuses, IT parks or multi-floor offices, the Solo WiFi UPI (₹22,500) or Solo Ethernet (₹24,500) with remote monitoring and usage analytics is recommended.",
+        text: "For small to mid-size offices (20–100 women), the Solo Coin or Push Button works well. For large corporate campuses, IT parks or multi-floor offices, the Solo WiFi UPI or Solo Ethernet with remote monitoring and usage analytics is recommended.",
       },
     },
     {
@@ -113,14 +113,13 @@ const features = [
   {
     icon: "♻️",
     heading: "Add Incinerator for Full Compliance",
-    body: "Pair with a Lyra Mini incinerator (₹12,500) for SWM Rules 2016 compliant sanitary waste disposal — complete the hygiene loop in your office washroom.",
+    body: "Pair with a Lyra Mini incinerator for SWM Rules 2016 compliant sanitary waste disposal — complete the hygiene loop in your office washroom.",
   },
 ];
 
 const products = [
   {
     name: "Push Button",
-    price: "₹9,000",
     slug: "push-button-vending-machine",
     tag: "Small Offices",
     desc: "Simple push-button dispenser, no electricity needed. Best for small offices up to 50 women.",
@@ -128,7 +127,6 @@ const products = [
   },
   {
     name: "Solo Coin",
-    price: "₹9,500",
     slug: "solo-coin-vending-machine",
     tag: "Mid Offices",
     desc: "Coin-operated vending machine. Recovers cost through per-use fee. Ideal for mid-size offices and factories.",
@@ -136,7 +134,6 @@ const products = [
   },
   {
     name: "Solo WiFi (UPI)",
-    price: "₹22,500",
     slug: "solo-wifi-vending-machine",
     tag: "Corporate Campuses",
     desc: "UPI QR cashless payment, real-time monitoring, usage analytics. Perfect for large IT parks and corporate offices.",
@@ -144,7 +141,6 @@ const products = [
   },
   {
     name: "Solo Ethernet",
-    price: "₹24,500",
     slug: "solo-ethernet-vending-machine",
     tag: "Enterprise",
     desc: "Wired network for multi-machine enterprise deployments. Most stable connectivity for large campus installations.",
@@ -231,13 +227,13 @@ export default function OfficesSolutionPage() {
                 <div key={p.slug} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col">
                   <span className={`self-start px-3 py-1 rounded-full text-xs font-bold ${p.badge} mb-4`}>{p.tag}</span>
                   <p className="font-bold text-gray-900 text-lg mb-1">{p.name}</p>
-                  <p className="text-indigo-600 font-semibold text-base mb-3">{p.price}</p>
+                  <p className="text-indigo-600 font-semibold text-sm mb-3">Contact for pricing</p>
                   <p className="text-gray-500 text-sm flex-1 mb-5">{p.desc}</p>
                   <Link
-                    href={`/products/${p.slug}#buy-now`}
+                    href={`/products/${p.slug}#enquiry`}
                     className="mt-auto text-center py-2.5 px-4 rounded-xl bg-indigo-50 text-indigo-700 font-semibold text-sm hover:bg-indigo-100 transition-colors"
                   >
-                    Buy Online →
+                    Enquire →
                   </Link>
                 </div>
               ))}

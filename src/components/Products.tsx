@@ -356,7 +356,6 @@ export default function Products() {
             <span className="text-gray-300">·</span>
             <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">2 Napkin Variants</span>
             <span className="text-gray-300">·</span>
-            <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm text-primary-600 font-semibold">From ₹5</span>
           </div>
         </motion.div>
 

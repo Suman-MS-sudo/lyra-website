@@ -8,7 +8,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Sanitary Napkin Vending Machine for Schools & Colleges India | Lyra Enterprises",
   description:
-    "Install sanitary napkin vending machines and incinerators in school & college washrooms. Reduce girl student absenteeism, meet Swachh Bharat & SWM Rules 2016 compliance. GeM vendor. From ₹9,000.",
+    "Install sanitary napkin vending machines and incinerators in school & college washrooms. Reduce girl student absenteeism, meet Swachh Bharat & SWM Rules 2016 compliance. GeM vendor.",
   keywords: [
     "sanitary napkin vending machine for schools india",
     "napkin vending machine for colleges india",
@@ -25,14 +25,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sanitary Napkin Vending Machine for Schools & Colleges | Lyra Enterprises India",
     description:
-      "Lyra vending machines reduce girl absenteeism, meet Swachh Bharat compliance, and are available on GeM for direct government procurement. Prices from ₹9,000.",
+      "Lyra vending machines reduce girl absenteeism, meet Swachh Bharat compliance, and are available on GeM for direct government procurement.",
     url: `${SITE.url}/solutions/schools-colleges`,
   },
   twitter: {
     card: "summary_large_image",
     title: "Sanitary Napkin Vending Machine for Schools & Colleges | Lyra Enterprises India",
     description:
-      "Lyra vending machines reduce girl absenteeism, meet Swachh Bharat compliance, and are available on GeM for direct government procurement. Prices from ₹9,000.",
+      "Lyra vending machines reduce girl absenteeism, meet Swachh Bharat compliance, and are available on GeM for direct government procurement.",
   },
 };
 
@@ -62,7 +62,7 @@ const faqSchema = {
       name: "Which vending machine is best for a school or college?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "For most schools, the Push Button (₹9,000) is the most affordable compliant option. For colleges and hostels with higher footfall, the Solo Coin (₹9,500) or Solo QR (₹15,000) are recommended.",
+        text: "For most schools, the Push Button is the most affordable compliant option. For colleges and hostels with higher footfall, the Solo Coin or Solo QR are recommended.",
       },
     },
     {
@@ -112,15 +112,14 @@ const features = [
   },
   {
     icon: "💰",
-    heading: "Starts at ₹9,000",
-    body: "The Push Button vending machine at ₹9,000 is the most affordable compliant solution in India. Coin-operated Solo Coin machines start at ₹9,500.",
+    heading: "Multiple Models Available",
+    body: "The Push Button vending machine is the most affordable compliant solution in India. Coin-operated Solo Coin machines add self-funding revenue collection.",
   },
 ];
 
 const products = [
   {
     name: "Push Button",
-    price: "₹9,000",
     slug: "push-button-vending-machine",
     tag: "Most Affordable",
     desc: "Simple push-button dispenser, no coins needed. Best for schools, hostels and government institutions.",
@@ -128,7 +127,6 @@ const products = [
   },
   {
     name: "Solo Coin",
-    price: "₹9,500",
     slug: "solo-coin-vending-machine",
     tag: "Revenue Generating",
     desc: "Coin-operated dispenser — recovers cost through small per-use fee. Perfect for attended hostels and PU colleges.",
@@ -136,7 +134,6 @@ const products = [
   },
   {
     name: "Solo QR (UPI)",
-    price: "₹15,000",
     slug: "solo-qr-vending-machine",
     tag: "Cashless",
     desc: "UPI QR + coin payment. Ideal for urban schools and colleges wanting a cashless menstrual hygiene solution.",
@@ -144,7 +141,6 @@ const products = [
   },
   {
     name: "Lyra Micro Incinerator",
-    price: "₹9,500",
     slug: "lyra-micro-incinerator",
     tag: "SWM Compliant",
     desc: "Compact wall-mount incinerator for girls' toilet. CPCB-compliant, smoke-free, ash tray included.",
@@ -232,13 +228,13 @@ export default function SchoolsSolutionPage() {
                 <div key={p.slug} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col">
                   <span className={`self-start px-3 py-1 rounded-full text-xs font-bold ${p.badge} mb-4`}>{p.tag}</span>
                   <p className="font-bold text-gray-900 text-lg mb-1">{p.name}</p>
-                  <p className="text-primary-600 font-semibold text-base mb-3">{p.price}</p>
+                  <p className="text-primary-600 font-semibold text-sm mb-3">Contact for pricing</p>
                   <p className="text-gray-500 text-sm flex-1 mb-5">{p.desc}</p>
                   <Link
-                    href={`/products/${p.slug}#buy-now`}
+                    href={`/products/${p.slug}#enquiry`}
                     className="mt-auto text-center py-2.5 px-4 rounded-xl bg-primary-50 text-primary-700 font-semibold text-sm hover:bg-primary-100 transition-colors"
                   >
-                    Buy Online →
+                    Enquire →
                   </Link>
                 </div>
               ))}

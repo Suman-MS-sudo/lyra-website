@@ -79,8 +79,8 @@ export default function WomensDayBanner() {
         <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
           <span className="text-xs sm:text-sm select-none flex-shrink-0">🌸</span>
           <span className="text-white font-bold text-[11px] sm:text-sm truncate">
-            <span className="sm:hidden">₹1,000 OFF — Women&apos;s Day</span>
-            <span className="hidden sm:inline">Women&apos;s Day Offer — <span className="underline decoration-pink-300 decoration-2 underline-offset-2">₹1,000 OFF</span> on all machines</span>
+            <span className="sm:hidden">Women&apos;s Day Special Offer</span>
+            <span className="hidden sm:inline">Women&apos;s Day Offer — <span className="underline decoration-pink-300 decoration-2 underline-offset-2">Special Discount</span> on all machines</span>
           </span>
           <span className="hidden sm:inline text-white/60 text-xs flex-shrink-0">· March 8, 2026</span>
         </div>
@@ -102,7 +102,7 @@ export default function WomensDayBanner() {
         {/* Right — CTA + Dismiss */}
         <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
           <Link
-            href={`https://wa.me/918122378860?text=${encodeURIComponent("Hi! I want to claim the Women's Day ₹1,000 offer on a Lyra vending machine / incinerator.")}`}
+            href={`https://wa.me/918122378860?text=${encodeURIComponent("Hi! I want to claim the Women's Day offer on a Lyra vending machine / incinerator.")}`}
             target="_blank"
             rel="noopener noreferrer"
             className="px-3 sm:px-4 py-1 sm:py-1.5 bg-white text-[#A0268A] font-bold text-[10px] sm:text-xs rounded-full shadow hover:shadow-md hover:-translate-y-0.5 transition-all whitespace-nowrap"

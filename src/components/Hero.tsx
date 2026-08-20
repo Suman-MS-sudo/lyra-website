@@ -242,7 +242,7 @@ export default function Hero() {
                   href="#contact"
                   className="inline-flex items-center justify-center gap-2 flex-1 min-w-0 px-4 sm:px-8 py-4 bg-white text-primary-600 font-semibold rounded-full border-2 border-primary-200 hover:border-primary-400 hover:bg-pink-blush hover:-translate-y-1 transition-all duration-300 shadow-sm text-sm sm:text-base"
                 >
-                  <span className="truncate">Get Best Price</span>
+                  <span className="truncate">Get a Free Quote</span>
                 </Link>
               </motion.div>
             </div>

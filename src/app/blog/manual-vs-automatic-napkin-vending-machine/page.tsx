@@ -8,7 +8,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Manual vs Automatic Sanitary Napkin Vending Machine India 2026 | Lyra Enterprises",
   description:
-    "Push Button (free-vend) napkin vending machines cost ₹9,000. Coin and UPI automatics start at ₹9,500. Full comparison of features, maintenance, best use cases and which to buy in India 2026.",
+    "Push Button (free-vend) napkin vending machines cost less upfront. Coin and UPI automatics cost more but add payment automation. Full comparison of features, maintenance, best use cases and which to buy in India 2026.",
   keywords: [
     "manual vs automatic vending machine india",
     "sanitary napkin vending machine comparison india",
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/blog/manual-vs-automatic-napkin-vending-machine` },
   openGraph: {
     title: "Manual vs Automatic Sanitary Napkin Vending Machine India 2026",
-    description: "Push Button free-vend machines cost ₹9,000. Coin/UPI automatics start at ₹9,500. Here’s exactly when to choose each — and how to avoid the wrong pick.",
+    description: "Push Button free-vend machines cost less upfront. Coin/UPI automatics cost more but add payment automation. Here’s exactly when to choose each — and how to avoid the wrong pick.",
     url: `${SITE.url}/blog/manual-vs-automatic-napkin-vending-machine`,
   },
   twitter: {
     card: "summary_large_image",
     title: "Manual vs Automatic Sanitary Napkin Vending Machine India 2026",
-    description: "Push Button free-vend machines cost ₹9,000. Coin/UPI automatics start at ₹9,500. Here’s exactly when to choose each — and how to avoid the wrong pick.",
+    description: "Push Button free-vend machines cost less upfront. Coin/UPI automatics cost more but add payment automation. Here’s exactly when to choose each — and how to avoid the wrong pick.",
   },
 };
 
@@ -42,7 +42,7 @@ const articleSchema = {
 };
 
 const comparisonRows = [
-  { feature: "Starting Price", manual: "₹9,000", automatic: "₹9,500" },
+  
   { feature: "Payment Method", manual: "Free / No payment", automatic: "Push button / Coin / UPI" },
   { feature: "Electricity Required", manual: "No", automatic: "No (push) / Yes (coin, UPI)" },
   { feature: "Napkins per Dispense", manual: "1", automatic: "1" },
@@ -77,7 +77,7 @@ export default function ManualVsAutomaticBlog() {
           </h1>
 
           <p className="mt-4 text-xl text-gray-600 leading-relaxed border-l-4 border-amber-300 pl-5">
-            Push Button machines cost ₹9,000. Coin &amp; UPI automatics start at ₹9,500. Here&apos;s exactly when to choose each — and how to avoid the wrong pick.
+            Push Button machines cost less upfront. Coin &amp; UPI automatics cost more but add payment automation. Here&apos;s exactly when to choose each — and how to avoid the wrong pick.
           </p>
 
           <div className="mt-10 prose prose-gray max-w-none space-y-6 text-gray-700 leading-relaxed">
@@ -86,7 +86,7 @@ export default function ManualVsAutomaticBlog() {
               A free-vend napkin vending machine (like the <Link href="/products/push-button-vending-machine" className="text-primary-600 hover:underline">Lyra Push Button</Link>) is the simplest type of electronic napkin dispenser. It dispenses one napkin per press with no payment required — just push the button and collect. It needs a power connection but has no coin slot, no QR code, no app.
             </p>
             <p>
-              The napkins are loaded inside a stainless steel wall-mounted box. The Push Button is priced at ₹9,000, making it the most affordable napkin dispensing solution in India.
+              The napkins are loaded inside a stainless steel wall-mounted box. The Push Button is the most affordable napkin dispensing solution in India.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900">What is an automatic sanitary napkin vending machine?</h2>
@@ -94,12 +94,12 @@ export default function ManualVsAutomaticBlog() {
               Automatic sanitary napkin vending machines use electric or mechanical coin/button/digital payment mechanisms to dispense napkins. Lyra&apos;s range includes:
             </p>
             <ul className="list-disc pl-5 space-y-1">
-              <li><Link href="/products/push-button-vending-machine" className="text-primary-600 hover:underline">Push Button (₹9,000)</Link> — Simple push-button dispense, no payment required</li>
-              <li><Link href="/products/solo-coin-vending-machine" className="text-primary-600 hover:underline">Solo Coin (₹9,500)</Link> — Coin-operated, self-funding</li>
-              <li><Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">Solo QR (₹15,000)</Link> — UPI QR + coin payment via SIM</li>
-              <li><Link href="/products/solo-rfid-vending-machine" className="text-primary-600 hover:underline">Solo RFID (₹13,000)</Link> — RFID card access for employee/student ID integration</li>
-              <li><Link href="/products/solo-wifi-vending-machine" className="text-primary-600 hover:underline">Solo WiFi UPI (₹22,500)</Link> — UPI QR payment with remote monitoring</li>
-              <li><Link href="/products/solo-ethernet-vending-machine" className="text-primary-600 hover:underline">Solo Ethernet (₹24,500)</Link> — Wired IoT monitoring for enterprise campuses</li>
+              <li><Link href="/products/push-button-vending-machine" className="text-primary-600 hover:underline">Push Button</Link> — Simple push-button dispense, no payment required</li>
+              <li><Link href="/products/solo-coin-vending-machine" className="text-primary-600 hover:underline">Solo Coin</Link> — Coin-operated, self-funding</li>
+              <li><Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">Solo QR</Link> — UPI QR + coin payment via SIM</li>
+              <li><Link href="/products/solo-rfid-vending-machine" className="text-primary-600 hover:underline">Solo RFID</Link> — RFID card access for employee/student ID integration</li>
+              <li><Link href="/products/solo-wifi-vending-machine" className="text-primary-600 hover:underline">Solo WiFi UPI</Link> — UPI QR payment with remote monitoring</li>
+              <li><Link href="/products/solo-ethernet-vending-machine" className="text-primary-600 hover:underline">Solo Ethernet</Link> — Wired IoT monitoring for enterprise campuses</li>
             </ul>
 
             <h2 className="text-2xl font-bold text-gray-900">Full comparison: Manual vs Automatic</h2>
@@ -133,7 +133,7 @@ export default function ManualVsAutomaticBlog() {
               <strong>Choose a Push Button machine if:</strong>
             </p>
             <ul className="list-disc pl-5 space-y-2">
-              <li>You are a <strong>government school</strong> with a limited budget (₹9,000 vs ₹9,500+) and want free dispensing</li>
+              <li>You are a <strong>government school</strong> with a limited budget and want free dispensing</li>
               <li>You want to <strong>provide napkins for free</strong> as a Swachh Bharat or MHS scheme initiative without a coin-collection mechanism</li>
               <li>Simplicity of maintenance is the priority — a Push Button machine has minimal moving parts</li>
               <li>The school is participating in <strong>GeM procurement</strong> with limited per-unit budgets</li>
@@ -144,7 +144,7 @@ export default function ManualVsAutomaticBlog() {
               <strong>Choose an automatic machine if:</strong>
             </p>
             <ul className="list-disc pl-5 space-y-2">
-              <li>You want a <strong>coin-operated self-funding model</strong> — the machine recovers its cost over time through per-use charges (Solo Coin at ₹9,500)</li>
+              <li>You want a <strong>coin-operated self-funding model</strong> — the machine recovers its cost over time through per-use charges (Solo Coin)</li>
               <li>You are deploying in a <strong>college, office or hospital</strong> where higher footfall requires a sturdier, higher-capacity mechanism</li>
               <li>You need <strong>RFID card integration</strong> with student or employee ID cards (Solo RFID)</li>
               <li>You want <strong>remote monitoring, usage tracking</strong> and cashless UPI payment (Solo WiFi or Solo Ethernet)</li>
@@ -153,15 +153,15 @@ export default function ManualVsAutomaticBlog() {
 
             <h2 className="text-2xl font-bold text-gray-900">What about the Solo QR machine?</h2>
             <p>
-              The <Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">Solo QR vending machine (₹15,000)</Link> bridges the gap between coin and WiFi. It accepts both UPI QR payments and ₹5 coins via a SIM-based connection — no WiFi setup needed. Ideal for schools and offices that want cashless UPI payments without the complexity of a cloud-connected smart machine.
+              The <Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">Solo QR vending machine</Link> bridges the gap between coin and WiFi. It accepts both UPI QR payments and coins via a SIM-based connection — no WiFi setup needed. Ideal for schools and offices that want cashless UPI payments without the complexity of a cloud-connected smart machine.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900">Our recommendation</h2>
             <p>
-              — <strong>Schools and institutions</strong> that want free dispensing: <Link href="/products/push-button-vending-machine" className="text-primary-600 hover:underline">Push Button at ₹9,000</Link> <br />
-              — <strong>Self-funding colleges</strong> and commercial setups: <Link href="/products/solo-coin-vending-machine" className="text-primary-600 hover:underline">Solo Coin at ₹9,500</Link><br />
-              — <strong>Cashless UPI</strong> without complex WiFi setup: <Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">Solo QR at ₹15,000</Link><br />
-              — <strong>Large offices and hospitals</strong> needing monitoring: <Link href="/products/solo-wifi-vending-machine" className="text-primary-600 hover:underline">Solo WiFi UPI at ₹22,500</Link>
+              — <strong>Schools and institutions</strong> that want free dispensing: <Link href="/products/push-button-vending-machine" className="text-primary-600 hover:underline">Push Button</Link> <br />
+              — <strong>Self-funding colleges</strong> and commercial setups: <Link href="/products/solo-coin-vending-machine" className="text-primary-600 hover:underline">Solo Coin</Link><br />
+              — <strong>Cashless UPI</strong> without complex WiFi setup: <Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">Solo QR</Link><br />
+              — <strong>Large offices and hospitals</strong> needing monitoring: <Link href="/products/solo-wifi-vending-machine" className="text-primary-600 hover:underline">Solo WiFi UPI</Link>
             </p>
 
             <p>

@@ -44,10 +44,7 @@ const schemaLD = {
     "Complete menstrual hygiene solution — Lyra vending machine paired with incinerator for full SWM Rules 2016 and CPCB compliance. Ideal for schools, hostels, hospitals and offices.",
   brand: { "@type": "Brand", name: "Lyra Enterprises" },
   offers: {
-    "@type": "AggregateOffer",
-    lowPrice: "18000",
-    highPrice: "52500",
-    priceCurrency: "INR",
+    "@type": "Offer",
     availability: "https://schema.org/InStock",
     seller: { "@type": "Organization", name: "Lyra Enterprises" },
   },
@@ -81,7 +78,7 @@ const faqSchema = {
       name: "Which combo is best for a school or hostel?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "For most schools and hostels, the Push Button (₹9,000) + Lyra Micro Incinerator (₹9,500) combo works best — total ₹18,500 for fully compliant menstrual hygiene infrastructure. For higher footfall, upgrade to Solo Coin + Lyra Mini.",
+        text: "For most schools and hostels, the Push Button + Lyra Micro Incinerator combo works best — an affordable, fully compliant menstrual hygiene setup. For higher footfall, upgrade to Solo Coin + Lyra Mini.",
       },
     },
     {
@@ -200,7 +197,7 @@ export default function BundlePage() {
           <div className="grid sm:grid-cols-3 gap-6 mt-8">
             {[
               { icon: "⚖️", title: "Full Legal Compliance", body: "SWM Rules 2016 requires both access to sanitary products AND proper disposal. A machine alone without an incinerator is only half the solution." },
-              { icon: "💰", title: "Bundle Savings", body: "Ordering vending machine and incinerator together comes with bundled pricing from Lyra — saving ₹1,000–₹4,500 vs buying separately." },
+              { icon: "💰", title: "Bundle Savings", body: "Ordering vending machine and incinerator together comes with bundled pricing from Lyra — contact us for a combined quote and available savings vs buying separately." },
               { icon: "🔧", title: "Single Vendor, One Install", body: "One order, one invoice, one installation team — simplifying procurement and compliance documentation for schools and institutions." },
             ].map((item) => (
               <div key={item.title} className="p-6 rounded-2xl border border-gray-100 bg-gradient-to-br from-primary-50 to-white">
@@ -234,7 +231,6 @@ export default function BundlePage() {
                             {b.vending.name}
                           </Link>
                         </div>
-                        <span className="text-primary-600 font-bold">₹{b.vending.price.toLocaleString()}</span>
                       </div>
                       <div className="flex items-center justify-between py-2">
                         <div>
@@ -243,15 +239,14 @@ export default function BundlePage() {
                             {b.incinerator.name}
                           </Link>
                         </div>
-                        <span className="text-primary-600 font-bold">₹{b.incinerator.price.toLocaleString()}</span>
                       </div>
                     </div>
                     <div className="bg-primary-50 rounded-xl px-4 py-3 mb-5">
                       <div className="flex items-center justify-between">
-                        <span className="text-primary-700 font-bold text-sm">Bundle Total</span>
-                        <span className="text-primary-700 font-bold text-lg">₹{b.total.toLocaleString()}</span>
+                        <span className="text-primary-700 font-bold text-sm">Bundle Pricing</span>
+                        <span className="text-primary-700 font-semibold text-sm">On Request</span>
                       </div>
-                      <p className="text-primary-500 text-xs mt-1">Save up to ₹{b.savings.toLocaleString()} on bundle</p>
+                      <p className="text-primary-500 text-xs mt-1">Contact us for a combined quote and bundle savings</p>
                     </div>
                     <ul className="space-y-2">
                       {b.highlights.map((h) => (

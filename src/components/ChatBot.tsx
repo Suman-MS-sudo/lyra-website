@@ -36,10 +36,10 @@ To give you the best recommendation, please share:
    • 100+ users
 
 3️⃣ **Budget range?**
-   • Under ₹10,000
-   • ₹10,000 - ₹15,000
-   • ₹15,000 - ₹25,000
-   • Above ₹25,000
+   • Entry-level / basic
+   • Mid-range
+   • Premium / smart IoT
+   • No budget constraint
 
 Based on your answers, I'll recommend the perfect solution! 💡`,
           sender: 'bot',
@@ -85,19 +85,19 @@ Based on your answers, I'll recommend the perfect solution! 💡`,
     if (userInput.includes('school') || userInput.includes('college') || userInput.includes('student')) {
       return `🏫 **Perfect for Schools & Colleges:**
 
-**Recommended: Push Button Vending Machine - ₹9,000**
+**Recommended: Push Button Vending Machine**
 ✅ No coins needed - completely free for students
 ✅ 25 napkin capacity
 ✅ Tamper-proof design
 ✅ Zero maintenance
 ✅ Trusted by 50+ schools
 
-**For Privacy: Lyra Micro Incinerator - ₹9,500**
+**For Privacy: Lyra Micro Incinerator**
 ✅ Safe disposal in washrooms
 ✅ No manual handling of waste
 ✅ CPCB compliant
 
-📞 **Contact:** +91-8122378860
+📞 **Contact:** +91-8122378860 for current pricing
 📧 **Email:** sales@lyraenterprise.co.in
 
 Would you like a detailed quote for your school?`
@@ -106,60 +106,59 @@ Would you like a detailed quote for your school?`
     if (userInput.includes('hospital') || userInput.includes('clinic') || userInput.includes('medical')) {
       return `🏥 **Hospital-Grade Solutions:**
 
-**Recommended: Solo Ethernet - ₹24,500**
+**Recommended: Solo Ethernet**
 ✅ 99.9% uptime with wired connection
 ✅ UPI + coin payments
 ✅ IoT cloud analytics & monitoring
 ✅ LED indicator display
 ✅ Perfect for high-traffic areas
 
-**For Disposal: Lyra Mini Incinerator - ₹12,500**
+**For Disposal: Lyra Mini Incinerator**
 ✅ 5-15 napkins per cycle
 ✅ Digital temperature control
 ✅ Infection-free waste disposal
 ✅ SWM Rules 2016 compliant
 
-📞 **Contact:** +91-8122378860
+📞 **Contact:** +91-8122378860 for current pricing
 Hospital installations include staff training & maintenance support.`
     }
 
     if (userInput.includes('office') || userInput.includes('corporate') || userInput.includes('company')) {
       return `🏢 **Corporate Office Solutions:**
 
-**Recommended: Solo WiFi - ₹22,500** ⭐ Most Popular
+**Recommended: Solo WiFi** ⭐ Most Popular
 ✅ UPI payments (GPay, PhonePe)
 ✅ No SIM card needed
 ✅ IoT real-time analytics
 ✅ LED indicator display
 ✅ Perfect for modern offices
 
-**Budget Option: Solo Coin - ₹9,500**  
+**Budget Option: Solo Coin**
 ✅ Simple coin operation
 ✅ Reliable & proven
 ✅ Low maintenance
 
-📞 **Contact:** +91-8122378860
-Corporate packages include bulk discounts & annual maintenance.`
+📞 **Contact:** +91-8122378860 for current pricing
+Corporate packages include volume discounts & annual maintenance.`
     }
 
-    if (userInput.includes('price') || userInput.includes('cost') || userInput.includes('budget')) {
-      return `💰 **Our Product Range & Prices:**
+    if (userInput.includes('price') || userInput.includes('cost') || userInput.includes('budget') || userInput.includes('quote')) {
+      return `💰 **Our Product Range:**
 
 **🔹 VENDING MACHINES:**
-• Push Button - ₹9,000 (Manual, perfect for schools)
-• Solo Coin - ₹9,500 (₹5 coin operated)
-• Solo QR - ₹15,000 (UPI payments)
-• Solo RFID - ₹13,000 (Card access)
-• Solo WiFi - ₹22,500 (Smart IoT, most popular)
-• Solo Ethernet - ₹24,500 (Premium IoT, hospital grade)
+• Push Button (Manual, perfect for schools)
+• Solo Coin (Coin operated)
+• Solo QR (UPI payments)
+• Solo RFID (Card access)
+• Solo WiFi (Smart IoT, most popular)
+• Solo Ethernet (Premium IoT, hospital grade)
 
 **🔹 INCINERATORS:**
-• Lyra Micro - ₹9,500 (Compact, 1-5 napkins/cycle)
-• Lyra Mini - ₹12,500 (Standard, 5-15 napkins/cycle)
+• Lyra Micro (Compact, 1-5 napkins/cycle)
+• Lyra Mini (Standard, 5-15 napkins/cycle)
 
-📞 **Quick Contact:** +91-8122378860
+📞 **Contact us on WhatsApp or call +91-8122378860 for current pricing**
 🚚 **Free Installation & 1-Year Warranty**
-💰 **EMI Options Available**
 
 Which product interests you most?`
     }
@@ -167,14 +166,14 @@ Which product interests you most?`
     if (userInput.includes('incinerator') || userInput.includes('disposal') || userInput.includes('waste')) {
       return `🔥 **Safe Waste Disposal Solutions:**
 
-**Lyra Micro - ₹9,500**
+**Lyra Micro**
 ✅ Compact (520×230×230 mm)
 ✅ 1-5 napkins per cycle
 ✅ Up to 100 napkins/day
 ✅ Wall mountable
 ✅ Perfect for small facilities
 
-**Lyra Mini - ₹12,500**  
+**Lyra Mini**
 ✅ Larger capacity (650×330×330 mm)
 ✅ 5-15 napkins per cycle
 ✅ Digital temperature display
@@ -188,7 +187,7 @@ Which product interests you most?`
 ✅ Zero manual handling
 ✅ Eco-friendly disposal
 
-📞 **Contact:** +91-8122378860
+📞 **Contact:** +91-8122378860 for current pricing
 Need help choosing the right capacity?`
     }
 
@@ -224,7 +223,7 @@ Here's how I can help you:
 • "School" - Education solutions
 • "Hospital" - Medical-grade machines  
 • "Office" - Corporate packages
-• "Price" - Complete price list
+• "Quote" - Get a price quote
 • "Incinerator" - Waste disposal options
 • "Contact" - Get in touch with us
 
@@ -238,7 +237,7 @@ What would you like to know about our vending machines and incinerators?`
     { text: 'School Solutions', action: 'school' },
     { text: 'Hospital Grade', action: 'hospital' }, 
     { text: 'Office Packages', action: 'office' },
-    { text: 'Price List', action: 'price' },
+    { text: 'Get a Quote', action: 'quote' },
     { text: 'Contact Us', action: 'contact' }
   ]
 

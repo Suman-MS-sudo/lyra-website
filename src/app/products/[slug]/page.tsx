@@ -50,7 +50,6 @@ const comparison = [
   { label: "Cloud Reports", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
   { label: "Touch Display", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
   { label: "IoT Monitoring", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Price", pb: "₹9,000", sc: "₹9,500", qr: "₹15,000", rf: "₹13,000", wifi: "₹22,500", eth: "₹24,500" },
 ];
 
 /* ─── FAQ content per product ──────────────────────────────── */
@@ -138,9 +137,6 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     category: isVM ? "Sanitary Napkin Vending Machine" : "Sanitary Napkin Incinerator",
     offers: {
       "@type": "Offer",
-      priceCurrency: "INR",
-      price: product.discountedPrice,
-      priceValidUntil: "2026-12-31",
       availability: "https://schema.org/InStock",
       url: canonical,
       seller: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
@@ -405,9 +401,6 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               Get a confirmed quote and place your order today. Pan-India delivery in 3–7 business days.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="#buy-now" className="px-8 py-3 bg-white text-[#A0268A] font-bold rounded-full hover:bg-gray-50 transition-colors">
-                Buy Online Now
-              </Link>
               <Link
                 href={`https://wa.me/918122378860?text=Hi%21%20I%27d%20like%20to%20order%20the%20${encodeURIComponent(product.fullName)}.%20Please%20confirm%20price%20%26%20availability.`}
                 target="_blank"

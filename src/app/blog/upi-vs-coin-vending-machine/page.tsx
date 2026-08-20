@@ -41,9 +41,9 @@ const articleSchema = {
 };
 
 const comparison = [
-  { factor: "Upfront cost", coin: "₹9,500 (Solo Coin)", upi: "₹22,500 (Solo WiFi)" },
-  { factor: "Payment method", coin: "₹5 coin only", upi: "UPI QR + ₹5 coin" },
-  { factor: "Change required", coin: "Yes — users need ₹5 coin", upi: "No — any UPI app" },
+  { factor: "Upfront cost", coin: "Lower (Solo Coin)", upi: "Higher (Solo WiFi)" },
+  { factor: "Payment method", coin: "Coin only", upi: "UPI QR + coin" },
+  { factor: "Change required", coin: "Yes — users need exact coin", upi: "No — any UPI app" },
   { factor: "Usage tracking", coin: "Manual counting", upi: "Automatic cloud reports" },
   { factor: "Remote monitoring", coin: "Not available", upi: "Real-time IoT dashboard" },
   { factor: "Low stock alerts", coin: "Manual check", upi: "Automatic notification" },
@@ -83,8 +83,8 @@ export default function BlogPost2() {
               Both are sanitary napkin vending machines from Lyra Enterprises that dispense one napkin per transaction. The key difference is payment method and connectivity:
             </p>
             <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Coin machine (Solo Coin, ₹9,500)</strong> — accepts ₹5 coin. No internet. No app. Simple mechanical + electronic operation.</li>
-              <li><strong>UPI WiFi machine (Solo WiFi, ₹22,500)</strong> — accepts UPI QR scan (PhonePe, Google Pay, Paytm) AND ₹5 coin. WiFi connected. Cloud dashboard. Remote monitoring.</li>
+              <li><strong>Coin machine (Solo Coin)</strong> — accepts a coin. No internet. No app. Simple mechanical + electronic operation.</li>
+              <li><strong>UPI WiFi machine (Solo WiFi)</strong> — accepts UPI QR scan (PhonePe, Google Pay, Paytm) AND coin. WiFi connected. Cloud dashboard. Remote monitoring.</li>
             </ul>
 
             <h2 className="text-2xl font-bold text-gray-900">Full comparison</h2>
@@ -111,7 +111,7 @@ export default function BlogPost2() {
 
             <h2 className="text-2xl font-bold text-gray-900">When to choose the Coin machine</h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Budget under ₹15,000 per machine</li>
+              <li>Budget-conscious deployments</li>
               <li>Schools, government facilities or rural locations</li>
               <li>Users are less likely to have UPI apps (older demographics, low-income areas)</li>
               <li>No WiFi infrastructure on site</li>
@@ -124,12 +124,12 @@ export default function BlogPost2() {
               <li>Hospitals where hygiene and accountability are critical</li>
               <li>Multi-location deployments where remote monitoring saves time</li>
               <li>Facilities where accounting and revenue tracking are required</li>
-              <li>Locations where users may not carry ₹5 coins (common in urban India)</li>
+              <li>Locations where users may not carry loose coins (common in urban India)</li>
             </ul>
 
             <h2 className="text-2xl font-bold text-gray-900">The ROI argument for UPI</h2>
             <p>
-              The UPI WiFi machine costs ₹12,000 more upfront. But consider: if it serves 15 users per day at ₹5 each, that&apos;s ₹75/day → ₹2,250/month → ₹27,000/year in revenue. The additional ₹12,000 investment pays back in under 6 months — and you have complete cloud visibility into all transactions.
+              The UPI WiFi machine costs more upfront. But consider: with steady daily usage, the extra investment pays back within months through per-use revenue — and you have complete cloud visibility into all transactions.
             </p>
             <p>
               For facilities that manage multiple machines across multiple buildings, the remote monitoring capability alone saves significant management overhead.
@@ -137,10 +137,10 @@ export default function BlogPost2() {
 
             <h2 className="text-2xl font-bold text-gray-900">Our recommendation</h2>
             <p>
-              <strong>For schools, government facilities and rural locations:</strong> Start with the <Link href="/products/solo-coin-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo Coin (₹9,500)</Link>. It&apos;s reliable, low maintenance and sufficient.
+              <strong>For schools, government facilities and rural locations:</strong> Start with the <Link href="/products/solo-coin-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo Coin</Link>. It&apos;s reliable, low maintenance and sufficient.
             </p>
             <p>
-              <strong>For IT parks, hospitals and premium facilities:</strong> The <Link href="/products/solo-wifi-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo WiFi (₹22,500)</Link> pays back quickly and the management visibility is worth the premium.
+              <strong>For IT parks, hospitals and premium facilities:</strong> The <Link href="/products/solo-wifi-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo WiFi</Link> pays back quickly and the management visibility is worth the premium.
             </p>
             <p>
               Not sure? Call us at <Link href="tel:+918122378860" className="text-primary-600 font-semibold hover:underline">{SITE.phoneDisplay}</Link> — describe your facility and we&apos;ll recommend the right model within minutes.
