@@ -80,6 +80,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     // Bundle page
     { url: `${SITE_URL}/products/vending-incinerator-bundle`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    // Combo offer landing page
+    { url: `${SITE_URL}/offers/push-button-micro-combo`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     // Business and policy pages
     { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/privacy-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
