@@ -1,11 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import ChatBot from './ChatBot'
+import dynamic from 'next/dynamic'
 import { SITE } from '@/lib/data'
+
+const ChatBot = dynamic(() => import('./ChatBot'), { ssr: false })
 
 export default function FloatingActionButtons() {
   const [showChat, setShowChat] = useState(false)
+  const [hasOpenedChat, setHasOpenedChat] = useState(false)
 
   const openMaps = () => {
     const encodedAddress = encodeURIComponent(SITE.address)
@@ -40,8 +43,8 @@ export default function FloatingActionButtons() {
 
   return (
     <>
-      {/* Chat Component */}
-      <ChatBot isOpen={showChat} setIsOpen={setShowChat} />
+      {/* Chat Component — only mounted after first open, so its JS chunk isn't part of the initial page load */}
+      {hasOpenedChat && <ChatBot isOpen={showChat} setIsOpen={setShowChat} />}
       
       {/* Floating Action Buttons - positioned to avoid mobile nav and chat overlap */}
       <div className="fixed bottom-28 right-4 z-40 flex flex-col gap-3 md:bottom-6 md:right-6">
@@ -68,7 +71,7 @@ export default function FloatingActionButtons() {
         {!showChat && (
           <div className="relative group">
             <button
-              onClick={() => setShowChat(true)}
+              onClick={() => { setHasOpenedChat(true); setShowChat(true) }}
               className="w-14 h-14 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group animate-pulse"
               title="Chat with us"
             >
