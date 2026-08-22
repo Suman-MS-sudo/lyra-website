@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Manual vs Automatic Sanitary Napkin Vending Machine India 2026 | Lyra Enterprises",
+  title: { absolute: "Manual vs Automatic Sanitary Napkin Vending Machine India 2026 | Lyra Enterprises" },
   description:
     "Push Button (free-vend) napkin vending machines cost less upfront. Coin and UPI automatics cost more but add payment automation. Full comparison of features, maintenance, best use cases and which to buy in India 2026.",
   keywords: [

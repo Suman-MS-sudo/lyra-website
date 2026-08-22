@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Why Every School in India Needs a Sanitary Napkin Vending Machine | Lyra Enterprises",
+  title: { absolute: "Why Every School in India Needs a Sanitary Napkin Vending Machine | Lyra Enterprises" },
   description:
     "Menstrual hygiene in schools directly impacts girls' attendance and learning outcomes. Discover why sanitary napkin vending machines are the most effective solution for Indian schools.",
   keywords: [

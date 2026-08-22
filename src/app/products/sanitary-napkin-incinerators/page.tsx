@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { incinerators, SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Sanitary Napkin Incinerators — All Models & Prices India | Lyra Enterprises",
+  title: { absolute: "Sanitary Napkin Incinerators — All Models & Prices India | Lyra Enterprises" },
   description:
     "Buy sanitary napkin incinerators in India. Compare Micro (1–5), Mini (5–15) and Maxi (25–50 napkins/cycle). CPCB & SWM compliant. Pan-India delivery. Call +91-8122378860.",
   keywords: [

@@ -24,7 +24,7 @@ export async function generateMetadata({
 
   const canonical = `${SITE.url}/products/${product.slug}`;
   return {
-    title: product.metaTitle,
+    title: { absolute: product.metaTitle },
     description: product.metaDescription,
     keywords: product.keywords,
     alternates: { canonical },
@@ -308,6 +308,28 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             ))}
           </div>
         </section>
+
+        {/* ── Combo offer callout ──────────────────────────── */}
+        {(product.slug === "push-button-vending-machine" || product.slug === "lyra-micro-incinerator") && (
+          <section className="max-w-7xl mx-auto px-5 sm:px-8 py-8 border-t border-gray-100">
+            <Link
+              href="/offers/push-button-micro-combo"
+              className="flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-gradient-to-r from-primary-50 to-pink-50 border border-primary-100 px-6 py-5 hover:border-primary-300 hover:shadow-md transition-all duration-200"
+            >
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-primary-600 mb-1">🔥 Combo Offer</p>
+                <p className="font-semibold text-gray-900">
+                  {product.slug === "push-button-vending-machine"
+                    ? "Get this + a Lyra Micro Incinerator together — see the ₹19,999 combo offer"
+                    : "Get this + a Push Button Vending Machine together — see the ₹19,999 combo offer"}
+                </p>
+              </div>
+              <span className="px-5 py-2.5 rounded-full bg-primary-600 text-white text-sm font-semibold whitespace-nowrap">
+                View Offer →
+              </span>
+            </Link>
+          </section>
+        )}
 
         {/* ── Long description ─────────────────────────────── */}
         <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">

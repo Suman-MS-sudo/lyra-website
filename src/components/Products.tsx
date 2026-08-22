@@ -379,11 +379,28 @@ export default function Products() {
           count={3}
           href="/products/sanitary-napkin-incinerators"
         />
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5 mb-14 sm:mb-20">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5">
           {incinerators.map((p, i) => (
             <ProductCard key={p.name} product={p} index={i} />
           ))}
         </div>
+
+        {/* Combo Offer Banner */}
+        <Link
+          href="/offers/push-button-micro-combo"
+          className="mt-6 mb-14 sm:mb-20 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-gradient-to-r from-gray-900 to-primary-900 px-6 py-6 sm:px-8 sm:py-7 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300"
+        >
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest text-primary-300 mb-1.5">🔥 Combo Offer</p>
+            <p className="font-bold text-white text-lg sm:text-xl">
+              Push Button Vending Machine + Micro Incinerator — ₹19,999
+            </p>
+            <p className="text-white/50 text-sm mt-1">Full SWM Rules 2016 compliance in one order</p>
+          </div>
+          <span className="px-6 py-3 rounded-full bg-white text-gray-900 text-sm font-bold whitespace-nowrap">
+            View Offer →
+          </span>
+        </Link>
 
         {/* Sanitary Napkins */}
         <CategoryHeader

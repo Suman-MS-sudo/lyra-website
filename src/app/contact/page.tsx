@@ -4,7 +4,7 @@ import StaticInfoPage from "@/components/StaticInfoPage";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Lyra Enterprises",
+  title: { absolute: "Contact Us | Lyra Enterprises" },
   description:
     "Contact Lyra Enterprises for product enquiries, quotes, installation assistance and shipping questions. Sanitary napkin vending machine & incinerator manufacturer, Chennai. Pan-India, serving all of South India.",
   alternates: { canonical: `${SITE.url}/contact` },

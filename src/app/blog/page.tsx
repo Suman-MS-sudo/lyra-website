@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { blogPosts, SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Blog — Menstrual Hygiene, Vending Machines & Incinerators India | Lyra Enterprises",
+  title: { absolute: "Blog — Menstrual Hygiene, Vending Machines & Incinerators India | Lyra Enterprises" },
   description:
     "Expert articles on menstrual hygiene management, vending machine buying guides and incinerator comparisons. By Lyra Enterprises — India's #1 manufacturer.",
   keywords: [

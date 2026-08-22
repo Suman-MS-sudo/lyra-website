@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Sanitary Napkin Incinerator vs Bio Bin — Which is Better for India? | Lyra Enterprises",
+  title: { absolute: "Sanitary Napkin Incinerator vs Bio Bin — Which is Better for India? | Lyra Enterprises" },
   description:
     "Comparing sanitary napkin incinerators vs bio bins for India institutions. Health risks, legal compliance, cost analysis — complete guide. Lyra Enterprises Chennai manufacturer.",
   keywords: [

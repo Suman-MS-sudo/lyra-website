@@ -26,7 +26,7 @@ export async function generateMetadata({
 
   const canonical = `${SITE.url}/${city.slug}`;
   return {
-    title: city.metaTitle,
+    title: { absolute: city.metaTitle },
     description: city.metaDescription,
     keywords: city.keywords,
     alternates: { canonical },

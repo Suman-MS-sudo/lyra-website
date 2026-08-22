@@ -3,7 +3,7 @@ import StaticInfoPage from "@/components/StaticInfoPage";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | Lyra Enterprises",
+  title: { absolute: "Terms and Conditions | Lyra Enterprises" },
   description:
     "Terms and Conditions governing use of the Lyra Enterprises website and orders placed through our enquiry and quotation process.",
   alternates: { canonical: `${SITE.url}/terms-and-conditions` },

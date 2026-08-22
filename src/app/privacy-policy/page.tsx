@@ -3,7 +3,7 @@ import StaticInfoPage from "@/components/StaticInfoPage";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Lyra Enterprises",
+  title: { absolute: "Privacy Policy | Lyra Enterprises" },
   description:
     "Privacy Policy for Lyra Enterprises covering customer information collected through product enquiries and quotation requests.",
   alternates: { canonical: `${SITE.url}/privacy-policy` },

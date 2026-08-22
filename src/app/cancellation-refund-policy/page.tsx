@@ -3,7 +3,7 @@ import StaticInfoPage from "@/components/StaticInfoPage";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Cancellation and Refund Policy | Lyra Enterprises",
+  title: { absolute: "Cancellation and Refund Policy | Lyra Enterprises" },
   description:
     "Cancellation and Refund Policy for Lyra Enterprises orders placed through our enquiry and quotation process.",
   alternates: { canonical: `${SITE.url}/cancellation-refund-policy` },

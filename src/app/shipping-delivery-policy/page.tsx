@@ -3,7 +3,7 @@ import StaticInfoPage from "@/components/StaticInfoPage";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Shipping and Delivery Policy | Lyra Enterprises",
+  title: { absolute: "Shipping and Delivery Policy | Lyra Enterprises" },
   description:
     "Shipping and Delivery Policy for Lyra Enterprises product orders across India.",
   alternates: { canonical: `${SITE.url}/shipping-delivery-policy` },

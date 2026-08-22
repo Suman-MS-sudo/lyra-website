@@ -15,9 +15,9 @@ const WA_MESSAGE =
   "Hi! I'm interested in the Push Button Vending Machine + Lyra Micro Incinerator combo offer at ₹19,999 + GST + Freight. Please share more details.";
 
 export const metadata: Metadata = {
-  title: "Push Button Vending Machine + Micro Incinerator Combo Offer ₹19,999 | Lyra",
+  title: { absolute: "Push Button Vending Machine + Micro Incinerator Combo Offer ₹19,999 | Lyra Enterprises" },
   description:
-    "Limited combo offer: Push Button Sanitary Napkin Vending Machine + Lyra Micro Incinerator for ₹19,999 + GST + Freight. Full SWM Rules 2016 compliance in one order. Pan-India delivery.",
+    "Combo offer: Push Button Sanitary Napkin Vending Machine + Lyra Micro Incinerator for ₹19,999 + GST + Freight. Full SWM Rules 2016 compliance in one order. Pan-India delivery.",
   keywords: [
     "vending machine incinerator combo offer",
     "sanitary napkin vending machine incinerator price",
@@ -116,6 +116,9 @@ export default function ComboOfferPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <meta property="og:type" content="product" />
+      <meta property="product:price:amount" content={String(PRICE)} />
+      <meta property="product:price:currency" content="INR" />
       <PageNavbar />
       <ExitPopup
         storageKey="lyra_combo_popup_dismissed"
