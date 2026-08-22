@@ -23,12 +23,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default:
-      "Lyra Enterprises | #1 Vending Machine & Incinerator Manufacturer India",
+    default: "Lyra Enterprises | Vending Machines & Incinerators India",
     template: "%s | Lyra Enterprises",
   },
   description:
-    "Buy sanitary napkin vending machines & incinerators from Lyra Enterprises — India's #1 manufacturer based in Chennai. Coin, UPI, WiFi & IoT models. Trusted by 200+ schools, hospitals & offices across India.",
+    "Lyra Enterprises — India's #1 manufacturer of sanitary napkin vending machines & incinerators. Coin, UPI, WiFi & IoT models. Trusted by 200+ institutions.",
 
   keywords: [
     // Primary product keywords
