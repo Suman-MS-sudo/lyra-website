@@ -5,7 +5,7 @@ import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import { SITE } from "@/lib/data";
 import { WhatsAppCTA, CallCTA } from "./ComboCTA";
-import ExitPopup from "./ExitPopup";
+import ExitPopup from "@/components/ExitPopup";
 
 const PRICE = 19999;
 const PAGE_URL = `${SITE.url}/offers/push-button-micro-combo`;
@@ -113,7 +113,12 @@ export default function ComboOfferPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <PageNavbar />
-      <ExitPopup />
+      <ExitPopup
+        storageKey="lyra_combo_popup_dismissed"
+        source="combo-offer-popup"
+        title="Get a callback about the ₹19,999 combo"
+        body="Leave your number and we'll call you back with full details on the Push Button + Micro Incinerator offer."
+      />
       <main className="pt-16 bg-white min-h-screen">
         {/* Hero */}
         <section className="bg-gradient-to-br from-primary-50 via-white to-pink-50 py-12 sm:py-20">
