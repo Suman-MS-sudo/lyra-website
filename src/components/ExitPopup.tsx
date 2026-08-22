@@ -15,6 +15,8 @@ type Props = {
   eyebrow?: string;
   title?: string;
   body?: string;
+  trigger?: "exit-intent" | "immediate";
+  delayMs?: number;
 };
 
 export default function ExitPopup({
@@ -23,6 +25,8 @@ export default function ExitPopup({
   eyebrow = "Wait — before you go",
   title = "Get a free callback",
   body = "Leave your number and our team will call you back with product details and pricing.",
+  trigger = "exit-intent",
+  delayMs = 1500,
 }: Props) {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -44,6 +48,11 @@ export default function ExitPopup({
       setOpen(true);
     };
 
+    if (trigger === "immediate") {
+      const timer = setTimeout(show, delayMs);
+      return () => clearTimeout(timer);
+    }
+
     const onMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0) show();
     };
@@ -58,7 +67,7 @@ export default function ExitPopup({
       document.removeEventListener("mouseleave", onMouseLeave);
       if (timer) clearTimeout(timer);
     };
-  }, [storageKey]);
+  }, [storageKey, trigger, delayMs]);
 
   const close = () => {
     setOpen(false);
