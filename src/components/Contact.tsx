@@ -345,10 +345,11 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    <label htmlFor="product" className="block text-sm font-medium text-gray-700 mb-1.5">
                       Interested In
                     </label>
                     <select
+                      id="product"
                       {...register("product", { required: "Please select a product" })}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all text-gray-700 appearance-none bg-white"
                     >

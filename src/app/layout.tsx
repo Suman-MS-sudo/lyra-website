@@ -120,9 +120,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${SITE_URL}/images/og-image.jpg`,
-        width: 1200,
-        height: 630,
+        url: `${SITE_URL}/images/logo.png`,
+        width: 442,
+        height: 454,
         alt: "Lyra Enterprises — Sanitary Napkin Vending Machine & Incinerator Manufacturer India",
       },
     ],
@@ -134,7 +134,7 @@ export const metadata: Metadata = {
       "Lyra Enterprises | #1 Vending Machine & Incinerator Manufacturer India",
     description:
       "Buy sanitary napkin vending machines & incinerators from India's #1 manufacturer. Coin, UPI, WiFi & IoT models. 200+ installations across India.",
-    images: [`${SITE_URL}/images/og-image.jpg`],
+    images: [`${SITE_URL}/images/logo.png`],
   },
 
   robots: {

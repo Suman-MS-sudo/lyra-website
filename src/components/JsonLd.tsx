@@ -19,7 +19,7 @@ const organizationSchema = {
     width: 200,
     height: 200,
   },
-  image: `${SITE_URL}/images/og-image.jpg`,
+  image: `${SITE_URL}/images/logo.png`,
   description:
     "India's #1 manufacturer of sanitary napkin vending machines and incinerators. Coin operated, UPI/QR, WiFi and IoT-enabled models for schools, hospitals, offices and colleges. Based in Chennai, Tamil Nadu.",
   foundingDate: "2018",
@@ -197,7 +197,7 @@ const productListSchema = {
         manufacturer: { "@id": `${SITE_URL}/#organization` },
         category: "Sanitary Napkin Vending Machine",
         url: `${SITE_URL}/#products`,
-        image: `${SITE_URL}/images/og-image.jpg`,
+        image: `${SITE_URL}/images/logo.png`,
       },
     })),
     ...incineratorProducts.map((p, i) => ({
@@ -214,7 +214,7 @@ const productListSchema = {
         manufacturer: { "@id": `${SITE_URL}/#organization` },
         category: "Sanitary Napkin Incinerator",
         url: `${SITE_URL}/#products`,
-        image: `${SITE_URL}/images/og-image.jpg`,
+        image: `${SITE_URL}/images/logo.png`,
       },
     })),
   ],

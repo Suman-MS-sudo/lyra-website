@@ -268,8 +268,8 @@ export default function Hero() {
                     src="/images/products/Hero Img.png"
                     alt="Lyra Enterprises - Sanitary Napkin Solutions"
                     fill
+                    sizes="(max-width: 1024px) 0px, (max-width: 1280px) 250px, 300px"
                     className="object-contain drop-shadow-2xl"
-                    priority
                   />
                 </div>
               </motion.div>
