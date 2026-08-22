@@ -151,6 +151,9 @@ export const metadata: Metadata = {
 
   verification: {
     google: "b80724af728d3dc1",
+    // Bing Webmaster Tools: sign in at bing.com/webmasters with "Import from Google Search Console"
+    // (one click, no token needed) — or if verifying manually, paste the msvalidate.01 content below.
+    // yandex: "YOUR_YANDEX_VERIFICATION_TOKEN",
   },
 
   other: {
@@ -160,6 +163,8 @@ export const metadata: Metadata = {
     ICBM: "13.0827, 80.2707",
     "DC.language": "en",
     "DC.publisher": "Lyra Enterprises",
+    // Bing Webmaster Tools manual verification (uncomment and fill in once you have a token):
+    // "msvalidate.01": "YOUR_BING_VERIFICATION_TOKEN",
     // Social Media Profiles for SEO
     "facebook-domain-verification": "Lyra Enterprises",
     "fb:page_id": "61578649496806",
