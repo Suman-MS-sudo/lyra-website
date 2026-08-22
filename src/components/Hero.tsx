@@ -152,39 +152,24 @@ export default function Hero() {
           <div className="grid lg:grid-cols-2 gap-6 sm:gap-12 xl:gap-20 items-center">
             {/* Left Content */}
             <div>
-              {/* Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-sm border border-primary-200/50 shadow-sm mb-4 sm:mb-8"
-              >
+              {/* Badge — rendered visible immediately (no JS-gated fade-in) so it doesn't delay LCP */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-sm border border-primary-200/50 shadow-sm mb-4 sm:mb-8">
                 <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
                 <span className="text-xs font-semibold text-primary-700 tracking-wider uppercase">
                   #1 Vending Machine Manufacturer India
                 </span>
-              </motion.div>
+              </div>
 
-              {/* Headline */}
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-gray-900 mb-5 sm:mb-6"
-              >
+              {/* Headline — the LCP element; must not be hidden behind a JS-driven animation */}
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-gray-900 mb-5 sm:mb-6">
                 Empowering{" "}
                 <span className="text-gradient">Women&apos;s Health</span>{" "}
                 <br className="hidden sm:block" />
                 Across India
-              </motion.h1>
+              </h1>
 
               {/* Description */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.35 }}
-                className="text-base sm:text-lg text-gray-600 leading-relaxed mb-7 sm:mb-10 max-w-xl"
-              >
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-7 sm:mb-10 max-w-xl">
                 Premium{" "}
                 <strong className="text-primary-600 font-semibold">
                   sanitary napkin vending machines
@@ -195,40 +180,24 @@ export default function Hero() {
                 </strong>{" "}
                 designed for schools, hospitals &amp; offices. Trusted by 200+
                 institutions for dignified, hygienic solutions.
-              </motion.p>
+              </p>
 
               {/* Stats */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.5 }}
-                className="grid grid-cols-3 gap-3 sm:gap-4 mb-7 sm:mb-10"
-              >
-                {stats.map((stat, i) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                    className="text-center px-1"
-                  >
+              <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-7 sm:mb-10">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="text-center px-1">
                     <p className="font-display text-xl sm:text-2xl font-bold text-gradient">
                       {stat.value}
                     </p>
                     <p className="text-xs text-gray-500 mt-1 leading-tight">
                       {stat.label}
                     </p>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
 
               {/* CTAs */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.65 }}
-                className="flex flex-row flex-wrap gap-3 sm:gap-4"
-              >
+              <div className="flex flex-row flex-wrap gap-3 sm:gap-4">
                 <Link
                   href="#products"
                   className="inline-flex items-center justify-center gap-2 flex-1 min-w-0 px-4 sm:px-8 py-4 bg-purple-gradient text-white font-semibold rounded-full shadow-purple hover:shadow-purple-lg hover:-translate-y-1 active:translate-y-0 transition-all duration-300 text-sm sm:text-base"
@@ -244,7 +213,7 @@ export default function Hero() {
                 >
                   <span className="truncate">Get a Free Quote</span>
                 </Link>
-              </motion.div>
+              </div>
             </div>
 
             {/* Right — Hero Image - Hidden on mobile */}
