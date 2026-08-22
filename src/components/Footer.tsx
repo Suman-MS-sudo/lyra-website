@@ -56,7 +56,7 @@ export default function Footer() {
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
                 Ready to empower your space?
               </h2>
-              <p className="text-gray-400 text-base">
+              <p className="text-gray-300 text-base">
                 Join 200+ institutions who already trust Lyra Enterprises machines.
               </p>
             </div>
@@ -88,6 +88,7 @@ export default function Footer() {
                   alt="Lyra Enterprises Logo"
                   fill
                   sizes="40px"
+                  quality={70}
                   className="object-contain"
                 />
               </div>
@@ -190,13 +191,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500 text-sm">
+        <div className="py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-400 text-sm">
           <p>© 2026 Lyra Enterprises. All rights reserved.</p>
-          <a 
-            href="https://maps.google.com/maps?q=10/21,+Vasuki+Street,+Cholapuram,+Ambattur,+Chennai+600053,+India" 
-            target="_blank" 
+          <a
+            href="https://maps.google.com/maps?q=10/21,+Vasuki+Street,+Cholapuram,+Ambattur,+Chennai+600053,+India"
+            target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-gray-500 hover:text-primary-600 transition-colors hover:underline"
+            className="text-xs text-gray-400 hover:text-primary-300 transition-colors hover:underline"
           >
             📍 10/21, Vasuki Street, Cholapuram, Ambattur, Chennai – 600053, India
           </a>

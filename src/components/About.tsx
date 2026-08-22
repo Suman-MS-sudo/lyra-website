@@ -10,7 +10,7 @@ const values = [
     description:
       "To become India's largest vending machine manufacturer by making premium sanitary hygiene solutions accessible in every school, office, hospital, and public space across India.",
     image:
-      "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&auto=format&fit=crop&q=60",
     accent: "from-primary-400 to-primary-600",
   },
   {
@@ -18,7 +18,7 @@ const values = [
     description:
       "India's most trusted vending machine brand and premier incinerator supplier, championing feminine hygiene infrastructure and empowering every woman with dignity and privacy.",
     image:
-      "https://images.unsplash.com/photo-1517438476312-10d79c077509?w=600&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1517438476312-10d79c077509?w=600&auto=format&fit=crop&q=60",
     accent: "from-pink-400 to-primary-500",
   },
 ];
@@ -84,6 +84,7 @@ export default function About() {
                     alt={val.title}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
+                    quality={65}
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div
