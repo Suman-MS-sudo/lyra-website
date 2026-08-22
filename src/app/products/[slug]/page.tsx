@@ -191,7 +191,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
                 {product.fullName}
               </h1>
-              <p className="mt-2 text-sm text-gray-400 font-mono">{product.code}</p>
+              <p className="mt-2 text-sm text-gray-500 font-mono">{product.code}</p>
               <p className="mt-4 text-lg text-gray-600 leading-relaxed">{product.description}</p>
 
               {/* Trust badges */}
@@ -345,7 +345,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                       {([row.pb, row.sc, row.qr, row.rf, row.wifi, row.eth] as string[]).map((val, j) => {
                         const isActive = vendingMachines[j]?.slug === product.slug;
                         return (
-                          <td key={j} className={`px-4 py-3 text-center font-medium ${isActive ? "bg-primary-50/60 text-primary-800" : val === "Yes" ? "text-green-600" : val === "No" ? "text-gray-400" : "text-gray-700"}`}>
+                          <td key={j} className={`px-4 py-3 text-center font-medium ${isActive ? "bg-primary-50/60 text-primary-800" : val === "Yes" ? "text-green-600" : val === "No" ? "text-gray-500" : "text-gray-700"}`}>
                             {val}
                           </td>
                         );

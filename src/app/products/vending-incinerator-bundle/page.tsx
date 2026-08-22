@@ -226,7 +226,7 @@ export default function BundlePage() {
                     <div className="space-y-3 mb-6">
                       <div className="flex items-center justify-between py-2 border-b border-gray-50">
                         <div>
-                          <p className="text-xs text-gray-400 uppercase font-semibold">Vending Machine</p>
+                          <p className="text-xs text-gray-500 uppercase font-semibold">Vending Machine</p>
                           <Link href={`/products/${b.vending.slug}`} className="text-gray-900 font-semibold hover:text-primary-600 transition-colors">
                             {b.vending.name}
                           </Link>
@@ -234,7 +234,7 @@ export default function BundlePage() {
                       </div>
                       <div className="flex items-center justify-between py-2">
                         <div>
-                          <p className="text-xs text-gray-400 uppercase font-semibold">Incinerator</p>
+                          <p className="text-xs text-gray-500 uppercase font-semibold">Incinerator</p>
                           <Link href={`/products/${b.incinerator.slug}`} className="text-gray-900 font-semibold hover:text-primary-600 transition-colors">
                             {b.incinerator.name}
                           </Link>

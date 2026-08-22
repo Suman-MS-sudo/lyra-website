@@ -351,11 +351,11 @@ export default function Products() {
           {/* Stats strip */}
           <div className="inline-flex items-center gap-2 flex-wrap justify-center text-sm text-gray-500 font-medium">
             <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">6 VM&nbsp;Models</span>
-            <span className="text-gray-300">·</span>
+            <span className="text-gray-500">·</span>
             <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">3 Incinerators</span>
-            <span className="text-gray-300">·</span>
+            <span className="text-gray-500">·</span>
             <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">2 Napkin Variants</span>
-            <span className="text-gray-300">·</span>
+            <span className="text-gray-500">·</span>
           </div>
         </motion.div>
 

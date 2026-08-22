@@ -139,7 +139,7 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
                   {p.popular && (
                     <span className="inline-block mb-2 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-primary-100 text-primary-700 rounded-full">Most Popular</span>
                   )}
-                  <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">{p.code}</p>
+                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">{p.code}</p>
                   <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
                   <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug">{p.tagline}</p>
                   <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details / Enquire →</span>
@@ -165,7 +165,7 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
               <Link key={p.slug} href={`/products/${p.slug}`} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                 <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
                 <div className="p-5">
-                  <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">{p.code}</p>
+                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">{p.code}</p>
                   <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
                   <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug">{p.tagline}</p>
                   <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details / Enquire →</span>

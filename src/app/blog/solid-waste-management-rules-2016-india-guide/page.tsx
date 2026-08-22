@@ -60,7 +60,7 @@ export default function SWMRulesBlog() {
 
           <div className="mt-6">
             <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold uppercase tracking-widest">Compliance</span>
-            <span className="ml-3 text-sm text-gray-400">1 March 2026 · 7 min read</span>
+            <span className="ml-3 text-sm text-gray-500">1 March 2026 · 7 min read</span>
           </div>
 
           <h1 className="mt-5 font-bold text-3xl sm:text-4xl text-gray-900 leading-tight">

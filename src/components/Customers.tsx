@@ -171,7 +171,7 @@ export default function Customers() {
                 <p className="font-semibold text-gray-800 text-sm leading-tight">
                   {customer.name}
                 </p>
-                <span className="mt-2 text-xs text-gray-400 bg-white/60 px-2 py-0.5 rounded-full">
+                <span className="mt-2 text-xs text-gray-500 bg-white/60 px-2 py-0.5 rounded-full">
                   {customer.category}
                 </span>
               </div>
@@ -207,7 +207,7 @@ export default function Customers() {
                     <p className="font-semibold text-gray-900 text-sm">
                       {t.author}
                     </p>
-                    <p className="text-xs text-gray-400">{t.company}</p>
+                    <p className="text-xs text-gray-500">{t.company}</p>
                   </div>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 h-1 rounded-b-3xl bg-gradient-to-r from-primary-300 to-pink-soft opacity-0 group-hover:opacity-100 transition-opacity" />

@@ -66,7 +66,7 @@ export default function BlogPost2() {
 
           <div className="mt-6">
             <span className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-bold uppercase tracking-widest">Buying Guide</span>
-            <span className="ml-3 text-sm text-gray-400">28 January 2026 · 6 min read</span>
+            <span className="ml-3 text-sm text-gray-500">28 January 2026 · 6 min read</span>
           </div>
 
           <h1 className="mt-5 font-bold text-3xl sm:text-4xl text-gray-900 leading-tight">

@@ -51,8 +51,8 @@ export default function BlogPage() {
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group block bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all p-6 sm:p-8">
                 <div className="flex flex-wrap items-center gap-3 mb-3">
                   <span className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-bold uppercase tracking-widest">{post.category}</span>
-                  <span className="text-xs text-gray-400">{new Date(post.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}</span>
-                  <span className="text-xs text-gray-400">{post.readTime}</span>
+                  <span className="text-xs text-gray-500">{new Date(post.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}</span>
+                  <span className="text-xs text-gray-500">{post.readTime}</span>
                 </div>
                 <h2 className="font-bold text-xl text-gray-900 group-hover:text-primary-600 transition-colors mb-2 leading-snug">
                   {post.title}

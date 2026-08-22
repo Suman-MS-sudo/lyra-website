@@ -176,13 +176,13 @@ export default function Contact() {
                   <div className="absolute inset-0 bg-purple-gradient opacity-60" />
                 </div>
                 <div className="min-w-0 w-full">
-                  <p className="text-xs text-gray-400 font-medium mb-0.5 uppercase tracking-wide">
+                  <p className="text-xs text-gray-500 font-medium mb-0.5 uppercase tracking-wide">
                     {info.label}
                   </p>
                   <p className="font-semibold text-gray-900 text-xs sm:text-sm truncate group-hover:text-primary-700 transition-colors">
                     {info.value}
                   </p>
-                  <p className="text-xs text-gray-400 mt-0.5 hidden sm:block">{info.sub}</p>
+                  <p className="text-xs text-gray-500 mt-0.5 hidden sm:block">{info.sub}</p>
                 </div>
               </a>
             </FadeUp>
@@ -404,7 +404,7 @@ export default function Contact() {
                   >
                     {submitting ? "Sending..." : "Send Message →"}
                   </button>
-                  <p className="text-xs text-gray-400 text-center">
+                  <p className="text-xs text-gray-500 text-center">
                     We respect your privacy. Your details are kept confidential.
                   </p>
                 </form>

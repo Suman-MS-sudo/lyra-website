@@ -94,7 +94,7 @@ export default function VendingMachinesPage() {
                   )}
                   <span className="inline-block mb-2 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-500 rounded-full w-fit">{p.badge}</span>
                   <h2 className="font-bold text-gray-900 text-xl group-hover:text-primary-600 transition-colors">{p.name}</h2>
-                  <p className="text-xs text-gray-400 mt-0.5 mb-3">{p.code}</p>
+                  <p className="text-xs text-gray-500 mt-0.5 mb-3">{p.code}</p>
                   <p className="text-sm text-gray-600 leading-relaxed flex-1">{p.description}</p>
                   <ul className="mt-4 space-y-1.5">
                     {p.features.slice(0, 4).map((f) => (
@@ -137,7 +137,7 @@ export default function VendingMachinesPage() {
                   <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
                     <td className="px-4 py-3 text-gray-600 font-medium">{row.label}</td>
                     {([row.pb, row.sc, row.qr, row.rf, row.wifi, row.eth] as string[]).map((val, j) => (
-                      <td key={j} className={`px-4 py-3 text-center ${val === "Yes" ? "text-green-600 font-semibold" : val === "No" ? "text-gray-400" : "text-gray-700"}`}>
+                      <td key={j} className={`px-4 py-3 text-center ${val === "Yes" ? "text-green-600 font-semibold" : val === "No" ? "text-gray-500" : "text-gray-700"}`}>
                         {val}
                       </td>
                     ))}

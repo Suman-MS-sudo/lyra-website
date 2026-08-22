@@ -98,7 +98,7 @@ export default function IncineratorsPage() {
                 <div className="p-6 flex flex-col flex-1">
                   <span className="inline-block mb-2 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-500 rounded-full w-fit">{p.badge}</span>
                   <h2 className="font-bold text-gray-900 text-xl group-hover:text-primary-600 transition-colors">{p.name}</h2>
-                  <p className="text-xs text-gray-400 mt-0.5 mb-3">{p.code}</p>
+                  <p className="text-xs text-gray-500 mt-0.5 mb-3">{p.code}</p>
                   <p className="text-sm text-gray-600 leading-relaxed flex-1">{p.description}</p>
                   <ul className="mt-4 space-y-1.5">
                     {p.features.slice(0, 4).map((f) => (
