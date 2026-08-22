@@ -67,8 +67,8 @@ const config: Config = {
           "100%": { backgroundPosition: "200% 0" },
         },
         pulseGlow: {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(181,101,167,0.3)" },
-          "50%": { boxShadow: "0 0 60px rgba(181,101,167,0.7)" },
+          "0%, 100%": { transform: "scale(0.92)", opacity: "0.5" },
+          "50%": { transform: "scale(1.08)", opacity: "0.9" },
         },
         slideUp: {
           "0%": { transform: "translateY(40px)", opacity: "0" },
