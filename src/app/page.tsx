@@ -20,7 +20,7 @@ export default function Home() {
         storageKey="lyra_home_popup_dismissed"
         source="homepage-popup"
         trigger="immediate"
-        delayMs={1500}
+        delayMs={3000}
         title="Get a free callback"
         body="Leave your number and our team will call you back with product details and a quote — no obligation."
       />
