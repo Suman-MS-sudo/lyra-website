@@ -135,21 +135,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       },
     },
     category: isVM ? "Sanitary Napkin Vending Machine" : "Sanitary Napkin Incinerator",
-    offers: {
-      "@type": "Offer",
-      availability: "https://schema.org/InStock",
-      url: canonical,
-      seller: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
-      shippingDetails: {
-        "@type": "OfferShippingDetails",
-        shippingDestination: { "@type": "DefinedRegion", addressCountry: "IN" },
-        deliveryTime: {
-          "@type": "ShippingDeliveryTime",
-          handlingTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 2, unitCode: "DAY" },
-          transitTime: { "@type": "QuantitativeValue", minValue: 3, maxValue: 7, unitCode: "DAY" },
-        },
-      },
-    },
+    url: canonical,
     keywords: product.keywords.join(", "),
   };
 

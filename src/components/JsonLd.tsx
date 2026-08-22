@@ -94,26 +94,6 @@ const organizationSchema = {
   openingHours: "Mo-Sa 09:00-18:00",
   paymentAccepted: ["Cash", "UPI", "Bank Transfer", "Cheque"],
   currenciesAccepted: "INR",
-  review: [
-    {
-      "@type": "Review",
-      reviewBody:
-        "Lyra's vending machine has been a game-changer for our female employees. Reliable, discreet, and zero maintenance issues in 2 years.",
-      author: { "@type": "Person", name: "Facilities Manager, Leading IT Corporation, Chennai" },
-    },
-    {
-      "@type": "Review",
-      reviewBody:
-        "We installed Lyra machines in all 12 women's restrooms across campus. The students love it, and the college administration is extremely satisfied.",
-      author: { "@type": "Person", name: "Principal, Women's College, Tamil Nadu" },
-    },
-    {
-      "@type": "Review",
-      reviewBody:
-        "Exceptional product quality and after-sales support. The IoT dashboard helps us monitor all machines remotely. Highly recommended.",
-      author: { "@type": "Person", name: "Hospital Administrator, Multi-specialty Hospital, Bangalore" },
-    },
-  ],
 };
 
 const vendingMachineProducts = [
@@ -218,35 +198,6 @@ const productListSchema = {
         category: "Sanitary Napkin Vending Machine",
         url: `${SITE_URL}/#products`,
         image: `${SITE_URL}/images/og-image.jpg`,
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/InStock",
-          seller: { "@id": `${SITE_URL}/#organization` },
-          url: `${SITE_URL}/#contact`,
-          hasMerchantReturnPolicy: {
-            "@type": "MerchantReturnPolicy",
-            applicableCountry: "IN",
-            returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
-            merchantReturnDays: 7,
-          },
-          shippingDetails: {
-            "@type": "OfferShippingDetails",
-            shippingRate: {
-              "@type": "MonetaryAmount",
-              value: "0",
-              currency: "INR",
-            },
-            shippingDestination: {
-              "@type": "DefinedRegion",
-              addressCountry: "IN",
-            },
-            deliveryTime: {
-              "@type": "ShippingDeliveryTime",
-              handlingTime: { "@type": "QuantitativeValue", minValue: 2, maxValue: 5, unitCode: "DAY" },
-              transitTime: { "@type": "QuantitativeValue", minValue: 3, maxValue: 7, unitCode: "DAY" },
-            },
-          },
-        },
       },
     })),
     ...incineratorProducts.map((p, i) => ({
@@ -264,12 +215,6 @@ const productListSchema = {
         category: "Sanitary Napkin Incinerator",
         url: `${SITE_URL}/#products`,
         image: `${SITE_URL}/images/og-image.jpg`,
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/InStock",
-          seller: { "@id": `${SITE_URL}/#organization` },
-          url: `${SITE_URL}/#contact`,
-        },
       },
     })),
   ],
