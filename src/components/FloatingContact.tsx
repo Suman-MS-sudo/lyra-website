@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { trackLead } from "@/lib/analytics";
 
 const PHONE = "+918122378860";
 const EMAIL = "sales@lyraenterprise.co.in";
@@ -39,6 +40,7 @@ export default function FloatingContact() {
             {/* Call */}
             <a
               href={`tel:${PHONE}`}
+              onClick={() => trackLead("call")}
               className="flex flex-col items-center justify-center py-3.5 gap-1.5 active:bg-primary-50 transition-colors border-r border-gray-100"
               aria-label="Call Lyra Enterprises"
             >
@@ -67,6 +69,7 @@ export default function FloatingContact() {
               href={`https://wa.me/${PHONE}?text=${WA_MESSAGE}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackLead("whatsapp")}
               className="flex flex-col items-center justify-center py-3.5 gap-1.5 active:bg-green-50 transition-colors border-r border-gray-100"
               aria-label="WhatsApp Lyra Enterprises"
             >
@@ -87,6 +90,7 @@ export default function FloatingContact() {
             {/* Email */}
             <a
               href={`mailto:${EMAIL}?subject=Product Inquiry - Lyra Enterprises&body=${EMAIL_MESSAGE}`}
+              onClick={() => trackLead("email")}
               className="flex flex-col items-center justify-center py-3.5 gap-1.5 active:bg-indigo-50 transition-colors"
               aria-label="Email Lyra Enterprises"
             >

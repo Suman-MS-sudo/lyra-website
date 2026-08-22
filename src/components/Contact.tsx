@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { trackLead } from "@/lib/analytics";
 
 type FormData = {
   name: string;
@@ -47,6 +48,7 @@ const contactInfo = [
     href: "tel:+918122378860",
     sub: "Mon–Sat, 9 AM – 6 PM IST",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=80&auto=format&fit=crop&q=80",
+    leadMethod: "call",
   },
   {
     label: "WhatsApp",
@@ -55,6 +57,7 @@ const contactInfo = [
     sub: "Message us instantly",
     image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=80&auto=format&fit=crop&q=80",
     isExternal: true,
+    leadMethod: "whatsapp",
   },
   {
     label: "Email Us",
@@ -62,6 +65,7 @@ const contactInfo = [
     href: `mailto:sales@lyraenterprise.co.in?subject=Product Inquiry - Lyra Enterprises&body=${EMAIL_TEXT}`,
     sub: "24/7 Response Guaranteed",
     image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=80&auto=format&fit=crop&q=80",
+    leadMethod: "email",
   },
   {
     label: "Follow Us",
@@ -112,6 +116,7 @@ export default function Contact() {
       setSubmittedEmails(prev => new Set([...prev, data.email]));
       setSubmittedPhones(prev => new Set([...prev, data.phone]));
       setSubmitted(true);
+      trackLead("form", data.product);
       reset();
     } catch {
       alert("Something went wrong. Please try again or call us directly.");
@@ -164,6 +169,7 @@ export default function Contact() {
                 href={info.href}
                 target={info.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
+                onClick={() => info.leadMethod && trackLead(info.leadMethod as "call" | "whatsapp" | "email")}
                 className="group flex flex-col sm:flex-row gap-3 sm:gap-4 items-start p-4 sm:p-6 rounded-2xl bg-white border border-gray-100 hover:border-primary-200 hover:shadow-purple transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
