@@ -160,6 +160,7 @@ export default function Customers() {
                     src={customer.logo}
                     alt={customer.name}
                     fill
+                    sizes="80px"
                     className="object-contain grayscale group-hover:grayscale-0 transition-all duration-500 opacity-70 group-hover:opacity-100"
                     onError={() => {}}
                   />

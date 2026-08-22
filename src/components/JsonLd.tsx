@@ -16,10 +16,10 @@ const organizationSchema = {
   logo: {
     "@type": "ImageObject",
     url: `${SITE_URL}/images/logo.png`,
-    width: 200,
-    height: 200,
+    width: 442,
+    height: 454,
   },
-  image: `${SITE_URL}/images/logo.png`,
+  image: `${SITE_URL}/images/og-image.jpg`,
   description:
     "India's #1 manufacturer of sanitary napkin vending machines and incinerators. Coin operated, UPI/QR, WiFi and IoT-enabled models for schools, hospitals, offices and colleges. Based in Chennai, Tamil Nadu.",
   foundingDate: "2018",
@@ -100,49 +100,55 @@ const vendingMachineProducts = [
   {
     name: "Push Button Sanitary Napkin Vending Machine",
     sku: "Lyra/SNVM/PB",
+    slug: "push-button-vending-machine",
+    image: "push-button-vm.png",
     description:
       "Manual push button sanitary napkin vending machine with 25-napkin capacity. Ideal for schools, hostels and small offices. Electronic operation, view panel provided.",
-    price: "9000",
     keywords: "push button vending machine, manual napkin vending machine, school vending machine",
   },
   {
     name: "Solo Coin Operated Sanitary Napkin Vending Machine",
     sku: "Lyra/SNVM/SC",
+    slug: "solo-coin-vending-machine",
+    image: "solo-coin.png",
     description:
       "Coin operated sanitary napkin vending machine with ₹5 coin acceptor. 25-napkin capacity, electronic operation. Perfect for public toilets, malls and offices.",
-    price: "9500",
     keywords: "coin vending machine india, coin operated napkin vending machine",
   },
   {
     name: "Solo QR UPI Sanitary Napkin Vending Machine",
     sku: "Lyra/SNVM/QR",
+    slug: "solo-qr-vending-machine",
+    image: "solo-qr.png",
     description:
       "UPI QR code sanitary napkin vending machine with ₹5 coin acceptor. SIM-based connectivity managed by customer. 25-napkin capacity. Ideal for campuses and offices.",
-    price: "15000",
     keywords: "upi qr vending machine india, sim based napkin vending machine, qr code napkin machine",
   },
   {
     name: "Solo RFID Sanitary Napkin Vending Machine",
     sku: "Lyra/SNVM/RF",
+    slug: "solo-rfid-vending-machine",
+    image: "solo-rfid.png",
     description:
       "RFID card/tag operated sanitary napkin vending machine. No coins, no QR — tap and dispense. 25-napkin capacity. Ideal for corporate campuses and hostels.",
-    price: "13000",
     keywords: "rfid vending machine india, contactless napkin vending machine, rfid card napkin machine",
   },
   {
     name: "Solo WiFi UPI QR Sanitary Napkin Vending Machine",
     sku: "Lyra/SNVM/W-QR-SC",
+    slug: "solo-wifi-vending-machine",
+    image: "solo-wifi.png",
     description:
       "Smart WiFi-enabled sanitary napkin vending machine with UPI QR code and coin payment. Touch display, cloud-based reports and IoT monitoring. Best seller across India.",
-    price: "22500",
     keywords: "UPI vending machine, QR code vending machine, WiFi vending machine India, smart vending machine",
   },
   {
     name: "Solo Ethernet UPI QR Sanitary Napkin Vending Machine",
     sku: "Lyra/SNVM/ET-QR-SC",
+    slug: "solo-ethernet-vending-machine",
+    image: "solo-ethernet.png",
     description:
       "Ethernet-connected sanitary napkin vending machine with UPI QR code and coin payment. Touch display panel, cloud-based analytics. Ideal for hospitals and large offices.",
-    price: "24500",
     keywords: "ethernet vending machine, UPI vending machine, cloud vending machine India",
   },
 ];
@@ -151,25 +157,28 @@ const incineratorProducts = [
   {
     name: "Lyra Micro Sanitary Napkin Incinerator",
     sku: "Lyra/SND/Micro",
+    slug: "lyra-micro-incinerator",
+    image: "lyra-micro.png",
     description:
       "Compact sanitary napkin incinerator for 1–5 napkins per cycle. Up to 100 napkins/day, automatic temperature controller, wall mounting. Best for schools and small offices.",
-    price: "9500",
     keywords: "micro incinerator, napkin incinerator for schools, compact incinerator india",
   },
   {
     name: "Lyra Mini Sanitary Napkin Incinerator",
     sku: "Lyra/SND/Mini",
+    slug: "lyra-mini-incinerator",
+    image: "lyra-mini.png",
     description:
       "Mid-size sanitary napkin incinerator for 5–15 napkins per cycle. 100 napkins/day, digital temperature display, wall mounting. Ideal for colleges and medium offices.",
-    price: "12500",
     keywords: "mini incinerator, napkin incinerator for colleges, sanitary waste incinerator",
   },
   {
     name: "Lyra Maxi High Capacity Sanitary Napkin Incinerator",
     sku: "Lyra/SND/Maxi",
+    slug: "lyra-maxi-incinerator",
+    image: "lyra-maxi.png",
     description:
       "High-capacity sanitary napkin incinerator for 25–50 napkins per cycle. Designed for hospitals, large institutions and industrial use. Digital temperature, wall mountable.",
-    price: "30000",
     keywords: "high capacity incinerator, hospital incinerator, industrial napkin incinerator india",
   },
 ];
@@ -196,8 +205,8 @@ const productListSchema = {
         brand: { "@type": "Brand", name: "Lyra Enterprises" },
         manufacturer: { "@id": `${SITE_URL}/#organization` },
         category: "Sanitary Napkin Vending Machine",
-        url: `${SITE_URL}/#products`,
-        image: `${SITE_URL}/images/logo.png`,
+        url: `${SITE_URL}/products/${p.slug}`,
+        image: `${SITE_URL}/images/products/${p.image}`,
       },
     })),
     ...incineratorProducts.map((p, i) => ({
@@ -213,8 +222,8 @@ const productListSchema = {
         brand: { "@type": "Brand", name: "Lyra Enterprises" },
         manufacturer: { "@id": `${SITE_URL}/#organization` },
         category: "Sanitary Napkin Incinerator",
-        url: `${SITE_URL}/#products`,
-        image: `${SITE_URL}/images/logo.png`,
+        url: `${SITE_URL}/products/${p.slug}`,
+        image: `${SITE_URL}/images/products/${p.image}`,
       },
     })),
   ],

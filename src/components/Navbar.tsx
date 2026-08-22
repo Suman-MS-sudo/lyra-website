@@ -136,6 +136,7 @@ export default function Navbar() {
                 src="/images/logo.png"
                 alt="Lyra Enterprises Logo"
                 fill
+                sizes="40px"
                 className="object-contain"
                 priority
               />

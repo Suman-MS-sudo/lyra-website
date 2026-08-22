@@ -10,7 +10,7 @@ export default function PageFooter() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-4">
               <div className="relative w-9 h-9">
-                <Image src="/images/logo.png" alt="Lyra Enterprises" fill className="object-contain" />
+                <Image src="/images/logo.png" alt="Lyra Enterprises" fill sizes="36px" className="object-contain" />
               </div>
               <span className="font-bold text-white text-lg">Lyra Enterprises</span>
             </Link>

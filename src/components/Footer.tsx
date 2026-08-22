@@ -87,6 +87,7 @@ export default function Footer() {
                   src="/images/logo.png"
                   alt="Lyra Enterprises Logo"
                   fill
+                  sizes="40px"
                   className="object-contain"
                 />
               </div>
