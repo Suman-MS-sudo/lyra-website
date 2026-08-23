@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import StaticInfoPage from "@/components/StaticInfoPage";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -33,7 +34,7 @@ export default function ContactPage() {
       <ul>
         <li><strong>Business Name:</strong> Lyra Enterprises</li>
         <li><strong>Phone:</strong> +91-81223 78860</li>
-        <li><strong>Email:</strong> sales@lyraenterprise.co.in</li>
+        <li><strong>Email:</strong> <ObfuscatedEmail /></li>
         <li><strong>Address:</strong> 10/21, Vasuki Street, Cholapuram, Ambattur, Chennai - 600053, Tamil Nadu, India</li>
         <li><strong>Website:</strong> https://lyraenterprise.co.in</li>
         <li><strong>IndiaMART:</strong> <Link href={SITE.social.indiamart} target="_blank" rel="noopener noreferrer">lyraenterprises-chennai on IndiaMART</Link> (GST verified, TrustSEAL supplier)</li>
@@ -47,7 +48,7 @@ export default function ContactPage() {
       <p>For pricing enquiries, order confirmation, invoice details, dispatch timelines, shipping coordination or order amendments, contact us through any of the channels below.</p>
       <ul>
         <li><Link href="tel:+918122378860">Call +91-81223 78860</Link></li>
-        <li><Link href="mailto:sales@lyraenterprise.co.in">Email sales@lyraenterprise.co.in</Link></li>
+        <li><ObfuscatedEmail>Email us</ObfuscatedEmail></li>
         <li><Link href={SITE.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp Support</Link></li>
       </ul>
 

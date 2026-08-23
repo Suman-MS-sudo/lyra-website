@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import StaticInfoPage from "@/components/StaticInfoPage";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -38,7 +39,7 @@ export default function ShippingDeliveryPolicyPage() {
       <p>If a shipment arrives visibly damaged or incomplete, notify Lyra Enterprises within 48 hours of delivery with photos, invoice details and package condition notes.</p>
 
       <h2>Support</h2>
-      <p>For dispatch status, delivery coordination or shipment issues, contact sales@lyraenterprise.co.in or +91-81223 78860.</p>
+      <p>For dispatch status, delivery coordination or shipment issues, contact <ObfuscatedEmail>us</ObfuscatedEmail> or +91-81223 78860.</p>
     </StaticInfoPage>
   );
 }

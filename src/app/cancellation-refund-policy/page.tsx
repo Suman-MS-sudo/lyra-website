@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import StaticInfoPage from "@/components/StaticInfoPage";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -42,7 +43,7 @@ export default function CancellationRefundPolicyPage() {
       </ul>
 
       <h2>How to Request Cancellation or Refund</h2>
-      <p>Email sales@lyraenterprise.co.in or call +91-81223 78860 with your order/enquiry reference, contact details and reason for the request.</p>
+      <p>Email <ObfuscatedEmail>us</ObfuscatedEmail> or call +91-81223 78860 with your order/enquiry reference, contact details and reason for the request.</p>
     </StaticInfoPage>
   );
 }

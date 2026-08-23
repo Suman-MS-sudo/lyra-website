@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import StaticInfoPage from "@/components/StaticInfoPage";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -40,7 +41,7 @@ export default function PrivacyPolicyPage() {
       <p>You may contact us to request correction or deletion of your personal information, subject to legal, accounting and operational requirements.</p>
 
       <h2>Contact</h2>
-      <p>For privacy-related requests, contact Lyra Enterprises at sales@lyraenterprise.co.in or +91-81223 78860.</p>
+      <p>For privacy-related requests, contact Lyra Enterprises at <ObfuscatedEmail>our email</ObfuscatedEmail> or +91-81223 78860.</p>
     </StaticInfoPage>
   );
 }
