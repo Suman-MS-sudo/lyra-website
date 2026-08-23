@@ -8,7 +8,7 @@ const SITE_URL = "https://lyraenterprise.co.in";
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": ["Organization", "LocalBusiness", "Store"],
+  "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
   name: "Lyra Enterprises",
   alternateName: ["Lyra Vending", "Lyra Enterprises Chennai"],
@@ -94,6 +94,40 @@ const organizationSchema = {
   openingHours: "Mo-Sa 09:00-18:00",
   paymentAccepted: ["Cash", "UPI", "Bank Transfer", "Cheque"],
   currenciesAccepted: "INR",
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE_URL}/#localbusiness`,
+  name: "Lyra Enterprises",
+  image: `${SITE_URL}/images/og-image.jpg`,
+  url: SITE_URL,
+  telephone: "+91-8122378860",
+  email: "sales@lyraenterprise.co.in",
+  priceRange: "₹₹",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Chennai",
+    addressLocality: "Chennai",
+    addressRegion: "Tamil Nadu",
+    postalCode: "600001",
+    addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 13.0827,
+    longitude: 80.2707,
+  },
+  openingHours: "Mo-Sa 09:00-18:00",
+  areaServed: [
+    { "@type": "State", name: "Tamil Nadu" },
+    { "@type": "State", name: "Kerala" },
+    { "@type": "State", name: "Karnataka" },
+    { "@type": "State", name: "Andhra Pradesh" },
+    { "@type": "State", name: "Telangana" },
+  ],
+  parentOrganization: { "@id": `${SITE_URL}/#organization` },
 };
 
 const vendingMachineProducts = [
@@ -369,6 +403,7 @@ const breadcrumbSchema = {
 export default function JsonLd() {
   const schemas = [
     organizationSchema,
+    localBusinessSchema,
     productListSchema,
     faqSchema,
     websiteSchema,
