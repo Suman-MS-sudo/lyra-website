@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
@@ -47,7 +48,7 @@ const contactInfo = [
     value: "+91-81223 78860",
     href: "tel:+918122378860",
     sub: "Mon–Sat, 9 AM – 6 PM IST",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=80&auto=format&fit=crop&q=80",
+    image: "/images/stock/contact-call.jpg",
     leadMethod: "call",
   },
   {
@@ -55,7 +56,7 @@ const contactInfo = [
     value: "+91-81223 78860",
     href: `https://wa.me/918122378860?text=${WA_TEXT}`,
     sub: "Message us instantly",
-    image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=80&auto=format&fit=crop&q=80",
+    image: "/images/stock/contact-whatsapp.jpg",
     isExternal: true,
     leadMethod: "whatsapp",
   },
@@ -64,7 +65,7 @@ const contactInfo = [
     value: "Tap to reveal",
     href: "",
     sub: "24/7 Response Guaranteed",
-    image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=80&auto=format&fit=crop&q=80",
+    image: "/images/stock/contact-email.jpg",
     leadMethod: "email",
     isEmail: true,
   },
@@ -73,7 +74,7 @@ const contactInfo = [
     value: "Social Media",
     href: "https://www.instagram.com/lyraenterprises_/",
     sub: "Instagram • Facebook • LinkedIn",
-    image: "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=80&auto=format&fit=crop&q=80",
+    image: "/images/stock/contact-social.jpg",
     isExternal: true,
   },
 ];
@@ -186,11 +187,13 @@ export default function Contact() {
                 className="group flex flex-col sm:flex-row gap-3 sm:gap-4 items-start p-4 sm:p-6 rounded-2xl bg-white border border-gray-100 hover:border-primary-200 hover:shadow-purple transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={info.image}
                     alt={info.label}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="56px"
+                    quality={70}
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-purple-gradient opacity-60" />
                 </div>
