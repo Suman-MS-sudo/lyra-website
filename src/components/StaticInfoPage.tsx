@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 
 type StaticInfoPageProps = {
   title: string;
@@ -39,7 +40,7 @@ export default function StaticInfoPage({
             <div className="mt-10 rounded-2xl bg-gray-50 p-5 text-sm text-gray-600">
               <p className="font-semibold text-gray-900">Need help with an order?</p>
               <p className="mt-2">
-                Contact Lyra Enterprises at <Link href="tel:+918122378860" className="font-semibold text-primary-600 hover:underline">+91-81223 78860</Link> or <Link href="mailto:sales@lyraenterprise.co.in" className="font-semibold text-primary-600 hover:underline">sales@lyraenterprise.co.in</Link>.
+                Contact Lyra Enterprises at <Link href="tel:+918122378860" className="font-semibold text-primary-600 hover:underline">+91-81223 78860</Link> or <ObfuscatedEmail className="font-semibold text-primary-600 hover:underline" />.
               </p>
             </div>
           </div>

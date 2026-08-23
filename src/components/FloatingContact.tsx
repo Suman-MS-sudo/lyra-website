@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { trackLead } from "@/lib/analytics";
 
 const PHONE = "+918122378860";
-const EMAIL = "sales@lyraenterprise.co.in";
 const WA_MESSAGE = encodeURIComponent(
   "Hi! I'm interested in Lyra Enterprisess' sanitary napkin vending machines / incinerators. Please share more details."
 );
@@ -15,10 +14,12 @@ const EMAIL_MESSAGE = encodeURIComponent(
 
 export default function FloatingContact() {
   const [visible, setVisible] = useState(false);
+  const [email, setEmail] = useState("");
 
   // Show bar after a small delay so it doesn't flash on initial load
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 600);
+    setEmail(["sales", "lyraenterprise.co.in"].join("@"));
     return () => clearTimeout(t);
   }, []);
 
@@ -89,7 +90,7 @@ export default function FloatingContact() {
 
             {/* Email */}
             <a
-              href={`mailto:${EMAIL}?subject=Product Inquiry - Lyra Enterprises&body=${EMAIL_MESSAGE}`}
+              href={email ? `mailto:${email}?subject=Product Inquiry - Lyra Enterprises&body=${EMAIL_MESSAGE}` : undefined}
               onClick={() => trackLead("email")}
               className="flex flex-col items-center justify-center py-3.5 gap-1.5 active:bg-indigo-50 transition-colors"
               aria-label="Email Lyra Enterprises"

@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import Image from "next/image";
 import { SITE } from "@/lib/data";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 
 export default function PageFooter() {
   return (
@@ -81,7 +82,7 @@ export default function PageFooter() {
           <p>© 2026 Lyra Enterprises. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="tel:+918122378860" className="hover:text-primary-300 transition-colors">+91-81223 78860</Link>
-            <Link href="mailto:sales@lyraenterprise.co.in" className="hover:text-primary-300 transition-colors">sales@lyraenterprise.co.in</Link>
+            <ObfuscatedEmail className="hover:text-primary-300 transition-colors" />
             <a href={SITE.social.indiamart} target="_blank" rel="noopener noreferrer" className="hover:text-primary-300 transition-colors">IndiaMART</a>
             <a href={SITE.social.justdial} target="_blank" rel="noopener noreferrer" className="hover:text-primary-300 transition-colors">Justdial</a>
           </div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { SITE } from "@/lib/data";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 
 const footerLinks = {
   Company: [
@@ -166,7 +167,13 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    {link.href.startsWith('http') || link.href.startsWith('tel:') || link.href.startsWith('mailto:') ? (
+                    {link.href.startsWith('mailto:') ? (
+                      <ObfuscatedEmail
+                        subject="Product Inquiry - Lyra Enterprises"
+                        body="Hi! I'm interested in Lyra Enterprises' sanitary napkin vending machines and incinerators. Please share more details about your products, pricing, and installation process. Looking forward to hearing from you."
+                        className="text-gray-400 text-sm hover:text-primary-300 transition-colors duration-200 leading-relaxed block"
+                      />
+                    ) : link.href.startsWith('http') || link.href.startsWith('tel:') ? (
                       <a
                         href={link.href}
                         target={link.href.startsWith('http') ? "_blank" : undefined}

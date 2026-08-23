@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { trackLead } from "@/lib/analytics";
 
 type FormData = {
@@ -61,11 +61,12 @@ const contactInfo = [
   },
   {
     label: "Email Us",
-    value: "sales@lyraenterprise.co.in",
-    href: `mailto:sales@lyraenterprise.co.in?subject=Product Inquiry - Lyra Enterprises&body=${EMAIL_TEXT}`,
+    value: "Tap to reveal",
+    href: "",
     sub: "24/7 Response Guaranteed",
     image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=80&auto=format&fit=crop&q=80",
     leadMethod: "email",
+    isEmail: true,
   },
   {
     label: "Follow Us",
@@ -82,6 +83,11 @@ export default function Contact() {
   const [submitting, setSubmitting] = useState(false);
   const [submittedEmails, setSubmittedEmails] = useState<Set<string>>(new Set());
   const [submittedPhones, setSubmittedPhones] = useState<Set<string>>(new Set());
+  const [salesEmail, setSalesEmail] = useState("");
+
+  useEffect(() => {
+    setSalesEmail(["sales", "lyraenterprise.co.in"].join("@"));
+  }, []);
 
   const {
     register,
@@ -163,10 +169,17 @@ export default function Contact() {
 
         {/* Contact Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-16">
-          {contactInfo.map((info, i) => (
+          {contactInfo.map((info, i) => {
+            const href = info.isEmail
+              ? salesEmail
+                ? `mailto:${salesEmail}?subject=Product Inquiry - Lyra Enterprises&body=${EMAIL_TEXT}`
+                : undefined
+              : info.href;
+            const value = info.isEmail ? (salesEmail || info.value) : info.value;
+            return (
             <FadeUp key={info.label} delay={i * 0.1}>
               <a
-                href={info.href}
+                href={href}
                 target={info.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 onClick={() => info.leadMethod && trackLead(info.leadMethod as "call" | "whatsapp" | "email")}
@@ -186,13 +199,14 @@ export default function Contact() {
                     {info.label}
                   </p>
                   <p className="font-semibold text-gray-900 text-xs sm:text-sm truncate group-hover:text-primary-700 transition-colors">
-                    {info.value}
+                    {value}
                   </p>
                   <p className="text-xs text-gray-500 mt-0.5 hidden sm:block">{info.sub}</p>
                 </div>
               </a>
             </FadeUp>
-          ))}
+            );
+          })}
         </div>
 
         {/* Form + Map */}

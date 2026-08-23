@@ -166,6 +166,9 @@ export default function Hero() {
                 <span className="text-gradient">Women&apos;s Health</span>{" "}
                 <br className="hidden sm:block" />
                 Across India
+                <span className="block mt-3 text-lg sm:text-xl lg:text-2xl font-semibold text-gray-500">
+                  Sanitary Napkin Vending Machines &amp; Incinerators
+                </span>
               </h1>
 
               {/* Description */}
