@@ -15,6 +15,16 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "AdsBot-Google",
         allow: "/",
       },
+      // Explicit groups for Google Merchant Center's quality/policy checks
+      {
+        userAgent: "Googlebot",
+        allow: "/",
+        disallow: ["/api/", "/_next/"],
+      },
+      {
+        userAgent: "Googlebot-Image",
+        allow: "/",
+      },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,
