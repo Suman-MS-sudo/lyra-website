@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import IndiaServiceMap from "@/components/IndiaServiceMap";
 import { cities, regionOrder, SITE, type IndiaRegion } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -89,6 +90,13 @@ export default function ServiceAreasPage() {
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Pan-India Delivery</span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 text-purple-700 rounded-full border border-purple-200 font-medium">✓ GST Invoice</span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-pink-50 text-pink-700 rounded-full border border-pink-200 font-medium">✓ Installation Support</span>
+          </div>
+        </section>
+
+        {/* Interactive India map */}
+        <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-8">
+          <div className="rounded-3xl border border-gray-100 bg-white/70 p-4 sm:p-8 shadow-sm">
+            <IndiaServiceMap />
           </div>
         </section>
 

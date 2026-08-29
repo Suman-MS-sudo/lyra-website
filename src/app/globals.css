@@ -195,3 +195,35 @@ img {
     margin: 3rem 0;
   }
 }
+/* ── India service-area map ─────────────────────────────── */
+@keyframes lyra-pin-pulse {
+  0%   { transform: scale(0.6); opacity: 0.55; }
+  70%  { transform: scale(2.4); opacity: 0; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes lyra-route-dash {
+  to { stroke-dashoffset: -24; }
+}
+.lyra-map path[data-state] {
+  transition: fill 180ms ease, opacity 180ms ease;
+  cursor: pointer;
+}
+.lyra-map .lyra-pin-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lyra-pin-pulse 2.6s ease-out infinite;
+}
+.lyra-map .lyra-route {
+  stroke-dasharray: 4 4;
+  animation: lyra-route-dash 1.1s linear infinite;
+}
+.lyra-map a { outline: none; }
+.lyra-map a:focus-visible circle:last-of-type {
+  stroke: #7c1d4e;
+  stroke-width: 2;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lyra-map .lyra-pin-ring,
+  .lyra-map .lyra-route { animation: none; }
+  .lyra-map .lyra-pin-ring { opacity: 0; }
+}
