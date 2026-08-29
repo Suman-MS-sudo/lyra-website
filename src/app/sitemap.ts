@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { cities } from "@/lib/data";
 
 const SITE_URL = "https://lyraenterprise.co.in";
 
@@ -21,13 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "xxl-sanitary-napkin",
   ];
 
-  const citySlugs = [
-    "vending-machine-tamil-nadu",
-    "vending-machine-kerala",
-    "vending-machine-andhra-pradesh",
-    "vending-machine-karnataka",
-    "vending-machine-telangana",
-  ];
+  const citySlugs = cities.map((c) => c.slug);
 
   const blogSlugs = [
     "why-every-school-needs-napkin-vending-machine",
@@ -50,6 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/#contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/#customers`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     // Product hub pages
+    { url: `${SITE_URL}/service-areas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/products`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/products/sanitary-napkin-vending-machines`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/products/sanitary-napkin-incinerators`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },

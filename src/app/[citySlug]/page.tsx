@@ -50,6 +50,9 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
   if (!city) notFound();
 
   const canonical = `${SITE.url}/${city.slug}`;
+  const nearby = cities
+    .filter((c) => c.region === city.region && c.slug !== city.slug)
+    .slice(0, 6);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -92,6 +95,25 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
           </h1>
           <p className="mt-4 text-gray-600 text-lg max-w-3xl">{city.description}</p>
 
+          <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
+            <div className="rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-primary-500">Region</p>
+              <p className="text-sm font-semibold text-gray-900 mt-0.5">{city.region}</p>
+            </div>
+            <div className="rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-primary-500">Capital</p>
+              <p className="text-sm font-semibold text-gray-900 mt-0.5">{city.capital}</p>
+            </div>
+            <div className="rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-primary-500">Districts</p>
+              <p className="text-sm font-semibold text-gray-900 mt-0.5">≈ {city.districtsApprox}</p>
+            </div>
+            <div className="rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-primary-500">Dispatch</p>
+              <p className="text-sm font-semibold text-gray-900 mt-0.5">{city.dispatch}</p>
+            </div>
+          </div>
+
           <div className="mt-6 flex flex-wrap gap-2">
             {city.cities.map((c) => (
               <span key={c} className="px-3 py-1.5 rounded-full bg-primary-100 text-primary-700 text-sm font-medium">
@@ -111,11 +133,15 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8">
             <h2 className="text-xl font-bold text-gray-900 mb-3">Serving {city.state} from our Chennai facility</h2>
             <p className="text-gray-600 leading-relaxed">
-              Lyra Enterprises manufactures every vending machine and incinerator in-house at our Chennai facility and dispatches pan-India, including
-              same-week delivery to {city.capital} and all major {city.state} districts. Our team handles on-site installation guidance, staff training and
-              after-sales service for schools, hospitals, colleges, IT campuses and government offices across {city.cities.slice(0, 4).join(", ")} and
-              beyond. All machines ship with a 1-year manufacturer warranty and GST invoice, and comply with Solid Waste Management Rules 2016 and CPCB
-              guidelines for menstrual waste disposal.
+              Lyra Enterprises manufactures every sanitary napkin vending machine and incinerator in-house at our Chennai facility and dispatches to{" "}
+              {city.state} in a typical {city.dispatch} — covering {city.capital} and {city.kind === "union territory" ? "the whole territory" : `all ≈${city.districtsApprox} districts`}.
+              We supply {city.context}. Our team handles installation guidance, staff training and after-sales service for schools, colleges, hospitals,
+              IT campuses and government offices across {city.cities.slice(0, 4).join(", ")} and beyond. Every machine ships with a 1-year manufacturer
+              warranty and GST invoice, and complies with Solid Waste Management Rules 2016 and CPCB guidelines for menstrual waste disposal.
+            </p>
+            <p className="mt-4 text-sm text-gray-500">
+              Machine prices start at ₹11,000 (+18% GST); freight to {city.state} is quoted separately based on destination.{" "}
+              <Link href="/products/sanitary-napkin-vending-machines" className="font-semibold text-primary-600 hover:underline">See all models and prices →</Link>
             </p>
           </div>
         </section>
@@ -174,6 +200,30 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
             ))}
           </div>
         </section>
+
+        {/* Nearby states — internal linking */}
+        {nearby.length > 0 && (
+          <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Also serving {city.region}</h2>
+            <div className="flex flex-wrap gap-2">
+              {nearby.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/${c.slug}`}
+                  className="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-medium text-gray-700 hover:border-primary-300 hover:text-primary-700 transition-colors"
+                >
+                  {c.state}
+                </Link>
+              ))}
+              <Link
+                href="/service-areas"
+                className="px-4 py-2 rounded-full bg-primary-600 text-white text-sm font-semibold hover:bg-primary-700 transition-colors"
+              >
+                All states & UTs →
+              </Link>
+            </div>
+          </section>
+        )}
 
         {/* CTA */}
         <section className="relative overflow-hidden bg-gradient-to-r from-[#6B1FA8] via-[#A0268A] to-[#E8477A] py-14 text-white text-center px-5">

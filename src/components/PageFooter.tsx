@@ -48,14 +48,15 @@ export default function PageFooter() {
           </div>
 
           <div>
-            <p className="font-semibold text-sm mb-4 tracking-wide">States</p>
+            <p className="font-semibold text-sm mb-4 tracking-wide">Service Areas</p>
             <ul className="space-y-2 text-sm text-gray-400">
               {[
+                ["All States & UTs", "/service-areas"],
                 ["Tamil Nadu", "/vending-machine-tamil-nadu"],
-                ["Kerala", "/vending-machine-kerala"],
-                ["Andhra Pradesh", "/vending-machine-andhra-pradesh"],
                 ["Karnataka", "/vending-machine-karnataka"],
-                ["Telangana", "/vending-machine-telangana"],
+                ["Maharashtra", "/vending-machine-maharashtra"],
+                ["Delhi NCR", "/vending-machine-delhi"],
+                ["Uttar Pradesh", "/vending-machine-uttar-pradesh"],
               ].map(([label, href]) => (
                 <li key={href}><Link href={href} className="hover:text-primary-300 transition-colors">{label}</Link></li>
               ))}

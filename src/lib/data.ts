@@ -897,11 +897,29 @@ export function getProductBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
 }
 
+export type IndiaRegion =
+  | "South India"
+  | "West India"
+  | "North India"
+  | "Central India"
+  | "East India"
+  | "Northeast India"
+  | "Island Territories";
+
 export type StateLocation = {
   slug: string;
   state: string;
   stateCode: string;
+  /** "state" or "union territory" — used in copy */
+  kind: "state" | "union territory";
+  region: IndiaRegion;
   capital: string;
+  /** approximate current district count — rendered with a "≈" qualifier */
+  districtsApprox: number;
+  /** typical dispatch/transit window from the Chennai facility */
+  dispatch: string;
+  /** one clause on the local institutional / industrial context */
+  context: string;
   description: string;
   cities: string[];
   metaTitle: string;
@@ -909,122 +927,903 @@ export type StateLocation = {
   keywords: string[];
 };
 
+function stateMeta(state: string, c: string[]): Pick<StateLocation, "metaTitle" | "metaDescription"> {
+  return {
+    metaTitle: `Sanitary Napkin Vending Machine in ${state} — Buy & Install | Lyra Enterprises`,
+    metaDescription: `Buy sanitary napkin vending machines & incinerators in ${state}. Lyra Enterprises (Chennai manufacturer) supplies and installs in ${c[0]}, ${c[1]}, ${c[2]} & all districts. Prices from ₹11,000. Call +91-8122378860.`,
+  };
+}
+
 export const cities: StateLocation[] = [
+  // ─── SOUTH INDIA ─────────────────────────────────────────────
   {
     slug: "vending-machine-tamil-nadu",
     state: "Tamil Nadu",
     stateCode: "TN",
+    kind: "state",
+    region: "South India",
     capital: "Chennai",
+    districtsApprox: 38,
+    dispatch: "2–4 business days",
+    context:
+      "our home state — the Chennai manufacturing facility plus education and industrial hubs in Coimbatore, Madurai, Salem and Tiruppur",
     description:
-      "Lyra Enterprises is headquartered in Chennai, Tamil Nadu. We supply and install sanitary napkin vending machines and incinerators across all major cities and districts in Tamil Nadu.",
+      "Lyra Enterprises is headquartered in Chennai, Tamil Nadu. We manufacture every sanitary napkin vending machine and incinerator in-house and supply and install across all districts of Tamil Nadu — schools, colleges, hospitals, government offices and factories.",
     cities: ["Chennai", "Coimbatore", "Madurai", "Trichy", "Salem", "Tirunelveli", "Vellore", "Erode", "Thanjavur", "Tiruppur"],
-    metaTitle:
-      "Sanitary Napkin Vending Machine in Tamil Nadu — Buy & Install | Lyra Enterprises",
-    metaDescription:
-      "Buy sanitary napkin vending machines & incinerators in Tamil Nadu. Lyra Enterprises Chennai manufacturer supplies to Chennai, Coimbatore, Madurai, Trichy & all districts. Call +91-8122378860.",
+    ...stateMeta("Tamil Nadu", ["Chennai", "Coimbatore", "Madurai"]),
     keywords: [
       "vending machine tamil nadu",
       "napkin vending machine tamil nadu",
-      "sanitary machine chennai",
+      "sanitary napkin machine chennai",
       "incinerator tamil nadu",
       "vending machine manufacturer chennai",
-      "napkin dispenser tamilnadu",
       "sanitary napkin machine coimbatore",
-      "vending machine madurai",
+      "napkin vending machine madurai",
     ],
   },
   {
     slug: "vending-machine-kerala",
     state: "Kerala",
     stateCode: "KL",
+    kind: "state",
+    region: "South India",
     capital: "Thiruvananthapuram",
+    districtsApprox: 14,
+    dispatch: "3–5 business days",
+    context:
+      "Kerala's high-literacy school network, dense hospital system and IT parks in Kochi and Thiruvananthapuram",
     description:
-      "Serving schools, hospitals, IT campuses and government offices across Kerala. Lyra Enterprises delivers to all 14 districts of Kerala with same-week dispatch.",
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across all 14 districts of Kerala, serving schools, higher-secondary institutions, hospitals, IT campuses and government offices with same-week dispatch from Chennai.",
     cities: ["Kochi", "Thiruvananthapuram", "Kozhikode", "Thrissur", "Kollam", "Palakkad", "Alappuzha", "Kannur", "Kottayam", "Malappuram"],
-    metaTitle:
-      "Sanitary Napkin Vending Machine in Kerala — Buy & Install | Lyra Enterprises",
-    metaDescription:
-      "Buy sanitary napkin vending machines & incinerators in Kerala. Lyra Enterprises supplies to Kochi, Thiruvananthapuram, Kozhikode, Thrissur & all districts. Call +91-8122378860.",
+    ...stateMeta("Kerala", ["Kochi", "Thiruvananthapuram", "Kozhikode"]),
     keywords: [
       "vending machine kerala",
       "napkin vending machine kerala",
-      "sanitary machine kochi",
+      "sanitary napkin machine kochi",
       "incinerator kerala",
-      "vending machine kochi",
+      "napkin vending machine thiruvananthapuram",
+      "sanitary napkin machine kozhikode",
       "napkin dispenser kerala",
-      "sanitary napkin machine thiruvananthapuram",
-      "vending machine kozhikode",
     ],
   },
   {
     slug: "vending-machine-andhra-pradesh",
     state: "Andhra Pradesh",
     stateCode: "AP",
+    kind: "state",
+    region: "South India",
     capital: "Amaravati",
+    districtsApprox: 26,
+    dispatch: "2–5 business days",
+    context:
+      "government schools, ANM and health sub-centres, and the port-industrial belt from Visakhapatnam to Tirupati",
     description:
-      "Supplying and installing sanitary napkin vending machines and incinerators across Andhra Pradesh — from Visakhapatnam to Tirupati. Ideal for schools, colleges, hospitals and government facilities.",
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Andhra Pradesh — from Visakhapatnam and Vijayawada to Tirupati, Guntur and Kurnool. Ideal for government and private schools, colleges, hospitals and PSU facilities.",
     cities: ["Visakhapatnam", "Vijayawada", "Tirupati", "Guntur", "Kakinada", "Nellore", "Kurnool", "Rajahmundry", "Kadapa", "Anantapur"],
-    metaTitle:
-      "Sanitary Napkin Vending Machine in Andhra Pradesh — Buy & Install | Lyra Enterprises",
-    metaDescription:
-      "Buy sanitary napkin vending machines & incinerators in Andhra Pradesh. Lyra Enterprises supplies to Visakhapatnam, Vijayawada, Tirupati & all districts. Call +91-8122378860.",
+    ...stateMeta("Andhra Pradesh", ["Visakhapatnam", "Vijayawada", "Tirupati"]),
     keywords: [
       "vending machine andhra pradesh",
       "napkin vending machine andhra pradesh",
-      "sanitary machine visakhapatnam",
+      "sanitary napkin machine visakhapatnam",
       "incinerator andhra pradesh",
-      "vending machine vijayawada",
-      "napkin dispenser ap",
+      "napkin vending machine vijayawada",
       "sanitary napkin machine tirupati",
-      "vending machine guntur",
+      "napkin dispenser andhra pradesh",
     ],
   },
   {
     slug: "vending-machine-karnataka",
     state: "Karnataka",
     stateCode: "KA",
+    kind: "state",
+    region: "South India",
     capital: "Bengaluru",
+    districtsApprox: 31,
+    dispatch: "2–4 business days",
+    context:
+      "IT campuses in Bengaluru plus universities, medical colleges and hospitals across Mysuru, Hubballi and Mangaluru",
     description:
-      "Serving IT parks, hospitals, educational institutions and government offices across Karnataka. Lyra Enterprises supplies to Bengaluru, Mysuru, Hubli, Mangaluru and all major Karnataka districts.",
-    cities: ["Bengaluru", "Mysuru", "Hubli", "Mangaluru", "Belagavi", "Davangere", "Ballari", "Tumkur", "Shivamogga", "Udupi"],
-    metaTitle:
-      "Sanitary Napkin Vending Machine in Karnataka — Buy & Install | Lyra Enterprises",
-    metaDescription:
-      "Buy sanitary napkin vending machines & incinerators in Karnataka. Lyra Enterprises supplies to Bengaluru, Mysuru, Hubli, Mangaluru & all districts. Call +91-8122378860.",
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Karnataka — IT parks, hospitals, universities, schools and government offices from Bengaluru to Mysuru, Hubballi, Belagavi and Mangaluru.",
+    cities: ["Bengaluru", "Mysuru", "Hubballi", "Mangaluru", "Belagavi", "Davangere", "Ballari", "Tumakuru", "Shivamogga", "Udupi"],
+    ...stateMeta("Karnataka", ["Bengaluru", "Mysuru", "Hubballi"]),
     keywords: [
       "vending machine karnataka",
       "napkin vending machine karnataka",
-      "sanitary machine bangalore",
+      "sanitary napkin machine bangalore",
       "incinerator karnataka",
-      "vending machine bangalore",
-      "napkin dispenser karnataka",
+      "napkin vending machine bengaluru",
       "sanitary napkin machine mysuru",
-      "vending machine hubli",
+      "napkin dispenser karnataka",
     ],
   },
   {
     slug: "vending-machine-telangana",
     state: "Telangana",
     stateCode: "TG",
+    kind: "state",
+    region: "South India",
     capital: "Hyderabad",
+    districtsApprox: 33,
+    dispatch: "2–5 business days",
+    context:
+      "Hyderabad's IT and pharma corridors alongside district schools and government hospitals in Warangal, Nizamabad and Karimnagar",
     description:
-      "Supplying and installing vending machines and incinerators across Telangana — from Hyderabad's IT corridors to schools and hospitals in Warangal, Nizamabad and Karimnagar.",
-    cities: ["Hyderabad", "Secunderabad", "Warangal", "Nizamabad", "Karimnagar", "Khammam", "Ramagundam", "Mahbubnagar", "Nalgonda", "Adilabad"],
-    metaTitle:
-      "Sanitary Napkin Vending Machine in Telangana — Buy & Install | Lyra Enterprises",
-    metaDescription:
-      "Buy sanitary napkin vending machines & incinerators in Telangana. Lyra Enterprises supplies to Hyderabad, Warangal, Nizamabad & all districts. Call +91-8122378860.",
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Telangana — from Hyderabad's IT and pharma corridors to schools, colleges and government hospitals in Warangal, Nizamabad, Karimnagar and Khammam.",
+    cities: ["Hyderabad", "Secunderabad", "Warangal", "Nizamabad", "Karimnagar", "Khammam", "Ramagundam", "Mahbubnagar", "Nalgonda", "Siddipet"],
+    ...stateMeta("Telangana", ["Hyderabad", "Warangal", "Nizamabad"]),
     keywords: [
       "vending machine telangana",
       "napkin vending machine telangana",
-      "sanitary machine hyderabad",
+      "sanitary napkin machine hyderabad",
       "incinerator telangana",
-      "vending machine hyderabad",
+      "napkin vending machine warangal",
+      "sanitary napkin machine karimnagar",
       "napkin dispenser telangana",
-      "sanitary napkin machine warangal",
-      "vending machine warangal",
     ],
   },
+  {
+    slug: "vending-machine-puducherry",
+    state: "Puducherry",
+    stateCode: "PY",
+    kind: "union territory",
+    region: "South India",
+    capital: "Puducherry",
+    districtsApprox: 4,
+    dispatch: "2–4 business days",
+    context:
+      "colleges, JIPMER and government schools across the Puducherry, Karaikal, Yanam and Mahe regions",
+    description:
+      "Puducherry is close to our Chennai facility, so Lyra Enterprises offers fast delivery and on-site installation of sanitary napkin vending machines and incinerators to colleges, JIPMER, government schools and offices across all four regions of the union territory.",
+    cities: ["Puducherry", "Karaikal", "Yanam", "Mahe", "Ozhukarai", "Villianur", "Bahour"],
+    ...stateMeta("Puducherry", ["Puducherry", "Karaikal", "Yanam"]),
+    keywords: [
+      "vending machine puducherry",
+      "napkin vending machine pondicherry",
+      "sanitary napkin machine puducherry",
+      "incinerator puducherry",
+      "napkin vending machine karaikal",
+      "napkin dispenser pondicherry",
+    ],
+  },
+
+  // ─── WEST INDIA ──────────────────────────────────────────────
+  {
+    slug: "vending-machine-maharashtra",
+    state: "Maharashtra",
+    stateCode: "MH",
+    kind: "state",
+    region: "West India",
+    capital: "Mumbai",
+    districtsApprox: 36,
+    dispatch: "4–7 business days",
+    context:
+      "corporate HQs and IT parks in Mumbai and Pune, industrial belts at Nashik and Aurangabad, and a large government school and hospital system",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Maharashtra — corporate offices and IT parks in Mumbai and Pune, factories in Nashik, Aurangabad and Nagpur, and schools, colleges and hospitals statewide.",
+    cities: ["Mumbai", "Pune", "Nagpur", "Nashik", "Thane", "Chhatrapati Sambhajinagar", "Solapur", "Kolhapur", "Amravati", "Navi Mumbai"],
+    ...stateMeta("Maharashtra", ["Mumbai", "Pune", "Nagpur"]),
+    keywords: [
+      "vending machine maharashtra",
+      "napkin vending machine mumbai",
+      "sanitary napkin machine pune",
+      "incinerator maharashtra",
+      "napkin vending machine nagpur",
+      "sanitary napkin machine nashik",
+      "napkin dispenser maharashtra",
+    ],
+  },
+  {
+    slug: "vending-machine-gujarat",
+    state: "Gujarat",
+    stateCode: "GJ",
+    kind: "state",
+    region: "West India",
+    capital: "Gandhinagar",
+    districtsApprox: 33,
+    dispatch: "4–7 business days",
+    context:
+      "textile and chemical industry clusters in Surat, Vadodara and Ankleshwar, plus a wide network of schools and primary health centres",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Gujarat — textile and chemical clusters in Surat, Vadodara and Bharuch, plus schools, colleges, hospitals and government offices in Ahmedabad, Rajkot and Gandhinagar.",
+    cities: ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Gandhinagar", "Junagadh", "Anand", "Bharuch"],
+    ...stateMeta("Gujarat", ["Ahmedabad", "Surat", "Vadodara"]),
+    keywords: [
+      "vending machine gujarat",
+      "napkin vending machine ahmedabad",
+      "sanitary napkin machine surat",
+      "incinerator gujarat",
+      "napkin vending machine vadodara",
+      "sanitary napkin machine rajkot",
+      "napkin dispenser gujarat",
+    ],
+  },
+  {
+    slug: "vending-machine-goa",
+    state: "Goa",
+    stateCode: "GA",
+    kind: "state",
+    region: "West India",
+    capital: "Panaji",
+    districtsApprox: 2,
+    dispatch: "4–7 business days",
+    context:
+      "the hospitality and tourism workforce, colleges and government hospitals across North and South Goa",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Goa — hotels and resorts, colleges, government hospitals and schools in Panaji, Margao, Vasco da Gama and Mapusa.",
+    cities: ["Panaji", "Margao", "Vasco da Gama", "Mapusa", "Ponda", "Bicholim", "Curchorem", "Valpoi"],
+    ...stateMeta("Goa", ["Panaji", "Margao", "Vasco da Gama"]),
+    keywords: [
+      "vending machine goa",
+      "napkin vending machine goa",
+      "sanitary napkin machine panaji",
+      "incinerator goa",
+      "napkin vending machine margao",
+      "napkin dispenser goa",
+    ],
+  },
+  {
+    slug: "vending-machine-rajasthan",
+    state: "Rajasthan",
+    stateCode: "RJ",
+    kind: "state",
+    region: "West India",
+    capital: "Jaipur",
+    districtsApprox: 41,
+    dispatch: "5–8 business days",
+    context:
+      "the coaching hub in Kota, universities in Jaipur and Udaipur, and government schools across the desert districts",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Rajasthan — coaching institutes in Kota, universities in Jaipur, Udaipur and Ajmer, and government schools and district hospitals statewide.",
+    cities: ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Ajmer", "Bikaner", "Alwar", "Bhilwara", "Sikar", "Sri Ganganagar"],
+    ...stateMeta("Rajasthan", ["Jaipur", "Jodhpur", "Udaipur"]),
+    keywords: [
+      "vending machine rajasthan",
+      "napkin vending machine jaipur",
+      "sanitary napkin machine jodhpur",
+      "incinerator rajasthan",
+      "napkin vending machine kota",
+      "sanitary napkin machine udaipur",
+      "napkin dispenser rajasthan",
+    ],
+  },
+  {
+    slug: "vending-machine-dadra-nagar-haveli-daman-diu",
+    state: "Dadra & Nagar Haveli and Daman & Diu",
+    stateCode: "DN",
+    kind: "union territory",
+    region: "West India",
+    capital: "Daman",
+    districtsApprox: 3,
+    dispatch: "5–8 business days",
+    context:
+      "the industrial estates around Silvassa and Vapi with their large factory workforce",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Dadra & Nagar Haveli and Daman & Diu — factory washrooms in the Silvassa industrial estates, plus schools and health centres in Daman and Diu.",
+    cities: ["Silvassa", "Daman", "Diu", "Amli", "Naroli", "Khanvel"],
+    ...stateMeta("Dadra & Nagar Haveli and Daman & Diu", ["Silvassa", "Daman", "Diu"]),
+    keywords: [
+      "vending machine silvassa",
+      "napkin vending machine daman",
+      "sanitary napkin machine dadra nagar haveli",
+      "incinerator silvassa",
+      "napkin vending machine diu",
+      "napkin dispenser silvassa",
+    ],
+  },
+
+  // ─── CENTRAL INDIA ───────────────────────────────────────────
+  {
+    slug: "vending-machine-madhya-pradesh",
+    state: "Madhya Pradesh",
+    stateCode: "MP",
+    kind: "state",
+    region: "Central India",
+    capital: "Bhopal",
+    districtsApprox: 55,
+    dispatch: "4–7 business days",
+    context:
+      "Indore's education and industry base plus a very large rural school and Anganwadi network",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Madhya Pradesh — colleges and industry in Indore, government schools and district hospitals from Bhopal and Gwalior to Jabalpur, Ujjain and Rewa.",
+    cities: ["Bhopal", "Indore", "Gwalior", "Jabalpur", "Ujjain", "Sagar", "Rewa", "Satna", "Ratlam", "Dewas"],
+    ...stateMeta("Madhya Pradesh", ["Bhopal", "Indore", "Gwalior"]),
+    keywords: [
+      "vending machine madhya pradesh",
+      "napkin vending machine bhopal",
+      "sanitary napkin machine indore",
+      "incinerator madhya pradesh",
+      "napkin vending machine gwalior",
+      "sanitary napkin machine jabalpur",
+      "napkin dispenser madhya pradesh",
+    ],
+  },
+  {
+    slug: "vending-machine-chhattisgarh",
+    state: "Chhattisgarh",
+    stateCode: "CG",
+    kind: "state",
+    region: "Central India",
+    capital: "Raipur",
+    districtsApprox: 33,
+    dispatch: "4–8 business days",
+    context:
+      "steel and power townships around Bhilai, Korba and Raigarh, and tribal-district schools",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Chhattisgarh — steel and power townships at Bhilai, Korba and Raigarh, plus government schools, colleges and district hospitals from Raipur to Bilaspur and Jagdalpur.",
+    cities: ["Raipur", "Bhilai", "Bilaspur", "Korba", "Durg", "Rajnandgaon", "Raigarh", "Jagdalpur", "Ambikapur", "Dhamtari"],
+    ...stateMeta("Chhattisgarh", ["Raipur", "Bhilai", "Bilaspur"]),
+    keywords: [
+      "vending machine chhattisgarh",
+      "napkin vending machine raipur",
+      "sanitary napkin machine bhilai",
+      "incinerator chhattisgarh",
+      "napkin vending machine bilaspur",
+      "napkin dispenser chhattisgarh",
+    ],
+  },
+
+  // ─── EAST INDIA ──────────────────────────────────────────────
+  {
+    slug: "vending-machine-west-bengal",
+    state: "West Bengal",
+    stateCode: "WB",
+    kind: "state",
+    region: "East India",
+    capital: "Kolkata",
+    districtsApprox: 23,
+    dispatch: "4–7 business days",
+    context:
+      "Kolkata's universities and hospitals and the industrial belts at Durgapur–Asansol and Haldia",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across West Bengal — universities, schools and hospitals in Kolkata and Howrah, plus industrial townships at Durgapur, Asansol and Haldia and district facilities in Siliguri and Malda.",
+    cities: ["Kolkata", "Howrah", "Durgapur", "Asansol", "Siliguri", "Bardhaman", "Malda", "Kharagpur", "Haldia", "Darjeeling"],
+    ...stateMeta("West Bengal", ["Kolkata", "Howrah", "Durgapur"]),
+    keywords: [
+      "vending machine west bengal",
+      "napkin vending machine kolkata",
+      "sanitary napkin machine howrah",
+      "incinerator west bengal",
+      "napkin vending machine siliguri",
+      "sanitary napkin machine durgapur",
+      "napkin dispenser west bengal",
+    ],
+  },
+  {
+    slug: "vending-machine-bihar",
+    state: "Bihar",
+    stateCode: "BR",
+    kind: "state",
+    region: "East India",
+    capital: "Patna",
+    districtsApprox: 38,
+    dispatch: "5–8 business days",
+    context:
+      "one of India's largest government school systems and a fast-expanding network of medical colleges and district hospitals",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Bihar — government and residential schools, new medical colleges and district hospitals from Patna and Gaya to Muzaffarpur, Bhagalpur and Purnia.",
+    cities: ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Darbhanga", "Purnia", "Ara", "Begusarai", "Katihar", "Munger"],
+    ...stateMeta("Bihar", ["Patna", "Gaya", "Bhagalpur"]),
+    keywords: [
+      "vending machine bihar",
+      "napkin vending machine patna",
+      "sanitary napkin machine gaya",
+      "incinerator bihar",
+      "napkin vending machine muzaffarpur",
+      "sanitary napkin machine bhagalpur",
+      "napkin dispenser bihar",
+    ],
+  },
+  {
+    slug: "vending-machine-jharkhand",
+    state: "Jharkhand",
+    stateCode: "JH",
+    kind: "state",
+    region: "East India",
+    capital: "Ranchi",
+    districtsApprox: 24,
+    dispatch: "5–8 business days",
+    context:
+      "mining and steel townships at Jamshedpur, Bokaro and Dhanbad and a large tribal-welfare residential school network",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Jharkhand — steel and mining townships at Jamshedpur, Bokaro and Dhanbad, plus government and residential schools and district hospitals from Ranchi to Hazaribagh and Deoghar.",
+    cities: ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro Steel City", "Deoghar", "Hazaribagh", "Giridih", "Ramgarh", "Phusro", "Medininagar"],
+    ...stateMeta("Jharkhand", ["Ranchi", "Jamshedpur", "Dhanbad"]),
+    keywords: [
+      "vending machine jharkhand",
+      "napkin vending machine ranchi",
+      "sanitary napkin machine jamshedpur",
+      "incinerator jharkhand",
+      "napkin vending machine dhanbad",
+      "napkin dispenser jharkhand",
+    ],
+  },
+  {
+    slug: "vending-machine-odisha",
+    state: "Odisha",
+    stateCode: "OD",
+    kind: "state",
+    region: "East India",
+    capital: "Bhubaneswar",
+    districtsApprox: 30,
+    dispatch: "4–8 business days",
+    context:
+      "the education city of Bhubaneswar, port-industrial Paradip and Rourkela, and coastal and tribal district schools",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Odisha — universities and institutes in Bhubaneswar, steel and port industry at Rourkela and Paradip, and government schools and district hospitals from Cuttack to Berhampur and Sambalpur.",
+    cities: ["Bhubaneswar", "Cuttack", "Rourkela", "Berhampur", "Sambalpur", "Puri", "Balasore", "Bhadrak", "Baripada", "Jharsuguda"],
+    ...stateMeta("Odisha", ["Bhubaneswar", "Cuttack", "Rourkela"]),
+    keywords: [
+      "vending machine odisha",
+      "napkin vending machine bhubaneswar",
+      "sanitary napkin machine cuttack",
+      "incinerator odisha",
+      "napkin vending machine rourkela",
+      "napkin dispenser odisha",
+    ],
+  },
+
+  // ─── NORTH INDIA ─────────────────────────────────────────────
+  {
+    slug: "vending-machine-delhi",
+    state: "Delhi",
+    stateCode: "DL",
+    kind: "union territory",
+    region: "North India",
+    capital: "New Delhi",
+    districtsApprox: 11,
+    dispatch: "5–8 business days",
+    context:
+      "a dense concentration of schools, universities, hospitals and corporate offices across the National Capital Territory",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Delhi NCR — government and private schools, universities, hospitals and corporate offices in New Delhi, Dwarka, Rohini, Saket and Narela.",
+    cities: ["New Delhi", "Dwarka", "Rohini", "Saket", "Karol Bagh", "Pitampura", "Janakpuri", "Nehru Place", "Narela", "Najafgarh"],
+    ...stateMeta("Delhi", ["New Delhi", "Dwarka", "Rohini"]),
+    keywords: [
+      "vending machine delhi",
+      "napkin vending machine delhi",
+      "sanitary napkin machine delhi ncr",
+      "incinerator delhi",
+      "napkin vending machine new delhi",
+      "sanitary napkin machine for schools delhi",
+      "napkin dispenser delhi",
+    ],
+  },
+  {
+    slug: "vending-machine-uttar-pradesh",
+    state: "Uttar Pradesh",
+    stateCode: "UP",
+    kind: "state",
+    region: "North India",
+    capital: "Lucknow",
+    districtsApprox: 75,
+    dispatch: "5–8 business days",
+    context:
+      "India's largest school system, the Noida–Ghaziabad corporate belt, and major universities and AIIMS/medical-college hospitals",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Uttar Pradesh — the Noida and Ghaziabad corporate belt, universities in Lucknow, Kanpur, Varanasi and Prayagraj, and one of the country's largest government school networks.",
+    cities: ["Lucknow", "Kanpur", "Ghaziabad", "Agra", "Varanasi", "Meerut", "Prayagraj", "Noida", "Bareilly", "Gorakhpur"],
+    ...stateMeta("Uttar Pradesh", ["Lucknow", "Kanpur", "Noida"]),
+    keywords: [
+      "vending machine uttar pradesh",
+      "napkin vending machine lucknow",
+      "sanitary napkin machine noida",
+      "incinerator uttar pradesh",
+      "napkin vending machine kanpur",
+      "sanitary napkin machine ghaziabad",
+      "napkin dispenser uttar pradesh",
+    ],
+  },
+  {
+    slug: "vending-machine-haryana",
+    state: "Haryana",
+    stateCode: "HR",
+    kind: "state",
+    region: "North India",
+    capital: "Chandigarh",
+    districtsApprox: 22,
+    dispatch: "5–8 business days",
+    context:
+      "the Gurugram–Faridabad corporate and manufacturing hubs plus state government schools and colleges",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Haryana — corporate offices and factories in Gurugram and Faridabad, and government schools, colleges and hospitals in Panipat, Ambala, Rohtak and Karnal.",
+    cities: ["Gurugram", "Faridabad", "Panipat", "Ambala", "Rohtak", "Hisar", "Karnal", "Sonipat", "Yamunanagar", "Panchkula"],
+    ...stateMeta("Haryana", ["Gurugram", "Faridabad", "Panipat"]),
+    keywords: [
+      "vending machine haryana",
+      "napkin vending machine gurugram",
+      "sanitary napkin machine faridabad",
+      "incinerator haryana",
+      "napkin vending machine gurgaon",
+      "napkin dispenser haryana",
+    ],
+  },
+  {
+    slug: "vending-machine-punjab",
+    state: "Punjab",
+    stateCode: "PB",
+    kind: "state",
+    region: "North India",
+    capital: "Chandigarh",
+    districtsApprox: 23,
+    dispatch: "5–8 business days",
+    context:
+      "Ludhiana's manufacturing industry, universities in Amritsar and Patiala, and rural school clusters",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Punjab — Ludhiana's hosiery and cycle industry, universities in Amritsar, Patiala and Mohali, and government schools and hospitals statewide.",
+    cities: ["Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Bathinda", "Mohali", "Hoshiarpur", "Pathankot", "Moga", "Firozpur"],
+    ...stateMeta("Punjab", ["Ludhiana", "Amritsar", "Jalandhar"]),
+    keywords: [
+      "vending machine punjab",
+      "napkin vending machine ludhiana",
+      "sanitary napkin machine amritsar",
+      "incinerator punjab",
+      "napkin vending machine jalandhar",
+      "napkin dispenser punjab",
+    ],
+  },
+  {
+    slug: "vending-machine-himachal-pradesh",
+    state: "Himachal Pradesh",
+    stateCode: "HP",
+    kind: "state",
+    region: "North India",
+    capital: "Shimla",
+    districtsApprox: 12,
+    dispatch: "6–9 business days",
+    context:
+      "hill-district residential schools, medical colleges, and the Baddi–Solan pharmaceutical belt",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Himachal Pradesh — the Baddi–Solan pharma belt, medical colleges and residential schools in the hill districts from Shimla and Mandi to Dharamshala and Kullu.",
+    cities: ["Shimla", "Dharamshala", "Mandi", "Solan", "Kullu", "Bilaspur", "Hamirpur", "Una", "Nahan", "Palampur"],
+    ...stateMeta("Himachal Pradesh", ["Shimla", "Dharamshala", "Mandi"]),
+    keywords: [
+      "vending machine himachal pradesh",
+      "napkin vending machine shimla",
+      "sanitary napkin machine solan",
+      "incinerator himachal pradesh",
+      "napkin vending machine dharamshala",
+      "napkin dispenser himachal pradesh",
+    ],
+  },
+  {
+    slug: "vending-machine-uttarakhand",
+    state: "Uttarakhand",
+    stateCode: "UK",
+    kind: "state",
+    region: "North India",
+    capital: "Dehradun",
+    districtsApprox: 13,
+    dispatch: "6–9 business days",
+    context:
+      "Dehradun's schools and institutes, the SIDCUL industrial areas at Haridwar and Rudrapur, and hill-district facilities",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Uttarakhand — boarding schools and institutes in Dehradun and Nainital, SIDCUL factories at Haridwar and Rudrapur, and hill-district schools and hospitals.",
+    cities: ["Dehradun", "Haridwar", "Roorkee", "Haldwani", "Rudrapur", "Kashipur", "Rishikesh", "Nainital", "Pithoragarh", "Kotdwar"],
+    ...stateMeta("Uttarakhand", ["Dehradun", "Haridwar", "Haldwani"]),
+    keywords: [
+      "vending machine uttarakhand",
+      "napkin vending machine dehradun",
+      "sanitary napkin machine haridwar",
+      "incinerator uttarakhand",
+      "napkin vending machine haldwani",
+      "napkin dispenser uttarakhand",
+    ],
+  },
+  {
+    slug: "vending-machine-jammu-kashmir",
+    state: "Jammu & Kashmir",
+    stateCode: "JK",
+    kind: "union territory",
+    region: "North India",
+    capital: "Srinagar / Jammu",
+    districtsApprox: 20,
+    dispatch: "7–10 business days",
+    context:
+      "government schools and district hospitals across the Kashmir and Jammu divisions",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Jammu & Kashmir — government schools, colleges and district hospitals in Srinagar, Jammu, Anantnag, Baramulla and Udhampur.",
+    cities: ["Srinagar", "Jammu", "Anantnag", "Baramulla", "Udhampur", "Kathua", "Sopore", "Kupwara", "Pulwama", "Rajouri"],
+    ...stateMeta("Jammu & Kashmir", ["Srinagar", "Jammu", "Anantnag"]),
+    keywords: [
+      "vending machine jammu kashmir",
+      "napkin vending machine srinagar",
+      "sanitary napkin machine jammu",
+      "incinerator jammu kashmir",
+      "napkin vending machine anantnag",
+      "napkin dispenser jammu kashmir",
+    ],
+  },
+  {
+    slug: "vending-machine-ladakh",
+    state: "Ladakh",
+    stateCode: "LA",
+    kind: "union territory",
+    region: "North India",
+    capital: "Leh",
+    districtsApprox: 7,
+    dispatch: "8–12 business days",
+    context:
+      "high-altitude residential schools and hospitals in Leh and Kargil, with seasonal road access",
+    description:
+      "Lyra Enterprises supplies sanitary napkin vending machines and incinerators to Ladakh — residential schools, colleges and hospitals in Leh, Kargil and the Nubra and Zanskar valleys. Dispatch timelines depend on seasonal road access.",
+    cities: ["Leh", "Kargil", "Nubra", "Zanskar", "Drass", "Diskit", "Khaltse", "Nyoma"],
+    ...stateMeta("Ladakh", ["Leh", "Kargil", "Nubra"]),
+    keywords: [
+      "vending machine ladakh",
+      "napkin vending machine leh",
+      "sanitary napkin machine kargil",
+      "incinerator ladakh",
+      "napkin dispenser leh",
+    ],
+  },
+  {
+    slug: "vending-machine-chandigarh",
+    state: "Chandigarh",
+    stateCode: "CH",
+    kind: "union territory",
+    region: "North India",
+    capital: "Chandigarh",
+    districtsApprox: 1,
+    dispatch: "5–8 business days",
+    context:
+      "a compact city of universities, PGIMER and government offices serving the wider tricity",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Chandigarh — Panjab University, PGIMER, government schools and offices, and the wider Mohali–Panchkula tricity.",
+    cities: ["Chandigarh", "Manimajra", "Sector 17", "Sector 22", "Sector 35", "Sector 43"],
+    ...stateMeta("Chandigarh", ["Chandigarh", "Manimajra", "the tricity"]),
+    keywords: [
+      "vending machine chandigarh",
+      "napkin vending machine chandigarh",
+      "sanitary napkin machine chandigarh",
+      "incinerator chandigarh",
+      "napkin dispenser chandigarh",
+    ],
+  },
+
+  // ─── NORTHEAST INDIA ─────────────────────────────────────────
+  {
+    slug: "vending-machine-assam",
+    state: "Assam",
+    stateCode: "AS",
+    kind: "state",
+    region: "Northeast India",
+    capital: "Dispur",
+    districtsApprox: 35,
+    dispatch: "6–9 business days",
+    context:
+      "the tea-belt workforce, Guwahati's universities and hospitals, and the logistics gateway for the rest of the Northeast",
+    description:
+      "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across Assam — tea-estate welfare facilities, universities and hospitals in Guwahati, and government schools and district hospitals from Dibrugarh and Jorhat to Silchar and Nagaon.",
+    cities: ["Guwahati", "Dibrugarh", "Silchar", "Jorhat", "Nagaon", "Tinsukia", "Tezpur", "Bongaigaon", "Dhubri", "Sivasagar"],
+    ...stateMeta("Assam", ["Guwahati", "Dibrugarh", "Silchar"]),
+    keywords: [
+      "vending machine assam",
+      "napkin vending machine guwahati",
+      "sanitary napkin machine dibrugarh",
+      "incinerator assam",
+      "napkin vending machine silchar",
+      "napkin dispenser assam",
+    ],
+  },
+  {
+    slug: "vending-machine-arunachal-pradesh",
+    state: "Arunachal Pradesh",
+    stateCode: "AR",
+    kind: "state",
+    region: "Northeast India",
+    capital: "Itanagar",
+    districtsApprox: 25,
+    dispatch: "7–11 business days",
+    context:
+      "remote hill districts served largely by residential schools and district hospitals",
+    description:
+      "Lyra Enterprises supplies sanitary napkin vending machines and incinerators to Arunachal Pradesh — residential schools, colleges and district hospitals in Itanagar, Naharlagun, Pasighat, Tawang and Ziro.",
+    cities: ["Itanagar", "Naharlagun", "Pasighat", "Tawang", "Ziro", "Bomdila", "Tezu", "Aalo", "Roing", "Namsai"],
+    ...stateMeta("Arunachal Pradesh", ["Itanagar", "Naharlagun", "Pasighat"]),
+    keywords: [
+      "vending machine arunachal pradesh",
+      "napkin vending machine itanagar",
+      "sanitary napkin machine arunachal pradesh",
+      "incinerator arunachal pradesh",
+      "napkin dispenser itanagar",
+    ],
+  },
+  {
+    slug: "vending-machine-manipur",
+    state: "Manipur",
+    stateCode: "MN",
+    kind: "state",
+    region: "Northeast India",
+    capital: "Imphal",
+    districtsApprox: 16,
+    dispatch: "7–10 business days",
+    context:
+      "Imphal valley colleges and hospitals plus hill-district residential schools",
+    description:
+      "Lyra Enterprises supplies sanitary napkin vending machines and incinerators to Manipur — colleges and hospitals in Imphal, and residential and government schools across the valley and hill districts.",
+    cities: ["Imphal", "Thoubal", "Bishnupur", "Churachandpur", "Kakching", "Ukhrul", "Senapati", "Jiribam", "Moreh", "Kangpokpi"],
+    ...stateMeta("Manipur", ["Imphal", "Thoubal", "Bishnupur"]),
+    keywords: [
+      "vending machine manipur",
+      "napkin vending machine imphal",
+      "sanitary napkin machine manipur",
+      "incinerator manipur",
+      "napkin dispenser imphal",
+    ],
+  },
+  {
+    slug: "vending-machine-meghalaya",
+    state: "Meghalaya",
+    stateCode: "ML",
+    kind: "state",
+    region: "Northeast India",
+    capital: "Shillong",
+    districtsApprox: 12,
+    dispatch: "6–10 business days",
+    context:
+      "Shillong's universities and the NEIGRIHMS hospital, and Khasi and Garo hills schools",
+    description:
+      "Lyra Enterprises supplies sanitary napkin vending machines and incinerators to Meghalaya — universities and NEIGRIHMS in Shillong, and government and mission schools across the Khasi, Jaintia and Garo hills.",
+    cities: ["Shillong", "Tura", "Jowai", "Nongstoin", "Baghmara", "Williamnagar", "Nongpoh", "Resubelpara", "Mairang", "Cherrapunji"],
+    ...stateMeta("Meghalaya", ["Shillong", "Tura", "Jowai"]),
+    keywords: [
+      "vending machine meghalaya",
+      "napkin vending machine shillong",
+      "sanitary napkin machine meghalaya",
+      "incinerator meghalaya",
+      "napkin dispenser shillong",
+    ],
+  },
+  {
+    slug: "vending-machine-mizoram",
+    state: "Mizoram",
+    stateCode: "MZ",
+    kind: "state",
+    region: "Northeast India",
+    capital: "Aizawl",
+    districtsApprox: 11,
+    dispatch: "7–10 business days",
+    context:
+      "one of India's highest female-literacy rates and a dense school network across the hill districts",
+    description:
+      "Lyra Enterprises supplies sanitary napkin vending machines and incinerators to Mizoram — schools, colleges and district hospitals in Aizawl, Lunglei, Champhai and Serchhip.",
+    cities: ["Aizawl", "Lunglei", "Champhai", "Serchhip", "Kolasib", "Saiha", "Lawngtlai", "Mamit", "Khawzawl", "Hnahthial"],
+    ...stateMeta("Mizoram", ["Aizawl", "Lunglei", "Champhai"]),
+    keywords: [
+      "vending machine mizoram",
+      "napkin vending machine aizawl",
+      "sanitary napkin machine mizoram",
+      "incinerator mizoram",
+      "napkin dispenser aizawl",
+    ],
+  },
+  {
+    slug: "vending-machine-nagaland",
+    state: "Nagaland",
+    stateCode: "NL",
+    kind: "state",
+    region: "Northeast India",
+    capital: "Kohima",
+    districtsApprox: 17,
+    dispatch: "7–10 business days",
+    context:
+      "the Dimapur commercial hub, Kohima institutions and district mission schools",
+    description:
+      "Lyra Enterprises supplies sanitary napkin vending machines and incinerators to Nagaland — the commercial centre at Dimapur, government offices and institutions in Kohima, and mission and government schools across the districts.",
+    cities: ["Kohima", "Dimapur", "Mokokchung", "Tuensang", "Wokha", "Zunheboto", "Mon", "Phek", "Kiphire", "Longleng"],
+    ...stateMeta("Nagaland", ["Kohima", "Dimapur", "Mokokchung"]),
+    keywords: [
+      "vending machine nagaland",
+      "napkin vending machine dimapur",
+      "sanitary napkin machine kohima",
+      "incinerator nagaland",
+      "napkin dispenser dimapur",
+    ],
+  },
+  {
+    slug: "vending-machine-tripura",
+    state: "Tripura",
+    stateCode: "TR",
+    kind: "state",
+    region: "Northeast India",
+    capital: "Agartala",
+    districtsApprox: 8,
+    dispatch: "6–10 business days",
+    context:
+      "Agartala's colleges and hospitals and a well-covered rural school system",
+    description:
+      "Lyra Enterprises supplies sanitary napkin vending machines and incinerators to Tripura — colleges and hospitals in Agartala, and government schools and health centres from Udaipur and Dharmanagar to Belonia and Kailashahar.",
+    cities: ["Agartala", "Udaipur", "Dharmanagar", "Kailashahar", "Belonia", "Ambassa", "Khowai", "Teliamura", "Sabroom", "Sonamura"],
+    ...stateMeta("Tripura", ["Agartala", "Udaipur", "Dharmanagar"]),
+    keywords: [
+      "vending machine tripura",
+      "napkin vending machine agartala",
+      "sanitary napkin machine tripura",
+      "incinerator tripura",
+      "napkin dispenser agartala",
+    ],
+  },
+  {
+    slug: "vending-machine-sikkim",
+    state: "Sikkim",
+    stateCode: "SK",
+    kind: "state",
+    region: "Northeast India",
+    capital: "Gangtok",
+    districtsApprox: 6,
+    dispatch: "6–9 business days",
+    context:
+      "a compact state with strong school enrolment and a large tourism-sector workforce",
+    description:
+      "Lyra Enterprises supplies sanitary napkin vending machines and incinerators to Sikkim — schools, colleges and hospitals in Gangtok and Namchi, and hotels and offices across the tourism belt.",
+    cities: ["Gangtok", "Namchi", "Gyalshing", "Mangan", "Rangpo", "Singtam", "Jorethang", "Ravangla", "Soreng", "Pakyong"],
+    ...stateMeta("Sikkim", ["Gangtok", "Namchi", "Gyalshing"]),
+    keywords: [
+      "vending machine sikkim",
+      "napkin vending machine gangtok",
+      "sanitary napkin machine sikkim",
+      "incinerator sikkim",
+      "napkin dispenser gangtok",
+    ],
+  },
+
+  // ─── ISLAND TERRITORIES ──────────────────────────────────────
+  {
+    slug: "vending-machine-andaman-nicobar",
+    state: "Andaman & Nicobar Islands",
+    stateCode: "AN",
+    kind: "union territory",
+    region: "Island Territories",
+    capital: "Port Blair",
+    districtsApprox: 3,
+    dispatch: "8–14 business days (sea freight)",
+    context:
+      "island schools and the GB Pant Hospital network, with dispatch by ship from Chennai or Kolkata",
+    description:
+      "Lyra Enterprises supplies sanitary napkin vending machines and incinerators to the Andaman & Nicobar Islands — schools, colleges and the GB Pant Hospital in Port Blair and health centres on the outer islands. Units are shipped by sea from Chennai.",
+    cities: ["Port Blair", "Sri Vijaya Puram", "Rangat", "Mayabunder", "Diglipur", "Car Nicobar", "Swaraj Dweep", "Little Andaman"],
+    ...stateMeta("Andaman & Nicobar Islands", ["Port Blair", "Rangat", "Diglipur"]),
+    keywords: [
+      "vending machine andaman nicobar",
+      "napkin vending machine port blair",
+      "sanitary napkin machine andaman",
+      "incinerator andaman nicobar",
+      "napkin dispenser port blair",
+    ],
+  },
+  {
+    slug: "vending-machine-lakshadweep",
+    state: "Lakshadweep",
+    stateCode: "LD",
+    kind: "union territory",
+    region: "Island Territories",
+    capital: "Kavaratti",
+    districtsApprox: 1,
+    dispatch: "10–16 business days (sea freight)",
+    context:
+      "island schools and health centres, with dispatch by ship via Kochi",
+    description:
+      "Lyra Enterprises supplies sanitary napkin vending machines and incinerators to Lakshadweep — island schools and primary health centres on Kavaratti, Agatti, Amini and Andrott. Units are shipped by sea via Kochi.",
+    cities: ["Kavaratti", "Agatti", "Amini", "Andrott", "Kalpeni", "Minicoy", "Kadmat", "Kiltan"],
+    ...stateMeta("Lakshadweep", ["Kavaratti", "Agatti", "Andrott"]),
+    keywords: [
+      "vending machine lakshadweep",
+      "napkin vending machine kavaratti",
+      "sanitary napkin machine lakshadweep",
+      "incinerator lakshadweep",
+      "napkin dispenser lakshadweep",
+    ],
+  },
+];
+
+export const regionOrder: IndiaRegion[] = [
+  "South India",
+  "West India",
+  "Central India",
+  "North India",
+  "East India",
+  "Northeast India",
+  "Island Territories",
 ];
 
 export const blogPosts = [
