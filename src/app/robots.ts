@@ -8,21 +8,31 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/"],
+        // Only the API is off-limits. /_next/ must stay crawlable so Google and
+        // Merchant Center can fetch next/image-optimised product images.
+        disallow: ["/api/"],
       },
-      // Allow Google AdsBot to crawl for Shopping ads
+      // Google Merchant Center quality & policy checks
+      {
+        userAgent: "Googlebot",
+        allow: "/",
+        disallow: ["/api/"],
+      },
+      {
+        userAgent: "Googlebot-Image",
+        allow: "/",
+      },
+      {
+        userAgent: "Storebot-Google",
+        allow: "/",
+      },
+      // Google Shopping ads
       {
         userAgent: "AdsBot-Google",
         allow: "/",
       },
-      // Explicit groups for Google Merchant Center's quality/policy checks
       {
-        userAgent: "Googlebot",
-        allow: "/",
-        disallow: ["/api/", "/_next/"],
-      },
-      {
-        userAgent: "Googlebot-Image",
+        userAgent: "AdsBot-Google-Mobile",
         allow: "/",
       },
     ],
