@@ -4,7 +4,15 @@
  * These schemas help Google understand the site and improve rich results ranking.
  */
 
+import { cities } from "@/lib/data";
+
 const SITE_URL = "https://lyraenterprise.co.in";
+
+/** Every Indian state & UT Lyra serves — keeps Organization areaServed in sync with the location pages. */
+const areaServedIndia = [
+  { "@type": "Country", name: "India" },
+  ...cities.map((c) => ({ "@type": c.kind === "union territory" ? "AdministrativeArea" : "State", name: c.state })),
+];
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -24,16 +32,7 @@ const organizationSchema = {
     "India's #1 manufacturer of sanitary napkin vending machines and incinerators. Coin operated, UPI/QR, WiFi and IoT-enabled models for schools, hospitals, offices and colleges. Based in Chennai, Tamil Nadu.",
   foundingDate: "2018",
   numberOfEmployees: { "@type": "QuantitativeValue", value: "20" },
-  areaServed: [
-    { "@type": "Country", name: "India" },
-    { "@type": "State", name: "Tamil Nadu" },
-    { "@type": "State", name: "Kerala" },
-    { "@type": "State", name: "Karnataka" },
-    { "@type": "State", name: "Andhra Pradesh" },
-    { "@type": "State", name: "Telangana" },
-    { "@type": "State", name: "Maharashtra" },
-    { "@type": "State", name: "Delhi" },
-  ],
+  areaServed: areaServedIndia,
   address: {
     "@type": "PostalAddress",
     streetAddress: "Chennai",
@@ -120,13 +119,7 @@ const localBusinessSchema = {
     longitude: 80.2707,
   },
   openingHours: "Mo-Sa 09:00-18:00",
-  areaServed: [
-    { "@type": "State", name: "Tamil Nadu" },
-    { "@type": "State", name: "Kerala" },
-    { "@type": "State", name: "Karnataka" },
-    { "@type": "State", name: "Andhra Pradesh" },
-    { "@type": "State", name: "Telangana" },
-  ],
+  areaServed: areaServedIndia,
   parentOrganization: { "@id": `${SITE_URL}/#organization` },
 };
 
