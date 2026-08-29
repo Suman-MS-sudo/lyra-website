@@ -25,7 +25,7 @@ export default function IndiaServiceMap() {
 
   return (
     <figure className="not-prose my-2">
-      <div className="relative mx-auto w-full max-w-[520px]">
+      <div className="relative mx-auto w-full max-w-[560px]">
         <svg
           viewBox={INDIA_VIEWBOX}
           className="lyra-map w-full h-auto drop-shadow-[0_20px_40px_rgba(190,26,104,0.12)]"
@@ -52,13 +52,13 @@ export default function IndiaServiceMap() {
             <path
               className="lyra-route"
               d={`M ${HQ_POINT.x} ${HQ_POINT.y} Q ${(HQ_POINT.x + activeState.cx) / 2} ${
-                Math.min(HQ_POINT.y, activeState.cy) - 40
+                Math.min(HQ_POINT.y, activeState.cy) - 70
               } ${activeState.cx} ${activeState.cy}`}
               fill="none"
               stroke="#be185d"
-              strokeWidth="1.1"
+              strokeWidth="1.8"
               strokeLinecap="round"
-              opacity="0.55"
+              opacity="0.5"
             />
           )}
 
@@ -81,10 +81,10 @@ export default function IndiaServiceMap() {
                   <path
                     data-state={s.slug}
                     d={s.d}
-                    fill={isActive ? "#ec4899" : "transparent"}
-                    fillOpacity={isActive ? 0.85 : 1}
+                    fill={isActive ? "#f472b6" : "transparent"}
+                    fillOpacity={isActive ? 0.55 : 1}
                     stroke="#ffffff"
-                    strokeWidth={isActive ? 1 : 0.6}
+                    strokeWidth={isActive ? 1.4 : 0.9}
                     strokeLinejoin="round"
                   />
                 )}
@@ -94,17 +94,17 @@ export default function IndiaServiceMap() {
                       className="lyra-pin-ring"
                       cx={s.cx}
                       cy={s.cy}
-                      r={3}
+                      r={4}
                       fill="#ec4899"
                       style={{ animationDelay: `${(s.cx * 7 + s.cy) % 2600}ms` }}
                     />
                     <circle
                       cx={s.cx}
                       cy={s.cy}
-                      r={isActive ? 4.4 : 3}
+                      r={isActive ? 6 : 4}
                       fill="#be185d"
                       stroke="#ffffff"
-                      strokeWidth={isActive ? 1.4 : 1}
+                      strokeWidth={isActive ? 1.8 : 1.3}
                       style={{ transition: "r 150ms ease" }}
                     />
                   </>
@@ -115,21 +115,21 @@ export default function IndiaServiceMap() {
 
           {/* Chennai HQ origin */}
           <g aria-hidden="true">
-            <circle cx={HQ_POINT.x} cy={HQ_POINT.y} r={13} fill="url(#lyraHqGlow)" />
+            <circle cx={HQ_POINT.x} cy={HQ_POINT.y} r={18} fill="url(#lyraHqGlow)" />
             <rect
-              x={HQ_POINT.x - 4}
-              y={HQ_POINT.y - 4}
-              width={8}
-              height={8}
+              x={HQ_POINT.x - 5.5}
+              y={HQ_POINT.y - 5.5}
+              width={11}
+              height={11}
               fill="#f59e0b"
               stroke="#ffffff"
-              strokeWidth={1.4}
+              strokeWidth={1.8}
               transform={`rotate(45 ${HQ_POINT.x} ${HQ_POINT.y})`}
             />
             <text
-              x={HQ_POINT.x + 12}
-              y={HQ_POINT.y + 3}
-              fontSize="11"
+              x={HQ_POINT.x + 15}
+              y={HQ_POINT.y + 4}
+              fontSize="14"
               fontWeight="700"
               fill="#7c2d12"
             >
