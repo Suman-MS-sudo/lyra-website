@@ -3,12 +3,12 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
-import { vendingMachines, SITE } from "@/lib/data";
+import { vendingMachines, SITE, formatINR } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: { absolute: "Sanitary Napkin Vending Machines — All 6 Models & Prices India | Lyra Enterprises" },
+  title: { absolute: "Sanitary Napkin Vending Machines — All 8 Models & Prices India | Lyra Enterprises" },
   description:
-    "Buy sanitary napkin vending machines in India. 6 models: push-button, coin, QR/UPI, RFID, WiFi and Ethernet. 1-year warranty. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
+    "Buy sanitary napkin vending machines in India. 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹11,000. 1-year warranty. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
   keywords: [
     "sanitary napkin vending machine india",
     "napkin vending machine price india",
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/products/sanitary-napkin-vending-machines` },
   openGraph: {
     title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
-    description: "Compare all 6 models: push-button, coin, QR/UPI, RFID, WiFi and Ethernet. Pan-India delivery.",
+    description: "Compare all 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹11,000. Pan-India delivery.",
     url: `${SITE.url}/products/sanitary-napkin-vending-machines`,
   },
   twitter: {
     card: "summary_large_image",
     title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
-    description: "Compare all 6 models: push-button, coin, QR/UPI, RFID, WiFi and Ethernet. Pan-India delivery.",
+    description: "Compare all 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹11,000. Pan-India delivery.",
   },
 };
 
@@ -48,12 +48,12 @@ const schema = {
   })),
 };
 
-const comparison = [
-  { label: "Payment", pb: "Manual", sc: "₹5 Coin", qr: "UPI QR + Coin", rf: "RFID Card", wifi: "UPI QR + Coin", eth: "UPI QR + Coin" },
-  { label: "Connectivity", pb: "None", sc: "None", qr: "SIM-based", rf: "None", wifi: "WiFi 2.4GHz", eth: "Ethernet/LAN" },
-  { label: "Cloud Reports", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Touch Display", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "IoT Monitoring", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+const comparisonRows: { label: string; key: "payment" | "connectivity" | "cloudReports" | "touchDisplay" | "iotMonitoring" }[] = [
+  { label: "Payment", key: "payment" },
+  { label: "Connectivity", key: "connectivity" },
+  { label: "Cloud Reports", key: "cloudReports" },
+  { label: "Touch Display", key: "touchDisplay" },
+  { label: "IoT Monitoring", key: "iotMonitoring" },
 ];
 
 export default function VendingMachinesPage() {
@@ -73,7 +73,7 @@ export default function VendingMachinesPage() {
             Sanitary Napkin <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">Vending Machines</span>
           </h1>
           <p className="mt-4 text-gray-600 text-lg max-w-2xl">
-          6 models to match every budget and facility — from push-button dispensers to IoT-enabled smart machines with UPI payments and cloud analytics. Manufactured in Chennai, delivered across India.
+          8 models to match every budget and facility — from ₹11,000 push-button dispensers to touchless wave-sensor units and IoT-enabled smart machines with UPI payments and cloud analytics. Manufactured in Chennai, delivered across India. Prices exclude 18% GST; freight additional.
           </p>
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ 1-Year Warranty</span>
@@ -106,7 +106,8 @@ export default function VendingMachinesPage() {
                   </ul>
                   <div className="mt-5 pt-4 border-t border-gray-100 flex items-end justify-between">
                     <div>
-                      <p className="text-sm font-semibold text-primary-600">Contact for pricing</p>
+                      <p className="text-lg font-bold text-gray-900">{formatINR(p.price)}</p>
+                      <p className="text-[11px] text-gray-500">+ 18% GST · freight extra</p>
                     </div>
                     <div className="flex flex-wrap gap-3 text-xs font-semibold">
                       <Link href={`/products/${p.slug}`} className="text-primary-600 hover:underline">Details →</Link>
@@ -133,14 +134,17 @@ export default function VendingMachinesPage() {
                 </tr>
               </thead>
               <tbody>
-                {comparison.map((row, i) => (
+                {comparisonRows.map((row, i) => (
                   <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
                     <td className="px-4 py-3 text-gray-600 font-medium">{row.label}</td>
-                    {([row.pb, row.sc, row.qr, row.rf, row.wifi, row.eth] as string[]).map((val, j) => (
-                      <td key={j} className={`px-4 py-3 text-center ${val === "Yes" ? "text-green-600 font-semibold" : val === "No" ? "text-gray-500" : "text-gray-700"}`}>
-                        {val}
-                      </td>
-                    ))}
+                    {vendingMachines.map((p) => {
+                      const val = p.compare ? p.compare[row.key] : "—";
+                      return (
+                        <td key={p.slug} className={`px-4 py-3 text-center ${val === "Yes" ? "text-green-600 font-semibold" : val === "No" ? "text-gray-500" : "text-gray-700"}`}>
+                          {val}
+                        </td>
+                      );
+                    })}
                   </tr>
                 ))}
               </tbody>

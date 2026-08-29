@@ -6,7 +6,7 @@ import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
 import ProductPurchasePanel from "@/components/ProductPurchasePanel";
-import { products, vendingMachines, getProductBySlug, SITE } from "@/lib/data";
+import { products, vendingMachines, getProductBySlug, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
 
 /* ─── Static params for all product pages ─────────────────── */
 export function generateStaticParams() {
@@ -43,13 +43,13 @@ export async function generateMetadata({
   };
 }
 
-/* ─── Comparison table data (VMs only) ─────────────────────── */
-const comparison = [
-  { label: "Payment", pb: "Manual", sc: "₹5 Coin", qr: "UPI QR + Coin", rf: "RFID Card", wifi: "UPI QR + Coin", eth: "UPI QR + Coin" },
-  { label: "Connectivity", pb: "None", sc: "None", qr: "SIM-based", rf: "None", wifi: "WiFi 2.4GHz", eth: "Ethernet/LAN" },
-  { label: "Cloud Reports", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "Touch Display", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
-  { label: "IoT Monitoring", pb: "No", sc: "No", qr: "No", rf: "No", wifi: "Yes", eth: "Yes" },
+/* ─── Comparison table rows (VMs only) — driven by product.compare ── */
+const comparisonRows: { label: string; key: "payment" | "connectivity" | "cloudReports" | "touchDisplay" | "iotMonitoring" }[] = [
+  { label: "Payment", key: "payment" },
+  { label: "Connectivity", key: "connectivity" },
+  { label: "Cloud Reports", key: "cloudReports" },
+  { label: "Touch Display", key: "touchDisplay" },
+  { label: "IoT Monitoring", key: "iotMonitoring" },
 ];
 
 /* ─── FAQ content per product ──────────────────────────────── */
@@ -95,6 +95,16 @@ function getFaqs(slug: string) {
       { q: "Is the Lyra Maxi compliant with Biomedical Waste Management Rules?", a: "Yes — the Lyra Maxi is fully compliant with Biomedical Waste Management Rules 2016, making it suitable for hospitals and medical colleges." },
       { q: "How much sanitary waste can the Maxi handle daily?", a: "The Lyra Maxi handles 100+ napkins per day, processing 25–50 napkins per cycle — designed for large hospitals and industrial facilities." },
     ],
+    "solo-multi-coin-vending-machine": [
+      { q: "Which coins does the Solo Multi machine accept?", a: "It accepts Indian ₹1, ₹2 and ₹5 coins through a multi-denomination coin acceptor. You can configure the per-napkin price to ₹1, ₹2, ₹3 or ₹5." },
+      { q: "How is it different from the Solo Coin machine?", a: "The Solo Coin accepts only ₹5 coins. The Solo Multi adds ₹1 and ₹2 acceptance so institutions can offer napkins at a subsidised price while still recovering cost." },
+      { q: "Does it need internet or a SIM card?", a: "No — the Solo Multi is fully offline. It needs only 230V AC power." },
+    ],
+    "solo-wave-vending-machine": [
+      { q: "How does the Solo Wave dispense a napkin?", a: "The user waves a hand once in front of the sensor and one napkin is dispensed. There is no button to press, no coin and no payment — it is a free-issue machine." },
+      { q: "Why does the Solo Wave use a stainless steel cabinet?", a: "Stainless steel resists rust in damp washrooms and withstands rough handling in high-traffic public areas, so the Solo Wave lasts longer than epoxy-coated sheet metal in those conditions." },
+      { q: "How many napkins does the Solo Wave hold?", a: "Up to 35 napkins depending on pad thickness. An LCD display shows the live stock level so housekeeping knows when to refill." },
+    ],
   };
 
   return [...(productFaqs[slug] ?? []), ...common];
@@ -106,13 +116,31 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   if (!product) notFound();
 
   const isVM = product.category === "vending-machine";
-  const categoryLabel = isVM ? "Vending Machines" : "Incinerators";
+  const isNapkinCat = product.category === "napkin";
+  const categoryLabel = isVM
+    ? "Vending Machines"
+    : isNapkinCat
+      ? "Sanitary Napkins"
+      : "Incinerators";
   const categoryHref = isVM
     ? "/products/sanitary-napkin-vending-machines"
-    : "/products/sanitary-napkin-incinerators";
+    : isNapkinCat
+      ? "/products"
+      : "/products/sanitary-napkin-incinerators";
 
   const canonical = `${SITE.url}/products/${product.slug}`;
   const faqs = getFaqs(product.slug);
+  const isNapkin = product.category === "napkin";
+
+  /* Pricing — pricelist MRP is ex-GST; GST 18% extra, freight additional */
+  const priceExGst = product.price;
+  const priceGstInc = priceInclGst(priceExGst);
+  const priceValidUntil = `${new Date().getFullYear() + 1}-12-31`;
+  const categorySchemaName = isVM
+    ? "Sanitary Napkin Vending Machine"
+    : isNapkin
+      ? "Sanitary Napkin"
+      : "Sanitary Napkin Incinerator";
 
   /* JSON-LD schemas */
   const productSchema = {
@@ -122,6 +150,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     description: product.description,
     sku: product.code,
     mpn: product.code,
+    ...(product.image ? { image: [`${SITE.url}${product.image}`] } : {}),
     brand: { "@type": "Brand", name: "Lyra Enterprises" },
     manufacturer: {
       "@type": "Organization",
@@ -134,9 +163,45 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         addressCountry: "IN",
       },
     },
-    category: isVM ? "Sanitary Napkin Vending Machine" : "Sanitary Napkin Incinerator",
+    ...(product.weightKg
+      ? { weight: { "@type": "QuantitativeValue", value: product.weightKg, unitCode: "KGM" } }
+      : {}),
+    category: categorySchemaName,
     url: canonical,
     keywords: product.keywords.join(", "),
+    offers: {
+      "@type": "Offer",
+      url: canonical,
+      priceCurrency: "INR",
+      price: priceExGst,
+      priceValidUntil,
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+      seller: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: priceExGst,
+        priceCurrency: "INR",
+        valueAddedTaxIncluded: false,
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingDestination: { "@type": "DefinedRegion", addressCountry: "IN" },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 3, unitCode: "DAY" },
+          transitTime: { "@type": "QuantitativeValue", minValue: 2, maxValue: 7, unitCode: "DAY" },
+        },
+      },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "IN",
+        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 7,
+        returnMethod: "https://schema.org/ReturnByMail",
+        returnFees: "https://schema.org/ReturnShippingFees",
+      },
+    },
   };
 
   const breadcrumbSchema = {
@@ -193,6 +258,19 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </h1>
               <p className="mt-2 text-sm text-gray-500 font-mono">{product.code}</p>
               <p className="mt-4 text-lg text-gray-600 leading-relaxed">{product.description}</p>
+
+              {/* Price */}
+              <div className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <span className="text-3xl font-bold text-gray-900">
+                  {isNapkin ? `${formatINR(priceExGst)} / napkin` : formatINR(priceExGst)}
+                </span>
+                {!isNapkin && (
+                  <span className="text-sm text-gray-500">
+                    + {Math.round(GST_RATE * 100)}% GST &nbsp;·&nbsp; {formatINR(priceGstInc)} incl. GST &nbsp;·&nbsp; freight extra
+                  </span>
+                )}
+              </div>
+              <p className="mt-1 text-xs text-gray-400">Ex-works Chennai. Price as per current Lyra pricelist and subject to revision.</p>
 
               {/* Trust badges */}
               <div className="mt-6 flex flex-wrap gap-3 text-sm">
@@ -255,7 +333,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               <div className="absolute bottom-6 left-6 right-6 text-white z-10">
                 <p className="text-lg lg:text-xl font-bold">{product.name}</p>
                 <p className="text-white/80 text-sm mt-1">{product.tagline}</p>
-                <p className="mt-2 text-sm font-semibold text-white/70">Contact us for pricing</p>
+                <p className="mt-2 text-sm font-semibold text-white/90">
+                  {isNapkin ? `${formatINR(priceExGst)} / napkin` : `${formatINR(priceExGst)} + GST`}
+                </p>
               </div>
             </div>
           </div>
@@ -361,13 +441,14 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {comparison.map((row, i) => (
+                  {comparisonRows.map((row, i) => (
                     <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
                       <td className="px-4 py-3 text-gray-600 font-medium">{row.label}</td>
-                      {([row.pb, row.sc, row.qr, row.rf, row.wifi, row.eth] as string[]).map((val, j) => {
-                        const isActive = vendingMachines[j]?.slug === product.slug;
+                      {vendingMachines.map((p) => {
+                        const val = p.compare ? p.compare[row.key] : "—";
+                        const isActive = p.slug === product.slug;
                         return (
-                          <td key={j} className={`px-4 py-3 text-center font-medium ${isActive ? "bg-primary-50/60 text-primary-800" : val === "Yes" ? "text-green-600" : val === "No" ? "text-gray-500" : "text-gray-700"}`}>
+                          <td key={p.slug} className={`px-4 py-3 text-center font-medium ${isActive ? "bg-primary-50/60 text-primary-800" : val === "Yes" ? "text-green-600" : val === "No" ? "text-gray-500" : "text-gray-700"}`}>
                             {val}
                           </td>
                         );

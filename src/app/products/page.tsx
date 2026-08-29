@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
-import { vendingMachines, incinerators, SITE } from "@/lib/data";
+import { vendingMachines, incinerators, SITE, formatINR } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: { absolute: "All Sanitary Napkin Vending Machines & Incinerators — Lyra Enterprises India" },
@@ -90,8 +90,9 @@ export default function ProductsPage() {
                   <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">{p.code}</p>
                   <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
                   <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug">{p.tagline}</p>
-                  <div className="flex items-end gap-2">
-                    <span className="text-sm font-semibold text-primary-600">Contact for pricing</span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-base font-bold text-gray-900">{formatINR(p.price)}</span>
+                    <span className="text-[11px] text-gray-500">+ 18% GST</span>
                   </div>
                   <div className="mt-4 flex flex-wrap gap-3">
                     <Link href={`/products/${p.slug}`} className="text-xs font-semibold text-primary-600 hover:underline">
@@ -126,8 +127,9 @@ export default function ProductsPage() {
                   <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">{p.code}</p>
                   <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
                   <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug">{p.tagline}</p>
-                  <div className="flex items-end gap-2">
-                    <span className="text-sm font-semibold text-primary-600">Contact for pricing</span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-base font-bold text-gray-900">{formatINR(p.price)}</span>
+                    <span className="text-[11px] text-gray-500">+ 18% GST</span>
                   </div>
                   <div className="mt-4 flex flex-wrap gap-3">
                     <Link href={`/products/${p.slug}`} className="text-xs font-semibold text-primary-600 hover:underline">

@@ -23,7 +23,7 @@ const vendingMachines: Product[] = [
     name: "Push Button",
     slug: "push-button-vending-machine",
     code: "Lyra/SNVM/PB",
-    price: "₹9,000",
+    price: "₹11,000",
     badge: "Essential",
     features: ["Manual dispensing", "25 napkins capacity", "Tamper-proof body"],
     accent: "from-gray-400 to-gray-600",
@@ -33,19 +33,29 @@ const vendingMachines: Product[] = [
     name: "Solo Coin",
     slug: "solo-coin-vending-machine",
     code: "Lyra/SNVM/SC",
-    price: "₹9,500",
+    price: "₹12,500",
     badge: "Standard",
     features: ["₹5 coin acceptor", "25 napkins capacity", "Anti-jam mechanism"],
     accent: "from-primary-400 to-primary-600",
     image: "/images/products/solo-coin.png",
   },
   {
+    name: "Solo Multi",
+    slug: "solo-multi-coin-vending-machine",
+    code: "Lyra/SNVM/SC-M",
+    price: "₹14,500",
+    badge: "Multi-Coin",
+    features: ["₹1 / ₹2 / ₹5 coin acceptor", "Configurable per-pad price", "25 napkins capacity"],
+    accent: "from-amber-400 to-primary-500",
+    image: "/images/products/solo-multi.png",
+  },
+  {
     name: "Solo RFID",
     slug: "solo-rfid-vending-machine",
-    code: "Lyra/SNVM/RF",
-    price: "₹13,000",
+    code: "Lyra/SNVM/RFID",
+    price: "₹15,000",
     badge: "RFID",
-    features: ["RFID card / tag access", "25 napkins capacity", "Contactless dispensing"],
+    features: ["RFID card / tag access", "Usage reports", "Contactless dispensing"],
     accent: "from-teal-400 to-cyan-600",
     image: "/images/products/solo-rfid.png",
   },
@@ -53,20 +63,30 @@ const vendingMachines: Product[] = [
     name: "Solo QR",
     slug: "solo-qr-vending-machine",
     code: "Lyra/SNVM/QR",
-    price: "₹15,000",
-    badge: "QR + Coin",
-    features: ["UPI QR + coin payment", "25 napkins capacity", "SIM-based connectivity"],
+    price: "₹18,500",
+    badge: "UPI / QR",
+    features: ["UPI QR payment", "GPay & PhonePe", "SIM-based connectivity"],
     accent: "from-pink-400 to-rose-500",
     image: "/images/products/solo-qr.png",
+  },
+  {
+    name: "Solo Wave",
+    slug: "solo-wave-vending-machine",
+    code: "Lyra/SNVM/Wave",
+    price: "₹22,000",
+    badge: "Touchless",
+    features: ["Touchless wave sensor", "Stainless steel cabinet", "LCD stock display"],
+    accent: "from-slate-400 to-slate-600",
+    image: "/images/products/solo-wave.png",
   },
   {
     name: "Solo WiFi",
     slug: "solo-wifi-vending-machine",
     code: "Lyra/SNVM/W-QR-SC",
-    price: "₹22,500",
+    price: "₹24,500",
     badge: "Most Popular",
     popular: true,
-    features: ["UPI QR + Coin payment", "WiFi connectivity", "Cloud-based reports"],
+    features: ["UPI QR + Coin payment", "WiFi + touch display", "Cloud-based reports"],
     accent: "from-pink-400 to-primary-500",
     image: "/images/products/solo-wifi.png",
   },
@@ -74,9 +94,9 @@ const vendingMachines: Product[] = [
     name: "Solo Ethernet",
     slug: "solo-ethernet-vending-machine",
     code: "Lyra/SNVM/ET-QR-SC",
-    price: "₹24,500",
+    price: "₹26,500",
     badge: "Premium",
-    features: ["UPI QR + Coin payment", "Ethernet / LAN", "99.9% uptime"],
+    features: ["UPI QR + Coin payment", "Ethernet / LAN", "Touch display + cloud"],
     accent: "from-fuchsia-400 to-primary-600",
     image: "/images/products/solo-ethernet.png",
   },
@@ -87,7 +107,7 @@ const incinerators: Product[] = [
     name: "Lyra Micro",
     slug: "lyra-micro-incinerator",
     code: "Lyra/SND/Micro",
-    price: "₹9,500",
+    price: "₹12,500",
     badge: "Compact",
     features: ["1–5 napkins/cycle", "Front loading", "230V, 1.25kW"],
     accent: "from-primary-300 to-primary-500",
@@ -97,7 +117,7 @@ const incinerators: Product[] = [
     name: "Lyra Mini",
     slug: "lyra-mini-incinerator",
     code: "Lyra/SND/Mini",
-    price: "₹12,500",
+    price: "₹15,500",
     badge: "Standard",
     features: ["5–15 napkins/cycle", "IoT WiFi add-on", "Front loading"],
     accent: "from-primary-400 to-primary-600",
@@ -107,7 +127,7 @@ const incinerators: Product[] = [
     name: "Lyra Maxi",
     slug: "lyra-maxi-incinerator",
     code: "Lyra/SND/Maxi",
-    price: "₹30,000",
+    price: "₹39,500",
     badge: "High Capacity",
     features: ["25–50 napkins/cycle", "Top loading", "IoT WiFi add-on"],
     accent: "from-pink-400 to-primary-700",
@@ -252,7 +272,10 @@ function ProductCard({
         <div className="mt-6 pt-5 border-t border-gray-200/60">
           <div className="flex items-end justify-between mb-4">
             <div className="flex flex-col">
-              <p className="text-sm font-semibold text-primary-600">Contact for pricing</p>
+              <p className="text-lg font-bold text-gray-900">{product.price}</p>
+              <p className="text-[11px] text-gray-500">
+                {product.price.includes("napkin") ? "GST extra" : "+ 18% GST · freight extra"}
+              </p>
             </div>
             <Link
               href={`/products/${product.slug}`}
@@ -350,7 +373,7 @@ export default function Products() {
           </p>
           {/* Stats strip */}
           <div className="inline-flex items-center gap-2 flex-wrap justify-center text-sm text-gray-500 font-medium">
-            <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">6 VM&nbsp;Models</span>
+            <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">8 VM&nbsp;Models</span>
             <span className="text-gray-500">·</span>
             <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">3 Incinerators</span>
             <span className="text-gray-500">·</span>
@@ -363,7 +386,7 @@ export default function Products() {
         <CategoryHeader
           title="Vending Machines"
           sub="Sanitary napkin dispensers for every environment"
-          count={6}
+          count={8}
           href="/products/sanitary-napkin-vending-machines"
         />
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 mb-14 sm:mb-20">

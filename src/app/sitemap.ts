@@ -9,12 +9,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "solo-qr-vending-machine",
     "push-button-vending-machine",
     "solo-coin-vending-machine",
+    "solo-multi-coin-vending-machine",
     "solo-rfid-vending-machine",
+    "solo-wave-vending-machine",
     "solo-wifi-vending-machine",
     "solo-ethernet-vending-machine",
     "lyra-micro-incinerator",
     "lyra-mini-incinerator",
     "lyra-maxi-incinerator",
+    "xl-sanitary-napkin",
+    "xxl-sanitary-napkin",
   ];
 
   const citySlugs = [

@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
-import { incinerators, SITE } from "@/lib/data";
+import { incinerators, SITE, formatINR } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: { absolute: "Sanitary Napkin Incinerators — All Models & Prices India | Lyra Enterprises" },
@@ -110,7 +110,8 @@ export default function IncineratorsPage() {
                   </ul>
                   <div className="mt-5 pt-4 border-t border-gray-100 flex items-end justify-between">
                     <div>
-                      <p className="text-sm font-semibold text-primary-600">Contact for pricing</p>
+                      <p className="text-lg font-bold text-gray-900">{formatINR(p.price)}</p>
+                      <p className="text-[11px] text-gray-500">+ 18% GST · freight extra</p>
                     </div>
                     <div className="flex flex-wrap gap-3 text-xs font-semibold">
                       <Link href={`/products/${p.slug}`} className="text-primary-600 hover:underline">Details →</Link>

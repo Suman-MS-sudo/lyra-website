@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
-import { SITE } from "@/lib/data";
+import { SITE, getProductBySlug, formatINR } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: { absolute: "Sanitary Napkin Vending Machine for Hospitals & Clinics India | Lyra Enterprises" },
@@ -227,7 +227,9 @@ export default function HospitalsSolutionPage() {
                 <div key={p.slug} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col">
                   <span className={`self-start px-3 py-1 rounded-full text-xs font-bold ${p.badge} mb-4`}>{p.tag}</span>
                   <p className="font-bold text-gray-900 text-lg mb-1">{p.name}</p>
-                  <p className="text-teal-600 font-semibold text-sm mb-3">Contact for pricing</p>
+                  <p className="text-gray-900 font-bold text-sm mb-3">
+                    {(() => { const dp = getProductBySlug(p.slug); return dp ? `${formatINR(dp.price)} + 18% GST` : "Contact for pricing"; })()}
+                  </p>
                   <p className="text-gray-500 text-sm flex-1 mb-5">{p.desc}</p>
                   <Link
                     href={`/products/${p.slug}#enquiry`}
