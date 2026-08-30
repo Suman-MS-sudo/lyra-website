@@ -7,7 +7,7 @@ import IndiaServiceMap from "@/components/IndiaServiceMap";
 import { cities, regionOrder, SITE, type IndiaRegion } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: { absolute: "Service Areas — Sanitary Napkin Vending Machines Across India | Lyra Enterprises" },
+  title: { absolute: "Napkin Vending Machines Across India — All States | Lyra" },
   description:
     "Lyra Enterprises supplies and installs sanitary napkin vending machines and incinerators across all 28 states and 8 union territories of India. Chennai manufacturer, pan-India delivery. Call +91-8122378860.",
   keywords: [

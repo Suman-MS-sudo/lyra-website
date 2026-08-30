@@ -15,7 +15,7 @@ const WA_MESSAGE =
   "Hi! I'm interested in the Push Button Vending Machine + Lyra Micro Incinerator combo offer at ₹19,999 + GST + Freight. Please share more details.";
 
 export const metadata: Metadata = {
-  title: { absolute: "Push Button Vending Machine + Micro Incinerator Combo Offer ₹19,999 | Lyra Enterprises" },
+  title: { absolute: "Push Button + Micro Incinerator Combo — ₹19,999 | Lyra" },
   description:
     "Combo offer: Push Button Sanitary Napkin Vending Machine + Lyra Micro Incinerator for ₹19,999 + GST + Freight. Full SWM Rules 2016 compliance in one order. Pan-India delivery.",
   keywords: [

@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { SITE, getProductBySlug, formatINR } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: { absolute: "Sanitary Napkin Vending Machine for Offices & Corporates India | Lyra Enterprises" },
+  title: { absolute: "Napkin Vending Machines for Offices & Corporates | Lyra" },
   description:
     "Install smart sanitary napkin vending machines in corporate offices. UPI / coin / IoT models. POSH-compliant workplace hygiene. GeM vendor. Pan-India delivery.",
   keywords: [

@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { vendingMachines, SITE, formatINR } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: { absolute: "Sanitary Napkin Vending Machines — All 8 Models & Prices India | Lyra Enterprises" },
+  title: { absolute: "Napkin Vending Machines — 8 Models & Prices | Lyra Enterprises" },
   description:
     "Buy sanitary napkin vending machines in India. 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹11,000. 1-year warranty. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
   keywords: [

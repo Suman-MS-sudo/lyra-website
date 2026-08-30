@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: { absolute: "Solid Waste Management Rules 2016 — Menstrual Waste Compliance Guide India | Lyra Enterprises" },
+  title: { absolute: "Solid Waste Management Rules 2016 — Menstrual Waste Guide" },
   description:
     "India's SWM Rules 2016 legally mandate separate collection and disposal of sanitary waste. What schools, hospitals, offices and institutions must do — and what equipment is required for CPCB compliance.",
   keywords: [

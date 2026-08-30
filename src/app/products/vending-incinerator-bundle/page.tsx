@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: { absolute: "Vending Machine + Incinerator Bundle India | Best Combo for Schools & Hostels | Lyra Enterprises" },
+  title: { absolute: "Vending Machine + Incinerator Bundle — Schools & Hostels | Lyra" },
   description:
     "Buy a sanitary napkin vending machine and incinerator combo from Lyra Enterprises. Save on bundled pricing, get full SWM Rules 2016 compliance in one order. Ideal for schools, hostels and hospitals. Pan-India delivery.",
   keywords: [
