@@ -1,6 +1,7 @@
 ﻿/**
  * JSON-LD Structured Data for Lyra Enterprises
- * Covers: Organization, LocalBusiness, ItemList (Products), FAQPage, BreadcrumbList
+ * Covers: Organization, LocalBusiness, ItemList (Products), FAQPage, WebSite.
+ * Per-page BreadcrumbList schema lives on the individual route files.
  * These schemas help Google understand the site and improve rich results ranking.
  */
 
@@ -52,6 +53,7 @@ const organizationSchema = {
     {
       "@type": "ContactPoint",
       telephone: "+91-8122378860",
+      email: "sales@lyraenterprise.co.in",
       contactType: "sales",
       areaServed: "IN",
       availableLanguage: ["English", "Tamil", "Hindi"],
@@ -59,9 +61,9 @@ const organizationSchema = {
     {
       "@type": "ContactPoint",
       telephone: "+91-8122378860",
-      contactType: "customer service",
-      contactOption: "TollFree",
+      contactType: "customer support",
       areaServed: "IN",
+      availableLanguage: ["English", "Tamil", "Hindi"],
     },
   ],
   sameAs: [
@@ -90,7 +92,7 @@ const organizationSchema = {
     "Women Health Products",
   ],
   slogan: "Empowering Women's Health Across India",
-  openingHours: "Mo-Sa 09:00-18:00",
+  openingHours: "Mo-Sa 09:30-18:30",
   paymentAccepted: ["Cash", "UPI", "Bank Transfer", "Cheque"],
   currenciesAccepted: "INR",
 };
@@ -118,7 +120,7 @@ const localBusinessSchema = {
     latitude: 13.1143,
     longitude: 80.1548,
   },
-  openingHours: "Mo-Sa 09:00-18:00",
+  openingHours: "Mo-Sa 09:30-18:30",
   areaServed: areaServedIndia,
   parentOrganization: { "@id": `${SITE_URL}/#organization` },
 };
@@ -410,37 +412,6 @@ const websiteSchema = {
   },
 };
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: SITE_URL,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Products",
-      item: `${SITE_URL}/#products`,
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "About Us",
-      item: `${SITE_URL}/#about`,
-    },
-    {
-      "@type": "ListItem",
-      position: 4,
-      name: "Contact",
-      item: `${SITE_URL}/#contact`,
-    },
-  ],
-};
-
 export default function JsonLd() {
   const schemas = [
     organizationSchema,
@@ -448,7 +419,6 @@ export default function JsonLd() {
     productListSchema,
     faqSchema,
     websiteSchema,
-    breadcrumbSchema,
   ];
 
   return (

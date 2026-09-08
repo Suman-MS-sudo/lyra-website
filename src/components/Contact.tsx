@@ -47,7 +47,7 @@ const contactInfo = [
     label: "Call Us",
     value: "+91-81223 78860",
     href: "tel:+918122378860",
-    sub: "Mon–Sat, 9 AM – 6 PM IST",
+    sub: "Mon–Sat, 9:30 AM – 6:30 PM IST",
     image: "/images/stock/contact-call.jpg",
     leadMethod: "call",
   },
@@ -140,29 +140,25 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="section-padding relative overflow-hidden bg-gradient-to-b from-pink-blush/20 to-white"
+      className="section-padding bg-[#f6f8fc]"
     >
-      {/* Decorative */}
-      <div className="absolute -left-40 bottom-0 w-[600px] h-[600px] rounded-full bg-primary-100/20 blur-3xl pointer-events-none" />
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary-300 to-transparent" />
-
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
+      <div className="lyra-container">
         {/* Header */}
         <motion.div
           ref={headerRef}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center max-w-3xl mx-auto mb-10 sm:mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-semibold tracking-wider uppercase mb-6">
+          <div className="lyra-eyebrow mb-6">
             Get in Touch
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-6">
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl mb-6">
             Let&apos;s Build{" "}
             <span className="text-gradient">Dignified Spaces</span> Together
           </h2>
-          <p className="text-lg text-gray-500">
+          <p className="text-lg text-slate-500">
             Reach out for a personalized quote, product demo, or any queries.
             Our team responds within 24 hours.
           </p>
@@ -184,27 +180,27 @@ export default function Contact() {
                 target={info.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 onClick={() => info.leadMethod && trackLead(info.leadMethod as "call" | "whatsapp" | "email")}
-                className="group flex flex-col sm:flex-row gap-3 sm:gap-4 items-start p-4 sm:p-6 rounded-2xl bg-white border border-gray-100 hover:border-primary-200 hover:shadow-purple transition-all duration-300 hover:-translate-y-1"
+                className="group flex flex-col sm:flex-row gap-3 sm:gap-4 items-start p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#bfd0f0] hover:shadow-[0_12px_28px_rgba(30,58,138,0.10)] transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="relative w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
+                <div className="relative w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 ring-1 ring-slate-200">
                   <Image
                     src={info.image}
                     alt={info.label}
                     fill
-                    sizes="56px"
+                    sizes="48px"
                     quality={70}
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-purple-gradient opacity-60" />
+                  <div className="absolute inset-0 bg-primary-900/25" />
                 </div>
                 <div className="min-w-0 w-full">
-                  <p className="text-xs text-gray-500 font-medium mb-0.5 uppercase tracking-wide">
+                  <p className="text-[11px] text-slate-400 font-semibold mb-0.5 uppercase tracking-wide">
                     {info.label}
                   </p>
-                  <p className="font-semibold text-gray-900 text-xs sm:text-sm truncate group-hover:text-primary-700 transition-colors">
+                  <p className="font-semibold text-slate-900 text-xs sm:text-sm truncate group-hover:text-primary-700 transition-colors">
                     {value}
                   </p>
-                  <p className="text-xs text-gray-500 mt-0.5 hidden sm:block">{info.sub}</p>
+                  <p className="text-xs text-slate-500 mt-0.5 hidden sm:block">{info.sub}</p>
                 </div>
               </a>
             </FadeUp>
@@ -216,11 +212,11 @@ export default function Contact() {
         <div className="grid lg:grid-cols-5 gap-8">
           {/* Form */}
           <FadeUp delay={0.1} className="lg:col-span-3">
-            <div className="rounded-3xl bg-white border border-gray-100 shadow-sm p-5 sm:p-8 lg:p-10">
-              <h3 className="font-display text-2xl font-bold text-gray-900 mb-2">
+            <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5 sm:p-8 lg:p-10">
+              <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900 mb-2">
                 Send Us a Message
               </h3>
-              <p className="text-gray-500 text-sm mb-8">
+              <p className="text-slate-500 text-sm mb-8">
                 Fill in the form below and we&apos;ll get back to you promptly.
               </p>
 
@@ -230,9 +226,9 @@ export default function Contact() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-16"
                 >
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary-400 to-pink-soft flex items-center justify-center mx-auto mb-6 shadow-purple">
+                  <div className="w-16 h-16 rounded-full bg-primary-600 flex items-center justify-center mx-auto mb-6">
                     <svg
-                      className="w-10 h-10 text-white"
+                      className="w-8 h-8 text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -245,10 +241,10 @@ export default function Contact() {
                       />
                     </svg>
                   </div>
-                  <h4 className="font-display text-2xl font-bold text-gray-900 mb-2">
+                  <h4 className="text-2xl font-semibold tracking-tight text-slate-900 mb-2">
                     Message Sent!
                   </h4>
-                  <p className="text-gray-500">
+                  <p className="text-slate-500">
                     Thank you for reaching out. We&apos;ll respond within 24 hours.
                   </p>
                   <button
@@ -282,7 +278,7 @@ export default function Contact() {
                           }
                         })}
                         placeholder="Your full name"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all placeholder:text-gray-300"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-transparent transition-all placeholder:text-gray-300"
                       />
                       {errors.name && (
                         <p className="text-red-500 text-xs mt-1">
@@ -310,7 +306,7 @@ export default function Contact() {
                         })}
                         type="email"
                         placeholder="your@email.com"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all placeholder:text-gray-300"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-transparent transition-all placeholder:text-gray-300"
                       />
                       {errors.email && (
                         <p className="text-red-500 text-xs mt-1">
@@ -347,7 +343,7 @@ export default function Contact() {
                         })}
                         type="tel"
                         placeholder="+91 XXXXX XXXXX"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all placeholder:text-gray-300"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-transparent transition-all placeholder:text-gray-300"
                       />
                       {errors.phone && (
                         <p className="text-red-500 text-xs mt-1">
@@ -362,7 +358,7 @@ export default function Contact() {
                       <input
                         {...register("organization")}
                         placeholder="School / Hospital / Office"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all placeholder:text-gray-300"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-transparent transition-all placeholder:text-gray-300"
                       />
                     </div>
                   </div>
@@ -374,7 +370,7 @@ export default function Contact() {
                     <select
                       id="product"
                       {...register("product", { required: "Please select a product" })}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all text-gray-700 appearance-none bg-white"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-transparent transition-all text-gray-700 appearance-none bg-white"
                     >
                       <option value="">Select a product</option>
                       <option value="vending-machine">Sanitary Napkin Vending Machine</option>
@@ -410,7 +406,7 @@ export default function Contact() {
                       })}
                       rows={4}
                       placeholder="Tell us about your requirements... (10-1000 characters)"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all resize-none placeholder:text-gray-300"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-transparent transition-all resize-none placeholder:text-gray-300"
                       maxLength={1000}
                     />
                     {errors.message && (
@@ -423,11 +419,11 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="w-full py-4 rounded-2xl font-semibold text-white bg-purple-gradient shadow-purple hover:shadow-purple-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="btn btn-primary w-full py-4 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {submitting ? "Sending..." : "Send Message →"}
                   </button>
-                  <p className="text-xs text-gray-500 text-center">
+                  <p className="text-xs text-slate-500 text-center">
                     We respect your privacy. Your details are kept confidential.
                   </p>
                 </form>
@@ -438,7 +434,7 @@ export default function Contact() {
           {/* Map */}
           <FadeUp delay={0.2} className="lg:col-span-2">
             <div className="flex flex-col gap-6 h-full">
-              <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex-1" style={{ minHeight: "420px" }}>
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex-1" style={{ minHeight: "420px" }}>
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.0947843847246!2d80.1421896!3d13.1220126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52630d041b194b%3A0x6ad7970c287d2d32!2sLyra%20Enterprises!5e0!3m2!1sen!2sin!4v1708214400000!5m2!1sen!2sin"
                   width="100%"
@@ -455,7 +451,7 @@ export default function Contact() {
                 href="https://maps.app.goo.gl/CS3hP8SezcS4EFDQ9"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-4 rounded-2xl bg-white border border-primary-200 text-primary-600 font-semibold text-sm hover:bg-primary-50 hover:border-primary-400 transition-all duration-300 hover:-translate-y-0.5"
+                className="btn btn-secondary py-4"
               >
                 Get Directions
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

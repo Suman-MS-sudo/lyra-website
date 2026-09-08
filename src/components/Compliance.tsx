@@ -24,9 +24,9 @@ const badges = [
     icon: "✅",
     label: "CE Certified",
     sublabel: "European Safety Standard",
-    color: "from-indigo-50 to-indigo-100",
-    border: "border-indigo-200",
-    text: "text-indigo-700",
+    color: "from-sky-50 to-sky-100",
+    border: "border-sky-200",
+    text: "text-sky-700",
   },
   {
     icon: "♻️",
@@ -48,7 +48,7 @@ const badges = [
     icon: "🧹",
     label: "SWM Rules 2016",
     sublabel: "Swachh Bharat Compliant",
-    color: "from-primary-50 to-pink-50",
+    color: "from-primary-50 to-blue-50",
     border: "border-primary-200",
     text: "text-primary-700",
   },
@@ -61,29 +61,24 @@ export default function Compliance() {
     <section
       ref={ref}
       id="compliance"
-      className="section-padding bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
+      className="section-padding bg-[#f6f8fc]"
     >
-      {/* Decorative background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-primary-200 to-transparent" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+      <div className="lyra-container">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-semibold tracking-wider uppercase mb-5">
+          <div className="lyra-eyebrow mb-5">
             Certifications &amp; Compliance
           </div>
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-slate-900 mb-4">
             Trusted, Certified &amp;{" "}
             <span className="text-gradient">Government Approved</span>
           </h2>
-          <p className="text-gray-500 text-base max-w-2xl mx-auto">
+          <p className="text-slate-500 text-base max-w-2xl mx-auto">
             Every Lyra product meets India&apos;s highest hygiene and safety
             standards — CPCB, SWM Rules 2016, and Swachh Bharat Mission
             guidelines. We are also a registered GeM (Government e-Marketplace)
@@ -100,15 +95,15 @@ export default function Compliance() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`flex flex-col items-center text-center p-5 rounded-2xl bg-gradient-to-br ${badge.color} border ${badge.border} hover:shadow-md transition-shadow duration-300`}
+              className="flex flex-col items-center rounded-2xl border border-slate-200 bg-white p-5 text-center transition-shadow duration-300 hover:shadow-[0_10px_24px_rgba(30,58,138,0.08)]"
             >
-              <span className="text-3xl mb-3" role="img" aria-label={badge.label}>
+              <span className="mb-3 text-3xl" role="img" aria-label={badge.label}>
                 {badge.icon}
               </span>
-              <p className={`font-bold text-sm leading-tight ${badge.text}`}>
+              <p className="text-sm font-semibold leading-tight text-slate-900">
                 {badge.label}
               </p>
-              <p className="text-gray-500 text-xs mt-1 leading-snug">
+              <p className="mt-1 text-xs leading-snug text-slate-500">
                 {badge.sublabel}
               </p>
             </motion.div>
@@ -120,15 +115,15 @@ export default function Compliance() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-10 rounded-2xl bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
+          className="mt-10 rounded-2xl bg-amber-50 border border-amber-200 px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <div className="flex items-center gap-4">
             <span className="text-4xl" role="img" aria-label="GeM Portal">🇮🇳</span>
             <div>
-              <p className="font-bold text-gray-900 text-base">
+              <p className="font-semibold text-slate-900 text-base">
                 GeM Registered Vendor
               </p>
-              <p className="text-gray-600 text-sm">
+              <p className="text-slate-600 text-sm">
                 Government schools, hospitals and Swachh Bharat institutions can procure Lyra products directly through the{" "}
                 <strong>Government e-Marketplace (GeM) portal</strong> — no separate tender process needed.
               </p>
@@ -136,7 +131,7 @@ export default function Compliance() {
           </div>
           <a
             href="tel:+918122378860"
-            className="flex-shrink-0 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full text-sm transition-colors duration-200 whitespace-nowrap"
+            className="flex-shrink-0 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl text-sm transition-colors duration-200 whitespace-nowrap"
           >
             Ask for GeM Quote
           </a>

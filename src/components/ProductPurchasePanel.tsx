@@ -69,15 +69,15 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
   }
 
   return (
-    <section id="enquiry" className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
+    <section id="enquiry" className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-slate-200">
       <div className="grid gap-6 lg:grid-cols-[1.3fr_0.9fr]">
-        <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary-500">Send Enquiry</p>
-              <h2 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">Get Rate & Availability Info</h2>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-600">Request a Quote</p>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Get a Formal Quote</h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-600 sm:text-base">
-                Fill in your details and we&apos;ll send you pricing, GST details and delivery timelines for <strong>{product.fullName}</strong> within 24 hours.
+                Fill in your details and we&apos;ll send you a formal quote with GST invoice details, bulk pricing and delivery timelines for <strong>{product.fullName}</strong> within 24 hours.
               </p>
             </div>
             <div className="rounded-2xl bg-green-50 px-4 py-3 text-sm font-semibold text-green-700">
@@ -94,7 +94,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
                 value={form.name}
                 onChange={(e) => { setForm({ ...form, name: e.target.value }); setErrors({ ...errors, name: "" }); }}
                 placeholder="Your full name"
-                className={`w-full rounded-xl border px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-300 transition-colors ${errors.name ? "border-red-400 bg-red-50" : "border-gray-200 bg-gray-50"}`}
+                className={`w-full rounded-xl border px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40 transition-colors ${errors.name ? "border-red-400 bg-red-50" : "border-slate-200 bg-slate-50"}`}
               />
               {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
             </div>
@@ -107,7 +107,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
                 value={form.email}
                 onChange={(e) => { setForm({ ...form, email: e.target.value }); setErrors({ ...errors, email: "" }); }}
                 placeholder="you@company.com"
-                className={`w-full rounded-xl border px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-300 transition-colors ${errors.email ? "border-red-400 bg-red-50" : "border-gray-200 bg-gray-50"}`}
+                className={`w-full rounded-xl border px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40 transition-colors ${errors.email ? "border-red-400 bg-red-50" : "border-slate-200 bg-slate-50"}`}
               />
               {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
             </div>
@@ -121,7 +121,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
                 onChange={(e) => { setForm({ ...form, phone: e.target.value }); setErrors({ ...errors, phone: "" }); }}
                 placeholder="10-digit mobile"
                 maxLength={10}
-                className={`w-full rounded-xl border px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-300 transition-colors ${errors.phone ? "border-red-400 bg-red-50" : "border-gray-200 bg-gray-50"}`}
+                className={`w-full rounded-xl border px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40 transition-colors ${errors.phone ? "border-red-400 bg-red-50" : "border-slate-200 bg-slate-50"}`}
               />
               {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
             </div>
@@ -134,7 +134,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
                 value={form.company}
                 onChange={(e) => setForm({ ...form, company: e.target.value })}
                 placeholder="Optional"
-                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-300 transition-colors"
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40 transition-colors"
               />
             </div>
 
@@ -146,7 +146,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 placeholder="Quantity needed, installation location, any specific requirements..."
                 rows={3}
-                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-300 transition-colors resize-none"
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40 transition-colors resize-none"
               />
             </div>
           </div>
@@ -160,7 +160,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
           {success && (
             <div className="mt-6 rounded-2xl border border-green-200 bg-green-50 px-4 py-4 text-sm text-green-800">
               <p className="font-bold text-green-900">Enquiry sent successfully!</p>
-              <p className="mt-1">We&apos;ve received your rate enquiry. Our team will contact you within 24 hours with pricing and delivery details.</p>
+              <p className="mt-1">We&apos;ve received your enquiry. Our team will contact you within 24 hours with your quote and delivery details.</p>
             </div>
           )}
 
@@ -169,21 +169,21 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
               type="button"
               onClick={handleSubmit}
               disabled={isSubmitting}
-              className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-primary-600 to-pink-500 hover:from-primary-700 hover:to-pink-600 px-6 py-4 text-sm font-bold text-white transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-70 shadow-lg"
+              className="btn btn-primary w-full py-4 disabled:cursor-not-allowed disabled:opacity-70"
             >
               {isSubmitting ? (
                 <>
                   <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
                   Sending Enquiry...
                 </>
-              ) : "Send Enquiry for Rate & Availability"}
+              ) : "Send Enquiry"}
             </button>
           </div>
         </div>
 
-        <aside className="rounded-3xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 text-white shadow-sm sm:p-8">
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-pink-300">Product</p>
-          <h3 className="mt-3 text-2xl font-bold">{product.name}</h3>
+        <aside className="rounded-2xl bg-slate-900 p-6 text-white shadow-sm sm:p-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">Product</p>
+          <h3 className="mt-3 text-2xl font-semibold tracking-tight">{product.name}</h3>
           <p className="mt-2 text-sm text-white/75">{product.fullName}</p>
           <p className="mt-1 text-xs font-mono text-white/40">{product.code}</p>
 
@@ -197,7 +197,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
               Pan-India Delivery
             </div>
             <div className="flex items-center gap-3 text-white/80">
-              <svg className="w-4 h-4 flex-shrink-0 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+              <svg className="w-4 h-4 flex-shrink-0 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
               GST Invoice Provided
             </div>
             <div className="flex items-center gap-3 text-white/80">

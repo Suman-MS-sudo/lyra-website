@@ -3,8 +3,12 @@ import { cities } from "@/lib/data";
 
 const SITE_URL = "https://lyraenterprise.co.in";
 
+// Bump when site content is meaningfully updated so <lastmod> stays honest
+// (an always-"now" lastmod trains crawlers to ignore it).
+const LAST_UPDATED = "2026-09-08T00:00:00.000Z";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date().toISOString();
+  const now = LAST_UPDATED;
 
   const productSlugs = [
     "solo-qr-vending-machine",
@@ -40,12 +44,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: SITE_URL, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
-    { url: `${SITE_URL}/#products`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${SITE_URL}/#about`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/#contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/#customers`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     // Product hub pages
     { url: `${SITE_URL}/service-areas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/government-schemes-menstrual-hygiene`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/products`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/products/sanitary-napkin-vending-machines`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/products/sanitary-napkin-incinerators`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },

@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Products from "@/components/Products";
+import FundingBanner from "@/components/FundingBanner";
 import Customers from "@/components/Customers";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -26,13 +27,10 @@ export default function Home() {
       />
       <main className="relative">
         <Hero />
-        <div className="section-divider" />
         <About />
-        <div className="section-divider" />
         <Products />
-        <div className="section-divider" />
+        <FundingBanner />
         <Customers />
-        <div className="section-divider" />
         <Contact />
       </main>
       <Footer />

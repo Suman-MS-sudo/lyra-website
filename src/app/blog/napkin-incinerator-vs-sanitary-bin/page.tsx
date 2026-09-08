@@ -35,8 +35,16 @@ const articleSchema = {
   headline: "Sanitary Napkin Incinerator vs Bio Bin — Which is Better for India?",
   description: "Bio bins create infection risk and require manual disposal. Incinerators eliminate waste completely.",
   author: { "@type": "Organization", name: "Lyra Enterprises" },
-  publisher: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
+  publisher: {
+    "@type": "Organization",
+    name: "Lyra Enterprises",
+    url: SITE.url,
+    logo: { "@type": "ImageObject", url: `${SITE.url}/images/logo.png`, width: 442, height: 454 },
+  },
   datePublished: "2026-02-05",
+  dateModified: "2026-02-05",
+  image: [`${SITE.url}/images/og-image.jpg`],
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/blog/napkin-incinerator-vs-sanitary-bin` },
   url: `${SITE.url}/blog/napkin-incinerator-vs-sanitary-bin`,
 };
 
@@ -144,11 +152,11 @@ export default function BlogPost3() {
             </div>
           </div>
 
-          <div className="mt-10 bg-gradient-to-r from-primary-50 to-pink-50 rounded-2xl border border-primary-100 p-6 text-center">
+          <div className="mt-10 bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl border border-primary-100 p-6 text-center">
             <h3 className="font-bold text-gray-900 mb-2">Browse Lyra Incinerators</h3>
             <p className="text-sm text-gray-600 mb-4">Micro, Mini and Maxi — all CPCB & SWM compliant.</p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <Link href="/products/sanitary-napkin-incinerators" className="px-5 py-2.5 bg-gradient-to-r from-primary-600 to-pink-500 text-white font-bold rounded-full text-sm">View Incinerators</Link>
+              <Link href="/products/sanitary-napkin-incinerators" className="px-5 py-2.5 bg-gradient-to-r from-primary-600 to-blue-500 text-white font-bold rounded-full text-sm">View Incinerators</Link>
               <Link href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-green-500 text-white font-bold rounded-full text-sm">WhatsApp Us</Link>
             </div>
           </div>

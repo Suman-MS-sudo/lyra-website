@@ -28,15 +28,15 @@ export default function IndiaServiceMap() {
       <div className="relative mx-auto w-full max-w-[560px]">
         <svg
           viewBox={INDIA_VIEWBOX}
-          className="lyra-map w-full h-auto drop-shadow-[0_20px_40px_rgba(190,26,104,0.12)]"
+          className="lyra-map w-full h-auto drop-shadow-[0_20px_40px_rgba(30,58,138,0.12)]"
           role="group"
           aria-label="Interactive map of India — Lyra Enterprises delivers sanitary napkin vending machines and incinerators to every state and union territory. Select a state for local models, pricing and delivery time."
         >
           <defs>
             <linearGradient id="lyraIndiaFill" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="#fee2f1" />
-              <stop offset="0.55" stopColor="#f7d6ef" />
-              <stop offset="1" stopColor="#e7d6fb" />
+              <stop offset="0" stopColor="#e0efff" />
+              <stop offset="0.55" stopColor="#cfe4ff" />
+              <stop offset="1" stopColor="#dbeafe" />
             </linearGradient>
             <radialGradient id="lyraHqGlow" cx="0.5" cy="0.5" r="0.5">
               <stop offset="0" stopColor="#f59e0b" stopOpacity="0.5" />
@@ -45,7 +45,7 @@ export default function IndiaServiceMap() {
           </defs>
 
           {/* Base silhouette — fills any hairline gaps between state polygons */}
-          <path d={baseD} fill="url(#lyraIndiaFill)" stroke="#e9a8cf" strokeWidth={1.1} strokeLinejoin="round" />
+          <path d={baseD} fill="url(#lyraIndiaFill)" stroke="#93c5fd" strokeWidth={1.1} strokeLinejoin="round" />
 
           {/* Route line to the hovered state */}
           {activeState && activeState.pin && (
@@ -55,7 +55,7 @@ export default function IndiaServiceMap() {
                 Math.min(HQ_POINT.y, activeState.cy) - 70
               } ${activeState.cx} ${activeState.cy}`}
               fill="none"
-              stroke="#be185d"
+              stroke="#1d4ed8"
               strokeWidth="1.8"
               strokeLinecap="round"
               opacity="0.5"
@@ -81,7 +81,7 @@ export default function IndiaServiceMap() {
                   <path
                     data-state={s.slug}
                     d={s.d}
-                    fill={isActive ? "#f472b6" : "transparent"}
+                    fill={isActive ? "#60a5fa" : "transparent"}
                     fillOpacity={isActive ? 0.55 : 1}
                     stroke="#ffffff"
                     strokeWidth={isActive ? 1.4 : 0.9}
@@ -95,14 +95,14 @@ export default function IndiaServiceMap() {
                       cx={s.cx}
                       cy={s.cy}
                       r={4}
-                      fill="#ec4899"
+                      fill="#3b82f6"
                       style={{ animationDelay: `${(s.cx * 7 + s.cy) % 2600}ms` }}
                     />
                     <circle
                       cx={s.cx}
                       cy={s.cy}
                       r={isActive ? 6 : 4}
-                      fill="#be185d"
+                      fill="#1d4ed8"
                       stroke="#ffffff"
                       strokeWidth={isActive ? 1.8 : 1.3}
                       style={{ transition: "r 150ms ease" }}
@@ -165,7 +165,7 @@ export default function IndiaServiceMap() {
 
       <figcaption className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-xs text-gray-500">
         <span className="inline-flex items-center gap-1.5">
-          <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#be185d]" />
+          <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#1d4ed8]" />
           Delivery &amp; installation point
         </span>
         <span className="inline-flex items-center gap-1.5">

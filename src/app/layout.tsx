@@ -1,5 +1,5 @@
-﻿import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+﻿import type { Metadata, Viewport } from "next";
+import { Inter, Sora } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import FloatingActionButtons from "@/components/FloatingActionButtons";
@@ -10,11 +10,11 @@ const inter = Inter({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-display",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["500", "600", "700"],
 });
 
 const SITE_URL = "https://lyraenterprise.co.in";
@@ -108,6 +108,8 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
 
+  manifest: "/manifest.webmanifest",
+
   openGraph: {
     title:
       "Lyra Enterprises | #1 Vending Machine & Incinerator Manufacturer India",
@@ -157,19 +159,21 @@ export const metadata: Metadata = {
 
   other: {
     "geo.region": "IN-TN",
-    "geo.placename": "Chennai, Tamil Nadu, India",
-    "geo.position": "13.0827;80.2707",
-    ICBM: "13.0827, 80.2707",
+    "geo.placename": "Ambattur, Chennai, Tamil Nadu, India",
+    "geo.position": "13.1143;80.1548",
+    ICBM: "13.1143, 80.1548",
     "DC.language": "en",
     "DC.publisher": "Lyra Enterprises",
     // Bing Webmaster Tools manual verification (uncomment and fill in once you have a token):
     // "msvalidate.01": "YOUR_BING_VERIFICATION_TOKEN",
-    // Social Media Profiles for SEO
-    "facebook-domain-verification": "Lyra Enterprises",
-    "fb:page_id": "61578649496806",
-    "instagram:profile": "lyraenterprises_",
-    "linkedin:company": "lyra-enterprises",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#2563eb",
+  colorScheme: "light",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -198,7 +202,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-white text-gray-900 overflow-x-hidden`}
+        className={`${inter.variable} ${sora.variable} font-sans antialiased bg-white text-gray-900 overflow-x-hidden`}
       >
         {children}
         <FloatingActionButtons />

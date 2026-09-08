@@ -35,8 +35,16 @@ const articleSchema = {
   headline: "UPI QR vs Coin Vending Machine — Which One Should You Buy?",
   description: "Complete comparison of UPI and coin vending machines for India.",
   author: { "@type": "Organization", name: "Lyra Enterprises" },
-  publisher: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
+  publisher: {
+    "@type": "Organization",
+    name: "Lyra Enterprises",
+    url: SITE.url,
+    logo: { "@type": "ImageObject", url: `${SITE.url}/images/logo.png`, width: 442, height: 454 },
+  },
   datePublished: "2026-01-28",
+  dateModified: "2026-01-28",
+  image: [`${SITE.url}/images/og-image.jpg`],
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/blog/upi-vs-coin-vending-machine` },
   url: `${SITE.url}/blog/upi-vs-coin-vending-machine`,
 };
 
@@ -155,11 +163,11 @@ export default function BlogPost2() {
             </div>
           </div>
 
-          <div className="mt-10 bg-gradient-to-r from-primary-50 to-pink-50 rounded-2xl border border-primary-100 p-6 text-center">
+          <div className="mt-10 bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl border border-primary-100 p-6 text-center">
             <h3 className="font-bold text-gray-900 mb-2">Ready to choose your machine?</h3>
             <p className="text-sm text-gray-600 mb-4">Compare all models side by side with prices.</p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <Link href="/products/sanitary-napkin-vending-machines" className="px-5 py-2.5 bg-gradient-to-r from-primary-600 to-pink-500 text-white font-bold rounded-full text-sm">Compare All Models</Link>
+              <Link href="/products/sanitary-napkin-vending-machines" className="px-5 py-2.5 bg-gradient-to-r from-primary-600 to-blue-500 text-white font-bold rounded-full text-sm">Compare All Models</Link>
               <Link href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-green-500 text-white font-bold rounded-full text-sm">Ask Our Team</Link>
             </div>
           </div>

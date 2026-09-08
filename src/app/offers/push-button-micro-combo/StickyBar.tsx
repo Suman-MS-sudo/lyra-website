@@ -36,7 +36,7 @@ export default function StickyBar({ price }: { price: number }) {
             </p>
             <WhatsAppCTA
               text="Hi! I'm interested in the Push Button Vending Machine + Lyra Micro Incinerator combo offer at ₹19,999 + GST + Freight. Please share more details."
-              className="flex-1 sm:flex-none text-center px-6 py-3 bg-gradient-to-r from-primary-600 to-pink-500 text-white font-bold rounded-full shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-sm"
+              className="flex-1 sm:flex-none text-center px-6 py-3 bg-gradient-to-r from-primary-600 to-blue-500 text-white font-bold rounded-full shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-sm"
             />
           </div>
         </motion.div>

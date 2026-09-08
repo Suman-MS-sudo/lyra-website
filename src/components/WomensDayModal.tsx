@@ -48,7 +48,7 @@ export default function WomensDayModal() {
             className="relative w-full max-w-2xl overflow-hidden rounded-3xl shadow-2xl"
           >
             {/* Gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#6B1FA8] via-[#A0268A] to-[#E8477A]" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6]" />
 
             {/* Subtle noise overlay */}
             <div className="absolute inset-0 opacity-[0.04]"
@@ -99,28 +99,28 @@ export default function WomensDayModal() {
 
               {/* Headline */}
               <h2 className="font-display leading-tight mb-2">
-                <span className="block text-pink-200 text-xl sm:text-2xl font-semibold mb-1">
+                <span className="block text-blue-200 text-xl sm:text-2xl font-semibold mb-1">
                   Exclusive
                 </span>
                 <span className="block text-white text-4xl sm:text-5xl font-black">
                   Women&apos;s Day
                 </span>
-                <span className="block text-pink-200 text-3xl sm:text-4xl font-bold">
+                <span className="block text-blue-200 text-3xl sm:text-4xl font-bold">
                   Special Offer 🌷
                 </span>
               </h2>
 
               {/* Divider */}
-              <div className="w-16 h-1 rounded-full bg-pink-300/60 my-6" />
+              <div className="w-16 h-1 rounded-full bg-blue-300/60 my-6" />
 
               {/* Offer */}
               <div className="flex items-center gap-4 mb-6">
                 <div className="flex-shrink-0 px-5 py-4 rounded-2xl bg-white text-center shadow-lg">
-                  <p className="text-[#A0268A] text-xs font-bold uppercase tracking-wider mb-1">Special</p>
-                  <p className="font-sans text-2xl sm:text-3xl font-black text-[#6B1FA8] leading-none">Offer</p>
-                  <p className="text-[#A0268A]/70 text-xs font-semibold mt-1">per machine</p>
+                  <p className="text-[#1d4ed8] text-xs font-bold uppercase tracking-wider mb-1">Special</p>
+                  <p className="font-sans text-2xl sm:text-3xl font-black text-[#1e3a8a] leading-none">Offer</p>
+                  <p className="text-[#1d4ed8]/70 text-xs font-semibold mt-1">per machine</p>
                 </div>
-                <p className="text-pink-100 text-sm sm:text-base leading-relaxed">
+                <p className="text-blue-100 text-sm sm:text-base leading-relaxed">
                   Celebrate Women&apos;s Day with dignity. Get{" "}
                   <strong className="text-white">a special discount</strong> on all
                   Vending Machines &amp; Incinerators. Valid till{" "}
@@ -133,7 +133,7 @@ export default function WomensDayModal() {
                 <Link
                   href="#contact"
                   onClick={close}
-                  className="px-7 py-3.5 rounded-full bg-white text-[#A0268A] font-bold text-sm hover:bg-pink-50 hover:-translate-y-0.5 transition-all duration-200 shadow-lg shadow-black/20"
+                  className="px-7 py-3.5 rounded-full bg-white text-[#1d4ed8] font-bold text-sm hover:bg-blue-50 hover:-translate-y-0.5 transition-all duration-200 shadow-lg shadow-black/20"
                 >
                   Claim Offer Now →
                 </Link>

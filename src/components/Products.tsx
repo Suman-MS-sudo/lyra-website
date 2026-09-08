@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
 import Image from "next/image";
-import { products } from "@/lib/data";
 
 type Product = {
   name: string;
@@ -16,6 +15,8 @@ type Product = {
   features: string[];
   accent: string;
   image: string;
+  /** extra inset for source images that are cropped tighter than the rest */
+  imgInset?: boolean;
 };
 
 const vendingMachines: Product[] = [
@@ -26,7 +27,7 @@ const vendingMachines: Product[] = [
     price: "₹11,000",
     badge: "Essential",
     features: ["Manual dispensing", "25 napkins capacity", "Tamper-proof body"],
-    accent: "from-gray-400 to-gray-600",
+    accent: "",
     image: "/images/products/push-button-vm.png",
   },
   {
@@ -36,7 +37,7 @@ const vendingMachines: Product[] = [
     price: "₹12,500",
     badge: "Standard",
     features: ["₹5 coin acceptor", "25 napkins capacity", "Anti-jam mechanism"],
-    accent: "from-primary-400 to-primary-600",
+    accent: "",
     image: "/images/products/solo-coin.png",
   },
   {
@@ -46,7 +47,7 @@ const vendingMachines: Product[] = [
     price: "₹14,500",
     badge: "Multi-Coin",
     features: ["₹1 / ₹2 / ₹5 coin acceptor", "Configurable per-pad price", "25 napkins capacity"],
-    accent: "from-amber-400 to-primary-500",
+    accent: "",
     image: "/images/products/solo-multi.png",
   },
   {
@@ -56,7 +57,7 @@ const vendingMachines: Product[] = [
     price: "₹15,000",
     badge: "RFID",
     features: ["RFID card / tag access", "Usage reports", "Contactless dispensing"],
-    accent: "from-teal-400 to-cyan-600",
+    accent: "",
     image: "/images/products/solo-rfid.png",
   },
   {
@@ -66,7 +67,7 @@ const vendingMachines: Product[] = [
     price: "₹18,500",
     badge: "UPI / QR",
     features: ["UPI QR payment", "GPay & PhonePe", "SIM-based connectivity"],
-    accent: "from-pink-400 to-rose-500",
+    accent: "",
     image: "/images/products/solo-qr.png",
   },
   {
@@ -76,8 +77,9 @@ const vendingMachines: Product[] = [
     price: "₹22,000",
     badge: "Touchless",
     features: ["Touchless wave sensor", "Stainless steel cabinet", "LCD stock display"],
-    accent: "from-slate-400 to-slate-600",
+    accent: "",
     image: "/images/products/solo-wave.png",
+    imgInset: true,
   },
   {
     name: "Solo WiFi",
@@ -87,7 +89,7 @@ const vendingMachines: Product[] = [
     badge: "Most Popular",
     popular: true,
     features: ["UPI QR + Coin payment", "WiFi + touch display", "Cloud-based reports"],
-    accent: "from-pink-400 to-primary-500",
+    accent: "",
     image: "/images/products/solo-wifi.png",
   },
   {
@@ -97,7 +99,7 @@ const vendingMachines: Product[] = [
     price: "₹26,500",
     badge: "Premium",
     features: ["UPI QR + Coin payment", "Ethernet / LAN", "Touch display + cloud"],
-    accent: "from-fuchsia-400 to-primary-600",
+    accent: "",
     image: "/images/products/solo-ethernet.png",
   },
 ];
@@ -110,7 +112,7 @@ const incinerators: Product[] = [
     price: "₹12,500",
     badge: "Compact",
     features: ["1–5 napkins/cycle", "Front loading", "230V, 1.25kW"],
-    accent: "from-primary-300 to-primary-500",
+    accent: "",
     image: "/images/products/lyra-micro.png",
   },
   {
@@ -120,7 +122,7 @@ const incinerators: Product[] = [
     price: "₹15,500",
     badge: "Standard",
     features: ["5–15 napkins/cycle", "IoT WiFi add-on", "Front loading"],
-    accent: "from-primary-400 to-primary-600",
+    accent: "",
     image: "/images/products/lyra-mini.png",
   },
   {
@@ -130,7 +132,7 @@ const incinerators: Product[] = [
     price: "₹39,500",
     badge: "High Capacity",
     features: ["25–50 napkins/cycle", "Top loading", "IoT WiFi add-on"],
-    accent: "from-pink-400 to-primary-700",
+    accent: "",
     image: "/images/products/lyra-maxi.png",
   },
 ];
@@ -143,7 +145,7 @@ const napkins: Product[] = [
     price: "₹5 / napkin",
     badge: "XL",
     features: ["280 mm length", "Regular-flow protection", "Individually wrapped"],
-    accent: "from-pink-300 to-rose-400",
+    accent: "",
     image: "/images/products/xl-napkin.png",
   },
   {
@@ -153,145 +155,106 @@ const napkins: Product[] = [
     price: "₹10 / napkin",
     badge: "XXL",
     features: ["320 mm length", "Heavy-flow / overnight", "Individually wrapped"],
-    accent: "from-fuchsia-300 to-pink-500",
+    accent: "",
     image: "/images/products/xxl-napkin.png",
   },
 ];
 
-function EnquiryButton({ slug }: { slug: string }) {
-  return (
-    <div className="space-y-2">
-      <Link
-        href={`/products/${slug}#enquiry`}
-        className="block w-full py-3.5 text-center text-sm font-bold rounded-2xl bg-gradient-to-r from-primary-600 to-pink-500 hover:from-primary-700 hover:to-pink-600 text-white transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
-      >
-        Send Enquiry for Rate
-      </Link>
-    </div>
-  );
-}
-
-function ProductCard({
-  product,
-  index,
-}: {
-  product: Product;
-  index: number;
-}) {
+function ProductCard({ product, index }: { product: Product; index: number }) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const gstNote = product.price.includes("napkin")
+    ? "GST extra"
+    : "+ 18% GST · freight extra";
 
   return (
-    <motion.div
+    <motion.article
       ref={ref}
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.45, delay: index * 0.06 }}
-      className={`group relative bg-white rounded-3xl overflow-hidden flex flex-col transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2
-        ${product.popular
-          ? "shadow-3xl hover:shadow-3xl ring-2 ring-primary-400/50 ring-offset-4 shadow-glow"
-          : "shadow-card hover:shadow-card-hover border border-gray-100/50 hover:border-primary-200"
-        }`}
+      transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.3) }}
+      className={`lyra-card lyra-card-hover group relative flex flex-col overflow-hidden ${
+        product.popular ? "ring-1 ring-primary-500" : ""
+      }`}
     >
-      {/* Modern gradient header with large image */}
-      <div className={`relative h-52 bg-gradient-to-br ${product.accent} overflow-hidden`}>
-        {/* Animated gradient orbs */}
-        <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/8 animate-pulse" />
-        <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-white/8 animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white/5 animate-pulse delay-500" />
-        
-        {/* Large centered product image */}
-        <div className="absolute inset-0 flex items-center justify-center p-6">
-          <div className="relative w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 group-hover:scale-110 transition-transform duration-500">
-            {/* Enhanced image background with glow effect */}
-            <div className="absolute inset-0 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-2xl group-hover:bg-white/25 transition-all duration-500"></div>
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent"></div>
-            <div className="absolute inset-0 rounded-2xl shadow-inner"></div>
-            
-            {/* Product image */}
-            <div className="absolute inset-3">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-contain drop-shadow-2xl"
-                sizes="(max-width: 640px) 128px, (max-width: 1024px) 144px, 160px"
-              />
-            </div>
-            
-            {/* Subtle glow effect */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-transparent via-transparent to-white/10 group-hover:to-white/20 transition-all duration-500"></div>
-          </div>
-        </div>
-        
-        {/* Modern badge with better styling */}
-        <div className="absolute top-4 left-4 z-10">
-          <span className="px-4 py-2 bg-black/25 backdrop-blur-md border border-white/30 text-white text-xs font-bold uppercase tracking-wider rounded-2xl shadow-lg">
-            {product.badge}
-          </span>
-        </div>
-        
-        {/* Popular badge with animation */}
+      {/* hover accent */}
+      <span className="absolute inset-x-0 top-0 z-10 h-0.5 origin-left scale-x-0 bg-primary-600 transition-transform duration-300 group-hover:scale-x-100" />
+      {/* Image panel */}
+      <div className="relative aspect-square overflow-hidden border-b border-slate-100 bg-gradient-to-br from-slate-50 to-white">
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          className={`object-contain transition-transform duration-500 group-hover:scale-105 ${
+            product.imgInset ? "p-12 sm:p-14" : "p-7"
+          }`}
+          sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 260px"
+        />
+        <span className="absolute left-3 top-3 rounded-md border border-slate-200 bg-white/90 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-600 backdrop-blur-sm">
+          {product.badge}
+        </span>
         {product.popular && (
-          <div className="absolute top-4 right-4 z-10">
-            <span className="px-4 py-2 bg-yellow-400 text-yellow-900 text-xs font-bold rounded-2xl shadow-lg animate-bounce">
-              ⭐ Popular
-            </span>
-          </div>
+          <span className="absolute right-3 top-3 rounded-md bg-primary-600 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
+            Popular
+          </span>
         )}
-        
-        {/* Modern bottom gradient */}
-        <div className="absolute bottom-0 inset-x-0 h-8 bg-gradient-to-t from-black/20 to-transparent"></div>
       </div>
 
-      {/* Enhanced content section */}
-      <div className="p-4 sm:p-6 flex flex-col flex-1 bg-gradient-to-b from-gray-50/50 to-white">
-        <div className="flex items-center justify-between mb-3">
-          <p className="text-xs text-gray-500 font-mono tracking-wider uppercase bg-gray-100 px-2 py-1 rounded-lg">{product.code}</p>
-          <div className="flex items-center gap-1 text-yellow-500">
-            {"⭐".repeat(5)}
-          </div>
-        </div>
-        
-        <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors leading-tight mb-4">
+      {/* Content */}
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <p className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
+          {product.code}
+        </p>
+        <h3 className="mt-1 text-base font-semibold text-slate-900 transition-colors group-hover:text-primary-700 sm:text-lg">
           {product.name}
         </h3>
 
-        <ul className="space-y-3 flex-1">
-          {product.features.slice(0, 3).map((feat, idx) => (
-            <li key={feat} className="flex items-start gap-3 text-sm text-gray-700">
-              <span className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-lg bg-gradient-to-br ${product.accent} flex items-center justify-center shadow-sm`}>
-                <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 12 12">
-                  <path d="M2.5 6l2.5 2.5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-              <span className="font-medium leading-snug">{feat}</span>
+        <ul className="mt-4 flex-1 space-y-2.5">
+          {product.features.slice(0, 3).map((feat) => (
+            <li key={feat} className="flex items-start gap-2.5 text-[13px] text-slate-600">
+              <svg
+                className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary-600"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <path
+                  d="M3.5 8.5l3 3 6-7"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span className="leading-snug">{feat}</span>
             </li>
           ))}
         </ul>
 
-        <div className="mt-6 pt-5 border-t border-gray-200/60">
-          <div className="flex items-end justify-between mb-4">
-            <div className="flex flex-col">
-              <p className="text-lg font-bold text-gray-900">{product.price}</p>
-              <p className="text-[11px] text-gray-500">
-                {product.price.includes("napkin") ? "GST extra" : "+ 18% GST · freight extra"}
-              </p>
+        <div className="mt-5 border-t border-slate-100 pt-4">
+          <div className="flex items-end justify-between">
+            <div>
+              <p className="text-lg font-semibold text-slate-900">{product.price}</p>
+              <p className="text-[11px] text-slate-400">{gstNote}</p>
             </div>
             <Link
               href={`/products/${product.slug}`}
-              className="flex items-center gap-1 text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors group/link"
+              className="inline-flex items-center gap-1 text-sm font-semibold text-primary-700 transition-colors hover:text-primary-800"
             >
               Details
-              <svg className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
               </svg>
             </Link>
           </div>
 
-          <EnquiryButton slug={product.slug} />
+          <Link
+            href={`/products/${product.slug}#enquiry`}
+            className="btn btn-primary mt-4 w-full"
+          >
+            Get a Quote
+          </Link>
         </div>
       </div>
-    </motion.div>
+    </motion.article>
   );
 }
 
@@ -306,35 +269,31 @@ function CategoryHeader({
   count?: number;
   href?: string;
 }) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x: -20 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5 }}
-      className="flex items-center justify-between mb-8 pb-6 border-b border-gray-100"
-    >
-      <div className="flex items-center gap-4">
-        <div className="w-1.5 h-12 rounded-full bg-gradient-to-b from-primary-400 to-pink-500 flex-shrink-0" />
+    <div className="mb-8 flex items-end justify-between gap-4 border-b border-slate-200 pb-5">
+      <div className="flex items-start gap-4">
+        <span className="mt-1 h-10 w-1 flex-shrink-0 rounded-full bg-primary-600" />
         <div>
-          <div className="flex items-center gap-3 flex-wrap">
-            <h3 className="font-display text-2xl lg:text-3xl font-bold text-gray-900">{title}</h3>
+          <div className="flex flex-wrap items-center gap-3">
+            <h3 className="text-xl font-semibold text-slate-900 lg:text-2xl">{title}</h3>
             {count && (
-              <span className="px-2.5 py-0.5 text-xs font-bold text-primary-600 bg-primary-50 border border-primary-200 rounded-full">
+              <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-xs font-semibold text-slate-500">
                 {count} models
               </span>
             )}
           </div>
-          <p className="text-sm text-gray-500 mt-0.5">{sub}</p>
+          <p className="mt-1 text-sm text-slate-500">{sub}</p>
         </div>
       </div>
       {href && (
-        <Link href={href} className="text-sm font-semibold text-primary-600 hover:text-primary-800 hover:underline hidden sm:flex items-center gap-1 shrink-0">
+        <Link
+          href={href}
+          className="hidden shrink-0 items-center gap-1 text-sm font-semibold text-primary-700 hover:text-primary-800 sm:flex"
+        >
           View All →
         </Link>
       )}
-    </motion.div>
+    </div>
   );
 }
 
@@ -342,43 +301,29 @@ export default function Products() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section
-      id="products"
-      className="section-padding relative overflow-hidden bg-gradient-to-b from-white via-pink-blush/20 to-white"
-    >
-      {/* Background effects */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary-200 to-transparent" />
-      <div className="absolute -right-40 top-40 w-[500px] h-[500px] rounded-full bg-primary-100/20 blur-3xl pointer-events-none" />
-      <div className="absolute -left-60 bottom-40 w-[400px] h-[400px] rounded-full bg-pink-100/20 blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
+    <section id="products" className="section-padding bg-[#f6f8fc]">
+      <div className="lyra-container">
         {/* Section Header */}
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 lg:mb-20"
+          transition={{ duration: 0.6 }}
+          className="mx-auto mb-14 max-w-3xl text-center sm:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-semibold tracking-wider uppercase mb-6">
-            Product Range
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-6">
+          <div className="lyra-eyebrow mb-6">Product Range</div>
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             From <span className="text-gradient">Basic</span> to{" "}
             <span className="text-gradient">Smart</span> — a Solution for Every Space
           </h2>
-          <p className="text-lg text-gray-500 mb-8">
+          <p className="mt-5 text-lg text-slate-500">
             Every product is precision-engineered in Chennai, shipped across
             India, and backed by our expert support team.
           </p>
-          {/* Stats strip */}
-          <div className="inline-flex items-center gap-2 flex-wrap justify-center text-sm text-gray-500 font-medium">
-            <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">8 VM&nbsp;Models</span>
-            <span className="text-gray-500">·</span>
-            <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">3 Incinerators</span>
-            <span className="text-gray-500">·</span>
-            <span className="px-3 py-1.5 bg-white border border-gray-200 rounded-full shadow-sm">2 Napkin Variants</span>
-            <span className="text-gray-500">·</span>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm font-medium text-slate-500">
+            <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5">8 VM&nbsp;Models</span>
+            <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5">3 Incinerators</span>
+            <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5">2 Napkin Variants</span>
           </div>
         </motion.div>
 
@@ -389,7 +334,7 @@ export default function Products() {
           count={8}
           href="/products/sanitary-napkin-vending-machines"
         />
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 mb-14 sm:mb-20">
+        <div className="mb-16 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
           {vendingMachines.map((p, i) => (
             <ProductCard key={p.name} product={p} index={i} />
           ))}
@@ -402,7 +347,7 @@ export default function Products() {
           count={3}
           href="/products/sanitary-napkin-incinerators"
         />
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5">
+        <div className="grid grid-cols-2 gap-4 sm:gap-5 sm:grid-cols-3">
           {incinerators.map((p, i) => (
             <ProductCard key={p.name} product={p} index={i} />
           ))}
@@ -411,16 +356,20 @@ export default function Products() {
         {/* Combo Offer Banner */}
         <Link
           href="/offers/push-button-micro-combo"
-          className="mt-6 mb-14 sm:mb-20 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-gradient-to-r from-gray-900 to-primary-900 px-6 py-6 sm:px-8 sm:py-7 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300"
+          className="my-16 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-slate-900 px-6 py-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:px-8 sm:py-7"
         >
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-primary-300 mb-1.5">🔥 Combo Offer</p>
-            <p className="font-bold text-white text-lg sm:text-xl">
+            <p className="mb-1.5 text-xs font-semibold uppercase tracking-widest text-primary-300">
+              🔥 Combo Offer
+            </p>
+            <p className="text-lg font-semibold text-white sm:text-xl">
               Push Button Vending Machine + Micro Incinerator — ₹19,999
             </p>
-            <p className="text-white/50 text-sm mt-1">Full SWM Rules 2016 compliance in one order</p>
+            <p className="mt-1 text-sm text-slate-400">
+              Full SWM Rules 2016 compliance in one order
+            </p>
           </div>
-          <span className="px-6 py-3 rounded-full bg-white text-gray-900 text-sm font-bold whitespace-nowrap">
+          <span className="whitespace-nowrap rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-900">
             View Offer →
           </span>
         </Link>
@@ -431,7 +380,7 @@ export default function Products() {
           sub="Compatible with all Lyra vending machines — XL & XXL variants"
           count={2}
         />
-        <div className="grid grid-cols-2 gap-3 sm:gap-5">
+        <div className="grid grid-cols-2 gap-4 sm:gap-5 sm:max-w-xl">
           {napkins.map((p, i) => (
             <ProductCard key={p.name} product={p} index={i} />
           ))}

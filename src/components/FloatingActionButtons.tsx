@@ -53,7 +53,7 @@ export default function FloatingActionButtons() {
         <div className="relative group">
           <button
             onClick={openMaps}
-            className="w-14 h-14 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+            className="w-14 h-14 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center group"
             title="Get Directions"
           >
             <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,7 +72,7 @@ export default function FloatingActionButtons() {
           <div className="relative group">
             <button
               onClick={() => { setHasOpenedChat(true); setShowChat(true) }}
-              className="w-14 h-14 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group animate-pulse"
+              className="w-14 h-14 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center group"
               title="Chat with us"
             >
               <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

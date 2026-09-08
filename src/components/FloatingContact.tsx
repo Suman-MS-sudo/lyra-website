@@ -92,12 +92,12 @@ export default function FloatingContact() {
             <a
               href={email ? `mailto:${email}?subject=Product Inquiry - Lyra Enterprises&body=${EMAIL_MESSAGE}` : undefined}
               onClick={() => trackLead("email")}
-              className="flex flex-col items-center justify-center py-3.5 gap-1.5 active:bg-indigo-50 transition-colors"
+              className="flex flex-col items-center justify-center py-3.5 gap-1.5 active:bg-sky-50 transition-colors"
               aria-label="Email Lyra Enterprises"
             >
-              <div className="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-sky-50 flex items-center justify-center">
                 <svg
-                  className="w-4 h-4 text-indigo-600"
+                  className="w-4 h-4 text-sky-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -110,7 +110,7 @@ export default function FloatingContact() {
                   />
                 </svg>
               </div>
-              <span className="text-[10px] font-bold text-indigo-700 uppercase tracking-wide">
+              <span className="text-[10px] font-bold text-sky-700 uppercase tracking-wide">
                 Email
               </span>
             </a>

@@ -61,7 +61,7 @@ export default function VendingMachinesPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <PageNavbar />
-      <main className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
         {/* Hero */}
         <section className="max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-10">
           <Breadcrumb crumbs={[
@@ -70,7 +70,7 @@ export default function VendingMachinesPage() {
             { label: "Vending Machines" },
           ]} />
           <h1 className="mt-6 font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-            Sanitary Napkin <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">Vending Machines</span>
+            Sanitary Napkin <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">Vending Machines</span>
           </h1>
           <p className="mt-4 text-gray-600 text-lg max-w-2xl">
           8 models to match every budget and facility — from ₹11,000 push-button dispensers to touchless wave-sensor units and IoT-enabled smart machines with UPI payments and cloud analytics. Manufactured in Chennai, delivered across India. Prices exclude 18% GST; freight additional.
@@ -78,7 +78,7 @@ export default function VendingMachinesPage() {
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ 1-Year Warranty</span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Pan-India Delivery</span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 text-purple-700 rounded-full border border-purple-200 font-medium">✓ Free Installation Support</span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Free Installation Support</span>
           </div>
         </section>
 
@@ -153,12 +153,12 @@ export default function VendingMachinesPage() {
         </section>
 
         {/* CTA */}
-        <section className="relative overflow-hidden bg-gradient-to-r from-[#6B1FA8] via-[#A0268A] to-[#E8477A] py-14 text-white text-center px-5">
+        <section className="relative overflow-hidden bg-gradient-to-r from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6] py-14 text-white text-center px-5">
           <div className="relative z-10">
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">Not sure which model to choose?</h2>
             <p className="text-white/80 mb-6 max-w-xl mx-auto">Tell us your facility type and budget — our team will recommend the right machine within 30 minutes.</p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20a%20Lyra%20vending%20machine.%20Please%20help%20me%20choose%20the%20right%20model." target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#A0268A] font-bold rounded-full">WhatsApp Us</Link>
+              <Link href="https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20a%20Lyra%20vending%20machine.%20Please%20help%20me%20choose%20the%20right%20model." target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#1d4ed8] font-bold rounded-full">WhatsApp Us</Link>
               <Link href="tel:+918122378860" className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full">Call +91-81223 78860</Link>
             </div>
           </div>

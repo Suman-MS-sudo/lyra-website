@@ -15,7 +15,10 @@ export const metadata: Metadata = {
     "napkin incinerator guide india",
     "sanitary napkin machine schools",
   ],
-  alternates: { canonical: `${SITE.url}/blog` },
+  alternates: {
+    canonical: `${SITE.url}/blog`,
+    types: { "application/rss+xml": `${SITE.url}/blog/rss.xml` },
+  },
   openGraph: {
     title: "Blog — Menstrual Hygiene, Vending Machines & Incinerators India | Lyra Enterprises",
     description:
@@ -30,15 +33,39 @@ export const metadata: Metadata = {
   },
 };
 
+const blogListSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": `${SITE.url}/blog#blog`,
+  name: "Lyra Enterprises Blog",
+  description:
+    "Guides on menstrual hygiene management, sanitary napkin vending machines and incinerators for institutions in India.",
+  url: `${SITE.url}/blog`,
+  publisher: { "@id": `${SITE.url}/#organization` },
+  blogPost: blogPosts.map((post) => ({
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    url: `${SITE.url}/blog/${post.slug}`,
+    author: { "@id": `${SITE.url}/#organization` },
+    publisher: { "@id": `${SITE.url}/#organization` },
+  })),
+};
+
 export default function BlogPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }}
+      />
       <PageNavbar />
-      <main className="pt-16 min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      <main className="pt-16 min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
         <section className="max-w-4xl mx-auto px-5 sm:px-8 pt-12 pb-10">
           <Breadcrumb crumbs={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
           <h1 className="mt-6 font-bold text-3xl sm:text-4xl text-gray-900">
-            Hygiene & Product <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">Guide</span>
+            Hygiene & Product <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">Guide</span>
           </h1>
           <p className="mt-3 text-gray-600 text-lg">
             Expert insights on menstrual hygiene management, vending machine comparisons and incinerator selection for schools, hospitals and offices across India.
@@ -64,7 +91,7 @@ export default function BlogPage() {
           </div>
         </section>
 
-        <section className="bg-gradient-to-r from-primary-600 to-pink-500 py-14 text-white text-center px-5">
+        <section className="bg-gradient-to-r from-primary-600 to-blue-500 py-14 text-white text-center px-5">
           <h2 className="text-2xl font-bold mb-3">Ready to upgrade your facility?</h2>
           <p className="text-white/80 mb-6">Browse our full range of vending machines and incinerators.</p>
           <Link href="/products" className="px-8 py-3 bg-white text-primary-700 font-bold rounded-full">View All Products</Link>

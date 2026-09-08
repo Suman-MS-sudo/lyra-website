@@ -36,8 +36,16 @@ const articleSchema = {
   headline: "Manual vs Automatic Sanitary Napkin Vending Machine — Which Is Right for You?",
   description: "A complete guide comparing manual and automatic sanitary napkin vending machines in India — price, features, maintenance and best use cases.",
   author: { "@type": "Organization", name: "Lyra Enterprises" },
-  publisher: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
+  publisher: {
+    "@type": "Organization",
+    name: "Lyra Enterprises",
+    url: SITE.url,
+    logo: { "@type": "ImageObject", url: `${SITE.url}/images/logo.png`, width: 442, height: 454 },
+  },
   datePublished: "2026-02-20",
+  dateModified: "2026-02-20",
+  image: [`${SITE.url}/images/og-image.jpg`],
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/blog/manual-vs-automatic-napkin-vending-machine` },
   url: `${SITE.url}/blog/manual-vs-automatic-napkin-vending-machine`,
 };
 
@@ -109,7 +117,7 @@ export default function ManualVsAutomaticBlog() {
           <div className="mt-6 overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-gradient-to-r from-primary-50 to-pink-50">
+                <tr className="bg-gradient-to-r from-primary-50 to-blue-50">
                   <th className="px-4 py-3 text-left font-bold text-gray-700 border-b border-gray-200">Feature</th>
                   <th className="px-4 py-3 text-center font-bold text-gray-700 border-b border-gray-200">Push Button (Free-Vend)</th>
                   <th className="px-4 py-3 text-center font-bold text-primary-600 border-b border-gray-200">Automatic</th>
@@ -169,7 +177,7 @@ export default function ManualVsAutomaticBlog() {
             </p>
           </div>
 
-          <div className="mt-12 p-6 rounded-2xl bg-gradient-to-br from-primary-50 to-pink-50 border border-primary-100">
+          <div className="mt-12 p-6 rounded-2xl bg-gradient-to-br from-primary-50 to-blue-50 border border-primary-100">
             <p className="font-bold text-gray-900 text-lg mb-2">Get the right machine for your institution</p>
             <p className="text-gray-600 text-sm mb-5">Browse all models or contact us for a personalised recommendation.</p>
             <div className="flex flex-wrap gap-3">

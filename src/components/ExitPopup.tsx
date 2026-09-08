@@ -124,7 +124,7 @@ export default function ExitPopup({
 
         {submitted ? (
           <div className="text-center py-6">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-400 to-pink-soft flex items-center justify-center mx-auto mb-5">
+            <div className="w-16 h-16 rounded-full bg-primary-600 flex items-center justify-center mx-auto mb-5">
               <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
@@ -144,7 +144,7 @@ export default function ExitPopup({
                 <input
                   {...register("name", { required: "Name is required" })}
                   placeholder="Your name"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all placeholder:text-gray-300"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-transparent transition-all placeholder:text-gray-300"
                 />
                 {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
               </div>
@@ -156,14 +156,14 @@ export default function ExitPopup({
                   })}
                   type="tel"
                   placeholder="Your phone number"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent transition-all placeholder:text-gray-300"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-transparent transition-all placeholder:text-gray-300"
                 />
                 {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
               </div>
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-primary-600 to-pink-500 shadow-lg hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="btn btn-primary w-full py-3.5 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {submitting ? "Sending..." : "Request Callback"}
               </button>

@@ -4,66 +4,36 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 
-const customers = [
+type Customer = { name: string; short: string; logo: string };
+
+const sectors: { label: string; items: Customer[] }[] = [
   {
-    name: "Larsen & Toubro",
-    short: "L&T",
-    logo: "/images/customers/lnt.png",
-    category: "Infrastructure",
+    label: "Industrial & Manufacturing",
+    items: [
+      { name: "Larsen & Toubro", short: "L&T", logo: "/images/customers/lnt.png" },
+      { name: "TVS Motor", short: "TVS", logo: "/images/customers/tvs-motors-logo-png-0.png" },
+      { name: "Saint-Gobain", short: "SG", logo: "/images/customers/saint-gobain.png" },
+      { name: "Parker Hannifin", short: "PH", logo: "/images/customers/parker-hannifin-logo-png-transparent.png" },
+    ],
   },
   {
-    name: "Saint-Gobain",
-    short: "SG",
-    logo: "/images/customers/saint-gobain.png",
-    category: "Manufacturing",
+    label: "Government, Research & Corporate",
+    items: [
+      { name: "ISRO", short: "ISRO", logo: "/images/customers/isro-logo.png" },
+      { name: "Integra", short: "INT", logo: "/images/customers/integra.png" },
+      { name: "Maxenra", short: "MX", logo: "/images/customers/maxenra.png" },
+    ],
   },
   {
-    name: "DG Vaishnav College",
-    short: "DGV",
-    logo: "/images/customers/dg-vaishnav.png",
-    category: "Education",
-  },
-  {
-    name: "Stella Maris College",
-    short: "SM",
-    logo: "/images/customers/stella-maris.png",
-    category: "Education",
-  },
-  {
-    name: "Mar Baselios College",
-    short: "MB",
-    logo: "/images/customers/mar-baselios.png",
-    category: "Education",
-  },
-  {
-    name: "Integra",
-    short: "INT",
-    logo: "/images/customers/integra.png",
-    category: "Technology",
-  },
-  {
-    name: "Vels University",
-    short: "VU",
-    logo: "/images/customers/vels-university.png",
-    category: "Education",
-  },
-  {
-    name: "Maxenra",
-    short: "MX",
-    logo: "/images/customers/maxenra.png",
-    category: "Corporate",
-  },
-  {
-    name: "Srikrish School",
-    short: "SKS",
-    logo: "/images/customers/Srikrish school.png",
-    category: "Education",
-  },
-  {
-    name: "Vivekanandha Institutions",
-    short: "VI",
-    logo: "/images/customers/Vivekanandha Educational Institutions.png",
-    category: "Education",
+    label: "Colleges & Schools",
+    items: [
+      { name: "Vels University", short: "VU", logo: "/images/customers/vels-university.png" },
+      { name: "Stella Maris College", short: "SM", logo: "/images/customers/stella-maris.png" },
+      { name: "DG Vaishnav College", short: "DGV", logo: "/images/customers/dg-vaishnav.png" },
+      { name: "Mar Baselios College", short: "MB", logo: "/images/customers/mar-baselios.png" },
+      { name: "Vivekanandha Institutions", short: "VI", logo: "/images/customers/Vivekanandha Educational Institutions.png" },
+      { name: "Srikrish School", short: "SKS", logo: "/images/customers/Srikrish school.png" },
+    ],
   },
 ];
 
@@ -120,99 +90,109 @@ export default function Customers() {
   return (
     <section
       id="customers"
-      className="section-padding relative overflow-hidden bg-white"
+      className="section-padding bg-white"
     >
-      {/* Decorative background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-pink-blush/10 to-primary-50/30 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary-100/10 blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div className="lyra-container">
         {/* Section Header */}
         <motion.div
           ref={headerRef}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 text-xs font-semibold tracking-wider uppercase mb-6">
-            Trusted Partners
+          <div className="lyra-eyebrow mb-6">
+            Our Customers
           </div>
-          <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-6">
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl mb-6">
             Trusted by{" "}
             <span className="text-gradient">India&apos;s Leading</span> Organizations
           </h2>
-          <p className="text-lg text-gray-500">
+          <p className="text-lg text-slate-500">
             From Fortune 500 companies to premier educational institutions — Lyra
             machines are installed where quality truly matters.
           </p>
         </motion.div>
 
-        {/* Customer Logos */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-24">
-          {customers.map((customer, i) => (
-            <FadeUp key={customer.name} delay={i * 0.08}>
-              <div
-                className="group relative rounded-2xl overflow-hidden bg-white border border-gray-100 p-6 flex flex-col items-center text-center hover:shadow-purple hover:border-primary-100 hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="relative w-20 h-16 mb-3">
-                  <Image
-                    src={customer.logo}
-                    alt={customer.name}
-                    fill
-                    sizes="80px"
-                    className="object-contain grayscale group-hover:grayscale-0 transition-all duration-500 opacity-70 group-hover:opacity-100"
-                    onError={() => {}}
-                  />
-                  {/* Fallback */}
-                  <div className="absolute inset-0 flex items-center justify-center font-display text-2xl font-bold text-gradient opacity-0 group-[.img-error]:opacity-100">
-                    {customer.short}
-                  </div>
+        {/* Customers grouped by sector */}
+        <div className="mb-16 space-y-12">
+          {sectors.map((sector) => (
+            <FadeUp key={sector.label}>
+              <div>
+                <div className="mb-6 flex items-center gap-3">
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-slate-500">
+                    {sector.label}
+                  </h3>
+                  <span className="h-px flex-1 bg-slate-200" />
+                  <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-medium text-slate-400">
+                    {sector.items.length}
+                  </span>
                 </div>
-                <p className="font-semibold text-gray-800 text-sm leading-tight">
-                  {customer.name}
-                </p>
-                <span className="mt-2 text-xs text-gray-500 bg-white/60 px-2 py-0.5 rounded-full">
-                  {customer.category}
-                </span>
+                <div className="flex flex-wrap justify-center gap-4 sm:justify-start">
+                  {sector.items.map((customer) => (
+                    <div
+                      key={customer.name}
+                      className="group flex w-[calc(50%-0.5rem)] flex-col items-center rounded-2xl border border-slate-200 bg-white p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#bfd0f0] hover:shadow-[0_12px_28px_rgba(30,58,138,0.10)] sm:w-44"
+                    >
+                      <div className="relative mb-3 h-14 w-24">
+                        <Image
+                          src={customer.logo}
+                          alt={`${customer.name} logo`}
+                          fill
+                          sizes="96px"
+                          className="object-contain opacity-80 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
+                          onError={() => {}}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center text-xl font-bold text-gradient opacity-0 group-[.img-error]:opacity-100">
+                          {customer.short}
+                        </div>
+                      </div>
+                      <p className="text-sm font-semibold leading-tight text-slate-800">
+                        {customer.name}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </FadeUp>
           ))}
+
+          <p className="max-w-3xl text-xs leading-relaxed text-slate-400">
+            Company names and logos are trademarks of their respective owners and are shown
+            only to identify organisations where Lyra Enterprises products have been supplied
+            or installed. Their use does not imply any partnership, sponsorship or endorsement.
+          </p>
         </div>
 
         {/* Testimonials */}
         <FadeUp>
           <div className="text-center mb-12">
-            <h3 className="font-display text-3xl font-bold text-gray-900">
+            <h3 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
               What Our Customers Say
             </h3>
           </div>
         </FadeUp>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
-            <FadeUp key={i} delay={i * 0.12}>
-              <div className="relative rounded-3xl bg-white border border-gray-100 p-8 hover:shadow-purple hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
-                {/* Quote mark */}
-                <div className="font-display text-6xl text-primary-200 leading-none mb-4 select-none">
-                  &ldquo;
-                </div>
-                <p className="text-gray-600 leading-relaxed flex-1 mb-6">
+            <FadeUp key={i} delay={i * 0.1}>
+              <figure className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(30,58,138,0.10)]">
+                <svg className="mb-4 h-7 w-7 text-primary-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                  <path d="M9.5 6C6.5 7.5 5 10 5 13.5V18h5v-5H7.8c0-2.2 1-3.7 2.9-4.6L9.5 6zm9 0c-3 1.5-4.5 4-4.5 7.5V18h5v-5h-2.2c0-2.2 1-3.7 2.9-4.6L18.5 6z" />
+                </svg>
+                <blockquote className="flex-1 text-[15px] leading-relaxed text-slate-600">
                   {t.content}
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-purple-gradient flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                </blockquote>
+                <figcaption className="mt-6 flex items-center gap-3">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary-600 text-xs font-bold text-white">
                     {t.initials}
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900 text-sm">
-                      {t.author}
-                    </p>
-                    <p className="text-xs text-gray-500">{t.company}</p>
+                    <p className="text-sm font-semibold text-slate-900">{t.author}</p>
+                    <p className="text-xs text-slate-500">{t.company}</p>
                   </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-1 rounded-b-3xl bg-gradient-to-r from-primary-300 to-pink-soft opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
+                </figcaption>
+              </figure>
             </FadeUp>
           ))}
         </div>

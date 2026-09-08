@@ -18,8 +18,8 @@ const footerLinks = {
     { label: "Push-Button Machine", href: "/products/push-button-vending-machine" },
     { label: "Coin-Operated", href: "/products/solo-coin-vending-machine" },
     { label: "WiFi / Smart", href: "/products/solo-wifi-vending-machine" },
-    { label: "Ethernet Pro", href: "/products/solo-ethernet-vending-machine" },
     { label: "Incinerators", href: "/products/sanitary-napkin-incinerators" },
+    { label: "Government Schemes & Funding", href: "/government-schemes-menstrual-hygiene" },
   ],
   Contact: [
     { label: "+91-81223 78860", href: "tel:+918122378860" },
@@ -36,14 +36,8 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gray-950 text-white overflow-hidden pb-20 md:pb-0">
-      {/* Top gradient border */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent" />
-
-      {/* Background orb */}
-      <div className="absolute bottom-0 right-0 w-[600px] h-[400px] bg-primary-900/20 blur-3xl rounded-full pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
+    <footer className="relative border-t border-white/10 bg-slate-950 text-white pb-20 md:pb-0">
+      <div className="lyra-container relative z-10">
         {/* CTA Banner */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -54,23 +48,20 @@ export default function Footer() {
         >
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div>
-              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white mb-3">
                 Ready to empower your space?
               </h2>
-              <p className="text-gray-300 text-base">
+              <p className="text-slate-300 text-base">
                 Join 200+ institutions who already trust Lyra Enterprises machines.
               </p>
             </div>
             <div className="flex flex-wrap gap-4 flex-shrink-0">
-              <Link
-                href="#contact"
-                className="px-8 py-4 bg-purple-gradient text-white font-semibold rounded-full shadow-purple hover:shadow-purple-lg hover:-translate-y-1 transition-all duration-300"
-              >
+              <Link href="#contact" className="btn btn-primary px-7 py-3.5">
                 Get a Free Quote
               </Link>
               <Link
                 href="tel:+918122378860"
-                className="px-8 py-4 bg-white/10 text-white font-semibold rounded-full border border-white/20 hover:bg-white/20 hover:-translate-y-1 transition-all duration-300"
+                className="btn px-7 py-3.5 border border-white/20 bg-white/10 text-white hover:bg-white/15"
               >
                 Call Now
               </Link>
@@ -93,7 +84,7 @@ export default function Footer() {
                   className="object-contain"
                 />
               </div>
-              <span className="font-display font-bold text-white text-xl">
+              <span className="font-semibold text-white text-xl">
                 Lyra Enterprises
               </span>
             </Link>
@@ -117,7 +108,7 @@ export default function Footer() {
                 href={SITE.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 transition-all duration-200"
+                className="w-9 h-9 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-600 transition-all duration-200"
                 aria-label="Instagram"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

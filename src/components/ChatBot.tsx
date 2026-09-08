@@ -209,8 +209,7 @@ Need help choosing the right capacity?`
 💼 LinkedIn: https://www.linkedin.com/company/lyra-enterprises/
 
 **Business Hours:**
-Monday-Friday: 9 AM - 7 PM
-Saturday: 9 AM - 5 PM
+Monday to Saturday: 9:30 AM - 6:30 PM IST
 
 How can I help you with your requirements?`
     }
@@ -253,7 +252,7 @@ What would you like to know about our vending machines and incinerators?`
   return (
     <div className="fixed bottom-32 right-4 z-50 w-80 h-96 bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col md:bottom-24 md:right-6 max-w-[calc(100vw-2rem)]">
       {/* Header */}
-      <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4 rounded-t-lg flex justify-between items-center">
+      <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center">
         <div>
           <h3 className="font-bold">Lyra Enterprises</h3>
           <p className="text-xs opacity-90">Product Expert 🤖</p>
@@ -274,11 +273,11 @@ What would you like to know about our vending machines and incinerators?`
           <div key={index} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-[80%] p-3 rounded-lg text-sm ${
               message.sender === 'user' 
-                ? 'bg-purple-600 text-white rounded-br-none'
+                ? 'bg-blue-600 text-white rounded-br-none'
                 : 'bg-white text-gray-800 shadow-sm rounded-bl-none'
             }`}>
               <div className="whitespace-pre-line">{message.text}</div>
-              <div className={`text-xs mt-1 ${message.sender === 'user' ? 'text-purple-200' : 'text-gray-500'}`}>
+              <div className={`text-xs mt-1 ${message.sender === 'user' ? 'text-blue-200' : 'text-gray-500'}`}>
                 {message.time}
               </div>
             </div>
@@ -310,11 +309,11 @@ What would you like to know about our vending machines and incinerators?`
             onChange={(e) => setInputText(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
             placeholder="Type your message..."
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
+            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
           />
           <button
             onClick={sendMessage}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />

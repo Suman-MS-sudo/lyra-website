@@ -126,7 +126,7 @@ const bundles = [
   {
     title: "Enterprise Bundle",
     tag: "Full Compliance",
-    badge: "bg-purple-100 text-purple-700",
+    badge: "bg-blue-100 text-blue-700",
     vending: { name: "Solo WiFi (UPI)", price: 24500, slug: "solo-wifi-vending-machine" },
     incinerator: { name: "Lyra Maxi", price: 39500, slug: "lyra-maxi-incinerator" },
     total: 58500,
@@ -145,7 +145,7 @@ export default function BundlePage() {
       <PageNavbar />
       <main className="pt-16 bg-white min-h-screen">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-primary-50 via-white to-pink-50 py-14 sm:py-20">
+        <section className="bg-gradient-to-br from-primary-50 via-white to-blue-50 py-14 sm:py-20">
           <div className="max-w-5xl mx-auto px-5 sm:px-8">
             <Breadcrumb crumbs={[
               { label: "Home", href: "/" },
@@ -159,7 +159,7 @@ export default function BundlePage() {
             </div>
             <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
               Vending Machine +{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">
                 Incinerator Bundle
               </span>
             </h1>
@@ -169,7 +169,7 @@ export default function BundlePage() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="tel:+918122378860"
-                className="px-7 py-3.5 bg-gradient-to-r from-primary-600 to-pink-500 text-white font-semibold rounded-full shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                className="px-7 py-3.5 bg-gradient-to-r from-primary-600 to-blue-500 text-white font-semibold rounded-full shadow-lg hover:-translate-y-0.5 transition-all duration-200"
               >
                 Get Bundle Price
               </Link>
@@ -260,7 +260,7 @@ export default function BundlePage() {
                   <div className="p-6 pt-0">
                     <Link
                       href="tel:+918122378860"
-                      className="w-full block text-center py-3 px-4 rounded-xl bg-gradient-to-r from-primary-600 to-pink-500 text-white font-semibold hover:shadow-lg transition-shadow"
+                      className="w-full block text-center py-3 px-4 rounded-xl bg-gradient-to-r from-primary-600 to-blue-500 text-white font-semibold hover:shadow-lg transition-shadow"
                     >
                       Get This Bundle →
                     </Link>
@@ -285,7 +285,7 @@ export default function BundlePage() {
         </section>
 
         {/* CTA */}
-        <section className="py-14 bg-gradient-to-r from-primary-600 to-pink-500">
+        <section className="py-14 bg-gradient-to-r from-primary-600 to-blue-500">
           <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
             <h2 className="font-bold text-2xl sm:text-3xl text-white mb-4">Get your compliance combo today</h2>
             <p className="text-white/80 mb-8">Bundle pricing available. Contact us with your institution type and quantity for a tailored quote.</p>

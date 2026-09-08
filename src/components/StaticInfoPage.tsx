@@ -21,7 +21,7 @@ export default function StaticInfoPage({
   return (
     <>
       <PageNavbar />
-      <main className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
         <section className="max-w-5xl mx-auto px-5 sm:px-8 pt-8 pb-6">
           <Breadcrumb crumbs={crumbs} />
           <div className="mt-6 rounded-3xl border border-gray-100 bg-white/90 p-6 shadow-sm sm:p-10">

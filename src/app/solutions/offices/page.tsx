@@ -144,7 +144,7 @@ const products = [
     slug: "solo-ethernet-vending-machine",
     tag: "Enterprise",
     desc: "Wired network for multi-machine enterprise deployments. Most stable connectivity for large campus installations.",
-    badge: "bg-indigo-100 text-indigo-700",
+    badge: "bg-sky-100 text-sky-700",
   },
 ];
 
@@ -156,7 +156,7 @@ export default function OfficesSolutionPage() {
       <PageNavbar />
       <main className="pt-16 bg-white min-h-screen">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-14 sm:py-20">
+        <section className="bg-gradient-to-br from-sky-50 via-white to-blue-50 py-14 sm:py-20">
           <div className="max-w-5xl mx-auto px-5 sm:px-8">
             <Breadcrumb crumbs={[
               { label: "Home", href: "/" },
@@ -164,13 +164,13 @@ export default function OfficesSolutionPage() {
               { label: "Offices & Corporates" },
             ]} />
             <div className="mt-6 flex flex-wrap gap-2 mb-5">
-              <span className="px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-widest">Offices & Corporates</span>
+              <span className="px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-xs font-bold uppercase tracking-widest">Offices & Corporates</span>
               <span className="px-3 py-1 rounded-full bg-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest">UPI Cashless</span>
               <span className="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold uppercase tracking-widest">Remote Monitoring</span>
             </div>
             <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
               Sanitary Napkin Machines{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-primary-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-primary-500">
                 for Offices &amp; Corporates
               </span>
             </h1>
@@ -180,13 +180,13 @@ export default function OfficesSolutionPage() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="tel:+918122378860"
-                className="px-7 py-3.5 bg-gradient-to-r from-indigo-600 to-primary-500 text-white font-semibold rounded-full shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                className="px-7 py-3.5 bg-gradient-to-r from-sky-600 to-primary-500 text-white font-semibold rounded-full shadow-lg hover:-translate-y-0.5 transition-all duration-200"
               >
                 Call for Corporate Quote
               </Link>
               <Link
                 href="/#contact"
-                className="px-7 py-3.5 border border-indigo-200 text-indigo-700 font-semibold rounded-full hover:bg-indigo-50 transition-colors"
+                className="px-7 py-3.5 border border-sky-200 text-sky-700 font-semibold rounded-full hover:bg-sky-50 transition-colors"
               >
                 Get Free Quote
               </Link>
@@ -194,7 +194,7 @@ export default function OfficesSolutionPage() {
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-500">
               {["UPI Cashless Models", "Remote Monitoring", "POSH Compliant", "1-Year Warranty", "Pan-India Delivery"].map((t) => (
                 <span key={t} className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400 flex-shrink-0" />
                   {t}
                 </span>
               ))}
@@ -233,7 +233,7 @@ export default function OfficesSolutionPage() {
                   <p className="text-gray-500 text-sm flex-1 mb-5">{p.desc}</p>
                   <Link
                     href={`/products/${p.slug}#enquiry`}
-                    className="mt-auto text-center py-2.5 px-4 rounded-xl bg-indigo-50 text-indigo-700 font-semibold text-sm hover:bg-indigo-100 transition-colors"
+                    className="mt-auto text-center py-2.5 px-4 rounded-xl bg-sky-50 text-sky-700 font-semibold text-sm hover:bg-sky-100 transition-colors"
                   >
                     Enquire →
                   </Link>
@@ -257,12 +257,12 @@ export default function OfficesSolutionPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-14 bg-gradient-to-r from-indigo-600 to-primary-500">
+        <section className="py-14 bg-gradient-to-r from-sky-600 to-primary-500">
           <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
             <h2 className="font-bold text-2xl sm:text-3xl text-white mb-4">Build a better workplace today</h2>
             <p className="text-white/80 mb-8">Get a corporate quote — volume discounts available for multi-location offices and IT parks.</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="tel:+918122378860" className="px-8 py-4 bg-white text-indigo-700 font-bold rounded-full hover:bg-gray-100 transition-colors">
+              <Link href="tel:+918122378860" className="px-8 py-4 bg-white text-sky-700 font-bold rounded-full hover:bg-gray-100 transition-colors">
                 📞 +91-81223 78860
               </Link>
               <Link href="/#contact" className="px-8 py-4 bg-white/20 text-white font-semibold rounded-full border border-white/30 hover:bg-white/30 transition-colors">

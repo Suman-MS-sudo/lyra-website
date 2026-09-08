@@ -62,7 +62,7 @@ export default function WomensDayBanner() {
   if (dismissed || expired) return null;
 
   return (
-    <div className="relative w-full bg-gradient-to-r from-[#6B1FA8] via-[#A0268A] to-[#E8477A] overflow-hidden">
+    <div className="relative w-full bg-gradient-to-r from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6] overflow-hidden">
       {/* Animated shimmer */}
       <div
         className="absolute inset-0 opacity-20 pointer-events-none"
@@ -80,7 +80,7 @@ export default function WomensDayBanner() {
           <span className="text-xs sm:text-sm select-none flex-shrink-0">🌸</span>
           <span className="text-white font-bold text-[11px] sm:text-sm truncate">
             <span className="sm:hidden">Women&apos;s Day Special Offer</span>
-            <span className="hidden sm:inline">Women&apos;s Day Offer — <span className="underline decoration-pink-300 decoration-2 underline-offset-2">Special Discount</span> on all machines</span>
+            <span className="hidden sm:inline">Women&apos;s Day Offer — <span className="underline decoration-blue-300 decoration-2 underline-offset-2">Special Discount</span> on all machines</span>
           </span>
           <span className="hidden sm:inline text-white/60 text-xs flex-shrink-0">· March 8, 2026</span>
         </div>
@@ -105,7 +105,7 @@ export default function WomensDayBanner() {
             href={`https://wa.me/918122378860?text=${encodeURIComponent("Hi! I want to claim the Women's Day offer on a Lyra vending machine / incinerator.")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3 sm:px-4 py-1 sm:py-1.5 bg-white text-[#A0268A] font-bold text-[10px] sm:text-xs rounded-full shadow hover:shadow-md hover:-translate-y-0.5 transition-all whitespace-nowrap"
+            className="px-3 sm:px-4 py-1 sm:py-1.5 bg-white text-[#1d4ed8] font-bold text-[10px] sm:text-xs rounded-full shadow hover:shadow-md hover:-translate-y-0.5 transition-all whitespace-nowrap"
           >
             Claim →
           </Link>

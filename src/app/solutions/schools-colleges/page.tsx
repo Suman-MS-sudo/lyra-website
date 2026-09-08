@@ -144,7 +144,7 @@ const products = [
     slug: "lyra-micro-incinerator",
     tag: "SWM Compliant",
     desc: "Compact wall-mount incinerator for girls' toilet. CPCB-compliant, smoke-free, ash tray included.",
-    badge: "bg-purple-100 text-purple-700",
+    badge: "bg-blue-100 text-blue-700",
   },
 ];
 
@@ -156,7 +156,7 @@ export default function SchoolsSolutionPage() {
       <PageNavbar />
       <main className="pt-16 bg-white min-h-screen">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-pink-50 via-white to-purple-50 py-14 sm:py-20">
+        <section className="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-14 sm:py-20">
           <div className="max-w-5xl mx-auto px-5 sm:px-8">
             <Breadcrumb crumbs={[
               { label: "Home", href: "/" },
@@ -170,7 +170,7 @@ export default function SchoolsSolutionPage() {
             </div>
             <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
               Sanitary Napkin Vending Machines{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">
                 for Schools &amp; Colleges
               </span>
             </h1>
@@ -180,7 +180,7 @@ export default function SchoolsSolutionPage() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="tel:+918122378860"
-                className="px-7 py-3.5 bg-gradient-to-r from-primary-600 to-pink-500 text-white font-semibold rounded-full shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                className="px-7 py-3.5 bg-gradient-to-r from-primary-600 to-blue-500 text-white font-semibold rounded-full shadow-lg hover:-translate-y-0.5 transition-all duration-200"
               >
                 Call for School Quote
               </Link>
@@ -200,6 +200,25 @@ export default function SchoolsSolutionPage() {
                 </span>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Funding callout */}
+        <section className="max-w-6xl mx-auto px-5 sm:px-8 pt-10">
+          <div className="rounded-2xl border border-primary-200 bg-primary-50 p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
+            <div>
+              <h2 className="text-lg font-bold text-gray-900">Not sure how to fund it?</h2>
+              <p className="mt-1 text-sm text-gray-600 max-w-2xl">
+                Samagra Shiksha, Swachh Bharat SLWM funds, state schemes and CSR all cover
+                napkin vending machines and incinerators for government and aided schools.
+              </p>
+            </div>
+            <Link
+              href="/government-schemes-menstrual-hygiene"
+              className="mt-4 inline-block whitespace-nowrap rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-700 sm:mt-0"
+            >
+              See government schemes &amp; subsidies →
+            </Link>
           </div>
         </section>
 
@@ -258,7 +277,7 @@ export default function SchoolsSolutionPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-14 bg-gradient-to-r from-primary-600 to-pink-500">
+        <section className="py-14 bg-gradient-to-r from-primary-600 to-blue-500">
           <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
             <h2 className="font-bold text-2xl sm:text-3xl text-white mb-4">Ready to install in your school?</h2>
             <p className="text-white/80 mb-8">Get a tailored quote for your school — including GeM procurement details, SWM compliance plan, and installation support.</p>

@@ -35,8 +35,16 @@ const articleSchema = {
   headline: "Why Every School in India Needs a Sanitary Napkin Vending Machine",
   description: "Menstrual hygiene in schools directly impacts girls' attendance and learning outcomes.",
   author: { "@type": "Organization", name: "Lyra Enterprises" },
-  publisher: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
+  publisher: {
+    "@type": "Organization",
+    name: "Lyra Enterprises",
+    url: SITE.url,
+    logo: { "@type": "ImageObject", url: `${SITE.url}/images/logo.png`, width: 442, height: 454 },
+  },
   datePublished: "2026-01-15",
+  dateModified: "2026-01-15",
+  image: [`${SITE.url}/images/og-image.jpg`],
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/blog/why-every-school-needs-napkin-vending-machine` },
   url: `${SITE.url}/blog/why-every-school-needs-napkin-vending-machine`,
 };
 
@@ -126,11 +134,11 @@ export default function BlogPost1() {
           </div>
 
           {/* CTA */}
-          <div className="mt-10 bg-gradient-to-r from-primary-50 to-pink-50 rounded-2xl border border-primary-100 p-6 text-center">
+          <div className="mt-10 bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl border border-primary-100 p-6 text-center">
             <h3 className="font-bold text-gray-900 mb-2">Install a vending machine at your school</h3>
             <p className="text-sm text-gray-600 mb-4">Pan-India delivery. 1-year warranty.</p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <Link href="/products/push-button-vending-machine" className="px-5 py-2.5 bg-gradient-to-r from-primary-600 to-pink-500 text-white font-bold rounded-full text-sm">View School Models</Link>
+              <Link href="/products/push-button-vending-machine" className="px-5 py-2.5 bg-gradient-to-r from-primary-600 to-blue-500 text-white font-bold rounded-full text-sm">View School Models</Link>
               <Link href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-green-500 text-white font-bold rounded-full text-sm">WhatsApp Us</Link>
             </div>
           </div>

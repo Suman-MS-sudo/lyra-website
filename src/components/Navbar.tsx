@@ -46,7 +46,7 @@ function Dropdown({ label, items }: { label: string; items: { label: string; hre
       >
         {label}
         <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-        <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 scale-x-0 bg-gradient-to-r from-primary-500 to-pink-soft rounded-full transition-transform duration-300 group-hover:scale-x-100" />
+        <span className="absolute -bottom-1 left-0 right-0 h-0.5 scale-x-0 bg-primary-600 rounded-full transition-transform duration-300 group-hover:scale-x-100" />
       </button>
       <AnimatePresence>
         {open && (
@@ -121,7 +121,7 @@ export default function Navbar() {
       transition={{ duration: 0.7, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "py-3 glass border-b border-primary-100/50 shadow-glass"
+          ? "py-3 glass shadow-[0_1px_0_rgba(15,23,42,0.06),0_8px_24px_rgba(15,23,42,0.04)]"
           : "py-5 bg-transparent"
       }`}
     >
@@ -141,10 +141,10 @@ export default function Navbar() {
               />
             </div>
             <div>
-              <p className="font-display font-bold text-gray-900 text-lg leading-none">
+              <p className="font-semibold text-slate-900 text-lg leading-none tracking-tight">
                 Lyra Enterprises
               </p>
-              <p className="text-[10px] text-primary-500 font-medium tracking-widest uppercase mt-0.5">
+              <p className="text-[10px] text-primary-600 font-semibold tracking-widest uppercase mt-0.5">
                 #1 in India
               </p>
             </div>
@@ -154,18 +154,18 @@ export default function Navbar() {
           <nav className="hidden md:flex items-center gap-7">
             <Link href="/#home" className="relative text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors duration-200 group">
               Home
-              <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 scale-x-0 bg-gradient-to-r from-primary-500 to-pink-soft rounded-full transition-transform duration-300 group-hover:scale-x-100" />
+              <span className="absolute -bottom-1 left-0 right-0 h-0.5 scale-x-0 bg-primary-600 rounded-full transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
             <Dropdown label="Vending Machines" items={[...vendingDropdown, { label: "→ All Vending Machines", href: "/products/sanitary-napkin-vending-machines" }]} />
             <Dropdown label="Incinerators" items={[...incineratorDropdown, { label: "→ All Incinerators", href: "/products/sanitary-napkin-incinerators" }]} />
             <Dropdown label="States" items={stateDropdown} />
             <Link href="/blog" className="relative text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors duration-200 group">
               Blog
-              <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 scale-x-0 bg-gradient-to-r from-primary-500 to-pink-soft rounded-full transition-transform duration-300 group-hover:scale-x-100" />
+              <span className="absolute -bottom-1 left-0 right-0 h-0.5 scale-x-0 bg-primary-600 rounded-full transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
             <Link href="/#contact" className="relative text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors duration-200 group">
               Contact
-              <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 scale-x-0 bg-gradient-to-r from-primary-500 to-pink-soft rounded-full transition-transform duration-300 group-hover:scale-x-100" />
+              <span className="absolute -bottom-1 left-0 right-0 h-0.5 scale-x-0 bg-primary-600 rounded-full transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
           </nav>
 
@@ -179,7 +179,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="#contact"
-              className="px-5 py-2.5 text-sm font-semibold text-white bg-gray-900 hover:bg-gray-700 hover:text-white rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+              className="btn btn-primary px-5 py-2.5"
             >
               Get a Quote
             </Link>
@@ -217,7 +217,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden glass border-t border-primary-100/30 overflow-hidden"
+            className="md:hidden glass overflow-hidden"
           >
             <div className="px-5 py-3 flex flex-col">
               <Link href="/#home" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-medium text-gray-700 hover:text-primary-600 border-b border-gray-100">Home</Link>
@@ -263,13 +263,13 @@ export default function Navbar() {
                 <ObfuscatedEmail
                   subject="Product Inquiry - Lyra Enterprises"
                   body="Hi! I'm interested in Lyra Enterprises' sanitary napkin vending machines and incinerators. Please share more details about your products and installation process. Looking forward to hearing from you."
-                  className="flex flex-col items-center gap-1 py-3 rounded-xl bg-indigo-50 border border-indigo-100 active:bg-indigo-100"
+                  className="flex flex-col items-center gap-1 py-3 rounded-xl bg-sky-50 border border-sky-100 active:bg-sky-100"
                 >
-                  <svg className="w-5 h-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                  <span className="text-[10px] font-bold text-indigo-700 uppercase tracking-wide">Email</span>
+                  <svg className="w-5 h-5 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  <span className="text-[10px] font-bold text-sky-700 uppercase tracking-wide">Email</span>
                 </ObfuscatedEmail>
               </div>
-              <Link href="#contact" onClick={() => setMobileOpen(false)} className="mt-2 mb-1 px-5 py-3 text-sm font-semibold text-white bg-gray-900 hover:bg-gray-700 hover:text-white rounded-full text-center shadow-lg transition-all duration-300">
+              <Link href="#contact" onClick={() => setMobileOpen(false)} className="btn btn-primary mt-3 mb-1 w-full">
                 Get a Quote
               </Link>
             </div>

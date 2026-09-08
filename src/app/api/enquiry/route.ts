@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f9fafb;padding:32px 16px;">
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
-        <tr><td style="background:linear-gradient(135deg,#db2777,#ec4899);border-radius:16px 16px 0 0;padding:32px 40px;text-align:center;">
+        <tr><td style="background:linear-gradient(135deg,#db2777,#3b82f6);border-radius:16px 16px 0 0;padding:32px 40px;text-align:center;">
           <div style="font-size:24px;font-weight:800;color:#fff;">Lyra Enterprises</div>
           <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-top:4px;text-transform:uppercase;letter-spacing:2px;">Direct Manufacturer · Chennai</div>
           <div style="font-size:22px;font-weight:700;color:#fff;margin-top:20px;">✅ Enquiry Received!</div>

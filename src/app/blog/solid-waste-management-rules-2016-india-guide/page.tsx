@@ -40,8 +40,16 @@ const articleSchema = {
   description:
     "India's SWM Rules 2016 require institutions to segregate, collect and properly dispose of sanitary waste. This guide explains what is required, what equipment is necessary, and how to achieve CPCB compliance.",
   author: { "@type": "Organization", name: "Lyra Enterprises" },
-  publisher: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
+  publisher: {
+    "@type": "Organization",
+    name: "Lyra Enterprises",
+    url: SITE.url,
+    logo: { "@type": "ImageObject", url: `${SITE.url}/images/logo.png`, width: 442, height: 454 },
+  },
   datePublished: "2026-03-01",
+  dateModified: "2026-03-01",
+  image: [`${SITE.url}/images/og-image.jpg`],
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/blog/solid-waste-management-rules-2016-india-guide` },
   url: `${SITE.url}/blog/solid-waste-management-rules-2016-india-guide`,
 };
 

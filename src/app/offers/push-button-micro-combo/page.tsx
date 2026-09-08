@@ -132,7 +132,7 @@ export default function ComboOfferPage() {
         <section className="relative pt-24 pb-16 sm:pt-32 sm:pb-24">
           {/* Animated gradient orbs */}
           <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-primary-600/30 blur-[100px] pointer-events-none" />
-          <div className="absolute top-20 -right-40 w-[500px] h-[500px] rounded-full bg-pink-500/20 blur-[100px] pointer-events-none" />
+          <div className="absolute top-20 -right-40 w-[500px] h-[500px] rounded-full bg-blue-500/20 blur-[100px] pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.07)_1px,transparent_0)] [background-size:32px_32px] pointer-events-none" />
 
           <div className="relative max-w-5xl mx-auto px-5 sm:px-8">
@@ -148,7 +148,7 @@ export default function ComboOfferPage() {
             <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.1] tracking-tight">
               Push Button Vending Machine{" "}
               <span className="text-white/40">+</span>{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-300 via-pink-300 to-orange-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-300 via-blue-300 to-orange-300">
                 Micro Incinerator
               </span>
             </h1>
@@ -157,7 +157,7 @@ export default function ComboOfferPage() {
             </p>
 
             {/* Price + CTA card */}
-            <div className="mt-10 p-1 rounded-3xl bg-gradient-to-r from-primary-500 via-pink-500 to-orange-400 shadow-2xl shadow-primary-900/50 max-w-xl">
+            <div className="mt-10 p-1 rounded-3xl bg-gradient-to-r from-primary-500 via-blue-500 to-orange-400 shadow-2xl shadow-primary-900/50 max-w-xl">
               <div className="rounded-[22px] bg-gray-950/95 backdrop-blur-xl p-6 sm:p-8">
                 <div className="flex items-end justify-between flex-wrap gap-4">
                   <div>
@@ -171,7 +171,7 @@ export default function ComboOfferPage() {
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">
                   <WhatsAppCTA
                     text={WA_MESSAGE}
-                    className="flex-1 text-center px-6 py-4 bg-gradient-to-r from-primary-500 to-pink-500 text-white font-bold rounded-2xl shadow-lg hover:-translate-y-0.5 hover:shadow-primary-500/30 transition-all duration-200"
+                    className="flex-1 text-center px-6 py-4 bg-gradient-to-r from-primary-500 to-blue-500 text-white font-bold rounded-2xl shadow-lg hover:-translate-y-0.5 hover:shadow-primary-500/30 transition-all duration-200"
                   />
                   <CallCTA className="flex-1 text-center px-6 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-2xl hover:bg-white/20 transition-all duration-200">
                     📞 Call Now
@@ -249,7 +249,7 @@ export default function ComboOfferPage() {
                 { icon: "🔧", title: "One Vendor, One Invoice", body: "Single order, single installation guide, single point of contact for warranty and support." },
               ].map((item, i) => (
                 <Reveal key={item.title} delay={i * 0.1} className="p-7 rounded-3xl border border-primary-100/60 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-100 to-pink-100 flex items-center justify-center text-2xl mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-100 to-blue-100 flex items-center justify-center text-2xl mb-4">
                     {item.icon}
                   </div>
                   <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
@@ -293,7 +293,7 @@ export default function ComboOfferPage() {
               <div className="flex flex-wrap justify-center gap-4">
                 <WhatsAppCTA
                   text={WA_MESSAGE}
-                  className="px-8 py-4 bg-gradient-to-r from-primary-500 to-pink-500 text-white font-bold rounded-full shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                  className="px-8 py-4 bg-gradient-to-r from-primary-500 to-blue-500 text-white font-bold rounded-full shadow-lg hover:-translate-y-0.5 transition-all duration-200"
                 />
                 <CallCTA className="px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-colors">
                   📞 +91-81223 78860

@@ -24,7 +24,7 @@ export default function NotFound() {
         <div className="flex flex-wrap justify-center gap-3 mb-10">
           <Link
             href="/"
-            className="px-6 py-3 bg-gradient-to-r from-primary-600 to-pink-500 text-white font-semibold rounded-full shadow hover:-translate-y-0.5 transition-all duration-200"
+            className="px-6 py-3 bg-gradient-to-r from-primary-600 to-blue-500 text-white font-semibold rounded-full shadow hover:-translate-y-0.5 transition-all duration-200"
           >
             Go to Homepage
           </Link>

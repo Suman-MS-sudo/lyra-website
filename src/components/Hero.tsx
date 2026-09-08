@@ -1,39 +1,8 @@
-﻿"use client";
+"use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-
-const particles = [
-  { x: 7,  y: 72, size: 9,  opacity: 0.7, dist: 90,  duration: 8,  delay: 0,   color: "#d946ef" },
-  { x: 14, y: 38, size: 5,  opacity: 0.5, dist: 65,  duration: 10, delay: 1.5, color: "#a855f7" },
-  { x: 24, y: 82, size: 11, opacity: 0.6, dist: 100, duration: 12, delay: 0.8, color: "#e879f9" },
-  { x: 44, y: 58, size: 6,  opacity: 0.5, dist: 75,  duration: 9,  delay: 2.1, color: "#c084fc" },
-  { x: 58, y: 78, size: 13, opacity: 0.5, dist: 110, duration: 13, delay: 3,   color: "#f0abfc" },
-  { x: 70, y: 28, size: 7,  opacity: 0.6, dist: 70,  duration: 9,  delay: 0.5, color: "#d946ef" },
-  { x: 83, y: 62, size: 5,  opacity: 0.5, dist: 80,  duration: 11, delay: 2.5, color: "#a855f7" },
-  { x: 91, y: 18, size: 10, opacity: 0.4, dist: 60,  duration: 8,  delay: 1.1, color: "#e879f9" },
-  { x: 33, y: 13, size: 6,  opacity: 0.5, dist: 90,  duration: 11, delay: 3.5, color: "#c084fc" },
-  { x: 52, y: 43, size: 8,  opacity: 0.4, dist: 75,  duration: 9,  delay: 1.3, color: "#f0abfc" },
-  { x: 19, y: 52, size: 4,  opacity: 0.6, dist: 65,  duration: 10, delay: 4,   color: "#d946ef" },
-  { x: 77, y: 88, size: 8,  opacity: 0.5, dist: 85,  duration: 11, delay: 2.3, color: "#a855f7" },
-  { x: 63, y: 12, size: 5,  opacity: 0.5, dist: 70,  duration: 8,  delay: 0.7, color: "#e879f9" },
-  { x: 3,  y: 30, size: 7,  opacity: 0.4, dist: 60,  duration: 12, delay: 1.8, color: "#c084fc" },
-];
-
-const stars = [
-  { x: 10, y: 20, delay: 0   },
-  { x: 30, y: 8,  delay: 0.8 },
-  { x: 55, y: 15, delay: 1.6 },
-  { x: 75, y: 5,  delay: 2.4 },
-  { x: 88, y: 35, delay: 0.4 },
-  { x: 42, y: 90, delay: 1.2 },
-  { x: 68, y: 95, delay: 2   },
-  { x: 95, y: 75, delay: 3   },
-  { x: 22, y: 95, delay: 0.6 },
-  { x: 80, y: 55, delay: 1.9 },
-];
 
 const stats = [
   { value: "200+", label: "Machines Installed" },
@@ -41,229 +10,157 @@ const stats = [
   { value: "99%", label: "Machine Uptime" },
 ];
 
-const badges = [
-  { text: "Coin Operated", color: "from-purple-400 to-purple-600" },
-  { text: "UPI / QR Pay", color: "from-pink-400 to-pink-600" },
-  { text: "IoT Enabled", color: "from-fuchsia-400 to-fuchsia-600" },
+const trustLogos = [
+  { src: "/images/customers/isro-logo.png", name: "ISRO" },
+  { src: "/images/customers/tvs-motors-logo-png-0.png", name: "TVS Motor" },
+  { src: "/images/customers/parker-hannifin-logo-png-transparent.png", name: "Parker Hannifin" },
+  { src: "/images/customers/lnt.png", name: "Larsen & Toubro" },
+  { src: "/images/customers/saint-gobain.png", name: "Saint-Gobain" },
+  { src: "/images/customers/stella-maris.png", name: "Stella Maris College" },
 ];
 
-export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+const ease = [0.16, 1, 0.3, 1] as const;
 
+export default function Hero() {
   return (
     <section
       id="home"
-      ref={ref}
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative overflow-hidden bg-hero-gradient pt-28 pb-14 sm:pt-32 sm:pb-16"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-pink-blush via-white to-pink-light" />
-
-      {/* Subtle Background Patterns */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(181,101,167,0.05)_0%,transparent_50%)]" />
-        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,rgba(226,152,211,0.04)_0%,transparent_50%)]" />
+      {/* ambient brand mesh — static, cheap */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="absolute -top-48 -right-24 h-[560px] w-[560px] rounded-full opacity-70 blur-2xl"
+          style={{ background: "radial-gradient(circle, rgba(37,99,235,0.14), rgba(37,99,235,0) 70%)" }}
+        />
+        <div
+          className="absolute top-40 -left-40 h-[440px] w-[440px] rounded-full opacity-60 blur-2xl"
+          style={{ background: "radial-gradient(circle, rgba(56,189,248,0.12), rgba(56,189,248,0) 70%)" }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.5]"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(15,23,42,0.06) 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+            maskImage:
+              "radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%)",
+          }}
+        />
       </div>
 
-      {/* Subtle floating elements - reduced count and proper z-index */}
-      {particles.slice(0, 6).map((p, i) => (
-        <motion.div
-          key={i}
-          animate={{
-            y: [0, -p.dist * 0.3, 0],
-            opacity: [0, p.opacity * 0.4, 0],
-            scale: [0.8, 1, 0.8],
-          }}
-          transition={{
-            duration: p.duration * 2,
-            repeat: Infinity,
-            delay: p.delay,
-            ease: "easeInOut",
-          }}
-          className="absolute rounded-full pointer-events-none blur-[1px] z-0"
-          style={{
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            width: p.size * 0.5,
-            height: p.size * 0.5,
-            background: `radial-gradient(circle, ${p.color}30, transparent)`,
-          }}
-        />
-      ))}
-
-      {/* Twinkling stars */}
-      {stars.map((s, i) => (
-        <motion.div
-          key={i}
-          animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5] }}
-          transition={{ duration: 3, repeat: Infinity, delay: s.delay, ease: "easeInOut" }}
-          className="absolute pointer-events-none text-primary-300 z-0"
-          style={{ left: `${s.x}%`, top: `${s.y}%`, fontSize: "10px" }}
-        >
-          ✦
-        </motion.div>
-      ))}
-
-      {/* Minimal decorative elements */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-        className="absolute pointer-events-none opacity-20 z-0"
-        style={{
-          width: 400,
-          height: 400,
-          top: "50%",
-          right: "10%",
-          marginTop: -200,
-          border: "1px dashed rgba(181,101,167,0.1)",
-          borderRadius: "50%",
-        }}
-      />
-
-      {/* Diagonal shimmer sweep */}
-      <motion.div
-        animate={{ x: ["-100%", "200%"] }}
-        transition={{ duration: 6, repeat: Infinity, repeatDelay: 8, ease: "easeInOut" }}
-        className="absolute inset-y-0 pointer-events-none z-0"
-        style={{
-          width: "40%",
-          background:
-            "linear-gradient(105deg, transparent 40%, rgba(240,171,252,0.06) 50%, rgba(181,101,167,0.04) 55%, transparent 65%)",
-          transform: "skewX(-15deg)",
-        }}
-      />
-
-      {/* Noise texture */}
-      <div className="absolute inset-0 noise opacity-50 pointer-events-none z-0" />
-
-      {/* Grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.03] z-0"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B565A7' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      />
-
-      <motion.div style={{ y, opacity }} className="relative z-20 w-full">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-12 sm:pb-24">
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-12 xl:gap-20 items-center">
-            {/* Left Content */}
-            <div>
-              {/* Badge — rendered visible immediately (no JS-gated fade-in) so it doesn't delay LCP */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-sm border border-primary-200/50 shadow-sm mb-4 sm:mb-8">
-                <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
-                <span className="text-xs font-semibold text-primary-700 tracking-wider uppercase">
-                  #1 Vending Machine Manufacturer India
-                </span>
-              </div>
-
-              {/* Headline — the LCP element; must not be hidden behind a JS-driven animation */}
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-gray-900 mb-5 sm:mb-6">
-                Empowering{" "}
-                <span className="text-gradient">Women&apos;s Health</span>{" "}
-                <br className="hidden sm:block" />
-                Across India
-                <span className="block mt-3 text-lg sm:text-xl lg:text-2xl font-semibold text-gray-500">
-                  Sanitary Napkin Vending Machines &amp; Incinerators
-                </span>
-              </h1>
-
-              {/* Description */}
-              <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-7 sm:mb-10 max-w-xl">
-                Premium{" "}
-                <strong className="text-primary-600 font-semibold">
-                  sanitary napkin vending machines
-                </strong>{" "}
-                and{" "}
-                <strong className="text-primary-600 font-semibold">
-                  incinerators
-                </strong>{" "}
-                designed for schools, hospitals &amp; offices. Trusted by 200+
-                institutions for dignified, hygienic solutions.
-              </p>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-7 sm:mb-10">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="text-center px-1">
-                    <p className="font-display text-xl sm:text-2xl font-bold text-gradient">
-                      {stat.value}
-                    </p>
-                    <p className="text-xs text-gray-500 mt-1 leading-tight">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTAs */}
-              <div className="flex flex-row flex-wrap gap-3 sm:gap-4">
-                <Link
-                  href="#products"
-                  className="inline-flex items-center justify-center gap-2 flex-1 min-w-0 px-4 sm:px-8 py-4 bg-purple-gradient text-white font-semibold rounded-full shadow-purple hover:shadow-purple-lg hover:-translate-y-1 active:translate-y-0 transition-all duration-300 text-sm sm:text-base"
-                >
-                  <span className="truncate">View Products</span>
-                  <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
-                <Link
-                  href="#contact"
-                  className="inline-flex items-center justify-center gap-2 flex-1 min-w-0 px-4 sm:px-8 py-4 bg-white text-primary-600 font-semibold rounded-full border-2 border-primary-200 hover:border-primary-400 hover:bg-pink-blush hover:-translate-y-1 transition-all duration-300 shadow-sm text-sm sm:text-base"
-                >
-                  <span className="truncate">Get a Free Quote</span>
-                </Link>
-              </div>
+      <div className="lyra-container relative z-10">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] xl:gap-20">
+          {/* Left */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease }}
+          >
+            <div className="lyra-eyebrow mb-6">
+              <span className="lyra-eyebrow-dot" />
+              #1 Vending Machine Manufacturer India
             </div>
 
-            {/* Right — Hero Image - Hidden on mobile */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, delay: 0.3 }}
-              className="relative hidden lg:flex items-center justify-center"
-            >
-              {/* Enhanced glow ring */}
-              <div className="absolute w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] lg:w-[350px] lg:h-[350px] rounded-full bg-gradient-radial from-primary-200/40 to-transparent animate-pulse-glow" />
+            <h1 className="text-[2.6rem] font-semibold leading-[1.05] tracking-tight text-slate-900 sm:text-5xl xl:text-[3.75rem]">
+              Empowering <span className="text-gradient">Women&apos;s Health</span>{" "}
+              <br className="hidden sm:block" />
+              Across India
+            </h1>
+            <p className="mt-4 text-lg font-medium text-slate-500 sm:text-xl">
+              Sanitary Napkin Vending Machines &amp; Incinerators
+            </p>
 
-              {/* Main Hero Image — reduced size */}
-              <motion.div
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-20"
-              >
-                <div className="relative w-32 sm:w-40 lg:w-[250px] xl:w-[300px] h-32 sm:h-40 lg:h-[250px] xl:h-[300px]">
-                  <Image
-                    src="/images/products/Hero Img.png"
-                    alt="Lyra Enterprises - Sanitary Napkin Solutions"
-                    fill
-                    sizes="(max-width: 1024px) 0px, (max-width: 1280px) 250px, 300px"
-                    className="object-contain drop-shadow-2xl"
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+              Premium{" "}
+              <strong className="font-semibold text-slate-900">
+                sanitary napkin vending machines
+              </strong>{" "}
+              and{" "}
+              <strong className="font-semibold text-slate-900">incinerators</strong>{" "}
+              designed for schools, hospitals &amp; offices. Trusted by 200+
+              institutions for dignified, hygienic solutions.
+            </p>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Link href="#products" className="btn btn-primary">
+                View Products
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
+                </svg>
+              </Link>
+              <Link href="#contact" className="btn btn-secondary">
+                Get a Free Quote
+              </Link>
+            </div>
+
+            <dl className="mt-11 grid max-w-lg grid-cols-3 gap-6 border-t border-slate-200 pt-7">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+                    {stat.value}
+                  </dd>
+                  <p className="mt-1 text-xs leading-tight text-slate-500 sm:text-sm">
+                    {stat.label}
+                  </p>
                 </div>
-              </motion.div>
-            </motion.div>
+              ))}
+            </dl>
+          </motion.div>
+
+          {/* Right — illustration on a soft brand panel with floating proof chips */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease, delay: 0.1 }}
+            className="relative hidden lg:block"
+          >
+            <div className="relative mx-auto max-w-md">
+              {/* soft panel */}
+              <div className="relative aspect-square w-full">
+                <div className="absolute inset-0 rounded-[42%_58%_54%_46%/48%_42%_58%_52%] bg-gradient-to-br from-primary-100/80 via-primary-50 to-sky-50" />
+                <div className="absolute inset-4 rounded-[46%_54%_50%_50%/52%_46%_54%_48%] bg-white/50" />
+                <Image
+                  src="/images/products/hero-vending-machine-incinerator.png"
+                  alt="Lyra Enterprises sanitary napkin vending machine and incinerator range"
+                  fill
+                  sizes="(max-width: 1024px) 0px, 440px"
+                  className="relative object-contain p-8"
+                  priority
+                />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* trust strip */}
+        <div className="mt-14 border-t border-slate-200 pt-8 sm:mt-16">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+            Trusted by 200+ institutions across India
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14">
+            {trustLogos.map((logo) => (
+              <div key={logo.name} className="relative h-8 w-24 opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0 sm:h-9 sm:w-28">
+                <Image
+                  src={logo.src}
+                  alt={logo.name}
+                  fill
+                  sizes="120px"
+                  className="object-contain"
+                />
+              </div>
+            ))}
           </div>
         </div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-primary-400"
-      >
-        <span className="text-xs tracking-widest uppercase font-medium">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-0.5 h-8 bg-gradient-to-b from-primary-400 to-transparent rounded-full"
-        />
-      </motion.div>
+      </div>
     </section>
   );
 }

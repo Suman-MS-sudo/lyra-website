@@ -231,7 +231,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <PageNavbar />
-      <main className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
 
         {/* ── Hero ──────────────────────────────────────────── */}
         <section className="max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-10">
@@ -276,16 +276,16 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               <div className="mt-6 flex flex-wrap gap-3 text-sm">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ 1-Year Warranty</span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Pan-India Delivery</span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 text-purple-700 rounded-full border border-purple-200 font-medium">✓ Free Installation Support</span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Free Installation Support</span>
               </div>
 
               {/* CTA buttons */}
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   href="#enquiry"
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 to-pink-500 text-white font-bold text-sm hover:from-primary-700 hover:to-pink-600 shadow hover:shadow-lg transition-all"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 to-blue-500 text-white font-bold text-sm hover:from-primary-700 hover:to-blue-600 shadow hover:shadow-lg transition-all"
                 >
-                  Send Enquiry for Rate
+                  Request a Quote
                 </Link>
                 <Link
                   href={`https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20${encodeURIComponent(product.fullName)}.%20Please%20share%20pricing%20and%20delivery%20details.`}
@@ -394,7 +394,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <section className="max-w-7xl mx-auto px-5 sm:px-8 py-8 border-t border-gray-100">
             <Link
               href="/offers/push-button-micro-combo"
-              className="flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-gradient-to-r from-primary-50 to-pink-50 border border-primary-100 px-6 py-5 hover:border-primary-300 hover:shadow-md transition-all duration-200"
+              className="flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-gradient-to-r from-primary-50 to-blue-50 border border-primary-100 px-6 py-5 hover:border-primary-300 hover:shadow-md transition-all duration-200"
             >
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-primary-600 mb-1">🔥 Combo Offer</p>
@@ -483,7 +483,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         </section>
 
         {/* ── CTA ──────────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-gradient-to-r from-[#6B1FA8] via-[#A0268A] to-[#E8477A] py-14 text-white text-center px-5">
+        <section className="relative overflow-hidden bg-gradient-to-r from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6] py-14 text-white text-center px-5">
           <div className="relative z-10">
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">Ready to order the {product.name}?</h2>
             <p className="text-white/80 mb-6 max-w-xl mx-auto">
@@ -494,7 +494,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                 href={`https://wa.me/918122378860?text=Hi%21%20I%27d%20like%20to%20order%20the%20${encodeURIComponent(product.fullName)}.%20Please%20confirm%20price%20%26%20availability.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-3 bg-white text-[#A0268A] font-bold rounded-full hover:bg-gray-50 transition-colors"
+                className="px-8 py-3 bg-white text-[#1d4ed8] font-bold rounded-full hover:bg-gray-50 transition-colors"
               >
                 WhatsApp Order
               </Link>

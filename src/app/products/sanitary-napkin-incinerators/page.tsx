@@ -50,7 +50,7 @@ export default function IncineratorsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <PageNavbar />
-      <main className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
         <section className="max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-10">
           <Breadcrumb crumbs={[
             { label: "Home", href: "/" },
@@ -58,7 +58,7 @@ export default function IncineratorsPage() {
             { label: "Incinerators" },
           ]} />
           <h1 className="mt-6 font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-            Sanitary Napkin <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">Incinerators</span>
+            Sanitary Napkin <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">Incinerators</span>
           </h1>
           <p className="mt-4 text-gray-600 text-lg max-w-2xl">
             3 capacity models for every institution — from compact school units to hospital-grade high-capacity incinerators. Fully compliant with CPCB and Solid Waste Management Rules 2016.
@@ -66,7 +66,7 @@ export default function IncineratorsPage() {
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ CPCB Compliant</span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ SWM Rules 2016</span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 text-purple-700 rounded-full border border-purple-200 font-medium">✓ Zero Manual Handling</span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Zero Manual Handling</span>
           </div>
         </section>
 
@@ -134,12 +134,12 @@ export default function IncineratorsPage() {
         </section>
 
         {/* CTA */}
-        <section className="relative overflow-hidden bg-gradient-to-r from-[#6B1FA8] via-[#A0268A] to-[#E8477A] py-14 text-white text-center px-5">
+        <section className="relative overflow-hidden bg-gradient-to-r from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6] py-14 text-white text-center px-5">
           <div className="relative z-10">
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">Get the right incinerator for your facility</h2>
             <p className="text-white/80 mb-6 max-w-xl mx-auto">Tell us your daily user count — we&apos;ll recommend Micro, Mini or Maxi for your needs.</p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20a%20Lyra%20incinerator.%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#A0268A] font-bold rounded-full">WhatsApp Us</Link>
+              <Link href="https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20a%20Lyra%20incinerator.%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#1d4ed8] font-bold rounded-full">WhatsApp Us</Link>
               <Link href="tel:+918122378860" className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full">Call +91-81223 78860</Link>
             </div>
           </div>

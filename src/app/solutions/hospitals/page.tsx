@@ -144,7 +144,7 @@ const products = [
     slug: "lyra-maxi-incinerator",
     tag: "Large Hospitals",
     desc: "25–50 napkins per cycle, remote temperature logging, Biomedical Waste Rules compliant. For large hospitals and medical colleges.",
-    badge: "bg-purple-100 text-purple-700",
+    badge: "bg-blue-100 text-blue-700",
   },
 ];
 

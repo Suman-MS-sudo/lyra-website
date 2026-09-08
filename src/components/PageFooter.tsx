@@ -5,7 +5,7 @@ import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 
 export default function PageFooter() {
   return (
-    <footer className="bg-gray-950 text-white">
+    <footer className="bg-slate-950 text-white">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pb-10 border-b border-white/10">
           <div className="col-span-2 md:col-span-1">
@@ -13,7 +13,7 @@ export default function PageFooter() {
               <div className="relative w-9 h-9">
                 <Image src="/images/logo.png" alt="Lyra Enterprises" fill sizes="36px" quality={45} className="object-contain" />
               </div>
-              <span className="font-bold text-white text-lg">Lyra Enterprises</span>
+              <span className="font-semibold text-white text-lg">Lyra Enterprises</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               India&apos;s #1 manufacturer of sanitary napkin vending machines and incinerators. Chennai, Tamil Nadu.
@@ -52,11 +52,11 @@ export default function PageFooter() {
             <ul className="space-y-2 text-sm text-gray-400">
               {[
                 ["All States & UTs", "/service-areas"],
+                ["Government Schemes & Funding", "/government-schemes-menstrual-hygiene"],
                 ["Tamil Nadu", "/vending-machine-tamil-nadu"],
                 ["Karnataka", "/vending-machine-karnataka"],
                 ["Maharashtra", "/vending-machine-maharashtra"],
                 ["Delhi NCR", "/vending-machine-delhi"],
-                ["Uttar Pradesh", "/vending-machine-uttar-pradesh"],
               ].map(([label, href]) => (
                 <li key={href}><Link href={href} className="hover:text-primary-300 transition-colors">{label}</Link></li>
               ))}

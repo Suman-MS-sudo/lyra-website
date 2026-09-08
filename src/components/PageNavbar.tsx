@@ -11,15 +11,15 @@ export default function PageNavbar() {
   return (
     <>
       <div className="fixed top-0 left-0 right-0 z-50">
-        <header className="bg-white/95 backdrop-blur-md border-b border-primary-100/50 shadow-sm">
+        <header className="bg-white/90 backdrop-blur-md border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
               <div className="relative w-9 h-9 flex-shrink-0">
                 <Image src="/images/logo.png" alt="Lyra Enterprises" fill sizes="36px" quality={45} className="object-contain" />
               </div>
               <div>
-                <p className="font-bold text-gray-900 text-base leading-none">Lyra Enterprises</p>
-                <p className="text-[9px] text-primary-500 font-semibold tracking-widest uppercase mt-0.5">#1 in India</p>
+                <p className="font-semibold text-slate-900 text-base leading-none tracking-tight">Lyra Enterprises</p>
+                <p className="text-[9px] text-primary-600 font-semibold tracking-widest uppercase mt-0.5">#1 in India</p>
               </div>
             </Link>
 
@@ -29,14 +29,14 @@ export default function PageNavbar() {
               <Link href="/products/sanitary-napkin-vending-machines" className="hover:text-primary-600 transition-colors">Vending Machines</Link>
               <Link href="/products/sanitary-napkin-incinerators" className="hover:text-primary-600 transition-colors">Incinerators</Link>
               <Link href="/blog" className="hover:text-primary-600 transition-colors">Blog</Link>
-              <Link href="/#contact" className="px-5 py-2 bg-gradient-to-r from-primary-600 to-pink-500 text-white rounded-full shadow hover:-translate-y-0.5 transition-all duration-200">
+              <Link href="/#contact" className="btn btn-primary px-5 py-2">
                 Get Quote
               </Link>
             </nav>
 
             {/* Mobile: CTA + Hamburger */}
             <div className="md:hidden flex items-center gap-2">
-              <Link href="/#contact" className="px-3 py-1.5 bg-gradient-to-r from-primary-600 to-pink-500 text-white text-xs font-semibold rounded-full">
+              <Link href="/#contact" className="btn btn-primary px-3 py-1.5 text-xs">
                 Get Quote
               </Link>
               <button

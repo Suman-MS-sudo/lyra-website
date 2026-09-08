@@ -107,8 +107,8 @@ const sectors = [
   },
   {
     title: "Government & PSU",
-    body: "GeM-ready models, GST invoicing and multi-site supply for welfare schemes and public institutions.",
-    href: "/products",
+    body: "GeM-ready models, GST invoicing and multi-site supply for welfare schemes and public institutions — see which schemes fund it.",
+    href: "/government-schemes-menstrual-hygiene",
   },
 ];
 
@@ -146,7 +146,7 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
     paymentAccepted: ["Cash", "UPI", "Bank Transfer", "Cheque"],
     telephone: SITE.phone,
     email: SITE.email,
-    openingHours: "Mo-Sa 09:00-18:00",
+    openingHours: "Mo-Sa 09:30-18:30",
     parentOrganization: { "@id": `${SITE.url}/#organization` },
     areaServed: [
       { "@type": "State", name: city.state },
@@ -170,7 +170,7 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
     provider: { "@id": `${SITE.url}/#organization` },
     areaServed: { "@type": "State", name: city.state },
     url: canonical,
-    hoursAvailable: { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "09:00", closes: "18:00" },
+    hoursAvailable: { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "09:30", closes: "18:30" },
   };
 
   const productListSchema = {
@@ -225,13 +225,13 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
       <PageNavbar />
-      <main className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
         {/* Hero */}
         <section className="max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-10">
           <Breadcrumb crumbs={[{ label: "Home", href: "/" }, { label: "Service Areas", href: "/service-areas" }, { label: city.state }]} />
           <h1 className="mt-8 font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
             Sanitary Napkin Vending Machines &amp; Incinerators in{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-pink-500">{city.state}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">{city.state}</span>
           </h1>
           <p className="mt-4 text-gray-600 text-lg max-w-3xl">{city.description}</p>
 
@@ -361,7 +361,7 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
 
         {/* Compliance */}
         <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <div className="rounded-2xl bg-gradient-to-br from-primary-50 to-pink-50 border border-primary-100 p-6 sm:p-8">
+          <div className="rounded-2xl bg-gradient-to-br from-primary-50 to-blue-50 border border-primary-100 p-6 sm:p-8">
             <h2 className="text-xl font-bold text-gray-900 mb-3">Menstrual waste compliance in {city.state}</h2>
             <p className="text-gray-600 leading-relaxed">
               Institutions in {city.state} are covered by India&apos;s <strong>Solid Waste Management Rules 2016</strong>, which require sanitary waste to be
@@ -417,12 +417,12 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
         )}
 
         {/* CTA */}
-        <section className="relative overflow-hidden bg-gradient-to-r from-[#6B1FA8] via-[#A0268A] to-[#E8477A] py-14 text-white text-center px-5">
+        <section className="relative overflow-hidden bg-gradient-to-r from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6] py-14 text-white text-center px-5">
           <div className="relative z-10">
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">Need help choosing the right machine for {city.state}?</h2>
             <p className="text-white/80 mb-6 max-w-xl mx-auto">Our team will recommend the perfect model for your facility and coordinate delivery to {city.capital} and beyond. Free consultation, no obligation.</p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#A0268A] font-bold rounded-full shadow hover:-translate-y-0.5 transition-all">WhatsApp Us</Link>
+              <Link href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#1d4ed8] font-bold rounded-full shadow hover:-translate-y-0.5 transition-all">WhatsApp Us</Link>
               <Link href={`tel:${SITE.phone}`} className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full hover:-translate-y-0.5 transition-all">Call {SITE.phoneDisplay}</Link>
             </div>
           </div>

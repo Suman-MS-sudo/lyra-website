@@ -64,7 +64,7 @@ export default function WomensDayCampaign() {
   return (
     <section className="relative overflow-hidden py-20">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#6B1FA8] via-[#A0268A] to-[#E8477A]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6]" />
 
       {/* Noise */}
       <div className="absolute inset-0 opacity-[0.03]"
@@ -104,14 +104,14 @@ export default function WomensDayCampaign() {
             </div>
 
             <h2 className="font-display leading-tight mb-4">
-              <span className="block text-pink-200 text-lg font-semibold mb-1">Celebrating Every Woman</span>
+              <span className="block text-blue-200 text-lg font-semibold mb-1">Celebrating Every Woman</span>
               <span className="block text-white text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black">Women&apos;s Day</span>
-              <span className="block text-pink-200 text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mt-1">Special Campaign 🌷</span>
+              <span className="block text-blue-200 text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mt-1">Special Campaign 🌷</span>
             </h2>
 
-            <p className="text-pink-100 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl mb-6 sm:mb-8">
+            <p className="text-blue-100 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl mb-6 sm:mb-8">
               This March, we&apos;re giving back. Get{" "}
-              <strong className="text-white underline decoration-pink-300 decoration-2 underline-offset-2">
+              <strong className="text-white underline decoration-blue-300 decoration-2 underline-offset-2">
                 a special discount
               </strong>{" "}
               on every Vending Machine and Incinerator — because every woman deserves dignity.
@@ -120,7 +120,7 @@ export default function WomensDayCampaign() {
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
               <Link
                 href="#contact"
-                className="px-8 py-4 rounded-full bg-white text-[#A0268A] font-bold text-sm hover:bg-pink-50 hover:-translate-y-0.5 transition-all duration-200 shadow-lg shadow-black/20 text-center"
+                className="px-8 py-4 rounded-full bg-white text-[#1d4ed8] font-bold text-sm hover:bg-blue-50 hover:-translate-y-0.5 transition-all duration-200 shadow-lg shadow-black/20 text-center"
               >
                 Claim Offer Now →
               </Link>
@@ -165,7 +165,7 @@ export default function WomensDayCampaign() {
               <motion.div
                 animate={{ y: [0, -6, 0], opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute top-20 left-2 text-pink-200 text-sm pointer-events-none select-none"
+                className="absolute top-20 left-2 text-blue-200 text-sm pointer-events-none select-none"
               >✦</motion.div>
               <motion.div
                 animate={{ y: [0, -10, 0], opacity: [0.6, 1, 0.6] }}
@@ -195,7 +195,7 @@ export default function WomensDayCampaign() {
             <span className="text-white/40 font-black text-3xl mt-2.5">:</span>
             <CountUnit value={countdown.seconds} label="Seconds" />
           </div>
-          <p className="text-center text-pink-200/60 text-xs mt-5 font-semibold">
+          <p className="text-center text-blue-200/60 text-xs mt-5 font-semibold">
             International Women&apos;s Day — March 8, 2026
           </p>
         </motion.div>
