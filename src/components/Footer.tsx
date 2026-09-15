@@ -89,8 +89,9 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              India&apos;s leading manufacturer of sanitary napkin vending machines
-              and incinerators. Empowering women&apos;s health across India.
+              ISO 9001:2015 certified manufacturer of sanitary napkin vending
+              machines and incinerators, installed in 200+ institutions across
+              4 Indian states.
             </p>
             <div className="flex gap-4">
               <a

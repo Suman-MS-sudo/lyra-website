@@ -8,13 +8,13 @@ const values = [
   {
     title: "Our Mission",
     description:
-      "To become India's largest vending machine manufacturer. We make sanitary hygiene infrastructure accessible in every school, office, hospital and public space.",
+      "To grow beyond our current 200+ installations and make sanitary hygiene infrastructure accessible in every school, office, hospital and public space in India.",
     image: "/images/stock/mission.webp",
   },
   {
     title: "Our Vision",
     description:
-      "To be India's most trusted vending machine and incinerator brand. We champion feminine hygiene infrastructure and give every woman dignity and privacy.",
+      "To champion feminine hygiene infrastructure with ISO 9001:2015-certified quality and give every woman dignity and privacy.",
     image: "/images/stock/vision.jpg",
   },
 ];

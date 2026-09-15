@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
+import Link from "next/link";
 
 type Customer = { name: string; short: string; logo: string };
 
@@ -162,6 +163,12 @@ export default function Customers() {
             only to identify organisations where Lyra Enterprises products have been supplied
             or installed. Their use does not imply any partnership, sponsorship or endorsement.
           </p>
+          <Link
+            href="/blog/lnt-manapakkam-chennai-iot-vending-machines"
+            className="inline-flex items-center gap-1 text-sm font-semibold text-primary-700 hover:text-primary-800"
+          >
+            Read the L&amp;T Manapakkam case study — 25 IoT machines, ongoing support →
+          </Link>
         </div>
 
         {/* Testimonials */}
