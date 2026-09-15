@@ -34,6 +34,11 @@ const nextConfig = {
         destination: "https://lyraenterprise.co.in/:path*",
         permanent: true,
       },
+      {
+        source: "/blog/lnt-manapakkam-chennai-iot-vending-machines",
+        destination: "/blog/lnt-manapakkam-case-study",
+        permanent: true,
+      },
     ];
   },
 };
