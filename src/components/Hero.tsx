@@ -67,8 +67,7 @@ export default function Hero() {
             <h1 className="text-[2.6rem] font-semibold leading-[1.05] tracking-tight text-slate-900 sm:text-5xl xl:text-[3.75rem]">
               Lyra Enterprises Equips{" "}
               <span className="text-gradient">200+ Institutions</span>{" "}
-              <br className="hidden sm:block" />
-              with Dignified Sanitary Care, Beyond a Single Machine
+              Across India
             </h1>
             <p className="mt-4 text-lg font-medium text-slate-500 sm:text-xl">
               Sanitary Napkin Vending Machines &amp; Incinerators
