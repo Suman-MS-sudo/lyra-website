@@ -43,14 +43,14 @@ const testimonials = [
     content:
       "After installing this machine, used sanitary pads are being disposed of in a safe and hygienic manner. It is very useful, and they are truly providing good quality service.",
     author: "Shyamala",
-    company: "Vels University · Google review",
+    company: "Verified Google Reviewer, Vels University",
     initials: "S",
   },
   {
     content:
       "Very good service and product. Using in IISc Bangalore — staff is attentive and cloud service is very elaborate.",
     author: "Arpita Das",
-    company: "Local Guide, IISc Bangalore · Google review",
+    company: "Google Local Guide, IISc Bangalore",
     initials: "AD",
   },
   {
@@ -164,7 +164,7 @@ export default function Customers() {
             or installed. Their use does not imply any partnership, sponsorship or endorsement.
           </p>
           <Link
-            href="/blog/lnt-manapakkam-chennai-iot-vending-machines"
+            href="/blog/lnt-manapakkam-case-study"
             className="inline-flex items-center gap-1 text-sm font-semibold text-primary-700 hover:text-primary-800"
           >
             Read the L&amp;T Manapakkam case study — 25 IoT machines, ongoing support →

@@ -1924,7 +1924,7 @@ export const blogPosts = [
     ],
   },
   {
-    slug: "lnt-manapakkam-chennai-iot-vending-machines",
+    slug: "lnt-manapakkam-case-study",
     title: "25 IoT Vending Machines at L&T Manapakkam, Chennai — Case Study",
     excerpt:
       "Lyra Enterprises installed 25 IoT-enabled sanitary napkin vending machines across Larsen & Toubro's Manapakkam campus in Chennai, with regular on-site visits and support.",

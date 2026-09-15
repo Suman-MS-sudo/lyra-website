@@ -5,7 +5,7 @@ import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
 import { SITE } from "@/lib/data";
 
-const SLUG = "lnt-manapakkam-chennai-iot-vending-machines";
+const SLUG = "lnt-manapakkam-case-study";
 
 export const metadata: Metadata = {
   title: { absolute: "25 IoT Vending Machines at L&T Manapakkam, Chennai — Case Study" },

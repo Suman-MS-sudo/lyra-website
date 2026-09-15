@@ -64,10 +64,10 @@ export default function Hero() {
               #1 Vending Machine Manufacturer India
             </div>
 
-            <h1 className="text-[2.6rem] font-semibold leading-[1.05] tracking-tight text-slate-900 sm:text-5xl xl:text-[3.75rem]">
+            <h1 className="text-[2.3rem] font-semibold leading-[1.1] tracking-tight text-slate-900 sm:text-[2.75rem] xl:text-[3.25rem]">
               Lyra Enterprises Equips{" "}
               <span className="text-gradient">200+ Institutions</span>{" "}
-              Across India
+              with Dignified Sanitary Care
             </h1>
             <p className="mt-4 text-lg font-medium text-slate-500 sm:text-xl">
               Sanitary Napkin Vending Machines &amp; Incinerators
