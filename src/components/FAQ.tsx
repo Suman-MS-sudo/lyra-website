@@ -45,8 +45,11 @@ export default function FAQ() {
         >
           <div className="lyra-eyebrow mb-6">Common Questions</div>
           <h2 className="text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Answers, Not Guesswork
+            Lyra Enterprises Answers Your Buying Questions Directly
           </h2>
+          <p className="mt-4 text-lg text-slate-500">
+            Real prices, real capacities, no guesswork — not vague marketing copy.
+          </p>
         </motion.div>
 
         <div className="mx-auto max-w-3xl divide-y divide-slate-200 border-t border-b border-slate-200">

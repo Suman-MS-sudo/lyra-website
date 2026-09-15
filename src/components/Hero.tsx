@@ -68,7 +68,7 @@ export default function Hero() {
               Lyra Enterprises Equips{" "}
               <span className="text-gradient">200+ Institutions</span>{" "}
               <br className="hidden sm:block" />
-              Across India with Dignified Sanitary Care
+              with Dignified Sanitary Care, Beyond a Single Machine
             </h1>
             <p className="mt-4 text-lg font-medium text-slate-500 sm:text-xl">
               Sanitary Napkin Vending Machines &amp; Incinerators
@@ -85,7 +85,8 @@ export default function Hero() {
               and{" "}
               <strong className="font-semibold text-slate-900">incinerators</strong>{" "}
               installed in 200+ schools, hospitals and offices across 4 Indian
-              states — built for institutional scale, not consumer countertops.
+              states. Unlike a single household dispenser, Lyra machines are
+              built for institutional scale — not just consumer countertops.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
