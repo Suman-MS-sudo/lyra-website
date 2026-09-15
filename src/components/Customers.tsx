@@ -53,13 +53,6 @@ const testimonials = [
     company: "Google Local Guide, IISc Bangalore",
     initials: "AD",
   },
-  {
-    content:
-      "Exceptional product quality and after-sales support. The IoT dashboard helps us monitor all machines remotely. Highly recommended.",
-    author: "Hospital Administrator",
-    company: "Multi-specialty Hospital, Bangalore",
-    initials: "HA",
-  },
 ];
 
 function FadeUp({
@@ -180,7 +173,7 @@ export default function Customers() {
           </div>
         </FadeUp>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="mx-auto grid max-w-3xl gap-6 md:grid-cols-2">
           {testimonials.map((t, i) => (
             <FadeUp key={i} delay={i * 0.1}>
               <figure className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(30,58,138,0.10)]">

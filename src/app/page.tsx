@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Products from "@/components/Products";
+import HowItWorks from "@/components/HowItWorks";
 import FundingBanner from "@/components/FundingBanner";
 import Customers from "@/components/Customers";
 import FAQ from "@/components/FAQ";
@@ -30,6 +31,7 @@ export default function Home() {
         <Hero />
         <About />
         <Products />
+        <HowItWorks />
         <FundingBanner />
         <Customers />
         <FAQ />
