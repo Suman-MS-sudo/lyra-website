@@ -8,13 +8,13 @@ const values = [
   {
     title: "Our Mission",
     description:
-      "To become India's largest vending machine manufacturer by making premium sanitary hygiene solutions accessible in every school, office, hospital, and public space across India.",
+      "To become India's largest vending machine manufacturer. We make sanitary hygiene infrastructure accessible in every school, office, hospital and public space.",
     image: "/images/stock/mission.webp",
   },
   {
     title: "Our Vision",
     description:
-      "India's most trusted vending machine brand and premier incinerator supplier, championing feminine hygiene infrastructure and empowering every woman with dignity and privacy.",
+      "To be India's most trusted vending machine and incinerator brand. We champion feminine hygiene infrastructure and give every woman dignity and privacy.",
     image: "/images/stock/vision.jpg",
   },
 ];
@@ -50,16 +50,16 @@ export default function About() {
               India&apos;s #1 Vending Machine Manufacturer
             </div>
             <h2 className="text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl mb-6">
-              Built for{" "}
+              We Build for{" "}
               <span className="text-gradient">Women&apos;s Dignity</span>.
               <br />
-              Trusted by Institutions.
+              200+ Institutions Trust Us.
             </h2>
             <p className="text-lg text-slate-500 leading-relaxed">
-              Lyra Enterprises is at the forefront of feminine hygiene
-              infrastructure in India — crafting precision-engineered vending
-              machines and incinerators that prioritize privacy, reliability,
-              and sustainability.
+              Lyra Enterprises designs and manufactures feminine hygiene
+              infrastructure in India — vending machines and incinerators
+              built for institutional scale, not one-off consumer purchases,
+              engineered for privacy, reliability, and sustainability.
             </p>
           </div>
         </FadeUp>

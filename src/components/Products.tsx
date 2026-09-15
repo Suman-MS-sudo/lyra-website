@@ -313,12 +313,13 @@ export default function Products() {
         >
           <div className="lyra-eyebrow mb-6">Product Range</div>
           <h2 className="text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            From <span className="text-gradient">Basic</span> to{" "}
-            <span className="text-gradient">Smart</span> — a Solution for Every Space
+            Choose Anything From <span className="text-gradient">Basic</span> to{" "}
+            <span className="text-gradient">Smart</span> — Not a One-Size-Fits-All Machine
           </h2>
           <p className="mt-5 text-lg text-slate-500">
-            Every product is precision-engineered in Chennai, shipped across
-            India, and backed by our expert support team.
+            Lyra Enterprises engineers all 13 models in Chennai — 8 vending
+            machines, 3 incinerators, 2 napkin variants — and ships them
+            across India with dedicated support.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm font-medium text-slate-500">
             <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5">8 VM&nbsp;Models</span>

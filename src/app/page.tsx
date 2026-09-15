@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Products from "@/components/Products";
 import FundingBanner from "@/components/FundingBanner";
 import Customers from "@/components/Customers";
+import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -31,6 +32,7 @@ export default function Home() {
         <Products />
         <FundingBanner />
         <Customers />
+        <FAQ />
         <Contact />
       </main>
       <Footer />

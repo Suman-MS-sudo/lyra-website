@@ -105,12 +105,12 @@ export default function Customers() {
             Our Customers
           </div>
           <h2 className="text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl mb-6">
-            Trusted by{" "}
-            <span className="text-gradient">India&apos;s Leading</span> Organizations
+            India&apos;s{" "}
+            <span className="text-gradient">Leading Organizations</span> Trust Lyra
           </h2>
           <p className="text-lg text-slate-500">
-            From Fortune 500 companies to premier educational institutions — Lyra
-            machines are installed where quality truly matters.
+            ISRO, L&amp;T, TVS Motor and 200+ other institutions run Lyra
+            vending machines in their facilities — not a pilot, a standard.
           </p>
         </motion.div>
 

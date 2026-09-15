@@ -26,10 +26,10 @@ export default function FundingBanner() {
                 You probably don&apos;t need to pay for this out of your own budget
               </h2>
               <p className="mt-3 max-w-2xl text-slate-600">
-                Most sanitary napkin vending machines and incinerators in India are
-                funded by a government scheme, a Finance Commission grant or corporate
-                CSR. We&apos;ve mapped every route — and how to route your request
-                through each.
+                Most sanitary napkin vending machines and incinerators in India
+                are funded by a government scheme, a Finance Commission grant
+                or corporate CSR — not the institution&apos;s own budget.
+                We&apos;ve mapped every route.
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {schemes.map((s) => (

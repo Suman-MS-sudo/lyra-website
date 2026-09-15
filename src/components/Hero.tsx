@@ -65,23 +65,27 @@ export default function Hero() {
             </div>
 
             <h1 className="text-[2.6rem] font-semibold leading-[1.05] tracking-tight text-slate-900 sm:text-5xl xl:text-[3.75rem]">
-              Empowering <span className="text-gradient">Women&apos;s Health</span>{" "}
+              Lyra Enterprises Equips{" "}
+              <span className="text-gradient">200+ Institutions</span>{" "}
               <br className="hidden sm:block" />
-              Across India
+              Across India with Dignified Sanitary Care
             </h1>
             <p className="mt-4 text-lg font-medium text-slate-500 sm:text-xl">
               Sanitary Napkin Vending Machines &amp; Incinerators
             </p>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Premium{" "}
+              <strong className="font-semibold text-slate-900">
+                Lyra Enterprises
+              </strong>{" "}
+              manufactures{" "}
               <strong className="font-semibold text-slate-900">
                 sanitary napkin vending machines
               </strong>{" "}
               and{" "}
               <strong className="font-semibold text-slate-900">incinerators</strong>{" "}
-              designed for schools, hospitals &amp; offices. Trusted by 200+
-              institutions for dignified, hygienic solutions.
+              installed in 200+ schools, hospitals and offices across 4 Indian
+              states — built for institutional scale, not consumer countertops.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
