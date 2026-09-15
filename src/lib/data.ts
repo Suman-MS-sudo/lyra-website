@@ -1923,4 +1923,22 @@ export const blogPosts = [
       "swachh bharat menstrual hygiene india",
     ],
   },
+  {
+    slug: "lnt-manapakkam-chennai-iot-vending-machines",
+    title: "25 IoT Vending Machines at L&T Manapakkam, Chennai — Case Study",
+    excerpt:
+      "Lyra Enterprises installed 25 IoT-enabled sanitary napkin vending machines across Larsen & Toubro's Manapakkam campus in Chennai, with regular on-site visits and support.",
+    date: "2026-09-15",
+    readTime: "3 min read",
+    category: "Case Study",
+    metaTitle:
+      "L&T Manapakkam, Chennai — 25 IoT Vending Machines Case Study",
+    metaDescription:
+      "How Lyra Enterprises equipped Larsen & Toubro's Manapakkam, Chennai campus with 25 IoT-enabled sanitary napkin vending machines, backed by regular support visits.",
+    keywords: [
+      "iot vending machine case study india",
+      "l&t sanitary napkin vending machine",
+      "corporate vending machine installation chennai",
+    ],
+  },
 ];

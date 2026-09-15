@@ -149,7 +149,7 @@ export default function Hero() {
         {/* trust strip */}
         <div className="mt-14 border-t border-slate-200 pt-8 sm:mt-16">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-            Trusted by 200+ institutions across India
+            ISO 9001:2015 Certified Manufacturing · Trusted by 200+ institutions across India
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14">
             {trustLogos.map((logo) => (

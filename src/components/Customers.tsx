@@ -40,17 +40,17 @@ const sectors: { label: string; items: Customer[] }[] = [
 const testimonials = [
   {
     content:
-      "Lyra's vending machine has been a game-changer for our female employees. Reliable, discreet, and zero maintenance issues in 2 years.",
-    author: "Facilities Manager",
-    company: "Leading IT Corporation, Chennai",
-    initials: "FM",
+      "After installing this machine, used sanitary pads are being disposed of in a safe and hygienic manner. It is very useful, and they are truly providing good quality service.",
+    author: "Shyamala",
+    company: "Vels University · Google review",
+    initials: "S",
   },
   {
     content:
-      "We installed Lyra machines in all 12 women's restrooms across campus. The students love it, and the college administration is extremely satisfied.",
-    author: "Principal",
-    company: "Women's College, Tamil Nadu",
-    initials: "P",
+      "Very good service and product. Using in IISc Bangalore — staff is attentive and cloud service is very elaborate.",
+    author: "Arpita Das",
+    company: "Local Guide, IISc Bangalore · Google review",
+    initials: "AD",
   },
   {
     content:

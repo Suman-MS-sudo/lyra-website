@@ -59,7 +59,8 @@ export default function About() {
               Lyra Enterprises designs and manufactures feminine hygiene
               infrastructure in India — vending machines and incinerators
               built for institutional scale, not one-off consumer purchases,
-              engineered for privacy, reliability, and sustainability.
+              engineered for privacy, reliability, and sustainability. Our
+              manufacturing is ISO 9001:2015 certified.
             </p>
           </div>
         </FadeUp>

@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "napkin-incinerator-vs-sanitary-bin",
     "manual-vs-automatic-napkin-vending-machine",
     "solid-waste-management-rules-2016-india-guide",
+    "lnt-manapakkam-chennai-iot-vending-machines",
   ];
 
   const solutionSlugs = [
