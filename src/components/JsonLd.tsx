@@ -133,8 +133,8 @@ const vendingMachineProducts = [
     image: "push-button-vm.png",
     price: 11000,
     description:
-      "Manual push button sanitary napkin vending machine with 25-napkin capacity. Ideal for schools, hostels and small offices. Electronic operation, view panel provided.",
-    keywords: "push button vending machine, manual napkin vending machine, school vending machine",
+      "Smart push-button sanitary napkin vending machine with offline usage analytics, anti-tampering lockout and 25-napkin capacity. On-demand WiFi hotspot reporting, zero subscription. Ideal for schools, hostels and small offices.",
+    keywords: "push button vending machine, smart napkin vending machine, offline usage analytics vending machine, school vending machine",
   },
   {
     name: "Solo Coin Operated Sanitary Napkin Vending Machine",

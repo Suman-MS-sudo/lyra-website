@@ -63,7 +63,10 @@ function getFaqs(slug: string) {
 
   const productFaqs: Record<string, { q: string; a: string }[]> = {
     "push-button-vending-machine": [
-      { q: "Does the Push Button machine need electricity?", a: "Yes, it runs on 230V AC mains power for the dispensing mechanism. However, it does not need any internet, SIM or payment processing infrastructure." },
+      { q: "Does the Push Button machine need internet or WiFi to work?", a: "No. The machine operates completely offline on 230V AC mains power. Its WiFi hotspot is only used for pulling usage reports on demand — it never needs an internet connection, SIM card or data plan." },
+      { q: "Is there a monthly fee or subscription?", a: "No. There is no SIM card, no data plan and no subscription of any kind. The ₹11,000 price is the only cost, for the life of the machine." },
+      { q: "How do I check how much stock is left?", a: "Press the WiFi button on the machine to open its private hotspot, connect with any phone, and pull a spreadsheet-ready CSV usage report in seconds — no app or login needed." },
+      { q: "What happens if someone tampers with the button?", a: "The built-in anti-abuse system detects rapid or repeated tampering, locks out the vend button temporarily, and logs the incident." },
       { q: "How many napkins can it hold?", a: "The Push Button machine holds 25 sanitary napkins per fill." },
     ],
     "solo-coin-vending-machine": [
@@ -375,6 +378,19 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </tbody>
             </table>
           </div>
+          {product.booklet && (
+            <a
+              href={product.booklet}
+              download
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-gray-300 px-5 py-2.5 text-sm font-semibold text-gray-800 hover:border-primary-400 hover:text-primary-700 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 12.5a.75.75 0 0 0 .53-.22l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V3.75a.75.75 0 0 0-1.5 0v6.19L7.53 8.22a.75.75 0 1 0-1.06 1.06l3 3a.75.75 0 0 0 .53.22Z" clipRule="evenodd" />
+                <path d="M3.5 12.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 0 .75.75h10a.75.75 0 0 0 .75-.75v-2a.75.75 0 0 1 1.5 0v2A2.25 2.25 0 0 1 15 17.75H5a2.25 2.25 0 0 1-2.25-2.25v-2a.75.75 0 0 1 .75-.75Z" />
+              </svg>
+              Download Product Booklet (PDF)
+            </a>
+          )}
         </section>
 
         {/* ── Use Cases ────────────────────────────────────── */}

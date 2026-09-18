@@ -57,6 +57,8 @@ export type Product = {
   useCases: string[];
   accent: string;
   image: string;
+  /** Public path to a downloadable product booklet/spec-sheet PDF, if available. */
+  booklet?: string;
   keywords: string[];
   metaTitle: string;
   metaDescription: string;
@@ -77,28 +79,41 @@ export const products: Product[] = [
     price: 11000,
     discountedPrice: 11000,
     badge: "Essential",
-    tagline: "Simple, reliable dispensing for every facility",
+    tagline: "Smart push-button dispensing, reinvented for institutions",
     description:
-      "Manual push-button sanitary napkin vending machine. Ideal for schools, hostels and budget-conscious institutions.",
+      "Push-button sanitary napkin vending machine with offline usage analytics, anti-tampering lockout and zero subscription cost. Ideal for schools, hostels and budget-conscious institutions.",
     longDescription:
-      "The Lyra Push Button sanitary napkin vending machine is the most affordable and reliable dispensing solution for educational institutions, government facilities and small offices across India. With a straightforward push-button operation, it requires minimal maintenance and works without any electronic payment system. The tamper-proof sheet metal cabinet with epoxy coating and transparent view panel make restocking easy for facility managers. Trusted by 50+ schools and government institutions across Tamil Nadu and Kerala.",
+      "The Lyra Push Button is the first machine in its price class to bring genuine smart-machine intelligence to a fully offline, subscription-free napkin dispenser. An onboard microcontroller with a battery-backed real-time clock tracks and timestamps every dispense, keeping accurate records through power outages without needing an internet connection. To check usage, administrators press a single button to open the machine's own private WiFi hotspot, connect with any phone, and pull a spreadsheet-ready CSV report in seconds — no app, no login, no data cost. The machine also protects itself: it stops running the motor entirely once stock runs out, preventing the dry-cycle burnout that destroys unprotected competitor machines, and an anti-tampering lockout disables vending and logs the incident if the button is jammed or mashed repeatedly. The tamper-proof sheet metal cabinet with epoxy coating and transparent view panel make restocking easy for facility managers. Trusted by 50+ schools and government institutions across Tamil Nadu and Kerala.",
     features: [
-      "Manual push-button dispensing",
-      "25 napkins capacity",
-      "Electronic operation",
-      "Transparent view panel",
-      "Tamper-proof body",
-      "Wall-mountable design",
+      "One-touch push-button dispensing, no coins required",
+      "Onboard microcontroller with live stock tracking",
+      "Automatic empty-stock motor protection",
+      "Anti-tampering abuse lockout with incident logging",
+      "Offline usage analytics — daily, weekly, monthly",
+      "Battery-backed real-time clock, no internet needed",
+      "On-demand private WiFi reporting, phone-ready",
+      "One-tap CSV export for audits and procurement",
+      "90-day on-device usage history",
+      "Zero SIM card, zero data plan, zero subscription",
+      "25 napkins capacity per fill",
+      "Tamper-proof epoxy-coated cabinet, transparent view panel",
     ],
     specs: [
       { label: "Dimensions", value: "700 × 160 × 160 mm" },
       { label: "Capacity", value: "25 napkins per selection" },
       { label: "No. of Selection", value: "One" },
-      { label: "Operation", value: "Electronic push-button" },
+      { label: "Operation", value: "Electronic push-button with onboard microcontroller" },
+      { label: "Connectivity", value: "On-device WiFi hotspot (offline, no internet required)" },
+      { label: "Data retention", value: "90 days on-device usage history" },
+      { label: "Reporting", value: "Mobile browser dashboard + CSV export" },
+      { label: "Clock", value: "Battery-backed real-time clock" },
+      { label: "Recurring cost", value: "None — no SIM, no data plan, no subscription" },
+      { label: "Power input", value: "230V AC mains" },
       { label: "Weight", value: "10 kg" },
       { label: "Housing", value: "Sheet metal cabinet, epoxy coated" },
       { label: "Loading", value: "Vertical" },
       { label: "Mounting", value: "Wall mount" },
+      { label: "Warranty", value: "1-year manufacturer warranty" },
       { label: "Model Code", value: "Lyra/SNVM/PB" },
     ],
     useCases: [
@@ -110,24 +125,25 @@ export const products: Product[] = [
     ],
     accent: "from-gray-400 to-gray-600",
     image: "/images/products/push-button-vm.png",
+    booklet: "/downloads/lyra-push-button-booklet.pdf",
     weightKg: 10,
-    compare: { payment: "Push Button", connectivity: "None", cloudReports: "No", touchDisplay: "No", iotMonitoring: "No" },
+    compare: { payment: "Push Button", connectivity: "Offline WiFi (reports only)", cloudReports: "No", touchDisplay: "No", iotMonitoring: "No" },
     keywords: [
       "push button sanitary napkin vending machine india",
       "sanitary napkin vending machine price india",
-      "manual sanitary napkin vending machine india",
+      "smart push button napkin vending machine india",
       "sanitary napkin machine for schools india",
       "napkin vending machine for hostels india",
       "napkin dispenser machine government institution",
-      "cheap sanitary napkin vending machine india",
-      "affordable napkin vending machine india",
+      "napkin vending machine usage analytics india",
+      "offline smart vending machine india",
       "best sanitary napkin machine schools india",
       "wall mount sanitary napkin dispenser india",
     ],
     metaTitle:
-      "Push Button Napkin Vending Machine — ₹11,000 | Lyra Enterprises",
+      "Push Button – Smart Napkin Vending Machine ₹11,000 | Lyra Enterprises",
     metaDescription:
-      "Buy Lyra Push Button sanitary napkin vending machine at ₹11,000 (+18% GST). Manual dispensing, 25-napkin capacity. Best for schools, hostels & government facilities. 1-year warranty. Chennai manufacturer. Call +91-8122378860.",
+      "Lyra Push Button sanitary napkin vending machine at ₹11,000 (+18% GST): offline usage analytics, anti-tampering lockout, zero subscription. 25-napkin capacity, 1-year warranty. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-coin-vending-machine",
