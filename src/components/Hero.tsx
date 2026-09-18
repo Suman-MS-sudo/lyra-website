@@ -83,8 +83,9 @@ export default function Hero() {
               </strong>{" "}
               and{" "}
               <strong className="font-semibold text-slate-900">incinerators</strong>{" "}
-              installed in 200+ schools, hospitals and offices across 4 Indian
-              states. Unlike a single household dispenser, Lyra machines are
+              installed in 200+ schools, hospitals and offices pan-India,
+              with offices in South India (Chennai) and North India (West
+              Bengal). Unlike a single household dispenser, Lyra machines are
               built for institutional scale — not just consumer countertops.
             </p>
 

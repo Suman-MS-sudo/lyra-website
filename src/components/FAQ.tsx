@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     q: "Are Lyra vending machines suitable for schools and colleges?",
-    a: "Yes. Lyra machines run in schools, colleges, hostels, hospitals and offices across 4 Indian states. The compact 700×160×160 mm body fits standard toilet cubicles.",
+    a: "Yes. Lyra machines run in schools, colleges, hostels, hospitals and offices pan-India, supported by our South India office in Chennai and North India office in West Bengal. The compact 700×160×160 mm body fits standard toilet cubicles.",
   },
   {
     q: "What is the capacity of a Lyra sanitary napkin vending machine?",

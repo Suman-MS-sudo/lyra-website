@@ -55,17 +55,38 @@ const organizationSchema = {
       telephone: "+91-8122378860",
       email: "sales@lyraenterprise.co.in",
       contactType: "sales",
-      areaServed: "IN",
+      areaServed: "South India",
       availableLanguage: ["English", "Tamil", "Hindi"],
     },
     {
       "@type": "ContactPoint",
       telephone: "+91-8122378860",
       contactType: "customer support",
-      areaServed: "IN",
+      areaServed: "South India",
       availableLanguage: ["English", "Tamil", "Hindi"],
     },
+    {
+      "@type": "ContactPoint",
+      telephone: "+91-7010857506",
+      email: "sales@lyraenterprise.co.in",
+      contactType: "sales",
+      areaServed: "North India",
+      availableLanguage: ["English", "Hindi", "Bengali"],
+    },
   ],
+  /** Manufacturing facility — production only, not a public sales/support contact point. */
+  location: {
+    "@type": "Place",
+    name: "Lyra Enterprises Manufacturing Facility",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "No. 109, High Tech City, Pazhanallur, Somangalam",
+      addressLocality: "Chennai",
+      addressRegion: "Tamil Nadu",
+      postalCode: "600069",
+      addressCountry: "IN",
+    },
+  },
   sameAs: [
     "https://wa.me/918122378860",
     "https://www.facebook.com/profile.php?id=61578649496806",
@@ -100,8 +121,8 @@ const organizationSchema = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": `${SITE_URL}/#localbusiness`,
-  name: "Lyra Enterprises",
+  "@id": `${SITE_URL}/#localbusiness-south`,
+  name: "Lyra Enterprises — South India Office",
   image: `${SITE_URL}/images/og-image.jpg`,
   url: SITE_URL,
   telephone: "+91-8122378860",
@@ -121,7 +142,38 @@ const localBusinessSchema = {
     longitude: 80.1548,
   },
   openingHours: "Mo-Sa 09:30-18:30",
-  areaServed: areaServedIndia,
+  areaServed: [
+    { "@type": "State", name: "Tamil Nadu" },
+    { "@type": "State", name: "Kerala" },
+    { "@type": "State", name: "Karnataka" },
+    { "@type": "State", name: "Andhra Pradesh" },
+    { "@type": "State", name: "Telangana" },
+  ],
+  parentOrganization: { "@id": `${SITE_URL}/#organization` },
+};
+
+/** North India branch — Hooghly, West Bengal. Handles North India operations & enquiries. */
+const localBusinessNorthSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE_URL}/#localbusiness-north`,
+  name: "Lyra Enterprises — North India Office",
+  image: `${SITE_URL}/images/og-image.jpg`,
+  url: SITE_URL,
+  telephone: "+91-7010857506",
+  email: "sales@lyraenterprise.co.in",
+  priceRange: "₹₹",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "No. 203, Jagannath Apartments, Sheoraphuli",
+    addressLocality: "Hooghly",
+    addressRegion: "West Bengal",
+    postalCode: "712223",
+    addressCountry: "IN",
+  },
+  openingHours: "Mo-Sa 09:30-18:30",
+  areaServed: { "@type": "AdministrativeArea", name: "North India" },
+  branchOf: { "@id": `${SITE_URL}/#organization` },
   parentOrganization: { "@id": `${SITE_URL}/#organization` },
 };
 
@@ -416,6 +468,7 @@ export default function JsonLd() {
   const schemas = [
     organizationSchema,
     localBusinessSchema,
+    localBusinessNorthSchema,
     productListSchema,
     faqSchema,
     websiteSchema,

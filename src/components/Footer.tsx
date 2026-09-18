@@ -90,8 +90,9 @@ export default function Footer() {
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               ISO 9001:2015 certified manufacturer of sanitary napkin vending
-              machines and incinerators, installed in 200+ institutions across
-              4 Indian states.
+              machines and incinerators, installed in 200+ institutions
+              pan-India — with offices serving South India (Chennai) and
+              North India (West Bengal).
             </p>
             <div className="flex gap-4">
               <a
