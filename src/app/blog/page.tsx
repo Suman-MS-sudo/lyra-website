@@ -55,6 +55,15 @@ const blogListSchema = {
   })),
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE.url}/blog` },
+  ],
+};
+
 export default function BlogPage() {
   return (
     <>
@@ -62,6 +71,7 @@ export default function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
       <main className="pt-16 min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
         <section className="max-w-4xl mx-auto px-5 sm:px-8 pt-12 pb-10">

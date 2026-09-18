@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -51,6 +52,25 @@ const articleSchema = {
   url: `${SITE.url}/blog/manual-vs-automatic-napkin-vending-machine`,
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE.url}/blog` },
+    { "@type": "ListItem", position: 3, name: "Manual vs Automatic", item: `${SITE.url}/blog/manual-vs-automatic-napkin-vending-machine` },
+  ],
+};
+
+const modelImages = [
+  { slug: "push-button-vending-machine", name: "Push Button", image: "/images/products/push-button-vm.png" },
+  { slug: "solo-coin-vending-machine", name: "Solo Coin", image: "/images/products/solo-coin.png" },
+  { slug: "solo-qr-vending-machine", name: "Solo QR", image: "/images/products/solo-qr.png" },
+  { slug: "solo-rfid-vending-machine", name: "Solo RFID", image: "/images/products/solo-rfid.png" },
+  { slug: "solo-wifi-vending-machine", name: "Solo WiFi", image: "/images/products/solo-wifi.png" },
+  { slug: "solo-ethernet-vending-machine", name: "Solo Ethernet", image: "/images/products/solo-ethernet.png" },
+];
+
 const comparisonRows = [
   
   { feature: "Payment Method", manual: "Free / No payment", automatic: "Push button / Coin / UPI" },
@@ -68,6 +88,7 @@ export default function ManualVsAutomaticBlog() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
       <main className="pt-16 bg-white min-h-screen">
         <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">
@@ -111,7 +132,26 @@ export default function ManualVsAutomaticBlog() {
               <li><Link href="/products/solo-wifi-vending-machine" className="text-primary-600 hover:underline">Solo WiFi UPI</Link> — UPI QR payment with remote monitoring</li>
               <li><Link href="/products/solo-ethernet-vending-machine" className="text-primary-600 hover:underline">Solo Ethernet</Link> — Wired IoT monitoring for enterprise campuses</li>
             </ul>
+          </div>
 
+          <div className="mt-6 grid grid-cols-3 sm:grid-cols-6 gap-3">
+            {modelImages.map((m) => (
+              <Link key={m.slug} href={`/products/${m.slug}`} className="group text-center">
+                <div className="relative aspect-square rounded-xl bg-gray-50 border border-gray-100 overflow-hidden">
+                  <Image
+                    src={m.image}
+                    alt={m.name}
+                    fill
+                    className="object-contain p-3 group-hover:scale-105 transition-transform duration-300"
+                    sizes="120px"
+                  />
+                </div>
+                <p className="mt-1.5 text-[11px] font-semibold text-gray-600 group-hover:text-primary-600 transition-colors">{m.name}</p>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-10 prose prose-gray max-w-none space-y-6 text-gray-700 leading-relaxed">
             <h2 className="text-2xl font-bold text-gray-900">Full comparison: Manual vs Automatic</h2>
           </div>
 

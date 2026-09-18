@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -50,10 +51,27 @@ const articleSchema = {
   url: `${SITE.url}/blog/napkin-incinerator-vs-sanitary-bin`,
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE.url}/blog` },
+    { "@type": "ListItem", position: 3, name: "Incinerator vs Bio Bin", item: `${SITE.url}/blog/napkin-incinerator-vs-sanitary-bin` },
+  ],
+};
+
+const incineratorImages = [
+  { slug: "lyra-micro-incinerator", name: "Lyra Micro", image: "/images/products/lyra-micro.png" },
+  { slug: "lyra-mini-incinerator", name: "Lyra Mini", image: "/images/products/lyra-mini.png" },
+  { slug: "lyra-maxi-incinerator", name: "Lyra Maxi", image: "/images/products/lyra-maxi.png" },
+];
+
 export default function BlogPost3() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
       <main className="pt-16 bg-white min-h-screen">
         <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">
@@ -140,6 +158,23 @@ export default function BlogPost3() {
               <li><Link href="/products/lyra-mini-incinerator" className="text-primary-600 font-semibold hover:underline">Lyra Mini</Link> — Colleges, medium offices, community centres. 5–15 napkins/cycle.</li>
               <li><Link href="/products/lyra-maxi-incinerator" className="text-primary-600 font-semibold hover:underline">Lyra Maxi</Link> — Hospitals, large campuses, industrial facilities. 25–50 napkins/cycle.</li>
             </ul>
+
+            <div className="not-prose grid grid-cols-3 gap-4">
+              {incineratorImages.map((m) => (
+                <Link key={m.slug} href={`/products/${m.slug}`} className="group text-center">
+                  <div className="relative aspect-square rounded-xl bg-gray-50 border border-gray-100 overflow-hidden">
+                    <Image
+                      src={m.image}
+                      alt={m.name}
+                      fill
+                      className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                      sizes="180px"
+                    />
+                  </div>
+                  <p className="mt-1.5 text-xs font-semibold text-gray-600 group-hover:text-primary-600 transition-colors">{m.name}</p>
+                </Link>
+              ))}
+            </div>
 
             <p>
               Call us at <Link href="tel:+918122378860" className="text-primary-600 font-semibold hover:underline">{SITE.phoneDisplay}</Link> — tell us your daily user count and we&apos;ll recommend the right model.

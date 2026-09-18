@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -19,14 +20,14 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/blog/why-every-school-needs-napkin-vending-machine` },
   openGraph: {
     title: "Why Every School in India Needs a Sanitary Napkin Vending Machine",
-    description: "36% of Indian girls miss school during menstruation. Vending machines solve this directly. See how.",
+    description: "Menstruation-related absenteeism is a major barrier to girls' education in India. Vending machines solve this directly. See how.",
     url: `${SITE.url}/blog/why-every-school-needs-napkin-vending-machine`,
     images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Why Every School in India Needs a Sanitary Napkin Vending Machine",
-    description: "36% of Indian girls miss school during menstruation. Vending machines solve this directly. See how.",
+    description: "Menstruation-related absenteeism is a major barrier to girls' education in India. Vending machines solve this directly. See how.",
     images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
@@ -50,10 +51,21 @@ const articleSchema = {
   url: `${SITE.url}/blog/why-every-school-needs-napkin-vending-machine`,
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE.url}/blog` },
+    { "@type": "ListItem", position: 3, name: "Schools & Vending Machines", item: `${SITE.url}/blog/why-every-school-needs-napkin-vending-machine` },
+  ],
+};
+
 export default function BlogPost1() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
       <main className="pt-16 bg-white min-h-screen">
         <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">
@@ -73,13 +85,13 @@ export default function BlogPost1() {
           </h1>
 
           <p className="mt-4 text-xl text-gray-600 leading-relaxed border-l-4 border-primary-300 pl-5">
-            36% of Indian girls miss school during menstruation. A vending machine in the School toilet can change that permanently.
+            Menstruation-related absenteeism keeps many Indian girls out of school every month. A vending machine in the school toilet can change that permanently.
           </p>
 
           <div className="mt-10 prose prose-gray max-w-none space-y-6 text-gray-700 leading-relaxed">
             <h2 className="text-2xl font-bold text-gray-900">The real cost of inadequate menstrual hygiene in schools</h2>
             <p>
-              According to UNICEF India, approximately 23 million girls drop out of school every year when they begin menstruating. The primary reason is not the biology — it is the lack of access to sanitary products at school. Girls who cannot manage their periods discreetly and hygienically in school toilets are left with one option: stay home.
+              Multiple studies and government surveys point to menstruation-related absenteeism as a significant factor behind school dropout among adolescent girls in India. The primary reason is not the biology — it is the lack of access to sanitary products at school. Girls who cannot manage their periods discreetly and hygienically in school toilets are left with one option: stay home.
             </p>
             <p>
               The economic cost of this is enormous. Each girl who drops out loses years of education and earning potential. Schools that install sanitary napkin vending machines consistently report improved attendance rates among girl students — particularly significant in government schools, rural schools, tribal residential schools and hostels.
@@ -108,6 +120,21 @@ export default function BlogPost1() {
             <p>
               Both models are wall-mountable, compact (700×160×160 mm) and fit standard school toilet dimensions. The transparent view panel makes restocking simple for maintenance staff.
             </p>
+
+            <div className="not-prose grid grid-cols-2 gap-4 max-w-sm">
+              <Link href="/products/push-button-vending-machine" className="group text-center">
+                <div className="relative aspect-square rounded-xl bg-gray-50 border border-gray-100 overflow-hidden">
+                  <Image src="/images/products/push-button-vm.png" alt="Lyra Push Button Vending Machine" fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-300" sizes="180px" />
+                </div>
+                <p className="mt-1.5 text-xs font-semibold text-gray-600 group-hover:text-primary-600 transition-colors">Push Button</p>
+              </Link>
+              <Link href="/products/solo-coin-vending-machine" className="group text-center">
+                <div className="relative aspect-square rounded-xl bg-gray-50 border border-gray-100 overflow-hidden">
+                  <Image src="/images/products/solo-coin.png" alt="Lyra Solo Coin Vending Machine" fill className="object-contain p-4 group-hover:scale-105 transition-transform duration-300" sizes="180px" />
+                </div>
+                <p className="mt-1.5 text-xs font-semibold text-gray-600 group-hover:text-primary-600 transition-colors">Solo Coin</p>
+              </Link>
+            </div>
 
             <h2 className="text-2xl font-bold text-gray-900">Government mandate and CBSE guidelines</h2>
             <p>

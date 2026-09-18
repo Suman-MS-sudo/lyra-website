@@ -272,12 +272,13 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
         {/* Local install / service note */}
         <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-14">
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-3">Serving {city.state} from our Chennai facility</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-3">Serving {city.state} pan-India from our South and North India offices</h2>
             <p className="text-gray-600 leading-relaxed">
               Lyra Enterprises manufactures every sanitary napkin vending machine and incinerator in-house at our Chennai facility and dispatches to{" "}
               {city.state} in a typical {city.dispatch} — covering {city.capital} and {city.kind === "union territory" ? "the whole territory" : `all ≈${city.districtsApprox} districts`}.
-              We supply {city.context}. Our team handles installation guidance, staff training and after-sales service for schools, colleges, hospitals,
-              IT campuses and government offices across {city.cities.slice(0, 4).join(", ")} and beyond. Every machine ships with a 1-year manufacturer
+              We supply {city.context}. With offices in South India (Chennai) and North India (West Bengal), our team handles installation guidance,
+              staff training and after-sales service for schools, colleges, hospitals, IT campuses and government offices across{" "}
+              {city.cities.slice(0, 4).join(", ")} and beyond. Every machine ships with a 1-year manufacturer
               warranty and GST invoice, and complies with Solid Waste Management Rules 2016 and CPCB guidelines for menstrual waste disposal.
             </p>
             <p className="mt-4 text-sm text-gray-500">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -53,10 +54,21 @@ const articleSchema = {
   url: `${SITE.url}/blog/${SLUG}`,
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE.url}/blog` },
+    { "@type": "ListItem", position: 3, name: "L&T Manapakkam Case Study", item: `${SITE.url}/blog/${SLUG}` },
+  ],
+};
+
 export default function LnTCaseStudy() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
       <main className="pt-16 bg-white min-h-screen">
         <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">
@@ -78,6 +90,18 @@ export default function LnTCaseStudy() {
           <p className="mt-4 text-xl text-gray-600 leading-relaxed border-l-4 border-primary-300 pl-5">
             Lyra Enterprises equipped Larsen &amp; Toubro&apos;s Manapakkam campus in Chennai with 25 IoT-enabled sanitary napkin vending machines — not a one-off installation, but an ongoing, supported deployment.
           </p>
+
+          <div className="mt-8 rounded-2xl bg-gradient-to-br from-blue-500 to-primary-600 p-8 flex items-center justify-center">
+            <div className="relative w-40 h-40">
+              <Image
+                src="/images/products/solo-wifi.png"
+                alt="Solo WiFi IoT Sanitary Napkin Vending Machine — installed at L&T Manapakkam"
+                fill
+                className="object-contain drop-shadow-xl"
+                sizes="160px"
+              />
+            </div>
+          </div>
 
           <div className="mt-10 prose prose-gray max-w-none space-y-6 text-gray-700 leading-relaxed">
             <h2 className="text-2xl font-bold text-gray-900">The deployment</h2>

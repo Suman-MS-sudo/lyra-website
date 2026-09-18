@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
-import { SITE } from "@/lib/data";
+import { SITE, getProductBySlug } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: { absolute: "Vending Machine + Incinerator Bundle — Schools & Hostels | Lyra" },
@@ -44,6 +45,7 @@ const schemaLD = {
   name: "Sanitary Napkin Vending Machine + Incinerator Bundle",
   description:
     "Complete menstrual hygiene solution — Lyra vending machine paired with incinerator for full SWM Rules 2016 and CPCB compliance. Ideal for schools, hostels, hospitals and offices.",
+  image: [`${SITE.url}/images/products/push-button-vm.png`, `${SITE.url}/images/products/lyra-micro.png`],
   brand: { "@type": "Brand", name: "Lyra Enterprises" },
   offers: {
     "@type": "Offer",
@@ -219,6 +221,15 @@ export default function BundlePage() {
             <div className="grid lg:grid-cols-3 gap-8">
               {bundles.map((b) => (
                 <div key={b.title} className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col">
+                  <div className="relative aspect-[2/1] bg-gradient-to-br from-primary-50 to-blue-50 flex items-center justify-center gap-4 p-4">
+                    <div className="relative w-24 h-24">
+                      <Image src={getProductBySlug(b.vending.slug)?.image ?? ""} alt={b.vending.name} fill className="object-contain" sizes="96px" />
+                    </div>
+                    <span className="text-2xl font-bold text-gray-300">+</span>
+                    <div className="relative w-24 h-24">
+                      <Image src={getProductBySlug(b.incinerator.slug)?.image ?? ""} alt={b.incinerator.name} fill className="object-contain" sizes="96px" />
+                    </div>
+                  </div>
                   <div className="p-6 border-b border-gray-100">
                     <span className={`px-3 py-1 rounded-full text-xs font-bold ${b.badge} mb-3 inline-block`}>{b.tag}</span>
                     <h3 className="font-bold text-gray-900 text-xl mb-1">{b.title}</h3>

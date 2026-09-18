@@ -3,15 +3,54 @@ import StaticInfoPage from "@/components/StaticInfoPage";
 import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import { SITE } from "@/lib/data";
 
+const PAGE_URL = `${SITE.url}/privacy-policy`;
+const PAGE_TITLE = "Privacy Policy | Lyra Enterprises";
+const PAGE_DESCRIPTION =
+  "Privacy Policy for Lyra Enterprises covering customer information collected through product enquiries, quotation requests and website use.";
+
 export const metadata: Metadata = {
-  title: { absolute: "Privacy Policy | Lyra Enterprises" },
-  description:
-    "Privacy Policy for Lyra Enterprises covering customer information collected through product enquiries and quotation requests.",
-  alternates: { canonical: `${SITE.url}/privacy-policy` },
+  title: { absolute: PAGE_TITLE },
+  description: PAGE_DESCRIPTION,
+  keywords: ["lyra enterprises privacy policy", "vending machine manufacturer data privacy india"],
+  alternates: { canonical: PAGE_URL },
+  openGraph: {
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    url: PAGE_URL,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [`${SITE.url}/images/og-image.jpg`],
+  },
+};
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Privacy Policy",
+  description: PAGE_DESCRIPTION,
+  url: PAGE_URL,
+  isPartOf: { "@type": "WebSite", "@id": `${SITE.url}/#website` },
+  publisher: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: PAGE_URL },
+  ],
 };
 
 export default function PrivacyPolicyPage() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <StaticInfoPage
       title="Privacy Policy"
       description="This Privacy Policy explains how Lyra Enterprises collects, uses and protects customer information when you browse our website or submit an enquiry."
@@ -43,5 +82,6 @@ export default function PrivacyPolicyPage() {
       <h2>Contact</h2>
       <p>For privacy-related requests, contact Lyra Enterprises at <ObfuscatedEmail>our email</ObfuscatedEmail> or +91-81223 78860.</p>
     </StaticInfoPage>
+    </>
   );
 }

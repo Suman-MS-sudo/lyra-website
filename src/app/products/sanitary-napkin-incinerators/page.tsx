@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -33,24 +34,58 @@ export const metadata: Metadata = {
   },
 };
 
+const PAGE_URL = `${SITE.url}/products/sanitary-napkin-incinerators`;
+const priceValidUntil = `${new Date().getFullYear() + 1}-12-31`;
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "Sanitary Napkin Incinerators — Lyra Enterprises",
-  url: `${SITE.url}/products/sanitary-napkin-incinerators`,
+  url: PAGE_URL,
   numberOfItems: incinerators.length,
   itemListElement: incinerators.map((p, i) => ({
     "@type": "ListItem",
     position: i + 1,
-    url: `${SITE.url}/products/${p.slug}`,
-    name: p.fullName,
+    item: {
+      "@type": "Product",
+      "@id": `${SITE.url}/products/${p.slug}#product`,
+      name: p.fullName,
+      sku: p.code,
+      mpn: p.code,
+      description: p.description,
+      image: [`${SITE.url}${p.image}`],
+      url: `${SITE.url}/products/${p.slug}`,
+      brand: { "@type": "Brand", name: "Lyra Enterprises" },
+      manufacturer: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
+      offers: {
+        "@type": "Offer",
+        url: `${SITE.url}/products/${p.slug}`,
+        priceCurrency: "INR",
+        price: p.price,
+        priceValidUntil,
+        availability: "https://schema.org/InStock",
+        itemCondition: "https://schema.org/NewCondition",
+        seller: { "@type": "Organization", name: "Lyra Enterprises" },
+      },
+    },
   })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+    { "@type": "ListItem", position: 2, name: "Products", item: `${SITE.url}/products` },
+    { "@type": "ListItem", position: 3, name: "Incinerators", item: PAGE_URL },
+  ],
 };
 
 export default function IncineratorsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
       <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
         <section className="max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-10">
@@ -96,7 +131,18 @@ export default function IncineratorsPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {incinerators.map((p) => (
               <div key={p.slug} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col">
-                <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
+                <div className={`relative aspect-[4/3] bg-gradient-to-br ${p.accent} overflow-hidden`}>
+                  <Image
+                    src={p.image}
+                    alt={p.fullName}
+                    fill
+                    className="object-contain p-6 drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+                  />
+                  <span className="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/90 text-emerald-700 text-[10px] font-bold uppercase tracking-wide">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> In Stock
+                  </span>
+                </div>
                 <div className="p-6 flex flex-col flex-1">
                   <span className="inline-block mb-2 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-500 rounded-full w-fit">{p.badge}</span>
                   <h2 className="font-bold text-gray-900 text-xl group-hover:text-primary-600 transition-colors">{p.name}</h2>
