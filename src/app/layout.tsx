@@ -113,8 +113,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
 
   openGraph: {
-    title:
-      "Lyra Enterprises | #1 Vending Machine & Incinerator Manufacturer India",
+    title: "Lyra Enterprises | Vending Machines & Incinerators India",
     description:
       "India's most trusted manufacturer of sanitary napkin vending machines & incinerators. Coin, UPI, WiFi & IoT models. 200+ installations across India. Manufactured in Chennai.",
     url: SITE_URL,
@@ -133,8 +132,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title:
-      "Lyra Enterprises | #1 Vending Machine & Incinerator Manufacturer India",
+    title: "Lyra Enterprises | Vending Machines & Incinerators India",
     description:
       "Buy sanitary napkin vending machines & incinerators from India's #1 manufacturer. Coin, UPI, WiFi & IoT models. 200+ installations across India.",
     images: [`${SITE_URL}/images/og-image.jpg`],

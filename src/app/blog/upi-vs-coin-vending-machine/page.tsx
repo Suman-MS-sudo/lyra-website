@@ -92,8 +92,12 @@ export default function BlogPost2() {
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Coin machine (Solo Coin)</strong> — accepts a coin. No internet. No app. Simple mechanical + electronic operation.</li>
-              <li><strong>UPI WiFi machine (Solo WiFi)</strong> — accepts UPI QR scan (PhonePe, Google Pay, Paytm) AND coin. WiFi connected. Cloud dashboard. Remote monitoring.</li>
+              <li><strong><Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">UPI QR machine (Solo QR)</Link></strong> — accepts UPI QR scan only (PhonePe, Google Pay, Paytm, any UPI app). SIM-based connectivity, no coin acceptor needed. The lowest-cost way to go fully cashless at ₹18,500.</li>
+              <li><strong>UPI WiFi machine (Solo WiFi)</strong> — accepts UPI QR scan AND coin. WiFi connected. Cloud dashboard. Remote monitoring. For facilities that want both payment options plus live reporting.</li>
             </ul>
+            <p>
+              If you just need cashless UPI payments without the extra cloud-reporting layer, the <Link href="/products/solo-qr-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo QR</Link> is the simpler, cheaper option — the WiFi model is worth the extra cost only if you specifically need remote monitoring across multiple machines.
+            </p>
 
             <h2 className="text-2xl font-bold text-gray-900">Full comparison</h2>
             <div className="overflow-x-auto rounded-xl border border-gray-200">
@@ -146,6 +150,9 @@ export default function BlogPost2() {
             <h2 className="text-2xl font-bold text-gray-900">Our recommendation</h2>
             <p>
               <strong>For schools, government facilities and rural locations:</strong> Start with the <Link href="/products/solo-coin-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo Coin</Link>. It&apos;s reliable, low maintenance and sufficient.
+            </p>
+            <p>
+              <strong>For cashless payments without the extra reporting layer:</strong> The <Link href="/products/solo-qr-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo QR</Link> gives you UPI acceptance at a lower price point than the WiFi model.
             </p>
             <p>
               <strong>For IT parks, hospitals and premium facilities:</strong> The <Link href="/products/solo-wifi-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo WiFi</Link> pays back quickly and the management visibility is worth the premium.

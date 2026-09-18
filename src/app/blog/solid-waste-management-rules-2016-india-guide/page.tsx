@@ -159,7 +159,7 @@ export default function SWMRulesBlog() {
               Lyra Enterprises manufactures the most complete range of SWM Rules 2016 and CPCB-compliant menstrual hygiene equipment in India:
             </p>
             <ul className="list-disc pl-5 space-y-2">
-              <li><strong>Napkin vending machines:</strong> From Push Button to Solo Ethernet — providing access to sanitary napkins on demand</li>
+              <li><strong>Napkin vending machines:</strong> From Push Button to Solo Ethernet — including the <Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">Solo QR (UPI/GPay/PhonePe)</Link> model — providing access to sanitary napkins on demand</li>
               <li><strong><Link href="/products/lyra-micro-incinerator" className="text-primary-600 hover:underline">Lyra Micro Incinerator</Link>:</strong> For small schools, clinics and offices (1–5 napkins/cycle)</li>
               <li><strong><Link href="/products/lyra-mini-incinerator" className="text-primary-600 hover:underline">Lyra Mini Incinerator</Link>:</strong> For colleges, offices and hospitals (5–15 napkins/cycle)</li>
               <li><strong><Link href="/products/lyra-maxi-incinerator" className="text-primary-600 hover:underline">Lyra Maxi Incinerator</Link>:</strong> For large hospitals and institutions (25–50 napkins/cycle, Biomedical Waste compliant)</li>
