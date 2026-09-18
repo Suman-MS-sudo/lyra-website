@@ -332,11 +332,14 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                 </p>
               </div>
               
+              {/* Scrim for guaranteed text legibility regardless of accent color */}
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/50 to-transparent z-[5]" />
+
               {/* Product info overlay */}
               <div className="absolute bottom-6 left-6 right-6 text-white z-10">
-                <p className="text-lg lg:text-xl font-bold">{product.name}</p>
-                <p className="text-white/80 text-sm mt-1">{product.tagline}</p>
-                <p className="mt-2 text-sm font-semibold text-white/90">
+                <p className="text-lg lg:text-xl font-bold drop-shadow-sm">{product.name}</p>
+                <p className="text-white/90 text-sm mt-1 drop-shadow-sm">{product.tagline}</p>
+                <p className="mt-2 text-sm font-semibold text-white drop-shadow-sm">
                   {isNapkin ? `${formatINR(priceExGst)} / napkin` : `${formatINR(priceExGst)} + GST`}
                 </p>
               </div>
@@ -345,6 +348,26 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         </section>
 
         <ProductPurchasePanel product={product} />
+
+        {/* ── Sticky mobile buy bar ─────────────────────────── */}
+        <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-gray-200 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] px-4 py-3 flex items-center gap-3">
+          <div className="flex-1 min-w-0">
+            <p className="text-base font-bold text-gray-900 truncate">
+              {isNapkin ? `${formatINR(priceExGst)} / napkin` : formatINR(priceExGst)}
+            </p>
+            <p className="text-[11px] text-gray-500 truncate">+{Math.round(GST_RATE * 100)}% GST · freight extra</p>
+          </div>
+          <a
+            href={`https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20${encodeURIComponent(product.fullName)}.%20Please%20share%20pricing%20and%20delivery%20details.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`px-5 py-2.5 rounded-xl text-white font-bold text-sm bg-gradient-to-r ${product.accent} shadow whitespace-nowrap`}
+          >
+            Get Quote
+          </a>
+        </div>
+        {/* Spacer so the sticky bar doesn't cover the footer on mobile */}
+        <div className="lg:hidden h-20" />
 
         {/* ── Features ─────────────────────────────────────── */}
         <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
