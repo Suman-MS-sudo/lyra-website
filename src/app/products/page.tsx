@@ -1,9 +1,10 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
-import { vendingMachines, incinerators, SITE, formatINR } from "@/lib/data";
+import { vendingMachines, incinerators, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: { absolute: "Napkin Vending Machines & Incinerators | Lyra Enterprises" },
@@ -34,6 +35,44 @@ export const metadata: Metadata = {
   },
 };
 
+const allListedProducts = [...vendingMachines, ...incinerators];
+const priceValidUntil = `${new Date().getFullYear() + 1}-12-31`;
+const vmPrices = vendingMachines.map((p) => p.price);
+const incPrices = incinerators.map((p) => p.price);
+const vmMin = Math.min(...vmPrices);
+const vmMax = Math.max(...vmPrices);
+const incMin = Math.min(...incPrices);
+const incMax = Math.max(...incPrices);
+
+const faqs = [
+  {
+    q: "What is the price range of Lyra sanitary napkin vending machines?",
+    a: `Lyra Enterprises sanitary napkin vending machines range from ${formatINR(vmMin)} for the Push Button model to ${formatINR(vmMax)} for the Solo Ethernet IoT model, ex-works Chennai plus 18% GST and freight.`,
+  },
+  {
+    q: "What is the price range of Lyra sanitary napkin incinerators?",
+    a: `Lyra Enterprises incinerators range from ${formatINR(incMin)} for the Micro model to ${formatINR(incMax)} for the high-capacity Maxi model, ex-works Chennai plus 18% GST and freight.`,
+  },
+  {
+    q: "Are all products in stock and ready to ship?",
+    a: "Yes. All Lyra Enterprises vending machines and incinerators are manufactured in-house and typically dispatched within 1–3 business days of order confirmation, with pan-India delivery in 2–7 business days depending on destination.",
+  },
+  {
+    q: "Do Lyra products come with a warranty?",
+    a: "Yes. Every Lyra vending machine and incinerator carries a 1-year manufacturer warranty covering manufacturing defects in parts and workmanship.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -49,10 +88,47 @@ const productSchema = {
   },
 };
 
+/** Product + Offer schema per listed item — the part Google actually needs for image/price rich results. */
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Lyra Enterprises — All Products",
+  url: `${SITE.url}/products`,
+  numberOfItems: allListedProducts.length,
+  itemListElement: allListedProducts.map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Product",
+      "@id": `${SITE.url}/products/${p.slug}#product`,
+      name: p.fullName,
+      sku: p.code,
+      mpn: p.code,
+      description: p.description,
+      image: [`${SITE.url}${p.image}`],
+      url: `${SITE.url}/products/${p.slug}`,
+      brand: { "@type": "Brand", name: "Lyra Enterprises" },
+      manufacturer: { "@type": "Organization", name: "Lyra Enterprises", url: SITE.url },
+      offers: {
+        "@type": "Offer",
+        url: `${SITE.url}/products/${p.slug}`,
+        priceCurrency: "INR",
+        price: p.price,
+        priceValidUntil,
+        availability: "https://schema.org/InStock",
+        itemCondition: "https://schema.org/NewCondition",
+        seller: { "@type": "Organization", name: "Lyra Enterprises" },
+      },
+    },
+  })),
+};
+
 export default function ProductsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <PageNavbar />
       <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
         {/* Hero */}
@@ -83,29 +159,41 @@ export default function ProductsPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {vendingMachines.map((p) => (
-              <div key={p.slug} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-                <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
-                <div className="p-5">
+              <Link
+                key={p.slug}
+                href={`/products/${p.slug}`}
+                className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
+              >
+                <div className={`relative aspect-square bg-gradient-to-br ${p.accent} overflow-hidden`}>
+                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/10" />
+                  <Image
+                    src={p.image}
+                    alt={p.fullName}
+                    fill
+                    className="object-contain p-8 drop-shadow-xl group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+                  />
+                  <span className="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/90 text-emerald-700 text-[10px] font-bold uppercase tracking-wide">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> In Stock
+                  </span>
                   {p.popular && (
-                    <span className="inline-block mb-2 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-primary-100 text-primary-700 rounded-full">Most Popular</span>
+                    <span className="absolute top-3 right-3 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-yellow-400 text-yellow-900 rounded-full">★ Popular</span>
                   )}
+                </div>
+                <div className="p-5 flex flex-col flex-1">
                   <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">{p.code}</p>
                   <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
-                  <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug">{p.tagline}</p>
+                  <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug flex-1">{p.tagline}</p>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-base font-bold text-gray-900">{formatINR(p.price)}</span>
-                    <span className="text-[11px] text-gray-500">+ 18% GST</span>
+                    <span className="text-xl font-extrabold text-gray-900">{formatINR(p.price)}</span>
+                    <span className="text-[11px] text-gray-500">+ 18% GST · {formatINR(priceInclGst(p.price))} incl.</span>
                   </div>
-                  <div className="mt-4 flex flex-wrap gap-3">
-                    <Link href={`/products/${p.slug}`} className="text-xs font-semibold text-primary-600 hover:underline">
-                      View Details →
-                    </Link>
-                    <Link href={`/products/${p.slug}#buy-now`} className="text-xs font-semibold text-gray-900 hover:underline">
-                      Buy Online →
-                    </Link>
+                  <div className="mt-4 flex items-center justify-between gap-3">
+                    <span className="text-xs font-bold text-primary-600 group-hover:underline">View Details →</span>
+                    <span className={`px-3 py-1.5 rounded-lg text-white text-xs font-bold bg-gradient-to-r ${p.accent}`}>Buy Now</span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
@@ -123,26 +211,54 @@ export default function ProductsPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {incinerators.map((p) => (
-              <div key={p.slug} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-                <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
-                <div className="p-5">
+              <Link
+                key={p.slug}
+                href={`/products/${p.slug}`}
+                className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
+              >
+                <div className={`relative aspect-square bg-gradient-to-br ${p.accent} overflow-hidden`}>
+                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/10" />
+                  <Image
+                    src={p.image}
+                    alt={p.fullName}
+                    fill
+                    className="object-contain p-8 drop-shadow-xl group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+                  />
+                  <span className="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/90 text-emerald-700 text-[10px] font-bold uppercase tracking-wide">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> In Stock
+                  </span>
+                </div>
+                <div className="p-5 flex flex-col flex-1">
                   <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">{p.code}</p>
                   <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
-                  <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug">{p.tagline}</p>
+                  <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug flex-1">{p.tagline}</p>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-base font-bold text-gray-900">{formatINR(p.price)}</span>
-                    <span className="text-[11px] text-gray-500">+ 18% GST</span>
+                    <span className="text-xl font-extrabold text-gray-900">{formatINR(p.price)}</span>
+                    <span className="text-[11px] text-gray-500">+ 18% GST · {formatINR(priceInclGst(p.price))} incl.</span>
                   </div>
-                  <div className="mt-4 flex flex-wrap gap-3">
-                    <Link href={`/products/${p.slug}`} className="text-xs font-semibold text-primary-600 hover:underline">
-                      View Details →
-                    </Link>
-                    <Link href={`/products/${p.slug}#buy-now`} className="text-xs font-semibold text-gray-900 hover:underline">
-                      Buy Online →
-                    </Link>
+                  <div className="mt-4 flex items-center justify-between gap-3">
+                    <span className="text-xs font-bold text-primary-600 group-hover:underline">View Details →</span>
+                    <span className={`px-3 py-1.5 rounded-lg text-white text-xs font-bold bg-gradient-to-r ${p.accent}`}>Buy Now</span>
                   </div>
                 </div>
-              </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="max-w-4xl mx-auto px-5 sm:px-8 pb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqs.map((faq, i) => (
+              <details key={i} className="group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                <summary className="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer font-semibold text-gray-900 text-sm list-none">
+                  {faq.q}
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-100 group-open:bg-primary-100 flex items-center justify-center text-gray-500 group-open:text-primary-600 transition-colors text-xs font-bold">+</span>
+                </summary>
+                <p className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{faq.a}</p>
+              </details>
             ))}
           </div>
         </section>
