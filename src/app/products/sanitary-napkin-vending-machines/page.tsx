@@ -8,7 +8,7 @@ import { vendingMachines, SITE, formatINR } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "Napkin Vending Machines — 8 Models & Prices | Lyra Enterprises" },
   description:
-    "Buy sanitary napkin vending machines in India. 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹11,000. 1-year warranty. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
+    "Buy sanitary napkin vending machines in India. 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹12,000. 1-year warranty. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
   keywords: [
     "sanitary napkin vending machine india",
     "napkin vending machine price india",
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/products/sanitary-napkin-vending-machines` },
   openGraph: {
     title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
-    description: "Compare all 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹11,000. Pan-India delivery.",
+    description: "Compare all 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹12,000. Pan-India delivery.",
     url: `${SITE.url}/products/sanitary-napkin-vending-machines`,
   },
   twitter: {
     card: "summary_large_image",
     title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
-    description: "Compare all 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹11,000. Pan-India delivery.",
+    description: "Compare all 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹12,000. Pan-India delivery.",
   },
 };
 
@@ -73,7 +73,7 @@ export default function VendingMachinesPage() {
             Sanitary Napkin <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">Vending Machines</span>
           </h1>
           <p className="mt-4 text-gray-600 text-lg max-w-2xl">
-          8 models to match every budget and facility — from ₹11,000 push-button dispensers to touchless wave-sensor units and IoT-enabled smart machines with UPI payments and cloud analytics. Manufactured in Chennai, delivered across India. Prices exclude 18% GST; freight additional.
+          8 models to match every budget and facility — from ₹12,000 push-button dispensers to touchless wave-sensor units and IoT-enabled smart machines with UPI payments and cloud analytics. Manufactured in Chennai, delivered across India. Prices exclude 18% GST; freight additional.
           </p>
           <div className="mt-6 flex flex-wrap gap-4 text-sm">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ 1-Year Warranty</span>

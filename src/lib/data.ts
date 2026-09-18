@@ -78,8 +78,8 @@ export const products: Product[] = [
     fullName: "Push Button Sanitary Napkin Vending Machine",
     code: "Lyra/SNVM/PB",
     category: "vending-machine",
-    price: 11000,
-    discountedPrice: 11000,
+    price: 12000,
+    discountedPrice: 12000,
     badge: "Essential",
     tagline: "Smart push-button dispensing, reinvented for institutions",
     description:
@@ -161,9 +161,9 @@ export const products: Product[] = [
       "wall mount sanitary napkin dispenser india",
     ],
     metaTitle:
-      "Push Button – Smart Napkin Vending Machine ₹11,000 | Lyra Enterprises",
+      "Push Button – Smart Napkin Vending Machine ₹12,000 | Lyra Enterprises",
     metaDescription:
-      "Lyra Push Button sanitary napkin vending machine at ₹11,000 (+18% GST): offline usage analytics, anti-tampering lockout, zero subscription. 25-napkin capacity, 1-year warranty. Chennai manufacturer. Call +91-8122378860.",
+      "Lyra Push Button sanitary napkin vending machine at ₹12,000 (+18% GST): offline usage analytics, anti-tampering lockout, zero subscription. 25-napkin capacity, 1-year warranty. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-coin-vending-machine",
@@ -171,8 +171,8 @@ export const products: Product[] = [
     fullName: "Solo Coin Operated Sanitary Napkin Vending Machine",
     code: "Lyra/SNVM/SC",
     category: "vending-machine",
-    price: 12500,
-    discountedPrice: 12500,
+    price: 13500,
+    discountedPrice: 13500,
     badge: "Standard",
     tagline: "Coin-operated hygiene on demand, 24×7",
     description:
@@ -223,9 +223,9 @@ export const products: Product[] = [
       "sanitary napkin machine hospital india",
     ],
     metaTitle:
-      "Coin Operated Napkin Vending Machine — ₹12,500 | Lyra Enterprises",
+      "Coin Operated Napkin Vending Machine — ₹13,500 | Lyra Enterprises",
     metaDescription:
-      "Buy Lyra Solo Coin sanitary napkin vending machine at ₹12,500 (+18% GST). ₹5 coin acceptor, 25-napkin capacity, tested 100,000+ cycles. Best for malls, railway stations, offices & hospitals. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Solo Coin sanitary napkin vending machine at ₹13,500 (+18% GST). ₹5 coin acceptor, 25-napkin capacity, tested 100,000+ cycles. Best for malls, railway stations, offices & hospitals. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-multi-coin-vending-machine",
@@ -233,8 +233,8 @@ export const products: Product[] = [
     fullName: "Solo Multi-Coin Sanitary Napkin Vending Machine",
     code: "Lyra/SNVM/SC-M",
     category: "vending-machine",
-    price: 14500,
-    discountedPrice: 14500,
+    price: 15500,
+    discountedPrice: 15500,
     badge: "Multi-Coin",
     tagline: "Accepts ₹1, ₹2 and ₹5 coins — flexible pricing per pad",
     description:
@@ -283,9 +283,9 @@ export const products: Product[] = [
       "cheap coin napkin machine india",
     ],
     metaTitle:
-      "Multi-Coin Napkin Vending Machine (₹1/₹2/₹5) — ₹14,500 | Lyra",
+      "Multi-Coin Napkin Vending Machine (₹1/₹2/₹5) — ₹15,500 | Lyra",
     metaDescription:
-      "Buy Lyra Solo Multi sanitary napkin vending machine at ₹14,500 (+18% GST). Accepts ₹1, ₹2 and ₹5 coins with configurable per-pad pricing. 25-napkin capacity. Best for schools, colleges & welfare programmes. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Solo Multi sanitary napkin vending machine at ₹15,500 (+18% GST). Accepts ₹1, ₹2 and ₹5 coins with configurable per-pad pricing. 25-napkin capacity. Best for schools, colleges & welfare programmes. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-rfid-vending-machine",
@@ -293,8 +293,8 @@ export const products: Product[] = [
     fullName: "RFID-Based Sanitary Napkin Vending Machine",
     code: "Lyra/SNVM/RFID",
     category: "vending-machine",
-    price: 15000,
-    discountedPrice: 15000,
+    price: 16000,
+    discountedPrice: 16000,
     badge: "RFID",
     tagline: "Contactless RFID card dispensing for controlled-access spaces",
     description:
@@ -340,9 +340,9 @@ export const products: Product[] = [
       "sanitary napkin vending machine rfid",
     ],
     metaTitle:
-      "RFID Napkin Vending Machine — Contactless — ₹15,000 | Lyra",
+      "RFID Napkin Vending Machine — Contactless — ₹16,000 | Lyra",
     metaDescription:
-      "Buy Lyra Solo RFID sanitary napkin vending machine at ₹15,000 (+18% GST). RFID card/tag access, usage reports, 25-napkin capacity, no coin needed. Best for campuses and hostels. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Solo RFID sanitary napkin vending machine at ₹16,000 (+18% GST). RFID card/tag access, usage reports, 25-napkin capacity, no coin needed. Best for campuses and hostels. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-qr-vending-machine",
@@ -350,8 +350,8 @@ export const products: Product[] = [
     fullName: "QR-Based Sanitary Napkin Vending Machine",
     code: "Lyra/SNVM/QR",
     category: "vending-machine",
-    price: 18500,
-    discountedPrice: 18500,
+    price: 19500,
+    discountedPrice: 19500,
     badge: "UPI / QR",
     tagline: "Fully cashless UPI dispensing — scan, pay, dispense",
     description:
@@ -400,9 +400,9 @@ export const products: Product[] = [
       "qr napkin machine for offices india",
     ],
     metaTitle:
-      "UPI QR Napkin Vending Machine (GPay/PhonePe) — ₹18,500 | Lyra",
+      "UPI QR Napkin Vending Machine (GPay/PhonePe) — ₹19,500 | Lyra",
     metaDescription:
-      "Buy Lyra Solo QR sanitary napkin vending machine at ₹18,500 (+18% GST). UPI QR payment, 25-napkin capacity, SIM-based. Best for campuses, offices & malls. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Solo QR sanitary napkin vending machine at ₹19,500 (+18% GST). UPI QR payment, 25-napkin capacity, SIM-based. Best for campuses, offices & malls. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-wave-vending-machine",
@@ -410,8 +410,8 @@ export const products: Product[] = [
     fullName: "Solo Wave Sensor Sanitary Napkin Vending Machine",
     code: "Lyra/SNVM/Wave",
     category: "vending-machine",
-    price: 22000,
-    discountedPrice: 22000,
+    price: 23000,
+    discountedPrice: 23000,
     badge: "Touchless",
     tagline: "Single wave to vend — free-issue hygiene, zero contact",
     description:
@@ -463,9 +463,9 @@ export const products: Product[] = [
       "napkin vending machine for hospitals india",
     ],
     metaTitle:
-      "Touchless Wave Napkin Vending Machine — Free Issue — ₹22,000 | Lyra",
+      "Touchless Wave Napkin Vending Machine — Free Issue — ₹23,000 | Lyra",
     metaDescription:
-      "Buy Lyra Solo Wave touchless sanitary napkin vending machine at ₹22,000 (+18% GST). Wave sensor, free-issue dispensing, stainless steel cabinet, LCD stock display, 35-napkin capacity. Best for welfare schemes, women's colleges & hospitals. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Solo Wave touchless sanitary napkin vending machine at ₹23,000 (+18% GST). Wave sensor, free-issue dispensing, stainless steel cabinet, LCD stock display, 35-napkin capacity. Best for welfare schemes, women's colleges & hospitals. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "solo-wifi-vending-machine",
@@ -612,8 +612,8 @@ export const products: Product[] = [
     fullName: "Lyra Micro Sanitary Napkin Incinerator",
     code: "Lyra/SND/Micro",
     category: "incinerator",
-    price: 12500,
-    discountedPrice: 12500,
+    price: 13000,
+    discountedPrice: 13000,
     badge: "Compact",
     tagline: "Compact, safe disposal for small facilities",
     description:
@@ -670,9 +670,9 @@ export const products: Product[] = [
       "napkin incinerator for clinics india",
     ],
     metaTitle:
-      "Sanitary Napkin Incinerator — Compact — ₹12,500 | Lyra Micro",
+      "Sanitary Napkin Incinerator — Compact — ₹13,000 | Lyra Micro",
     metaDescription:
-      "Buy Lyra Micro sanitary napkin incinerator at ₹12,500 (+18% GST). 1–5 napkins/cycle, 100 napkins/day, automatic digital temperature control, CPCB-compliant. Best for schools, clinics & small offices. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Micro sanitary napkin incinerator at ₹13,000 (+18% GST). 1–5 napkins/cycle, 100 napkins/day, automatic digital temperature control, CPCB-compliant. Best for schools, clinics & small offices. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "lyra-mini-incinerator",
@@ -680,8 +680,8 @@ export const products: Product[] = [
     fullName: "Lyra Mini Sanitary Napkin Incinerator",
     code: "Lyra/SND/Mini",
     category: "incinerator",
-    price: 15500,
-    discountedPrice: 15500,
+    price: 16000,
+    discountedPrice: 16000,
     badge: "Standard",
     tagline: "Mid-capacity disposal for colleges and offices",
     description:
@@ -740,9 +740,9 @@ export const products: Product[] = [
       "best napkin incinerator india",
     ],
     metaTitle:
-      "Sanitary Napkin Incinerator — 5–15/Cycle — ₹15,500 | Lyra Mini",
+      "Sanitary Napkin Incinerator — 5–15/Cycle — ₹16,000 | Lyra Mini",
     metaDescription:
-      "Buy Lyra Mini sanitary napkin incinerator at ₹15,500 (+18% GST). 5–15 napkins/cycle, 100/day, digital temperature display, optional WiFi IoT, SWM Rules 2016 compliant. Best for colleges, offices & hospitals. Chennai manufacturer. Call +91-8122378860.",
+      "Buy Lyra Mini sanitary napkin incinerator at ₹16,000 (+18% GST). 5–15 napkins/cycle, 100/day, digital temperature display, optional WiFi IoT, SWM Rules 2016 compliant. Best for colleges, offices & hospitals. Chennai manufacturer. Call +91-8122378860.",
   },
   {
     slug: "lyra-maxi-incinerator",
@@ -750,8 +750,8 @@ export const products: Product[] = [
     fullName: "Lyra Maxi High Capacity Sanitary Napkin Incinerator",
     code: "Lyra/SND/Maxi",
     category: "incinerator",
-    price: 39500,
-    discountedPrice: 39500,
+    price: 40000,
+    discountedPrice: 40000,
     badge: "High Capacity",
     tagline: "Industrial-grade disposal for hospitals & institutions",
     description:
@@ -811,9 +811,9 @@ export const products: Product[] = [
       "heavy duty sanitary incinerator india",
     ],
     metaTitle:
-      "High-Capacity Napkin Incinerator — ₹39,500 | Lyra Maxi",
+      "High-Capacity Napkin Incinerator — ₹40,000 | Lyra Maxi",
     metaDescription:
-      "Buy Lyra Maxi high-capacity sanitary napkin incinerator at ₹39,500 (+18% GST). 25–50 napkins/cycle, top-loading, digital temperature, optional WiFi IoT logging. Best for hospitals, medical colleges & large institutions. Chennai. Call +91-8122378860.",
+      "Buy Lyra Maxi high-capacity sanitary napkin incinerator at ₹40,000 (+18% GST). 25–50 napkins/cycle, top-loading, digital temperature, optional WiFi IoT logging. Best for hospitals, medical colleges & large institutions. Chennai. Call +91-8122378860.",
   },
 
   // ─── SANITARY NAPKINS ────────────────────────────────────────
@@ -970,7 +970,7 @@ function stateMeta(state: string, c: string[]): Pick<StateLocation, "metaTitle" 
   const metaTitle = full.length <= 66 ? full : `Napkin Vending Machine — ${state} | Lyra`;
   return {
     metaTitle,
-    metaDescription: `Buy sanitary napkin vending machines & incinerators in ${state}. Lyra Enterprises (Chennai manufacturer) supplies and installs in ${c[0]}, ${c[1]}, ${c[2]} & all districts. Prices from ₹11,000. Call +91-8122378860.`,
+    metaDescription: `Buy sanitary napkin vending machines & incinerators in ${state}. Lyra Enterprises (Chennai manufacturer) supplies and installs in ${c[0]}, ${c[1]}, ${c[2]} & all districts. Prices from ₹12,000. Call +91-8122378860.`,
   };
 }
 

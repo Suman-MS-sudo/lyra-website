@@ -68,7 +68,7 @@ function getStateFaqs(city: StateLocation) {
     },
     {
       q: `What is the price of a sanitary napkin vending machine in ${city.state}?`,
-      a: `Pricing is the same nationwide: from ₹11,000 (+18% GST) for the Push Button model up to ₹26,500 for the Solo Ethernet IoT machine. Incinerators range ₹12,500–₹39,500. Freight to ${city.state} is quoted separately based on the delivery pincode.`,
+      a: `Pricing is the same nationwide: from ₹12,000 (+18% GST) for the Push Button model up to ₹26,500 for the Solo Ethernet IoT machine. Incinerators range ₹13,000–₹40,000. Freight to ${city.state} is quoted separately based on the delivery pincode.`,
     },
     {
       q: `Do you provide on-site installation and service in ${city.state}?`,
@@ -281,7 +281,7 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
               warranty and GST invoice, and complies with Solid Waste Management Rules 2016 and CPCB guidelines for menstrual waste disposal.
             </p>
             <p className="mt-4 text-sm text-gray-500">
-              Machine prices start at ₹11,000 (+18% GST); freight to {city.state} is quoted separately based on destination.{" "}
+              Machine prices start at ₹12,000 (+18% GST); freight to {city.state} is quoted separately based on destination.{" "}
               <Link href="/products/sanitary-napkin-vending-machines" className="font-semibold text-primary-600 hover:underline">See all models and prices →</Link>
             </p>
           </div>

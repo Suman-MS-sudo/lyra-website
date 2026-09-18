@@ -64,7 +64,7 @@ function getFaqs(slug: string) {
   const productFaqs: Record<string, { q: string; a: string }[]> = {
     "push-button-vending-machine": [
       { q: "Does the Push Button machine need internet or WiFi to work?", a: "No. The machine operates completely offline on 230V AC mains power. Its WiFi hotspot is only used for pulling usage reports on demand — it never needs an internet connection, SIM card or data plan." },
-      { q: "Is there a monthly fee or subscription?", a: "No. There is no SIM card, no data plan and no subscription of any kind. The ₹11,000 price is the only cost, for the life of the machine." },
+      { q: "Is there a monthly fee or subscription?", a: "No. There is no SIM card, no data plan and no subscription of any kind. The ₹12,000 price is the only cost, for the life of the machine." },
       { q: "How do I check how much stock is left?", a: "Press the WiFi button on the machine to open its private hotspot, connect with any phone, and pull a spreadsheet-ready CSV usage report in seconds — no app or login needed." },
       { q: "What happens if someone tampers with the button?", a: "The built-in anti-abuse system detects rapid or repeated tampering, locks out the vend button temporarily, and logs the incident." },
       { q: "How many napkins can it hold?", a: "The Push Button machine holds 25 sanitary napkins per fill." },

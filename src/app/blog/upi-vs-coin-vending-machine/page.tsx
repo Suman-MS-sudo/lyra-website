@@ -92,7 +92,7 @@ export default function BlogPost2() {
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Coin machine (Solo Coin)</strong> — accepts a coin. No internet. No app. Simple mechanical + electronic operation.</li>
-              <li><strong><Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">UPI QR machine (Solo QR)</Link></strong> — accepts UPI QR scan only (PhonePe, Google Pay, Paytm, any UPI app). SIM-based connectivity, no coin acceptor needed. The lowest-cost way to go fully cashless at ₹18,500.</li>
+              <li><strong><Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">UPI QR machine (Solo QR)</Link></strong> — accepts UPI QR scan only (PhonePe, Google Pay, Paytm, any UPI app). SIM-based connectivity, no coin acceptor needed. The lowest-cost way to go fully cashless at ₹19,500.</li>
               <li><strong>UPI WiFi machine (Solo WiFi)</strong> — accepts UPI QR scan AND coin. WiFi connected. Cloud dashboard. Remote monitoring. For facilities that want both payment options plus live reporting.</li>
             </ul>
             <p>
