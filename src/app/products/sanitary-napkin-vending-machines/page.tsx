@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { vendingMachines, SITE, formatINR } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: { absolute: "Napkin Vending Machines — 8 Models & Prices | Lyra Enterprises" },
+  title: { absolute: "Napkin (Pad) Vending Machines — 8 Models & Prices | Lyra Enterprises" },
   description:
     "Buy sanitary napkin vending machines in India. 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹12,000. 1-year warranty. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
   keywords: [
@@ -20,17 +20,21 @@ export const metadata: Metadata = {
     "vending machine manufacturer chennai india",
     "sanitary napkin machine for schools hospitals offices",
     "best napkin vending machine india",
+    "sanitary pad vending machine price india",
+    "pad vending machine for schools india",
   ],
   alternates: { canonical: `${SITE.url}/products/sanitary-napkin-vending-machines` },
   openGraph: {
     title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
     description: "Compare all 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹12,000. Pan-India delivery.",
     url: `${SITE.url}/products/sanitary-napkin-vending-machines`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sanitary Napkin Vending Machines — All Models India | Lyra Enterprises",
     description: "Compare all 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹12,000. Pan-India delivery.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

@@ -21,11 +21,13 @@ export const metadata: Metadata = {
     title: "Why Every School in India Needs a Sanitary Napkin Vending Machine",
     description: "36% of Indian girls miss school during menstruation. Vending machines solve this directly. See how.",
     url: `${SITE.url}/blog/why-every-school-needs-napkin-vending-machine`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Why Every School in India Needs a Sanitary Napkin Vending Machine",
     description: "36% of Indian girls miss school during menstruation. Vending machines solve this directly. See how.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

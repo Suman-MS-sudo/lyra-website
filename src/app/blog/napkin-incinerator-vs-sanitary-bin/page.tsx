@@ -21,11 +21,13 @@ export const metadata: Metadata = {
     title: "Sanitary Napkin Incinerator vs Bio Bin — Which is Better for India?",
     description: "Bio bins create infection risk and require manual disposal. Incinerators eliminate waste completely. See the full comparison.",
     url: `${SITE.url}/blog/napkin-incinerator-vs-sanitary-bin`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sanitary Napkin Incinerator vs Bio Bin — Which is Better for India?",
     description: "Bio bins create infection risk and require manual disposal. Incinerators eliminate waste completely. See the full comparison.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

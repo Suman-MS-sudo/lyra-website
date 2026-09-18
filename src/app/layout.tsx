@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Lyra Enterprises",
   },
   description:
-    "Lyra Enterprises — India's #1 manufacturer of sanitary napkin vending machines & incinerators. Coin, UPI, WiFi & IoT models. Trusted by 200+ institutions.",
+    "Lyra Enterprises — India's #1 manufacturer of sanitary napkin (pad) vending machines & incinerators. Coin, UPI, WiFi & IoT models. Trusted by 200+ institutions.",
 
   keywords: [
     // Primary product keywords

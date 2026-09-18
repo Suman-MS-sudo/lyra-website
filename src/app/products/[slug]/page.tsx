@@ -24,6 +24,7 @@ export async function generateMetadata({
   if (!product) return {};
 
   const canonical = `${SITE.url}/products/${product.slug}`;
+  const productImage = `${SITE.url}${product.image}`;
   return {
     title: { absolute: product.metaTitle },
     description: product.metaDescription,
@@ -35,11 +36,13 @@ export async function generateMetadata({
       url: canonical,
       type: "website",
       siteName: SITE.name,
+      images: [{ url: productImage, width: 800, height: 800, alt: product.fullName }],
     },
     twitter: {
       card: "summary_large_image",
       title: product.metaTitle,
       description: product.metaDescription,
+      images: [productImage],
     },
   };
 }

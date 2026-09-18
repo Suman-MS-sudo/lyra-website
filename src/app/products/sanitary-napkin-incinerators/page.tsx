@@ -23,11 +23,13 @@ export const metadata: Metadata = {
     title: "Sanitary Napkin Incinerators — All Models India | Lyra Enterprises",
     description: "Micro, Mini & Maxi incinerators. CPCB & SWM compliant. Pan-India delivery from Chennai.",
     url: `${SITE.url}/products/sanitary-napkin-incinerators`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sanitary Napkin Incinerators — All Models India | Lyra Enterprises",
     description: "Micro, Mini & Maxi incinerators. CPCB & SWM compliant. Pan-India delivery from Chennai.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

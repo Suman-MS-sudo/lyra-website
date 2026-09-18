@@ -27,12 +27,14 @@ export const metadata: Metadata = {
     description:
       "Lyra vending machines reduce girl absenteeism, meet Swachh Bharat compliance, and are available on GeM for direct government procurement.",
     url: `${SITE.url}/solutions/schools-colleges`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sanitary Napkin Vending Machine for Schools & Colleges | Lyra Enterprises India",
     description:
       "Lyra vending machines reduce girl absenteeism, meet Swachh Bharat compliance, and are available on GeM for direct government procurement.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

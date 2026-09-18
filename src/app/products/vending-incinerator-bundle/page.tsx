@@ -27,12 +27,14 @@ export const metadata: Metadata = {
     description:
       "Get a complete menstrual hygiene solution — vending machine + incinerator combo. Full SWM Rules 2016 compliance. Best for schools, hostels and hospitals. Bundle pricing available.",
     url: `${SITE.url}/products/vending-incinerator-bundle`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Vending Machine + Incinerator Bundle | Complete Menstrual Hygiene Solution | Lyra India",
     description:
       "Get a complete menstrual hygiene solution — vending machine + incinerator combo. Full SWM Rules 2016 compliance. Best for schools, hostels and hospitals. Bundle pricing available.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

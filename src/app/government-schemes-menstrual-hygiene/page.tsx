@@ -30,12 +30,14 @@ export const metadata: Metadata = {
     description:
       "A procurement guide to the central and state schemes, CSR routes and local-area funds that pay for sanitary napkin vending machines and incinerators in India.",
     url: PAGE_URL,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Government Schemes & Subsidies for Menstrual-Hygiene Infrastructure | Lyra Enterprises",
     description:
       "Central and state schemes, CSR routes and local-area funds that pay for sanitary napkin vending machines and incinerators in India.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

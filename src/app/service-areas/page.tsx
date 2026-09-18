@@ -26,12 +26,14 @@ export const metadata: Metadata = {
     description:
       "Sanitary napkin vending machines and incinerators delivered and installed across all Indian states and union territories. Chennai manufacturer.",
     url: `${SITE.url}/service-areas`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Service Areas — Lyra Enterprises Across India",
     description:
       "Sanitary napkin vending machines and incinerators delivered and installed across all Indian states and union territories.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

@@ -15,12 +15,14 @@ export const metadata: Metadata = {
     description:
       "Contact Lyra Enterprises for product enquiries, quotes, installation assistance and shipping questions. Chennai manufacturer, pan-India delivery.",
     url: `${SITE.url}/contact`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Contact Us | Lyra Enterprises",
     description:
       "Contact Lyra Enterprises for product enquiries, quotes, installation assistance and shipping questions. Chennai manufacturer, pan-India delivery.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

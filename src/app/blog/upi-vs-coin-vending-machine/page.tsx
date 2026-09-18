@@ -21,11 +21,13 @@ export const metadata: Metadata = {
     title: "UPI QR vs Coin Vending Machine — Which One Should You Buy? India 2026",
     description: "Coin machines are cheaper upfront, smart UPI machines pay back in operational savings. Here's a full comparison to help you decide.",
     url: `${SITE.url}/blog/upi-vs-coin-vending-machine`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "UPI QR vs Coin Vending Machine — Which One Should You Buy? India 2026",
     description: "Coin machines are cheaper upfront, smart UPI machines pay back in operational savings. Here's a full comparison to help you decide.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

@@ -24,12 +24,14 @@ export const metadata: Metadata = {
     description:
       "Expert articles on menstrual hygiene management, vending machine buying guides and incinerator comparisons. By Lyra Enterprises — India's #1 manufacturer.",
     url: `${SITE.url}/blog`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Blog — Menstrual Hygiene, Vending Machines & Incinerators India | Lyra Enterprises",
     description:
       "Expert articles on menstrual hygiene management, vending machine buying guides and incinerator comparisons. By Lyra Enterprises — India's #1 manufacturer.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

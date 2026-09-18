@@ -22,11 +22,13 @@ export const metadata: Metadata = {
     title: "Manual vs Automatic Sanitary Napkin Vending Machine India 2026",
     description: "Push Button free-vend machines cost less upfront. Coin/UPI automatics cost more but add payment automation. Here’s exactly when to choose each — and how to avoid the wrong pick.",
     url: `${SITE.url}/blog/manual-vs-automatic-napkin-vending-machine`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Manual vs Automatic Sanitary Napkin Vending Machine India 2026",
     description: "Push Button free-vend machines cost less upfront. Coin/UPI automatics cost more but add payment automation. Here’s exactly when to choose each — and how to avoid the wrong pick.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

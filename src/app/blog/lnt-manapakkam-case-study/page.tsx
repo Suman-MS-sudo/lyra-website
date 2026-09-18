@@ -22,12 +22,14 @@ export const metadata: Metadata = {
     description:
       "25 IoT-enabled sanitary napkin vending machines installed and supported by Lyra Enterprises at Larsen & Toubro's Manapakkam campus.",
     url: `${SITE.url}/blog/${SLUG}`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "25 IoT Vending Machines at L&T Manapakkam, Chennai — Case Study",
     description:
       "25 IoT-enabled sanitary napkin vending machines installed and supported by Lyra Enterprises at Larsen & Toubro's Manapakkam campus.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

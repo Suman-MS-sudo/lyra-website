@@ -27,12 +27,14 @@ export const metadata: Metadata = {
     description:
       "CPCB-compliant vending machines and incinerators for hospitals, clinics and healthcare facilities. Biomedical Waste Rules 2016 compliant. GeM procurement available.",
     url: `${SITE.url}/solutions/hospitals`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sanitary Napkin Vending Machine for Hospitals | Lyra Enterprises India",
     description:
       "CPCB-compliant vending machines and incinerators for hospitals, clinics and healthcare facilities. Biomedical Waste Rules 2016 compliant. GeM procurement available.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

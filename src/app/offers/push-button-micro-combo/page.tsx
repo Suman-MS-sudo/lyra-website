@@ -39,6 +39,7 @@ export const metadata: Metadata = {
     title: "Push Button + Micro Incinerator Combo Offer ₹19,999 | Lyra Enterprises",
     description:
       "Complete menstrual hygiene compliance in one order — Push Button Vending Machine + Lyra Micro Incinerator for ₹19,999 + GST + Freight.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 

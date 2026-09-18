@@ -27,12 +27,14 @@ export const metadata: Metadata = {
     description:
       "Smart, UPI-enabled vending machines for corporate offices, IT parks and factories. POSH-compliant, remote monitoring, usage analytics.",
     url: `${SITE.url}/solutions/offices`,
+    images: [{ url: `${SITE.url}/images/og-image.jpg`, width: 1200, height: 630, alt: "Lyra Enterprises" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sanitary Napkin Vending Machine for Offices | Lyra Enterprises India",
     description:
       "Smart, UPI-enabled vending machines for corporate offices, IT parks and factories. POSH-compliant, remote monitoring, usage analytics.",
+    images: [`${SITE.url}/images/og-image.jpg`],
   },
 };
 
