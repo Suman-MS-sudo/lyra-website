@@ -38,7 +38,7 @@ const sectors: { label: string; items: Customer[] }[] = [
   },
 ];
 
-const testimonials = [
+export const testimonials = [
   {
     content:
       "After installing this machine, used sanitary pads are being disposed of in a safe and hygienic manner. It is very useful, and they are truly providing good quality service.",

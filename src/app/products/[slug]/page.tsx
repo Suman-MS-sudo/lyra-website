@@ -6,6 +6,7 @@ import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
 import ProductPurchasePanel from "@/components/ProductPurchasePanel";
+import { testimonials } from "@/components/Customers";
 import { products, vendingMachines, getProductBySlug, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
 
 /* ─── Static params for all product pages ─────────────────── */
@@ -199,10 +200,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       hasMerchantReturnPolicy: {
         "@type": "MerchantReturnPolicy",
         applicableCountry: "IN",
-        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
-        merchantReturnDays: 7,
-        returnMethod: "https://schema.org/ReturnByMail",
-        returnFees: "https://schema.org/ReturnShippingFees",
+        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+        merchantReturnLink: `${SITE.url}/cancellation-refund-policy`,
       },
     },
   };
@@ -535,6 +534,27 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             </div>
           </section>
         )}
+
+        {/* ── Customer testimonials (real, verified Google reviews) ── */}
+        <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">What Our Customers Say</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {testimonials.map((t) => (
+              <div key={t.author} className="rounded-2xl border border-gray-100 bg-white shadow-sm p-5">
+                <p className="text-sm text-gray-700 leading-relaxed">&ldquo;{t.content}&rdquo;</p>
+                <div className="mt-4 flex items-center gap-3">
+                  <span className={`w-9 h-9 rounded-full bg-gradient-to-br ${product.accent} text-white text-xs font-bold flex items-center justify-center flex-shrink-0`}>
+                    {t.initials}
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900">{t.author}</p>
+                    <p className="text-xs text-gray-500">{t.company}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* ── FAQ ──────────────────────────────────────────── */}
         <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
