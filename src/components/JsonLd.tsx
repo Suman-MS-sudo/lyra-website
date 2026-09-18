@@ -44,8 +44,8 @@ const organizationSchema = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 13.1143,
-    longitude: 80.1548,
+    latitude: 13.122041492078642,
+    longitude: 80.14473080170454,
   },
   telephone: "+91-8122378860",
   email: "sales@lyraenterprise.co.in",
@@ -86,6 +86,12 @@ const organizationSchema = {
       postalCode: "600069",
       addressCountry: "IN",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 12.957928570733447,
+      longitude: 80.0332898772614,
+    },
+    hasMap: "https://www.google.com/maps?q=12.957928570733447,80.0332898772614",
   },
   sameAs: [
     "https://wa.me/918122378860",
@@ -138,9 +144,10 @@ const localBusinessSchema = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 13.1143,
-    longitude: 80.1548,
+    latitude: 13.122041492078642,
+    longitude: 80.14473080170454,
   },
+  hasMap: "https://www.google.com/maps?q=13.122041492078642,80.14473080170454",
   openingHours: "Mo-Sa 09:30-18:30",
   areaServed: [
     { "@type": "State", name: "Tamil Nadu" },
@@ -171,6 +178,12 @@ const localBusinessNorthSchema = {
     postalCode: "712223",
     addressCountry: "IN",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 22.77103758410416,
+    longitude: 88.322645,
+  },
+  hasMap: "https://www.google.com/maps?q=22.77103758410416,88.322645",
   openingHours: "Mo-Sa 09:30-18:30",
   areaServed: { "@type": "AdministrativeArea", name: "North India" },
   branchOf: { "@id": `${SITE_URL}/#organization` },
