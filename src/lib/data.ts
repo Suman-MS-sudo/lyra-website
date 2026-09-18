@@ -70,6 +70,24 @@ export type Product = {
   compare?: CompareRow;
 };
 
+/** Genuine, attributed Google-review testimonials — used on the homepage and product pages. */
+export const testimonials = [
+  {
+    content:
+      "After installing this machine, used sanitary pads are being disposed of in a safe and hygienic manner. It is very useful, and they are truly providing good quality service.",
+    author: "Shyamala",
+    company: "Verified Google Reviewer, Vels University",
+    initials: "S",
+  },
+  {
+    content:
+      "Very good service and product. Using in IISc Bangalore — staff is attentive and cloud service is very elaborate.",
+    author: "Arpita Das",
+    company: "Google Local Guide, IISc Bangalore",
+    initials: "AD",
+  },
+];
+
 export const products: Product[] = [
   // ─── VENDING MACHINES ───────────────────────────────────────
   {

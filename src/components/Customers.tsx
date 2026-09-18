@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import Link from "next/link";
+import { testimonials } from "@/lib/data";
 
 type Customer = { name: string; short: string; logo: string };
 
@@ -35,23 +36,6 @@ const sectors: { label: string; items: Customer[] }[] = [
       { name: "Vivekanandha Institutions", short: "VI", logo: "/images/customers/Vivekanandha Educational Institutions.png" },
       { name: "Srikrish School", short: "SKS", logo: "/images/customers/Srikrish school.png" },
     ],
-  },
-];
-
-export const testimonials = [
-  {
-    content:
-      "After installing this machine, used sanitary pads are being disposed of in a safe and hygienic manner. It is very useful, and they are truly providing good quality service.",
-    author: "Shyamala",
-    company: "Verified Google Reviewer, Vels University",
-    initials: "S",
-  },
-  {
-    content:
-      "Very good service and product. Using in IISc Bangalore — staff is attentive and cloud service is very elaborate.",
-    author: "Arpita Das",
-    company: "Google Local Guide, IISc Bangalore",
-    initials: "AD",
   },
 ];
 

@@ -6,8 +6,7 @@ import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
 import ProductPurchasePanel from "@/components/ProductPurchasePanel";
-import { testimonials } from "@/components/Customers";
-import { products, vendingMachines, getProductBySlug, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
+import { products, vendingMachines, getProductBySlug, testimonials, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
 
 /* ─── Static params for all product pages ─────────────────── */
 export function generateStaticParams() {
