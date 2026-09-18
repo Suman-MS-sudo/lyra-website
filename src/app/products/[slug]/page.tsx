@@ -264,7 +264,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
               {/* Price */}
               <div className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <span className="text-3xl font-bold text-gray-900">
+                <span className={`text-4xl font-extrabold bg-gradient-to-r ${product.accent} bg-clip-text text-transparent`}>
                   {isNapkin ? `${formatINR(priceExGst)} / napkin` : formatINR(priceExGst)}
                 </span>
                 {!isNapkin && (
@@ -275,8 +275,12 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </div>
               <p className="mt-1 text-xs text-gray-400">Ex-works Chennai. Price as per current Lyra pricelist and subject to revision.</p>
 
-              {/* Trust badges */}
+              {/* Stock + trust badges */}
               <div className="mt-6 flex flex-wrap gap-3 text-sm">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200 font-semibold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  In Stock — Ships in 1–3 Days
+                </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ 1-Year Warranty</span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Pan-India Delivery</span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Free Installation Support</span>
@@ -369,12 +373,39 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         {/* Spacer so the sticky bar doesn't cover the footer on mobile */}
         <div className="lg:hidden h-20" />
 
+        {/* ── Differentiators: why nothing else at this price competes ─ */}
+        {product.differentiators && product.differentiators.length > 0 && (
+          <section className={`bg-gradient-to-br ${product.accent} py-14`}>
+            <div className="max-w-7xl mx-auto px-5 sm:px-8">
+              <div className="text-center max-w-2xl mx-auto mb-10">
+                <span className="inline-block px-3 py-1 rounded-full bg-white/15 text-white text-xs font-bold uppercase tracking-widest mb-4">
+                  Unmatched At This Price
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-bold text-white drop-shadow-sm">
+                  Why nothing else near {formatINR(priceExGst)} comes close
+                </h2>
+                <p className="mt-3 text-white/85 text-sm sm:text-base">
+                  The {product.name} packs intelligence normally reserved for machines costing ₹18,000 and up — with zero recurring cost.
+                </p>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {product.differentiators.map((d) => (
+                  <div key={d.title} className="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 p-5">
+                    <p className="font-bold text-white text-sm mb-2">{d.title}</p>
+                    <p className="text-white/80 text-xs leading-relaxed">{d.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* ── Features ─────────────────────────────────────── */}
         <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Features</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {product.features.map((feat) => (
-              <div key={feat} className="flex items-start gap-3 bg-white rounded-xl border border-gray-100 shadow-sm p-4">
+              <div key={feat} className="flex items-start gap-3 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all p-4">
                 <span className={`mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br ${product.accent} flex items-center justify-center`}>
                   <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 12 12">
                     <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

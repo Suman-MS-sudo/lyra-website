@@ -59,6 +59,8 @@ export type Product = {
   image: string;
   /** Public path to a downloadable product booklet/spec-sheet PDF, if available. */
   booklet?: string;
+  /** Optional "what sets this apart at this price" callouts — only set when genuinely differentiated vs. typical machines in this price band. */
+  differentiators?: { title: string; detail: string }[];
   keywords: string[];
   metaTitle: string;
   metaDescription: string;
@@ -126,6 +128,24 @@ export const products: Product[] = [
     accent: "from-gray-600 to-gray-800",
     image: "/images/products/push-button-vm.png",
     booklet: "/downloads/lyra-push-button-booklet.pdf",
+    differentiators: [
+      {
+        title: "Smart, not just mechanical",
+        detail: "Most machines under ₹15,000 are bare mechanical boxes with no tracking. The Push Button has an onboard microcontroller that timestamps every dispense.",
+      },
+      {
+        title: "Zero recurring cost, forever",
+        detail: "No SIM, no data plan, no subscription — ever. Competing 'smart' machines usually require a paid SIM plan to unlock reporting features.",
+      },
+      {
+        title: "Self-protecting mechanism",
+        detail: "Motor cuts out automatically when stock runs out, preventing the dry-cycle burnout that damages unprotected machines over time.",
+      },
+      {
+        title: "Reports without an app",
+        detail: "Tap the machine's WiFi button, connect any phone, and export a CSV usage report in seconds — no login, no cloud account, no internet needed.",
+      },
+    ],
     weightKg: 10,
     compare: { payment: "Push Button", connectivity: "Offline WiFi (reports only)", cloudReports: "No", touchDisplay: "No", iotMonitoring: "No" },
     keywords: [
