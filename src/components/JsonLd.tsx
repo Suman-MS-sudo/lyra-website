@@ -228,8 +228,8 @@ const vendingMachineProducts = [
     image: "solo-rfid.png",
     price: 16000,
     description:
-      "RFID card/tag operated sanitary napkin vending machine. One tap to vend, usage reports can be generated. 25-napkin capacity. Ideal for corporate campuses and hostels.",
-    keywords: "rfid vending machine india, contactless napkin vending machine, rfid card napkin machine",
+      "RFID card/tag operated sanitary napkin vending machine. Single tap to vend, ISO 14443/15693 card compatible, per-card usage logging with full audit trail, cloud dashboard and OTA firmware updates. 25-napkin capacity. Ideal for corporate campuses and hostels.",
+    keywords: "rfid vending machine india, contactless napkin vending machine, rfid card napkin machine, iso 14443 access card napkin machine, per card usage audit trail vending machine",
   },
   {
     name: "Solo QR UPI Sanitary Napkin Vending Machine",
@@ -258,8 +258,8 @@ const vendingMachineProducts = [
     image: "solo-wifi.png",
     price: 24500,
     description:
-      "Smart WiFi-enabled sanitary napkin vending machine with UPI QR code and ₹5 coin payment. Touch display, centralised cloud reports and IoT monitoring. Best seller across India.",
-    keywords: "UPI vending machine, QR code vending machine, WiFi vending machine India, smart vending machine",
+      "Smart WiFi-enabled sanitary napkin vending machine with UPI QR code and ₹5 coin backup payment. Server-side payment verification, offline transaction queuing with auto-sync, live cloud dashboard, low-stock alerts, OTA firmware updates with auto-rollback and encrypted communication. Touch display. Best seller across India.",
+    keywords: "UPI vending machine, QR code vending machine, WiFi vending machine India, smart vending machine, offline queue napkin vending machine, server verified payment vending machine, OTA firmware update vending machine",
   },
   {
     name: "Solo Ethernet UPI QR Sanitary Napkin Vending Machine",
@@ -268,8 +268,8 @@ const vendingMachineProducts = [
     image: "solo-ethernet.png",
     price: 26500,
     description:
-      "Ethernet-connected sanitary napkin vending machine with UPI QR code and ₹5 coin payment. Touch display panel, centralised cloud analytics. Ideal for hospitals and large offices.",
-    keywords: "ethernet vending machine, UPI vending machine, cloud vending machine India",
+      "Ethernet-connected sanitary napkin vending machine with UPI QR code and ₹5 coin backup payment. Wired LAN connectivity, server-side payment verification, offline transaction queuing, live cloud dashboard, OTA firmware updates with auto-rollback and encrypted communication. Touch display. Ideal for hospitals and large offices with strict IT/network policies.",
+    keywords: "ethernet vending machine, UPI vending machine, cloud vending machine India, wired lan napkin vending machine, hospital napkin vending machine encrypted",
   },
 ];
 
@@ -412,7 +412,15 @@ const faqSchema = {
       name: "Do Lyra vending machines support UPI and QR code payments?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. The Solo QR (Lyra/SNVM/QR), Solo WiFi (Lyra/SNVM/W-QR-SC) and Solo Ethernet (Lyra/SNVM/ET-QR-SC) models support UPI QR code payments — GPay, PhonePe and any UPI app. The WiFi and Ethernet models add coin operation, a touch display and cloud-based monitoring and reports.",
+        text: "Yes. The Solo QR (Lyra/SNVM/QR), Solo WiFi (Lyra/SNVM/W-QR-SC) and Solo Ethernet (Lyra/SNVM/ET-QR-SC) models support UPI QR code payments — GPay, PhonePe and any UPI app. The WiFi and Ethernet models add ₹5 coin backup, server-side payment verification before every dispense, a touch display, live cloud dashboard and usage analytics.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What happens if the internet or WiFi goes down on a Lyra IoT vending machine?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The Solo WiFi and Solo Ethernet models continue accepting and queuing transactions during a connectivity outage. Once the connection is restored, queued transactions sync automatically — no lost sales and no lost stock count. Firmware updates are also delivered over the air with automatic rollback if an update fails, and the machines self-reset automatically if they ever hang.",
       },
     },
     {

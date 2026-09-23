@@ -79,15 +79,25 @@ function getFaqs(slug: string) {
     "solo-rfid-vending-machine": [
       { q: "What type of RFID cards work with the Solo RFID?", a: "The Solo RFID is compatible with standard ISO 14443 and ISO 15693 contactless smart cards — the same type used in most corporate access control systems." },
       { q: "Can it integrate with our existing access cards?", a: "Yes, if your cards are ISO 14443 or ISO 15693, they will work directly. Contact us to verify compatibility with your existing access control infrastructure." },
+      { q: "Does the Solo RFID track who used the machine?", a: "Yes. Every dispense is logged against the specific card or tag used, giving a full per-card audit trail viewable from the cloud dashboard — useful for departmental billing, hostel allotments or misuse monitoring." },
+      { q: "Does the Solo RFID have a cloud dashboard?", a: "Yes. It includes the same live cloud dashboard, automatic low-stock alerts and usage analytics as the WiFi and Ethernet models, plus remote OTA firmware updates and automatic fault recovery." },
     ],
     "solo-wifi-vending-machine": [
-      { q: "Does the Solo WiFi need a SIM card?", a: "No — it uses your facility's existing WiFi network (2.4GHz). No SIM card or separate data plan is required." },
-      { q: "Which UPI apps are supported?", a: "It supports all UPI apps including GPay, PhonePe, Paytm, BHIM and any bank UPI. The QR code is NPCI-standard." },
-      { q: "Can I see live sales reports?", a: "Yes — the cloud dashboard shows real-time dispensing count, revenue, refill alerts and usage trends accessible from any browser." },
+      { q: "Does the Solo WiFi need a SIM card?", a: "No — it uses your facility's existing 2.4GHz WiFi network. No SIM card or separate data plan is required." },
+      { q: "Which UPI apps are supported?", a: "It supports all NPCI-standard UPI apps including GPay, PhonePe, Paytm and BHIM." },
+      { q: "Can I see live sales reports?", a: "Yes — the cloud dashboard shows real-time stock levels, sales, dispensing count and machine status from any browser, plus automatic low-stock alerts and usage analytics." },
+      { q: "Is the payment verified before the napkin is dispensed?", a: "Yes. Every transaction is verified server-side before the machine dispenses, which blocks spoofed or fake payment attempts. Dispense happens instantly once payment is confirmed — there's no manual approval step." },
+      { q: "What happens if the WiFi goes down during a transaction?", a: "The machine keeps accepting and queuing transactions offline during a WiFi outage. Once connectivity is restored, queued transactions sync automatically — no lost sales and no lost stock count. Payment confirmation is also pushed to the machine in real time with an automatic fallback check, so a payment is never missed even if the instant push fails." },
+      { q: "Are firmware updates automatic?", a: "Yes. Firmware updates are delivered over the air (OTA) with automatic rollback if an update ever fails, so there's no technician visit needed. The machine also self-resets automatically if it ever hangs." },
+      { q: "Is the connection between the machine and the cloud secure?", a: "Yes. All communication between the machine and the cloud dashboard is encrypted." },
     ],
     "solo-ethernet-vending-machine": [
-      { q: "Why choose Ethernet over WiFi?", a: "Ethernet provides a stable, wired connection with 99.9% uptime — preferred in hospitals, government buildings and large campuses where WiFi may be patchy or security policies restrict wireless devices." },
-      { q: "Does the Solo Ethernet need a SIM card?", a: "No — it connects via your existing LAN/Ethernet cable. No SIM card or WiFi router needed." },
+      { q: "Why choose Ethernet over WiFi?", a: "Ethernet provides a stable, low-latency wired connection — preferred in hospitals, government buildings and large campuses where WiFi signal is unreliable or IT policy restricts wireless devices, and it suits environments with strict network segmentation." },
+      { q: "Does the Solo Ethernet need a SIM card or WiFi router?", a: "No — it connects via your existing LAN/Ethernet cable and plugs straight into existing network infrastructure. No SIM card or WiFi router dependency at all." },
+      { q: "Is the payment verified before the napkin is dispensed?", a: "Yes. Every transaction is verified server-side before dispensing, blocking spoofed or fake payment attempts, with instant dispense once payment is confirmed." },
+      { q: "What happens if the network connection drops during a transaction?", a: "The machine queues transactions offline during a connection loss and automatically syncs them once the connection is restored — no lost sales, no lost stock count." },
+      { q: "Are firmware updates automatic?", a: "Yes. Firmware is updated remotely over the air with automatic rollback if an update fails, and the machine self-resets automatically if it ever hangs — no technician visit needed." },
+      { q: "Is the LAN connection encrypted?", a: "Yes. The Solo Ethernet uses the same encrypted, verified communication channel as the WiFi model — nothing is sent in the open over the wire." },
     ],
     "lyra-micro-incinerator": [
       { q: "Is the Lyra Micro incinerator CPCB approved?", a: "The Lyra Micro follows CPCB menstrual waste disposal guidelines. It burns sanitary waste at high temperature, producing only sterile ash — no liquid effluent." },
@@ -175,6 +185,11 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     category: categorySchemaName,
     url: canonical,
     keywords: product.keywords.join(", "),
+    additionalProperty: product.features.map((feat) => ({
+      "@type": "PropertyValue",
+      name: feat,
+      value: true,
+    })),
     offers: {
       "@type": "Offer",
       url: canonical,
