@@ -35,6 +35,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "manual-vs-automatic-napkin-vending-machine",
     "solid-waste-management-rules-2016-india-guide",
     "lnt-manapakkam-case-study",
+    "best-sanitary-napkin-vending-machine-india",
+    "iot-vending-machine-technology-india",
   ];
 
   const solutionSlugs = [

@@ -449,6 +449,14 @@ const faqSchema = {
     },
     {
       "@type": "Question",
+      name: "Which is the best sanitary napkin vending machine in India?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The best model depends on the facility. For most institutions across India, the Lyra Solo WiFi is the top choice — UPI QR and coin payment, server-side payment verification, a touch display and a live cloud dashboard with offline resilience so no transaction is ever lost. Free-issue welfare schemes are better served by the touchless Solo Wave, and budget-first schools do well with the Solo Coin or Solo Multi-Coin. Lyra manufactures all 8 categories so institutions can match the model to their exact use case.",
+      },
+    },
+    {
+      "@type": "Question",
       name: "Which is the best sanitary napkin vending machine manufacturer in South India?",
       acceptedAnswer: {
         "@type": "Answer",

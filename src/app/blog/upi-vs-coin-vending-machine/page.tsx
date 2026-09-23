@@ -167,6 +167,7 @@ export default function BlogPost2() {
           <div className="mt-12 pt-8 border-t border-gray-100">
             <p className="text-sm font-bold text-gray-900 mb-4">Related Articles</p>
             <div className="space-y-3">
+              <Link href="/blog/best-sanitary-napkin-vending-machine-india" className="block text-sm text-primary-600 hover:underline">Best Sanitary Napkin Vending Machine in India (2026) — Full Comparison →</Link>
               <Link href="/blog/why-every-school-needs-napkin-vending-machine" className="block text-sm text-primary-600 hover:underline">Why Every School Needs a Napkin Vending Machine →</Link>
               <Link href="/blog/napkin-incinerator-vs-sanitary-bin" className="block text-sm text-primary-600 hover:underline">Napkin Incinerator vs Bio Bin →</Link>
             </div>

@@ -2033,4 +2033,40 @@ export const blogPosts = [
       "corporate vending machine installation chennai",
     ],
   },
+  {
+    slug: "best-sanitary-napkin-vending-machine-india",
+    title: "Best Sanitary Napkin Vending Machine in India (2026) — Full Comparison",
+    excerpt:
+      "All 8 Lyra models compared side by side — prices, features and which one is best for your school, hospital, office or hostel, anywhere in India.",
+    date: "2026-09-23",
+    readTime: "8 min read",
+    category: "Buying Guide",
+    metaTitle:
+      "Best Sanitary Napkin Vending Machine in India (2026) — Full Comparison",
+    metaDescription:
+      "Compare all 8 Lyra Enterprises sanitary napkin vending machine models — prices, features and which one is best for your school, hospital, office or hostel across India.",
+    keywords: [
+      "best sanitary napkin vending machine india",
+      "best napkin vending machine manufacturer india",
+      "top sanitary napkin vending machine company india",
+    ],
+  },
+  {
+    slug: "iot-vending-machine-technology-india",
+    title: "Inside Lyra's IoT Vending Machine Technology — WiFi, Ethernet & RFID",
+    excerpt:
+      "How Lyra's Solo WiFi, Solo Ethernet and Solo RFID machines handle payment verification, offline transaction queuing and OTA firmware updates — explained model by model.",
+    date: "2026-09-23",
+    readTime: "7 min read",
+    category: "Technology",
+    metaTitle:
+      "Inside Lyra's IoT Vending Machine Technology — WiFi, Ethernet & RFID",
+    metaDescription:
+      "The engineering behind Lyra's IoT sanitary napkin vending machines — server-side payment verification, offline resilience, OTA firmware rollback and encrypted cloud sync.",
+    keywords: [
+      "iot sanitary napkin vending machine india",
+      "smart napkin vending machine technology india",
+      "offline sync vending machine india",
+    ],
+  },
 ];
