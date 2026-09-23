@@ -228,8 +228,8 @@ const vendingMachineProducts = [
     image: "solo-rfid.png",
     price: 16000,
     description:
-      "RFID card/tag operated sanitary napkin vending machine. Single tap to vend, ISO 14443/15693 card compatible, per-card usage logging with full audit trail, offline logging with auto-sync, cloud dashboard and OTA firmware updates. 25-napkin capacity. Ideal for corporate campuses and hostels.",
-    keywords: "rfid vending machine india, contactless napkin vending machine, rfid card napkin machine, iso 14443 access card napkin machine, per card usage audit trail vending machine, offline sync rfid vending machine",
+      "IoT RFID card/tag operated sanitary napkin vending machine. Prepaid & postpaid billing, per-card monthly limits, remote card activation, wired network with offline resilience, live cloud dashboard, per-card audit trail and OTA firmware updates. 25-napkin capacity. Ideal for corporate campuses and hostels.",
+    keywords: "rfid vending machine india, contactless napkin vending machine, rfid card napkin machine, prepaid postpaid rfid vending machine, per card usage audit trail vending machine, offline sync rfid vending machine, iot rfid vending machine india",
   },
   {
     name: "Solo QR UPI Sanitary Napkin Vending Machine",
