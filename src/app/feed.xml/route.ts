@@ -43,7 +43,7 @@ function item(p: Product): string {
   return `    <item>
       <g:id>${esc(p.code)}</g:id>
       <g:title>${esc(title)}</g:title>
-      <g:description>${esc(p.description)}</g:description>
+      <g:description>${esc(p.merchantDescription ?? p.description)}</g:description>
       <g:link>${esc(link)}</g:link>
       <g:image_link>${esc(image)}</g:image_link>
       <g:availability>in_stock</g:availability>
