@@ -228,8 +228,8 @@ const vendingMachineProducts = [
     image: "solo-rfid.png",
     price: 16000,
     description:
-      "RFID card/tag operated sanitary napkin vending machine. Single tap to vend, ISO 14443/15693 card compatible, per-card usage logging with full audit trail, cloud dashboard and OTA firmware updates. 25-napkin capacity. Ideal for corporate campuses and hostels.",
-    keywords: "rfid vending machine india, contactless napkin vending machine, rfid card napkin machine, iso 14443 access card napkin machine, per card usage audit trail vending machine",
+      "RFID card/tag operated sanitary napkin vending machine. Single tap to vend, ISO 14443/15693 card compatible, per-card usage logging with full audit trail, offline logging with auto-sync, cloud dashboard and OTA firmware updates. 25-napkin capacity. Ideal for corporate campuses and hostels.",
+    keywords: "rfid vending machine india, contactless napkin vending machine, rfid card napkin machine, iso 14443 access card napkin machine, per card usage audit trail vending machine, offline sync rfid vending machine",
   },
   {
     name: "Solo QR UPI Sanitary Napkin Vending Machine",
@@ -420,7 +420,7 @@ const faqSchema = {
       name: "What happens if the internet or WiFi goes down on a Lyra IoT vending machine?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The Solo WiFi and Solo Ethernet models continue accepting and queuing transactions during a connectivity outage. Once the connection is restored, queued transactions sync automatically — no lost sales and no lost stock count. Firmware updates are also delivered over the air with automatic rollback if an update fails, and the machines self-reset automatically if they ever hang.",
+        text: "The Solo WiFi, Solo Ethernet and Solo RFID models continue operating and logging transactions locally during a connectivity outage. Once the connection is restored, queued transactions and usage logs sync automatically to the cloud dashboard — no lost sales, no lost stock count and no lost audit trail entries. Firmware updates are also delivered over the air with automatic rollback if an update fails, and the machines self-reset automatically if they ever hang.",
       },
     },
     {

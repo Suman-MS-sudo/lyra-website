@@ -318,7 +318,7 @@ export const products: Product[] = [
     description:
       "RFID card/tag operated sanitary napkin vending machine. No coins, no QR scanning — secure tap-and-dispense access for corporate campuses and hostels.",
     longDescription:
-      "The Lyra Solo RFID sanitary napkin vending machine delivers touchless, identity-linked dispensing via RFID card or tag — a single tap vends instantly. No coins, no QR scanning. It's compatible with ISO 14443 / ISO 15693 cards, which covers most existing corporate access-control cards, so many institutions can use their current employee or student ID rather than issuing a new tag. Every dispense is logged against the card/tag used, giving admins a full audit trail viewable from the cloud dashboard — useful for departmental billing, hostel allotments or misuse monitoring. It shares the same cloud dashboard, low-stock alerts and usage analytics as the WiFi/Ethernet models, plus remote OTA firmware updates with rollback protection and automatic fault recovery. Best suited for corporate campuses, hostels and other controlled-access spaces where identity-linked dispensing matters more than open public payment. Compact 700×160×160 mm sheet metal cabinet with view panel and vertical loading.",
+      "The Lyra Solo RFID sanitary napkin vending machine delivers touchless, identity-linked dispensing via RFID card or tag — a single tap vends instantly. No coins, no QR scanning. It's compatible with ISO 14443 / ISO 15693 cards, which covers most existing corporate access-control cards, so many institutions can use their current employee or student ID rather than issuing a new tag. Every dispense is logged against the card/tag used, giving admins a full audit trail viewable from the cloud dashboard — useful for departmental billing, hostel allotments or misuse monitoring. Every tap is recorded locally on the machine first, so dispensing and logging keep working even if connectivity drops; queued logs sync automatically to the cloud dashboard the moment the connection is restored, so no usage record is ever lost. It shares the same cloud dashboard, low-stock alerts and usage analytics as the WiFi/Ethernet models, plus remote OTA firmware updates with rollback protection and automatic fault recovery. Best suited for corporate campuses, hostels and other controlled-access spaces where identity-linked dispensing matters more than open public payment. Compact 700×160×160 mm sheet metal cabinet with view panel and vertical loading.",
     features: [
       "RFID card / tag access — single tap to vend",
       "Compatible with ISO 14443 / ISO 15693 cards — works with existing access cards",
@@ -326,6 +326,7 @@ export const products: Product[] = [
       "Per-card usage logging — every dispense tied to the card/tag used",
       "Full audit trail for admin review (billing, hostel allotments, misuse monitoring)",
       "Usage reports per card/user, viewable from the cloud dashboard",
+      "Offline resilience — logs stored locally and dispensing continues during connection loss, auto-syncs on reconnect",
       "Live cloud dashboard — stock levels, sales & machine status",
       "Automatic low-stock alerts",
       "Usage analytics and reporting",
@@ -341,6 +342,7 @@ export const products: Product[] = [
       { label: "Payment", value: "RFID Card / Tag — single tap to vend" },
       { label: "Card Compatibility", value: "ISO 14443 / ISO 15693" },
       { label: "Data", value: "Per-card usage logs & audit trail" },
+      { label: "Offline Mode", value: "Local logging continues offline, auto-syncs on reconnect" },
       { label: "Cloud", value: "Centralised dashboard — stock, sales, status" },
       { label: "Alerts", value: "Automatic low-stock alerts" },
       { label: "Firmware", value: "Remote OTA updates with rollback protection" },

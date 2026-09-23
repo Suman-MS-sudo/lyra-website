@@ -81,6 +81,7 @@ function getFaqs(slug: string) {
       { q: "Can it integrate with our existing access cards?", a: "Yes, if your cards are ISO 14443 or ISO 15693, they will work directly. Contact us to verify compatibility with your existing access control infrastructure." },
       { q: "Does the Solo RFID track who used the machine?", a: "Yes. Every dispense is logged against the specific card or tag used, giving a full per-card audit trail viewable from the cloud dashboard — useful for departmental billing, hostel allotments or misuse monitoring." },
       { q: "Does the Solo RFID have a cloud dashboard?", a: "Yes. It includes the same live cloud dashboard, automatic low-stock alerts and usage analytics as the WiFi and Ethernet models, plus remote OTA firmware updates and automatic fault recovery." },
+      { q: "Does the Solo RFID still work if the internet or WiFi goes down?", a: "Yes. Tap-and-dispense keeps working even during a connectivity outage — each transaction is logged locally on the machine first. Once the connection is restored, all queued logs sync automatically to the cloud dashboard, so no usage record or audit trail entry is ever lost." },
     ],
     "solo-wifi-vending-machine": [
       { q: "Does the Solo WiFi need a SIM card?", a: "No — it uses your facility's existing 2.4GHz WiFi network. No SIM card or separate data plan is required." },
