@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import TrackedLink from "@/components/TrackedLink";
 import GoogleReviews from "@/components/GoogleReviews";
 import { SITE, getProductBySlug, formatINR } from "@/lib/data";
 
@@ -142,9 +143,9 @@ export default function WomensHostelsPage() {
               colleges and universities across India.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="tel:+918122378860" className="px-7 py-3.5 bg-gradient-to-r from-blue-600 to-teal-500 text-white font-semibold rounded-full shadow-lg">
+              <TrackedLink method="call" detail="hostels-page" href="tel:+918122378860" className="px-7 py-3.5 bg-gradient-to-r from-blue-600 to-teal-500 text-white font-semibold rounded-full shadow-lg">
                 Call for a quote
-              </Link>
+              </TrackedLink>
               <Link href="/sanitary-napkin-vending-machine-price-india" className="px-7 py-3.5 border border-blue-200 text-blue-700 font-semibold rounded-full hover:bg-blue-50 transition-colors">
                 See prices
               </Link>
@@ -209,7 +210,7 @@ export default function WomensHostelsPage() {
             <h2 className="font-bold text-2xl sm:text-3xl text-white mb-4">Equip your hostel or campus</h2>
             <p className="text-white/80 mb-8">Share your headcount and location. We recommend models, quantity and freight.</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="tel:+918122378860" className="px-8 py-4 bg-white text-blue-700 font-bold rounded-full hover:bg-gray-100 transition-colors">{SITE.phoneDisplay}</Link>
+              <TrackedLink method="call" detail="hostels-page" href="tel:+918122378860" className="px-8 py-4 bg-white text-blue-700 font-bold rounded-full hover:bg-gray-100 transition-colors">{SITE.phoneDisplay}</TrackedLink>
               <Link href="/contact" className="px-8 py-4 bg-white/20 text-white font-semibold rounded-full border border-white/30 hover:bg-white/30 transition-colors">Request a quote</Link>
             </div>
           </div>

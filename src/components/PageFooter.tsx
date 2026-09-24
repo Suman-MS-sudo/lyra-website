@@ -53,6 +53,8 @@ export default function PageFooter() {
               {[
                 ["All States & UTs", "/service-areas"],
                 ["Price List", "/sanitary-napkin-vending-machine-price-india"],
+                ["Compare Models", "/compare-sanitary-napkin-vending-machines"],
+                ["Solutions by Sector", "/solutions"],
                 ["Hostels & Colleges", "/solutions/womens-hostels-colleges"],
                 ["GeM & Tender Guide", "/blog/gem-tender-sanitary-napkin-vending-machine-guide"],
                 ["Government Schemes & Funding", "/government-schemes-menstrual-hygiene"],

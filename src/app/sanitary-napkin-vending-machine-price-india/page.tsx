@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import TrackedLink from "@/components/TrackedLink";
 import { SITE, vendingMachines, incinerators, formatINR, priceInclGst } from "@/lib/data";
 
 const URL = `${SITE.url}/sanitary-napkin-vending-machine-price-india`;
@@ -225,7 +226,7 @@ export default function PricePage() {
             <li><strong>Add-ons:</strong> some incinerators support an optional WiFi IoT module for remote temperature logging.</li>
           </ul>
           <p className="mt-4 text-gray-700 leading-relaxed">
-            Not sure which model fits? Read our{" "}
+            Not sure which model fits? <Link href="/compare-sanitary-napkin-vending-machines" className="text-primary-600 hover:underline">Compare all 8 models side by side</Link>, see refills ({" "}<Link href="/products/xl-sanitary-napkin" className="text-primary-600 hover:underline">XL 280 mm</Link>,{" "}<Link href="/products/xxl-sanitary-napkin" className="text-primary-600 hover:underline">XXL 320 mm</Link>{" "}), or read our{" "}
             <Link href="/blog/best-sanitary-napkin-vending-machine-india" className="text-primary-600 hover:underline">comparison of all 8 models</Link>,{" "}
             <Link href="/blog/upi-vs-coin-vending-machine" className="text-primary-600 hover:underline">UPI vs coin</Link>, or check{" "}
             <Link href="/government-schemes-menstrual-hygiene" className="text-primary-600 hover:underline">government schemes and CSR funding</Link>{" "}
@@ -252,9 +253,9 @@ export default function PricePage() {
             <h2 className="font-bold text-2xl sm:text-3xl text-white mb-4">Get a quote for your site</h2>
             <p className="text-white/80 mb-8">Tell us your location and quantity. We reply with freight and any volume pricing.</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="tel:+918122378860" className="px-8 py-4 bg-white text-blue-700 font-bold rounded-full hover:bg-gray-100 transition-colors">
+              <TrackedLink method="call" detail="price-page" href="tel:+918122378860" className="px-8 py-4 bg-white text-blue-700 font-bold rounded-full hover:bg-gray-100 transition-colors">
                 {SITE.phoneDisplay}
-              </Link>
+              </TrackedLink>
               <Link href="/contact" className="px-8 py-4 bg-white/20 text-white font-semibold rounded-full border border-white/30 hover:bg-white/30 transition-colors">
                 Request a quote
               </Link>

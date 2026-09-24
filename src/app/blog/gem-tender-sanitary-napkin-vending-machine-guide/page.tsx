@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import TrackedLink from "@/components/TrackedLink";
 import { SITE } from "@/lib/data";
 
 const SLUG = "gem-tender-sanitary-napkin-vending-machine-guide";
@@ -201,7 +202,7 @@ export default function GemGuidePage() {
 
             <p>
               Need a quotation, specification sheet or GeM listing details? Call{" "}
-              <Link href="tel:+918122378860" className="text-primary-600 font-semibold hover:underline">{SITE.phoneDisplay}</Link>.
+              <TrackedLink method="call" detail="gem-guide" href="tel:+918122378860" className="text-primary-600 font-semibold hover:underline">{SITE.phoneDisplay}</TrackedLink>.
             </p>
           </div>
 

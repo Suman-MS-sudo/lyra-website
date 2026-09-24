@@ -20,6 +20,7 @@ const footerLinks = {
     { label: "WiFi / Smart", href: "/products/solo-wifi-vending-machine" },
     { label: "Incinerators", href: "/products/sanitary-napkin-incinerators" },
     { label: "Price List", href: "/sanitary-napkin-vending-machine-price-india" },
+    { label: "Compare Models", href: "/compare-sanitary-napkin-vending-machines" },
     { label: "Hostels & Colleges", href: "/solutions/womens-hostels-colleges" },
     { label: "Government Schemes & Funding", href: "/government-schemes-menstrual-hygiene" },
   ],

@@ -490,6 +490,13 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               </Link>
             </p>
           </div>
+          {isVM && (
+            <p className="mt-4 text-sm text-gray-600">
+              Refills: <Link href="/products/xl-sanitary-napkin" className="font-semibold text-primary-600 hover:underline">XL 280 mm</Link> and{" "}
+              <Link href="/products/xxl-sanitary-napkin" className="font-semibold text-primary-600 hover:underline">XXL 320 mm</Link> napkins are made for all Lyra machines.{" "}
+              <Link href="/compare-sanitary-napkin-vending-machines" className="font-semibold text-primary-600 hover:underline">Compare all models →</Link>
+            </p>
+          )}
         </section>
 
         {/* ── Use Cases ────────────────────────────────────── */}

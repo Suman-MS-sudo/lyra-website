@@ -57,6 +57,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/products/sanitary-napkin-vending-machines`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/products/sanitary-napkin-incinerators`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/sanitary-napkin-vending-machine-price-india`, lastModified: "2026-09-25T00:00:00.000Z", changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/compare-sanitary-napkin-vending-machines`, lastModified: "2026-09-25T00:00:00.000Z", changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/solutions`, lastModified: "2026-09-25T00:00:00.000Z", changeFrequency: "monthly", priority: 0.8 },
     // Individual product pages
     ...productSlugs.map((slug) => ({
       url: `${SITE_URL}/products/${slug}`,

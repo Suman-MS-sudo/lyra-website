@@ -144,6 +144,7 @@ export default function ProductsPage() {
             <a href="#vending-machines" className="px-4 py-2 rounded-full bg-primary-100 text-primary-700 hover:bg-primary-200 transition-colors">Vending Machines ↓</a>
             <a href="#incinerators" className="px-4 py-2 rounded-full bg-primary-100 text-primary-700 hover:bg-primary-200 transition-colors">Incinerators ↓</a>
             <Link href="/sanitary-napkin-vending-machine-price-india" className="px-4 py-2 rounded-full bg-teal-100 text-teal-700 hover:bg-teal-200 transition-colors">Price list →</Link>
+            <Link href="/compare-sanitary-napkin-vending-machines" className="px-4 py-2 rounded-full bg-teal-100 text-teal-700 hover:bg-teal-200 transition-colors">Compare models →</Link>
           </div>
         </section>
 

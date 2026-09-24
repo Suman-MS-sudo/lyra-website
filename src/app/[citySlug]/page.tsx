@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import TrackedLink from "@/components/TrackedLink";
 import GoogleReviews from "@/components/GoogleReviews";
 import {
   vendingMachines,
@@ -118,9 +119,11 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
   if (!city) notFound();
 
   const canonical = `${SITE.url}/${city.slug}`;
-  const nearby = cities
-    .filter((c) => c.region === city.region && c.slug !== city.slug)
-    .slice(0, 6);
+  // Rotate through the region (the next 6 states after this one, wrapping) so every
+  // state page receives internal links, instead of the first 6 in the region always winning.
+  const regionStates = cities.filter((c) => c.region === city.region);
+  const at = regionStates.findIndex((c) => c.slug === city.slug);
+  const nearby = [...regionStates.slice(at + 1), ...regionStates.slice(0, at)].slice(0, 6);
   const faqs = getStateFaqs(city);
   const priceValidUntil = `${new Date().getFullYear() + 1}-12-31`;
 
@@ -426,8 +429,8 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
             <h2 className="text-2xl sm:text-3xl font-bold mb-3">Need help choosing the right machine for {city.state}?</h2>
             <p className="text-white/80 mb-6 max-w-xl mx-auto">Our team will recommend the perfect model for your facility and coordinate delivery to {city.capital} and beyond. Free consultation, no obligation.</p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#1d4ed8] font-bold rounded-full shadow hover:-translate-y-0.5 transition-all">WhatsApp Us</Link>
-              <Link href={`tel:${SITE.phone}`} className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full hover:-translate-y-0.5 transition-all">Call {SITE.phoneDisplay}</Link>
+              <TrackedLink method="whatsapp" detail="state-page" href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#1d4ed8] font-bold rounded-full shadow hover:-translate-y-0.5 transition-all">WhatsApp Us</TrackedLink>
+              <TrackedLink method="call" detail="state-page" href={`tel:${SITE.phone}`} className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full hover:-translate-y-0.5 transition-all">Call {SITE.phoneDisplay}</TrackedLink>
             </div>
           </div>
         </section>

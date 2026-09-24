@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Product } from "@/lib/data";
+import { trackLead } from "@/lib/analytics";
 
 type ProductPurchasePanelProps = {
   product: Product;
@@ -60,6 +61,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
       if (!res.ok || !payload.success) throw new Error(payload.error || "Failed to send enquiry.");
 
       setSuccess(true);
+      trackLead("form", `product-${product.slug}`);
       setForm({ name: "", email: "", phone: "", company: "", message: "" });
     } catch (err) {
       setErrorMessage(err instanceof Error ? err.message : "Failed to send enquiry.");
@@ -214,6 +216,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
             <p className="text-xs text-white/40 mb-3">Or contact us directly</p>
             <a
               href="https://wa.me/918122378860"
+              onClick={() => trackLead("whatsapp", `product-${product.slug}`)}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-sm font-semibold text-green-400 hover:text-green-300 transition-colors"
@@ -223,6 +226,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
             </a>
             <a
               href="tel:+918122378860"
+              onClick={() => trackLead("call", `product-${product.slug}`)}
               className="flex items-center gap-2 mt-3 text-sm font-semibold text-white/60 hover:text-white transition-colors"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
