@@ -52,6 +52,9 @@ export default function PageFooter() {
             <ul className="space-y-2 text-sm text-gray-400">
               {[
                 ["All States & UTs", "/service-areas"],
+                ["Price List", "/sanitary-napkin-vending-machine-price-india"],
+                ["Hostels & Colleges", "/solutions/womens-hostels-colleges"],
+                ["GeM & Tender Guide", "/blog/gem-tender-sanitary-napkin-vending-machine-guide"],
                 ["Government Schemes & Funding", "/government-schemes-menstrual-hygiene"],
                 ["Tamil Nadu", "/vending-machine-tamil-nadu"],
                 ["Karnataka", "/vending-machine-karnataka"],

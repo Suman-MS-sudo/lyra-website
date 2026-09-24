@@ -177,7 +177,7 @@ export default function SchoolsSolutionPage() {
               </span>
             </h1>
             <p className="mt-5 text-gray-600 text-lg max-w-3xl leading-relaxed">
-              36% of Indian girls miss school during menstruation. Lyra vending machines installed in school toilets give girls private, on-demand access to sanitary napkins — improving attendance, meeting Swachh Bharat compliance, and available on GeM for easy government procurement.
+              36% of Indian girls miss school during menstruation. Lyra vending machines installed in school toilets give girls private, on-demand access to sanitary napkins — improving attendance, meeting Swachh Bharat compliance, and available on GeM for easy government procurement. Housing students? See our <Link href="/solutions/womens-hostels-colleges" className="text-primary-600 font-semibold hover:underline">women&apos;s hostel and college solutions</Link>.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link

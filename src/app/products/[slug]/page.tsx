@@ -6,7 +6,9 @@ import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
 import ProductPurchasePanel from "@/components/ProductPurchasePanel";
-import { products, vendingMachines, getProductBySlug, testimonials, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
+import { getPngSize } from "@/lib/image-meta";
+import GoogleReviews from "@/components/GoogleReviews";
+import { products, vendingMachines, getProductBySlug, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
 
 /* ─── Static params for all product pages ─────────────────── */
 export function generateStaticParams() {
@@ -24,6 +26,7 @@ export async function generateMetadata({
 
   const canonical = `${SITE.url}/products/${product.slug}`;
   const productImage = `${SITE.url}${product.image}`;
+  const imageSize = getPngSize(product.image);
   return {
     title: { absolute: product.metaTitle },
     description: product.metaDescription,
@@ -35,7 +38,7 @@ export async function generateMetadata({
       url: canonical,
       type: "website",
       siteName: SITE.name,
-      images: [{ url: productImage, width: 800, height: 800, alt: product.fullName }],
+      images: [{ url: productImage, ...(imageSize ?? {}), alt: product.fullName }],
     },
     twitter: {
       card: "summary_large_image",
@@ -162,6 +165,16 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       ? "Sanitary Napkin"
       : "Sanitary Napkin Incinerator";
 
+  const imageSize = getPngSize(product.image);
+  const imageObject = {
+    "@type": "ImageObject",
+    url: `${SITE.url}${product.image}`,
+    contentUrl: `${SITE.url}${product.image}`,
+    name: product.fullName,
+    description: `${product.fullName} (${product.code}) — ${product.tagline}`,
+    ...(imageSize ?? {}),
+  };
+
   /* JSON-LD schemas */
   const productSchema = {
     "@context": "https://schema.org",
@@ -170,7 +183,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     description: product.description,
     sku: product.code,
     mpn: product.code,
-    ...(product.image ? { image: [`${SITE.url}${product.image}`] } : {}),
+    ...(product.image ? { image: [imageObject] } : {}),
     brand: { "@type": "Brand", name: "Lyra Enterprises" },
     manufacturer: {
       "@type": "Organization",
@@ -338,7 +351,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               
               {/* Product Image */}
               <div className="absolute inset-0 flex items-center justify-center z-20">
-                <div className="relative w-40 h-40 lg:w-48 lg:h-48">
+                <figure className="relative w-40 h-40 lg:w-48 lg:h-48 m-0">
                   <Image
                     src={product.image}
                     alt={product.fullName}
@@ -346,7 +359,10 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                     className="object-contain drop-shadow-2xl"
                     sizes="(max-width: 1024px) 160px, 192px"
                   />
-                </div>
+                  <figcaption className="sr-only">
+                    {product.fullName}, model {product.code}. {product.tagline}.
+                  </figcaption>
+                </figure>
               </div>
               
               {/* Ghost text behind image */}
@@ -556,26 +572,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           </section>
         )}
 
-        {/* ── Customer testimonials (real, verified Google reviews) ── */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">What Our Customers Say</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {testimonials.map((t) => (
-              <div key={t.author} className="rounded-2xl border border-gray-100 bg-white shadow-sm p-5">
-                <p className="text-sm text-gray-700 leading-relaxed">&ldquo;{t.content}&rdquo;</p>
-                <div className="mt-4 flex items-center gap-3">
-                  <span className={`w-9 h-9 rounded-full bg-gradient-to-br ${product.accent} text-white text-xs font-bold flex items-center justify-center flex-shrink-0`}>
-                    {t.initials}
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold text-gray-900">{t.author}</p>
-                    <p className="text-xs text-gray-500">{t.company}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        {/* ── Customer reviews (real Google reviews, linked back) ── */}
+        <GoogleReviews />
 
         {/* ── FAQ ──────────────────────────────────────────── */}
         <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">

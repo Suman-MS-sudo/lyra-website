@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import GoogleReviews from "@/components/GoogleReviews";
 import {
   vendingMachines,
   incinerators,
@@ -376,6 +377,8 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
             </div>
           </div>
         </section>
+
+        <GoogleReviews limit={2} />
 
         {/* FAQ */}
         <section id="faq" className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">

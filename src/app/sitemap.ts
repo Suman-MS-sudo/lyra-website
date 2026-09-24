@@ -38,12 +38,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["lnt-manapakkam-case-study", "2026-09-15"],
     ["best-sanitary-napkin-vending-machine-india", "2026-09-23"],
     ["iot-vending-machine-technology-india", "2026-09-23"],
+    ["gem-tender-sanitary-napkin-vending-machine-guide", "2026-09-25"],
   ];
 
   const solutionSlugs = [
     "schools-colleges",
     "hospitals",
     "offices",
+    "womens-hostels-colleges",
   ];
 
   return [
@@ -54,6 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/products`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/products/sanitary-napkin-vending-machines`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/products/sanitary-napkin-incinerators`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE_URL}/sanitary-napkin-vending-machine-price-india`, lastModified: "2026-09-25T00:00:00.000Z", changeFrequency: "monthly", priority: 0.9 },
     // Individual product pages
     ...productSlugs.map((slug) => ({
       url: `${SITE_URL}/products/${slug}`,

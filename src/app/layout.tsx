@@ -108,9 +108,6 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical: SITE_URL,
-    types: {
-      "application/rss+xml": `${SITE_URL}/feed.xml`,
-    },
   },
 
   manifest: "/manifest.webmanifest",

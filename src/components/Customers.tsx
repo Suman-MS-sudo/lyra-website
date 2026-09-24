@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import Link from "next/link";
 import { testimonials } from "@/lib/data";
+import GoogleReviewBadge from "@/components/GoogleReviewBadge";
 
 type Customer = { name: string; short: string; logo: string };
 
@@ -154,6 +155,7 @@ export default function Customers() {
             <h3 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
               What Our Customers Say
             </h3>
+            <div className="mt-4"><GoogleReviewBadge /></div>
           </div>
         </FadeUp>
 
