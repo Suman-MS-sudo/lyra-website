@@ -1,0 +1,24 @@
+name: IndexNow
+
+# Pings Bing/Yandex IndexNow after a successful production deploy on Vercel.
+# Vercel reports deployments to GitHub as `deployment_status` events.
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Submit every sitemap URL (not just recently changed)"
+        type: boolean
+        default: false
+
+jobs:
+  submit:
+    if: github.event_name == 'workflow_dispatch' || (github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Submit to IndexNow
+        run: node scripts/indexnow.mjs ${{ inputs.all && '--all' || '' }}

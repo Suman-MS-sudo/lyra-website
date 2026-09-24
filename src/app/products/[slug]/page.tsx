@@ -481,6 +481,15 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               Download Product Booklet (PDF)
             </a>
           )}
+          <div className="mt-5 rounded-2xl border border-teal-100 bg-teal-50 px-5 py-4 text-sm text-gray-700">
+            <p className="font-semibold text-gray-900">Buying for a government institution?</p>
+            <p className="mt-1">
+              Lyra Enterprises is a registered GeM vendor, and a GST invoice is provided with every order.{" "}
+              <Link href="/blog/gem-tender-sanitary-napkin-vending-machine-guide" className="font-semibold text-primary-600 hover:underline">
+                How to buy through GeM →
+              </Link>
+            </p>
+          </div>
         </section>
 
         {/* ── Use Cases ────────────────────────────────────── */}

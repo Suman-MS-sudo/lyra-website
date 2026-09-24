@@ -82,7 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Solution / Industry pages
     ...solutionSlugs.map((slug) => ({
       url: `${SITE_URL}/solutions/${slug}`,
-      lastModified: now,
+      lastModified: slug === "womens-hostels-colleges" ? "2026-09-25T00:00:00.000Z" : now,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),

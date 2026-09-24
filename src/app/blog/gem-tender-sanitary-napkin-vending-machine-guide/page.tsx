@@ -128,7 +128,7 @@ export default function GemGuidePage() {
               GeM (Government e-Marketplace) is the national online portal where government departments buy goods and services. Many institutions buy through GeM directly, while others still float a tender or quotation request. The rules and value limits differ by department and state, so confirm the correct route with your procurement officer before you start.
             </p>
             <p>
-              Lyra Enterprises is a registered GeM vendor and also responds to tenders and quotation requests. Either way, the steps below help you get equipment that works and can be audited.
+              Lyra Enterprises is a registered GeM vendor. Whichever route you use, the steps below help you get equipment that works and can be audited.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900">Step 1: Decide what you need</h2>
