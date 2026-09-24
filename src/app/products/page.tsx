@@ -9,7 +9,7 @@ import { vendingMachines, incinerators, SITE, GST_RATE, priceInclGst, formatINR 
 export const metadata: Metadata = {
   title: { absolute: "Napkin Vending Machines & Incinerators | Lyra Enterprises" },
   description:
-    "Browse all Lyra Enterprises products — sanitary napkin vending machines (coin, QR/UPI, RFID, WiFi, IoT) and incinerators. 1-year warranty. Pan-India delivery. Manufacturer in Chennai. Call +91-8122378860.",
+    "Browse Lyra sanitary napkin vending machines (coin, UPI, RFID, WiFi, IoT) and incinerators. 1-year warranty, pan-India delivery. Call +91-8122378860.",
   keywords: [
     "sanitary napkin vending machine india",
     "napkin vending machine price india",

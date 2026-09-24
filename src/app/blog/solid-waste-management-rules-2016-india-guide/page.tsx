@@ -8,7 +8,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "Solid Waste Management Rules 2016 — Menstrual Waste Guide" },
   description:
-    "India's SWM Rules 2016 legally mandate separate collection and disposal of sanitary waste. What schools, hospitals, offices and institutions must do — and what equipment is required for CPCB compliance.",
+    "SWM Rules 2016 mandate separate collection and disposal of sanitary waste in India. What schools, hospitals and offices must do, and what equipment is needed.",
   keywords: [
     "solid waste management rules 2016 india",
     "swm rules menstrual waste india",

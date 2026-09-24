@@ -8,7 +8,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "Inside Lyra's IoT Vending Machine Technology — WiFi, Ethernet & RFID" },
   description:
-    "How Lyra's Solo WiFi, Solo Ethernet and Solo RFID sanitary napkin vending machines work under the hood — server-side payment verification, offline transaction queuing, OTA firmware rollback and encrypted cloud sync. Built and supported across India.",
+    "How Lyra Solo WiFi, Ethernet and RFID napkin vending machines work: server-side payment checks, offline queuing, OTA rollback, encrypted cloud sync.",
   keywords: [
     "iot sanitary napkin vending machine india",
     "smart napkin vending machine technology india",

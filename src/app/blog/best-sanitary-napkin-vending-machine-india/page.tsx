@@ -8,7 +8,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "Best Sanitary Napkin Vending Machine in India (2026) — Full Comparison" },
   description:
-    "Compare all 8 Lyra Enterprises sanitary napkin vending machine models — Push Button, Coin, Multi-Coin, RFID, QR, Wave, WiFi and Ethernet. Prices, features and which one is best for your school, hospital, office or hostel across India.",
+    "Compare all 8 Lyra napkin vending machines: Push Button, Coin, Multi-Coin, RFID, QR, Wave, WiFi, Ethernet. Prices, features and best fit for your site.",
   keywords: [
     "best sanitary napkin vending machine india",
     "best napkin vending machine manufacturer india",

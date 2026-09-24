@@ -9,7 +9,7 @@ import { incinerators, SITE, formatINR } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "Napkin Incinerators — Models & Prices | Lyra Enterprises" },
   description:
-    "Buy sanitary napkin incinerators in India. Compare Micro (1–5), Mini (5–15) and Maxi (25–50 napkins/cycle). CPCB & SWM compliant. Pan-India delivery. Call +91-8122378860.",
+    "Buy sanitary napkin incinerators in India: Micro (1–5), Mini (5–15) and Maxi (25–50 napkins/cycle). CPCB & SWM compliant. Call +91-8122378860.",
   keywords: [
     "sanitary napkin incinerator india",
     "napkin incinerator price india",

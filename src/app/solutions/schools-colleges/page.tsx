@@ -8,7 +8,7 @@ import { SITE, getProductBySlug, formatINR } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "Napkin Vending Machines for Schools & Colleges | Lyra" },
   description:
-    "Install sanitary napkin vending machines and incinerators in school & college washrooms. Reduce girl student absenteeism, meet Swachh Bharat & SWM Rules 2016 compliance. GeM vendor.",
+    "Napkin vending machines and incinerators for school & college washrooms. Cut girl student absenteeism, meet Swachh Bharat and SWM Rules 2016. GeM vendor.",
   keywords: [
     "sanitary napkin vending machine for schools india",
     "napkin vending machine for colleges india",

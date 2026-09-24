@@ -6,7 +6,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "Cancellation, Return, Refund & Warranty Policy | Lyra Enterprises" },
   description:
-    "Cancellation, return, refund and 1-year warranty policy for Lyra Enterprises sanitary napkin vending machine and incinerator orders — pre-dispatch cancellation, post-delivery defect replacement, and refund timelines.",
+    "Cancellation, return, refund and 1-year warranty policy for Lyra vending machine and incinerator orders: refund timelines and defect replacement.",
   alternates: { canonical: `${SITE.url}/cancellation-refund-policy` },
 };
 

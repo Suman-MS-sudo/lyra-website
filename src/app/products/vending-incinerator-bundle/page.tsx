@@ -9,7 +9,7 @@ import { SITE, getProductBySlug } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "Vending Machine + Incinerator Bundle — Schools & Hostels | Lyra" },
   description:
-    "Buy a sanitary napkin vending machine and incinerator combo from Lyra Enterprises. Save on bundled pricing, get full SWM Rules 2016 compliance in one order. Ideal for schools, hostels and hospitals. Pan-India delivery.",
+    "Buy a napkin vending machine and incinerator combo from Lyra Enterprises. Bundled pricing, full SWM Rules 2016 compliance in one order. Pan-India delivery.",
   keywords: [
     "vending machine incinerator combo india",
     "napkin vending machine incinerator bundle india",

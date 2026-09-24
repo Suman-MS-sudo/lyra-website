@@ -9,7 +9,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "Manual vs Automatic Napkin Vending Machine — India Guide 2026" },
   description:
-    "Push Button (free-vend) napkin vending machines cost less upfront. Coin and UPI automatics cost more but add payment automation. Full comparison of features, maintenance, best use cases and which to buy in India 2026.",
+    "Push Button vs coin and UPI napkin vending machines: cost, features, maintenance and best use cases. A buying guide for India, 2026.",
   keywords: [
     "manual vs automatic vending machine india",
     "sanitary napkin vending machine comparison india",

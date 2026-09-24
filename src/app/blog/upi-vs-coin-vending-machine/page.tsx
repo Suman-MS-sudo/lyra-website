@@ -8,7 +8,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "UPI QR vs Coin Vending Machine — Which to Buy? (2026)" },
   description:
-    "Complete comparison of UPI QR code vs coin-operated sanitary napkin vending machines. Price, features, maintenance, best use cases — full buying guide for India 2026. Lyra Enterprises.",
+    "UPI QR vs coin-operated napkin vending machines compared: price, features, maintenance and best use cases. Buying guide for India, 2026.",
   keywords: [
     "upi vending machine vs coin india",
     "best vending machine india 2026",

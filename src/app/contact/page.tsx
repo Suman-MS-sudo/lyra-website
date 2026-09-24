@@ -8,7 +8,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "Contact Us | Lyra Enterprises" },
   description:
-    "Contact Lyra Enterprises for product enquiries, quotes, installation assistance and shipping questions. Sanitary napkin vending machine & incinerator manufacturer with offices in Chennai (South India) and West Bengal (North India). Pan-India delivery.",
+    "Contact Lyra Enterprises for quotes, product enquiries and installation help. Napkin vending machine & incinerator maker in Chennai and West Bengal.",
   alternates: { canonical: `${SITE.url}/contact` },
   openGraph: {
     title: "Contact Us | Lyra Enterprises",

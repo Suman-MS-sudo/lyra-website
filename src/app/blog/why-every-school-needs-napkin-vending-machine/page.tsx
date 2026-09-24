@@ -9,7 +9,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "Why Every School in India Needs a Napkin Vending Machine" },
   description:
-    "Menstrual hygiene in schools directly impacts girls' attendance and learning outcomes. Discover why sanitary napkin vending machines are the most effective solution for Indian schools.",
+    "Menstrual hygiene affects girls' school attendance and learning. Why sanitary napkin vending machines are the most effective fix for Indian schools.",
   keywords: [
     "napkin vending machine for schools india",
     "menstrual hygiene school india",

@@ -9,7 +9,7 @@ import { vendingMachines, SITE, formatINR } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "Napkin (Pad) Vending Machines — 8 Models & Prices | Lyra Enterprises" },
   description:
-    "Buy sanitary napkin vending machines in India. 8 models: push-button, coin, multi-coin, RFID, QR/UPI, wave sensor, WiFi and Ethernet. Prices from ₹12,000. 1-year warranty. Pan-India delivery from Chennai manufacturer. Call +91-8122378860.",
+    "Buy sanitary napkin vending machines in India. 8 models from ₹12,000: push-button, coin, RFID, UPI QR, wave, WiFi, Ethernet. 1-year warranty.",
   keywords: [
     "sanitary napkin vending machine india",
     "napkin vending machine price india",

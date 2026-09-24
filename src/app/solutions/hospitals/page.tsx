@@ -8,7 +8,7 @@ import { SITE, getProductBySlug, formatINR } from "@/lib/data";
 export const metadata: Metadata = {
   title: { absolute: "Napkin Vending Machines for Hospitals & Clinics | Lyra" },
   description:
-    "Supply sanitary napkin vending machines and CPCB-compliant incinerators to hospitals, clinics and healthcare facilities. Biomedical Waste Rules 2016 compliant. GeM vendor.",
+    "Napkin vending machines and CPCB-compliant incinerators for hospitals and clinics. Biomedical Waste Rules 2016 compliant. GeM vendor.",
   keywords: [
     "sanitary napkin vending machine for hospitals india",
     "napkin vending machine for clinics india",

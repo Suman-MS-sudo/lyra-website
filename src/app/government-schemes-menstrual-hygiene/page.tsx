@@ -10,7 +10,7 @@ const PAGE_URL = `${SITE.url}/government-schemes-menstrual-hygiene`;
 export const metadata: Metadata = {
   title: { absolute: "Government Schemes & Subsidies for Menstrual Hygiene Infrastructure" },
   description:
-    "How schools, health departments, urban local bodies and CSR teams in India fund sanitary napkin vending machines and incinerators — Samagra Shiksha, National Health Mission, Swachh Bharat Mission, state schemes, CSR, MPLADS and Finance Commission grants.",
+    "How schools, health departments and CSR teams in India fund napkin vending machines and incinerators: Samagra Shiksha, NHM, Swachh Bharat, MPLADS and more.",
   keywords: [
     "government scheme sanitary napkin vending machine",
     "subsidy for napkin incinerator india",

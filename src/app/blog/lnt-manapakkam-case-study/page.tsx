@@ -11,7 +11,7 @@ const SLUG = "lnt-manapakkam-case-study";
 export const metadata: Metadata = {
   title: { absolute: "25 IoT Vending Machines at L&T Manapakkam, Chennai — Case Study" },
   description:
-    "How Lyra Enterprises equipped Larsen & Toubro's Manapakkam, Chennai campus with 25 IoT-enabled sanitary napkin vending machines, backed by regular support visits.",
+    "How Lyra Enterprises equipped L&T's Manapakkam, Chennai campus with 25 IoT-enabled sanitary napkin vending machines, backed by regular support visits.",
   keywords: [
     "iot vending machine case study india",
     "l&t sanitary napkin vending machine",

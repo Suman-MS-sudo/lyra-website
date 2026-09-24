@@ -28,15 +28,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const citySlugs = cities.map((c) => c.slug);
 
-  const blogSlugs = [
-    "why-every-school-needs-napkin-vending-machine",
-    "upi-vs-coin-vending-machine",
-    "napkin-incinerator-vs-sanitary-bin",
-    "manual-vs-automatic-napkin-vending-machine",
-    "solid-waste-management-rules-2016-india-guide",
-    "lnt-manapakkam-case-study",
-    "best-sanitary-napkin-vending-machine-india",
-    "iot-vending-machine-technology-india",
+  // Real publish dates (match each post's BlogPosting datePublished).
+  const blogPosts: [string, string][] = [
+    ["why-every-school-needs-napkin-vending-machine", "2026-01-15"],
+    ["upi-vs-coin-vending-machine", "2026-01-28"],
+    ["napkin-incinerator-vs-sanitary-bin", "2026-02-05"],
+    ["manual-vs-automatic-napkin-vending-machine", "2026-02-20"],
+    ["solid-waste-management-rules-2016-india-guide", "2026-03-01"],
+    ["lnt-manapakkam-case-study", "2026-09-15"],
+    ["best-sanitary-napkin-vending-machine-india", "2026-09-23"],
+    ["iot-vending-machine-technology-india", "2026-09-23"],
   ];
 
   const solutionSlugs = [
@@ -68,10 +69,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     })),
     // Blog
-    { url: `${SITE_URL}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
-    ...blogSlugs.map((slug) => ({
+    { url: `${SITE_URL}/blog`, lastModified: "2026-09-23T00:00:00.000Z", changeFrequency: "weekly", priority: 0.7 },
+    ...blogPosts.map(([slug, date]) => ({
       url: `${SITE_URL}/blog/${slug}`,
-      lastModified: now,
+      lastModified: `${date}T00:00:00.000Z`,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
