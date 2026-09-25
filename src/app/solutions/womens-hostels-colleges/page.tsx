@@ -46,7 +46,7 @@ const faqs = [
   },
   {
     q: "Can a hostel dispose of used sanitary pads safely on site?",
-    a: "Yes. A sanitary napkin incinerator burns used pads on site, so waste never sits in open bins. The Lyra Mini handles 5–15 napkins per cycle and up to 100 a day, and the Micro handles 1–5 per cycle. Both are designed for SWM Rules 2016 compliance.",
+    a: "Yes. A sanitary napkin incinerator burns used pads on site, so waste never sits in open bins. The Lyra Mini handles 5–15 napkins per 30-minute cycle, up to 240 over an 8-hour day, and the Micro handles 1–5 per cycle, up to 80. Both are designed for SWM Rules 2016 compliance.",
   },
   {
     q: "Which incinerator size suits a college or hostel block?",
@@ -117,7 +117,7 @@ const recommended = [
     tag: "Disposal",
     slug: "lyra-mini-incinerator",
     name: "Lyra Mini Incinerator",
-    desc: "5–15 napkins per cycle, up to 100 a day, digital temperature display. SWM Rules 2016 compliant. For hostel blocks and colleges.",
+    desc: "5–15 napkins per 30-minute cycle, up to 240 per 8-hour day, digital temperature display. SWM Rules 2016 compliant. For hostel blocks and colleges.",
   },
 ];
 

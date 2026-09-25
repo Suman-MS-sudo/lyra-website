@@ -108,7 +108,7 @@ function getFaqs(slug: string) {
     ],
     "lyra-micro-incinerator": [
       { q: "Is the Lyra Micro incinerator CPCB approved?", a: "The Lyra Micro follows CPCB menstrual waste disposal guidelines. It burns sanitary waste at high temperature, producing only sterile ash — no liquid effluent." },
-      { q: "How many napkins can the Micro handle per day?", a: "The Lyra Micro can process up to 100 napkins per day, handling 1–5 napkins per cycle." },
+      { q: "How many napkins can the Micro handle per day?", a: "Each cycle takes 30 minutes and handles 1–5 napkins, so the Lyra Micro processes up to 10 napkins an hour, up to 80 napkins over an 8-hour working day, or up to 240 napkins over 24 hours of continuous back-to-back cycles, all at full load." },
     ],
     "lyra-mini-incinerator": [
       { q: "Is the Lyra Mini SWM Rules 2016 compliant?", a: "Yes — the Lyra Mini is compliant with India's Solid Waste Management Rules 2016 for menstrual waste. It completely incinerates sanitary waste leaving only sterile ash." },
@@ -116,7 +116,7 @@ function getFaqs(slug: string) {
     ],
     "lyra-maxi-incinerator": [
       { q: "Is the Lyra Maxi compliant with Biomedical Waste Management Rules?", a: "Yes — the Lyra Maxi is fully compliant with Biomedical Waste Management Rules 2016, making it suitable for hospitals and medical colleges." },
-      { q: "How much sanitary waste can the Maxi handle daily?", a: "The Lyra Maxi handles 100+ napkins per day, processing 25–50 napkins per cycle — designed for large hospitals and industrial facilities." },
+      { q: "How much sanitary waste can the Maxi handle daily?", a: "Each cycle takes 30 minutes and handles 25–50 napkins, so the Lyra Maxi processes up to 100 napkins an hour, up to 800 napkins over an 8-hour working day, or up to 2,400 napkins over 24 hours of continuous back-to-back cycles, all at full load — designed for large hospitals and industrial facilities." },
     ],
     "solo-multi-coin-vending-machine": [
       { q: "Which coins does the Solo Multi machine accept?", a: "It accepts Indian ₹1, ₹2 and ₹5 coins through a multi-denomination coin acceptor. You can configure the per-napkin price to ₹1, ₹2, ₹3 or ₹5." },

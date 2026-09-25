@@ -222,7 +222,7 @@ export default function ComboOfferPage() {
                 </div>
                 <h3 className="font-bold text-gray-900 text-xl mb-3">Lyra Micro Incinerator</h3>
                 <ul className="space-y-2 text-sm text-gray-600">
-                  {["1–5 napkins per cycle, up to 100/day", "Automatic digital temperature control", "Auto shut-off, smoke & odour control", "Wall-mountable, CPCB-compliant disposal"].map((f) => (
+                  {["1–5 napkins per 30-minute cycle, up to 80 per 8-hour day", "Automatic digital temperature control", "Auto shut-off, smoke & odour control", "Wall-mountable, CPCB-compliant disposal"].map((f) => (
                     <li key={f} className="flex items-start gap-2">
                       <span className="text-green-500 mt-0.5 flex-shrink-0">✓</span>{f}
                     </li>

@@ -711,10 +711,10 @@ export const products: Product[] = [
     description:
       "Compact sanitary napkin incinerator for 1–5 napkins per cycle. Ideal for small schools, clinics and offices.",
     longDescription:
-      "The Lyra Micro is the most compact sanitary napkin incinerator available in India, designed for small to medium washrooms with limited wall space. Processing 1–5 napkins per cycle at up to 100 napkins per day, it completely burns sanitary waste at high temperature — eliminating odour, infection risk and manual handling. An automatic digital temperature controller ensures safe operation, and a start-up timer saves power. Wall-mountable with an MS cabinet and epoxy coating, it meets CPCB (Central Pollution Control Board) hygiene guidelines for menstrual waste disposal.",
+      "The Lyra Micro is the most compact sanitary napkin incinerator available in India, designed for small to medium washrooms with limited wall space. Processing 1–5 napkins per 30-minute cycle, up to 80 napkins over an 8-hour working day, it completely burns sanitary waste at high temperature — eliminating odour, infection risk and manual handling. An automatic digital temperature controller ensures safe operation, and a start-up timer saves power. Wall-mountable with an MS cabinet and epoxy coating, it meets CPCB (Central Pollution Control Board) hygiene guidelines for menstrual waste disposal.",
     features: [
       "1–5 napkins per cycle",
-      "100 napkins/day capacity",
+      "Up to 80 napkins per 8-hour day (30-minute cycle)",
       "Automatic digital temperature controller",
       "MCB safety provided",
       "Unique thermal insulation — prevents heat loss",
@@ -727,7 +727,10 @@ export const products: Product[] = [
     specs: [
       { label: "Dimensions", value: "520 × 230 × 230 mm" },
       { label: "Cycle Capacity", value: "1–5 napkins" },
-      { label: "Daily Capacity", value: "Up to 100 napkins/day" },
+      { label: "Cycle Time", value: "30 minutes" },
+      { label: "Hourly Capacity", value: "Up to 10 napkins/hour (back-to-back cycles, full load)" },
+      { label: "Daily Capacity", value: "Up to 80 napkins per 8-hour working day (full load)" },
+      { label: "24-Hour Capacity", value: "Up to 240 napkins (48 back-to-back cycles, full load)" },
       { label: "Electrical", value: "230V ±10%, 50 Hz, single phase, 5A" },
       { label: "Power Consumption", value: "1.25 kW" },
       { label: "Temp Control", value: "Automatic digital controller" },
@@ -778,10 +781,10 @@ export const products: Product[] = [
     description:
       "Mid-size sanitary napkin incinerator for 5–15 napkins per cycle. Perfect for colleges, medium offices and hospitals.",
     longDescription:
-      "The Lyra Mini sanitary napkin incinerator handles 5–15 napkins per cycle, processing up to 100 napkins per day — making it the go-to choice for colleges, medium-sized corporate offices and community health centres. Unlike bio-bins that require manual emptying and create infection risk, the Lyra Mini completely incinerates sanitary waste at high temperature, leaving only sterile ash. Compliant with Solid Waste Management Rules 2016 for menstrual waste. Includes a digital display for actual and set temperature, MCB safety, thermal insulation and an optional WiFi IoT module (no SIM needed).",
+      "The Lyra Mini sanitary napkin incinerator handles 5–15 napkins per 30-minute cycle, processing up to 240 napkins over an 8-hour working day — making it the go-to choice for colleges, medium-sized corporate offices and community health centres. Unlike bio-bins that require manual emptying and create infection risk, the Lyra Mini completely incinerates sanitary waste at high temperature, leaving only sterile ash. Compliant with Solid Waste Management Rules 2016 for menstrual waste. Includes a digital display for actual and set temperature, MCB safety, thermal insulation and an optional WiFi IoT module (no SIM needed).",
     features: [
       "5–15 napkins per cycle",
-      "100 napkins/day capacity",
+      "Up to 240 napkins per 8-hour day (30-minute cycle)",
       "Digital temperature display (actual & set)",
       "Automatic digital temperature controller",
       "MCB safety provided",
@@ -794,7 +797,10 @@ export const products: Product[] = [
     specs: [
       { label: "Dimensions", value: "650 × 330 × 330 mm" },
       { label: "Cycle Capacity", value: "5–15 napkins" },
-      { label: "Daily Capacity", value: "Up to 100 napkins/day" },
+      { label: "Cycle Time", value: "30 minutes" },
+      { label: "Hourly Capacity", value: "Up to 30 napkins/hour (back-to-back cycles, full load)" },
+      { label: "Daily Capacity", value: "Up to 240 napkins per 8-hour working day (full load)" },
+      { label: "24-Hour Capacity", value: "Up to 720 napkins (48 back-to-back cycles, full load)" },
       { label: "Electrical", value: "230V ±10%, 50 Hz, single phase, 5A" },
       { label: "Power Consumption", value: "1.25 kW" },
       { label: "Display", value: "Digital — actual & set temperature" },
@@ -850,7 +856,7 @@ export const products: Product[] = [
       "The Lyra Maxi is the highest-capacity sanitary napkin incinerator in Lyra Enterprises' range, handling 25–50 napkins per cycle — essential for large hospitals, government medical colleges, industrial facilities and large institutional campuses with high daily sanitary waste volumes. The top-loading design allows quick restocking. Robust 900×500×500 mm MS construction with epoxy coating is built for continuous operation. Includes a digital temperature display, automatic controller, MCB safety, thermal insulation and an optional WiFi IoT module for remote temperature logging.",
     features: [
       "25–50 napkins per cycle",
-      "100+ napkins/day capacity",
+      "Up to 800 napkins per 8-hour day (30-minute cycle)",
       "Digital temperature display (actual & set)",
       "Automatic digital temperature controller",
       "Top-loading design",
@@ -864,7 +870,10 @@ export const products: Product[] = [
     specs: [
       { label: "Dimensions", value: "900 × 500 × 500 mm" },
       { label: "Cycle Capacity", value: "25–50 napkins" },
-      { label: "Daily Capacity", value: "Up to 100 napkins/day" },
+      { label: "Cycle Time", value: "30 minutes" },
+      { label: "Hourly Capacity", value: "Up to 100 napkins/hour (back-to-back cycles, full load)" },
+      { label: "Daily Capacity", value: "Up to 800 napkins per 8-hour working day (full load)" },
+      { label: "24-Hour Capacity", value: "Up to 2,400 napkins (48 back-to-back cycles, full load)" },
       { label: "Electrical", value: "230V ±10%, 50 Hz, single phase, 5A" },
       { label: "Power Consumption", value: "1.25 kW" },
       { label: "Display", value: "Digital — actual & set temperature" },

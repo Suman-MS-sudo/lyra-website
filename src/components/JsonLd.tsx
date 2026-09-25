@@ -281,7 +281,7 @@ const incineratorProducts = [
     image: "lyra-micro.png",
     price: 13000,
     description:
-      "Compact sanitary napkin incinerator for 1–5 napkins per cycle. Up to 100 napkins/day, automatic temperature controller, wall mounting. Best for schools and small offices.",
+      "Compact sanitary napkin incinerator for 1–5 napkins per cycle. Up to 80 napkins per 8-hour day (30-minute cycles), automatic temperature controller, wall mounting. Best for schools and small offices.",
     keywords: "micro incinerator, napkin incinerator for schools, compact incinerator india",
   },
   {
@@ -291,7 +291,7 @@ const incineratorProducts = [
     image: "lyra-mini.png",
     price: 16000,
     description:
-      "Mid-size sanitary napkin incinerator for 5–15 napkins per cycle. 100 napkins/day, digital temperature display, wall mounting. Ideal for colleges and medium offices.",
+      "Mid-size sanitary napkin incinerator for 5–15 napkins per cycle. Up to 240 napkins per 8-hour day (30-minute cycles), digital temperature display, wall mounting. Ideal for colleges and medium offices.",
     keywords: "mini incinerator, napkin incinerator for colleges, sanitary waste incinerator",
   },
   {

@@ -95,7 +95,7 @@ const vmChecklist = [
 ];
 
 const incChecklist = [
-  ["Capacity", "Napkins per cycle and per day (Micro 1–5 per cycle, Mini 5–15, Maxi 25–50)"],
+  ["Capacity", "Napkins per cycle and per day. Lyra cycles take 30 minutes: Micro 1–5 per cycle (up to 80 per 8-hour day, 240 per 24 hours), Mini 5–15 (up to 240, 720), Maxi 25–50 (up to 800, 2,400)"],
   ["Control", "Automatic digital temperature controller and display"],
   ["Safety", "MCB safety, thermal insulation and a smoke-control design"],
   ["Compliance", "SWM Rules 2016 and CPCB guidelines for sanitary waste"],

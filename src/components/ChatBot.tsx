@@ -115,6 +115,7 @@ Would you like a detailed quote for your school?`
 
 **For Disposal: Lyra Mini Incinerator**
 ✅ 5-15 napkins per cycle
+✅ Up to 240 napkins per 8-hour day (30-min cycles)
 ✅ Digital temperature control
 ✅ Infection-free waste disposal
 ✅ SWM Rules 2016 compliant
@@ -169,7 +170,7 @@ Which product interests you most?`
 **Lyra Micro**
 ✅ Compact (520×230×230 mm)
 ✅ 1-5 napkins per cycle
-✅ Up to 100 napkins/day
+✅ Up to 80 napkins per 8-hour day (30-min cycles)
 ✅ Wall mountable
 ✅ Perfect for small facilities
 
