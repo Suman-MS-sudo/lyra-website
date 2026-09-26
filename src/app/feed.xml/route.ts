@@ -1,11 +1,12 @@
-import { products, SITE, priceInclGst, type Product } from "@/lib/data";
+import { products, SITE, type Product } from "@/lib/data";
 
 /**
  * Google Merchant Center product feed (RSS 2.0 + g: namespace).
  * Served at /feed.xml — submit this URL as a scheduled feed in Merchant Center.
  *
- * Prices are the ex-GST pricelist MRP. GST (18%) is declared separately via
- * g:tax so Merchant Center shows a GST-inclusive price to shoppers.
+ * Prices are the ex-GST pricelist MRP, matching the landing pages. Merchant Center
+ * does not support the g:tax attribute in India (it flags it as unrecognised), so GST
+ * is stated in the feed description and product pages instead.
  */
 
 export const dynamic = "force-static";
@@ -35,7 +36,6 @@ function item(p: Product): string {
   const link = `${SITE.url}/products/${p.slug}`;
   const image = `${SITE.url}${p.image}`;
   const priceExGst = p.price;
-  const gst = priceInclGst(priceExGst) - priceExGst;
   const title = p.category === "napkin"
     ? `${p.fullName}`
     : `${p.fullName} — ₹${priceExGst.toLocaleString("en-IN")}`;
@@ -49,11 +49,6 @@ function item(p: Product): string {
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>${priceExGst}.00 INR</g:price>
-      <g:tax>
-        <g:country>IN</g:country>
-        <g:rate>18</g:rate>
-        <g:tax_ship>no</g:tax_ship>
-      </g:tax>
       <g:brand>Lyra Enterprises</g:brand>
       <g:mpn>${esc(p.code)}</g:mpn>
       <g:identifier_exists>no</g:identifier_exists>
