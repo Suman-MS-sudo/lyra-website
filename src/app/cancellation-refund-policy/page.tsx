@@ -27,12 +27,13 @@ export default function CancellationRefundPolicyPage() {
 
       <h2>Post-Delivery Returns and Warranty</h2>
       <p>
-        <strong>In short:</strong> returns are accepted for defective items only, within 1 year of delivery (transit damage within 48 hours). Return shipping for a confirmed manufacturing defect is free for the customer.
+        <strong>In short:</strong> a defective or damaged unit can be returned within 10 days of delivery, and Lyra Enterprises pays the return shipping. After that, the 1-year warranty covers manufacturing defects through repair or replacement. We do not accept change-of-mind returns, and transit damage must be reported within 48 hours of delivery.
       </p>
       <p>
         Because our vending machines and incinerators are installed institutional equipment rather than everyday consumer goods, we do not offer &ldquo;change of mind&rdquo; returns after delivery. Instead, every machine is covered by our <strong>1-year manufacturer warranty</strong> against manufacturing defects, as follows:
       </p>
       <ul>
+        <li><strong>10-day return window:</strong> A defective or damaged unit may be returned within 10 days of delivery. Lyra Enterprises pays the return shipping, and the unit is repaired or replaced. A refund is considered only where repair or replacement is not possible. Returns are not accepted for change of mind or wrong selection.</li>
         <li><strong>What is covered:</strong> Manufacturing defects in parts or workmanship that appear during normal use within 1 year of delivery — for example, a faulty coin acceptor, dispensing mechanism, sensor, display, or control board fitted at the factory.</li>
         <li><strong>What is not covered:</strong> Damage from improper installation, misuse, unauthorized modification, water ingress from improper siting, electrical damage from unstable power supply, or normal wear items (e.g. consumable coin-acceptor cleaning).</li>
         <li><strong>Reporting window:</strong> Report a suspected manufacturing defect within 1 year of delivery, and report transit damage or missing parts within 48 hours of delivery (see our <a href="/shipping-delivery-policy">Shipping and Delivery Policy</a>).</li>
