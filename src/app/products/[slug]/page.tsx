@@ -554,9 +554,15 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                         key={p.slug}
                         className={`px-4 py-3 text-center font-semibold ${p.slug === product.slug ? "text-primary-700 bg-primary-50" : "text-gray-700"}`}
                       >
-                        {p.name}
-                        {p.slug === product.slug && (
-                          <span className="block text-[9px] font-bold text-primary-500 uppercase tracking-widest">← this</span>
+                        {p.slug === product.slug ? (
+                          <>
+                            {p.name}
+                            <span className="block text-[9px] font-bold text-primary-500 uppercase tracking-widest">← this</span>
+                          </>
+                        ) : (
+                          <Link href={`/products/${p.slug}`} className="hover:text-primary-600 hover:underline">
+                            {p.name}
+                          </Link>
                         )}
                       </th>
                     ))}
@@ -585,6 +591,33 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                 View all vending machines →
               </Link>
             </div>
+          </section>
+        )}
+
+        {/* ── Related reading (internal links to guides) ───── */}
+        {product.category !== "napkin" && (
+          <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Related Reading</h2>
+            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2 text-sm font-semibold text-primary-600">
+              {(isVM
+                ? [
+                    ["/blog/upi-vs-coin-vending-machine", "UPI vs coin vending machines: which to choose →"],
+                    ["/blog/manual-vs-automatic-napkin-vending-machine", "Manual vs automatic napkin vending machines →"],
+                    ["/sanitary-napkin-vending-machine-price-india", "Sanitary napkin vending machine price in India →"],
+                    ["/government-schemes-menstrual-hygiene", "Government schemes that fund vending machines →"],
+                  ]
+                : [
+                    ["/blog/napkin-incinerator-vs-sanitary-bin", "Napkin incinerator vs sanitary bin →"],
+                    ["/blog/solid-waste-management-rules-2016-india-guide", "SWM Rules 2016: sanitary waste disposal rules →"],
+                    ["/government-schemes-menstrual-hygiene", "Government schemes that fund incinerators →"],
+                    ["/solutions/schools-colleges", "Menstrual hygiene setup for schools & colleges →"],
+                  ]
+              ).map(([href, label]) => (
+                <li key={href}>
+                  <Link href={href} className="hover:underline">{label}</Link>
+                </li>
+              ))}
+            </ul>
           </section>
         )}
 

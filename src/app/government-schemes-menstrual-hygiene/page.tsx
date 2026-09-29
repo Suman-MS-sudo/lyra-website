@@ -8,9 +8,9 @@ import { SITE } from "@/lib/data";
 const PAGE_URL = `${SITE.url}/government-schemes-menstrual-hygiene`;
 
 export const metadata: Metadata = {
-  title: { absolute: "Government Schemes & Subsidies for Menstrual Hygiene Infrastructure" },
+  title: { absolute: "Govt Schemes for Sanitary Pad Vending Machines, 2026 Guide" },
   description:
-    "How schools, health departments and CSR teams in India fund napkin vending machines and incinerators: Samagra Shiksha, NHM, Swachh Bharat, MPLADS and more.",
+    "Which schemes fund sanitary pad vending machines and incinerators in India? Samagra Shiksha, NHM, Swachh Bharat, MPLADS, CSR and state schemes like SHe-Pad, Shuchi and Asmita.",
   keywords: [
     "government scheme sanitary napkin vending machine",
     "subsidy for napkin incinerator india",
@@ -354,6 +354,34 @@ export default function GovernmentSchemesPage() {
                   </div>
                   <p className="mt-3 text-sm leading-relaxed text-slate-600">{r.body}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Machines these schemes can fund */}
+        <section className="section-padding">
+          <div className="lyra-container max-w-5xl">
+            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+              Machines these schemes can fund
+            </h2>
+            <p className="mt-3 max-w-3xl text-slate-600">
+              Attach the model and price to your proposal. Every model ships with a GST invoice and a formal quotation.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                ["/products/push-button-vending-machine", "Push Button Vending Machine", "Low-cost manual model for schools and hostels"],
+                ["/products/solo-coin-vending-machine", "Solo Coin Vending Machine", "Coin-operated, no connectivity needed"],
+                ["/products/solo-qr-vending-machine", "Solo QR (UPI) Vending Machine", "Cashless UPI dispensing for colleges and offices"],
+                ["/products/lyra-micro-incinerator", "Micro Incinerator", "Compact disposal for small washrooms"],
+                ["/products/vending-incinerator-bundle", "Vending + Incinerator Bundle", "Access and compliant disposal in one procurement"],
+                ["/sanitary-napkin-vending-machine-price-india", "Price list, all models", "Compare prices before you draft the proposal"],
+              ].map(([href, name, note]) => (
+                <Link key={href} href={href} className="lyra-card p-5 hover:border-primary-300">
+                  <h3 className="text-base font-semibold text-slate-900">{name}</h3>
+                  <p className="mt-1 text-sm text-slate-600">{note}</p>
+                  <span className="mt-3 inline-block text-sm font-semibold text-primary-600">View details →</span>
+                </Link>
               ))}
             </div>
           </div>

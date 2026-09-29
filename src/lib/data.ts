@@ -419,7 +419,7 @@ export const products: Product[] = [
   {
     slug: "solo-qr-vending-machine",
     name: "Solo QR",
-    fullName: "QR-Based Sanitary Napkin Vending Machine",
+    fullName: "UPI QR Sanitary Napkin Vending Machine",
     code: "Lyra/SNVM/QR",
     category: "vending-machine",
     price: 19500,
@@ -471,9 +471,9 @@ export const products: Product[] = [
       "sim based napkin vending machine india",
       "qr napkin machine for offices india",
     ],
-    metaTitle: "UPI QR Sanitary Pad Vending Machine ₹19,500 | Lyra",
+    metaTitle: "UPI Vending Machine for Sanitary Pads ₹19,500 | Lyra",
     metaDescription:
-      "Lyra Solo QR napkin vending machine, ₹19,500 + GST. UPI QR payment (GPay, PhonePe), SIM-based, 25-pad capacity. Chennai manufacturer.",
+      "UPI vending machine for sanitary napkins, ₹19,500 + GST. Lyra Solo QR accepts GPay, PhonePe and all UPI apps, SIM-based, 25-pad capacity. Chennai manufacturer.",
   },
   {
     slug: "solo-wave-vending-machine",
