@@ -34,11 +34,13 @@ function productType(p: Product): string {
 
 function item(p: Product): string {
   const link = `${SITE.url}/products/${p.slug}`;
-  const image = `${SITE.url}${p.image}`;
+  // Feed images are white-background 1000x1000 JPEG copies of the product PNGs
+  // (public/images/feed/), since the originals are transparent and some are under 800 px.
+  const image = `${SITE.url}/images/feed/${p.image.split("/").pop()!.replace(/\.png$/, ".jpg")}`;
   const priceExGst = p.price;
-  const title = p.category === "napkin"
-    ? `${p.fullName}`
-    : `${p.fullName} — ₹${priceExGst.toLocaleString("en-IN")}`;
+  // Merchant Center treats a price in the title as promotional text, so the title is
+  // just the brand + product name (never repeat "Lyra" when the name already has it).
+  const title = /^lyra\b/i.test(p.fullName) ? p.fullName : `Lyra ${p.fullName}`;
 
   return `    <item>
       <g:id>${esc(p.code)}</g:id>
