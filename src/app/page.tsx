@@ -23,9 +23,12 @@ export default function Home() {
         storageKey="lyra_home_popup_dismissed"
         source="homepage-popup"
         trigger="immediate"
-        delayMs={3000}
-        title="Get a free callback"
-        body="Leave your number and our team will call you back with product details and a quote — no obligation."
+        delayMs={10000}
+        eyebrow="Price list + free callback"
+        title="Vending machines from ₹12,000 + GST"
+        body="Leave your number and we'll call back with prices for UPI, coin, RFID and push-button models. GeM registered, GST invoice on every order, 1-year warranty."
+        cta="Get the Price List"
+        quickContact
       />
       <main className="relative">
         <Hero />
