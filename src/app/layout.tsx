@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import FloatingActionButtons from "@/components/FloatingActionButtons";
+import LeadClickTracker from "@/components/LeadClickTracker";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -192,20 +193,19 @@ export default function RootLayout({
           src="https://www.googletagmanager.com/gtag/js?id=G-ZCS9ZJ3TXC"
           strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-ZCS9ZJ3TXC');
-          `}
-        </Script>
+        {/* Tiny gtag queue stub, inline so clicks before gtag.js loads are queued, not lost */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZCS9ZJ3TXC');`,
+          }}
+        />
       </head>
       <body
         className={`${inter.variable} ${sora.variable} font-sans antialiased bg-white text-gray-900 overflow-x-hidden`}
       >
         {children}
         <FloatingActionButtons />
+        <LeadClickTracker />
         <Analytics />
         <SpeedInsights />
       </body>

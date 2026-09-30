@@ -115,7 +115,7 @@ export default function Contact() {
     form.append("_captcha", "false");
     form.append("_subject", "New Inquiry from Lyra Enterprises Website");
     try {
-      await fetch("https://formsubmit.co/sales@lyraenterprise.co.in", {
+      const res = await fetch("https://formsubmit.co/sales@lyraenterprise.co.in", {
         method: "POST",
         body: form,
         headers: { Accept: "application/json" },
@@ -123,7 +123,7 @@ export default function Contact() {
       setSubmittedEmails(prev => new Set([...prev, data.email]));
       setSubmittedPhones(prev => new Set([...prev, data.phone]));
       setSubmitted(true);
-      trackLead("form", data.product);
+      if (res.ok) trackLead("form", data.product);
       reset();
     } catch {
       alert("Something went wrong. Please try again or call us directly.");

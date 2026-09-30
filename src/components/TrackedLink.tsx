@@ -10,7 +10,10 @@ type Props = ComponentProps<typeof Link> & {
   detail?: string;
 };
 
-/** Link that fires the GA4 `generate_lead` event on click. Usable from server components. */
+/**
+ * Link that reports email clicks to GA4. Phone and WhatsApp clicks are picked up
+ * site-wide by LeadClickTracker. Usable from server components.
+ */
 export default function TrackedLink({ method, detail, onClick, ...rest }: Props) {
   return (
     <Link

@@ -61,7 +61,7 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
       if (!res.ok || !payload.success) throw new Error(payload.error || "Failed to send enquiry.");
 
       setSuccess(true);
-      trackLead("form", `product-${product.slug}`);
+      trackLead("form", product.fullName);
       setForm({ name: "", email: "", phone: "", company: "", message: "" });
     } catch (err) {
       setErrorMessage(err instanceof Error ? err.message : "Failed to send enquiry.");

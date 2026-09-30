@@ -83,12 +83,12 @@ export default function ExitPopup({
     form.append("_captcha", "false");
     form.append("_subject", `Callback Request - ${source} - Lyra Enterprises`);
     try {
-      await fetch("https://formsubmit.co/sales@lyraenterprise.co.in", {
+      const res = await fetch("https://formsubmit.co/sales@lyraenterprise.co.in", {
         method: "POST",
         body: form,
         headers: { Accept: "application/json" },
       });
-      trackLead("form", source);
+      if (res.ok) trackLead("form", source, "callback");
       setSubmitted(true);
       sessionStorage.setItem(storageKey, "1");
     } catch {
