@@ -4,6 +4,7 @@ import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import AddToCartButton from "@/components/AddToCartButton";
 import { vendingMachines, SITE, formatINR } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -163,6 +164,9 @@ export default function VendingMachinesPage() {
                       <Link href={`/products/${p.slug}`} className="text-primary-600 hover:underline">Details →</Link>
                       <Link href={`/products/${p.slug}#enquiry`} className="text-gray-900 hover:underline">Enquire →</Link>
                     </div>
+                  </div>
+                  <div className="mt-4">
+                    <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="block" />
                   </div>
                 </div>
               </div>

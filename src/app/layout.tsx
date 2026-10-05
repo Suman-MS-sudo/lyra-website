@@ -196,7 +196,7 @@ export default function RootLayout({
         {/* Tiny gtag queue stub, inline so clicks before gtag.js loads are queued, not lost */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZCS9ZJ3TXC');`,
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZCS9ZJ3TXC');gtag('config','AW-7565942591');`,
           }}
         />
       </head>

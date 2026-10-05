@@ -4,6 +4,7 @@ import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import AddToCartButton from "@/components/AddToCartButton";
 import { vendingMachines, incinerators, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -161,11 +162,11 @@ export default function ProductsPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {vendingMachines.map((p) => (
-              <Link
+              <div
                 key={p.slug}
-                href={`/products/${p.slug}`}
-                className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
+                className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
               >
+                <Link href={`/products/${p.slug}`} aria-label={p.fullName} className="absolute inset-0 z-0" />
                 <div className={`relative aspect-square bg-gradient-to-br ${p.accent} overflow-hidden`}>
                   <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/10" />
                   <Image
@@ -190,12 +191,12 @@ export default function ProductsPage() {
                     <span className="text-xl font-extrabold text-gray-900">{formatINR(p.price)}</span>
                     <span className="text-[11px] text-gray-500">+ 18% GST · {formatINR(priceInclGst(p.price))} incl.</span>
                   </div>
-                  <div className="mt-4 flex items-center justify-between gap-3">
-                    <span className="text-xs font-bold text-primary-600 group-hover:underline">View Details →</span>
-                    <span className={`px-3 py-1.5 rounded-lg text-white text-xs font-bold bg-gradient-to-r ${p.accent}`}>Buy Now</span>
+                  <span className="mt-4 text-xs font-bold text-primary-600 group-hover:underline">View Details →</span>
+                  <div className="relative z-10 mt-3">
+                    <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="block" />
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </section>
@@ -213,11 +214,11 @@ export default function ProductsPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {incinerators.map((p) => (
-              <Link
+              <div
                 key={p.slug}
-                href={`/products/${p.slug}`}
-                className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
+                className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
               >
+                <Link href={`/products/${p.slug}`} aria-label={p.fullName} className="absolute inset-0 z-0" />
                 <div className={`relative aspect-square bg-gradient-to-br ${p.accent} overflow-hidden`}>
                   <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/10" />
                   <Image
@@ -239,12 +240,12 @@ export default function ProductsPage() {
                     <span className="text-xl font-extrabold text-gray-900">{formatINR(p.price)}</span>
                     <span className="text-[11px] text-gray-500">+ 18% GST · {formatINR(priceInclGst(p.price))} incl.</span>
                   </div>
-                  <div className="mt-4 flex items-center justify-between gap-3">
-                    <span className="text-xs font-bold text-primary-600 group-hover:underline">View Details →</span>
-                    <span className={`px-3 py-1.5 rounded-lg text-white text-xs font-bold bg-gradient-to-r ${p.accent}`}>Buy Now</span>
+                  <span className="mt-4 text-xs font-bold text-primary-600 group-hover:underline">View Details →</span>
+                  <div className="relative z-10 mt-3">
+                    <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="block" />
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </section>

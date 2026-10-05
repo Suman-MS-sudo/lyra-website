@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import CartLink from "@/components/CartLink";
 import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 
 const vendingDropdown = [
@@ -170,6 +171,7 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
+            <CartLink />
             <Link
               href="tel:+918122378860"
               className="text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
@@ -184,9 +186,11 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Toggle */}
+          {/* Mobile: cart + toggle */}
+          <div className="md:hidden flex items-center gap-1">
+          <CartLink />
           <button
-            className="md:hidden flex flex-col gap-1.5 p-2"
+            className="flex flex-col gap-1.5 p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -205,6 +209,7 @@ export default function Navbar() {
               className="w-6 h-0.5 bg-gray-800 rounded-full block transition-all"
             />
           </button>
+          </div>
         </div>
       </div>
 
@@ -247,6 +252,7 @@ export default function Navbar() {
               </MobileSection>
 
               <Link href="/blog" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-medium text-gray-700 hover:text-primary-600 border-b border-gray-100">Blog</Link>
+              <Link href="/order" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-medium text-gray-700 hover:text-primary-600 border-b border-gray-100">Cart &amp; Order</Link>
               <Link href="/#contact" onClick={() => setMobileOpen(false)} className="py-3 text-sm font-medium text-gray-700 hover:text-primary-600 border-b border-gray-100">Contact</Link>
 
               {/* Quick contact */}

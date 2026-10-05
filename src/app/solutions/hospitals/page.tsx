@@ -4,6 +4,7 @@ import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
 import { SITE, getProductBySlug, formatINR } from "@/lib/data";
+import AddToCartButton from "@/components/AddToCartButton";
 
 export const metadata: Metadata = {
   title: { absolute: "Napkin Vending Machines for Hospitals & Clinics | Lyra" },
@@ -233,12 +234,12 @@ export default function HospitalsSolutionPage() {
                     {(() => { const dp = getProductBySlug(p.slug); return dp ? `${formatINR(dp.price)} + 18% GST` : "Contact for pricing"; })()}
                   </p>
                   <p className="text-gray-500 text-sm flex-1 mb-5">{p.desc}</p>
-                  <Link
-                    href={`/products/${p.slug}#enquiry`}
-                    className="mt-auto text-center py-2.5 px-4 rounded-xl bg-teal-50 text-teal-700 font-semibold text-sm hover:bg-teal-100 transition-colors"
-                  >
-                    Enquire →
-                  </Link>
+                  <div className="mt-auto grid gap-2">
+                    <AddToCartButton slug={p.slug} name={p.name} price={getProductBySlug(p.slug)?.price} variant="block" />
+                    <Link href={`/products/${p.slug}#enquiry`} className="text-center py-2.5 px-4 rounded-xl bg-teal-50 text-teal-700 font-semibold text-sm hover:bg-teal-100 transition-colors">
+                      Enquire →
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>

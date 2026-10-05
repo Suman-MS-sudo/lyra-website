@@ -30,7 +30,14 @@ export async function GET() {
     <loc>${esc(`${SITE.url}/products/${p.slug}`)}</loc>
     <image:image>
       <image:loc>${esc(`${SITE.url}${p.image}`)}</image:loc>
-    </image:image>
+    </image:image>${(p.gallery ?? [])
+      .map(
+        (g) => `
+    <image:image>
+      <image:loc>${esc(`${SITE.url}${g.src}`)}</image:loc>
+    </image:image>`
+      )
+      .join("")}
   </url>`
     ),
   ].join("\n");

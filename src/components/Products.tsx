@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
 import Image from "next/image";
+import AddToCartButton from "@/components/AddToCartButton";
 
 type Product = {
   name: string;
@@ -246,12 +247,15 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             </Link>
           </div>
 
-          <Link
-            href={`/products/${product.slug}#enquiry`}
-            className="btn btn-primary mt-4 w-full"
-          >
-            Get a Quote
-          </Link>
+          <div className="mt-4 grid gap-2">
+            <AddToCartButton slug={product.slug} name={product.name} variant="block" qty={product.slug.endsWith("-sanitary-napkin") ? 100 : 1} />
+            <Link
+              href={`/products/${product.slug}#enquiry`}
+              className="btn btn-primary w-full"
+            >
+              Get a Quote
+            </Link>
+          </div>
         </div>
       </div>
     </motion.article>

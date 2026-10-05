@@ -5,6 +5,7 @@ import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
 import TrackedLink from "@/components/TrackedLink";
 import { SITE, vendingMachines, incinerators, formatINR, priceInclGst } from "@/lib/data";
+import AddToCartButton from "@/components/AddToCartButton";
 
 const URL = `${SITE.url}/sanitary-napkin-vending-machine-price-india`;
 const TITLE = "Sanitary Napkin Vending Machine Price in India (2026)";
@@ -159,6 +160,7 @@ export default function PricePage() {
                   <th className="px-4 py-3 font-semibold">Connectivity</th>
                   <th className="px-4 py-3 font-semibold text-right">Price (ex-GST)</th>
                   <th className="px-4 py-3 font-semibold text-right">With 18% GST</th>
+                  <th className="px-4 py-3 font-semibold text-right"><span className="sr-only">Add to cart</span></th>
                 </tr>
               </thead>
               <tbody>
@@ -173,6 +175,9 @@ export default function PricePage() {
                     <td className="px-4 py-3 text-gray-600">{p.compare?.connectivity ?? "—"}</td>
                     <td className="px-4 py-3 text-right font-semibold text-gray-900">{formatINR(p.price)}</td>
                     <td className="px-4 py-3 text-right text-gray-600">{formatINR(priceInclGst(p.price))}</td>
+                    <td className="px-4 py-3 text-right">
+                      <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="compact" />
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -187,6 +192,7 @@ export default function PricePage() {
                   <th className="px-4 py-3 font-semibold">Model</th>
                   <th className="px-4 py-3 font-semibold text-right">Price (ex-GST)</th>
                   <th className="px-4 py-3 font-semibold text-right">With 18% GST</th>
+                  <th className="px-4 py-3 font-semibold text-right"><span className="sr-only">Add to cart</span></th>
                 </tr>
               </thead>
               <tbody>
@@ -199,6 +205,9 @@ export default function PricePage() {
                     </td>
                     <td className="px-4 py-3 text-right font-semibold text-gray-900">{formatINR(p.price)}</td>
                     <td className="px-4 py-3 text-right text-gray-600">{formatINR(priceInclGst(p.price))}</td>
+                    <td className="px-4 py-3 text-right">
+                      <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="compact" />
+                    </td>
                   </tr>
                 ))}
               </tbody>

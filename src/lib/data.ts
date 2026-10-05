@@ -65,6 +65,8 @@ export type Product = {
   useCases: string[];
   accent: string;
   image: string;
+  /** Extra product images (feature / spec sheets) shown in the product-page gallery section. */
+  gallery?: { src: string; width: number; height: number }[];
   /** Public path to a downloadable product booklet/spec-sheet PDF, if available. */
   booklet?: string;
   /** Optional "what sets this apart at this price" callouts — only set when genuinely differentiated vs. typical machines in this price band. */
@@ -168,6 +170,7 @@ export const products: Product[] = [
     ],
     accent: "from-gray-600 to-gray-800",
     image: "/images/products/push-button-vm.png",
+    gallery: [{ src: "/images/products/gallery/push-button-vending-machine-2.webp", width: 1024, height: 1024 }],
     booklet: "/downloads/lyra-push-button-booklet.pdf",
     differentiators: [
       {
@@ -248,6 +251,7 @@ export const products: Product[] = [
     ],
     accent: "from-primary-500 to-primary-700",
     image: "/images/products/solo-coin.png",
+    gallery: [{ src: "/images/products/gallery/solo-coin-vending-machine-2.webp", width: 842, height: 1264 }],
     weightKg: 10,
     compare: { payment: "₹5 Coin", connectivity: "None", cloudReports: "No", touchDisplay: "No", iotMonitoring: "No" },
     keywords: [
@@ -310,6 +314,7 @@ export const products: Product[] = [
     ],
     accent: "from-amber-500 to-primary-600",
     image: "/images/products/solo-multi.png",
+    gallery: [{ src: "/images/products/gallery/solo-multi-coin-vending-machine-2.webp", width: 842, height: 1264 }],
     weightKg: 10,
     compare: { payment: "₹1 / ₹2 / ₹5 Coin", connectivity: "None", cloudReports: "No", touchDisplay: "No", iotMonitoring: "No" },
     keywords: [
@@ -403,6 +408,7 @@ export const products: Product[] = [
     ],
     accent: "from-teal-500 to-cyan-700",
     image: "/images/products/solo-rfid.png",
+    gallery: [{ src: "/images/products/gallery/solo-rfid-vending-machine-2.webp", width: 842, height: 1200 }],
     weightKg: 10,
     compare: { payment: "RFID Card (Prepaid/Postpaid)", connectivity: "Wired network + offline cache", cloudReports: "Yes", touchDisplay: "Yes", iotMonitoring: "Yes" },
     keywords: [
@@ -459,6 +465,7 @@ export const products: Product[] = [
     ],
     accent: "from-blue-500 to-blue-700",
     image: "/images/products/solo-qr.png",
+    gallery: [{ src: "/images/products/gallery/solo-qr-vending-machine-2.webp", width: 768, height: 1342 }],
     weightKg: 10,
     compare: { payment: "UPI QR", connectivity: "SIM-based", cloudReports: "No", touchDisplay: "No", iotMonitoring: "No" },
     keywords: [
@@ -521,6 +528,7 @@ export const products: Product[] = [
     ],
     accent: "from-slate-600 to-slate-800",
     image: "/images/products/solo-wave.png",
+    gallery: [{ src: "/images/products/gallery/solo-wave-vending-machine-2.webp", width: 842, height: 1236 }],
     weightKg: 15,
     compare: { payment: "Wave Sensor (free)", connectivity: "None", cloudReports: "No", touchDisplay: "No", iotMonitoring: "No" },
     keywords: [
@@ -598,6 +606,7 @@ export const products: Product[] = [
     ],
     accent: "from-blue-500 to-primary-600",
     image: "/images/products/solo-wifi.png",
+    gallery: [{ src: "/images/products/gallery/solo-wifi-vending-machine-2.webp", width: 842, height: 1264 }],
     weightKg: 10,
     compare: { payment: "UPI QR + Coin", connectivity: "WiFi 2.4GHz", cloudReports: "Yes", touchDisplay: "Yes", iotMonitoring: "Yes" },
     keywords: [
@@ -678,6 +687,7 @@ export const products: Product[] = [
     ],
     accent: "from-sky-500 to-primary-700",
     image: "/images/products/solo-ethernet.png",
+    gallery: [{ src: "/images/products/gallery/solo-ethernet-vending-machine-2.webp", width: 842, height: 1264 }],
     weightKg: 10,
     compare: { payment: "UPI QR + Coin", connectivity: "Ethernet/LAN", cloudReports: "Yes", touchDisplay: "Yes", iotMonitoring: "Yes" },
     keywords: [
@@ -749,6 +759,7 @@ export const products: Product[] = [
     ],
     accent: "from-primary-600 to-primary-800",
     image: "/images/products/lyra-micro.png",
+    gallery: [{ src: "/images/products/gallery/lyra-micro-incinerator-2.webp", width: 842, height: 1264 }],
     weightKg: 15,
     keywords: [
       "sanitary napkin incinerator india",
@@ -821,6 +832,7 @@ export const products: Product[] = [
     ],
     accent: "from-primary-500 to-primary-700",
     image: "/images/products/lyra-mini.png",
+    gallery: [{ src: "/images/products/gallery/lyra-mini-incinerator-2.webp", width: 1024, height: 1024 }],
     weightKg: 23,
     keywords: [
       "sanitary napkin incinerator for colleges india",
@@ -894,6 +906,7 @@ export const products: Product[] = [
     ],
     accent: "from-blue-600 to-primary-800",
     image: "/images/products/lyra-maxi.png",
+    gallery: [{ src: "/images/products/gallery/lyra-maxi-incinerator-2.webp", width: 843, height: 1264 }],
     weightKg: 50,
     keywords: [
       "high capacity sanitary napkin incinerator india",

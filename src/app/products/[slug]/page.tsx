@@ -1,11 +1,14 @@
 ﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
 import ProductPurchasePanel from "@/components/ProductPurchasePanel";
+import ProductImageGallery from "@/components/ProductImageGallery";
+import AddToCartButton from "@/components/AddToCartButton";
+import NapkinQuickAdd from "@/components/NapkinQuickAdd";
+import ViewItemTracker from "@/components/ViewItemTracker";
 import { getPngSize } from "@/lib/image-meta";
 import GoogleReviews from "@/components/GoogleReviews";
 import { products, vendingMachines, getProductBySlug, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
@@ -183,7 +186,21 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     description: product.description,
     sku: product.code,
     mpn: product.code,
-    ...(product.image ? { image: [imageObject] } : {}),
+    ...(product.image
+      ? {
+          image: [
+            imageObject,
+            ...(product.gallery ?? []).map((g) => ({
+              "@type": "ImageObject",
+              url: `${SITE.url}${g.src}`,
+              contentUrl: `${SITE.url}${g.src}`,
+              name: `${product.fullName} — features and specifications`,
+              width: g.width,
+              height: g.height,
+            })),
+          ],
+        }
+      : {}),
     brand: { "@type": "Brand", name: "Lyra Enterprises" },
     manufacturer: {
       "@type": "Organization",
@@ -266,6 +283,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <ViewItemTracker slug={product.slug} name={product.fullName} price={product.price} category={categoryLabel} />
       <PageNavbar />
       <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
 
@@ -278,110 +296,137 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             { label: product.name },
           ]} />
 
-          <div className="mt-6 grid lg:grid-cols-2 gap-10 items-start">
-            {/* Left: product info */}
-            <div>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className={`px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full text-white bg-gradient-to-r ${product.accent}`}>
-                  {product.badge}
-                </span>
-                {product.popular && (
-                  <span className="px-3 py-1 text-xs font-bold bg-yellow-400 text-yellow-900 rounded-full">★ Most Popular</span>
-                )}
-              </div>
-              <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-                {product.fullName}
-              </h1>
-              <p className="mt-2 text-sm text-gray-500 font-mono">{product.code}</p>
-              <p className="mt-4 text-lg text-gray-600 leading-relaxed">{product.description}</p>
-
-              {/* Price */}
-              <div className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <span className={`text-4xl font-extrabold bg-gradient-to-r ${product.accent} bg-clip-text text-transparent`}>
-                  {isNapkin ? `${formatINR(priceExGst)} / napkin` : formatINR(priceExGst)}
-                </span>
-                {!isNapkin && (
-                  <span className="text-sm text-gray-500">
-                    + {Math.round(GST_RATE * 100)}% GST &nbsp;·&nbsp; {formatINR(priceGstInc)} incl. GST &nbsp;·&nbsp; freight extra
-                  </span>
-                )}
-              </div>
-              <p className="mt-1 text-xs text-gray-400">Ex-works Chennai. Price as per current Lyra pricelist and subject to revision.</p>
-
-              {/* Stock + trust badges */}
-              <div className="mt-6 flex flex-wrap gap-3 text-sm">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200 font-semibold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  In Stock — Ships in 1–3 Days
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ 1-Year Warranty</span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Pan-India Delivery</span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Free Installation Support</span>
-              </div>
-
-              {/* CTA buttons */}
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  href="#enquiry"
-                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 to-blue-500 text-white font-bold text-sm hover:from-primary-700 hover:to-blue-600 shadow hover:shadow-lg transition-all"
-                >
-                  Request a Quote
-                </Link>
-                <Link
-                  href={`https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20${encodeURIComponent(product.fullName)}.%20Please%20share%20pricing%20and%20delivery%20details.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`px-6 py-3 rounded-xl text-white font-bold text-sm bg-gradient-to-r ${product.accent} hover:opacity-90 shadow hover:shadow-lg transition-all`}
-                >
-                  Get Quote on WhatsApp
-                </Link>
-                <Link
-                  href="tel:+918122378860"
-                  className="px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-800 font-bold text-sm hover:border-primary-400 hover:text-primary-700 transition-all"
-                >
-                  Call +91-81223 78860
-                </Link>
-              </div>
+          <div className="mt-6 grid items-start gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-12">
+            {/* Left: image gallery (photo + feature poster), sticky on desktop */}
+            <div className="lg:sticky lg:top-24">
+              <ProductImageGallery
+                fullName={product.fullName}
+                code={product.code}
+                image={product.image}
+                imageSize={imageSize ?? undefined}
+                gallery={product.gallery}
+              />
             </div>
 
-            {/* Right: visual card */}
-            <div className={`relative rounded-3xl overflow-hidden bg-gradient-to-br ${product.accent} h-72 lg:h-96 flex items-center justify-center shadow-2xl`}>
-              <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-white/10" />
-              <div className="absolute -bottom-12 -left-12 w-40 h-40 rounded-full bg-white/10" />
-              
-              {/* Product Image */}
-              <div className="absolute inset-0 flex items-center justify-center z-20">
-                <figure className="relative w-40 h-40 lg:w-48 lg:h-48 m-0">
-                  <Image
-                    src={product.image}
-                    alt={product.fullName}
-                    fill
-                    className="object-contain drop-shadow-2xl"
-                    sizes="(max-width: 1024px) 160px, 192px"
-                  />
-                  <figcaption className="sr-only">
-                    {product.fullName}, model {product.code}. {product.tagline}.
-                  </figcaption>
-                </figure>
+            {/* Right: title, price, model selector, buy box, highlights */}
+            <div>
+              <p className="text-sm">
+                <span className="text-gray-500">Brand: </span>
+                <span className="font-semibold text-primary-600">Lyra Enterprises</span>
+                <span className="mx-2 text-gray-300">|</span>
+                <span className="text-gray-500">{product.badge}</span>
+              </p>
+              <h1 className="mt-1 text-2xl font-semibold leading-snug text-gray-900 sm:text-3xl">
+                {product.fullName}
+              </h1>
+              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+                <a
+                  href={SITE.googleReviews.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 hover:underline"
+                  aria-label={`Lyra Enterprises is rated ${SITE.googleReviews.rating.toFixed(1)} out of 5 from ${SITE.googleReviews.count} Google reviews`}
+                >
+                  <span className="font-semibold text-gray-900">{SITE.googleReviews.rating.toFixed(1)}</span>
+                  <span className="text-amber-500" aria-hidden>★★★★★</span>
+                  <span className="text-primary-600">{SITE.googleReviews.count} Google reviews</span>
+                </a>
+                <span className="font-mono text-xs text-gray-400">Model {product.code}</span>
+                {product.popular && (
+                  <span className="rounded bg-yellow-400 px-2 py-0.5 text-xs font-bold text-yellow-900">Most Popular</span>
+                )}
               </div>
-              
-              {/* Ghost text behind image */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-                <p className="text-7xl font-black tracking-tight opacity-[0.08] leading-none text-white select-none">
-                  {product.name.split(" ").pop()}
-                </p>
-              </div>
-              
-              {/* Scrim for guaranteed text legibility regardless of accent color */}
-              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/50 to-transparent z-[5]" />
 
-              {/* Product info overlay */}
-              <div className="absolute bottom-6 left-6 right-6 text-white z-10">
-                <p className="text-lg lg:text-xl font-bold drop-shadow-sm">{product.name}</p>
-                <p className="text-white/90 text-sm mt-1 drop-shadow-sm">{product.tagline}</p>
-                <p className="mt-2 text-sm font-semibold text-white drop-shadow-sm">
-                  {isNapkin ? `${formatINR(priceExGst)} / napkin` : `${formatINR(priceExGst)} + GST`}
+              {/* Price */}
+              <div className="mt-4 border-t border-gray-200 pt-4">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="text-3xl font-bold text-gray-900 sm:text-4xl">{formatINR(priceExGst)}</span>
+                  {isNapkin ? (
+                    <span className="text-lg text-gray-600">/ napkin</span>
+                  ) : (
+                    <span className="text-sm font-medium text-gray-600">+ {Math.round(GST_RATE * 100)}% GST</span>
+                  )}
+                </div>
+                {!isNapkin && (
+                  <p className="mt-1 text-sm text-gray-600">
+                    {formatINR(priceGstInc)} inclusive of GST · freight extra
+                  </p>
+                )}
+                {isNapkin && (
+                  <p className="mt-1 text-sm text-gray-600">
+                    Sold in 100s: 100 napkins = {formatINR(product.price * 100)} · 1,000 napkins = {formatINR(product.price * 1000)}
+                  </p>
+                )}
+                <p className="mt-1 text-xs text-gray-400">
+                  Ex-works Chennai. Price as per current Lyra pricelist and subject to revision.
                 </p>
+              </div>
+
+              {/* Buy box */}
+              <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5">
+                <p className="flex items-center gap-2 text-base font-semibold text-emerald-700">
+                  <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                  In stock · Ships in 1–3 days
+                </p>
+                <ul className="mt-3 grid gap-x-4 gap-y-2 text-sm text-gray-700 sm:grid-cols-2">
+                  {[
+                    "1-year manufacturer warranty",
+                    "Pan-India delivery (freight extra)",
+                    "Free installation support",
+                    "GST invoice on every order",
+                  ].map((t) => (
+                    <li key={t} className="flex items-start gap-2">
+                      <svg className="mt-0.5 h-4 w-4 flex-none text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-4 grid gap-2.5">
+                  <AddToCartButton slug={product.slug} name={product.fullName} price={product.price} variant="primary" qty={isNapkin ? 100 : 1} />
+                  {isNapkin && <NapkinQuickAdd slug={product.slug} name={product.fullName} price={product.price} />}
+                  <Link
+                    href={`/order?add=${product.slug}`}
+                    className="flex items-center justify-center rounded-full bg-primary-600 px-6 py-3.5 text-sm font-bold text-white shadow transition hover:bg-primary-700"
+                  >
+                    Buy Now: Place an Order
+                  </Link>
+                  <p className="-mt-1 text-center text-xs font-medium text-emerald-700">No payment now. We confirm availability and freight first.</p>
+                  <Link
+                    href={`https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20${encodeURIComponent(product.fullName)}.%20Please%20share%20pricing%20and%20delivery%20details.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center rounded-full bg-[#25D366] px-6 py-3 text-sm font-bold text-white shadow transition hover:brightness-95"
+                  >
+                    Get Quote on WhatsApp
+                  </Link>
+                  <Link
+                    href="tel:+918122378860"
+                    className="flex items-center justify-center rounded-full border-2 border-gray-300 px-6 py-3 text-sm font-bold text-gray-800 transition hover:border-primary-400 hover:text-primary-700"
+                  >
+                    Call +91-81223 78860
+                  </Link>
+                </div>
+                <p className="mt-3 text-center text-sm">
+                  <Link href="#enquiry" className="font-semibold text-primary-600 hover:underline">Or request a formal quote ↓</Link>
+                </p>
+                <p className="mt-3 text-xs text-gray-500">
+                  Sold and shipped by <strong className="font-semibold text-gray-700">Lyra Enterprises</strong>, Chennai: direct from the manufacturer.
+                </p>
+              </div>
+
+              {/* About this item */}
+              <div className="mt-6 border-t border-gray-200 pt-5">
+                <h2 className="text-base font-bold text-gray-900">About this item</h2>
+                <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-gray-700">
+                  {product.features.slice(0, 6).map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+                <a href="#specs" className="mt-3 inline-block text-sm font-semibold text-primary-600 hover:underline">
+                  See full specifications ↓
+                </a>
               </div>
             </div>
           </div>
@@ -397,14 +442,13 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             </p>
             <p className="text-[11px] text-gray-500 truncate">+{Math.round(GST_RATE * 100)}% GST · freight extra</p>
           </div>
-          <a
-            href={`https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20${encodeURIComponent(product.fullName)}.%20Please%20share%20pricing%20and%20delivery%20details.`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`px-5 py-2.5 rounded-xl text-white font-bold text-sm bg-gradient-to-r ${product.accent} shadow whitespace-nowrap`}
+          <AddToCartButton slug={product.slug} name={product.fullName} price={product.price} variant="compact" qty={isNapkin ? 100 : 1} className="flex-none" />
+          <Link
+            href={`/order?add=${product.slug}`}
+            className="rounded-full bg-primary-600 px-5 py-2.5 text-sm font-bold text-white shadow whitespace-nowrap"
           >
-            Get Quote
-          </a>
+            Buy Now
+          </Link>
         </div>
         {/* Spacer so the sticky bar doesn't cover the footer on mobile */}
         <div className="lg:hidden h-20" />
@@ -454,7 +498,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         </section>
 
         {/* ── Specs ────────────────────────────────────────── */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
+        <section id="specs" className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100 scroll-mt-24">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Technical Specifications</h2>
           <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm bg-white">
             <table className="w-full text-sm">

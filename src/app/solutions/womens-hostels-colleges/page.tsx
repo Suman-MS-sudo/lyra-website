@@ -6,6 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import TrackedLink from "@/components/TrackedLink";
 import GoogleReviews from "@/components/GoogleReviews";
 import { SITE, getProductBySlug, formatINR } from "@/lib/data";
+import AddToCartButton from "@/components/AddToCartButton";
 
 const URL = `${SITE.url}/solutions/womens-hostels-colleges`;
 const TITLE = "Napkin Vending Machine & Incinerator for Women's Hostels";
@@ -165,9 +166,12 @@ export default function WomensHostelsPage() {
                   <p className="font-bold text-gray-900 text-lg mb-1">{p.name}</p>
                   <p className="text-gray-900 font-bold text-sm mb-3">{dp ? `${formatINR(dp.price)} + 18% GST` : "Contact for pricing"}</p>
                   <p className="text-gray-500 text-sm flex-1 mb-5">{p.desc}</p>
-                  <Link href={`/products/${p.slug}`} className="mt-auto text-center py-2.5 px-4 rounded-xl bg-teal-50 text-teal-700 font-semibold text-sm hover:bg-teal-100 transition-colors">
-                    View details →
-                  </Link>
+                  <div className="mt-auto grid gap-2">
+                    <AddToCartButton slug={p.slug} name={p.name} price={dp?.price} variant="block" />
+                    <Link href={`/products/${p.slug}`} className="text-center py-2.5 px-4 rounded-xl bg-teal-50 text-teal-700 font-semibold text-sm hover:bg-teal-100 transition-colors">
+                      View details →
+                    </Link>
+                  </div>
                 </div>
               );
             })}

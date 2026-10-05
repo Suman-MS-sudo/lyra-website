@@ -4,6 +4,7 @@ import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
 import { SITE, vendingMachines, formatINR, priceInclGst } from "@/lib/data";
+import AddToCartButton from "@/components/AddToCartButton";
 
 const URL = `${SITE.url}/compare-sanitary-napkin-vending-machines`;
 const TITLE = "Compare Sanitary Napkin Vending Machines (8 Models)";
@@ -105,6 +106,7 @@ export default function ComparePage() {
                   <th className="px-4 py-3 font-semibold text-center">Touch display</th>
                   <th className="px-4 py-3 font-semibold">Capacity</th>
                   <th className="px-4 py-3 font-semibold text-right">Price (ex-GST)</th>
+                  <th className="px-4 py-3 font-semibold text-right"><span className="sr-only">Add to cart</span></th>
                 </tr>
               </thead>
               <tbody>
@@ -121,6 +123,9 @@ export default function ComparePage() {
                     <td className="px-4 py-3 text-right font-semibold text-gray-900">
                       {formatINR(p.price)}
                       <span className="block text-xs font-normal text-gray-500">{formatINR(priceInclGst(p.price))} with GST</span>
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="compact" />
                     </td>
                   </tr>
                 ))}

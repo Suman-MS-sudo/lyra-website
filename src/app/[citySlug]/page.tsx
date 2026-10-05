@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import AddToCartButton from "@/components/AddToCartButton";
 import TrackedLink from "@/components/TrackedLink";
 import GoogleReviews from "@/components/GoogleReviews";
 import {
@@ -305,7 +306,8 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {vendingMachines.map((p) => (
-              <Link key={p.slug} href={`/products/${p.slug}`} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              <div key={p.slug} className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                <Link href={`/products/${p.slug}`} aria-label={p.fullName} className="absolute inset-0 z-0" />
                 <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
                 <div className="p-5">
                   {p.popular && (
@@ -316,8 +318,11 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
                   <p className="text-sm text-gray-500 mt-1 mb-3 leading-snug">{p.tagline}</p>
                   <p className="text-sm font-bold text-gray-900">{formatINR(p.price)} <span className="text-[11px] font-medium text-gray-500">+ 18% GST</span></p>
                   <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details / Enquire →</span>
+                  <div className="relative z-10 mt-3">
+                    <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="block" />
+                  </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </section>
@@ -335,7 +340,8 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {incinerators.map((p) => (
-              <Link key={p.slug} href={`/products/${p.slug}`} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              <div key={p.slug} className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                <Link href={`/products/${p.slug}`} aria-label={p.fullName} className="absolute inset-0 z-0" />
                 <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
                 <div className="p-5">
                   <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">{p.code}</p>
@@ -343,8 +349,11 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
                   <p className="text-sm text-gray-500 mt-1 mb-3 leading-snug">{p.tagline}</p>
                   <p className="text-sm font-bold text-gray-900">{formatINR(p.price)} <span className="text-[11px] font-medium text-gray-500">+ 18% GST</span></p>
                   <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details / Enquire →</span>
+                  <div className="relative z-10 mt-3">
+                    <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="block" />
+                  </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </section>

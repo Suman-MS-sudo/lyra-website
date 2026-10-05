@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import CartLink from "@/components/CartLink";
 
 export default function PageNavbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -29,13 +30,15 @@ export default function PageNavbar() {
               <Link href="/products/sanitary-napkin-vending-machines" className="hover:text-primary-600 transition-colors">Vending Machines</Link>
               <Link href="/products/sanitary-napkin-incinerators" className="hover:text-primary-600 transition-colors">Incinerators</Link>
               <Link href="/blog" className="hover:text-primary-600 transition-colors">Blog</Link>
+              <CartLink />
               <Link href="/#contact" className="btn btn-primary px-5 py-2">
                 Get Quote
               </Link>
             </nav>
 
             {/* Mobile: CTA + Hamburger */}
-            <div className="md:hidden flex items-center gap-2">
+            <div className="md:hidden flex items-center gap-1">
+              <CartLink />
               <Link href="/#contact" className="btn btn-primary px-3 py-1.5 text-xs">
                 Get Quote
               </Link>
@@ -66,6 +69,7 @@ export default function PageNavbar() {
                   <Link href="/products/sanitary-napkin-vending-machines" onClick={() => setMobileOpen(false)} className="py-2.5 text-sm font-medium text-gray-700 hover:text-primary-600 border-b border-gray-50">Vending Machines</Link>
                   <Link href="/products/sanitary-napkin-incinerators" onClick={() => setMobileOpen(false)} className="py-2.5 text-sm font-medium text-gray-700 hover:text-primary-600 border-b border-gray-50">Incinerators</Link>
                   <Link href="/blog" onClick={() => setMobileOpen(false)} className="py-2.5 text-sm font-medium text-gray-700 hover:text-primary-600 border-b border-gray-50">Blog</Link>
+                  <Link href="/order" onClick={() => setMobileOpen(false)} className="py-2.5 text-sm font-medium text-gray-700 hover:text-primary-600 border-b border-gray-50">Cart &amp; Order</Link>
                   <div className="pt-3 grid grid-cols-2 gap-2">
                     <a href="tel:+918122378860" className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-primary-50 border border-primary-100 text-primary-700 text-sm font-semibold">
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
