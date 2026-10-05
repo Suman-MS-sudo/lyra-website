@@ -17,6 +17,7 @@ const sectors: { label: string; items: Customer[] }[] = [
       { name: "TVS Motor", short: "TVS", logo: "/images/customers/tvs-motors-logo-png-0.png" },
       { name: "Saint-Gobain", short: "SG", logo: "/images/customers/saint-gobain.png" },
       { name: "Parker Hannifin", short: "PH", logo: "/images/customers/parker-hannifin-logo-png-transparent.png" },
+      { name: "Ashok Leyland", short: "AL", logo: "/images/customers/ashok-leyland.png" },
     ],
   },
   {
