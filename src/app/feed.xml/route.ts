@@ -20,10 +20,42 @@ function esc(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
+/**
+ * Values come from Google's official product taxonomy (taxonomy-with-ids.en-US.txt).
+ * There is no incinerator category, so incinerators use the nearest valid waste category.
+ */
 function googleCategory(p: Product): string {
-  if (p.category === "napkin") return "Health & Beauty > Personal Care > Feminine Sanitary Supplies";
-  if (p.category === "incinerator") return "Business & Industrial > Work Safety Protective Gear";
-  return "Business & Industrial > Retail > Vending Machines";
+  if (p.category === "napkin") return "Health & Beauty > Personal Care > Feminine Sanitary Supplies > Feminine Pads & Protectors";
+  if (p.category === "incinerator") return "Home & Garden > Household Supplies > Waste Containment";
+  return "Business & Industrial > Food Service > Vending Machines";
+}
+
+/** Custom labels let Google Ads campaigns and reports be split by type, price band and payment method. */
+function priceBand(price: number): string {
+  if (price < 15000) return "under_15k";
+  if (price < 20000) return "15k_to_20k";
+  return "above_20k";
+}
+
+function extraAttributes(p: Product): string {
+  const lines: string[] = [];
+  for (const h of p.features.slice(0, 10)) {
+    lines.push(`      <g:product_highlight>${esc(h.slice(0, 150))}</g:product_highlight>`);
+  }
+  for (const sp of p.specs.slice(0, 20)) {
+    lines.push(
+      `      <g:product_detail><g:section_name>Specifications</g:section_name><g:attribute_name>${esc(sp.label.slice(0, 140))}</g:attribute_name><g:attribute_value>${esc(sp.value.slice(0, 1000))}</g:attribute_value></g:product_detail>`,
+    );
+  }
+  lines.push(`      <g:custom_label_0>${p.category === "vending-machine" ? "vending_machine" : p.category}</g:custom_label_0>`);
+  lines.push(`      <g:custom_label_1>${priceBand(p.price)}</g:custom_label_1>`);
+  if (p.compare?.payment) {
+    lines.push(`      <g:custom_label_2>${esc(p.compare.payment.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, ""))}</g:custom_label_2>`);
+  }
+  lines.push(`      <g:custom_label_3>${p.popular ? "bestseller" : "standard"}</g:custom_label_3>`);
+  // Dispatch time promised on the product pages ("ships in 1-3 days").
+  lines.push("      <g:min_handling_time>1</g:min_handling_time>", "      <g:max_handling_time>3</g:max_handling_time>");
+  return lines.join("\n");
 }
 
 function productType(p: Product): string {
@@ -55,7 +87,8 @@ function item(p: Product): string {
       <g:mpn>${esc(p.code)}</g:mpn>
       <g:identifier_exists>no</g:identifier_exists>
       <g:google_product_category>${esc(googleCategory(p))}</g:google_product_category>
-      <g:product_type>${esc(productType(p))}</g:product_type>${
+      <g:product_type>${esc(productType(p))}</g:product_type>
+${extraAttributes(p)}${
         p.weightKg ? `\n      <g:shipping_weight>${p.weightKg} kg</g:shipping_weight>` : ""
       }
     </item>`;
