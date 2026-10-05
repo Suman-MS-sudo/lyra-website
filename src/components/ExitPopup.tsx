@@ -81,19 +81,15 @@ export default function ExitPopup({
 
   const onSubmit = async (data: FormData) => {
     setSubmitting(true);
-    const form = new FormData();
-    form.append("name", data.name);
-    form.append("phone", data.phone);
-    form.append("source", source);
-    form.append("_captcha", "false");
-    form.append("_subject", `Callback Request - ${source} - Lyra Enterprises`);
     try {
-      const res = await fetch("https://formsubmit.co/sales@lyraenterprise.co.in", {
+      // Sent from the website's own mailbox (see /api/lead), not a third-party form service.
+      const res = await fetch("/api/lead", {
         method: "POST",
-        body: form,
-        headers: { Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ kind: "callback", name: data.name, phone: data.phone, source }),
       });
-      if (res.ok) trackLead("form", source, "callback");
+      if (!res.ok) throw new Error("send failed");
+      trackLead("form", source, "callback");
       setSubmitted(true);
       sessionStorage.setItem(storageKey, "1");
     } catch {

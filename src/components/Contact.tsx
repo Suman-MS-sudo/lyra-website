@@ -110,20 +110,18 @@ export default function Contact() {
     }
 
     setSubmitting(true);
-    const form = new FormData();
-    Object.entries(data).forEach(([k, v]) => form.append(k, v));
-    form.append("_captcha", "false");
-    form.append("_subject", "New Inquiry from Lyra Enterprises Website");
     try {
-      const res = await fetch("https://formsubmit.co/sales@lyraenterprise.co.in", {
+      // Sent from the website's own mailbox (see /api/lead), not a third-party form service.
+      const res = await fetch("/api/lead", {
         method: "POST",
-        body: form,
-        headers: { Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, kind: "contact", source: "homepage-contact" }),
       });
+      if (!res.ok) throw new Error("send failed");
       setSubmittedEmails(prev => new Set([...prev, data.email]));
       setSubmittedPhones(prev => new Set([...prev, data.phone]));
       setSubmitted(true);
-      if (res.ok) trackLead("form", data.product);
+      trackLead("form", data.product);
       reset();
     } catch {
       alert("Something went wrong. Please try again or call us directly.");

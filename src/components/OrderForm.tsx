@@ -95,6 +95,34 @@ export default function OrderForm({ products, states, gstRate, initialSlug }: Pr
   }, [lines, subtotal, gst]);
   const hasNapkins = lines.some(({ p }) => p.category === "napkin");
 
+  /**
+   * Backup path used only when /api/order fails on the server (for example the mail settings are broken).
+   * It emails the same details to sales through the form service the contact form already uses.
+   */
+  const sendBackup = async (data: Fields): Promise<string> => {
+    const ref = `LYR-${new Date().toISOString().slice(2, 10).replace(/-/g, "")}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
+    const form = new FormData();
+    form.append("name", data.name);
+    form.append("email", data.email);
+    form.append("phone", data.phone);
+    form.append("organisation", data.organisation);
+    form.append("gstin", data.gstin);
+    form.append("delivery_address", `${data.address}, ${data.city}, ${data.state} - ${data.pincode}`);
+    form.append("notes", data.notes);
+    form.append("items", lines.map(({ p, q }) => `${q} x ${p.fullName} (${p.code}) @ ${inr(p.price)}`).join("\n"));
+    form.append("estimated_total_incl_gst", inr(subtotal + gst));
+    form.append("reference", ref);
+    form.append("_subject", `New order request ${ref}: ${data.name} (${data.phone})`);
+    form.append("_captcha", "false");
+    const r = await fetch("https://formsubmit.co/sales@lyraenterprise.co.in", {
+      method: "POST",
+      body: form,
+      headers: { Accept: "application/json" },
+    });
+    if (!r.ok) throw new Error("backup failed");
+    return ref;
+  };
+
   const onSubmit = async (data: Fields) => {
     if (lines.length === 0) {
       setItemsError(true);
@@ -104,13 +132,28 @@ export default function OrderForm({ products, states, gstRate, initialSlug }: Pr
     setSubmitting(true);
     setServerError("");
     try {
-      const res = await fetch("/api/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, items: lines.map(({ p, q }) => ({ slug: p.slug, qty: q })) }),
-      });
-      const payload = (await res.json()) as { success?: boolean; reference?: string; error?: string };
-      if (!res.ok || !payload.success) throw new Error(payload.error || "Could not place the order.");
+      let res: Response | null = null;
+      let payload: { success?: boolean; reference?: string; error?: string } = {};
+      try {
+        res = await fetch("/api/order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...data, items: lines.map(({ p, q }) => ({ slug: p.slug, qty: q })) }),
+        });
+        payload = (await res.json().catch(() => ({}))) as typeof payload;
+      } catch {
+        res = null; // network failure
+      }
+      let reference = "";
+      if (res?.ok && payload.success) {
+        reference = payload.reference ?? "";
+      } else if (res && res.status < 500) {
+        // validation problem or rate limit: show the server's message, do not retry elsewhere
+        throw new Error(payload.error || "Could not place the order.");
+      } else {
+        // server/mail failure or no connection: use the backup route so the order is not lost
+        reference = await sendBackup(data);
+      }
       const summary = lines.map(({ p, q }) => `${q} x ${p.fullName}`).join(", ");
       // value lets Google Ads optimise for order size, not just the number of leads
       sendEvent("generate_lead", {
@@ -121,7 +164,7 @@ export default function OrderForm({ products, states, gstRate, initialSlug }: Pr
         items: lines.map(({ p, q }) => ({ item_id: p.slug, item_name: p.fullName, price: p.price, quantity: q })),
       });
       clearCart();
-      setDone({ ref: payload.reference ?? "", summary });
+      setDone({ ref: reference, summary });
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (e) {
       setServerError(e instanceof Error ? e.message : "Could not place the order.");

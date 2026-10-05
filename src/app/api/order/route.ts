@@ -1,47 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
 import { SITE, GST_RATE, getProductBySlug, formatINR } from "@/lib/data";
+import { clean, describeMailError, esc, missingMailSettings, rateLimited, sendToCustomer, sendToTeam } from "@/lib/mail";
 
 export const runtime = "nodejs";
-
-/* ── helpers ─────────────────────────────────────────────── */
-
-/** Escape user-supplied text before it goes into email HTML. */
-function esc(s: string): string {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-function clean(v: unknown, max: number): string {
-  return typeof v === "string" ? v.replace(/[\u0000-\u001f\u007f]+/g, " ").trim().slice(0, max) : "";
-}
-
-/** Best-effort per-IP rate limit (in-memory, so per server instance). */
-const hits = new Map<string, { n: number; reset: number }>();
-function limited(ip: string): boolean {
-  const now = Date.now();
-  const h = hits.get(ip);
-  if (!h || h.reset < now) {
-    hits.set(ip, { n: 1, reset: now + 10 * 60_000 });
-    return false;
-  }
-  h.n += 1;
-  return h.n > 5;
-}
-
-function getTransporter() {
-  const port = Number(process.env.SMTP_PORT ?? 465);
-  return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port,
-    secure: port === 465,
-    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
-  });
-}
 
 function reference(): string {
   const d = new Date();
@@ -57,7 +18,7 @@ type Line = { slug: string; name: string; code: string; qty: number; unit: numbe
 export async function POST(req: NextRequest) {
   try {
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
-    if (limited(ip)) {
+    if (rateLimited("order", ip)) {
       return NextResponse.json({ error: "Too many requests. Please try again in a few minutes or call us." }, { status: 429 });
     }
 
@@ -191,27 +152,28 @@ export async function POST(req: NextRequest) {
   </td></tr>
 </table></td></tr></table></body></html>`;
 
-    const transporter = getTransporter();
-    const from = `"Lyra Enterprises" <${process.env.SMTP_USER}>`;
-    const ownerEmail = process.env.SMTP_USER ?? SITE.email;
+    const missing = missingMailSettings();
+    if (missing.length) {
+      console.error(`Order email not sent: missing environment variable(s) on this deployment: ${missing.join(", ")}`);
+      return NextResponse.json({ error: "We couldn't send your order. Please try again or call us." }, { status: 500 });
+    }
+
     const subjectItems = lines.map((l) => `${l.qty}× ${l.name}`).join(", ").slice(0, 90);
 
-    // The owner email is the one that matters: if it fails, report failure so the customer can retry or call.
-    await transporter.sendMail({
-      from,
-      to: ownerEmail,
+    // The team notification is the one that matters: if it fails, report failure so the customer can retry or call.
+    await sendToTeam({
       replyTo: email,
       subject: `New order request ${ref}: ${name} (${phone}) – ${subjectItems}`,
       html: ownerHtml,
     });
     // A failed confirmation must not turn a recorded order into an error.
-    transporter
-      .sendMail({ from, to: email, subject: `Order request received ${ref} | Lyra Enterprises`, html: customerHtml })
-      .catch((e) => console.error("Order confirmation email error:", e));
+    sendToCustomer({ to: email, subject: `Order request received ${ref} | Lyra Enterprises`, html: customerHtml }).catch((e) =>
+      console.error("Order confirmation email error:", describeMailError(e)),
+    );
 
     return NextResponse.json({ success: true, reference: ref });
   } catch (err) {
-    console.error("Order email error:", err);
+    console.error("Order email error:", describeMailError(err));
     return NextResponse.json({ error: "We couldn't send your order. Please try again or call us." }, { status: 500 });
   }
 }
