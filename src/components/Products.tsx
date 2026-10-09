@@ -202,7 +202,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
       {/* Content */}
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <p className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
+        <p className="font-mono text-[11px] uppercase tracking-wider text-slate-500">
           {product.code}
         </p>
         <h3 className="mt-1 text-base font-semibold text-slate-900 transition-colors group-hover:text-primary-700 sm:text-lg">
@@ -234,7 +234,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           <div className="flex items-end justify-between">
             <div>
               <p className="text-lg font-semibold text-slate-900">{product.price}</p>
-              <p className="text-[11px] text-slate-400">{gstNote}</p>
+              <p className="text-[11px] text-slate-500">{gstNote}</p>
             </div>
             <Link
               href={`/products/${product.slug}`}

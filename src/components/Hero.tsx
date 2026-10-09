@@ -54,8 +54,10 @@ export default function Hero() {
       <div className="lyra-container relative z-10">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] xl:gap-20">
           {/* Left */}
+          {/* initial={false}: server HTML renders visible, so the headline (the mobile LCP)
+              paints immediately instead of waiting for JS hydration to fade it in */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease }}
           >
@@ -108,14 +110,13 @@ export default function Hero() {
 
             <dl className="mt-11 grid max-w-lg grid-cols-3 gap-6 border-t border-slate-200 pt-7">
               {stats.map((stat) => (
-                <div key={stat.label}>
-                  <dt className="sr-only">{stat.label}</dt>
+                <div key={stat.label} className="flex flex-col-reverse">
+                  <dt className="mt-1 text-xs leading-tight text-slate-500 sm:text-sm">
+                    {stat.label}
+                  </dt>
                   <dd className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
                     {stat.value}
                   </dd>
-                  <p className="mt-1 text-xs leading-tight text-slate-500 sm:text-sm">
-                    {stat.label}
-                  </p>
                 </div>
               ))}
             </dl>
@@ -123,7 +124,7 @@ export default function Hero() {
 
           {/* Right — illustration on a soft brand panel with floating proof chips */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.1 }}
             className="relative hidden lg:block"
@@ -148,7 +149,7 @@ export default function Hero() {
 
         {/* trust strip */}
         <div className="mt-14 border-t border-slate-200 pt-8 sm:mt-16">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
             ISO 9001:2015 Certified Manufacturing · Trusted by 200+ institutions across India
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14">

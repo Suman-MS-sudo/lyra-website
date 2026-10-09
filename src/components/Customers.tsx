@@ -104,7 +104,7 @@ export default function Customers() {
                     {sector.label}
                   </h3>
                   <span className="h-px flex-1 bg-slate-200" />
-                  <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-medium text-slate-400">
+                  <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-medium text-slate-500">
                     {sector.items.length}
                   </span>
                 </div>
@@ -137,7 +137,7 @@ export default function Customers() {
             </FadeUp>
           ))}
 
-          <p className="max-w-3xl text-xs leading-relaxed text-slate-400">
+          <p className="max-w-3xl text-xs leading-relaxed text-slate-500">
             Company names and logos are trademarks of their respective owners and are shown
             only to identify organisations where Lyra Enterprises products have been supplied
             or installed. Their use does not imply any partnership, sponsorship or endorsement.

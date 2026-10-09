@@ -186,9 +186,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/* Preconnect for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Google Analytics — deferred to idle time so it doesn't compete with LCP/TBT */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ZCS9ZJ3TXC"

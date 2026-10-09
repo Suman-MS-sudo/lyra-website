@@ -9,9 +9,8 @@ import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
-import FloatingContact from "@/components/FloatingContact";
 import JsonLd from "@/components/JsonLd";
-import ExitPopup from "@/components/ExitPopup";
+import { HomePopup, DeferredFloatingContact } from "@/components/DeferredWidgets";
 
 export default function Home() {
   return (
@@ -19,17 +18,7 @@ export default function Home() {
       <JsonLd />
       <ScrollProgress />
       <Navbar />
-      <ExitPopup
-        storageKey="lyra_home_popup_dismissed"
-        source="homepage-popup"
-        trigger="immediate"
-        delayMs={10000}
-        eyebrow="Price list + free callback"
-        title="Vending machines from ₹12,000 + GST"
-        body="Leave your number and we'll call back with prices for UPI, coin, RFID and push-button models. GeM registered, GST invoice on every order, 1-year warranty."
-        cta="Get the Price List"
-        quickContact
-      />
+      <HomePopup />
       <main className="relative">
         <Hero />
         <About />
@@ -41,7 +30,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      <FloatingContact />
+      <DeferredFloatingContact />
     </>
   );
 }

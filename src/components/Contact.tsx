@@ -192,7 +192,7 @@ export default function Contact() {
                   <div className="absolute inset-0 bg-primary-900/25" />
                 </div>
                 <div className="min-w-0 w-full">
-                  <p className="text-[11px] text-slate-400 font-semibold mb-0.5 uppercase tracking-wide">
+                  <p className="text-[11px] text-slate-500 font-semibold mb-0.5 uppercase tracking-wide">
                     {info.label}
                   </p>
                   <p className="font-semibold text-slate-900 text-xs sm:text-sm truncate group-hover:text-primary-700 transition-colors">
