@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import FloatingActionButtons from "@/components/FloatingActionButtons";
 import LeadClickTracker from "@/components/LeadClickTracker";
+import ClarityInit from "@/components/ClarityInit";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -206,6 +207,7 @@ export default function RootLayout({
         {children}
         <FloatingActionButtons />
         <LeadClickTracker />
+        <ClarityInit projectId={process.env.CLARITY_PROJECT_ID} />
         <Analytics />
         <SpeedInsights />
       </body>
