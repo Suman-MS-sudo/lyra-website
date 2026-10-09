@@ -238,6 +238,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             </div>
             <Link
               href={`/products/${product.slug}`}
+              aria-label={`${product.name} details`}
               className="inline-flex items-center gap-1 text-sm font-semibold text-primary-700 transition-colors hover:text-primary-800"
             >
               Details
@@ -286,7 +287,7 @@ function CategoryHeader({
               </span>
             )}
           </div>
-          <p className="mt-1 text-sm text-slate-500">{sub}</p>
+          <p className="mt-1 text-sm text-slate-600">{sub}</p>
         </div>
       </div>
       {href && (

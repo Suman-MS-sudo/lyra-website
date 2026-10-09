@@ -57,7 +57,7 @@ export default function FundingBanner() {
                   />
                 </svg>
               </Link>
-              <p className="mt-3 text-xs text-slate-500">
+              <p className="mt-3 text-xs text-slate-600">
                 Free quotation, specs &amp; compliance docs for your proposal
               </p>
             </div>
