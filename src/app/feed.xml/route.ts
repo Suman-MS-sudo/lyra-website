@@ -64,11 +64,23 @@ function productType(p: Product): string {
   return "Sanitary Napkin Vending Machines";
 }
 
+// Bump when feed images are regenerated: Merchant Center caches images by URL and
+// would otherwise keep showing the old picture.
+const IMAGE_VERSION = "20261014";
+
 function item(p: Product): string {
   const link = `${SITE.url}/products/${p.slug}`;
   // Feed images are white-background 1000x1000 JPEG copies of the product PNGs
   // (public/images/feed/), since the originals are transparent and some are under 800 px.
-  const image = `${SITE.url}/images/feed/${p.image.split("/").pop()!.replace(/\.png$/, ".jpg")}`;
+  const image = `${SITE.url}/images/feed/${p.image.split("/").pop()!.replace(/\.png$/, ".jpg")}?v=${IMAGE_VERSION}`;
+  // Gallery posters (feature/spec sheets) go in as additional images, as JPG copies in public/images/feed/.
+  const extraImages = (p.gallery ?? [])
+    .slice(0, 10)
+    .map((g) => {
+      const file = g.src.split("/").pop()!.replace(/\.webp$/, ".jpg");
+      return `      <g:additional_image_link>${esc(`${SITE.url}/images/feed/${file}?v=${IMAGE_VERSION}`)}</g:additional_image_link>`;
+    })
+    .join("\n");
   const priceExGst = p.price;
   // Merchant Center treats a price in the title as promotional text, so the title is
   // just the brand + product name (never repeat "Lyra" when the name already has it).
@@ -79,7 +91,8 @@ function item(p: Product): string {
       <g:title>${esc(title)}</g:title>
       <g:description>${esc(p.merchantDescription ?? p.description)}</g:description>
       <g:link>${esc(link)}</g:link>
-      <g:image_link>${esc(image)}</g:image_link>
+      <g:image_link>${esc(image)}</g:image_link>${extraImages ? `
+${extraImages}` : ""}
       <g:availability>in_stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>${priceExGst}.00 INR</g:price>
