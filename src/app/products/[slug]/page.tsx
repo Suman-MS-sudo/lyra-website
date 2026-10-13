@@ -12,6 +12,7 @@ import ViewItemTracker from "@/components/ViewItemTracker";
 import { getPngSize } from "@/lib/image-meta";
 import GoogleReviews from "@/components/GoogleReviews";
 import { products, vendingMachines, getProductBySlug, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
+import { offerPolicies } from "@/lib/offer-schema";
 
 /* ─── Static params for all product pages ─────────────────── */
 export function generateStaticParams() {
@@ -239,21 +240,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         priceCurrency: "INR",
         valueAddedTaxIncluded: false,
       },
-      shippingDetails: {
-        "@type": "OfferShippingDetails",
-        shippingDestination: { "@type": "DefinedRegion", addressCountry: "IN" },
-        deliveryTime: {
-          "@type": "ShippingDeliveryTime",
-          handlingTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 3, unitCode: "DAY" },
-          transitTime: { "@type": "QuantitativeValue", minValue: 2, maxValue: 7, unitCode: "DAY" },
-        },
-      },
-      hasMerchantReturnPolicy: {
-        "@type": "MerchantReturnPolicy",
-        applicableCountry: "IN",
-        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
-        merchantReturnLink: `${SITE.url}/cancellation-refund-policy`,
-      },
+      ...offerPolicies,
     },
   };
 

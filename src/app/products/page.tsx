@@ -6,6 +6,7 @@ import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
 import AddToCartButton from "@/components/AddToCartButton";
 import { vendingMachines, incinerators, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
+import { offerPolicies } from "@/lib/offer-schema";
 
 export const metadata: Metadata = {
   title: { absolute: "Napkin Vending Machines & Incinerators | Lyra Enterprises" },
@@ -116,6 +117,7 @@ const itemListSchema = {
         priceCurrency: "INR",
         price: p.price,
         priceValidUntil,
+        ...offerPolicies,
         availability: "https://schema.org/InStock",
         itemCondition: "https://schema.org/NewCondition",
         seller: { "@type": "Organization", name: "Lyra Enterprises" },

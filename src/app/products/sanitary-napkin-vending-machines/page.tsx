@@ -6,6 +6,7 @@ import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
 import AddToCartButton from "@/components/AddToCartButton";
 import { vendingMachines, SITE, formatINR } from "@/lib/data";
+import { offerPolicies } from "@/lib/offer-schema";
 
 export const metadata: Metadata = {
   title: { absolute: "Napkin (Pad) Vending Machines — 8 Models & Prices | Lyra Enterprises" },
@@ -69,6 +70,7 @@ const schema = {
         priceCurrency: "INR",
         price: p.price,
         priceValidUntil,
+        ...offerPolicies,
         availability: "https://schema.org/InStock",
         itemCondition: "https://schema.org/NewCondition",
         seller: { "@type": "Organization", name: "Lyra Enterprises" },

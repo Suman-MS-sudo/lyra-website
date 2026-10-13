@@ -6,6 +6,7 @@
  */
 
 import { cities } from "@/lib/data";
+import { offerPolicies } from "@/lib/offer-schema";
 
 const SITE_URL = "https://lyraenterprise.co.in";
 
@@ -315,6 +316,7 @@ function offerFor(price: number, url: string) {
     priceCurrency: "INR",
     price,
     priceValidUntil: OFFER_VALID_UNTIL,
+    ...offerPolicies,
     availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
     seller: { "@id": `${SITE_URL}/#organization` },

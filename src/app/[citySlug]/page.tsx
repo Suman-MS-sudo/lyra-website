@@ -7,6 +7,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import AddToCartButton from "@/components/AddToCartButton";
 import TrackedLink from "@/components/TrackedLink";
 import GoogleReviews from "@/components/GoogleReviews";
+import { offerPolicies } from "@/lib/offer-schema";
 import {
   vendingMachines,
   incinerators,
@@ -203,6 +204,7 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
           priceCurrency: "INR",
           price: p.price,
           priceValidUntil,
+          ...offerPolicies,
           availability: "https://schema.org/InStock",
           itemCondition: "https://schema.org/NewCondition",
           seller: { "@id": `${SITE.url}/#organization` },
