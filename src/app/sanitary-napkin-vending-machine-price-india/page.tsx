@@ -125,19 +125,23 @@ const schema = {
   ],
 };
 
+// Mobile: label/value rows inside each card. Desktop: normal table cells.
+const cell =
+  "flex items-baseline justify-between gap-4 border-t border-gray-100 py-1.5 text-gray-600 before:text-xs before:font-medium before:text-gray-500 before:content-[attr(data-label)] md:table-cell md:border-0 md:px-4 md:py-3 md:before:content-none";
+
 export default function PricePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <PageNavbar />
       <main className="pt-16 bg-white min-h-screen">
-        <section className="bg-gradient-to-br from-blue-50 via-white to-teal-50 py-14 sm:py-20">
+        <section className="bg-gradient-to-br from-blue-50 via-white to-teal-50 py-10 sm:py-20">
           <div className="max-w-5xl mx-auto px-5 sm:px-8">
             <Breadcrumb crumbs={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Price list" }]} />
             <h1 className="mt-6 font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
               Sanitary Napkin Vending Machine Price in India
             </h1>
-            <p className="mt-5 text-gray-600 text-lg max-w-3xl leading-relaxed">
+            <p className="mt-4 sm:mt-5 text-gray-600 text-base sm:text-lg max-w-3xl leading-relaxed">
               Lyra Enterprises publishes its prices openly. Vending machines range from{" "}
               <strong>{formatINR(lowest)}</strong> to <strong>{formatINR(highest)}</strong> ex-GST, and incinerators from{" "}
               <strong>{formatINR(incLow)}</strong> to <strong>{formatINR(incHigh)}</strong>. Manufactured in Chennai and
@@ -149,11 +153,12 @@ export default function PricePage() {
           </div>
         </section>
 
-        <section className="py-12 max-w-5xl mx-auto px-5 sm:px-8">
+        <section className="py-10 sm:py-12 max-w-5xl mx-auto px-5 sm:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Sanitary napkin vending machine price list</h2>
-          <div className="overflow-x-auto rounded-xl border border-gray-200">
-            <table className="w-full text-sm">
-              <thead>
+          {/* Below md each table row becomes a stacked card (no sideways scrolling on phones) */}
+          <div className="md:overflow-x-auto md:rounded-xl md:border md:border-gray-200">
+            <table className="block w-full text-sm md:table">
+              <thead className="hidden md:table-header-group">
                 <tr className="bg-gray-50 text-left text-gray-700">
                   <th className="px-4 py-3 font-semibold">Model</th>
                   <th className="px-4 py-3 font-semibold">Payment</th>
@@ -163,20 +168,20 @@ export default function PricePage() {
                   <th className="px-4 py-3 font-semibold text-right"><span className="sr-only">Add to cart</span></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="block space-y-3 md:table-row-group md:space-y-0">
                 {vendingMachines.map((p, i) => (
-                  <tr key={p.slug} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
-                    <td className="px-4 py-3 font-medium">
-                      <Link href={`/products/${p.slug}`} className="text-primary-600 hover:underline">
+                  <tr key={p.slug} className={`block rounded-xl border border-gray-200 p-4 md:table-row md:rounded-none md:border-0 md:p-0 ${i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}>
+                    <td className="block pb-2 text-base font-semibold md:table-cell md:px-4 md:py-3 md:pb-3 md:text-sm md:font-medium">
+                      <Link href={`/products/${p.slug}`} className="text-primary-700 hover:underline">
                         {p.fullName}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 text-gray-600">{p.compare?.payment ?? "—"}</td>
-                    <td className="px-4 py-3 text-gray-600">{p.compare?.connectivity ?? "—"}</td>
-                    <td className="px-4 py-3 text-right font-semibold text-gray-900">{formatINR(p.price)}</td>
-                    <td className="px-4 py-3 text-right text-gray-600">{formatINR(priceInclGst(p.price))}</td>
-                    <td className="px-4 py-3 text-right">
-                      <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="compact" />
+                    <td data-label="Payment" className={cell}>{p.compare?.payment ?? "—"}</td>
+                    <td data-label="Connectivity" className={cell}>{p.compare?.connectivity ?? "—"}</td>
+                    <td data-label="Price (ex-GST)" className={`${cell} md:text-right md:font-semibold md:text-gray-900`}><span className="font-semibold text-gray-900">{formatINR(p.price)}</span></td>
+                    <td data-label="With 18% GST" className={`${cell} md:text-right`}>{formatINR(priceInclGst(p.price))}</td>
+                    <td className="block pt-3 md:table-cell md:px-4 md:py-3 md:pt-3 md:text-right">
+                      <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="compact" className="w-full md:w-auto [&_button]:w-full [&_button]:py-2.5 md:[&_button]:w-auto md:[&_button]:py-1.5" />
                     </td>
                   </tr>
                 ))}
@@ -184,10 +189,10 @@ export default function PricePage() {
             </table>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-14 mb-6">Sanitary napkin incinerator price list</h2>
-          <div className="overflow-x-auto rounded-xl border border-gray-200">
-            <table className="w-full text-sm">
-              <thead>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-12 sm:mt-14 mb-6">Sanitary napkin incinerator price list</h2>
+          <div className="md:overflow-x-auto md:rounded-xl md:border md:border-gray-200">
+            <table className="block w-full text-sm md:table">
+              <thead className="hidden md:table-header-group">
                 <tr className="bg-gray-50 text-left text-gray-700">
                   <th className="px-4 py-3 font-semibold">Model</th>
                   <th className="px-4 py-3 font-semibold text-right">Price (ex-GST)</th>
@@ -195,18 +200,18 @@ export default function PricePage() {
                   <th className="px-4 py-3 font-semibold text-right"><span className="sr-only">Add to cart</span></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="block space-y-3 md:table-row-group md:space-y-0">
                 {incinerators.map((p, i) => (
-                  <tr key={p.slug} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
-                    <td className="px-4 py-3 font-medium">
-                      <Link href={`/products/${p.slug}`} className="text-primary-600 hover:underline">
+                  <tr key={p.slug} className={`block rounded-xl border border-gray-200 p-4 md:table-row md:rounded-none md:border-0 md:p-0 ${i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}>
+                    <td className="block pb-2 text-base font-semibold md:table-cell md:px-4 md:py-3 md:pb-3 md:text-sm md:font-medium">
+                      <Link href={`/products/${p.slug}`} className="text-primary-700 hover:underline">
                         {p.fullName}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 text-right font-semibold text-gray-900">{formatINR(p.price)}</td>
-                    <td className="px-4 py-3 text-right text-gray-600">{formatINR(priceInclGst(p.price))}</td>
-                    <td className="px-4 py-3 text-right">
-                      <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="compact" />
+                    <td data-label="Price (ex-GST)" className={`${cell} md:text-right`}><span className="font-semibold text-gray-900">{formatINR(p.price)}</span></td>
+                    <td data-label="With 18% GST" className={`${cell} md:text-right`}>{formatINR(priceInclGst(p.price))}</td>
+                    <td className="block pt-3 md:table-cell md:px-4 md:py-3 md:pt-3 md:text-right">
+                      <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="compact" className="w-full md:w-auto [&_button]:w-full [&_button]:py-2.5 md:[&_button]:w-auto md:[&_button]:py-1.5" />
                     </td>
                   </tr>
                 ))}
@@ -214,7 +219,7 @@ export default function PricePage() {
             </table>
           </div>
 
-          <div className="mt-8 rounded-2xl border border-teal-100 bg-teal-50 p-6">
+          <div className="mt-8 rounded-2xl border border-teal-100 bg-teal-50 p-5 sm:p-6">
             <h3 className="font-bold text-gray-900 mb-1">Combo: vending machine + incinerator</h3>
             <p className="text-sm text-gray-700">
               Push Button vending machine with Lyra Micro incinerator for ₹19,999 + GST + freight.{" "}
@@ -234,7 +239,7 @@ export default function PricePage() {
             <li><strong>Quantity:</strong> volume pricing applies from 5 units. CSR, school and government purchases can also go through GeM.</li>
             <li><strong>Add-ons:</strong> some incinerators support an optional WiFi IoT module for remote temperature logging.</li>
           </ul>
-          <p className="mt-4 text-gray-700 leading-relaxed">
+          <p className="mt-4 text-gray-700 leading-relaxed [&_a]:inline-block [&_a]:py-1">
             Not sure which model fits? <Link href="/compare-sanitary-napkin-vending-machines" className="text-primary-600 hover:underline">Compare all 8 models side by side</Link>, see refills ({" "}<Link href="/products/xl-sanitary-napkin" className="text-primary-600 hover:underline">XL 280 mm</Link>,{" "}<Link href="/products/xxl-sanitary-napkin" className="text-primary-600 hover:underline">XXL 320 mm</Link>{" "}), or read our{" "}
             <Link href="/blog/best-sanitary-napkin-vending-machine-india" className="text-primary-600 hover:underline">comparison of all 8 models</Link>,{" "}
             <Link href="/blog/upi-vs-coin-vending-machine" className="text-primary-600 hover:underline">UPI vs coin</Link>, or check{" "}
@@ -243,7 +248,7 @@ export default function PricePage() {
           </p>
         </section>
 
-        <section className="py-12 bg-gray-50">
+        <section className="py-10 sm:py-12 bg-gray-50">
           <div className="max-w-3xl mx-auto px-5 sm:px-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-8">Price FAQs</h2>
             <div className="space-y-6">
@@ -257,15 +262,15 @@ export default function PricePage() {
           </div>
         </section>
 
-        <section className="py-14 bg-gradient-to-r from-blue-600 to-teal-500">
+        <section className="py-12 sm:py-14 bg-gradient-to-r from-blue-600 to-teal-500">
           <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
             <h2 className="font-bold text-2xl sm:text-3xl text-white mb-4">Get a quote for your site</h2>
             <p className="text-white/80 mb-8">Tell us your location and quantity. We reply with freight and any volume pricing.</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <TrackedLink method="call" detail="price-page" href="tel:+918122378860" className="px-8 py-4 bg-white text-blue-700 font-bold rounded-full hover:bg-gray-100 transition-colors">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 sm:gap-4">
+              <TrackedLink method="call" detail="price-page" href="tel:+918122378860" className="px-8 py-4 text-center bg-white text-blue-700 font-bold rounded-full hover:bg-gray-100 transition-colors">
                 {SITE.phoneDisplay}
               </TrackedLink>
-              <Link href="/contact" className="px-8 py-4 bg-white/20 text-white font-semibold rounded-full border border-white/30 hover:bg-white/30 transition-colors">
+              <Link href="/contact" className="px-8 py-4 text-center bg-white/20 text-white font-semibold rounded-full border border-white/30 hover:bg-white/30 transition-colors">
                 Request a quote
               </Link>
             </div>
