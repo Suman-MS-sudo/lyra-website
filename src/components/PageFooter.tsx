@@ -72,6 +72,7 @@ export default function PageFooter() {
             <p className="font-semibold text-sm mb-4 tracking-wide">Policies</p>
             <ul className="space-y-2 text-sm text-gray-400">
               {[
+                ["About Us", "/about"],
                 ["Contact Us", "/contact"],
                 ["Privacy Policy", "/privacy-policy"],
                 ["Terms & Conditions", "/terms-and-conditions"],

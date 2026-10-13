@@ -3,12 +3,13 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: { absolute: "SWM Rules 2016: Sanitary Waste Disposal Rules for Institutions" },
   description:
-    "Are you compliant? SWM Rules 2016 require separate collection and disposal of sanitary waste. See what schools, hospitals and offices must do, and the equipment needed.",
+    "SWM Rules 2016 require separate collection and disposal of sanitary waste. See what schools, hospitals and offices must do, and the equipment needed.",
   keywords: [
     "solid waste management rules 2016 india",
     "swm rules menstrual waste india",
@@ -55,10 +56,40 @@ const articleSchema = {
   url: `${SITE.url}/blog/solid-waste-management-rules-2016-india-guide`,
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://lyraenterprise.co.in" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://lyraenterprise.co.in/blog" },
+    { "@type": "ListItem", position: 3, name: "SWM Rules 2016 Guide", item: "https://lyraenterprise.co.in/blog/solid-waste-management-rules-2016-india-guide" },
+  ],
+};
+
+const faqs: Faq[] = [
+  {
+    q: "What do the SWM Rules 2016 say about sanitary napkins?",
+    a: "The Solid Waste Management Rules 2016 treat used sanitary napkins as sanitary waste that must be wrapped and kept separate from wet and mixed waste. Rule 15 also makes manufacturers responsible for educating users on proper disposal.",
+  },
+  {
+    q: "Does a school need a sanitary napkin incinerator?",
+    a: "Schools are expected to have a safe, hygienic sanitary waste disposal mechanism under SWM Rules 2016 and CPCB advisories. A wall-mounted incinerator is the most practical way to meet that, because it removes manual handling and leaves only sterile ash.",
+  },
+  {
+    q: "Do hospitals have additional rules for sanitary waste?",
+    a: "Yes. Hospitals must also follow the Biomedical Waste Management Rules 2016, under which used napkins from wards may count as biomedical waste depending on contamination, so records must be kept.",
+  },
+  {
+    q: "Can government institutions buy incinerators and vending machines on GeM?",
+    a: "Yes. Lyra Enterprises is a registered vendor on the Government e-Marketplace (GeM). Our GeM and tender guide explains what to put in the specification.",
+  },
+];
+
 export default function SWMRulesBlog() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
       <main className="pt-16 bg-white min-h-screen">
         <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">
@@ -170,6 +201,8 @@ export default function SWMRulesBlog() {
               Consider the <Link href="/products/vending-incinerator-bundle" className="text-primary-600 hover:underline">Vending Machine + Incinerator Bundle</Link> for the most cost-effective path to full compliance — available with bundled pricing.
             </p>
           </div>
+
+          <BlogFaq faqs={faqs} />
 
           <div className="mt-12 p-6 rounded-2xl bg-gradient-to-br from-green-50 to-teal-50 border border-green-100">
             <p className="font-bold text-gray-900 text-lg mb-2">Need help achieving SWM Rules 2016 compliance?</p>

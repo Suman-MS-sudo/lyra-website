@@ -13,7 +13,11 @@
 ## Key pages
 
 - [Home](https://lyraenterprise.co.in/): company overview, product range, customers
+- [About Lyra Enterprises](https://lyraenterprise.co.in/about): founded 2018 in Chennai, ~20 staff, customers, certifications, locations
 - [All products](https://lyraenterprise.co.in/products): full catalogue with prices
+- [Price list (India)](https://lyraenterprise.co.in/sanitary-napkin-vending-machine-price-india): every model's price in one table
+- [Compare vending machines](https://lyraenterprise.co.in/compare-sanitary-napkin-vending-machines): payment, connectivity and features side by side
+- [Government schemes & funding](https://lyraenterprise.co.in/government-schemes-menstrual-hygiene): MHS, Swachh Bharat, CSR and GeM routes
 - [Sanitary napkin vending machines](https://lyraenterprise.co.in/products/sanitary-napkin-vending-machines): 8 models, ₹12,000 to ₹26,500 (ex-GST, ex-works Chennai)
 - [Sanitary napkin incinerators](https://lyraenterprise.co.in/products/sanitary-napkin-incinerators): Micro ₹13,000, Mini ₹16,000, Maxi ₹40,000 (ex-GST)
 - [Vending machine + incinerator bundle](https://lyraenterprise.co.in/products/vending-incinerator-bundle)
@@ -21,13 +25,44 @@
 - [Service areas across India](https://lyraenterprise.co.in/service-areas)
 - [Contact](https://lyraenterprise.co.in/contact)
 
+## Vending machine models (prices ex-GST, ex-works Chennai)
+
+- [Push Button](https://lyraenterprise.co.in/products/push-button-vending-machine): ₹12,000 — free-vend, offline usage log, 25 napkins
+- [Solo Coin](https://lyraenterprise.co.in/products/solo-coin-vending-machine): ₹13,500 — ₹5 coin, no internet, 25 napkins
+- [Solo Multi-Coin](https://lyraenterprise.co.in/products/solo-multi-coin-vending-machine): ₹15,500 — ₹1/₹2/₹5 coins, configurable price
+- [Solo RFID](https://lyraenterprise.co.in/products/solo-rfid-vending-machine): ₹16,000 — RFID card/tag, prepaid/postpaid, wired network, cloud dashboard
+- [Solo QR](https://lyraenterprise.co.in/products/solo-qr-vending-machine): ₹19,500 — UPI QR only, SIM-based, no coin acceptor
+- [Solo Wave](https://lyraenterprise.co.in/products/solo-wave-vending-machine): ₹23,000 — touchless wave sensor, stainless steel, up to 35 napkins, free issue
+- [Solo WiFi](https://lyraenterprise.co.in/products/solo-wifi-vending-machine): ₹24,500 — UPI QR + ₹5 coin, WiFi, touch display, cloud dashboard, offline queue
+- [Solo Ethernet](https://lyraenterprise.co.in/products/solo-ethernet-vending-machine): ₹26,500 — as Solo WiFi but wired LAN
+
+## Incinerator models (prices ex-GST)
+
+- [Lyra Micro](https://lyraenterprise.co.in/products/lyra-micro-incinerator): ₹13,000 — 1–5 napkins per 30-minute cycle, up to 80 per 8-hour day
+- [Lyra Mini](https://lyraenterprise.co.in/products/lyra-mini-incinerator): ₹16,000 — 5–15 napkins per cycle, up to 240 per 8-hour day
+- [Lyra Maxi](https://lyraenterprise.co.in/products/lyra-maxi-incinerator): ₹40,000 — 25–50 napkins per cycle, hospitals and large campuses
+
+## Quick facts
+
+- Prices exclude 18% GST and freight; machines ship pan-India from Chennai, typically 3–7 business days in transit.
+- Warranty: 1 year against manufacturing defects; defective or damaged units can be returned within 10 days of delivery.
+- All vending machines run on 230V AC mains and dispense one napkin per transaction.
+- Notable customers: Larsen & Toubro (25 IoT machines at Manapakkam, Chennai), TVS Motor, Saint-Gobain, Parker Hannifin, Ashok Leyland, ISRO, Vels University, Stella Maris College.
+
 ## Solutions by sector
 
+- [All solutions](https://lyraenterprise.co.in/solutions)
 - [Schools & colleges](https://lyraenterprise.co.in/solutions/schools-colleges)
 - [Hospitals](https://lyraenterprise.co.in/solutions/hospitals)
 - [Offices](https://lyraenterprise.co.in/solutions/offices)
+- [Women's hostels & colleges](https://lyraenterprise.co.in/solutions/womens-hostels-colleges)
 
 ## Guides
+
+- [Best sanitary napkin vending machine in India (2026)](https://lyraenterprise.co.in/blog/best-sanitary-napkin-vending-machine-india)
+- [IoT vending machine technology — WiFi, Ethernet & RFID](https://lyraenterprise.co.in/blog/iot-vending-machine-technology-india)
+- [Buying through GeM or a tender](https://lyraenterprise.co.in/blog/gem-tender-sanitary-napkin-vending-machine-guide)
+- [Case study: 25 IoT machines at L&T Manapakkam](https://lyraenterprise.co.in/blog/lnt-manapakkam-case-study)
 
 - [Why every school needs a napkin vending machine](https://lyraenterprise.co.in/blog/why-every-school-needs-napkin-vending-machine)
 - [UPI vs coin vending machine](https://lyraenterprise.co.in/blog/upi-vs-coin-vending-machine)

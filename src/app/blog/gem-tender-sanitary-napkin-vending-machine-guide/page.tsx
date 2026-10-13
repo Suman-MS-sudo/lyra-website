@@ -102,10 +102,21 @@ const incChecklist = [
   ["Power", "Electrical rating (Maxi: 230V, 50 Hz, single phase, 1.25 kW)"],
 ];
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://lyraenterprise.co.in" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://lyraenterprise.co.in/blog" },
+    { "@type": "ListItem", position: 3, name: "GeM & tender guide", item: "https://lyraenterprise.co.in/blog/gem-tender-sanitary-napkin-vending-machine-guide" },
+  ],
+};
+
 export default function GemGuidePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
       <main className="pt-16 bg-white min-h-screen">
         <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">

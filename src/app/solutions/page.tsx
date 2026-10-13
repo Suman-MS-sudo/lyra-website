@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
 
 const URL = `${SITE.url}/solutions`;
@@ -53,6 +54,30 @@ const sectors = [
     title: "Offices & Corporates",
     href: "/solutions/offices",
     body: "UPI, WiFi and Ethernet IoT machines for offices, IT parks and campuses, with usage reporting for facility teams.",
+  },
+];
+
+const quickPick = [
+  { sector: "Government & budget schools", vm: "Push Button (₹12,000)", inc: "Lyra Micro (₹13,000)", why: "Free issue, offline, lowest cost" },
+  { sector: "Private schools & colleges", vm: "Solo Coin (₹13,500) or Solo Multi-Coin (₹15,500)", inc: "Lyra Micro or Mini", why: "Coin fee makes the programme self-funding" },
+  { sector: "Women's hostels", vm: "Solo RFID (₹16,000)", inc: "Lyra Mini (₹16,000)", why: "Links dispensing to resident ID cards" },
+  { sector: "Welfare & free-issue schemes", vm: "Solo Wave (₹23,000)", inc: "Lyra Mini", why: "Touchless, stainless steel, up to 35 napkins" },
+  { sector: "Offices & IT parks", vm: "Solo WiFi (₹24,500)", inc: "Lyra Micro or Mini", why: "UPI + coin, cloud dashboard for facility teams" },
+  { sector: "Hospitals", vm: "Solo WiFi (₹24,500); Solo Ethernet (₹26,500) where WiFi is restricted", inc: "Lyra Maxi (₹40,000)", why: "UPI + coin with remote monitoring; high-capacity disposal" },
+];
+
+const faqs: Faq[] = [
+  {
+    q: "Which sanitary napkin vending machine is best for my institution?",
+    a: "Government and budget schools usually pick the Push Button, private schools the Solo Coin, hostels the Solo RFID, free-issue schemes the touchless Solo Wave, offices and hospitals the Solo WiFi, or the wired Solo Ethernet where WiFi is restricted. Each sector page explains why.",
+  },
+  {
+    q: "Do I need an incinerator as well as a vending machine?",
+    a: "In most institutions, yes. The SWM Rules 2016 expect a safe way to dispose of used napkins, and an on-site incinerator removes manual handling. Match the incinerator to daily users: Micro for small sites, Mini for colleges and offices, Maxi for hospitals and large campuses.",
+  },
+  {
+    q: "Can government institutions buy these through GeM?",
+    a: "Yes. Lyra Enterprises is a registered GeM vendor, and our GeM and tender guide lists what to put in the specification.",
   },
 ];
 
@@ -121,6 +146,33 @@ export default function SolutionsHub() {
               </Link>
             ))}
           </div>
+
+          <h2 className="mt-14 text-2xl font-bold text-gray-900">Quick pick: recommended setup by sector</h2>
+          <p className="mt-2 text-sm text-gray-600">Prices ex-GST, ex-works Chennai.</p>
+          <div className="mt-5 overflow-x-auto rounded-xl border border-gray-200">
+            <table className="w-full min-w-[640px] text-sm">
+              <thead className="bg-gray-50 text-left text-gray-700">
+                <tr>
+                  <th scope="col" className="px-4 py-3 font-bold">Sector</th>
+                  <th scope="col" className="px-4 py-3 font-bold">Vending machine</th>
+                  <th scope="col" className="px-4 py-3 font-bold">Incinerator</th>
+                  <th scope="col" className="px-4 py-3 font-bold">Why</th>
+                </tr>
+              </thead>
+              <tbody>
+                {quickPick.map((r, i) => (
+                  <tr key={r.sector} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
+                    <th scope="row" className="px-4 py-3 text-left font-semibold text-gray-800">{r.sector}</th>
+                    <td className="px-4 py-3 text-gray-600">{r.vm}</td>
+                    <td className="px-4 py-3 text-gray-600">{r.inc}</td>
+                    <td className="px-4 py-3 text-gray-600">{r.why}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <BlogFaq faqs={faqs} />
 
           <div className="mt-12 flex flex-wrap gap-4 text-sm font-semibold">
             <Link href="/sanitary-napkin-vending-machine-price-india" className="text-primary-600 hover:underline">Price list →</Link>

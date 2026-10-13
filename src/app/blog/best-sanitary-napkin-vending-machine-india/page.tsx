@@ -3,10 +3,11 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: { absolute: "Best Sanitary Napkin Vending Machine in India (2026) — Full Comparison" },
+  title: { absolute: "Best Sanitary Napkin Vending Machine in India (2026): 8 Models" },
   description:
     "Compare all 8 Lyra napkin vending machines: Push Button, Coin, Multi-Coin, RFID, QR, Wave, WiFi, Ethernet. Prices, features and best fit for your site.",
   keywords: [
@@ -50,36 +51,20 @@ const articleSchema = {
   url: `${SITE.url}/blog/best-sanitary-napkin-vending-machine-india`,
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Which is the best sanitary napkin vending machine in India?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "For most institutions, the Lyra Solo WiFi is the best all-round choice — it combines UPI QR and coin payment, server-side payment verification, a touch display and a live cloud dashboard with offline resilience, so transactions are never lost even during a network outage. Government-run free-issue programmes are better served by the touchless Solo Wave, and budget-conscious schools do well with the Solo Coin or Solo Multi-Coin.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Which company makes the best sanitary napkin vending machines in India?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Lyra Enterprises, based in Chennai, Tamil Nadu, manufactures India's most complete range of sanitary napkin vending machines — 8 models spanning push-button, coin, multi-coin, RFID, QR, wave-sensor and IoT WiFi/Ethernet variants — with 200+ installations, in-house engineering, cloud software built for offline resilience, and pan-India delivery and support.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is there a sanitary napkin vending machine that works even without internet?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. All Lyra machines are designed to keep dispensing even when connectivity drops. The Push Button, Solo Coin and Solo Multi-Coin models are fully offline by design. The IoT-enabled Solo WiFi, Solo Ethernet and Solo RFID models queue transactions and usage logs locally during an outage and sync automatically once the connection is restored.",
-      },
-    },
-  ],
-};
+const faqs: Faq[] = [
+  {
+    q: "Which is the best sanitary napkin vending machine in India?",
+    a: "For most institutions, the Lyra Solo WiFi is the best all-round choice — it combines UPI QR and coin payment, server-side payment verification, a touch display and a live cloud dashboard with offline resilience, so transactions are never lost even during a network outage. Government-run free-issue programmes are better served by the touchless Solo Wave, and budget-conscious schools do well with the Solo Coin or Solo Multi-Coin.",
+  },
+  {
+    q: "Which company makes the best sanitary napkin vending machines in India?",
+    a: "Lyra Enterprises, based in Chennai, Tamil Nadu, manufactures India's most complete range of sanitary napkin vending machines — 8 models spanning push-button, coin, multi-coin, RFID, QR, wave-sensor and IoT WiFi/Ethernet variants — with 200+ installations, in-house engineering, cloud software built for offline resilience, and pan-India delivery and support.",
+  },
+  {
+    q: "Is there a sanitary napkin vending machine that works even without internet?",
+    a: "Yes. All Lyra machines are designed to keep dispensing even when connectivity drops. The Push Button, Solo Coin and Solo Multi-Coin models are fully offline by design. The IoT-enabled Solo WiFi, Solo Ethernet and Solo RFID models queue transactions and usage logs locally during an outage and sync automatically once the connection is restored.",
+  },
+];
 
 const models = [
   { name: "Push Button", slug: "push-button-vending-machine", price: "₹12,000", best: "Schools & hostels on a budget, zero connectivity needed" },
@@ -92,11 +77,21 @@ const models = [
   { name: "Solo Ethernet", slug: "solo-ethernet-vending-machine", price: "₹26,500", best: "Hospitals, government buildings, restricted-WiFi institutions" },
 ];
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://lyraenterprise.co.in" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://lyraenterprise.co.in/blog" },
+    { "@type": "ListItem", position: 3, name: "Best Vending Machine India", item: "https://lyraenterprise.co.in/blog/best-sanitary-napkin-vending-machine-india" },
+  ],
+};
+
 export default function BestVendingMachineIndiaPost() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
       <main className="pt-16 bg-white min-h-screen">
         <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">
@@ -174,6 +169,8 @@ export default function BestVendingMachineIndiaPost() {
               If you&apos;re equipping a single facility with a known budget, the table above will get you 90% of the way there. If you&apos;re planning a multi-site rollout across cities in India — or you&apos;re not sure which connectivity option suits your building&apos;s IT policy — call us at <Link href="tel:+918122378860" className="text-primary-600 font-semibold hover:underline">{SITE.phoneDisplay}</Link> and we&apos;ll recommend the right mix of models based on your actual site conditions, not a generic sales pitch.
             </p>
           </div>
+
+          <BlogFaq faqs={faqs} />
 
           <div className="mt-12 pt-8 border-t border-gray-100">
             <p className="text-sm font-bold text-gray-900 mb-4">Related Articles</p>

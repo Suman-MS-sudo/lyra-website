@@ -26,8 +26,61 @@ export const metadata: Metadata = {
   },
 };
 
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${SITE.url}/contact#webpage`,
+  url: `${SITE.url}/contact`,
+  name: "Contact Lyra Enterprises",
+  isPartOf: { "@id": `${SITE.url}/#website` },
+  about: { "@id": `${SITE.url}/#organization` },
+  mainEntity: {
+    "@type": "Organization",
+    "@id": `${SITE.url}/#organization`,
+    name: "Lyra Enterprises",
+    url: SITE.url,
+    email: "sales@lyraenterprise.co.in",
+    telephone: "+91-8122378860",
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+91-8122378860",
+        email: "sales@lyraenterprise.co.in",
+        contactType: "sales",
+        areaServed: "IN",
+        availableLanguage: ["English", "Tamil", "Hindi"],
+        hoursAvailable: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          opens: "09:30",
+          closes: "18:30",
+        },
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: "+91-7010857506",
+        contactType: "sales",
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi", "Bengali"],
+      },
+    ],
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+    { "@type": "ListItem", position: 2, name: "Contact Us", item: `${SITE.url}/contact` },
+  ],
+};
+
 export default function ContactPage() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <StaticInfoPage
       title="Contact Us"
       description="Use this page for product enquiries, quote requests, shipping updates, invoice requests, cancellation requests and general assistance."
@@ -64,5 +117,6 @@ export default function ContactPage() {
       <h2>Escalation</h2>
       <p>If your request concerns refund processing, cancellation, payment disputes or delivery issues, mention your order ID, payment ID and contact number so the team can resolve it faster.</p>
     </StaticInfoPage>
+    </>
   );
 }

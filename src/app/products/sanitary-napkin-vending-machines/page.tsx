@@ -9,7 +9,7 @@ import { vendingMachines, SITE, formatINR } from "@/lib/data";
 import { offerPolicies } from "@/lib/offer-schema";
 
 export const metadata: Metadata = {
-  title: { absolute: "Napkin (Pad) Vending Machines — 8 Models & Prices | Lyra Enterprises" },
+  title: { absolute: "Napkin (Pad) Vending Machines — 8 Models & Prices | Lyra" },
   description:
     "Buy sanitary napkin vending machines in India. 8 models from ₹12,000: push-button, coin, RFID, UPI QR, wave, WiFi, Ethernet. 1-year warranty.",
   keywords: [
@@ -163,7 +163,7 @@ export default function VendingMachinesPage() {
                       <p className="text-[11px] text-gray-500">+ 18% GST · freight extra</p>
                     </div>
                     <div className="flex flex-wrap gap-3 text-xs font-semibold">
-                      <Link href={`/products/${p.slug}`} className="text-primary-600 hover:underline">Details →</Link>
+                      <Link href={`/products/${p.slug}`} className="text-primary-600 hover:underline">Details<span className="sr-only"> for {p.name}</span> →</Link>
                       <Link href={`/products/${p.slug}#enquiry`} className="text-gray-900 hover:underline">Enquire →</Link>
                     </div>
                   </div>

@@ -82,6 +82,7 @@ const contactInfo = [
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [showMap, setShowMap] = useState(false);
   const [submittedEmails, setSubmittedEmails] = useState<Set<string>>(new Set());
   const [submittedPhones, setSubmittedPhones] = useState<Set<string>>(new Set());
   const [salesEmail, setSalesEmail] = useState("");
@@ -303,7 +304,7 @@ export default function Contact() {
                           }
                         })}
                         type="email"
-                        placeholder="your@email.com"
+                        placeholder="Your email address"
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-transparent transition-all placeholder:text-gray-300"
                       />
                       {errors.email && (
@@ -433,17 +434,33 @@ export default function Contact() {
           <FadeUp delay={0.2} className="lg:col-span-2">
             <div className="flex flex-col gap-6 h-full">
               <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex-1" style={{ minHeight: "420px" }}>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.0947843847246!2d80.1421896!3d13.1220126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52630d041b194b%3A0x6ad7970c287d2d32!2sLyra%20Enterprises!5e0!3m2!1sen!2sin!4v1708214400000!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0, minHeight: "420px" }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Lyra Enterprises Location"
-                  className="w-full h-full"
-                />
+                {/* Click-to-load: the Maps embed loads heavy third-party JS, so only fetch it on demand */}
+                {showMap ? (
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.0947843847246!2d80.1421896!3d13.1220126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52630d041b194b%3A0x6ad7970c287d2d32!2sLyra%20Enterprises!5e0!3m2!1sen!2sin!4v1708214400000!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, minHeight: "420px" }}
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Lyra Enterprises Location"
+                    className="w-full h-full"
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setShowMap(true)}
+                    className="flex h-full min-h-[420px] w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-blue-50 via-white to-slate-50 p-6 text-center transition-colors hover:from-blue-100"
+                  >
+                    <svg className="h-10 w-10 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                    <span className="font-semibold text-slate-900">10/21 Vasuki Street, Cholapuram, Ambattur</span>
+                    <span className="text-sm text-slate-600">Chennai 600053, Tamil Nadu</span>
+                    <span className="mt-2 rounded-full bg-primary-600 px-4 py-2 text-sm font-semibold text-white">Show map</span>
+                  </button>
+                )}
               </div>
               <a
                 href="https://maps.app.goo.gl/CS3hP8SezcS4EFDQ9"

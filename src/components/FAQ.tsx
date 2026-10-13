@@ -2,33 +2,9 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { homeFaqs } from "@/lib/home-faqs";
 
-const faqs = [
-  {
-    q: "What is the price of a sanitary napkin vending machine in India?",
-    a: "Lyra Enterprises machines start at ₹12,000 for the Push Button model and go up to ₹26,500 for the WiFi-enabled Solo Ethernet. Prices are ex-works Chennai, plus 18% GST and freight.",
-  },
-  {
-    q: "Do Lyra vending machines support UPI and QR code payments?",
-    a: "Yes. The Solo QR, Solo WiFi and Solo Ethernet models accept UPI QR payments through GPay, PhonePe or any UPI app.",
-  },
-  {
-    q: "Are Lyra vending machines suitable for schools and colleges?",
-    a: "Yes. Lyra machines run in schools, colleges, hostels, hospitals and offices pan-India, supported by our South India office in Chennai and North India office in West Bengal. The compact 700×160×160 mm body fits standard toilet cubicles.",
-  },
-  {
-    q: "What is the capacity of a Lyra sanitary napkin vending machine?",
-    a: "Most Lyra models hold 25 napkins per load. The stainless-steel Solo Wave holds up to 35.",
-  },
-  {
-    q: "Does Lyra Enterprises provide installation and after-sales service?",
-    a: "Yes. Lyra Enterprises installs, trains staff and services machines across Tamil Nadu, Kerala, Karnataka, Andhra Pradesh, Telangana, Maharashtra and Delhi NCR.",
-  },
-  {
-    q: "What does a sanitary napkin incinerator cost?",
-    a: "Lyra incinerators run ₹13,000 for the Micro (1–5 napkins/cycle) up to ₹40,000 for the Maxi (25–50 napkins/cycle), ex-works Chennai plus GST.",
-  },
-];
+const faqs = homeFaqs;
 
 export default function FAQ() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });

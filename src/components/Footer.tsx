@@ -9,7 +9,7 @@ import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 const footerLinks = {
   Company: [
     { label: "Home", href: "#home" },
-    { label: "About Us", href: "#about" },
+    { label: "About Us", href: "/about" },
     { label: "Products", href: "#products" },
     { label: "Customers", href: "#customers" },
     { label: "Contact", href: "/contact" },

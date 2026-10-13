@@ -4,6 +4,7 @@ import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -60,6 +61,25 @@ const breadcrumbSchema = {
     { "@type": "ListItem", position: 3, name: "Schools & Vending Machines", item: `${SITE.url}/blog/why-every-school-needs-napkin-vending-machine` },
   ],
 };
+
+const faqs: Faq[] = [
+  {
+    q: "Why should a school install a sanitary napkin vending machine?",
+    a: "Girls often skip school during their period because they cannot get a pad privately. A machine inside the girls' toilet gives private, on-demand access with no need to ask staff, which helps reduce menstruation-related absence.",
+  },
+  {
+    q: "Which vending machine is best for a school?",
+    a: "Government and budget schools that give napkins free usually choose the Lyra Push Button (₹12,000). Private schools where students pay a small fee choose the Solo Coin (₹13,500), which makes the programme self-funding. Prices are ex-GST.",
+  },
+  {
+    q: "What does a school need to install a napkin vending machine?",
+    a: "Only a flat wall and a standard power outlet. The machines measure 700 × 160 × 160 mm and fit a normal toilet cubicle. For most locations, order to installation takes under a week.",
+  },
+  {
+    q: "Does a school also need a napkin incinerator?",
+    a: "Usually yes. SWM Rules 2016 expect a safe disposal method for used napkins, and the compact Lyra Micro incinerator is sized for small schools. We also sell a vending machine and incinerator bundle.",
+  },
+];
 
 export default function BlogPost1() {
   return (
@@ -154,6 +174,8 @@ export default function BlogPost1() {
           </div>
 
           {/* Related links */}
+          <BlogFaq faqs={faqs} />
+
           <div className="mt-12 pt-8 border-t border-gray-100">
             <p className="text-sm font-bold text-gray-900 mb-4">Related Articles</p>
             <div className="space-y-3">

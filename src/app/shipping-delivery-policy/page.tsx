@@ -7,7 +7,7 @@ import { SITE } from "@/lib/data";
 const PAGE_URL = `${SITE.url}/shipping-delivery-policy`;
 const PAGE_TITLE = "Shipping and Delivery Policy | Lyra Enterprises";
 const PAGE_DESCRIPTION =
-  "Shipping and Delivery Policy for Lyra Enterprises sanitary napkin vending machine and incinerator orders — dispatch timelines, transit time, freight charges and delivery conditions across India.";
+  "Lyra Enterprises shipping policy for vending machine and incinerator orders: dispatch timelines, transit time, freight charges and delivery across India.";
 
 export const metadata: Metadata = {
   title: { absolute: PAGE_TITLE },

@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -61,10 +62,40 @@ const comparison = [
   { factor: "Best for", coin: "Schools, rural, budget", upi: "IT parks, hospitals, premium" },
 ];
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://lyraenterprise.co.in" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://lyraenterprise.co.in/blog" },
+    { "@type": "ListItem", position: 3, name: "UPI vs Coin Guide", item: "https://lyraenterprise.co.in/blog/upi-vs-coin-vending-machine" },
+  ],
+};
+
+const faqs: Faq[] = [
+  {
+    q: "What is the difference between a UPI and a coin sanitary napkin vending machine?",
+    a: "A coin machine such as the Lyra Solo Coin (₹13,500) accepts ₹5 coins and needs no internet. A UPI machine such as the Lyra Solo QR (₹19,500) accepts payment from any UPI app over a SIM connection and has no coin slot. The Solo WiFi (₹24,500) accepts both UPI and coins and adds a live cloud dashboard. Prices are ex-GST, ex-works Chennai.",
+  },
+  {
+    q: "Does a coin-operated napkin vending machine need internet?",
+    a: "No. The Lyra Solo Coin and Solo Multi-Coin run fully offline. They only need a standard 230V power point, which makes them a good fit for schools, rural sites and buildings without WiFi.",
+  },
+  {
+    q: "Does the Lyra Solo QR accept coins?",
+    a: "No. The Solo QR is UPI-only. If you want UPI with a coin backup, choose the Solo WiFi or Solo Ethernet, which accept both and add remote monitoring.",
+  },
+  {
+    q: "Is a UPI or a coin vending machine better for a school?",
+    a: "For most schools and government facilities the Solo Coin is enough: it is cheaper, simple to maintain and works where students do not carry phones. UPI machines suit colleges, IT parks and hospitals where users rarely carry loose coins.",
+  },
+];
+
 export default function BlogPost2() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
       <main className="pt-16 bg-white min-h-screen">
         <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">
@@ -163,6 +194,8 @@ export default function BlogPost2() {
               Not sure? Call us at <Link href="tel:+918122378860" className="text-primary-600 font-semibold hover:underline">{SITE.phoneDisplay}</Link> — describe your facility and we&apos;ll recommend the right model within minutes.
             </p>
           </div>
+
+          <BlogFaq faqs={faqs} />
 
           <div className="mt-12 pt-8 border-t border-gray-100">
             <p className="text-sm font-bold text-gray-900 mb-4">Related Articles</p>

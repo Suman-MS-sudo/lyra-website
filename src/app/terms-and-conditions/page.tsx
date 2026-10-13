@@ -6,7 +6,7 @@ import { SITE } from "@/lib/data";
 const PAGE_URL = `${SITE.url}/terms-and-conditions`;
 const PAGE_TITLE = "Terms and Conditions | Lyra Enterprises";
 const PAGE_DESCRIPTION =
-  "Terms and Conditions for Lyra Enterprises — sanitary napkin vending machine and incinerator orders, pricing, warranty, installation and liability terms for our Chennai manufacturing business.";
+  "Terms and Conditions for Lyra Enterprises vending machine and incinerator orders: pricing, warranty, installation and liability terms.";
 
 export const metadata: Metadata = {
   title: { absolute: PAGE_TITLE },

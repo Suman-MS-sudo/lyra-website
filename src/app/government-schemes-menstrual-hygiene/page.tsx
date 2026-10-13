@@ -10,7 +10,7 @@ const PAGE_URL = `${SITE.url}/government-schemes-menstrual-hygiene`;
 export const metadata: Metadata = {
   title: { absolute: "Govt Schemes for Sanitary Pad Vending Machines, 2026 Guide" },
   description:
-    "Which schemes fund sanitary pad vending machines and incinerators in India? Samagra Shiksha, NHM, Swachh Bharat, MPLADS, CSR and state schemes like SHe-Pad, Shuchi and Asmita.",
+    "Which schemes fund sanitary pad vending machines and incinerators in India? Samagra Shiksha, NHM, Swachh Bharat, MPLADS, CSR and state schemes.",
   keywords: [
     "government scheme sanitary napkin vending machine",
     "subsidy for napkin incinerator india",

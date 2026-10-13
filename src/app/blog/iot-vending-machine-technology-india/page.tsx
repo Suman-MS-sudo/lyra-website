@@ -3,10 +3,11 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: { absolute: "Inside Lyra's IoT Vending Machine Technology — WiFi, Ethernet & RFID" },
+  title: { absolute: "Lyra IoT Vending Machine Tech: WiFi, Ethernet & RFID" },
   description:
     "How Lyra Solo WiFi, Ethernet and RFID napkin vending machines work: server-side payment checks, offline queuing, OTA rollback, encrypted cloud sync.",
   keywords: [
@@ -50,34 +51,28 @@ const articleSchema = {
   url: `${SITE.url}/blog/iot-vending-machine-technology-india`,
 };
 
-const faqSchema = {
+const faqs: Faq[] = [
+  {
+    q: "How does server-side payment verification prevent fake payments on a vending machine?",
+    a: "On Lyra's Solo WiFi and Solo Ethernet machines, the machine never trusts a payment screenshot or a locally-displayed success message. It waits for the backend to independently confirm the transaction with the payment gateway before releasing a napkin, which blocks spoofed or replayed QR payment attempts that simpler machines are vulnerable to.",
+  },
+  {
+    q: "Do Lyra IoT vending machines lose sales data during an internet outage?",
+    a: "No. The Solo WiFi, Solo Ethernet and Solo RFID models continue operating and store transactions and usage logs locally during a connectivity outage. When the connection is restored, everything syncs automatically to the cloud dashboard — no lost sales, no lost stock count, no gap in the audit trail.",
+  },
+  {
+    q: "How are firmware updates delivered to Lyra vending machines?",
+    a: "Firmware updates are pushed remotely over the air (OTA) to every IoT-enabled Lyra machine. If an update ever fails to apply correctly, the machine automatically rolls back to the previous working version, so a facility never loses vending capability waiting for a technician visit.",
+  },
+];
+
+const breadcrumbSchema = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "How does server-side payment verification prevent fake payments on a vending machine?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "On Lyra's Solo WiFi and Solo Ethernet machines, the machine never trusts a payment screenshot or a locally-displayed success message. It waits for the backend to independently confirm the transaction with the payment gateway before releasing a napkin, which blocks spoofed or replayed QR payment attempts that simpler machines are vulnerable to.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do Lyra IoT vending machines lose sales data during an internet outage?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "No. The Solo WiFi, Solo Ethernet and Solo RFID models continue operating and store transactions and usage logs locally during a connectivity outage. When the connection is restored, everything syncs automatically to the cloud dashboard — no lost sales, no lost stock count, no gap in the audit trail.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How are firmware updates delivered to Lyra vending machines?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Firmware updates are pushed remotely over the air (OTA) to every IoT-enabled Lyra machine. If an update ever fails to apply correctly, the machine automatically rolls back to the previous working version, so a facility never loses vending capability waiting for a technician visit.",
-      },
-    },
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://lyraenterprise.co.in" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://lyraenterprise.co.in/blog" },
+    { "@type": "ListItem", position: 3, name: "IoT Vending Machine Technology", item: "https://lyraenterprise.co.in/blog/iot-vending-machine-technology-india" },
   ],
 };
 
@@ -85,7 +80,7 @@ export default function IoTTechnologyPost() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
       <main className="pt-16 bg-white min-h-screen">
         <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">
@@ -153,6 +148,8 @@ export default function IoTTechnologyPost() {
               Have a specific IT policy or network constraint? Call <Link href="tel:+918122378860" className="text-primary-600 font-semibold hover:underline">{SITE.phoneDisplay}</Link> and we&apos;ll confirm the right fit before you order.
             </p>
           </div>
+
+          <BlogFaq faqs={faqs} />
 
           <div className="mt-12 pt-8 border-t border-gray-100">
             <p className="text-sm font-bold text-gray-900 mb-4">Related Articles</p>

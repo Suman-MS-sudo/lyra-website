@@ -238,10 +238,9 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             </div>
             <Link
               href={`/products/${product.slug}`}
-              aria-label={`${product.name} details`}
               className="inline-flex items-center gap-1 text-sm font-semibold text-primary-700 transition-colors hover:text-primary-800"
             >
-              Details
+              Details<span className="sr-only"> for {product.name}</span>
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
               </svg>
@@ -295,7 +294,7 @@ function CategoryHeader({
           href={href}
           className="hidden shrink-0 items-center gap-1 text-sm font-semibold text-primary-700 hover:text-primary-800 sm:flex"
         >
-          View All →
+          View All<span className="sr-only"> {title}</span> →
         </Link>
       )}
     </div>

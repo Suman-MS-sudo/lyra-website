@@ -303,7 +303,7 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Sanitary Napkin Vending Machines in {city.state}</h2>
             </div>
             <Link href="/products/sanitary-napkin-vending-machines" className="ml-auto text-sm text-primary-600 font-semibold hover:underline whitespace-nowrap">
-              View All →
+              View All<span className="sr-only"> vending machines</span> →
             </Link>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -337,7 +337,7 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Sanitary Napkin Incinerators in {city.state}</h2>
             </div>
             <Link href="/products/sanitary-napkin-incinerators" className="ml-auto text-sm text-primary-600 font-semibold hover:underline whitespace-nowrap">
-              View All →
+              View All<span className="sr-only"> incinerators</span> →
             </Link>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

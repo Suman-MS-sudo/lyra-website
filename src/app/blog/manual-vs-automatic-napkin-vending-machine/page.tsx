@@ -4,6 +4,7 @@ import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -73,15 +74,34 @@ const modelImages = [
 
 const comparisonRows = [
   
-  { feature: "Payment Method", manual: "Free / No payment", automatic: "Push button / Coin / UPI" },
-  { feature: "Electricity Required", manual: "No", automatic: "No (push) / Yes (coin, UPI)" },
+  { feature: "Payment Method", manual: "Free / No payment", automatic: "Coin / UPI QR / RFID card" },
+  { feature: "Electricity Required", manual: "Yes (230V AC mains)", automatic: "Yes (230V AC mains)" },
   { feature: "Napkins per Dispense", manual: "1", automatic: "1" },
-  { feature: "Capacity", manual: "20–40 napkins", automatic: "40–60+ napkins" },
-  { feature: "Vandal Resistance", manual: "High (SS body)", automatic: "High (SS body)" },
+  { feature: "Capacity", manual: "25 napkins", automatic: "25 napkins (Solo Wave: up to 35)" },
+  { feature: "Cabinet", manual: "Sheet metal, epoxy coated", automatic: "Sheet metal, epoxy coated (Solo Wave: stainless steel)" },
   { feature: "Maintenance Needed", manual: "Monthly refill only", automatic: "Refill + coin clearing" },
   { feature: "Best For", manual: "Small gov schools, rural areas", automatic: "Colleges, offices, hospitals" },
   { feature: "Self-Funding Model", manual: "No", automatic: "Yes (coin models)" },
   { feature: "Remote Monitoring", manual: "No", automatic: "Yes (WiFi/Ethernet models)" },
+];
+
+const faqs: Faq[] = [
+  {
+    q: "What is a push-button (free-vend) sanitary napkin vending machine?",
+    a: "It dispenses one napkin per press with no payment. The Lyra Push Button costs ₹12,000 ex-GST, holds 25 napkins, runs on 230V mains and logs every dispense offline, with a CSV usage report downloadable over the machine's own WiFi hotspot.",
+  },
+  {
+    q: "Does a push-button napkin vending machine need electricity?",
+    a: "Yes. The Lyra Push Button and all automatic Lyra models run on standard 230V AC mains power.",
+  },
+  {
+    q: "When should I choose an automatic napkin vending machine instead?",
+    a: "Choose a coin model if you want the machine to recover napkin costs, an RFID model to link dispensing to staff or student ID cards, and a UPI WiFi or Ethernet model for cashless payment and remote monitoring across several buildings.",
+  },
+  {
+    q: "What is the cheapest sanitary napkin vending machine from Lyra?",
+    a: "The Push Button at ₹12,000 is the lowest-cost model. The cheapest paid-vend model is the Solo Coin at ₹13,500. Prices exclude 18% GST and freight.",
+  },
 ];
 
 export default function ManualVsAutomaticBlog() {
@@ -117,7 +137,7 @@ export default function ManualVsAutomaticBlog() {
               A free-vend napkin vending machine (like the <Link href="/products/push-button-vending-machine" className="text-primary-600 hover:underline">Lyra Push Button</Link>) is the simplest type of electronic napkin dispenser. It dispenses one napkin per press with no payment required — just push the button and collect. It needs a power connection but has no coin slot, no QR code, no app.
             </p>
             <p>
-              The napkins are loaded inside a stainless steel wall-mounted box. The Push Button is the most affordable napkin dispensing solution in India.
+              The napkins are loaded into an epoxy-coated sheet-metal wall-mounted cabinet with a transparent view panel, and the machine logs every dispense for offline usage reports. The Push Button is the most affordable napkin dispensing solution in India.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900">What is an automatic sanitary napkin vending machine?</h2>
@@ -127,7 +147,7 @@ export default function ManualVsAutomaticBlog() {
             <ul className="list-disc pl-5 space-y-1">
               <li><Link href="/products/push-button-vending-machine" className="text-primary-600 hover:underline">Push Button</Link> — Simple push-button dispense, no payment required</li>
               <li><Link href="/products/solo-coin-vending-machine" className="text-primary-600 hover:underline">Solo Coin</Link> — Coin-operated, self-funding</li>
-              <li><Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">Solo QR</Link> — UPI QR + coin payment via SIM</li>
+              <li><Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">Solo QR</Link> — UPI QR payment via SIM (no coin acceptor)</li>
               <li><Link href="/products/solo-rfid-vending-machine" className="text-primary-600 hover:underline">Solo RFID</Link> — RFID card access for employee/student ID integration</li>
               <li><Link href="/products/solo-wifi-vending-machine" className="text-primary-600 hover:underline">Solo WiFi UPI</Link> — UPI QR payment with remote monitoring</li>
               <li><Link href="/products/solo-ethernet-vending-machine" className="text-primary-600 hover:underline">Solo Ethernet</Link> — Wired IoT monitoring for enterprise campuses</li>
@@ -195,7 +215,7 @@ export default function ManualVsAutomaticBlog() {
             </p>
             <ul className="list-disc pl-5 space-y-2">
               <li>You want a <strong>coin-operated self-funding model</strong> — the machine recovers its cost over time through per-use charges (Solo Coin)</li>
-              <li>You are deploying in a <strong>college, office or hospital</strong> where higher footfall requires a sturdier, higher-capacity mechanism</li>
+              <li>You are deploying in a <strong>college, office or hospital</strong> where higher footfall makes a self-funding or cashless payment model worthwhile</li>
               <li>You need <strong>RFID card integration</strong> with student or employee ID cards (Solo RFID)</li>
               <li>You want <strong>remote monitoring, usage tracking</strong> and cashless UPI payment (Solo WiFi or Solo Ethernet)</li>
               <li>You are deploying across a <strong>multi-location campus</strong> where a facility manager needs centralised visibility</li>
@@ -203,7 +223,7 @@ export default function ManualVsAutomaticBlog() {
 
             <h2 className="text-2xl font-bold text-gray-900">What about the Solo QR machine?</h2>
             <p>
-              The <Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">Solo QR vending machine</Link> bridges the gap between coin and WiFi. It accepts both UPI QR payments and coins via a SIM-based connection — no WiFi setup needed. Ideal for schools and offices that want cashless UPI payments without the complexity of a cloud-connected smart machine.
+              The <Link href="/products/solo-qr-vending-machine" className="text-primary-600 hover:underline">Solo QR vending machine</Link> bridges the gap between coin and WiFi. It accepts UPI QR payments from any UPI app over a SIM-based connection — no WiFi setup and no coin handling needed. Ideal for schools and offices that want cashless UPI payments without the complexity of a cloud-connected smart machine.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900">Our recommendation</h2>
@@ -218,6 +238,8 @@ export default function ManualVsAutomaticBlog() {
               Still unsure? Call us at <a href="tel:+918122378860" className="text-primary-600 font-semibold hover:underline">+91-81223 78860</a> — we help you choose the right model for your institution every day.
             </p>
           </div>
+
+          <BlogFaq faqs={faqs} />
 
           <div className="mt-12 p-6 rounded-2xl bg-gradient-to-br from-primary-50 to-blue-50 border border-primary-100">
             <p className="font-bold text-gray-900 text-lg mb-2">Get the right machine for your institution</p>

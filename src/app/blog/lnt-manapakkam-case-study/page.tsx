@@ -4,6 +4,7 @@ import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
 
 const SLUG = "lnt-manapakkam-case-study";
@@ -63,6 +64,21 @@ const breadcrumbSchema = {
     { "@type": "ListItem", position: 3, name: "L&T Manapakkam Case Study", item: `${SITE.url}/blog/${SLUG}` },
   ],
 };
+
+const faqs: Faq[] = [
+  {
+    q: "How many vending machines did Lyra install at L&T Manapakkam?",
+    a: "Lyra Enterprises supplied and installed 25 IoT-enabled sanitary napkin vending machines across Larsen & Toubro's Manapakkam campus in Chennai, and all 25 are operating normally.",
+  },
+  {
+    q: "Why use IoT vending machines on a corporate campus?",
+    a: "IoT machines report stock and status remotely, so the facilities team knows which restroom needs a refill without walking to every machine. Across many buildings, that turns maintenance into planned visits.",
+  },
+  {
+    q: "Who maintains the machines at L&T Manapakkam?",
+    a: "Lyra Enterprises makes regular on-site visits for restocking, servicing and connectivity checks, backed by its support team.",
+  },
+];
 
 export default function LnTCaseStudy() {
   return (
@@ -135,6 +151,8 @@ export default function LnTCaseStudy() {
           </div>
 
           {/* Related links */}
+          <BlogFaq faqs={faqs} />
+
           <div className="mt-12 pt-8 border-t border-gray-100">
             <p className="text-sm font-bold text-gray-900 mb-4">Related</p>
             <div className="space-y-3">

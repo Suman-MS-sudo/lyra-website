@@ -4,6 +4,7 @@ import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
+import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -65,6 +66,25 @@ const incineratorImages = [
   { slug: "lyra-micro-incinerator", name: "Lyra Micro", image: "/images/products/lyra-micro.png" },
   { slug: "lyra-mini-incinerator", name: "Lyra Mini", image: "/images/products/lyra-mini.png" },
   { slug: "lyra-maxi-incinerator", name: "Lyra Maxi", image: "/images/products/lyra-maxi.png" },
+];
+
+const faqs: Faq[] = [
+  {
+    q: "Is a sanitary napkin incinerator better than a sanitary bin?",
+    a: "For any facility with more than about 10 women users a day, yes. An incinerator burns used napkins inside the unit, so no one handles the waste, there is no odour, and only sterile ash remains. A bin needs daily manual emptying and its contents still need compliant disposal.",
+  },
+  {
+    q: "What happens to the ash from a napkin incinerator?",
+    a: "Complete combustion leaves a small amount of sterile ash that can be disposed of with ordinary municipal solid waste.",
+  },
+  {
+    q: "Which Lyra incinerator size do I need?",
+    a: "Lyra Micro handles 1–5 napkins per 30-minute cycle (up to 80 per 8-hour day) and suits small schools, clinics and offices. Lyra Mini handles 5–15 per cycle (up to 240 per day) for colleges and medium offices. Lyra Maxi handles 25–50 per cycle for hospitals and large campuses.",
+  },
+  {
+    q: "How much does a sanitary napkin incinerator cost?",
+    a: "Lyra incinerators cost ₹13,000 (Micro), ₹16,000 (Mini) and ₹40,000 (Maxi), ex-GST and ex-works Chennai. The only running cost is electricity while a cycle runs.",
+  },
 ];
 
 export default function BlogPost3() {
@@ -130,7 +150,7 @@ export default function BlogPost3() {
                 <tbody>
                   {[
                     { factor: "Upfront cost", bin: "Lower", inc: "Higher" },
-                    { factor: "Annual running cost", bin: "Ongoing liner cost", inc: "None" },
+                    { factor: "Annual running cost", bin: "Ongoing liner cost", inc: "Electricity only (1.25 kW while running)" },
                     { factor: "Manual handling", bin: "Daily (infection risk)", inc: "Zero" },
                     { factor: "Downstream disposal", bin: "Problem — non-compliant", inc: "Solved — sterile ash" },
                     { factor: "Odour control", bin: "Partial", inc: "Complete" },
@@ -180,6 +200,8 @@ export default function BlogPost3() {
               Call us at <Link href="tel:+918122378860" className="text-primary-600 font-semibold hover:underline">{SITE.phoneDisplay}</Link> — tell us your daily user count and we&apos;ll recommend the right model.
             </p>
           </div>
+
+          <BlogFaq faqs={faqs} />
 
           <div className="mt-12 pt-8 border-t border-gray-100">
             <p className="text-sm font-bold text-gray-900 mb-4">Related Articles</p>
