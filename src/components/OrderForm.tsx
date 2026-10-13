@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { sendEvent } from "@/lib/analytics";
 import { addToCart, clearCart, setCartQty, useCart } from "@/lib/cart";
+import GoogleCustomerReviewsOptIn from "@/components/GoogleCustomerReviewsOptIn";
 
 export type OrderProduct = {
   slug: string;
@@ -56,7 +57,7 @@ export default function OrderForm({ products, states, gstRate, initialSlug }: Pr
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState("");
   const [itemsError, setItemsError] = useState(false);
-  const [done, setDone] = useState<{ ref: string; summary: string } | null>(null);
+  const [done, setDone] = useState<{ ref: string; summary: string; email: string } | null>(null);
 
   const {
     register,
@@ -164,7 +165,7 @@ export default function OrderForm({ products, states, gstRate, initialSlug }: Pr
         items: lines.map(({ p, q }) => ({ item_id: p.slug, item_name: p.fullName, price: p.price, quantity: q })),
       });
       clearCart();
-      setDone({ ref: reference, summary });
+      setDone({ ref: reference, summary, email: data.email });
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (e) {
       setServerError(e instanceof Error ? e.message : "Could not place the order.");
@@ -190,6 +191,7 @@ export default function OrderForm({ products, states, gstRate, initialSlug }: Pr
           No payment has been taken. Our team will contact you within 24 hours to confirm availability, freight to your
           location and payment details. A confirmation has also been emailed to you.
         </p>
+        <GoogleCustomerReviewsOptIn orderId={done.ref} email={done.email} />
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <a href={wa} target="_blank" rel="noopener noreferrer" className="rounded-full bg-[#25D366] px-6 py-3 text-sm font-bold text-white shadow">
             Message us on WhatsApp
