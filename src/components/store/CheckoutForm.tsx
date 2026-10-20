@@ -29,7 +29,8 @@ type Fields = {
   website: string; // honeypot
 };
 
-type Done = { ref: string; email: string; summary: string; amount: number; paymentId: string };
+/** verifying: Razorpay reported success, server check in flight; verified: server confirmed; unverified: server check failed (payment still exists in Razorpay). */
+type Done = { ref: string; email: string; summary: string; amount: number; paymentId: string; status: "verifying" | "verified" | "unverified" };
 
 type RazorpayResponse = { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string };
 type RazorpayInstance = { open: () => void; on: (event: string, cb: (r: { error?: { description?: string } }) => void) => void };
@@ -56,7 +57,8 @@ const DRAFT_KEY = "lyra_checkout_details_v1";
 export default function CheckoutForm({ states, initialSlug }: { states: string[]; initialSlug?: string }) {
   const { lines, totals } = useCartLines();
   const { bySlug } = useCatalog();
-  const [busy, setBusy] = useState(false);
+  const [phase, setPhase] = useState<"idle" | "opening" | "confirming">("idle");
+  const busy = phase !== "idle";
   const [serverError, setServerError] = useState("");
   const [done, setDone] = useState<Done | null>(null);
 
@@ -139,7 +141,19 @@ export default function CheckoutForm({ states, initialSlug }: { states: string[]
     if (!res.ok || !order.orderId) throw new Error(order.error || "Could not start the payment. Please try again or call us.");
     if (!(await loadRazorpay()) || !window.Razorpay) throw new Error("Couldn't load the payment window. Check your connection and try again.");
 
+    const payload = { ...data, items };
+    let settled = false;
+
     await new Promise<void>((resolve, reject) => {
+      /** Razorpay says the money went through: show the confirmation now, confirm with the server behind it. */
+      const succeed = (paymentId: string, status: Done["status"], ref?: string, amount?: number) => {
+        if (settled) return;
+        settled = true;
+        sendEvent("purchase", { transaction_id: ref ?? order.reference, currency: "INR", value: amount ?? totals.total, tax: totals.gst, items: gaItems });
+        finish({ ref: ref ?? order.reference ?? "", email: data.email, summary, amount: amount ?? totals.total, paymentId, status });
+        resolve();
+      };
+
       const rzp = new window.Razorpay!({
         key: order.keyId,
         order_id: order.orderId,
@@ -152,30 +166,37 @@ export default function CheckoutForm({ states, initialSlug }: { states: string[]
         notes: { reference: order.reference },
         theme: { color: "#2563eb" },
         modal: {
-          ondismiss: () => reject(new Error("Payment window closed. Your cart is saved; you can try again.")),
           confirm_close: true,
+          // UPI buyers often pay in their app and then close this window. Ask Razorpay before calling it cancelled.
+          ondismiss: async () => {
+            if (settled) return;
+            setPhase("confirming");
+            try {
+              const st = await fetch("/api/checkout/status", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ order_id: order.orderId, ...payload }),
+              });
+              const out = (await st.json().catch(() => ({}))) as { paid?: boolean; reference?: string; paymentId?: string; amount?: number };
+              if (out.paid) {
+                succeed(out.paymentId ?? "", "verified", out.reference, out.amount);
+                return;
+              }
+            } catch {
+              /* fall through to "closed" */
+            }
+            settled = true;
+            reject(new Error("Payment window closed. Your cart is saved; you can try again."));
+          },
         },
-        handler: async (r: RazorpayResponse) => {
-          try {
-            const v = await fetch("/api/checkout/verify", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ ...r, ...data, items }),
-            });
-            const out = (await v.json().catch(() => ({}))) as { success?: boolean; reference?: string; amount?: number; error?: string };
-            if (!v.ok || !out.success) throw new Error(out.error || "Payment verification failed. Please call us with your payment ID.");
-            sendEvent("purchase", {
-              transaction_id: out.reference,
-              currency: "INR",
-              value: out.amount ?? totals.total,
-              tax: totals.gst,
-              items: gaItems,
-            });
-            finish({ ref: out.reference ?? order.reference ?? "", email: data.email, summary, amount: out.amount ?? totals.total, paymentId: r.razorpay_payment_id });
-            resolve();
-          } catch (e) {
-            reject(e);
-          }
+        handler: (r: RazorpayResponse) => {
+          succeed(r.razorpay_payment_id, "verifying");
+          fetch("/api/checkout/verify", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...r, ...payload }) })
+            .then(async (v) => {
+              const out = (await v.json().catch(() => ({}))) as { success?: boolean; reference?: string; amount?: number };
+              setDone((d) => (d ? { ...d, status: v.ok && out.success ? "verified" : "unverified", ref: out.reference ?? d.ref, amount: out.amount ?? d.amount } : d));
+            })
+            .catch(() => setDone((d) => (d ? { ...d, status: "unverified" } : d)));
         },
       });
       rzp.on("payment.failed", (r) => {
@@ -191,14 +212,14 @@ export default function CheckoutForm({ states, initialSlug }: { states: string[]
       setServerError("Your cart is empty.");
       return;
     }
-    setBusy(true);
+    setPhase("opening");
     setServerError("");
     try {
       await payOnline(data);
     } catch (e) {
       setServerError(e instanceof Error ? e.message : "Something went wrong.");
     } finally {
-      setBusy(false);
+      setPhase("idle");
     }
   };
 
@@ -374,7 +395,7 @@ export default function CheckoutForm({ states, initialSlug }: { states: string[]
             {busy ? (
               <>
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" aria-hidden />
-                Opening secure payment…
+                {phase === "confirming" ? "Confirming your payment…" : "Opening secure payment…"}
               </>
             ) : (
               <>
@@ -427,7 +448,22 @@ function Confirmation({ done }: { done: Done }) {
           · Payment <span className="font-mono">{done.paymentId}</span>
         </p>
         <p className="mt-5 text-[15px] leading-relaxed text-body">
-          We received {inr(done.amount)}. Our team will call you within one working day to confirm the dispatch date and freight to your pincode. A confirmation is on its way to {done.email}.
+          We received {inr(done.amount)}. Our team will call you within one working day to confirm the dispatch date and freight to your pincode.
+        </p>
+        <p
+          aria-live="polite"
+          className={`mx-auto mt-4 inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-medium ${
+            done.status === "unverified" ? "bg-amber-50 text-amber-800" : "bg-subtle text-muted"
+          }`}
+        >
+          {done.status === "verifying" && (
+            <>
+              <span className="h-3 w-3 animate-spin rounded-full border-2 border-line-strong border-t-brand" aria-hidden />
+              Confirming with Razorpay and sending your receipt…
+            </>
+          )}
+          {done.status === "verified" && <>Confirmed · receipt emailed to {done.email}</>}
+          {done.status === "unverified" && <>Your payment is safe with Razorpay. We couldn&apos;t send the receipt automatically, so our team will contact you with it.</>}
         </p>
         <GoogleCustomerReviewsOptIn orderId={done.ref} email={done.email} />
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">

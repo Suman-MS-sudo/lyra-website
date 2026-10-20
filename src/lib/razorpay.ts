@@ -54,6 +54,15 @@ export async function fetchOrder(id: string): Promise<RazorpayOrder> {
   return data;
 }
 
+export type RazorpayPayment = { id: string; status: "created" | "authorized" | "captured" | "refunded" | "failed"; amount: number; method?: string };
+
+export async function fetchOrderPayments(orderId: string): Promise<RazorpayPayment[]> {
+  const res = await fetch(`${API}/orders/${encodeURIComponent(orderId)}/payments`, { headers: { Authorization: authHeader() }, cache: "no-store" });
+  const data = (await res.json()) as { items?: RazorpayPayment[]; error?: { description?: string } };
+  if (!res.ok) throw new Error(`Razorpay fetch payments failed: ${res.status} ${data.error?.description ?? ""}`);
+  return data.items ?? [];
+}
+
 function safeEqual(a: string, b: string): boolean {
   const ba = Buffer.from(a);
   const bb = Buffer.from(b);
