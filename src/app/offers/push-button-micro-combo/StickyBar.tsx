@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { WhatsAppCTA } from "./ComboCTA";
 
 export default function StickyBar({ price }: { price: number }) {

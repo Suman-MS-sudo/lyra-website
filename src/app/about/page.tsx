@@ -147,7 +147,7 @@ export default function AboutPage() {
         </p>
 
         <h2>Our locations</h2>
-        <OurLocations />
+        <div className="not-prose"><OurLocations /></div>
         <p className="text-sm text-gray-500 mt-4">
           Office hours: Monday to Saturday, 9:30 AM to 6:30 PM IST. For quotes and orders, visit the{" "}
           <Link href="/contact">contact page</Link>.

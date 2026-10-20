@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Overridable so a verification build can run without touching a running `next dev` cache.
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   images: {
     // AVIF is ~20-30% smaller than WebP; browsers without AVIF still get WebP.
     formats: ["image/avif", "image/webp"],

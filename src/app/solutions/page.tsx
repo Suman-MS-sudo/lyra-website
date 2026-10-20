@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
-import Breadcrumb from "@/components/Breadcrumb";
+import PageHero from "@/components/page/PageHero";
+import { CtaBand } from "@/components/page/Blocks";
+import { IconArrowRight, IconBuilding, IconHospital, IconSchool, IconUsers } from "@/components/store/icons";
 import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
 
@@ -113,74 +115,99 @@ const schema = {
   ],
 };
 
+const SECTOR_ICONS = [IconSchool, IconUsers, IconHospital, IconBuilding];
+
 export default function SolutionsHub() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <PageNavbar />
-      <main className="pt-16 bg-white min-h-screen">
-        <section className="bg-gradient-to-br from-blue-50 via-white to-teal-50 py-14 sm:py-20">
-          <div className="max-w-5xl mx-auto px-5 sm:px-8">
-            <Breadcrumb crumbs={[{ label: "Home", href: "/" }, { label: "Solutions" }]} />
-            <h1 className="mt-6 font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-              Sanitary Napkin Vending Machine Solutions by Sector
-            </h1>
-            <p className="mt-5 text-gray-600 text-lg max-w-3xl leading-relaxed">
+      <main className="bg-canvas">
+        <PageHero
+          crumbs={[{ label: "Home", href: "/" }, { label: "Solutions" }]}
+          eyebrow="Solutions"
+          title={<>Sanitary Napkin Vending Machine Solutions <span className="text-gradient">by Sector</span></>}
+          lead={
+            <p>
               Every institution needs different access, capacity and disposal. Pick your sector to see the models we
               recommend, how they are used, and pricing. Lyra Enterprises manufactures in Chennai and supplies across India.
             </p>
+          }
+        />
+
+        <section className="bg-canvas py-14 sm:py-20">
+          <div className="lyra-container">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {sectors.map((s, k) => {
+                const Icon = SECTOR_ICONS[k] ?? IconBuilding;
+                return (
+                  <Link
+                    key={s.href}
+                    href={s.href}
+                    className="group flex flex-col rounded-[22px] border border-line bg-surface p-7 transition-[border-color,box-shadow] duration-300 hover:border-line-strong hover:shadow-lift"
+                  >
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-soft text-brand">
+                      <Icon className="h-6 w-6" />
+                    </span>
+                    <h2 className="mt-6 font-display text-xl font-semibold text-ink">{s.title}</h2>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-body">{s.body}</p>
+                    <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
+                      See the solution <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+
+            <div className="mt-16">
+              <p className="kicker">Quick pick</p>
+              <h2 className="mt-3 text-[1.85rem] font-semibold tracking-tight text-ink sm:text-4xl">Quick pick: recommended setup by sector</h2>
+              <p className="mt-2 text-sm text-muted">Prices ex-GST, ex-works Chennai.</p>
+              <div className="mt-6 overflow-x-auto rounded-[20px] border border-line bg-surface">
+                <table className="w-full min-w-[640px] text-sm">
+                  <thead className="bg-subtle text-left">
+                    <tr>
+                      {["Sector", "Vending machine", "Incinerator", "Why"].map((h) => (
+                        <th key={h} scope="col" className="px-5 py-3.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
+                          {h}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-line">
+                    {quickPick.map((r) => (
+                      <tr key={r.sector}>
+                        <th scope="row" className="px-5 py-4 text-left font-semibold text-ink">{r.sector}</th>
+                        <td className="px-5 py-4 text-body">{r.vm}</td>
+                        <td className="px-5 py-4 text-body">{r.inc}</td>
+                        <td className="px-5 py-4 text-body">{r.why}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="mx-auto max-w-4xl">
+              <BlogFaq faqs={faqs} />
+            </div>
+
+            <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                ["/sanitary-napkin-vending-machine-price-india", "Price list"],
+                ["/compare-sanitary-napkin-vending-machines", "Compare all models"],
+                ["/government-schemes-menstrual-hygiene", "Funding and government schemes"],
+                ["/blog/gem-tender-sanitary-napkin-vending-machine-guide", "Buying through GeM"],
+              ].map(([href, label]) => (
+                <Link key={href} href={href} className="flex items-center justify-between rounded-2xl border border-line bg-surface px-5 py-4 text-sm font-semibold text-ink transition-colors hover:border-brand hover:text-brand">
+                  {label} <IconArrowRight className="h-4 w-4" />
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="py-14 max-w-5xl mx-auto px-5 sm:px-8">
-          <div className="grid sm:grid-cols-2 gap-6">
-            {sectors.map((s) => (
-              <Link
-                key={s.href}
-                href={s.href}
-                className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-              >
-                <h2 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">{s.title}</h2>
-                <p className="mt-2 text-sm text-gray-600 leading-relaxed">{s.body}</p>
-                <span className="mt-4 inline-block text-sm font-semibold text-primary-600 group-hover:underline">See the solution →</span>
-              </Link>
-            ))}
-          </div>
-
-          <h2 className="mt-14 text-2xl font-bold text-gray-900">Quick pick: recommended setup by sector</h2>
-          <p className="mt-2 text-sm text-gray-600">Prices ex-GST, ex-works Chennai.</p>
-          <div className="mt-5 overflow-x-auto rounded-xl border border-gray-200">
-            <table className="w-full min-w-[640px] text-sm">
-              <thead className="bg-gray-50 text-left text-gray-700">
-                <tr>
-                  <th scope="col" className="px-4 py-3 font-bold">Sector</th>
-                  <th scope="col" className="px-4 py-3 font-bold">Vending machine</th>
-                  <th scope="col" className="px-4 py-3 font-bold">Incinerator</th>
-                  <th scope="col" className="px-4 py-3 font-bold">Why</th>
-                </tr>
-              </thead>
-              <tbody>
-                {quickPick.map((r, i) => (
-                  <tr key={r.sector} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
-                    <th scope="row" className="px-4 py-3 text-left font-semibold text-gray-800">{r.sector}</th>
-                    <td className="px-4 py-3 text-gray-600">{r.vm}</td>
-                    <td className="px-4 py-3 text-gray-600">{r.inc}</td>
-                    <td className="px-4 py-3 text-gray-600">{r.why}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <BlogFaq faqs={faqs} />
-
-          <div className="mt-12 flex flex-wrap gap-4 text-sm font-semibold">
-            <Link href="/sanitary-napkin-vending-machine-price-india" className="text-primary-600 hover:underline">Price list →</Link>
-            <Link href="/compare-sanitary-napkin-vending-machines" className="text-primary-600 hover:underline">Compare all models →</Link>
-            <Link href="/government-schemes-menstrual-hygiene" className="text-primary-600 hover:underline">Funding and government schemes →</Link>
-            <Link href="/blog/gem-tender-sanitary-napkin-vending-machine-guide" className="text-primary-600 hover:underline">Buying through GeM →</Link>
-          </div>
-        </section>
+        <CtaBand title="Not sure which sector fits?" body="Tell us about your site and we will recommend the right machines, quantity and disposal setup." primary={{ href: "/contact", label: "Talk to sales" }} />
       </main>
       <PageFooter />
     </>

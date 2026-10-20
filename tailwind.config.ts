@@ -1,6 +1,17 @@
 import type { Config } from "tailwindcss";
 
+/**
+ * Every colour scale the site uses is backed by CSS variables (defined in globals.css),
+ * so `.dark` on <html> re-tones the whole site, including older pages written with plain
+ * `bg-gray-50` / `text-slate-900` / `bg-primary-50` classes, without touching their markup.
+ */
+const STOPS = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const;
+const scale = (name: string) =>
+  Object.fromEntries(STOPS.map((s) => [s, `rgb(var(--${name}-${s}) / <alpha-value>)`]));
+const token = (name: string) => `rgb(var(--${name}) / <alpha-value>)`;
+
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,49 +21,70 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: "#2563EB",
-          50: "#EFF6FF",
-          100: "#DBEAFE",
-          200: "#BFDBFE",
-          300: "#93C5FD",
-          400: "#60A5FA",
-          500: "#3B82F6",
-          600: "#2563EB",
-          700: "#1D4ED8",
-          800: "#1E40AF",
-          900: "#1E3A8A",
-        },
+        gray: scale("gray"),
+        slate: scale("slate"),
+        primary: { DEFAULT: "rgb(var(--primary-600) / <alpha-value>)", ...scale("primary") },
+        blue: scale("blue"),
+        sky: scale("sky"),
+        teal: scale("teal"),
+        green: scale("green"),
+        emerald: scale("emerald"),
+        amber: scale("amber"),
+        red: scale("red"),
+        orange: scale("orange"),
+        yellow: scale("yellow"),
+        cyan: scale("cyan"),
+        rose: scale("rose"),
+        indigo: scale("indigo"),
+
+        // Semantic tokens for new UI.
+        canvas: token("canvas"),
+        surface: token("surface"),
+        subtle: token("subtle"),
+        elevated: token("elevated"),
+        ink: token("ink"),
+        body: token("body"),
+        muted: token("muted"),
+        line: token("line"),
+        "line-strong": token("line-strong"),
+        brand: { DEFAULT: token("brand"), strong: token("brand-strong"), soft: token("brand-soft") },
+        night: "#070a10",
+
+        // Legacy names kept for older pages (render as blue tints).
         pink: {
-          soft: "#60A5FA",
-          light: "#DBEAFE",
-          rose: "#3B82F6",
-          blush: "#EFF6FF",
+          soft: "rgb(var(--primary-400) / <alpha-value>)",
+          light: "rgb(var(--primary-100) / <alpha-value>)",
+          rose: "rgb(var(--primary-500) / <alpha-value>)",
+          blush: "rgb(var(--primary-50) / <alpha-value>)",
         },
-        cream: "#F8FAFF",
+        cream: token("subtle"),
       },
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
+      fontSize: {
+        "display-xl": ["clamp(2.6rem, 6.2vw, 5.4rem)", { lineHeight: "0.98", letterSpacing: "-0.045em" }],
+        "display-lg": ["clamp(2rem, 3.4vw, 3rem)", { lineHeight: "1.06", letterSpacing: "-0.03em" }],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "hero-gradient":
-          "linear-gradient(180deg, #f6f8fc 0%, #ffffff 60%)",
-        "purple-gradient":
-          "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
-        "pink-gradient":
-          "linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "hero-gradient": "linear-gradient(180deg, rgb(var(--subtle)) 0%, rgb(var(--canvas)) 60%)",
+        "purple-gradient": "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
+        "pink-gradient": "linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)",
+      },
+      transitionTimingFunction: {
+        "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
       },
       animation: {
         "float-slow": "floatSlow 8s ease-in-out infinite",
         "float-medium": "floatMedium 6s ease-in-out infinite",
-        "shimmer": "shimmer 2.5s linear infinite",
+        shimmer: "shimmer 2.5s linear infinite",
         "pulse-glow": "pulseGlow 3s ease-in-out infinite",
         "slide-up": "slideUp 0.7s ease-out forwards",
         "fade-in": "fadeIn 0.8s ease-out forwards",
+        marquee: "marquee var(--marquee-duration, 40s) linear infinite",
       },
       keyframes: {
         floatSlow: {
@@ -79,12 +111,17 @@ const config: Config = {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
       },
       boxShadow: {
-        '3xl': '0 35px 60px -12px rgba(0, 0, 0, 0.25)',
-        'glow': '0 0 20px rgba(37, 99, 235, 0.3)',
-        'card': '0 4px 20px rgba(0, 0, 0, 0.08), 0 2px 10px rgba(0, 0, 0, 0.04)',
-        'card-hover': '0 10px 40px rgba(0, 0, 0, 0.12), 0 4px 20px rgba(0, 0, 0, 0.06)',
+        "3xl": "0 35px 60px -12px rgba(0, 0, 0, 0.25)",
+        glow: "0 0 20px rgba(37, 99, 235, 0.3)",
+        card: "var(--shadow-sm)",
+        "card-hover": "var(--shadow-lg)",
+        lift: "var(--shadow-lift)",
         purple: "0 10px 40px rgba(37,99,235,0.28)",
         "purple-lg": "0 20px 60px rgba(37,99,235,0.35)",
         "purple-xl": "0 30px 80px rgba(37,99,235,0.45)",

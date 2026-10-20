@@ -71,9 +71,9 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
   }
 
   return (
-    <section id="enquiry" className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-slate-200">
+    <section id="enquiry" className="lyra-container scroll-mt-44 border-t border-line py-14 sm:py-20">
       <div className="grid gap-6 lg:grid-cols-[1.3fr_0.9fr]">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <div className="rounded-[24px] border border-line bg-surface p-6 sm:p-8">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-600">Request a Quote</p>
@@ -183,9 +183,9 @@ export default function ProductPurchasePanel({ product }: ProductPurchasePanelPr
           </div>
         </div>
 
-        <aside className="rounded-2xl bg-slate-900 p-6 text-white shadow-sm sm:p-8">
+        <aside className="theme-light rounded-2xl bg-slate-900 p-6 text-white shadow-sm sm:p-8">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">Product</p>
-          <h3 className="mt-3 text-2xl font-semibold tracking-tight">{product.name}</h3>
+          <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white">{product.name}</h3>
           <p className="mt-2 text-sm text-white/75">{product.fullName}</p>
           <p className="mt-1 text-xs font-mono text-white/40">{product.code}</p>
 

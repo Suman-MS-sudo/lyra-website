@@ -3,8 +3,14 @@ import Link from "next/link";
 import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
-import Breadcrumb from "@/components/Breadcrumb";
-import { SITE, getProductBySlug } from "@/lib/data";
+import PageHero from "@/components/page/PageHero";
+import Section from "@/components/page/Section";
+import FeatureGrid from "@/components/page/FeatureGrid";
+import FaqList from "@/components/page/FaqList";
+import { CtaBand } from "@/components/page/Blocks";
+import AddBundleButton from "@/components/store/AddBundleButton";
+import { IconCheck } from "@/components/store/icons";
+import { SITE, getProductBySlug, formatINR } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: { absolute: "Vending Machine + Incinerator Bundle — Schools & Hostels | Lyra" },
@@ -147,171 +153,130 @@ export default function BundlePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <PageNavbar />
-      <main className="pt-16 bg-white min-h-screen">
-        {/* Hero */}
-        <section className="bg-gradient-to-br from-primary-50 via-white to-blue-50 py-14 sm:py-20">
-          <div className="max-w-5xl mx-auto px-5 sm:px-8">
-            <Breadcrumb crumbs={[
-              { label: "Home", href: "/" },
-              { label: "Products", href: "/products" },
-              { label: "Vending + Incinerator Bundle" },
-            ]} />
-            <div className="mt-6 flex flex-wrap gap-2 mb-5">
-              <span className="px-3 py-1 rounded-full bg-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest">Bundle Offer</span>
-              <span className="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold uppercase tracking-widest">SWM Rules 2016</span>
-              <span className="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-bold uppercase tracking-widest">Save on Combo</span>
-            </div>
-            <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-              Vending Machine +{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">
-                Incinerator Bundle
-              </span>
-            </h1>
-            <p className="mt-5 text-gray-600 text-lg max-w-3xl leading-relaxed">
+      <main className="bg-canvas">
+        <PageHero
+          crumbs={[
+            { label: "Home", href: "/" },
+            { label: "Products", href: "/products" },
+            { label: "Vending + Incinerator Bundle" },
+          ]}
+          eyebrow="Bundles"
+          tags={["Bundle Offer", "SWM Rules 2016", "Save on Combo"]}
+          title={<>Vending Machine + <span className="text-gradient">Incinerator Bundle</span></>}
+          lead={
+            <p>
               The complete menstrual hygiene solution in one order. A vending machine provides napkins on demand; an incinerator handles safe, CPCB-compliant disposal. Together, they satisfy the full requirements of India&apos;s Solid Waste Management Rules 2016 for schools, hospitals and hostels.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="tel:+918122378860"
-                className="px-7 py-3.5 bg-gradient-to-r from-primary-600 to-blue-500 text-white font-semibold rounded-full shadow-lg hover:-translate-y-0.5 transition-all duration-200"
-              >
-                Get Bundle Price
-              </Link>
-              <Link
-                href="/#contact"
-                className="px-7 py-3.5 border border-primary-200 text-primary-700 font-semibold rounded-full hover:bg-primary-50 transition-colors"
-              >
-                Request Quote
-              </Link>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-500">
-              {["Bundle Savings Available", "SWM Rules 2016 Compliant", "CPCB Approved", "1-Year Warranty", "Pan-India Delivery"].map((t) => (
-                <span key={t} className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-400 flex-shrink-0" />
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
+          }
+          actions={
+            <>
+              <a href="#bundles" className="btn btn-primary h-12 px-6">Choose a bundle</a>
+              <a href="tel:+918122378860" className="btn btn-secondary h-12 px-6">Get Bundle Price</a>
+              <Link href="/contact" className="btn btn-ghost h-12 px-4">Request Quote</Link>
+            </>
+          }
+          points={["Bundle Savings Available", "SWM Rules 2016 Compliant", "CPCB Approved", "1-Year Warranty", "Pan-India Delivery"]}
+          images={[
+            { src: getProductBySlug("solo-wifi-vending-machine")?.image ?? "", alt: "Solo WiFi vending machine" },
+            { src: getProductBySlug("lyra-mini-incinerator")?.image ?? "", alt: "Lyra Mini incinerator" },
+          ]}
+        />
 
-        {/* Why Bundle */}
-        <section className="py-14 max-w-5xl mx-auto px-5 sm:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Why Buy Both Together?</h2>
-          <div className="grid sm:grid-cols-3 gap-6 mt-8">
-            {[
+        <Section kicker="Why bundle" title="Why Buy Both Together?">
+          <FeatureGrid
+            items={[
               { icon: "⚖️", title: "Full Legal Compliance", body: "SWM Rules 2016 requires both access to sanitary products AND proper disposal. A machine alone without an incinerator is only half the solution." },
               { icon: "💰", title: "Bundle Savings", body: "Ordering vending machine and incinerator together comes with bundled pricing from Lyra — contact us for a combined quote and available savings vs buying separately." },
               { icon: "🔧", title: "Single Vendor, One Install", body: "One order, one invoice, one installation team — simplifying procurement and compliance documentation for schools and institutions." },
-            ].map((item) => (
-              <div key={item.title} className="p-6 rounded-2xl border border-gray-100 bg-gradient-to-br from-primary-50 to-white">
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.body}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+            ]}
+          />
+        </Section>
 
-        {/* Bundle Options */}
-        <section className="py-14 bg-gradient-to-b from-gray-50 to-white">
-          <div className="max-w-5xl mx-auto px-5 sm:px-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Choose Your Bundle</h2>
-            <p className="text-gray-500 mb-10">Three bundle options for every institution size. Call for custom combinations.</p>
-            <div className="grid lg:grid-cols-3 gap-8">
-              {bundles.map((b) => (
-                <div key={b.title} className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col">
-                  <div className="relative aspect-[2/1] bg-gradient-to-br from-primary-50 to-blue-50 flex items-center justify-center gap-4 p-4">
-                    <div className="relative w-24 h-24">
-                      <Image src={getProductBySlug(b.vending.slug)?.image ?? ""} alt={b.vending.name} fill className="object-contain" sizes="96px" />
-                    </div>
-                    <span className="text-2xl font-bold text-gray-300">+</span>
-                    <div className="relative w-24 h-24">
-                      <Image src={getProductBySlug(b.incinerator.slug)?.image ?? ""} alt={b.incinerator.name} fill className="object-contain" sizes="96px" />
-                    </div>
+        <Section id="bundles" tone="subtle" kicker="Bundles" title="Choose Your Bundle" lead="Three bundle options for every institution size. Call for custom combinations.">
+          <div className="grid gap-5 lg:grid-cols-3">
+            {bundles.map((b, k) => {
+              const vm = getProductBySlug(b.vending.slug);
+              const inc = getProductBySlug(b.incinerator.slug);
+              const separate = (vm?.price ?? 0) + (inc?.price ?? 0);
+              return (
+                <article
+                  key={b.title}
+                  className={`flex flex-col overflow-hidden rounded-[24px] border bg-surface ${k === 0 ? "border-primary-600 shadow-[0_0_0_3px_rgb(var(--brand)/0.1)]" : "border-line"}`}
+                >
+                  <div className="relative flex aspect-[2/1] items-end justify-center gap-2 bg-subtle px-6 pt-6">
+                    <div aria-hidden className="absolute inset-x-[15%] bottom-0 top-1/4 rounded-full bg-[radial-gradient(closest-side,rgb(var(--brand)/0.16),transparent)]" />
+                    <Image src={vm?.image ?? ""} alt={b.vending.name} width={120} height={180} className="product-shot relative h-[88%] w-auto object-contain" />
+                    <span className="relative mb-10 font-display text-2xl font-semibold text-muted">+</span>
+                    <Image src={inc?.image ?? ""} alt={b.incinerator.name} width={120} height={180} className="product-shot relative h-[72%] w-auto object-contain" />
+                    <span
+                      className={`absolute left-4 top-4 rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-wider ${k === 0 ? "bg-primary-600 text-white" : "border border-line bg-surface/90 text-ink"}`}
+                    >
+                      {b.tag}
+                    </span>
                   </div>
-                  <div className="p-6 border-b border-gray-100">
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${b.badge} mb-3 inline-block`}>{b.tag}</span>
-                    <h3 className="font-bold text-gray-900 text-xl mb-1">{b.title}</h3>
-                    <p className="text-gray-500 text-sm">{b.bestFor}</p>
+                  <div className="border-b border-line p-6">
+                    <h3 className="font-display text-xl font-semibold text-ink">{b.title}</h3>
+                    <p className="mt-1 text-sm text-muted">{b.bestFor}</p>
                   </div>
-                  <div className="p-6 flex-1">
-                    <div className="space-y-3 mb-6">
-                      <div className="flex items-center justify-between py-2 border-b border-gray-50">
-                        <div>
-                          <p className="text-xs text-gray-500 uppercase font-semibold">Vending Machine</p>
-                          <Link href={`/products/${b.vending.slug}`} className="text-gray-900 font-semibold hover:text-primary-600 transition-colors">
-                            {b.vending.name}
-                          </Link>
-                        </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <dl className="grid grid-cols-2 gap-3">
+                      <div className="rounded-xl border border-line p-3">
+                        <dt className="text-[10.5px] font-semibold uppercase tracking-wider text-muted">Vending Machine</dt>
+                        <dd className="mt-1">
+                          <Link href={`/products/${b.vending.slug}`} className="font-semibold text-ink hover:text-brand">{b.vending.name}</Link>
+                        </dd>
                       </div>
-                      <div className="flex items-center justify-between py-2">
-                        <div>
-                          <p className="text-xs text-gray-500 uppercase font-semibold">Incinerator</p>
-                          <Link href={`/products/${b.incinerator.slug}`} className="text-gray-900 font-semibold hover:text-primary-600 transition-colors">
-                            {b.incinerator.name}
-                          </Link>
-                        </div>
+                      <div className="rounded-xl border border-line p-3">
+                        <dt className="text-[10.5px] font-semibold uppercase tracking-wider text-muted">Incinerator</dt>
+                        <dd className="mt-1">
+                          <Link href={`/products/${b.incinerator.slug}`} className="font-semibold text-ink hover:text-brand">{b.incinerator.name}</Link>
+                        </dd>
                       </div>
-                    </div>
-                    <div className="bg-primary-50 rounded-xl px-4 py-3 mb-5">
-                      <div className="flex items-center justify-between">
-                        <span className="text-primary-700 font-bold text-sm">Bundle Pricing</span>
-                        <span className="text-primary-700 font-semibold text-sm">On Request</span>
-                      </div>
-                      <p className="text-primary-500 text-xs mt-1">Contact us for a combined quote and bundle savings</p>
-                    </div>
-                    <ul className="space-y-2">
+                    </dl>
+                    <ul className="mt-5 space-y-2.5">
                       {b.highlights.map((h) => (
-                        <li key={h} className="flex items-start gap-2 text-sm text-gray-600">
-                          <span className="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+                        <li key={h} className="flex items-start gap-2.5 text-sm text-body">
+                          <IconCheck className="mt-0.5 h-4 w-4 flex-none text-brand" strokeWidth={2.2} />
                           {h}
                         </li>
                       ))}
                     </ul>
+                    <div className="mt-auto pt-6">
+                      <div className="rounded-xl bg-primary-50 px-4 py-3">
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="font-semibold text-primary-700">Bundle Pricing</span>
+                          <span className="font-semibold text-primary-700">On Request</span>
+                        </div>
+                        <p className="mt-1 text-xs text-primary-700/80">Contact us for a combined quote and bundle savings · individually {formatINR(separate)} + GST</p>
+                      </div>
+                      <div className="mt-4 grid gap-2">
+                        <AddBundleButton
+                          items={[
+                            { slug: b.vending.slug, name: vm?.fullName ?? b.vending.name, price: vm?.price ?? 0 },
+                            { slug: b.incinerator.slug, name: inc?.fullName ?? b.incinerator.name, price: inc?.price ?? 0 },
+                          ]}
+                        />
+                        <a href="tel:+918122378860" className="py-2 text-center text-sm font-semibold text-brand hover:underline">
+                          Get This Bundle → call for bundle price
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                  <div className="p-6 pt-0">
-                    <Link
-                      href="tel:+918122378860"
-                      className="w-full block text-center py-3 px-4 rounded-xl bg-gradient-to-r from-primary-600 to-blue-500 text-white font-semibold hover:shadow-lg transition-shadow"
-                    >
-                      Get This Bundle →
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
+                </article>
+              );
+            })}
           </div>
-        </section>
+        </Section>
 
-        {/* FAQ */}
-        <section className="py-14 sm:py-20 max-w-3xl mx-auto px-5 sm:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
-          <div className="space-y-6">
-            {faqSchema.mainEntity.map((q) => (
-              <div key={q.name} className="border-b border-gray-100 pb-6">
-                <p className="font-semibold text-gray-900 mb-2">{q.name}</p>
-                <p className="text-gray-600 text-sm leading-relaxed">{q.acceptedAnswer.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <Section kicker="FAQ" title="Frequently Asked Questions" narrow>
+          <FaqList items={faqSchema.mainEntity.map((q) => ({ q: q.name, a: q.acceptedAnswer.text }))} />
+        </Section>
 
-        {/* CTA */}
-        <section className="py-14 bg-gradient-to-r from-primary-600 to-blue-500">
-          <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
-            <h2 className="font-bold text-2xl sm:text-3xl text-white mb-4">Get your compliance combo today</h2>
-            <p className="text-white/80 mb-8">Bundle pricing available. Contact us with your institution type and quantity for a tailored quote.</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="tel:+918122378860" className="px-8 py-4 bg-white text-primary-700 font-bold rounded-full hover:bg-gray-100 transition-colors">
-                📞 +91-81223 78860
-              </Link>
-              <Link href="/#contact" className="px-8 py-4 bg-white/20 text-white font-semibold rounded-full border border-white/30 hover:bg-white/30 transition-colors">
-                Request Quote
-              </Link>
-            </div>
-          </div>
-        </section>
+        <CtaBand
+          title="Get your compliance combo today"
+          body="Bundle pricing available. Contact us with your institution type and quantity for a tailored quote."
+          primary={{ href: "/contact", label: "Request Quote" }}
+        />
       </main>
       <PageFooter />
     </>

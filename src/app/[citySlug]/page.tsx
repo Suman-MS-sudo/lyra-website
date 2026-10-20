@@ -3,9 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
-import Breadcrumb from "@/components/Breadcrumb";
-import AddToCartButton from "@/components/AddToCartButton";
-import TrackedLink from "@/components/TrackedLink";
+import PageHero from "@/components/page/PageHero";
+import Section from "@/components/page/Section";
+import FaqList from "@/components/page/FaqList";
+import ProductCard from "@/components/store/ProductCard";
+import { CtaBand, StatRow } from "@/components/page/Blocks";
+import { IconArrowRight } from "@/components/store/icons";
+import { toCatalogItem } from "@/lib/catalog";
 import GoogleReviews from "@/components/GoogleReviews";
 import { offerPolicies } from "@/lib/offer-schema";
 import {
@@ -13,7 +17,6 @@ import {
   incinerators,
   cities,
   SITE,
-  formatINR,
   type StateLocation,
 } from "@/lib/data";
 
@@ -224,6 +227,11 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
     })),
   };
 
+  const heroImages = ["solo-wifi-vending-machine", "lyra-mini-incinerator"]
+    .map((slug) => [...vendingMachines, ...incinerators].find((p) => p.slug === slug))
+    .filter(Boolean)
+    .map((p) => ({ src: p!.image, alt: p!.fullName }));
+
   const schemas = [breadcrumbSchema, localBusinessSchema, serviceSchema, productListSchema, faqSchema];
 
   return (
@@ -232,219 +240,175 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
       <PageNavbar />
-      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
-        {/* Hero */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-10">
-          <Breadcrumb crumbs={[{ label: "Home", href: "/" }, { label: "Service Areas", href: "/service-areas" }, { label: city.state }]} />
-          <h1 className="mt-8 font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-            Sanitary Napkin Vending Machines &amp; Incinerators in{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">{city.state}</span>
-          </h1>
-          <p className="mt-4 text-gray-600 text-lg max-w-3xl">{city.description}</p>
-
-          <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
-            <div className="rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-primary-500">Region</p>
-              <p className="text-sm font-semibold text-gray-900 mt-0.5">{city.region}</p>
-            </div>
-            <div className="rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-primary-500">{city.kind === "union territory" ? "HQ / Capital" : "Capital"}</p>
-              <p className="text-sm font-semibold text-gray-900 mt-0.5">{city.capital}</p>
-            </div>
-            <div className="rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-primary-500">Districts</p>
-              <p className="text-sm font-semibold text-gray-900 mt-0.5">≈ {city.districtsApprox}</p>
-            </div>
-            <div className="rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-primary-500">Dispatch</p>
-              <p className="text-sm font-semibold text-gray-900 mt-0.5">{city.dispatch}</p>
-            </div>
+      <main className="bg-canvas">
+        <PageHero
+          crumbs={[{ label: "Home", href: "/" }, { label: "Service Areas", href: "/service-areas" }, { label: city.state }]}
+          eyebrow={`${city.region} · Service area`}
+          title={
+            <>
+              Sanitary Napkin Vending Machines &amp; Incinerators in <span className="text-gradient">{city.state}</span>
+            </>
+          }
+          lead={<p>{city.description}</p>}
+          actions={
+            <>
+              <a href="#vending-machines" className="btn btn-primary h-12 px-6">Vending Machines ↓</a>
+              <a href="#incinerators" className="btn btn-secondary h-12 px-6">Incinerators ↓</a>
+              <a href="#faq" className="btn btn-ghost h-12 px-4">{city.state} FAQs ↓</a>
+            </>
+          }
+          images={heroImages}
+        >
+          <div className="mt-10 max-w-2xl">
+            <StatRow
+              items={[
+                { label: "Region", value: city.region },
+                { label: city.kind === "union territory" ? "HQ / Capital" : "Capital", value: city.capital },
+                { label: "Districts", value: <>≈ {city.districtsApprox}</> },
+                { label: "Dispatch", value: city.dispatch },
+              ]}
+            />
+            <ul className="mt-5 flex flex-wrap gap-2" aria-label={`Cities served in ${city.state}`}>
+              {city.cities.map((c) => (
+                <li key={c} className="rounded-full border border-line bg-surface px-3 py-1.5 text-[13px] font-medium text-ink">
+                  {c}
+                </li>
+              ))}
+            </ul>
           </div>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            {city.cities.map((c) => (
-              <span key={c} className="px-3 py-1.5 rounded-full bg-primary-100 text-primary-700 text-sm font-medium">
-                {c}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-6 flex flex-wrap gap-3 text-sm font-medium">
-            <a href="#vending-machines" className="px-4 py-2 rounded-full bg-primary-100 text-primary-700 hover:bg-primary-200 transition-colors">Vending Machines ↓</a>
-            <a href="#incinerators" className="px-4 py-2 rounded-full bg-primary-100 text-primary-700 hover:bg-primary-200 transition-colors">Incinerators ↓</a>
-            <a href="#faq" className="px-4 py-2 rounded-full bg-primary-100 text-primary-700 hover:bg-primary-200 transition-colors">{city.state} FAQs ↓</a>
-          </div>
-        </section>
+        </PageHero>
 
         {/* Local install / service note */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-14">
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-3">Serving {city.state} pan-India from our South and North India offices</h2>
-            <p className="text-gray-600 leading-relaxed">
-              Lyra Enterprises manufactures every sanitary napkin vending machine and incinerator in-house at our Chennai facility and dispatches to{" "}
-              {city.state} in a typical {city.dispatch} — covering {city.capital} and {city.kind === "union territory" ? "the whole territory" : `all ≈${city.districtsApprox} districts`}.
-              We supply {city.context}. With offices in South India (Chennai) and North India (West Bengal), our team handles installation guidance,
-              staff training and after-sales service for schools, colleges, hospitals, IT campuses and government offices across{" "}
-              {city.cities.slice(0, 4).join(", ")} and beyond. Every machine ships with a 1-year manufacturer
-              warranty and GST invoice, and complies with Solid Waste Management Rules 2016 and CPCB guidelines for menstrual waste disposal.
-            </p>
-            <p className="mt-4 text-sm text-gray-500">
-              Machine prices start at ₹12,000 (+18% GST); freight to {city.state} is quoted separately based on destination.{" "}
-              <Link href="/products/sanitary-napkin-vending-machines" className="font-semibold text-primary-600 hover:underline">See all models and prices →</Link>
-            </p>
-          </div>
-        </section>
-
-        {/* Vending Machines */}
-        <section id="vending-machines" className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <div className="flex items-center gap-4 mb-8">
-            <div>
-              <p className="text-xs font-bold text-primary-500 uppercase tracking-widest mb-1">Category</p>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Sanitary Napkin Vending Machines in {city.state}</h2>
-            </div>
-            <Link href="/products/sanitary-napkin-vending-machines" className="ml-auto text-sm text-primary-600 font-semibold hover:underline whitespace-nowrap">
-              View All<span className="sr-only"> vending machines</span> →
-            </Link>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {vendingMachines.map((p) => (
-              <div key={p.slug} className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-                <Link href={`/products/${p.slug}`} aria-label={p.fullName} className="absolute inset-0 z-0" />
-                <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
-                <div className="p-5">
-                  {p.popular && (
-                    <span className="inline-block mb-2 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-primary-100 text-primary-700 rounded-full">Most Popular</span>
-                  )}
-                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">{p.code}</p>
-                  <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
-                  <p className="text-sm text-gray-500 mt-1 mb-3 leading-snug">{p.tagline}</p>
-                  <p className="text-sm font-bold text-gray-900">{formatINR(p.price)} <span className="text-[11px] font-medium text-gray-500">+ 18% GST</span></p>
-                  <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details / Enquire →</span>
-                  <div className="relative z-10 mt-3">
-                    <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="block" />
-                  </div>
-                </div>
+        <section className="bg-canvas pt-14 sm:pt-20">
+          <div className="lyra-container">
+            <div className="grid gap-8 rounded-[24px] border border-line bg-surface p-7 sm:p-10 lg:grid-cols-[0.8fr_1.6fr]">
+              <h2 className="font-display text-2xl font-semibold leading-tight tracking-tight text-ink">Serving {city.state} pan-India from our South and North India offices</h2>
+              <div>
+                <p className="text-[15.5px] leading-relaxed text-body">
+                  Lyra Enterprises manufactures every sanitary napkin vending machine and incinerator in-house at our Chennai facility and dispatches to{" "}
+                  {city.state} in a typical {city.dispatch} — covering {city.capital} and {city.kind === "union territory" ? "the whole territory" : `all ≈${city.districtsApprox} districts`}.
+                  We supply {city.context}. With offices in South India (Chennai) and North India (West Bengal), our team handles installation guidance,
+                  staff training and after-sales service for schools, colleges, hospitals, IT campuses and government offices across{" "}
+                  {city.cities.slice(0, 4).join(", ")} and beyond. Every machine ships with a 1-year manufacturer
+                  warranty and GST invoice, and complies with Solid Waste Management Rules 2016 and CPCB guidelines for menstrual waste disposal.
+                </p>
+                <p className="mt-4 text-sm text-muted">
+                  Machine prices start at ₹12,000 (+18% GST); freight to {city.state} is quoted separately based on destination.{" "}
+                  <Link href="/products/sanitary-napkin-vending-machines" className="font-semibold text-brand hover:underline">See all models and prices →</Link>
+                </p>
               </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Incinerators */}
-        <section id="incinerators" className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <div className="flex items-center gap-4 mb-8">
-            <div>
-              <p className="text-xs font-bold text-primary-500 uppercase tracking-widest mb-1">Category</p>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Sanitary Napkin Incinerators in {city.state}</h2>
             </div>
-            <Link href="/products/sanitary-napkin-incinerators" className="ml-auto text-sm text-primary-600 font-semibold hover:underline whitespace-nowrap">
-              View All<span className="sr-only"> incinerators</span> →
-            </Link>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {incinerators.map((p) => (
-              <div key={p.slug} className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-                <Link href={`/products/${p.slug}`} aria-label={p.fullName} className="absolute inset-0 z-0" />
-                <div className={`h-2 bg-gradient-to-r ${p.accent}`} />
-                <div className="p-5">
-                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">{p.code}</p>
-                  <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
-                  <p className="text-sm text-gray-500 mt-1 mb-3 leading-snug">{p.tagline}</p>
-                  <p className="text-sm font-bold text-gray-900">{formatINR(p.price)} <span className="text-[11px] font-medium text-gray-500">+ 18% GST</span></p>
-                  <span className="mt-3 block text-xs font-semibold text-primary-600 group-hover:underline">View Details / Enquire →</span>
-                  <div className="relative z-10 mt-3">
-                    <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="block" />
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </section>
 
-        {/* Sectors served */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Who we supply in {city.state}</h2>
-          <p className="text-gray-500 mb-8 max-w-2xl">Menstrual-hygiene infrastructure for every kind of institution — with the right machine and disposal capacity for each.</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <Section
+          id="vending-machines"
+          kicker="Category"
+          title={<>Sanitary Napkin Vending Machines in {city.state}</>}
+          action={{ href: "/products/sanitary-napkin-vending-machines", label: "View all vending machines" }}
+        >
+          <ul className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+            {vendingMachines.map((p, k) => (
+              <li key={p.slug}>
+                <ProductCard product={toCatalogItem(p)} index={k} />
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        <Section
+          id="incinerators"
+          tone="subtle"
+          kicker="Category"
+          title={<>Sanitary Napkin Incinerators in {city.state}</>}
+          action={{ href: "/products/sanitary-napkin-incinerators", label: "View all incinerators" }}
+        >
+          <ul className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
+            {incinerators.map((p, k) => (
+              <li key={p.slug}>
+                <ProductCard product={toCatalogItem(p)} index={k} />
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        <Section
+          kicker="Sectors"
+          title={<>Who we supply in {city.state}</>}
+          lead="Menstrual-hygiene infrastructure for every kind of institution — with the right machine and disposal capacity for each."
+        >
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {sectors.map((s) => (
-              <Link key={s.title} href={s.href} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 p-5">
-                <h3 className="font-bold text-gray-900 group-hover:text-primary-600 transition-colors">{s.title}</h3>
-                <p className="mt-2 text-sm text-gray-500 leading-snug">{s.body}</p>
-                <span className="mt-3 inline-block text-xs font-semibold text-primary-600 group-hover:underline">Learn more →</span>
+              <Link
+                key={s.title}
+                href={s.href}
+                className="group flex flex-col rounded-[22px] border border-line bg-surface p-6 transition-[border-color,box-shadow] duration-300 hover:border-line-strong hover:shadow-lift"
+              >
+                <h3 className="font-display text-lg font-semibold text-ink">{s.title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-body">{s.body}</p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
+                  Learn more <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
               </Link>
             ))}
           </div>
-        </section>
 
-        {/* Compliance */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <div className="rounded-2xl bg-gradient-to-br from-primary-50 to-blue-50 border border-primary-100 p-6 sm:p-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-3">Menstrual waste compliance in {city.state}</h2>
-            <p className="text-gray-600 leading-relaxed">
-              Institutions in {city.state} are covered by India&apos;s <strong>Solid Waste Management Rules 2016</strong>, which require sanitary waste to be
-              handled separately and disposed of safely, and by CPCB guidance on menstrual-waste incineration. Pairing a Lyra vending machine with a
-              CPCB-compliant Lyra incinerator gives schools, colleges and hospitals in {city.capital} and across {city.state} an audit-ready closed loop —
-              from access to disposal — in a single procurement.
-            </p>
-            <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
-              <Link href="/blog/solid-waste-management-rules-2016-india-guide" className="text-primary-600 hover:underline">SWM Rules 2016 guide →</Link>
-              <Link href="/products/vending-incinerator-bundle" className="text-primary-600 hover:underline">Vending + incinerator bundle →</Link>
+          <div className="mt-10 grid gap-6 rounded-[24px] border border-primary-200 bg-primary-50 p-7 sm:p-9 lg:grid-cols-[1.6fr_1fr] lg:items-center">
+            <div>
+              <h2 className="font-display text-xl font-semibold text-ink sm:text-2xl">Menstrual waste compliance in {city.state}</h2>
+              <p className="mt-3 text-[15px] leading-relaxed text-body">
+                Institutions in {city.state} are covered by India&apos;s <strong className="text-ink">Solid Waste Management Rules 2016</strong>, which require sanitary waste to be
+                handled separately and disposed of safely, and by CPCB guidance on menstrual-waste incineration. Pairing a Lyra vending machine with a
+                CPCB-compliant Lyra incinerator gives schools, colleges and hospitals in {city.capital} and across {city.state} an audit-ready closed loop —
+                from access to disposal — in a single procurement.
+              </p>
+            </div>
+            <div className="grid gap-2 text-sm font-semibold">
+              <Link href="/blog/solid-waste-management-rules-2016-india-guide" className="flex items-center justify-between rounded-xl border border-primary-200 bg-surface px-4 py-3 text-ink hover:border-brand">
+                SWM Rules 2016 guide <IconArrowRight className="h-4 w-4" />
+              </Link>
+              <Link href="/products/vending-incinerator-bundle" className="flex items-center justify-between rounded-xl border border-primary-200 bg-surface px-4 py-3 text-ink hover:border-brand">
+                Vending + incinerator bundle <IconArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
-        </section>
+        </Section>
 
         <GoogleReviews limit={2} />
 
-        {/* FAQ */}
-        <section id="faq" className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Sanitary Napkin Vending Machines in {city.state} — FAQs</h2>
-          <div className="space-y-4 max-w-3xl">
-            {faqs.map((faq, i) => (
-              <details key={i} className="group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-                <summary className="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer font-semibold text-gray-900 text-sm list-none">
-                  {faq.q}
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-100 group-open:bg-primary-100 flex items-center justify-center text-gray-500 group-open:text-primary-600 transition-colors text-xs font-bold">+</span>
-                </summary>
-                <p className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{faq.a}</p>
-              </details>
-            ))}
+        <Section id="faq" tone="subtle" kicker="FAQ" title={<>Sanitary Napkin Vending Machines in {city.state} — FAQs</>}>
+          <div className="max-w-4xl">
+            <FaqList items={faqs} />
           </div>
-        </section>
+        </Section>
 
-        {/* Nearby states — internal linking */}
         {nearby.length > 0 && (
-          <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Also serving {city.region}</h2>
-            <div className="flex flex-wrap gap-2">
-              {nearby.map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/${c.slug}`}
-                  className="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-medium text-gray-700 hover:border-primary-300 hover:text-primary-700 transition-colors"
-                >
-                  {c.state}
+          <section className="bg-canvas pt-14 sm:pt-16">
+            <div className="lyra-container">
+              <h2 className="font-display text-xl font-semibold text-ink">Also serving {city.region}</h2>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {nearby.map((c) => (
+                  <Link
+                    key={c.slug}
+                    href={`/${c.slug}`}
+                    className="inline-flex h-10 items-center rounded-full border border-line bg-surface px-4 text-sm font-medium text-ink transition-colors hover:border-brand hover:text-brand"
+                  >
+                    {c.state}
+                  </Link>
+                ))}
+                <Link href="/service-areas" className="inline-flex h-10 items-center rounded-full bg-ink px-4 text-sm font-semibold text-canvas hover:bg-ink/85">
+                  All states &amp; UTs →
                 </Link>
-              ))}
-              <Link
-                href="/service-areas"
-                className="px-4 py-2 rounded-full bg-primary-600 text-white text-sm font-semibold hover:bg-primary-700 transition-colors"
-              >
-                All states &amp; UTs →
-              </Link>
+              </div>
             </div>
           </section>
         )}
 
-        {/* CTA */}
-        <section className="relative overflow-hidden bg-gradient-to-r from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6] py-14 text-white text-center px-5">
-          <div className="relative z-10">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-3">Need help choosing the right machine for {city.state}?</h2>
-            <p className="text-white/80 mb-6 max-w-xl mx-auto">Our team will recommend the perfect model for your facility and coordinate delivery to {city.capital} and beyond. Free consultation, no obligation.</p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <TrackedLink method="whatsapp" detail="state-page" href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#1d4ed8] font-bold rounded-full shadow hover:-translate-y-0.5 transition-all">WhatsApp Us</TrackedLink>
-              <TrackedLink method="call" detail="state-page" href={`tel:${SITE.phone}`} className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full hover:-translate-y-0.5 transition-all">Call {SITE.phoneDisplay}</TrackedLink>
-            </div>
-          </div>
-        </section>
+        <CtaBand
+          title={<>Need help choosing the right machine for {city.state}?</>}
+          body={<>Our team will recommend the perfect model for your facility and coordinate delivery to {city.capital} and beyond. Free consultation, no obligation.</>}
+          primary={{ href: SITE.whatsapp, label: "WhatsApp Us" }}
+        />
       </main>
       <PageFooter />
     </>

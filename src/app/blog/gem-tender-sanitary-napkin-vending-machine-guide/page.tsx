@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
+import ArticleAside from "@/components/page/ArticleAside";
 import Breadcrumb from "@/components/Breadcrumb";
 import TrackedLink from "@/components/TrackedLink";
 import { SITE } from "@/lib/data";
@@ -118,11 +119,12 @@ export default function GemGuidePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
-      <main className="pt-16 bg-white min-h-screen">
-        <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">
+      <main className="bg-canvas">
+        <div className="lyra-container grid gap-12 lg:grid-cols-[minmax(0,1fr)_300px] xl:gap-20">
+        <article className="lyra-article max-w-3xl">
           <Breadcrumb crumbs={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }, { label: "GeM & tender guide" }]} />
 
-          <div className="mt-6">
+          <div className="article-meta mt-8">
             <span className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-bold uppercase tracking-widest">Procurement Guide</span>
             <span className="ml-3 text-sm text-gray-500">25 September 2026 · 6 min read</span>
           </div>
@@ -133,6 +135,8 @@ export default function GemGuidePage() {
           <p className="mt-4 text-xl text-gray-600 leading-relaxed border-l-4 border-primary-300 pl-5">
             Government schools, colleges, hospitals and offices often must buy through GeM or a tender. Here is what to specify, what to ask suppliers for, and what to avoid.
           </p>
+
+          <div className="article-body">
 
           <div className="mt-10 space-y-6 text-gray-700 leading-relaxed">
             <h2 className="text-2xl font-bold text-gray-900">GeM or tender: which route?</h2>
@@ -217,7 +221,9 @@ export default function GemGuidePage() {
             </p>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-gray-100">
+          </div>
+
+          <div className="article-related mt-14">
             <p className="text-sm font-bold text-gray-900 mb-4">Related</p>
             <div className="space-y-3">
               <Link href="/solutions/womens-hostels-colleges" className="block text-sm text-primary-600 hover:underline">Solutions for women&apos;s hostels and colleges →</Link>
@@ -226,6 +232,8 @@ export default function GemGuidePage() {
             </div>
           </div>
         </article>
+        <ArticleAside />
+        </div>
       </main>
       <PageFooter />
     </>

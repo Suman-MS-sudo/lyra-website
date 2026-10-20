@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PageNavbar from "@/components/PageNavbar";
-import PageFooter from "@/components/PageFooter";
-import Breadcrumb from "@/components/Breadcrumb";
-import { SITE, getProductBySlug, formatINR } from "@/lib/data";
-import AddToCartButton from "@/components/AddToCartButton";
+import SolutionPage from "@/components/page/SolutionPage";
+import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: { absolute: "Napkin Vending Machines for Schools & Colleges | Lyra" },
@@ -156,146 +153,33 @@ export default function SchoolsSolutionPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <PageNavbar />
-      <main className="pt-16 bg-white min-h-screen">
-        {/* Hero */}
-        <section className="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-14 sm:py-20">
-          <div className="max-w-5xl mx-auto px-5 sm:px-8">
-            <Breadcrumb crumbs={[
-              { label: "Home", href: "/" },
-              { label: "Solutions", href: "/solutions" },
-              { label: "Schools & Colleges" },
-            ]} />
-            <div className="mt-6 flex flex-wrap gap-2 mb-5">
-              <span className="px-3 py-1 rounded-full bg-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest">Schools & Colleges</span>
-              <span className="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-bold uppercase tracking-widest">GeM Vendor</span>
-              <span className="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold uppercase tracking-widest">Swachh Bharat</span>
-            </div>
-            <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-              Sanitary Napkin Vending Machines{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">
-                for Schools &amp; Colleges
-              </span>
-            </h1>
-            <p className="mt-5 text-gray-600 text-lg max-w-3xl leading-relaxed">
-              36% of Indian girls miss school during menstruation. Lyra vending machines installed in school toilets give girls private, on-demand access to sanitary napkins — improving attendance, meeting Swachh Bharat compliance, and available on GeM for easy government procurement. Housing students? See our <Link href="/solutions/womens-hostels-colleges" className="text-primary-600 font-semibold hover:underline">women&apos;s hostel and college solutions</Link>.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="tel:+918122378860"
-                className="px-7 py-3.5 bg-gradient-to-r from-primary-600 to-blue-500 text-white font-semibold rounded-full shadow-lg hover:-translate-y-0.5 transition-all duration-200"
-              >
-                Call for School Quote
-              </Link>
-              <Link
-                href="/#contact"
-                className="px-7 py-3.5 border border-primary-200 text-primary-700 font-semibold rounded-full hover:bg-primary-50 transition-colors"
-              >
-                Get Free Quote
-              </Link>
-            </div>
-            {/* Trust strip */}
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-500">
-              {["GeM Registered Vendor", "CPCB Compliant", "SWM Rules 2016", "1-Year Warranty", "Pan-India Delivery"].map((t) => (
-                <span key={t} className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-400 flex-shrink-0" />
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Funding callout */}
-        <section className="max-w-6xl mx-auto px-5 sm:px-8 pt-10">
-          <div className="rounded-2xl border border-primary-200 bg-primary-50 p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
-            <div>
-              <h2 className="text-lg font-bold text-gray-900">Not sure how to fund it?</h2>
-              <p className="mt-1 text-sm text-gray-600 max-w-2xl">
-                Samagra Shiksha, Swachh Bharat SLWM funds, state schemes and CSR all cover
-                napkin vending machines and incinerators for government and aided schools.
-              </p>
-            </div>
-            <Link
-              href="/government-schemes-menstrual-hygiene"
-              className="mt-4 inline-block whitespace-nowrap rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-700 sm:mt-0"
-            >
-              See government schemes &amp; subsidies →
-            </Link>
-          </div>
-        </section>
-
-        {/* Features */}
-        <section className="py-14 sm:py-20 max-w-6xl mx-auto px-5 sm:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Why Lyra for Schools?</h2>
-          <p className="text-gray-500 mb-10 max-w-2xl">Built for Indian school environments — compliant, durable, and affordable.</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((f) => (
-              <div key={f.heading} className="p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-3xl mb-4">{f.icon}</div>
-                <h3 className="font-bold text-gray-900 text-base mb-2">{f.heading}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{f.body}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Recommended Products */}
-        <section className="py-14 sm:py-20 bg-gradient-to-b from-gray-50 to-white">
-          <div className="max-w-6xl mx-auto px-5 sm:px-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Recommended for Schools &amp; Colleges</h2>
-            <p className="text-gray-500 mb-10">Most popular choices for government schools, private schools, hostels and colleges.</p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {products.map((p) => (
-                <div key={p.slug} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col">
-                  <span className={`self-start px-3 py-1 rounded-full text-xs font-bold ${p.badge} mb-4`}>{p.tag}</span>
-                  <p className="font-bold text-gray-900 text-lg mb-1">{p.name}</p>
-                  <p className="text-gray-900 font-bold text-sm mb-3">
-                    {(() => { const dp = getProductBySlug(p.slug); return dp ? `${formatINR(dp.price)} + 18% GST` : "Contact for pricing"; })()}
-                  </p>
-                  <p className="text-gray-500 text-sm flex-1 mb-5">{p.desc}</p>
-                  <div className="mt-auto grid gap-2">
-                    <AddToCartButton slug={p.slug} name={p.name} price={getProductBySlug(p.slug)?.price} variant="block" />
-                    <Link href={`/products/${p.slug}#enquiry`} className="text-center py-2.5 px-4 rounded-xl bg-primary-50 text-primary-700 font-semibold text-sm hover:bg-primary-100 transition-colors">
-                      Enquire →
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="py-14 sm:py-20 max-w-3xl mx-auto px-5 sm:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
-          <div className="space-y-6">
-            {faqSchema.mainEntity.map((q) => (
-              <div key={q.name} className="border-b border-gray-100 pb-6">
-                <p className="font-semibold text-gray-900 mb-2">{q.name}</p>
-                <p className="text-gray-600 text-sm leading-relaxed">{q.acceptedAnswer.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-14 bg-gradient-to-r from-primary-600 to-blue-500">
-          <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
-            <h2 className="font-bold text-2xl sm:text-3xl text-white mb-4">Ready to install in your school?</h2>
-            <p className="text-white/80 mb-8">Get a tailored quote for your school — including GeM procurement details, SWM compliance plan, and installation support.</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="tel:+918122378860" className="px-8 py-4 bg-white text-primary-700 font-bold rounded-full hover:bg-gray-100 transition-colors">
-                📞 +91-81223 78860
-              </Link>
-              <Link href="/#contact" className="px-8 py-4 bg-white/20 text-white font-semibold rounded-full border border-white/30 hover:bg-white/30 transition-colors">
-                Get Free Quote
-              </Link>
-            </div>
-          </div>
-        </section>
-      </main>
-      <PageFooter />
+      <SolutionPage
+        crumb="Schools & Colleges"
+        tags={["Schools & Colleges", "GeM Vendor", "Swachh Bharat"]}
+        title={<>Sanitary Napkin Vending Machines <span className="text-gradient">for Schools &amp; Colleges</span></>}
+        lead={
+          <p>
+            36% of Indian girls miss school during menstruation. Lyra vending machines installed in school toilets give girls private, on-demand access to sanitary napkins — improving attendance, meeting Swachh Bharat compliance, and available on GeM for easy government procurement. Housing students? See our <Link href="/solutions/womens-hostels-colleges" className="font-semibold text-brand hover:underline">women&apos;s hostel and college solutions</Link>.
+          </p>
+        }
+        callLabel="Call for School Quote"
+        points={["GeM Registered Vendor", "CPCB Compliant", "SWM Rules 2016", "1-Year Warranty", "Pan-India Delivery"]}
+        callout={{
+          title: "Not sure how to fund it?",
+          body: "Samagra Shiksha, Swachh Bharat SLWM funds, state schemes and CSR all cover napkin vending machines and incinerators for government and aided schools.",
+          href: "/government-schemes-menstrual-hygiene",
+          label: "See government schemes & subsidies →",
+        }}
+        featuresTitle="Why Lyra for Schools?"
+        featuresLead="Built for Indian school environments — compliant, durable, and affordable."
+        features={features}
+        productsTitle={<>Recommended for Schools &amp; Colleges</>}
+        productsLead="Most popular choices for government schools, private schools, hostels and colleges."
+        products={products}
+        faqs={faqSchema.mainEntity}
+        ctaTitle="Ready to install in your school?"
+        ctaBody="Get a tailored quote for your school — including GeM procurement details, SWM compliance plan, and installation support."
+      />
     </>
   );
 }

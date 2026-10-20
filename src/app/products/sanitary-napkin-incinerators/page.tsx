@@ -1,11 +1,14 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
-import Breadcrumb from "@/components/Breadcrumb";
-import AddToCartButton from "@/components/AddToCartButton";
-import { incinerators, SITE, formatINR } from "@/lib/data";
+import PageHero from "@/components/page/PageHero";
+import Section from "@/components/page/Section";
+import FeatureGrid from "@/components/page/FeatureGrid";
+import CategoryProductCard from "@/components/page/CategoryProductCard";
+import { CtaBand } from "@/components/page/Blocks";
+import { IconArrowRight } from "@/components/store/icons";
+import { incinerators, SITE } from "@/lib/data";
 import { offerPolicies } from "@/lib/offer-schema";
 
 export const metadata: Metadata = {
@@ -90,114 +93,65 @@ export default function IncineratorsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
-      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-10">
-          <Breadcrumb crumbs={[
+      <main className="bg-canvas">
+        <PageHero
+          crumbs={[
             { label: "Home", href: "/" },
             { label: "Products", href: "/products" },
             { label: "Incinerators" },
-          ]} />
-          <h1 className="mt-6 font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-            Sanitary Napkin <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">Incinerators</span>
-          </h1>
-          <p className="mt-4 text-gray-600 text-lg max-w-2xl">
-            3 capacity models for every institution — from compact school units to hospital-grade high-capacity incinerators. Fully compliant with CPCB and Solid Waste Management Rules 2016.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-4 text-sm">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ CPCB Compliant</span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ SWM Rules 2016</span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Zero Manual Handling</span>
-          </div>
-        </section>
+          ]}
+          eyebrow="Category"
+          title={<>Sanitary Napkin <span className="text-gradient">Incinerators</span></>}
+          lead={
+            <p>
+              3 capacity models for every institution — from compact school units to hospital-grade high-capacity incinerators. Fully compliant with CPCB and Solid Waste Management Rules 2016.
+            </p>
+          }
+          points={["CPCB Compliant", "SWM Rules 2016", "Zero Manual Handling"]}
+          actions={
+            <>
+              <Link href="#models" className="btn btn-primary h-12 px-6">Browse 3 models</Link>
+              <Link href="/blog/napkin-incinerator-vs-sanitary-bin" className="btn btn-secondary h-12 px-6">Incinerator vs bio-bin</Link>
+            </>
+          }
+          images={incinerators.filter((p) => p.slug !== "lyra-micro-incinerator").map((p) => ({ src: p.image, alt: p.fullName }))}
+        />
 
-        {/* Why Incinerator */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-12">
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Why incinerators over bio-bins?</h2>
-            <div className="grid sm:grid-cols-3 gap-6 text-sm">
-              {[
-                { title: "Zero infection risk", desc: "High-temperature incineration kills all pathogens. Bio-bins accumulate bacteria and require manual handling." },
-                { title: "Odour-free", desc: "Complete combustion leaves only sterile ash. No odour, no leakage, no pest attraction." },
-                { title: "Legal compliance", desc: "SWM Rules 2016 and CPCB guidelines mandate proper menstrual waste disposal for institutions." },
-              ].map((item) => (
-                <div key={item.title}>
-                  <p className="font-semibold text-gray-900 mb-1">✓ {item.title}</p>
-                  <p className="text-gray-500 leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <Section kicker="Why incinerate" title="Why incinerators over bio-bins?">
+          <FeatureGrid
+            items={[
+              { icon: "🏥", title: "Zero infection risk", body: "High-temperature incineration kills all pathogens. Bio-bins accumulate bacteria and require manual handling." },
+              { icon: "🌿", title: "Odour-free", body: "Complete combustion leaves only sterile ash. No odour, no leakage, no pest attraction." },
+              { icon: "⚖️", title: "Legal compliance", body: "SWM Rules 2016 and CPCB guidelines mandate proper menstrual waste disposal for institutions." },
+            ]}
+          />
+        </Section>
 
-        {/* Product Cards */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {incinerators.map((p) => (
-              <div key={p.slug} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col">
-                <div className={`relative aspect-[4/3] bg-gradient-to-br ${p.accent} overflow-hidden`}>
-                  <Image
-                    src={p.image}
-                    alt={p.fullName}
-                    fill
-                    className="object-contain p-6 drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
-                  />
-                  <span className="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/90 text-emerald-700 text-[10px] font-bold uppercase tracking-wide">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> In Stock
-                  </span>
-                </div>
-                <div className="p-6 flex flex-col flex-1">
-                  <span className="inline-block mb-2 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-500 rounded-full w-fit">{p.badge}</span>
-                  <h2 className="font-bold text-gray-900 text-xl group-hover:text-primary-600 transition-colors">{p.name}</h2>
-                  <p className="text-xs text-gray-500 mt-0.5 mb-3">{p.code}</p>
-                  <p className="text-sm text-gray-600 leading-relaxed flex-1">{p.description}</p>
-                  <ul className="mt-4 space-y-1.5">
-                    {p.features.slice(0, 4).map((f) => (
-                      <li key={f} className="flex items-center gap-2 text-xs text-gray-600">
-                        <span className="w-4 h-4 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center text-[10px] font-bold flex-shrink-0">✓</span>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-5 pt-4 border-t border-gray-100 flex items-end justify-between">
-                    <div>
-                      <p className="text-lg font-bold text-gray-900">{formatINR(p.price)}</p>
-                      <p className="text-[11px] text-gray-500">+ 18% GST · freight extra</p>
-                    </div>
-                    <div className="flex flex-wrap gap-3 text-xs font-semibold">
-                      <Link href={`/products/${p.slug}`} className="text-primary-600 hover:underline">Details<span className="sr-only"> for {p.name}</span> →</Link>
-                      <Link href={`/products/${p.slug}#enquiry`} className="text-gray-900 hover:underline">Enquire →</Link>
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="block" />
-                  </div>
-                </div>
-              </div>
+        <section id="models" className="scroll-mt-36 border-y border-line bg-subtle py-14 sm:py-20">
+          <div className="lyra-container grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {incinerators.map((p, k) => (
+              <CategoryProductCard key={p.slug} p={p} priority={k < 3} />
             ))}
           </div>
         </section>
 
-        {/* Also see */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Also see: Vending Machines</h2>
-          <p className="text-gray-600 text-sm mb-4">Many institutions pair incinerators with vending machines for a complete menstrual hygiene solution — one machine dispenses, the other safely disposes.</p>
-          <Link href="/products/sanitary-napkin-vending-machines" className="inline-flex items-center gap-2 text-primary-600 font-semibold text-sm hover:underline">
-            Browse Vending Machines →
-          </Link>
-        </section>
-
-        {/* CTA */}
-        <section className="relative overflow-hidden bg-gradient-to-r from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6] py-14 text-white text-center px-5">
-          <div className="relative z-10">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-3">Get the right incinerator for your facility</h2>
-            <p className="text-white/80 mb-6 max-w-xl mx-auto">Tell us your daily user count — we&apos;ll recommend Micro, Mini or Maxi for your needs.</p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20a%20Lyra%20incinerator.%20Please%20share%20details." target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#1d4ed8] font-bold rounded-full">WhatsApp Us</Link>
-              <Link href="tel:+918122378860" className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full">Call +91-81223 78860</Link>
+        <Section>
+          <div className="flex flex-col gap-6 rounded-[24px] border border-line bg-surface p-7 sm:flex-row sm:items-center sm:justify-between sm:p-9">
+            <div className="max-w-2xl">
+              <h2 className="font-display text-2xl font-semibold text-ink">Also see: Vending Machines</h2>
+              <p className="mt-2 text-[15px] leading-relaxed text-body">Many institutions pair incinerators with vending machines for a complete menstrual hygiene solution — one machine dispenses, the other safely disposes.</p>
             </div>
+            <Link href="/products/sanitary-napkin-vending-machines" className="btn btn-ink h-12 flex-none px-6">
+              Browse Vending Machines <IconArrowRight className="h-4 w-4" />
+            </Link>
           </div>
-        </section>
+        </Section>
+
+        <CtaBand
+          title="Get the right incinerator for your facility"
+          body="Tell us your daily user count — we'll recommend Micro, Mini or Maxi for your needs."
+          primary={{ href: "https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20a%20Lyra%20incinerator.%20Please%20share%20details.", label: "WhatsApp Us" }}
+        />
       </main>
       <PageFooter />
     </>

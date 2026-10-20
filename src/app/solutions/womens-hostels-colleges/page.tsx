@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
-import Breadcrumb from "@/components/Breadcrumb";
+import PageHero from "@/components/page/PageHero";
+import Section from "@/components/page/Section";
+import ProductPicks from "@/components/page/ProductPicks";
+import FaqList from "@/components/page/FaqList";
+import { CtaBand } from "@/components/page/Blocks";
 import TrackedLink from "@/components/TrackedLink";
 import GoogleReviews from "@/components/GoogleReviews";
-import { SITE, getProductBySlug, formatINR } from "@/lib/data";
-import AddToCartButton from "@/components/AddToCartButton";
+import { SITE, getProductBySlug } from "@/lib/data";
 
 const URL = `${SITE.url}/solutions/womens-hostels-colleges`;
 const TITLE = "Napkin Vending Machine & Incinerator for Women's Hostels";
@@ -123,102 +126,81 @@ const recommended = [
 ];
 
 export default function WomensHostelsPage() {
+  const heroImages = recommended
+    .slice(0, 2)
+    .map((r) => getProductBySlug(r.slug))
+    .filter(Boolean)
+    .map((p) => ({ src: p!.image, alt: p!.fullName }));
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <PageNavbar />
-      <main className="pt-16 bg-white min-h-screen">
-        <section className="bg-gradient-to-br from-blue-50 via-white to-teal-50 py-14 sm:py-20">
-          <div className="max-w-5xl mx-auto px-5 sm:px-8">
-            <Breadcrumb crumbs={[
-              { label: "Home", href: "/" },
-              { label: "Solutions", href: "/solutions/schools-colleges" },
-              { label: "Women's Hostels & Colleges" },
-            ]} />
-            <h1 className="mt-6 font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-              Sanitary Napkin Vending Machines &amp; Incinerators for Women&apos;s Hostels and Colleges
-            </h1>
-            <p className="mt-5 text-gray-600 text-lg max-w-3xl leading-relaxed">
+      <main className="bg-canvas">
+        <PageHero
+          crumbs={[
+            { label: "Home", href: "/" },
+            { label: "Solutions", href: "/solutions/schools-colleges" },
+            { label: "Women's Hostels & Colleges" },
+          ]}
+          eyebrow="Solutions"
+          tags={["Hostels", "Colleges", "Universities"]}
+          title={<>Sanitary Napkin Vending Machines &amp; Incinerators <span className="text-gradient">for Women&apos;s Hostels and Colleges</span></>}
+          lead={
+            <p>
               Hostel residents need napkins at any hour and a safe way to dispose of them. Lyra Enterprises supplies
               vending machines with RFID, touch-free and coin options, plus on-site incinerators, for women&apos;s hostels,
               colleges and universities across India.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <TrackedLink method="call" detail="hostels-page" href="tel:+918122378860" className="px-7 py-3.5 bg-gradient-to-r from-blue-600 to-teal-500 text-white font-semibold rounded-full shadow-lg">
+          }
+          actions={
+            <>
+              <TrackedLink method="call" detail="hostels-page" href="tel:+918122378860" className="btn btn-primary h-12 px-6">
                 Call for a quote
               </TrackedLink>
-              <Link href="/sanitary-napkin-vending-machine-price-india" className="px-7 py-3.5 border border-blue-200 text-blue-700 font-semibold rounded-full hover:bg-blue-50 transition-colors">
+              <Link href="/sanitary-napkin-vending-machine-price-india" className="btn btn-secondary h-12 px-6">
                 See prices
               </Link>
-            </div>
-          </div>
-        </section>
+            </>
+          }
+          images={heroImages}
+        />
 
-        <section className="py-14 max-w-6xl mx-auto px-5 sm:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Recommended for hostels and colleges</h2>
-          <p className="text-gray-500 mb-10 max-w-2xl">Pick by how you want to manage access, then add an incinerator for disposal.</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {recommended.map((p) => {
-              const dp = getProductBySlug(p.slug);
-              return (
-                <div key={p.slug} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col">
-                  <span className="self-start px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-700 mb-4">{p.tag}</span>
-                  <p className="font-bold text-gray-900 text-lg mb-1">{p.name}</p>
-                  <p className="text-gray-900 font-bold text-sm mb-3">{dp ? `${formatINR(dp.price)} + 18% GST` : "Contact for pricing"}</p>
-                  <p className="text-gray-500 text-sm flex-1 mb-5">{p.desc}</p>
-                  <div className="mt-auto grid gap-2">
-                    <AddToCartButton slug={p.slug} name={p.name} price={dp?.price} variant="block" />
-                    <Link href={`/products/${p.slug}`} className="text-center py-2.5 px-4 rounded-xl bg-teal-50 text-teal-700 font-semibold text-sm hover:bg-teal-100 transition-colors">
-                      View details →
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
+        <Section kicker="Recommended" title="Recommended for hostels and colleges" lead="Pick by how you want to manage access, then add an incinerator for disposal." action={{ href: "/products", label: "All products" }}>
+          <ProductPicks items={recommended.map((r) => ({ slug: r.slug, tag: r.tag, desc: r.desc }))} />
+        </Section>
 
         <GoogleReviews limit={2} />
 
-        <section className="py-14 max-w-3xl mx-auto px-5 sm:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">How to plan a hostel or campus installation</h2>
-          <ol className="list-decimal pl-6 space-y-3 text-gray-700 leading-relaxed">
-            <li>Count washroom blocks and floors. Place one machine per block so residents never walk far.</li>
-            <li>Decide the access model: RFID cards, free issue under a scheme, or coin.</li>
-            <li>Match incinerator size to daily volume, and plan a power point for it near the washroom.</li>
-            <li>Choose funding: institutional budget, CSR, or a government scheme. See <Link href="/government-schemes-menstrual-hygiene" className="text-primary-600 hover:underline">funding options</Link>.</li>
-            <li>For government institutions, buy through GeM. See our <Link href="/blog/gem-tender-sanitary-napkin-vending-machine-guide" className="text-primary-600 hover:underline">GeM and tender guide</Link>.</li>
+        <Section tone="subtle" kicker="Planning" title="How to plan a hostel or campus installation">
+          <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            {[
+              <>Count washroom blocks and floors. Place one machine per block so residents never walk far.</>,
+              <>Decide the access model: RFID cards, free issue under a scheme, or coin.</>,
+              <>Match incinerator size to daily volume, and plan a power point for it near the washroom.</>,
+              <>Choose funding: institutional budget, CSR, or a government scheme. See <Link href="/government-schemes-menstrual-hygiene" className="font-medium text-brand hover:underline">funding options</Link>.</>,
+              <>For government institutions, buy through GeM. See our <Link href="/blog/gem-tender-sanitary-napkin-vending-machine-guide" className="font-medium text-brand hover:underline">GeM and tender guide</Link>.</>,
+            ].map((step, k) => (
+              <li key={k} className="rounded-[20px] border border-line bg-surface p-6">
+                <span className="font-display text-sm font-semibold text-brand">{String(k + 1).padStart(2, "0")}</span>
+                <p className="mt-3 text-[14.5px] leading-relaxed text-body">{step}</p>
+              </li>
+            ))}
           </ol>
-          <p className="mt-6 text-sm text-gray-500">
-            Also see <Link href="/solutions/schools-colleges" className="text-primary-600 hover:underline">solutions for schools and colleges</Link> and the{" "}
-            <Link href="/blog/solid-waste-management-rules-2016-india-guide" className="text-primary-600 hover:underline">SWM Rules 2016 guide</Link>.
+          <p className="mt-8 text-sm text-muted">
+            Also see <Link href="/solutions/schools-colleges" className="font-medium text-brand hover:underline">solutions for schools and colleges</Link> and the{" "}
+            <Link href="/blog/solid-waste-management-rules-2016-india-guide" className="font-medium text-brand hover:underline">SWM Rules 2016 guide</Link>.
           </p>
-        </section>
+        </Section>
 
-        <section className="py-12 bg-gray-50">
-          <div className="max-w-3xl mx-auto px-5 sm:px-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">Frequently asked questions</h2>
-            <div className="space-y-6">
-              {faqs.map((f) => (
-                <div key={f.q} className="border-b border-gray-200 pb-6">
-                  <h3 className="font-semibold text-gray-900 mb-2">{f.q}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{f.a}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <Section kicker="FAQ" title="Frequently asked questions" narrow>
+          <FaqList items={faqs} />
+        </Section>
 
-        <section className="py-14 bg-gradient-to-r from-blue-600 to-teal-500">
-          <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
-            <h2 className="font-bold text-2xl sm:text-3xl text-white mb-4">Equip your hostel or campus</h2>
-            <p className="text-white/80 mb-8">Share your headcount and location. We recommend models, quantity and freight.</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <TrackedLink method="call" detail="hostels-page" href="tel:+918122378860" className="px-8 py-4 bg-white text-blue-700 font-bold rounded-full hover:bg-gray-100 transition-colors">{SITE.phoneDisplay}</TrackedLink>
-              <Link href="/contact" className="px-8 py-4 bg-white/20 text-white font-semibold rounded-full border border-white/30 hover:bg-white/30 transition-colors">Request a quote</Link>
-            </div>
-          </div>
-        </section>
+        <CtaBand
+          title="Equip your hostel or campus"
+          body="Share your headcount and location. We recommend models, quantity and freight."
+          primary={{ href: "/contact", label: "Request a quote" }}
+        />
       </main>
       <PageFooter />
     </>

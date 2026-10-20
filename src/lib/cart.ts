@@ -64,6 +64,14 @@ export function addToCart(slug: string, qty = 1) {
   write(items);
 }
 
+/** Adds the product only if it is not already in the cart (safe to call more than once). */
+export function ensureInCart(slug: string, qty = 1) {
+  const items = parse(readRaw());
+  if (items[slug] > 0) return;
+  items[slug] = qty;
+  write(items);
+}
+
 export function setCartQty(slug: string, qty: number) {
   const items = parse(readRaw());
   if (qty <= 0) delete items[slug];
@@ -73,6 +81,27 @@ export function setCartQty(slug: string, qty: number) {
 
 export function clearCart() {
   write({});
+}
+
+/* ── slide-out cart drawer: open/closed state shared by the header, buttons and drawer ── */
+
+let drawerOpen = false;
+const drawerListeners = new Set<() => void>();
+function setDrawer(open: boolean) {
+  drawerOpen = open;
+  drawerListeners.forEach((l) => l());
+}
+export const openCart = () => setDrawer(true);
+export const closeCart = () => setDrawer(false);
+export function useCartOpen(): boolean {
+  return useSyncExternalStore(
+    (cb) => {
+      drawerListeners.add(cb);
+      return () => drawerListeners.delete(cb);
+    },
+    () => drawerOpen,
+    () => false,
+  );
 }
 
 /** Live cart contents. Renders an empty cart on the server and first paint (no hydration mismatch). */

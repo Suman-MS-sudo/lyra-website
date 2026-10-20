@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import StaticInfoPage from "@/components/StaticInfoPage";
+import Contact from "@/components/Contact";
 import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 import OurLocations from "@/components/OurLocations";
 import { SITE } from "@/lib/data";
@@ -85,6 +86,7 @@ export default function ContactPage() {
       title="Contact Us"
       description="Use this page for product enquiries, quote requests, shipping updates, invoice requests, cancellation requests and general assistance."
       crumbs={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
+      before={<Contact />}
     >
       <h2>Business Details</h2>
       <ul>
@@ -96,7 +98,7 @@ export default function ContactPage() {
       </ul>
 
       <h2>Our Locations</h2>
-      <OurLocations />
+      <div className="not-prose"><OurLocations /></div>
       <p className="text-sm text-gray-500 mt-4">
         South India office serves Tamil Nadu, Kerala, Karnataka, Andhra Pradesh, Telangana and surrounding regions.
         North India office handles North India operations and enquiries. The Somangalam facility is our production

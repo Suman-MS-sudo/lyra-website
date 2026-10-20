@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
+import ArticleAside from "@/components/page/ArticleAside";
 import Breadcrumb from "@/components/Breadcrumb";
 import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
@@ -86,15 +87,16 @@ export default function LnTCaseStudy() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
-      <main className="pt-16 bg-white min-h-screen">
-        <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">
+      <main className="bg-canvas">
+        <div className="lyra-container grid gap-12 lg:grid-cols-[minmax(0,1fr)_300px] xl:gap-20">
+        <article className="lyra-article max-w-3xl">
           <Breadcrumb crumbs={[
             { label: "Home", href: "/" },
             { label: "Blog", href: "/blog" },
             { label: "L&T Manapakkam Case Study" },
           ]} />
 
-          <div className="mt-6">
+          <div className="article-meta mt-8">
             <span className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-bold uppercase tracking-widest">Case Study</span>
             <span className="ml-3 text-sm text-gray-500">15 September 2026 · 3 min read</span>
           </div>
@@ -106,6 +108,8 @@ export default function LnTCaseStudy() {
           <p className="mt-4 text-xl text-gray-600 leading-relaxed border-l-4 border-primary-300 pl-5">
             Lyra Enterprises equipped Larsen &amp; Toubro&apos;s Manapakkam campus in Chennai with 25 IoT-enabled sanitary napkin vending machines — not a one-off installation, but an ongoing, supported deployment.
           </p>
+
+          <div className="article-body">
 
           <div className="mt-8 rounded-2xl bg-gradient-to-br from-blue-500 to-primary-600 p-8 flex items-center justify-center">
             <div className="relative w-40 h-40">
@@ -151,9 +155,11 @@ export default function LnTCaseStudy() {
           </div>
 
           {/* Related links */}
+          </div>
+
           <BlogFaq faqs={faqs} />
 
-          <div className="mt-12 pt-8 border-t border-gray-100">
+          <div className="article-related mt-14">
             <p className="text-sm font-bold text-gray-900 mb-4">Related</p>
             <div className="space-y-3">
               <Link href="/products/solo-wifi-vending-machine" className="block text-sm text-primary-600 hover:underline">Solo WiFi — IoT Vending Machine with Cloud Reports →</Link>
@@ -162,7 +168,7 @@ export default function LnTCaseStudy() {
           </div>
 
           {/* CTA */}
-          <div className="mt-10 bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl border border-primary-100 p-6 text-center">
+          <div className="article-cta mt-10">
             <h3 className="font-bold text-gray-900 mb-2">Deploying across a corporate campus?</h3>
             <p className="text-sm text-gray-600 mb-4">IoT vending, remote monitoring, ongoing on-site support.</p>
             <div className="flex flex-wrap gap-3 justify-center">
@@ -171,6 +177,8 @@ export default function LnTCaseStudy() {
             </div>
           </div>
         </article>
+        <ArticleAside />
+        </div>
       </main>
       <PageFooter />
     </>

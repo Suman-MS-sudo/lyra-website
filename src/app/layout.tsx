@@ -7,6 +7,10 @@ import "./globals.css";
 import FloatingActionButtons from "@/components/FloatingActionButtons";
 import LeadClickTracker from "@/components/LeadClickTracker";
 import ClarityInit from "@/components/ClarityInit";
+import StoreProvider from "@/components/store/StoreProvider";
+import CartDrawer from "@/components/store/CartDrawer";
+import { themeInitScript } from "@/lib/theme";
+import { getCatalog } from "@/lib/catalog";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -172,8 +176,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2563eb",
-  colorScheme: "light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#080b11" },
+  ],
+  colorScheme: "light dark",
   width: "device-width",
   initialScale: 1,
 };
@@ -184,8 +191,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        {/* Applies the saved / system colour theme before first paint (no flash) */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {/* Google Analytics — deferred to idle time so it doesn't compete with LCP/TBT */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ZCS9ZJ3TXC"
@@ -199,9 +208,12 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${sora.variable} font-sans antialiased bg-white text-gray-900 overflow-x-hidden`}
+        className={`${inter.variable} ${sora.variable} font-sans antialiased bg-canvas text-body overflow-x-hidden`}
       >
-        {children}
+        <StoreProvider catalog={getCatalog()}>
+          {children}
+          <CartDrawer />
+        </StoreProvider>
         <FloatingActionButtons />
         <LeadClickTracker />
         <ClarityInit projectId={process.env.CLARITY_PROJECT_ID} />

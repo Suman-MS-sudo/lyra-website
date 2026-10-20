@@ -388,7 +388,7 @@ export default function GovernmentSchemesPage() {
         </section>
 
         {/* How Lyra helps */}
-        <section className="section-padding bg-slate-900 text-white">
+        <section className="theme-light section-padding bg-slate-900 text-white">
           <div className="lyra-container max-w-5xl">
             <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
               How Lyra supports your procurement

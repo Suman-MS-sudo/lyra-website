@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
+import ArticleAside from "@/components/page/ArticleAside";
 import Breadcrumb from "@/components/Breadcrumb";
 import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
@@ -110,15 +111,16 @@ export default function ManualVsAutomaticBlog() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
-      <main className="pt-16 bg-white min-h-screen">
-        <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">
+      <main className="bg-canvas">
+        <div className="lyra-container grid gap-12 lg:grid-cols-[minmax(0,1fr)_300px] xl:gap-20">
+        <article className="lyra-article max-w-3xl">
           <Breadcrumb crumbs={[
             { label: "Home", href: "/" },
             { label: "Blog", href: "/blog" },
             { label: "Manual vs Automatic" },
           ]} />
 
-          <div className="mt-6">
+          <div className="article-meta mt-8">
             <span className="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-bold uppercase tracking-widest">Buying Guide</span>
             <span className="ml-3 text-sm text-gray-500">20 February 2026 · 6 min read</span>
           </div>
@@ -130,6 +132,8 @@ export default function ManualVsAutomaticBlog() {
           <p className="mt-4 text-xl text-gray-600 leading-relaxed border-l-4 border-amber-300 pl-5">
             Push Button machines cost less upfront. Coin &amp; UPI automatics cost more but add payment automation. Here&apos;s exactly when to choose each — and how to avoid the wrong pick.
           </p>
+
+          <div className="article-body">
 
           <div className="mt-10 prose prose-gray max-w-none space-y-6 text-gray-700 leading-relaxed">
             <h2 className="text-2xl font-bold text-gray-900">What is a free-vend (Push Button) sanitary napkin vending machine?</h2>
@@ -239,6 +243,8 @@ export default function ManualVsAutomaticBlog() {
             </p>
           </div>
 
+          </div>
+
           <BlogFaq faqs={faqs} />
 
           <div className="mt-12 p-6 rounded-2xl bg-gradient-to-br from-primary-50 to-blue-50 border border-primary-100">
@@ -254,6 +260,8 @@ export default function ManualVsAutomaticBlog() {
             </div>
           </div>
         </article>
+        <ArticleAside />
+        </div>
       </main>
       <PageFooter />
     </>

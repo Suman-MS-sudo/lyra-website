@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { addToCart, setCartQty, useCart } from "@/lib/cart";
+import { addToCart, openCart, setCartQty, useCart } from "@/lib/cart";
 import { sendEvent } from "@/lib/analytics";
+import { IconBag, IconMinus, IconPlus } from "@/components/store/icons";
 
 type Props = {
   slug: string;
@@ -10,7 +10,7 @@ type Props = {
   /** Unit price (ex-GST), sent to GA4 with the cart events. */
   price?: number;
   /**
-   * primary: big pill for the product page buy box
+   * primary: large button for the product page buy box
    * block:   full-width button for product cards
    * compact: small inline control for table rows and the sticky mobile bar
    */
@@ -20,36 +20,24 @@ type Props = {
   className?: string;
 };
 
-const shell = {
-  primary: "rounded-full px-2 py-1.5 text-sm",
-  block: "rounded-xl px-2 py-1.5 text-sm",
-  compact: "rounded-lg px-1 py-0.5 text-xs",
-} as const;
-
 const addBtn = {
   primary:
-    "flex w-full items-center justify-center gap-2 rounded-full bg-amber-400 px-6 py-3.5 text-sm font-bold text-gray-900 shadow transition hover:bg-amber-500",
+    "flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary-600 px-6 text-[15px] font-semibold text-white shadow-[0_10px_24px_-10px_rgba(37,99,235,0.7)] transition hover:bg-primary-700 active:scale-[0.985]",
   block:
-    "flex w-full items-center justify-center gap-2 rounded-xl bg-amber-400 px-4 py-2.5 text-sm font-bold text-gray-900 transition hover:bg-amber-500",
+    "flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-ink px-4 text-sm font-semibold text-canvas transition hover:bg-primary-600 hover:text-white active:scale-[0.985]",
   compact:
-    "inline-flex items-center justify-center gap-1.5 rounded-lg bg-amber-400 px-3 py-1.5 text-xs font-bold text-gray-900 transition hover:bg-amber-500",
+    "inline-flex h-9 items-center justify-center gap-1.5 rounded-lg bg-primary-600 px-3 text-xs font-semibold text-white transition hover:bg-primary-700",
 } as const;
 
-const stepBtn = {
-  primary: "h-9 w-9 text-xl",
-  block: "h-8 w-8 text-lg",
-  compact: "h-6 w-6 text-base",
+const shell = {
+  primary: "h-12 rounded-xl",
+  block: "h-11 rounded-xl",
+  compact: "h-9 rounded-lg",
 } as const;
-
-const CartIcon = ({ className = "h-4 w-4" }: { className?: string }) => (
-  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l3-8H5.4M7 13L5.4 5M7 13l-1.3 2.6A1 1 0 006.6 17H19M9 20a1 1 0 100 2 1 1 0 000-2zm8 0a1 1 0 100 2 1 1 0 000-2z" />
-  </svg>
-);
 
 /**
- * Add to Cart that turns into a  −  count  +  stepper once the product is in the cart,
- * like a typical e-commerce site. Stepping down to 0 removes it and the button comes back.
+ * Add to Cart that turns into a  −  count  +  stepper once the product is in the cart.
+ * The first add opens the cart drawer so the buyer sees what happened.
  */
 export default function AddToCartButton({ slug, name, price, variant = "block", qty = 1, className = "" }: Props) {
   const { items } = useCart();
@@ -63,9 +51,10 @@ export default function AddToCartButton({ slug, name, price, variant = "block", 
       items: [{ item_id: slug, item_name: name, price, quantity: n }],
     });
 
-  const inc = () => {
+  const inc = (first = false) => {
     addToCart(slug, qty);
     event("add_to_cart", qty);
+    if (first) openCart();
   };
   const dec = () => {
     const removed = Math.min(qty, count);
@@ -73,14 +62,14 @@ export default function AddToCartButton({ slug, name, price, variant = "block", 
     event("remove_from_cart", removed);
   };
 
-  const wrap = variant === "compact" ? `inline-flex flex-col items-start ${className}` : `w-full ${className}`;
+  const wrap = variant === "compact" ? `inline-flex ${className}` : `w-full ${className}`;
 
   if (count === 0) {
     return (
       <div className={wrap}>
-        <button type="button" onClick={inc} className={addBtn[variant]} aria-label={`Add ${name} to cart`}>
-          <CartIcon className={variant === "compact" ? "h-3.5 w-3.5" : "h-4 w-4"} />
-          {qty > 1 ? (variant === "compact" ? `Add ${fmt(qty)}` : `Add ${fmt(qty)} to Cart`) : "Add to Cart"}
+        <button type="button" onClick={() => inc(true)} className={addBtn[variant]} aria-label={`Add ${name} to cart`}>
+          <IconBag className={variant === "compact" ? "h-3.5 w-3.5" : "h-[18px] w-[18px]"} />
+          {qty > 1 ? (variant === "compact" ? `Add ${fmt(qty)}` : `Add ${fmt(qty)} to cart`) : "Add to cart"}
         </button>
       </div>
     );
@@ -91,35 +80,34 @@ export default function AddToCartButton({ slug, name, price, variant = "block", 
       <div
         role="group"
         aria-label={`${name} quantity in cart`}
-        className={`flex items-center justify-between bg-amber-400 font-bold text-gray-900 ${shell[variant]} ${variant === "compact" ? "gap-1" : "w-full shadow"}`}
+        className={`flex items-center justify-between border border-primary-600 bg-primary-50 font-semibold text-primary-700 ${shell[variant]} ${variant === "compact" ? "gap-1 px-0.5" : "w-full px-1"}`}
       >
         <button
           type="button"
           onClick={dec}
           aria-label={`Remove ${fmt(qty)} ${name} from cart`}
-          className={`flex flex-none items-center justify-center rounded-full leading-none hover:bg-amber-500 ${stepBtn[variant]}`}
+          className={`flex flex-none items-center justify-center rounded-lg transition hover:bg-primary-100 ${variant === "compact" ? "h-7 w-7" : "h-9 w-9"}`}
         >
-          −
+          <IconMinus className="h-4 w-4" />
         </button>
-        <span className="min-w-[2ch] px-2 text-center tabular-nums" aria-live="polite">
-          {fmt(count)}
-        </span>
         <button
           type="button"
-          onClick={inc}
-          aria-label={`Add ${fmt(qty)} more ${name} to cart`}
-          className={`flex flex-none items-center justify-center rounded-full leading-none hover:bg-amber-500 ${stepBtn[variant]}`}
+          onClick={openCart}
+          className={`tabular ${variant === "compact" ? "px-1 text-xs" : "text-sm"}`}
+          aria-live="polite"
         >
-          +
+          {fmt(count)}
+          {variant !== "compact" && <span className="font-normal text-primary-700/80"> in cart · view</span>}
+        </button>
+        <button
+          type="button"
+          onClick={() => inc()}
+          aria-label={`Add ${fmt(qty)} more ${name} to cart`}
+          className={`flex flex-none items-center justify-center rounded-lg transition hover:bg-primary-100 ${variant === "compact" ? "h-7 w-7" : "h-9 w-9"}`}
+        >
+          <IconPlus className="h-4 w-4" />
         </button>
       </div>
-      {variant !== "compact" && (
-        <p className="mt-1.5 text-center text-xs text-gray-600">
-          <Link href="/order" className="font-semibold text-primary-700 hover:underline">
-            View cart →
-          </Link>
-        </p>
-      )}
     </div>
   );
 }

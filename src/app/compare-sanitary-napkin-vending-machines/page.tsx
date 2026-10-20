@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
-import Breadcrumb from "@/components/Breadcrumb";
+import Image from "next/image";
+import PageHero from "@/components/page/PageHero";
+import Section from "@/components/page/Section";
+import { CtaBand } from "@/components/page/Blocks";
+import { IconCheck } from "@/components/store/icons";
 import { SITE, vendingMachines, formatINR, priceInclGst } from "@/lib/data";
 import AddToCartButton from "@/components/AddToCartButton";
 
@@ -74,89 +78,116 @@ const schema = {
   ],
 };
 
+const YesNo = ({ v }: { v?: string }) =>
+  v === "Yes" ? (
+    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-50 text-emerald-700" aria-label="Yes">
+      <IconCheck className="h-3.5 w-3.5" strokeWidth={2.4} />
+    </span>
+  ) : v === "No" ? (
+    <span className="text-muted" aria-label="No">—</span>
+  ) : (
+    <>{v ?? "—"}</>
+  );
+
 export default function ComparePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <PageNavbar />
-      <main className="pt-16 bg-white min-h-screen">
-        <section className="bg-gradient-to-br from-blue-50 via-white to-teal-50 py-14 sm:py-20">
-          <div className="max-w-6xl mx-auto px-5 sm:px-8">
-            <Breadcrumb crumbs={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Compare models" }]} />
-            <h1 className="mt-6 font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-              Compare Sanitary Napkin Vending Machines
-            </h1>
-            <p className="mt-5 text-gray-600 text-lg max-w-3xl leading-relaxed">
+      <main className="bg-canvas">
+        <PageHero
+          crumbs={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Compare models" }]}
+          eyebrow="Compare"
+          title={<>Compare Sanitary Napkin <span className="text-gradient">Vending Machines</span></>}
+          lead={
+            <p>
               All 8 Lyra models side by side. Choose by how users pay, how the machine connects, and whether you need
               usage reporting. Prices are ex-GST; see the{" "}
-              <Link href="/sanitary-napkin-vending-machine-price-india" className="text-primary-600 hover:underline">full price list</Link>.
+              <Link href="/sanitary-napkin-vending-machine-price-india" className="font-semibold text-brand hover:underline">full price list</Link>.
             </p>
-          </div>
-        </section>
+          }
+        />
 
-        <section className="py-12 max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="overflow-x-auto rounded-xl border border-gray-200">
-            <table className="w-full text-sm min-w-[820px]">
-              <thead>
-                <tr className="bg-gray-50 text-left text-gray-700">
-                  <th className="px-4 py-3 font-semibold">Model</th>
-                  <th className="px-4 py-3 font-semibold">Payment</th>
-                  <th className="px-4 py-3 font-semibold">Connectivity</th>
-                  <th className="px-4 py-3 font-semibold text-center">Cloud reports</th>
-                  <th className="px-4 py-3 font-semibold text-center">Touch display</th>
-                  <th className="px-4 py-3 font-semibold">Capacity</th>
-                  <th className="px-4 py-3 font-semibold text-right">Price (ex-GST)</th>
-                  <th className="px-4 py-3 font-semibold text-right"><span className="sr-only">Add to cart</span></th>
-                </tr>
-              </thead>
-              <tbody>
-                {vendingMachines.map((p, i) => (
-                  <tr key={p.slug} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
-                    <td className="px-4 py-3 font-medium">
-                      <Link href={`/products/${p.slug}`} className="text-primary-600 hover:underline">{p.name}</Link>
-                    </td>
-                    <td className="px-4 py-3 text-gray-600">{p.compare?.payment ?? "—"}</td>
-                    <td className="px-4 py-3 text-gray-600">{p.compare?.connectivity ?? "—"}</td>
-                    <td className="px-4 py-3 text-center text-gray-600">{p.compare?.cloudReports ?? "—"}</td>
-                    <td className="px-4 py-3 text-center text-gray-600">{p.compare?.touchDisplay ?? "—"}</td>
-                    <td className="px-4 py-3 text-gray-600">{capacity(p)}</td>
-                    <td className="px-4 py-3 text-right font-semibold text-gray-900">
-                      {formatINR(p.price)}
-                      <span className="block text-xs font-normal text-gray-500">{formatINR(priceInclGst(p.price))} with GST</span>
-                    </td>
-                    <td className="px-4 py-3 text-right">
-                      <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="compact" />
-                    </td>
+        <section className="bg-canvas py-12 sm:py-16">
+          <div className="lyra-container">
+            <div className="overflow-x-auto rounded-[24px] border border-line bg-surface">
+              <table className="w-full min-w-[960px] text-sm">
+                <thead className="bg-subtle text-left">
+                  <tr>
+                    {["Model", "Payment", "Connectivity", "Cloud reports", "Touch display", "Capacity", "Price (ex-GST)"].map((h, k) => (
+                      <th key={h} className={`px-5 py-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted ${k === 3 || k === 4 ? "text-center" : ""} ${k === 6 ? "text-right" : ""}`}>
+                        {h}
+                      </th>
+                    ))}
+                    <th className="px-5 py-4"><span className="sr-only">Add to cart</span></th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-line">
+                  {vendingMachines.map((p) => (
+                    <tr key={p.slug} className="transition-colors hover:bg-subtle/60">
+                      <td className="px-5 py-4">
+                        <Link href={`/products/${p.slug}`} className="group flex items-center gap-3">
+                          <span className="relative h-14 w-14 flex-none overflow-hidden rounded-xl bg-subtle">
+                            <Image src={p.image} alt="" fill sizes="56px" className="object-contain p-1.5" />
+                          </span>
+                          <span>
+                            <span className="block font-display font-semibold text-ink group-hover:text-brand">{p.name}</span>
+                            <span className="block text-xs text-muted">{p.badge}</span>
+                          </span>
+                        </Link>
+                      </td>
+                      <td className="px-5 py-4 text-body">{p.compare?.payment ?? "—"}</td>
+                      <td className="px-5 py-4 text-body">{p.compare?.connectivity ?? "—"}</td>
+                      <td className="px-5 py-4 text-center"><YesNo v={p.compare?.cloudReports} /></td>
+                      <td className="px-5 py-4 text-center"><YesNo v={p.compare?.touchDisplay} /></td>
+                      <td className="px-5 py-4 text-body">{capacity(p)}</td>
+                      <td className="px-5 py-4 text-right">
+                        <span className="font-display text-base font-semibold text-ink tabular">{formatINR(p.price)}</span>
+                        <span className="block text-xs text-muted tabular">{formatINR(priceInclGst(p.price))} with GST</span>
+                      </td>
+                      <td className="px-5 py-4 text-right">
+                        <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="compact" />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 
-        <section className="pb-14 max-w-4xl mx-auto px-5 sm:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">How to choose</h2>
-          <ul className="list-disc pl-6 space-y-2 text-gray-700 leading-relaxed">
-            <li><strong>Lowest cost, no connectivity:</strong> Push Button, Solo Coin or Solo Multi.</li>
-            <li><strong>Cashless payment:</strong> Solo QR for UPI on a SIM, or Solo WiFi and Solo Ethernet for UPI plus coin with cloud reports.</li>
-            <li><strong>Hostels and controlled access:</strong> Solo RFID card access.</li>
-            <li><strong>Free-issue, touch-free dispensing:</strong> Solo Wave.</li>
-          </ul>
-          <p className="mt-6 text-gray-700 leading-relaxed">
+        <Section tone="subtle" kicker="Guide" title="How to choose">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ["Lowest cost, no connectivity", "Push Button, Solo Coin or Solo Multi."],
+              ["Cashless payment", "Solo QR for UPI on a SIM, or Solo WiFi and Solo Ethernet for UPI plus coin with cloud reports."],
+              ["Hostels and controlled access", "Solo RFID card access."],
+              ["Free-issue, touch-free dispensing", "Solo Wave."],
+            ].map(([t, b]) => (
+              <div key={t} className="rounded-[20px] border border-line bg-surface p-6">
+                <h3 className="font-display text-base font-semibold text-ink">{t}:</h3>
+                <p className="mt-2 text-sm leading-relaxed text-body">{b}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 max-w-3xl text-[15px] leading-relaxed text-body">
             Read the deeper guides on{" "}
-            <Link href="/blog/upi-vs-coin-vending-machine" className="text-primary-600 hover:underline">UPI vs coin</Link>{" "}
+            <Link href="/blog/upi-vs-coin-vending-machine" className="font-medium text-brand hover:underline">UPI vs coin</Link>{" "}
             and{" "}
-            <Link href="/blog/manual-vs-automatic-napkin-vending-machine" className="text-primary-600 hover:underline">manual vs automatic</Link>,
+            <Link href="/blog/manual-vs-automatic-napkin-vending-machine" className="font-medium text-brand hover:underline">manual vs automatic</Link>,
             or explore{" "}
-            <Link href="/solutions" className="text-primary-600 hover:underline">solutions by sector</Link>.
+            <Link href="/solutions" className="font-medium text-brand hover:underline">solutions by sector</Link>.
             Machines take XL (280 mm) and XXL (320 mm) napkin refills:{" "}
-            <Link href="/products/xl-sanitary-napkin" className="text-primary-600 hover:underline">XL</Link>,{" "}
-            <Link href="/products/xxl-sanitary-napkin" className="text-primary-600 hover:underline">XXL</Link>.
+            <Link href="/products/xl-sanitary-napkin" className="font-medium text-brand hover:underline">XL</Link>,{" "}
+            <Link href="/products/xxl-sanitary-napkin" className="font-medium text-brand hover:underline">XXL</Link>.
           </p>
-          <p className="mt-6 text-sm text-gray-500">
-            Need help choosing? Call <a href="tel:+918122378860" className="text-primary-600 hover:underline">{SITE.phoneDisplay}</a>.
-          </p>
-        </section>
+        </Section>
+
+        <CtaBand
+          title="Need help choosing?"
+          body="Describe your facility and footfall. We will recommend the right model and quantity."
+          primary={{ href: "/products/sanitary-napkin-vending-machines", label: "Shop vending machines" }}
+        />
       </main>
       <PageFooter />
     </>

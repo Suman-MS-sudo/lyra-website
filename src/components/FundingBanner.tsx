@@ -1,67 +1,87 @@
+import Image from "next/image";
 import Link from "next/link";
+import { IconArrowRight } from "@/components/store/icons";
 
-const schemes = [
-  "Samagra Shiksha",
-  "Swachh Bharat Mission",
-  "National Health Mission",
-  "State schemes",
-  "Corporate CSR",
-  "MPLADS",
-];
+const schemes = ["Samagra Shiksha", "Swachh Bharat Mission", "National Health Mission", "State schemes", "Corporate CSR", "MPLADS"];
 
+/**
+ * Promo row (Nextmerce-style banners): the combo offer, the bundle and the funding guide.
+ * The funding copy is the original procurement-guide banner, unchanged.
+ */
 export default function FundingBanner() {
   return (
-    <section className="bg-white py-12 sm:py-16">
-      <div className="lyra-container">
-        <div className="relative overflow-hidden rounded-3xl border border-primary-200 bg-primary-50 px-6 py-10 sm:px-10 sm:py-12">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full opacity-60 blur-2xl"
-            style={{ background: "radial-gradient(circle, rgba(37,99,235,0.18), transparent 70%)" }}
-          />
-          <div className="relative grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center">
-            <div>
-              <div className="lyra-eyebrow mb-4">Procurement Guide</div>
-              <h2 className="text-2xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-3xl">
-                You probably don&apos;t need to pay for this out of your own budget
-              </h2>
-              <p className="mt-3 max-w-2xl text-slate-600">
-                Most machines in India are funded by a government scheme,
-                a Finance Commission grant or corporate CSR — not the
-                institution&apos;s own budget. We&apos;ve mapped every route.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {schemes.map((s) => (
-                  <span
-                    key={s}
-                    className="rounded-full border border-primary-200 bg-white px-3 py-1 text-xs font-medium text-primary-700"
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="lg:text-right">
-              <Link
-                href="/government-schemes-menstrual-hygiene"
-                className="btn btn-primary w-full justify-center sm:w-auto"
-              >
-                See Government Schemes &amp; Subsidies
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
-              <p className="mt-3 text-xs text-slate-600">
-                Free quotation, specs &amp; compliance docs for your proposal
-              </p>
-            </div>
+    <section aria-label="Offers and funding" className="bg-canvas py-16 sm:py-20">
+      <div className="lyra-container grid gap-4 lg:grid-cols-3 lg:gap-5">
+        {/* Combo offer */}
+        <Link
+          href="/offers/push-button-micro-combo"
+          className="group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-[22px] bg-night p-7 text-white"
+        >
+          <div aria-hidden className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-primary-600/40 blur-3xl transition-opacity duration-500 group-hover:opacity-80" />
+          <div className="relative max-w-[62%]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-400">Combo offer</p>
+            <h2 className="mt-3 font-display text-2xl font-semibold leading-tight text-white">Push Button + Micro Incinerator</h2>
+            <p className="mt-2 text-sm text-white/65">Full SWM Rules 2016 compliance in one order.</p>
           </div>
+          <p className="relative z-10 flex max-w-[64%] flex-wrap items-center gap-3">
+            <span className="font-display text-3xl font-semibold tracking-tight">₹19,999</span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-semibold text-night transition-transform group-hover:translate-x-1">
+              View offer <IconArrowRight className="h-4 w-4" />
+            </span>
+          </p>
+          <Image
+            src="/images/products/push-button-vm.png"
+            alt=""
+            width={150}
+            height={260}
+            className="pointer-events-none absolute -bottom-6 right-5 h-[72%] w-auto object-contain drop-shadow-[0_24px_30px_rgba(0,0,0,0.6)] transition-transform duration-700 ease-out-expo group-hover:-translate-y-2"
+          />
+        </Link>
+
+        {/* Bundle */}
+        <Link
+          href="/products/vending-incinerator-bundle"
+          className="group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-[22px] border border-line bg-subtle p-7"
+        >
+          <div className="relative max-w-[60%]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand">Complete washroom kit</p>
+            <h2 className="mt-3 font-display text-2xl font-semibold leading-tight text-ink">Vending machine + incinerator bundle</h2>
+            <p className="mt-2 text-sm text-muted">Dispense and dispose: one invoice, one install visit.</p>
+          </div>
+          <span className="relative inline-flex w-fit items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-canvas transition-transform group-hover:translate-x-1">
+            Build a bundle <IconArrowRight className="h-4 w-4" />
+          </span>
+          <Image
+            src="/images/products/lyra-micro.png"
+            alt=""
+            width={170}
+            height={220}
+            className="product-shot pointer-events-none absolute -bottom-2 right-3 h-[70%] w-auto object-contain transition-transform duration-700 ease-out-expo group-hover:-translate-y-2"
+          />
+        </Link>
+
+        {/* Funding guide (original procurement banner copy) */}
+        <div className="relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-[22px] border border-primary-200 bg-primary-50 p-7">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-700">Procurement Guide</p>
+            <h2 className="mt-3 font-display text-xl font-semibold leading-tight text-ink sm:text-2xl">
+              You probably don&apos;t need to pay for this out of your own budget
+            </h2>
+            <p className="mt-2 text-sm text-body">
+              Most machines in India are funded by a government scheme, a Finance Commission grant or corporate CSR — not
+              the institution&apos;s own budget. We&apos;ve mapped every route.
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-1.5">
+              {schemes.map((s) => (
+                <li key={s} className="rounded-full border border-primary-200 bg-surface px-2.5 py-1 text-[11px] font-medium text-primary-700">
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <Link href="/government-schemes-menstrual-hygiene" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-700 hover:underline">
+            See Government Schemes &amp; Subsidies <IconArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </section>

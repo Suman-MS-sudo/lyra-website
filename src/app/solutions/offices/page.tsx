@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import PageNavbar from "@/components/PageNavbar";
-import PageFooter from "@/components/PageFooter";
-import Breadcrumb from "@/components/Breadcrumb";
-import { SITE, getProductBySlug, formatINR } from "@/lib/data";
-import AddToCartButton from "@/components/AddToCartButton";
+import SolutionPage from "@/components/page/SolutionPage";
+import { SITE } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: { absolute: "Napkin Vending Machines for Offices & Corporates | Lyra" },
@@ -156,126 +152,27 @@ export default function OfficesSolutionPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <PageNavbar />
-      <main className="pt-16 bg-white min-h-screen">
-        {/* Hero */}
-        <section className="bg-gradient-to-br from-sky-50 via-white to-blue-50 py-14 sm:py-20">
-          <div className="max-w-5xl mx-auto px-5 sm:px-8">
-            <Breadcrumb crumbs={[
-              { label: "Home", href: "/" },
-              { label: "Solutions", href: "/solutions" },
-              { label: "Offices & Corporates" },
-            ]} />
-            <div className="mt-6 flex flex-wrap gap-2 mb-5">
-              <span className="px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-xs font-bold uppercase tracking-widest">Offices & Corporates</span>
-              <span className="px-3 py-1 rounded-full bg-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest">UPI Cashless</span>
-              <span className="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold uppercase tracking-widest">Remote Monitoring</span>
-            </div>
-            <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-              Sanitary Napkin Machines{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-primary-500">
-                for Offices &amp; Corporates
-              </span>
-            </h1>
-            <p className="mt-5 text-gray-600 text-lg max-w-3xl leading-relaxed">
-              Build a dignified, POSH-compliant workplace with Lyra smart vending machines. UPI cashless payment, remote monitoring, and real-time analytics — designed for modern Indian offices, IT parks and factories.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="tel:+918122378860"
-                className="px-7 py-3.5 bg-gradient-to-r from-sky-600 to-primary-500 text-white font-semibold rounded-full shadow-lg hover:-translate-y-0.5 transition-all duration-200"
-              >
-                Call for Corporate Quote
-              </Link>
-              <Link
-                href="/#contact"
-                className="px-7 py-3.5 border border-sky-200 text-sky-700 font-semibold rounded-full hover:bg-sky-50 transition-colors"
-              >
-                Get Free Quote
-              </Link>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-500">
-              {["UPI Cashless Models", "Remote Monitoring", "POSH Compliant", "1-Year Warranty", "Pan-India Delivery"].map((t) => (
-                <span key={t} className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sky-400 flex-shrink-0" />
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Features */}
-        <section className="py-14 sm:py-20 max-w-6xl mx-auto px-5 sm:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Why Lyra for Offices?</h2>
-          <p className="text-gray-500 mb-10 max-w-2xl">Smart, cashless, connected — built for modern corporate workplaces.</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((f) => (
-              <div key={f.heading} className="p-6 rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-3xl mb-4">{f.icon}</div>
-                <h3 className="font-bold text-gray-900 text-base mb-2">{f.heading}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{f.body}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Recommended Products */}
-        <section className="py-14 sm:py-20 bg-gradient-to-b from-gray-50 to-white">
-          <div className="max-w-6xl mx-auto px-5 sm:px-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Recommended for Offices &amp; Corporates</h2>
-            <p className="text-gray-500 mb-10">From small offices to large enterprise campuses — the right machine for every scale.</p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {products.map((p) => (
-                <div key={p.slug} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col">
-                  <span className={`self-start px-3 py-1 rounded-full text-xs font-bold ${p.badge} mb-4`}>{p.tag}</span>
-                  <p className="font-bold text-gray-900 text-lg mb-1">{p.name}</p>
-                  <p className="text-gray-900 font-bold text-sm mb-3">
-                    {(() => { const dp = getProductBySlug(p.slug); return dp ? `${formatINR(dp.price)} + 18% GST` : "Contact for pricing"; })()}
-                  </p>
-                  <p className="text-gray-500 text-sm flex-1 mb-5">{p.desc}</p>
-                  <div className="mt-auto grid gap-2">
-                    <AddToCartButton slug={p.slug} name={p.name} price={getProductBySlug(p.slug)?.price} variant="block" />
-                    <Link href={`/products/${p.slug}#enquiry`} className="text-center py-2.5 px-4 rounded-xl bg-sky-50 text-sky-700 font-semibold text-sm hover:bg-sky-100 transition-colors">
-                      Enquire →
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="py-14 sm:py-20 max-w-3xl mx-auto px-5 sm:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
-          <div className="space-y-6">
-            {faqSchema.mainEntity.map((q) => (
-              <div key={q.name} className="border-b border-gray-100 pb-6">
-                <p className="font-semibold text-gray-900 mb-2">{q.name}</p>
-                <p className="text-gray-600 text-sm leading-relaxed">{q.acceptedAnswer.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-14 bg-gradient-to-r from-sky-600 to-primary-500">
-          <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
-            <h2 className="font-bold text-2xl sm:text-3xl text-white mb-4">Build a better workplace today</h2>
-            <p className="text-white/80 mb-8">Get a corporate quote — volume discounts available for multi-location offices and IT parks.</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="tel:+918122378860" className="px-8 py-4 bg-white text-sky-700 font-bold rounded-full hover:bg-gray-100 transition-colors">
-                📞 +91-81223 78860
-              </Link>
-              <Link href="/#contact" className="px-8 py-4 bg-white/20 text-white font-semibold rounded-full border border-white/30 hover:bg-white/30 transition-colors">
-                Get Free Quote
-              </Link>
-            </div>
-          </div>
-        </section>
-      </main>
-      <PageFooter />
+      <SolutionPage
+        crumb="Offices & Corporates"
+        tags={["Offices & Corporates", "UPI Cashless", "Remote Monitoring"]}
+        title={<>Sanitary Napkin Machines <span className="text-gradient">for Offices &amp; Corporates</span></>}
+        lead={
+          <p>
+            Build a dignified, POSH-compliant workplace with Lyra smart vending machines. UPI cashless payment, remote monitoring, and real-time analytics — designed for modern Indian offices, IT parks and factories.
+          </p>
+        }
+        callLabel="Call for Corporate Quote"
+        points={["UPI Cashless Models", "Remote Monitoring", "POSH Compliant", "1-Year Warranty", "Pan-India Delivery"]}
+        featuresTitle="Why Lyra for Offices?"
+        featuresLead="Smart, cashless, connected — built for modern corporate workplaces."
+        features={features}
+        productsTitle={<>Recommended for Offices &amp; Corporates</>}
+        productsLead="From small offices to large enterprise campuses — the right machine for every scale."
+        products={products}
+        faqs={faqSchema.mainEntity}
+        ctaTitle="Build a better workplace today"
+        ctaBody="Get a corporate quote — volume discounts available for multi-location offices and IT parks."
+      />
     </>
   );
 }

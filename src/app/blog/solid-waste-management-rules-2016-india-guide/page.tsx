@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
+import ArticleAside from "@/components/page/ArticleAside";
 import Breadcrumb from "@/components/Breadcrumb";
 import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
@@ -91,15 +92,16 @@ export default function SWMRulesBlog() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
-      <main className="pt-16 bg-white min-h-screen">
-        <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">
+      <main className="bg-canvas">
+        <div className="lyra-container grid gap-12 lg:grid-cols-[minmax(0,1fr)_300px] xl:gap-20">
+        <article className="lyra-article max-w-3xl">
           <Breadcrumb crumbs={[
             { label: "Home", href: "/" },
             { label: "Blog", href: "/blog" },
             { label: "SWM Rules 2016 Guide" },
           ]} />
 
-          <div className="mt-6">
+          <div className="article-meta mt-8">
             <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold uppercase tracking-widest">Compliance</span>
             <span className="ml-3 text-sm text-gray-500">1 March 2026 · 7 min read</span>
           </div>
@@ -111,6 +113,8 @@ export default function SWMRulesBlog() {
           <p className="mt-4 text-xl text-gray-600 leading-relaxed border-l-4 border-green-300 pl-5">
             India&apos;s SWM Rules 2016 legally mandate segregated menstrual waste disposal. Non-compliance risks fines and failed government inspections. Here&apos;s what your institution must do.
           </p>
+
+          <div className="article-body">
 
           <div className="mt-10 prose prose-gray max-w-none space-y-6 text-gray-700 leading-relaxed">
             <h2 className="text-2xl font-bold text-gray-900">What are the Solid Waste Management Rules 2016?</h2>
@@ -202,6 +206,8 @@ export default function SWMRulesBlog() {
             </p>
           </div>
 
+          </div>
+
           <BlogFaq faqs={faqs} />
 
           <div className="mt-12 p-6 rounded-2xl bg-gradient-to-br from-green-50 to-teal-50 border border-green-100">
@@ -217,6 +223,8 @@ export default function SWMRulesBlog() {
             </div>
           </div>
         </article>
+        <ArticleAside />
+        </div>
       </main>
       <PageFooter />
     </>

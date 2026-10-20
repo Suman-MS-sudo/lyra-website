@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
 
 const steps = [
   {
@@ -33,81 +33,81 @@ const components = [
   { part: "IoT board", detail: "WiFi or Ethernet connectivity for stock-level and usage reports (WiFi/Ethernet models)" },
 ];
 
-function FadeUp({
-  children,
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  delay?: number;
-}) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
-    >
-      {children}
-    </motion.div>
-  );
-}
+const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function HowItWorks() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const reduce = useReducedMotion();
+  const railRef = useRef<HTMLOListElement>(null);
+  const { scrollYProgress } = useScroll({ target: railRef, offset: ["start 85%", "end 55%"] });
+  const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 24 });
 
   return (
-    <section id="how-it-works" className="section-padding bg-white">
+    <section id="how-it-works" className="bg-subtle py-20 sm:py-24 lg:py-32">
       <div className="lyra-container">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mx-auto mb-14 max-w-3xl text-center sm:mb-16"
+          initial={reduce ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease }}
+          className="grid gap-6 lg:grid-cols-[1.3fr_1fr] lg:items-end"
         >
-          <div className="lyra-eyebrow mb-6">How It Works</div>
-          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Most Institutions Have No Dignified Way to Dispose of Napkins On-Site
-          </h2>
-          <p className="mt-5 text-lg text-slate-500">
-            Staff resort to municipal bins or manual handling. Lyra Enterprises
-            fixes that in 4 steps, from your first call to an installed,
-            supported machine.
+          <div>
+            <p className="kicker">How It Works</p>
+            <h2 className="mt-4 text-display-lg font-semibold text-ink">
+              Most Institutions Have No Dignified Way to Dispose of Napkins On-Site
+            </h2>
+          </div>
+          <p className="max-w-md text-lg leading-relaxed text-body lg:justify-self-end">
+            Staff resort to municipal bins or manual handling. Lyra Enterprises fixes that in 4 steps, from your first call
+            to an installed, supported machine.
           </p>
         </motion.div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <ol ref={railRef} className="relative mt-14 grid gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-6">
+          {/* progress rail (desktop) */}
+          <span aria-hidden className="absolute left-0 right-0 top-[27px] hidden h-px bg-line lg:block" />
+          <motion.span
+            aria-hidden
+            style={{ scaleX: reduce ? 1 : progress }}
+            className="absolute left-0 right-0 top-[27px] hidden h-px origin-left bg-primary-600 lg:block"
+          />
           {steps.map((step, i) => (
-            <FadeUp key={step.n} delay={i * 0.08}>
-              <div className="h-full rounded-2xl border border-slate-200 bg-white p-6">
-                <span className="text-sm font-bold text-primary-600">{step.n}</span>
-                <h3 className="mt-2 text-base font-semibold text-slate-900">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.body}</p>
+            <motion.li
+              key={step.n}
+              initial={reduce ? false : { opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: i * 0.1, ease }}
+              className="relative"
+            >
+              <span className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border border-line bg-canvas font-display text-base font-semibold text-brand shadow-sm">
+                {step.n}
+              </span>
+              <div className="mt-6 rounded-[20px] border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-lift">
+                <h3 className="font-display text-lg font-semibold text-ink">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-body">{step.body}</p>
               </div>
-            </FadeUp>
+            </motion.li>
           ))}
-        </div>
+        </ol>
 
-        {/* Components */}
-        <FadeUp delay={0.2}>
-          <div className="mt-14 rounded-2xl border border-slate-200 bg-[#f6f8fc] p-6 sm:p-8">
-            <h3 className="text-lg font-semibold text-slate-900 sm:text-xl">
-              What Every Lyra Vending Machine Includes
-            </h3>
-            <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              {components.map((c) => (
-                <div key={c.part} className="flex items-start gap-3">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary-600" />
-                  <div>
-                    <p className="text-sm font-semibold text-slate-900">{c.part}</p>
-                    <p className="text-sm text-slate-600">{c.detail}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </FadeUp>
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease }}
+          className="mt-16 grid gap-8 rounded-[24px] border border-line bg-surface p-7 sm:p-9 lg:grid-cols-[0.8fr_2fr]"
+        >
+          <h3 className="font-display text-xl font-semibold text-ink sm:text-2xl">What Every Lyra Vending Machine Includes</h3>
+          <dl className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
+            {components.map((c) => (
+              <div key={c.part} className="border-l-2 border-primary-600 pl-4">
+                <dt className="text-sm font-semibold text-ink">{c.part}</dt>
+                <dd className="mt-1 text-sm leading-relaxed text-body">{c.detail}</dd>
+              </div>
+            ))}
+          </dl>
+        </motion.div>
       </div>
     </section>
   );

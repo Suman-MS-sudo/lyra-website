@@ -11,8 +11,13 @@ import NapkinQuickAdd from "@/components/NapkinQuickAdd";
 import ViewItemTracker from "@/components/ViewItemTracker";
 import { getPngSize } from "@/lib/image-meta";
 import GoogleReviews from "@/components/GoogleReviews";
+import FaqList from "@/components/page/FaqList";
+import { CtaBand } from "@/components/page/Blocks";
+import ProductCard from "@/components/store/ProductCard";
+import { toCatalogItem } from "@/lib/catalog";
 import { products, vendingMachines, getProductBySlug, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
 import { offerPolicies } from "@/lib/offer-schema";
+import { IconArrowRight, IconCheck, IconDownload, IconHeadset, IconLock, IconPhone, IconReceipt, IconShield, IconStar, IconTruck, IconWhatsApp } from "@/components/store/icons";
 
 /* ─── Static params for all product pages ─────────────────── */
 export function generateStaticParams() {
@@ -156,6 +161,10 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       : "/products/sanitary-napkin-incinerators";
 
   const canonical = `${SITE.url}/products/${product.slug}`;
+  const related = [
+    ...products.filter((p) => p.category === product.category && p.slug !== product.slug),
+    ...products.filter((p) => p.category !== product.category && p.category !== "napkin"),
+  ].slice(0, 4);
   const faqs = getFaqs(product.slug);
   const isNapkin = product.category === "napkin";
 
@@ -272,10 +281,10 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <ViewItemTracker slug={product.slug} name={product.fullName} price={product.price} category={categoryLabel} />
       <PageNavbar />
-      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
+      <main className="min-h-screen bg-canvas">
 
         {/* ── Hero ──────────────────────────────────────────── */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-10">
+        <section className="lyra-container pt-6 pb-12 sm:pt-8">
           <Breadcrumb crumbs={[
             { label: "Home", href: "/" },
             { label: "Products", href: "/products" },
@@ -283,9 +292,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             { label: product.name },
           ]} />
 
-          <div className="mt-6 grid items-start gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-12">
+          <div className="mt-6 grid items-start gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-14">
             {/* Left: image gallery (photo + feature poster), sticky on desktop */}
-            <div className="lg:sticky lg:top-24">
+            <div className="lg:sticky lg:top-36">
               <ProductImageGallery
                 fullName={product.fullName}
                 code={product.code}
@@ -295,18 +304,21 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               />
             </div>
 
-            {/* Right: title, price, model selector, buy box, highlights */}
+            {/* Right: title, price, buy box, highlights */}
             <div>
-              <p className="text-sm">
-                <span className="text-gray-500">Brand: </span>
-                <span className="font-semibold text-primary-600">Lyra Enterprises</span>
-                <span className="mx-2 text-gray-300">|</span>
-                <span className="text-gray-500">{product.badge}</span>
-              </p>
-              <h1 className="mt-1 text-2xl font-semibold leading-snug text-gray-900 sm:text-3xl">
+              <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em]">
+                <span className="text-brand">Lyra Enterprises</span>
+                <span className="text-line-strong">/</span>
+                <span className="text-muted">{categoryLabel}</span>
+                {product.popular && (
+                  <span className="rounded-full bg-primary-600 px-2.5 py-1 text-[10px] tracking-wider text-white">Most Popular</span>
+                )}
+              </div>
+              <h1 className="mt-3 text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-ink sm:text-4xl">
                 {product.fullName}
               </h1>
-              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+              <p className="mt-3 text-base text-body">{product.tagline}</p>
+              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
                 <a
                   href={SITE.googleReviews.url}
                   target="_blank"
@@ -314,98 +326,93 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   className="inline-flex items-center gap-1.5 hover:underline"
                   aria-label={`Lyra Enterprises is rated ${SITE.googleReviews.rating.toFixed(1)} out of 5 from ${SITE.googleReviews.count} Google reviews`}
                 >
-                  <span className="font-semibold text-gray-900">{SITE.googleReviews.rating.toFixed(1)}</span>
-                  <span className="text-amber-500" aria-hidden>★★★★★</span>
-                  <span className="text-primary-600">{SITE.googleReviews.count} Google reviews</span>
+                  <span className="flex text-amber-400" aria-hidden>
+                    {[0, 1, 2, 3, 4].map((k) => <IconStar key={k} className="h-4 w-4" />)}
+                  </span>
+                  <span className="font-semibold text-ink">{SITE.googleReviews.rating.toFixed(1)}</span>
+                  <span className="text-muted">· {SITE.googleReviews.count} Google reviews</span>
                 </a>
-                <span className="font-mono text-xs text-gray-400">Model {product.code}</span>
-                {product.popular && (
-                  <span className="rounded bg-yellow-400 px-2 py-0.5 text-xs font-bold text-yellow-900">Most Popular</span>
-                )}
+                <span className="rounded-md border border-line px-2 py-0.5 font-mono text-xs text-muted">Model {product.code}</span>
               </div>
 
-              {/* Price */}
-              <div className="mt-4 border-t border-gray-200 pt-4">
+              {/* Price + buy box */}
+              <div className="mt-6 rounded-[22px] border border-line bg-subtle p-5 sm:p-6">
                 <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span className="text-3xl font-bold text-gray-900 sm:text-4xl">{formatINR(priceExGst)}</span>
+                  <span className="font-display text-4xl font-semibold tracking-tight text-ink tabular sm:text-[2.6rem]">{formatINR(priceExGst)}</span>
                   {isNapkin ? (
-                    <span className="text-lg text-gray-600">/ napkin</span>
+                    <span className="text-lg text-muted">/ napkin</span>
                   ) : (
-                    <span className="text-sm font-medium text-gray-600">+ {Math.round(GST_RATE * 100)}% GST</span>
+                    <span className="text-sm font-medium text-muted">+ {Math.round(GST_RATE * 100)}% GST</span>
                   )}
                 </div>
                 {!isNapkin && (
-                  <p className="mt-1 text-sm text-gray-600">
+                  <p className="mt-1 text-sm text-body">
                     {formatINR(priceGstInc)} inclusive of GST · freight extra
                   </p>
                 )}
                 {isNapkin && (
-                  <p className="mt-1 text-sm text-gray-600">
+                  <p className="mt-1 text-sm text-body">
                     Sold in 100s: 100 napkins = {formatINR(product.price * 100)} · 1,000 napkins = {formatINR(product.price * 1000)}
                   </p>
                 )}
-                <p className="mt-1 text-xs text-gray-400">
+                <p className="mt-1 text-xs text-muted">
                   Ex-works Chennai. Price as per current Lyra pricelist and subject to revision.
                 </p>
-              </div>
 
-              {/* Buy box */}
-              <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5">
-                <p className="flex items-center gap-2 text-base font-semibold text-emerald-700">
-                  <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                <p className="mt-5 flex items-center gap-2 text-sm font-semibold text-emerald-700">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                  </span>
                   In stock · Ships in 1–3 days
                 </p>
-                <ul className="mt-3 grid gap-x-4 gap-y-2 text-sm text-gray-700 sm:grid-cols-2">
-                  {[
-                    "1-year manufacturer warranty",
-                    "Pan-India delivery (freight extra)",
-                    "Free installation support",
-                    "GST invoice on every order",
-                  ].map((t) => (
-                    <li key={t} className="flex items-start gap-2">
-                      <svg className="mt-0.5 h-4 w-4 flex-none text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
+
                 <div className="mt-4 grid gap-2.5">
                   <AddToCartButton slug={product.slug} name={product.fullName} price={product.price} variant="primary" qty={isNapkin ? 100 : 1} />
                   {isNapkin && <NapkinQuickAdd slug={product.slug} name={product.fullName} price={product.price} />}
-                  <Link
-                    href={`/order?add=${product.slug}`}
-                    className="flex items-center justify-center rounded-full bg-primary-600 px-6 py-3.5 text-sm font-bold text-white shadow transition hover:bg-primary-700"
-                  >
-                    Buy Now: Place an Order
+                  <Link href={`/checkout?add=${product.slug}`} className="btn btn-ink h-12 w-full text-[15px]">
+                    Buy now
                   </Link>
-                  <p className="-mt-1 text-center text-xs font-medium text-emerald-700">No payment now. We confirm availability and freight first.</p>
-                  <Link
-                    href={`https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20${encodeURIComponent(product.fullName)}.%20Please%20share%20pricing%20and%20delivery%20details.`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center rounded-full bg-[#25D366] px-6 py-3 text-sm font-bold text-white shadow transition hover:brightness-95"
-                  >
-                    Get Quote on WhatsApp
-                  </Link>
-                  <Link
-                    href="tel:+918122378860"
-                    className="flex items-center justify-center rounded-full border-2 border-gray-300 px-6 py-3 text-sm font-bold text-gray-800 transition hover:border-primary-400 hover:text-primary-700"
-                  >
-                    Call +91-81223 78860
-                  </Link>
+                  <div className="grid grid-cols-2 gap-2.5">
+                    <Link
+                      href={`https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20${encodeURIComponent(product.fullName)}.%20Please%20share%20pricing%20and%20delivery%20details.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn h-11 bg-[#25D366] text-sm text-white hover:bg-[#1fb457]"
+                    >
+                      <IconWhatsApp className="h-4 w-4" /> WhatsApp
+                    </Link>
+                    <Link href="tel:+918122378860" className="btn btn-secondary h-11 text-sm">
+                      <IconPhone className="h-4 w-4" /> Call sales
+                    </Link>
+                  </div>
                 </div>
-                <p className="mt-3 text-center text-sm">
-                  <Link href="#enquiry" className="font-semibold text-primary-600 hover:underline">Or request a formal quote ↓</Link>
-                </p>
-                <p className="mt-3 text-xs text-gray-500">
-                  Sold and shipped by <strong className="font-semibold text-gray-700">Lyra Enterprises</strong>, Chennai: direct from the manufacturer.
+                <p className="mt-4 flex items-center justify-center gap-1.5 text-center text-xs text-muted">
+                  <IconLock className="h-3.5 w-3.5" /> Pay securely online with UPI, cards, net banking or wallets.
                 </p>
               </div>
 
+              <ul className="mt-5 grid gap-3 text-sm text-body sm:grid-cols-2">
+                {[
+                  { t: "1-year manufacturer warranty", I: IconShield },
+                  { t: "Pan-India delivery (freight extra)", I: IconTruck },
+                  { t: "Free installation support", I: IconHeadset },
+                  { t: "GST invoice on every order", I: IconReceipt },
+                ].map(({ t, I }) => (
+                  <li key={t} className="flex items-center gap-3 rounded-xl border border-line px-3.5 py-3">
+                    <I className="h-[18px] w-[18px] flex-none text-brand" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-xs text-muted">
+                Sold and shipped by <strong className="font-semibold text-ink">Lyra Enterprises</strong>, Chennai: direct from the manufacturer.{" "}
+                <Link href="#enquiry" className="font-semibold text-brand hover:underline">Need a formal quote?</Link>
+              </p>
+
               {/* About this item */}
-              <div className="mt-6 border-t border-gray-200 pt-5">
-                <h2 className="text-base font-bold text-gray-900">About this item</h2>
+              <div className="mt-6 border-t border-line pt-5">
+                <h2 className="text-base font-semibold text-ink">About this item</h2>
                 <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-gray-700">
                   {product.features.slice(0, 6).map((f) => (
                     <li key={f}>{f}</li>
@@ -419,280 +426,310 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           </div>
         </section>
 
-        <ProductPurchasePanel product={product} />
 
         {/* ── Sticky mobile buy bar ─────────────────────────── */}
-        <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-gray-200 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] px-4 py-3 flex items-center gap-3">
-          <div className="flex-1 min-w-0">
-            <p className="text-base font-bold text-gray-900 truncate">
+        <div className="glass fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-line px-4 py-3 lg:hidden">
+          <div className="min-w-0 flex-1">
+            <p className="truncate font-display text-lg font-semibold text-ink tabular">
               {isNapkin ? `${formatINR(priceExGst)} / napkin` : formatINR(priceExGst)}
             </p>
-            <p className="text-[11px] text-gray-500 truncate">+{Math.round(GST_RATE * 100)}% GST · freight extra</p>
+            <p className="truncate text-[11px] text-muted">+{Math.round(GST_RATE * 100)}% GST · freight extra</p>
           </div>
           <AddToCartButton slug={product.slug} name={product.fullName} price={product.price} variant="compact" qty={isNapkin ? 100 : 1} className="flex-none" />
-          <Link
-            href={`/order?add=${product.slug}`}
-            className="rounded-full bg-primary-600 px-5 py-2.5 text-sm font-bold text-white shadow whitespace-nowrap"
-          >
-            Buy Now
+          <Link href={`/checkout?add=${product.slug}`} className="btn btn-ink h-9 min-h-0 whitespace-nowrap px-4 text-xs">
+            Buy now
           </Link>
         </div>
         {/* Spacer so the sticky bar doesn't cover the footer on mobile */}
         <div className="lg:hidden h-20" />
 
+        {/* ── In-page section tabs ─────────────────────────── */}
+        <nav aria-label="Product sections" className="glass sticky top-[121px] z-30 hidden border-y border-line lg:block">
+          <div className="lyra-container flex h-12 items-center gap-1 overflow-x-auto text-sm font-medium text-body">
+            {[
+              ["#features", "Features"],
+              ["#specs", "Specifications"],
+              ["#about-product", "Overview"],
+              ...(isVM ? [["#compare", "Compare"]] : []),
+              ["#reviews", "Reviews"],
+              ["#faq", "FAQ"],
+              ["#enquiry", "Formal quote"],
+            ].map(([href, label]) => (
+              <a key={href} href={href} className="whitespace-nowrap rounded-lg px-3 py-1.5 transition-colors hover:bg-subtle hover:text-ink">
+                {label}
+              </a>
+            ))}
+            <span className="ml-auto flex items-center gap-3 pl-4">
+              <span className="font-display text-sm font-semibold text-ink tabular">{formatINR(priceExGst)}{isNapkin ? " / napkin" : " + GST"}</span>
+              <AddToCartButton slug={product.slug} name={product.fullName} price={product.price} variant="compact" qty={isNapkin ? 100 : 1} />
+            </span>
+          </div>
+        </nav>
+
         {/* ── Differentiators: why nothing else at this price competes ─ */}
         {product.differentiators && product.differentiators.length > 0 && (
-          <section className={`bg-gradient-to-br ${product.accent} py-14`}>
-            <div className="max-w-7xl mx-auto px-5 sm:px-8">
-              <div className="text-center max-w-2xl mx-auto mb-10">
-                <span className="inline-block px-3 py-1 rounded-full bg-white/15 text-white text-xs font-bold uppercase tracking-widest mb-4">
-                  Unmatched At This Price
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white drop-shadow-sm">
-                  Why nothing else near {formatINR(priceExGst)} comes close
-                </h2>
-                <p className="mt-3 text-white/85 text-sm sm:text-base">
-                  The {product.name} packs intelligence normally reserved for machines costing ₹18,000 and up — with zero recurring cost.
-                </p>
-              </div>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {product.differentiators.map((d) => (
-                  <div key={d.title} className="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 p-5">
-                    <p className="font-bold text-white text-sm mb-2">{d.title}</p>
-                    <p className="text-white/80 text-xs leading-relaxed">{d.detail}</p>
-                  </div>
-                ))}
+          <section className="bg-canvas py-14 sm:py-20">
+            <div className="lyra-container">
+              <div className="theme-light relative overflow-hidden rounded-[28px] bg-night px-6 py-12 text-white sm:px-12 sm:py-14">
+                <div aria-hidden className="absolute -left-20 -top-24 h-72 w-72 rounded-full bg-primary-600/35 blur-3xl" />
+                <div className="relative max-w-2xl">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary-400">Unmatched At This Price</p>
+                  <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
+                    Why nothing else near {formatINR(priceExGst)} comes close
+                  </h2>
+                  <p className="mt-3 text-[15px] text-white/70">
+                    The {product.name} packs intelligence normally reserved for machines costing ₹18,000 and up — with zero recurring cost.
+                  </p>
+                </div>
+                <div className="relative mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  {product.differentiators.map((d, k) => (
+                    <div key={d.title} className="rounded-[20px] border border-white/10 bg-white/[0.04] p-6">
+                      <span className="font-mono text-xs text-white/40">{String(k + 1).padStart(2, "0")}</span>
+                      <p className="mt-3 font-display text-base font-semibold text-white">{d.title}</p>
+                      <p className="mt-2 text-[13.5px] leading-relaxed text-white/65">{d.detail}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
         )}
 
-        {/* ── Features ─────────────────────────────────────── */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Features</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {product.features.map((feat) => (
-              <div key={feat} className="flex items-start gap-3 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all p-4">
-                <span className={`mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br ${product.accent} flex items-center justify-center`}>
-                  <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 12 12">
-                    <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-                <span className="text-sm text-gray-700 font-medium leading-snug">{feat}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Specs ────────────────────────────────────────── */}
-        <section id="specs" className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100 scroll-mt-24">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Technical Specifications</h2>
-          <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm bg-white">
-            <table className="w-full text-sm">
-              <tbody>
-                {product.specs.map((spec, i) => (
-                  <tr key={spec.label} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/60"}>
-                    <td className="px-5 py-3.5 font-semibold text-gray-600 w-1/3">{spec.label}</td>
-                    <td className="px-5 py-3.5 text-gray-900">{spec.value}</td>
-                  </tr>
+        {/* ── Features + specs ─────────────────────────────── */}
+        <section className="scroll-mt-44 border-t border-line bg-canvas py-14 sm:py-20" id="features">
+          <div className="lyra-container grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
+            <div>
+              <p className="kicker">Features</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink">Key Features</h2>
+              <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+                {product.features.map((feat) => (
+                  <li key={feat} className="flex items-start gap-3 rounded-2xl border border-line bg-surface p-4">
+                    <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-brand-soft text-brand">
+                      <IconCheck className="h-3.5 w-3.5" strokeWidth={2.4} />
+                    </span>
+                    <span className="text-[14px] font-medium leading-snug text-ink">{feat}</span>
+                  </li>
                 ))}
-              </tbody>
-            </table>
-          </div>
-          {product.booklet && (
-            <a
-              href={product.booklet}
-              download
-              className="mt-5 inline-flex items-center gap-2 rounded-full border border-gray-300 px-5 py-2.5 text-sm font-semibold text-gray-800 hover:border-primary-400 hover:text-primary-700 transition-colors"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 12.5a.75.75 0 0 0 .53-.22l3-3a.75.75 0 1 0-1.06-1.06l-1.72 1.72V3.75a.75.75 0 0 0-1.5 0v6.19L7.53 8.22a.75.75 0 1 0-1.06 1.06l3 3a.75.75 0 0 0 .53.22Z" clipRule="evenodd" />
-                <path d="M3.5 12.75a.75.75 0 0 1 .75.75v2a.75.75 0 0 0 .75.75h10a.75.75 0 0 0 .75-.75v-2a.75.75 0 0 1 1.5 0v2A2.25 2.25 0 0 1 15 17.75H5a2.25 2.25 0 0 1-2.25-2.25v-2a.75.75 0 0 1 .75-.75Z" />
-              </svg>
-              Download Product Booklet (PDF)
-            </a>
-          )}
-          <div className="mt-5 rounded-2xl border border-teal-100 bg-teal-50 px-5 py-4 text-sm text-gray-700">
-            <p className="font-semibold text-gray-900">Buying for a government institution?</p>
-            <p className="mt-1">
-              Lyra Enterprises is a registered GeM vendor, and a GST invoice is provided with every order.{" "}
-              <Link href="/blog/gem-tender-sanitary-napkin-vending-machine-guide" className="font-semibold text-primary-600 hover:underline">
-                How to buy through GeM →
-              </Link>
-            </p>
-          </div>
-          {isVM && (
-            <p className="mt-4 text-sm text-gray-600">
-              Refills: <Link href="/products/xl-sanitary-napkin" className="font-semibold text-primary-600 hover:underline">XL 280 mm</Link> and{" "}
-              <Link href="/products/xxl-sanitary-napkin" className="font-semibold text-primary-600 hover:underline">XXL 320 mm</Link> napkins are made for all Lyra machines.{" "}
-              <Link href="/compare-sanitary-napkin-vending-machines" className="font-semibold text-primary-600 hover:underline">Compare all models →</Link>
-            </p>
-          )}
-        </section>
+              </ul>
+            </div>
 
-        {/* ── Use Cases ────────────────────────────────────── */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Ideal For</h2>
-          <div className="flex flex-wrap gap-3">
-            {product.useCases.map((uc) => (
-              <span key={uc} className={`px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r ${product.accent}`}>
-                {uc}
-              </span>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Combo offer callout ──────────────────────────── */}
-        {(product.slug === "push-button-vending-machine" || product.slug === "lyra-micro-incinerator") && (
-          <section className="max-w-7xl mx-auto px-5 sm:px-8 py-8 border-t border-gray-100">
-            <Link
-              href="/offers/push-button-micro-combo"
-              className="flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-gradient-to-r from-primary-50 to-blue-50 border border-primary-100 px-6 py-5 hover:border-primary-300 hover:shadow-md transition-all duration-200"
-            >
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-primary-600 mb-1">🔥 Combo Offer</p>
-                <p className="font-semibold text-gray-900">
-                  {product.slug === "push-button-vending-machine"
-                    ? "Get this + a Lyra Micro Incinerator together — see the ₹19,999 combo offer"
-                    : "Get this + a Push Button Vending Machine together — see the ₹19,999 combo offer"}
+            <div id="specs" className="scroll-mt-44">
+              <p className="kicker">Specifications</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink">Technical Specifications</h2>
+              <dl className="mt-8 divide-y divide-line overflow-hidden rounded-[22px] border border-line bg-surface">
+                {product.specs.map((spec) => (
+                  <div key={spec.label} className="grid grid-cols-[40%_1fr] gap-4 px-5 py-3.5 text-sm">
+                    <dt className="font-medium text-muted">{spec.label}</dt>
+                    <dd className="text-ink">{spec.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              {product.booklet && (
+                <a href={product.booklet} download className="btn btn-secondary mt-5">
+                  <IconDownload className="h-4 w-4" />
+                  Download Product Booklet (PDF)
+                </a>
+              )}
+              <div className="mt-5 rounded-[20px] border border-primary-200 bg-primary-50 px-5 py-4 text-sm text-body">
+                <p className="font-semibold text-ink">Buying for a government institution?</p>
+                <p className="mt-1">
+                  Lyra Enterprises is a registered GeM vendor, and a GST invoice is provided with every order.{" "}
+                  <Link href="/blog/gem-tender-sanitary-napkin-vending-machine-guide" className="font-semibold text-brand hover:underline">
+                    How to buy through GeM →
+                  </Link>
                 </p>
               </div>
-              <span className="px-5 py-2.5 rounded-full bg-primary-600 text-white text-sm font-semibold whitespace-nowrap">
-                View Offer →
-              </span>
-            </Link>
-          </section>
-        )}
+              {isVM && (
+                <p className="mt-4 text-sm text-body">
+                  Refills: <Link href="/products/xl-sanitary-napkin" className="font-semibold text-brand hover:underline">XL 280 mm</Link> and{" "}
+                  <Link href="/products/xxl-sanitary-napkin" className="font-semibold text-brand hover:underline">XXL 320 mm</Link> napkins are made for all Lyra machines.{" "}
+                  <Link href="/compare-sanitary-napkin-vending-machines" className="font-semibold text-brand hover:underline">Compare all models →</Link>
+                </p>
+              )}
+            </div>
+          </div>
+        </section>
 
-        {/* ── Long description ─────────────────────────────── */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">About the {product.name}</h2>
-          <p className="text-gray-600 leading-relaxed max-w-4xl">{product.longDescription}</p>
+        {/* ── Overview + ideal for ─────────────────────────── */}
+        <section id="about-product" className="scroll-mt-44 border-y border-line bg-subtle py-14 sm:py-20">
+          <div className="lyra-container grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+            <div>
+              <p className="kicker">Overview</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink">About the {product.name}</h2>
+              <p className="mt-6 text-[16px] leading-[1.8] text-body">{product.longDescription}</p>
+            </div>
+            <div>
+              <h2 className="font-display text-xl font-semibold text-ink">Ideal For</h2>
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {product.useCases.map((uc) => (
+                  <li key={uc} className="rounded-full border border-line bg-surface px-4 py-2 text-sm font-medium text-ink">
+                    {uc}
+                  </li>
+                ))}
+              </ul>
+              {(product.slug === "push-button-vending-machine" || product.slug === "lyra-micro-incinerator") && (
+                <Link
+                  href="/offers/push-button-micro-combo"
+                  className="group mt-8 flex items-center justify-between gap-4 rounded-[20px] bg-night p-5 text-white"
+                >
+                  <span>
+                    <span className="block text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-400">Combo Offer</span>
+                    <span className="mt-1 block text-[15px] font-semibold">
+                      {product.slug === "push-button-vending-machine"
+                        ? "Get this + a Lyra Micro Incinerator together — see the ₹19,999 combo offer"
+                        : "Get this + a Push Button Vending Machine together — see the ₹19,999 combo offer"}
+                    </span>
+                  </span>
+                  <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-white text-night transition-transform group-hover:translate-x-1">
+                    <IconArrowRight className="h-4 w-4" />
+                  </span>
+                </Link>
+              )}
+            </div>
+          </div>
         </section>
 
         {/* ── Comparison Table (VMs only) ───────────────────── */}
         {isVM && (
-          <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Compare All Models</h2>
-            <p className="text-sm text-gray-500 mb-6">See how {product.name} compares to our full vending machine range</p>
-            <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="bg-gray-50">
-                    <th className="px-4 py-3 text-left font-semibold text-gray-700">Feature</th>
-                    {vendingMachines.map((p) => (
-                      <th
-                        key={p.slug}
-                        className={`px-4 py-3 text-center font-semibold ${p.slug === product.slug ? "text-primary-700 bg-primary-50" : "text-gray-700"}`}
-                      >
-                        {p.slug === product.slug ? (
-                          <>
-                            {p.name}
-                            <span className="block text-[9px] font-bold text-primary-500 uppercase tracking-widest">← this</span>
-                          </>
-                        ) : (
-                          <Link href={`/products/${p.slug}`} className="hover:text-primary-600 hover:underline">
-                            {p.name}
-                          </Link>
-                        )}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {comparisonRows.map((row, i) => (
-                    <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
-                      <td className="px-4 py-3 text-gray-600 font-medium">{row.label}</td>
-                      {vendingMachines.map((p) => {
-                        const val = p.compare ? p.compare[row.key] : "—";
-                        const isActive = p.slug === product.slug;
-                        return (
-                          <td key={p.slug} className={`px-4 py-3 text-center font-medium ${isActive ? "bg-primary-50/60 text-primary-800" : val === "Yes" ? "text-green-600" : val === "No" ? "text-gray-500" : "text-gray-700"}`}>
-                            {val}
-                          </td>
-                        );
-                      })}
+          <section id="compare" className="scroll-mt-44 bg-canvas py-14 sm:py-20">
+            <div className="lyra-container">
+              <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <p className="kicker">Compare</p>
+                  <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink">Compare All Models</h2>
+                  <p className="mt-2 text-sm text-muted">See how {product.name} compares to our full vending machine range</p>
+                </div>
+                <Link href="/products/sanitary-napkin-vending-machines" className="text-sm font-semibold text-brand hover:underline">
+                  View all vending machines →
+                </Link>
+              </div>
+              <div className="overflow-x-auto rounded-[22px] border border-line bg-surface">
+                <table className="w-full min-w-[860px] text-sm">
+                  <thead className="bg-subtle">
+                    <tr>
+                      <th className="px-5 py-4 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">Feature</th>
+                      {vendingMachines.map((p) => (
+                        <th key={p.slug} className={`px-4 py-4 text-center font-display text-[13px] font-semibold ${p.slug === product.slug ? "bg-primary-50 text-primary-700" : "text-ink"}`}>
+                          {p.slug === product.slug ? (
+                            <>
+                              {p.name}
+                              <span className="block text-[9px] font-bold uppercase tracking-widest text-brand">This model</span>
+                            </>
+                          ) : (
+                            <Link href={`/products/${p.slug}`} className="hover:text-brand">
+                              {p.name}
+                            </Link>
+                          )}
+                        </th>
+                      ))}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="mt-4 text-right">
-              <Link href="/products/sanitary-napkin-vending-machines" className="text-sm font-semibold text-primary-600 hover:underline">
-                View all vending machines →
-              </Link>
+                  </thead>
+                  <tbody className="divide-y divide-line">
+                    {comparisonRows.map((row) => (
+                      <tr key={row.label}>
+                        <td className="px-5 py-3.5 font-medium text-ink">{row.label}</td>
+                        {vendingMachines.map((p) => {
+                          const val = p.compare ? p.compare[row.key] : "—";
+                          const isActive = p.slug === product.slug;
+                          return (
+                            <td key={p.slug} className={`px-4 py-3.5 text-center ${isActive ? "bg-primary-50/60 font-medium text-primary-800" : "text-body"}`}>
+                              {val === "Yes" ? (
+                                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-50 text-emerald-700" aria-label="Yes">
+                                  <IconCheck className="h-3.5 w-3.5" strokeWidth={2.4} />
+                                </span>
+                              ) : val === "No" ? (
+                                <span className="text-muted" aria-label="No">—</span>
+                              ) : (
+                                val
+                              )}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
         )}
 
-        {/* ── Related reading (internal links to guides) ───── */}
-        {product.category !== "napkin" && (
-          <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Related Reading</h2>
-            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2 text-sm font-semibold text-primary-600">
-              {(isVM
-                ? [
-                    ["/blog/upi-vs-coin-vending-machine", "UPI vs coin vending machines: which to choose →"],
-                    ["/blog/manual-vs-automatic-napkin-vending-machine", "Manual vs automatic napkin vending machines →"],
-                    ["/sanitary-napkin-vending-machine-price-india", "Sanitary napkin vending machine price in India →"],
-                    ["/government-schemes-menstrual-hygiene", "Government schemes that fund vending machines →"],
-                  ]
-                : [
-                    ["/blog/napkin-incinerator-vs-sanitary-bin", "Napkin incinerator vs sanitary bin →"],
-                    ["/blog/solid-waste-management-rules-2016-india-guide", "SWM Rules 2016: sanitary waste disposal rules →"],
-                    ["/government-schemes-menstrual-hygiene", "Government schemes that fund incinerators →"],
-                    ["/solutions/schools-colleges", "Menstrual hygiene setup for schools & colleges →"],
-                  ]
-              ).map(([href, label]) => (
-                <li key={href}>
-                  <Link href={href} className="hover:underline">{label}</Link>
+        {/* ── You may also like (same category) ───────────── */}
+        <section className="border-t border-line bg-canvas py-14 sm:py-20">
+          <div className="lyra-container">
+            <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p className="kicker">More from Lyra</p>
+                <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink">You may also like</h2>
+              </div>
+              <Link href="/products" className="text-sm font-semibold text-brand hover:underline">Shop all products →</Link>
+            </div>
+            <ul className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+              {related.map((p, k) => (
+                <li key={p.slug}>
+                  <ProductCard product={toCatalogItem(p)} index={k} />
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        {/* ── Related reading (internal links to guides) ───── */}
+        {product.category !== "napkin" && (
+          <section className="border-t border-line bg-canvas py-14">
+            <div className="lyra-container">
+              <h2 className="font-display text-xl font-semibold text-ink">Related Reading</h2>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {(isVM
+                  ? [
+                      ["/blog/upi-vs-coin-vending-machine", "UPI vs coin vending machines: which to choose →"],
+                      ["/blog/manual-vs-automatic-napkin-vending-machine", "Manual vs automatic napkin vending machines →"],
+                      ["/sanitary-napkin-vending-machine-price-india", "Sanitary napkin vending machine price in India →"],
+                      ["/government-schemes-menstrual-hygiene", "Government schemes that fund vending machines →"],
+                    ]
+                  : [
+                      ["/blog/napkin-incinerator-vs-sanitary-bin", "Napkin incinerator vs sanitary bin →"],
+                      ["/blog/solid-waste-management-rules-2016-india-guide", "SWM Rules 2016: sanitary waste disposal rules →"],
+                      ["/government-schemes-menstrual-hygiene", "Government schemes that fund incinerators →"],
+                      ["/solutions/schools-colleges", "Menstrual hygiene setup for schools & colleges →"],
+                    ]
+                ).map(([href, label]) => (
+                  <li key={href}>
+                    <Link href={href} className="flex h-full items-center rounded-2xl border border-line bg-surface px-5 py-4 text-sm font-semibold text-ink transition-colors hover:border-brand hover:text-brand">
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </section>
         )}
 
         {/* ── Customer reviews (real Google reviews, linked back) ── */}
-        <GoogleReviews />
+        <div id="reviews" className="scroll-mt-44 border-t border-line">
+          <GoogleReviews />
+        </div>
 
         {/* ── FAQ ──────────────────────────────────────────── */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 py-12 border-t border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
-          <div className="space-y-4 max-w-3xl">
-            {faqs.map((faq, i) => (
-              <details key={i} className="group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-                <summary className="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer font-semibold text-gray-900 text-sm list-none">
-                  {faq.q}
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-100 group-open:bg-primary-100 flex items-center justify-center text-gray-500 group-open:text-primary-600 transition-colors text-xs font-bold">+</span>
-                </summary>
-                <p className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{faq.a}</p>
-              </details>
-            ))}
+        <section id="faq" className="scroll-mt-44 border-t border-line bg-subtle py-14 sm:py-20">
+          <div className="lyra-container max-w-4xl">
+            <p className="kicker">FAQ</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink">Frequently Asked Questions</h2>
+            <FaqList items={faqs} className="mt-8" />
           </div>
         </section>
 
-        {/* ── CTA ──────────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-gradient-to-r from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6] py-14 text-white text-center px-5">
-          <div className="relative z-10">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-3">Ready to order the {product.name}?</h2>
-            <p className="text-white/80 mb-6 max-w-xl mx-auto">
-              Get a confirmed quote and place your order today. Pan-India delivery in 3–7 business days.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href={`https://wa.me/918122378860?text=Hi%21%20I%27d%20like%20to%20order%20the%20${encodeURIComponent(product.fullName)}.%20Please%20confirm%20price%20%26%20availability.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3 bg-white text-[#1d4ed8] font-bold rounded-full hover:bg-gray-50 transition-colors"
-              >
-                WhatsApp Order
-              </Link>
-              <Link href="tel:+918122378860" className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full hover:bg-white/30 transition-colors">
-                Call +91-81223 78860
-              </Link>
-            </div>
-          </div>
-        </section>
+        <ProductPurchasePanel product={product} />
+
+        <CtaBand
+          title={<>Ready to order the {product.name}?</>}
+          body="Get a confirmed quote and place your order today. Pan-India delivery in 3–7 business days."
+          primary={{ href: `/checkout?add=${product.slug}`, label: "Buy now" }}
+          secondary={{
+            href: `https://wa.me/918122378860?text=Hi%21%20I%27d%20like%20to%20order%20the%20${encodeURIComponent(product.fullName)}.%20Please%20confirm%20price%20%26%20availability.`,
+            label: "WhatsApp Order",
+          }}
+        />
       </main>
       <PageFooter />
     </>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
+import ArticleAside from "@/components/page/ArticleAside";
 import Breadcrumb from "@/components/Breadcrumb";
 import BlogFaq, { type Faq } from "@/components/BlogFaq";
 import { SITE } from "@/lib/data";
@@ -93,15 +94,16 @@ export default function BlogPost3() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
-      <main className="pt-16 bg-white min-h-screen">
-        <article className="max-w-3xl mx-auto px-5 sm:px-8 pt-12 pb-20">
+      <main className="bg-canvas">
+        <div className="lyra-container grid gap-12 lg:grid-cols-[minmax(0,1fr)_300px] xl:gap-20">
+        <article className="lyra-article max-w-3xl">
           <Breadcrumb crumbs={[
             { label: "Home", href: "/" },
             { label: "Blog", href: "/blog" },
             { label: "Incinerator vs Bio Bin" },
           ]} />
 
-          <div className="mt-6">
+          <div className="article-meta mt-8">
             <span className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-bold uppercase tracking-widest">Hygiene Guide</span>
             <span className="ml-3 text-sm text-gray-500">5 February 2026 · 5 min read</span>
           </div>
@@ -113,6 +115,8 @@ export default function BlogPost3() {
           <p className="mt-4 text-xl text-gray-600 leading-relaxed border-l-4 border-primary-300 pl-5">
             Bio bins accumulate bacteria, require manual handling and create infection risk. Incinerators eliminate all of this — but which is right for your institution?
           </p>
+
+          <div className="article-body">
 
           <div className="mt-10 space-y-6 text-gray-700 leading-relaxed">
             <h2 className="text-2xl font-bold text-gray-900">How bio bins fail in practice</h2>
@@ -201,9 +205,11 @@ export default function BlogPost3() {
             </p>
           </div>
 
+          </div>
+
           <BlogFaq faqs={faqs} />
 
-          <div className="mt-12 pt-8 border-t border-gray-100">
+          <div className="article-related mt-14">
             <p className="text-sm font-bold text-gray-900 mb-4">Related Articles</p>
             <div className="space-y-3">
               <Link href="/blog/why-every-school-needs-napkin-vending-machine" className="block text-sm text-primary-600 hover:underline">Why Every School Needs a Napkin Vending Machine →</Link>
@@ -211,7 +217,7 @@ export default function BlogPost3() {
             </div>
           </div>
 
-          <div className="mt-10 bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl border border-primary-100 p-6 text-center">
+          <div className="article-cta mt-10">
             <h3 className="font-bold text-gray-900 mb-2">Browse Lyra Incinerators</h3>
             <p className="text-sm text-gray-600 mb-4">Micro, Mini and Maxi — all CPCB & SWM compliant.</p>
             <div className="flex flex-wrap gap-3 justify-center">
@@ -220,6 +226,8 @@ export default function BlogPost3() {
             </div>
           </div>
         </article>
+        <ArticleAside />
+        </div>
       </main>
       <PageFooter />
     </>

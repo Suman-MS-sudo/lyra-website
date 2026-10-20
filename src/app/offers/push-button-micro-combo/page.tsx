@@ -128,7 +128,7 @@ export default function ComboOfferPage() {
         body="Leave your number and we'll call you back with full details on the Push Button + Micro Incinerator offer."
       />
       <StickyBar price={PRICE} />
-      <main className="bg-gray-950 min-h-screen overflow-hidden">
+      <main className="theme-light bg-gray-950 min-h-screen overflow-hidden">
         {/* Hero — dark, bold, gradient-mesh */}
         <section className="relative pt-24 pb-16 sm:pt-32 sm:pb-24">
           {/* Animated gradient orbs */}

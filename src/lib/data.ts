@@ -24,8 +24,10 @@ export const SITE = {
   }
 };
 
+import { GST_RATE } from "./pricing";
+
 /** GST rate applied to all machine prices. Pricelist MRP is quoted ex-GST. */
-export const GST_RATE = 0.18;
+export { GST_RATE };
 
 /** Price shown to buyers is the ex-GST MRP from the Lyra pricelist (Nov 2025). */
 export function priceInclGst(exGst: number): number {

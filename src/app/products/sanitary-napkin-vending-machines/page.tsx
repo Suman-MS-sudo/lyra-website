@@ -1,11 +1,13 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
-import Breadcrumb from "@/components/Breadcrumb";
-import AddToCartButton from "@/components/AddToCartButton";
-import { vendingMachines, SITE, formatINR } from "@/lib/data";
+import PageHero from "@/components/page/PageHero";
+import Section from "@/components/page/Section";
+import CategoryProductCard from "@/components/page/CategoryProductCard";
+import { CtaBand } from "@/components/page/Blocks";
+import { IconCheck } from "@/components/store/icons";
+import { vendingMachines, SITE } from "@/lib/data";
 import { offerPolicies } from "@/lib/offer-schema";
 
 export const metadata: Metadata = {
@@ -98,106 +100,72 @@ const comparisonRows: { label: string; key: "payment" | "connectivity" | "cloudR
 ];
 
 export default function VendingMachinesPage() {
+  const picks = vendingMachines.filter((p) => p.popular || p.slug === "push-button-vending-machine");
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageNavbar />
-      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
-        {/* Hero */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-10">
-          <Breadcrumb crumbs={[
+      <main className="bg-canvas">
+        <PageHero
+          crumbs={[
             { label: "Home", href: "/" },
             { label: "Products", href: "/products" },
             { label: "Vending Machines" },
-          ]} />
-          <h1 className="mt-6 font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-            Sanitary Napkin <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">Vending Machines</span>
-          </h1>
-          <p className="mt-4 text-gray-600 text-lg max-w-2xl">
-          8 models to match every budget and facility — from ₹12,000 push-button dispensers to touchless wave-sensor units and IoT-enabled smart machines with UPI payments and cloud analytics. Manufactured in Chennai, delivered across India. Prices exclude 18% GST; freight additional.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-4 text-sm">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium">✓ 1-Year Warranty</span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Pan-India Delivery</span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-200 font-medium">✓ Free Installation Support</span>
-          </div>
-        </section>
+          ]}
+          eyebrow="Category"
+          title={<>Sanitary Napkin <span className="text-gradient">Vending Machines</span></>}
+          lead={
+            <p>
+              8 models to match every budget and facility — from ₹12,000 push-button dispensers to touchless wave-sensor units and IoT-enabled smart machines with UPI payments and cloud analytics. Manufactured in Chennai, delivered across India. Prices exclude 18% GST; freight additional.
+            </p>
+          }
+          points={["1-Year Warranty", "Pan-India Delivery", "Free Installation Support"]}
+          actions={
+            <>
+              <Link href="#models" className="btn btn-primary h-12 px-6">Browse 8 models</Link>
+              <Link href="/compare-sanitary-napkin-vending-machines" className="btn btn-secondary h-12 px-6">Compare side by side</Link>
+            </>
+          }
+          images={picks.map((p) => ({ src: p.image, alt: p.fullName }))}
+        />
 
-        {/* Product Cards */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {vendingMachines.map((p) => (
-              <div key={p.slug} className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col">
-                <div className={`relative aspect-[4/3] bg-gradient-to-br ${p.accent} overflow-hidden`}>
-                  <Image
-                    src={p.image}
-                    alt={p.fullName}
-                    fill
-                    className="object-contain p-6 drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
-                  />
-                  <span className="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/90 text-emerald-700 text-[10px] font-bold uppercase tracking-wide">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> In Stock
-                  </span>
-                </div>
-                <div className="p-6 flex flex-col flex-1">
-                  {p.popular && (
-                    <span className="inline-block mb-3 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-primary-100 text-primary-700 rounded-full w-fit">⭐ Most Popular</span>
-                  )}
-                  <span className="inline-block mb-2 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-500 rounded-full w-fit">{p.badge}</span>
-                  <h2 className="font-bold text-gray-900 text-xl group-hover:text-primary-600 transition-colors">{p.name}</h2>
-                  <p className="text-xs text-gray-500 mt-0.5 mb-3">{p.code}</p>
-                  <p className="text-sm text-gray-600 leading-relaxed flex-1">{p.description}</p>
-                  <ul className="mt-4 space-y-1.5">
-                    {p.features.slice(0, 4).map((f) => (
-                      <li key={f} className="flex items-center gap-2 text-xs text-gray-600">
-                        <span className="w-4 h-4 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center text-[10px] font-bold flex-shrink-0">✓</span>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-5 pt-4 border-t border-gray-100 flex items-end justify-between">
-                    <div>
-                      <p className="text-lg font-bold text-gray-900">{formatINR(p.price)}</p>
-                      <p className="text-[11px] text-gray-500">+ 18% GST · freight extra</p>
-                    </div>
-                    <div className="flex flex-wrap gap-3 text-xs font-semibold">
-                      <Link href={`/products/${p.slug}`} className="text-primary-600 hover:underline">Details<span className="sr-only"> for {p.name}</span> →</Link>
-                      <Link href={`/products/${p.slug}#enquiry`} className="text-gray-900 hover:underline">Enquire →</Link>
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="block" />
-                  </div>
-                </div>
-              </div>
+        <section id="models" className="scroll-mt-36 bg-canvas py-14 sm:py-20">
+          <div className="lyra-container grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {vendingMachines.map((p, k) => (
+              <CategoryProductCard key={p.slug} p={p} priority={k < 3} />
             ))}
           </div>
         </section>
 
-        {/* Comparison Table */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Quick Comparison</h2>
-          <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-gray-50">
-                  <th className="px-4 py-3 text-left font-semibold text-gray-700">Feature</th>
+        <Section tone="subtle" kicker="Compare" title="Quick Comparison" action={{ href: "/compare-sanitary-napkin-vending-machines", label: "Full comparison" }}>
+          <div className="overflow-x-auto rounded-[20px] border border-line bg-surface">
+            <table className="w-full min-w-[860px] text-sm">
+              <thead className="bg-subtle">
+                <tr>
+                  <th className="sticky left-0 bg-subtle px-5 py-4 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">Feature</th>
                   {vendingMachines.map((p) => (
-                    <th key={p.slug} className="px-4 py-3 text-center font-semibold text-gray-700">{p.name}</th>
+                    <th key={p.slug} className="px-4 py-4 text-center font-display text-[13px] font-semibold text-ink">
+                      <Link href={`/products/${p.slug}`} className="hover:text-brand">{p.name}</Link>
+                    </th>
                   ))}
                 </tr>
               </thead>
-              <tbody>
-                {comparisonRows.map((row, i) => (
-                  <tr key={row.label} className={i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}>
-                    <td className="px-4 py-3 text-gray-600 font-medium">{row.label}</td>
+              <tbody className="divide-y divide-line">
+                {comparisonRows.map((row) => (
+                  <tr key={row.label}>
+                    <td className="sticky left-0 bg-surface px-5 py-3.5 font-medium text-ink">{row.label}</td>
                     {vendingMachines.map((p) => {
                       const val = p.compare ? p.compare[row.key] : "—";
                       return (
-                        <td key={p.slug} className={`px-4 py-3 text-center ${val === "Yes" ? "text-green-600 font-semibold" : val === "No" ? "text-gray-500" : "text-gray-700"}`}>
-                          {val}
+                        <td key={p.slug} className="px-4 py-3.5 text-center text-body">
+                          {val === "Yes" ? (
+                            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-50 text-emerald-700" aria-label="Yes"><IconCheck className="h-3.5 w-3.5" strokeWidth={2.4} /></span>
+                          ) : val === "No" ? (
+                            <span className="text-muted" aria-label="No">—</span>
+                          ) : (
+                            val
+                          )}
                         </td>
                       );
                     })}
@@ -206,19 +174,13 @@ export default function VendingMachinesPage() {
               </tbody>
             </table>
           </div>
-        </section>
+        </Section>
 
-        {/* CTA */}
-        <section className="relative overflow-hidden bg-gradient-to-r from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6] py-14 text-white text-center px-5">
-          <div className="relative z-10">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-3">Not sure which model to choose?</h2>
-            <p className="text-white/80 mb-6 max-w-xl mx-auto">Tell us your facility type and budget — our team will recommend the right machine within 30 minutes.</p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20a%20Lyra%20vending%20machine.%20Please%20help%20me%20choose%20the%20right%20model." target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white text-[#1d4ed8] font-bold rounded-full">WhatsApp Us</Link>
-              <Link href="tel:+918122378860" className="px-8 py-3 bg-white/20 border border-white/30 text-white font-bold rounded-full">Call +91-81223 78860</Link>
-            </div>
-          </div>
-        </section>
+        <CtaBand
+          title="Not sure which model to choose?"
+          body="Tell us your facility type and budget — our team will recommend the right machine within 30 minutes."
+          primary={{ href: "https://wa.me/918122378860?text=Hi%21%20I%27m%20interested%20in%20a%20Lyra%20vending%20machine.%20Please%20help%20me%20choose%20the%20right%20model.", label: "WhatsApp Us" }}
+        />
       </main>
       <PageFooter />
     </>

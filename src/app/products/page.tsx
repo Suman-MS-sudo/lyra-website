@@ -1,11 +1,10 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
-import AddToCartButton from "@/components/AddToCartButton";
-import { vendingMachines, incinerators, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
+import ShopGrid from "@/components/store/ShopGrid";
+import { vendingMachines, incinerators, SITE, formatINR } from "@/lib/data";
 import { offerPolicies } from "@/lib/offer-schema";
 
 export const metadata: Metadata = {
@@ -133,123 +132,33 @@ export default function ProductsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <PageNavbar />
-      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
+      <main className="min-h-screen bg-canvas">
         {/* Hero */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-8 pt-8 pb-10">
-          <Breadcrumb crumbs={[{ label: "Home", href: "/" }, { label: "Products" }]} />
-          <h1 className="mt-8 font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight">
-            All <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">Products</span>
-          </h1>
-          <p className="mt-4 text-gray-600 text-lg max-w-2xl">
-            India&apos;s most complete range of sanitary napkin vending machines and incinerators. Every model is manufactured at our Chennai facility with 1-year warranty and pan-India service.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3 text-sm font-medium">
-            <a href="#vending-machines" className="px-4 py-2 rounded-full bg-primary-100 text-primary-700 hover:bg-primary-200 transition-colors">Vending Machines ↓</a>
-            <a href="#incinerators" className="px-4 py-2 rounded-full bg-primary-100 text-primary-700 hover:bg-primary-200 transition-colors">Incinerators ↓</a>
-            <Link href="/sanitary-napkin-vending-machine-price-india" className="px-4 py-2 rounded-full bg-teal-100 text-teal-700 hover:bg-teal-200 transition-colors">Price list →</Link>
-            <Link href="/compare-sanitary-napkin-vending-machines" className="px-4 py-2 rounded-full bg-teal-100 text-teal-700 hover:bg-teal-200 transition-colors">Compare models →</Link>
+        <section className="border-b border-line bg-subtle">
+          <div className="lyra-container pb-10 pt-6 sm:pt-8">
+            <Breadcrumb crumbs={[{ label: "Home", href: "/" }, { label: "Products" }]} />
+            <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+              <div>
+                <p className="kicker">Shop</p>
+                <h1 className="mt-3 text-display-lg font-semibold text-ink">
+                  All <span className="text-gradient">Products</span>
+                </h1>
+                <p className="mt-4 max-w-2xl text-lg text-body">
+                  India&apos;s most complete range of sanitary napkin vending machines and incinerators. Every model is manufactured at our Chennai facility with 1-year warranty and pan-India service.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 text-sm font-medium">
+                <a href="#vending-machines" className="inline-flex h-10 items-center rounded-full border border-line bg-surface px-4 text-ink hover:border-brand hover:text-brand">Vending Machines ↓</a>
+                <a href="#incinerators" className="inline-flex h-10 items-center rounded-full border border-line bg-surface px-4 text-ink hover:border-brand hover:text-brand">Incinerators ↓</a>
+                <Link href="/sanitary-napkin-vending-machine-price-india" className="inline-flex h-10 items-center rounded-full border border-line bg-surface px-4 text-ink hover:border-brand hover:text-brand">Price list →</Link>
+                <Link href="/compare-sanitary-napkin-vending-machines" className="inline-flex h-10 items-center rounded-full border border-line bg-surface px-4 text-ink hover:border-brand hover:text-brand">Compare models →</Link>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Vending Machines */}
-        <section id="vending-machines" className="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
-          <div className="flex items-center gap-4 mb-8">
-            <div>
-              <p className="text-xs font-bold text-primary-500 uppercase tracking-widest mb-1">Category</p>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Sanitary Napkin Vending Machines</h2>
-            </div>
-            <Link href="/products/sanitary-napkin-vending-machines" className="ml-auto text-sm text-primary-600 font-semibold hover:underline whitespace-nowrap">
-              View All<span className="sr-only"> vending machines</span> →
-            </Link>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {vendingMachines.map((p) => (
-              <div
-                key={p.slug}
-                className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
-              >
-                <Link href={`/products/${p.slug}`} aria-label={p.fullName} className="absolute inset-0 z-0" />
-                <div className={`relative aspect-square bg-gradient-to-br ${p.accent} overflow-hidden`}>
-                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/10" />
-                  <Image
-                    src={p.image}
-                    alt={p.fullName}
-                    fill
-                    className="object-contain p-8 drop-shadow-xl group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
-                  />
-                  <span className="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/90 text-emerald-700 text-[10px] font-bold uppercase tracking-wide">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> In Stock
-                  </span>
-                  {p.popular && (
-                    <span className="absolute top-3 right-3 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-yellow-400 text-yellow-900 rounded-full">★ Popular</span>
-                  )}
-                </div>
-                <div className="p-5 flex flex-col flex-1">
-                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">{p.code}</p>
-                  <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
-                  <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug flex-1">{p.tagline}</p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-xl font-extrabold text-gray-900">{formatINR(p.price)}</span>
-                    <span className="text-[11px] text-gray-500">+ 18% GST · {formatINR(priceInclGst(p.price))} incl.</span>
-                  </div>
-                  <span className="mt-4 text-xs font-bold text-primary-600 group-hover:underline">View Details →</span>
-                  <div className="relative z-10 mt-3">
-                    <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="block" />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Incinerators */}
-        <section id="incinerators" className="max-w-7xl mx-auto px-5 sm:px-8 pb-20">
-          <div className="flex items-center gap-4 mb-8">
-            <div>
-              <p className="text-xs font-bold text-primary-500 uppercase tracking-widest mb-1">Category</p>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Sanitary Napkin Incinerators</h2>
-            </div>
-            <Link href="/products/sanitary-napkin-incinerators" className="ml-auto text-sm text-primary-600 font-semibold hover:underline whitespace-nowrap">
-              View All<span className="sr-only"> incinerators</span> →
-            </Link>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {incinerators.map((p) => (
-              <div
-                key={p.slug}
-                className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
-              >
-                <Link href={`/products/${p.slug}`} aria-label={p.fullName} className="absolute inset-0 z-0" />
-                <div className={`relative aspect-square bg-gradient-to-br ${p.accent} overflow-hidden`}>
-                  <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/10" />
-                  <Image
-                    src={p.image}
-                    alt={p.fullName}
-                    fill
-                    className="object-contain p-8 drop-shadow-xl group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
-                  />
-                  <span className="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/90 text-emerald-700 text-[10px] font-bold uppercase tracking-wide">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> In Stock
-                  </span>
-                </div>
-                <div className="p-5 flex flex-col flex-1">
-                  <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">{p.code}</p>
-                  <h3 className="font-bold text-gray-900 mt-1 text-lg group-hover:text-primary-600 transition-colors">{p.name}</h3>
-                  <p className="text-sm text-gray-500 mt-1 mb-4 leading-snug flex-1">{p.tagline}</p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-xl font-extrabold text-gray-900">{formatINR(p.price)}</span>
-                    <span className="text-[11px] text-gray-500">+ 18% GST · {formatINR(priceInclGst(p.price))} incl.</span>
-                  </div>
-                  <span className="mt-4 text-xs font-bold text-primary-600 group-hover:underline">View Details →</span>
-                  <div className="relative z-10 mt-3">
-                    <AddToCartButton slug={p.slug} name={p.fullName} price={p.price} variant="block" />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        <section className="lyra-container py-10 sm:py-14" aria-label="Product catalogue">
+          <ShopGrid />
         </section>
 
         {/* FAQ */}
