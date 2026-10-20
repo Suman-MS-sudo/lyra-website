@@ -56,7 +56,7 @@ export default function FeatureGrid({ items, columns = 3 }: { items: Item[]; col
   return (
     <ul className={`grid overflow-hidden rounded-[24px] border border-line bg-line sm:grid-cols-2 ${cols} [&>li]:bg-surface`} style={{ gap: 1 }}>
       {items.map((f, k) => (
-        <li key={k} className="group relative p-7 transition-colors hover:bg-subtle sm:p-8">
+        <li key={k} className="spotlight group relative p-7 transition-colors hover:bg-subtle sm:p-8">
           <div className="flex items-center justify-between">
             <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-canvas text-brand transition-colors group-hover:border-primary-200">
               <FeatureIcon icon={f.icon} />

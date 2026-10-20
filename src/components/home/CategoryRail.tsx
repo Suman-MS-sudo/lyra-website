@@ -57,7 +57,7 @@ function Tile({
   return (
     <Link
       href={href}
-      className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-[26px] border border-line bg-subtle transition-[border-color,box-shadow] duration-500 hover:border-line-strong hover:shadow-lift dark:bg-surface ${
+      className={`spotlight group relative flex h-full flex-col justify-between overflow-hidden rounded-[26px] border border-line bg-subtle transition-[border-color,box-shadow] duration-500 hover:border-line-strong hover:shadow-lift dark:bg-surface ${
         big ? "min-h-[540px] p-7 sm:min-h-[520px] sm:p-9" : "min-h-[230px] p-6 sm:p-7"
       }`}
     >

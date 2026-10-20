@@ -123,7 +123,7 @@ export default function Customers() {
               <motion.figure
                 key={t.author}
                 {...fade(i * 0.08)}
-                className="flex h-full flex-col rounded-[20px] border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-lift sm:p-7"
+                className="spotlight flex h-full flex-col rounded-[20px] border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-lift sm:p-7"
               >
                 <div className="flex gap-0.5 text-amber-400" aria-label="5 out of 5 stars">
                   {Array.from({ length: 5 }).map((_, k) => (

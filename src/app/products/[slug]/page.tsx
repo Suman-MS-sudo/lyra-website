@@ -444,7 +444,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         <div className="lg:hidden h-20" />
 
         {/* ── In-page section tabs ─────────────────────────── */}
-        <nav aria-label="Product sections" className="glass sticky top-[121px] z-30 hidden border-y border-line lg:block">
+        <nav aria-label="Product sections" className="glass sticky top-[88px] z-30 hidden border-y border-line lg:block">
           <div className="lyra-container flex h-12 items-center gap-1 overflow-x-auto text-sm font-medium text-body">
             {[
               ["#features", "Features"],

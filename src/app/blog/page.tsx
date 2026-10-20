@@ -131,7 +131,7 @@ export default function BlogPage() {
             <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {rest.map((post) => (
                 <li key={post.slug}>
-                  <Link href={`/blog/${post.slug}`} className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-line bg-surface transition-[border-color,box-shadow] duration-300 hover:border-line-strong hover:shadow-lift">
+                  <Link href={`/blog/${post.slug}`} className="spotlight group flex h-full flex-col overflow-hidden rounded-[22px] border border-line bg-surface transition-[border-color,box-shadow] duration-300 hover:border-line-strong hover:shadow-lift">
                     <div className="relative aspect-[16/9] overflow-hidden bg-subtle">
                       <div aria-hidden className="absolute inset-[20%] rounded-full bg-[radial-gradient(closest-side,rgb(var(--brand)/0.16),transparent)]" />
                       <Image src={imageFor(post.category)} alt="" fill sizes="(max-width: 640px) 100vw, 380px" className="product-shot object-contain p-8 transition-transform duration-700 ease-out-expo group-hover:-translate-y-1 group-hover:scale-[1.05]" />

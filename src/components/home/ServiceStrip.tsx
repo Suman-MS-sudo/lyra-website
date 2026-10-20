@@ -9,7 +9,7 @@ const items = [
 
 export default function ServiceStrip() {
   return (
-    <section aria-label="Why buy from Lyra" className="border-b border-line bg-canvas">
+    <section aria-label="Why buy from Lyra" className="dark border-b border-line bg-canvas">
       <ul className="lyra-container grid grid-cols-2 lg:grid-cols-4">
         {items.map(({ icon: Icon, title, body }, k) => (
           <li

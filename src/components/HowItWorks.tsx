@@ -83,7 +83,7 @@ export default function HowItWorks() {
               <span className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border border-line bg-canvas font-display text-base font-semibold text-brand shadow-sm">
                 {step.n}
               </span>
-              <div className="mt-6 rounded-[20px] border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-lift">
+              <div className="spotlight mt-6 rounded-[20px] border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-lift">
                 <h3 className="font-display text-lg font-semibold text-ink">{step.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-body">{step.body}</p>
               </div>

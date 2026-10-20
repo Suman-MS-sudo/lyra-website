@@ -6,16 +6,21 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { openCart, useCart } from "@/lib/cart";
-import { computeTotals, inr } from "@/lib/pricing";
+import { inr } from "@/lib/pricing";
 import { useCatalog } from "@/components/store/StoreProvider";
 import ThemeToggle from "@/components/store/ThemeToggle";
-import HeaderSearch from "@/components/store/HeaderSearch";
+import SearchDialog from "@/components/store/SearchDialog";
 import {
   IconArrowRight,
   IconBag,
+  IconBuilding,
   IconChevronDown,
+  IconHospital,
   IconMenu,
   IconPhone,
+  IconSchool,
+  IconSearch,
+  IconUsers,
   IconWhatsApp,
   IconX,
 } from "@/components/store/icons";
@@ -25,26 +30,18 @@ const PHONE_DISPLAY = "+91-81223 78860";
 const WHATSAPP = `https://wa.me/918122378860?text=${encodeURIComponent("Hi! I'm interested in Lyra vending machines / incinerators.")}`;
 
 const solutions = [
-  { label: "Schools & colleges", href: "/solutions/schools-colleges", note: "Girls' toilets, hostels and staff rooms" },
-  { label: "Hospitals", href: "/solutions/hospitals", note: "Wards, OPD and staff washrooms" },
-  { label: "Offices & factories", href: "/solutions/offices", note: "Corporate campuses and shop floors" },
-  { label: "Women's hostels", href: "/solutions/womens-hostels-colleges", note: "Round-the-clock, unattended access" },
+  { label: "Schools & colleges", href: "/solutions/schools-colleges", note: "Girls' toilets, hostels and staff rooms", icon: IconSchool },
+  { label: "Hospitals", href: "/solutions/hospitals", note: "Wards, OPD and staff washrooms", icon: IconHospital },
+  { label: "Offices & factories", href: "/solutions/offices", note: "Corporate campuses and shop floors", icon: IconBuilding },
+  { label: "Women's hostels", href: "/solutions/womens-hostels-colleges", note: "Round-the-clock, unattended access", icon: IconUsers },
 ];
 
 const resources = [
-  { label: "Price list 2026", href: "/sanitary-napkin-vending-machine-price-india" },
-  { label: "Compare all models", href: "/compare-sanitary-napkin-vending-machines" },
-  { label: "Government schemes & funding", href: "/government-schemes-menstrual-hygiene" },
-  { label: "Service areas", href: "/service-areas" },
-  { label: "Blog & guides", href: "/blog" },
-];
-
-const primaryNav = [
-  { label: "Vending machines", href: "/products/sanitary-napkin-vending-machines" },
-  { label: "Incinerators", href: "/products/sanitary-napkin-incinerators" },
-  { label: "Bundles", href: "/products/vending-incinerator-bundle" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Price list 2026", href: "/sanitary-napkin-vending-machine-price-india", note: "Every model, ex-GST" },
+  { label: "Compare all models", href: "/compare-sanitary-napkin-vending-machines", note: "Side-by-side specs" },
+  { label: "Government schemes", href: "/government-schemes-menstrual-hygiene", note: "Funding and subsidies" },
+  { label: "Service areas", href: "/service-areas", note: "All states & UTs" },
+  { label: "Blog & guides", href: "/blog", note: "Buying guides, case studies" },
 ];
 
 type MenuKey = "shop" | "solutions" | "resources" | null;
@@ -53,23 +50,29 @@ export default function SiteHeader() {
   const pathname = usePathname();
   const [menu, setMenu] = useState<MenuKey>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close menus on navigation and on Escape.
   useEffect(() => {
     setMenu(null);
     setMobileOpen(false);
+    setSearchOpen(false);
   }, [pathname]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
       if (e.key === "Escape") {
         setMenu(null);
         setMobileOpen(false);
@@ -78,6 +81,7 @@ export default function SiteHeader() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
@@ -91,52 +95,42 @@ export default function SiteHeader() {
       setMenu(key);
     },
     onMouseLeave: () => {
-      closeTimer.current = setTimeout(() => setMenu(null), 140);
+      closeTimer.current = setTimeout(() => setMenu(null), 160);
     },
   });
 
+  const isActive = (prefixes: string[]) => prefixes.some((p) => pathname === p || pathname.startsWith(p + "/"));
+
   return (
     <>
-      {/* Utility strip: scrolls away, the main bar stays */}
-      <div className="hidden border-b border-white/10 bg-night text-[12.5px] text-white/65 md:block">
-        <div className="lyra-container flex h-9 items-center justify-between gap-6">
-          <p className="truncate">
-            <span className="text-white">Direct from the manufacturer</span>
-            <span className="mx-2.5 text-white/25">/</span>
-            ISO 9001:2015 certified
-            <span className="mx-2.5 text-white/25">/</span>
-            GST invoice on every order
-            <span className="mx-2.5 text-white/25">/</span>
-            Pan-India dispatch from Chennai
-          </p>
-          <div className="flex flex-none items-center gap-5">
-            <a href={`tel:${PHONE}`} className="inline-flex items-center gap-1.5 text-white transition-colors hover:text-primary-400">
-              <IconPhone className="h-3.5 w-3.5" />
-              {PHONE_DISPLAY}
-            </a>
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 transition-colors hover:text-white">
-              <IconWhatsApp className="h-3.5 w-3.5" />
-              WhatsApp
-            </a>
-            <Link href="/contact" className="transition-colors hover:text-white">
-              Help
-            </Link>
-          </div>
-        </div>
+      {/* One-line announcement (scrolls away) */}
+      <div className="bg-night">
+        <Link
+          href="/offers/push-button-micro-combo"
+          className="lyra-container group flex h-9 items-center justify-center gap-2 text-[12.5px] text-white/70 transition-colors hover:text-white"
+        >
+          <span className="rounded-full bg-primary-600 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">New</span>
+          <span className="truncate">
+            Push Button + Micro Incinerator combo at <strong className="font-semibold text-white">₹19,999</strong>
+            <span className="hidden sm:inline"> · GST invoice · pan-India dispatch</span>
+          </span>
+          <IconArrowRight className="h-3.5 w-3.5 flex-none transition-transform group-hover:translate-x-0.5" />
+        </Link>
       </div>
 
-      <header
-        className={`sticky top-0 z-50 transition-[background-color,box-shadow,border-color] duration-300 ${
-          scrolled ? "glass shadow-[0_10px_30px_-18px_rgba(15,23,42,0.35)]" : "border-b border-line bg-canvas"
-        }`}
-      >
-        {/* Main bar */}
-        <div className="lyra-container flex h-16 items-center gap-3 sm:gap-5 lg:h-[72px]">
+      <header className="sticky top-0 z-50 px-3 pt-3 sm:px-4">
+        <div
+          className={`relative mx-auto flex h-16 max-w-[82rem] items-center gap-2 rounded-full border pl-3 pr-2 transition-[background-color,border-color,box-shadow] duration-300 sm:pl-5 ${
+            scrolled
+              ? "glass border-line shadow-[0_12px_40px_-16px_rgba(15,23,42,0.35)] dark:shadow-[0_12px_40px_-16px_rgba(0,0,0,0.8)]"
+              : "border-line bg-surface/90 backdrop-blur"
+          }`}
+        >
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
-            className="-ml-2 inline-flex h-10 w-10 items-center justify-center rounded-full text-ink hover:bg-subtle lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink hover:bg-subtle lg:hidden"
           >
             <IconMenu />
           </button>
@@ -145,110 +139,83 @@ export default function SiteHeader() {
             <span className="relative h-9 w-9 flex-none">
               <Image src="/images/logo.png" alt="" fill sizes="36px" quality={60} className="object-contain" priority />
             </span>
-            <span className="hidden leading-none sm:block">
-              <span className="block font-display text-[17px] font-semibold tracking-tight text-ink">Lyra Enterprises</span>
-              <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">Hygiene infrastructure</span>
+            <span className="hidden font-display text-[17px] font-semibold tracking-tight text-ink sm:block">
+              Lyra<span className="text-muted"> Enterprises</span>
             </span>
           </Link>
 
-          <div className="hidden flex-1 justify-center md:flex">
-            <HeaderSearch />
-          </div>
-
-          <div className="ml-auto flex items-center gap-1 sm:gap-2 md:ml-0">
-            <a
-              href={`tel:${PHONE}`}
-              className="mr-2 hidden items-center gap-3 xl:flex"
-              aria-label={`Call sales ${PHONE_DISPLAY}`}
-            >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-brand">
-                <IconPhone className="h-[18px] w-[18px]" />
-              </span>
-              <span className="leading-tight">
-                <span className="block text-[11px] font-medium uppercase tracking-wider text-muted">Sales, Mon–Sat</span>
-                <span className="block text-sm font-semibold text-ink tabular">{PHONE_DISPLAY}</span>
-              </span>
-            </a>
-            <ThemeToggle />
-            <CartButton />
-          </div>
-        </div>
-
-        {/* Mobile search */}
-        <div className="lyra-container pb-3 md:hidden">
-          <HeaderSearch compact />
-        </div>
-
-        {/* Desktop nav row */}
-        <nav aria-label="Primary" className="hidden border-t border-line lg:block">
-          <div className="lyra-container relative flex h-12 items-center justify-between">
-            <ul className="flex items-center gap-1 text-[14px] font-medium text-body">
+          {/* Centre navigation */}
+          <nav aria-label="Primary" className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
+            <ul className="flex items-center gap-0.5 text-[14px] font-medium">
               <li {...hover("shop")}>
-                <button
-                  type="button"
-                  aria-expanded={menu === "shop"}
-                  onClick={() => setMenu(menu === "shop" ? null : "shop")}
-                  className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-ink px-3.5 font-semibold text-canvas transition hover:bg-ink/85"
-                >
-                  <IconMenu className="h-4 w-4" />
-                  Shop all
-                  <IconChevronDown className={`h-3.5 w-3.5 transition-transform ${menu === "shop" ? "rotate-180" : ""}`} />
-                </button>
+                <MenuTrigger open={menu === "shop"} active={isActive(["/products"])} onClick={() => setMenu(menu === "shop" ? null : "shop")}>
+                  Shop
+                </MenuTrigger>
               </li>
-              {primaryNav.slice(0, 3).map((l) => (
-                <NavLink key={l.href} href={l.href} active={pathname === l.href}>
-                  {l.label}
-                </NavLink>
-              ))}
               <li {...hover("solutions")}>
-                <MenuTrigger open={menu === "solutions"} onClick={() => setMenu(menu === "solutions" ? null : "solutions")}>
+                <MenuTrigger open={menu === "solutions"} active={isActive(["/solutions"])} onClick={() => setMenu(menu === "solutions" ? null : "solutions")}>
                   Solutions
                 </MenuTrigger>
               </li>
               <li {...hover("resources")}>
-                <MenuTrigger open={menu === "resources"} onClick={() => setMenu(menu === "resources" ? null : "resources")}>
+                <MenuTrigger
+                  open={menu === "resources"}
+                  active={isActive(["/blog", "/sanitary-napkin-vending-machine-price-india", "/compare-sanitary-napkin-vending-machines", "/government-schemes-menstrual-hygiene", "/service-areas"])}
+                  onClick={() => setMenu(menu === "resources" ? null : "resources")}
+                >
                   Resources
                 </MenuTrigger>
               </li>
-              {primaryNav.slice(3).map((l) => (
-                <NavLink key={l.href} href={l.href} active={pathname === l.href}>
-                  {l.label}
-                </NavLink>
-              ))}
+              <NavLink href="/about" active={pathname === "/about"}>
+                About
+              </NavLink>
+              <NavLink href="/contact" active={pathname === "/contact"}>
+                Contact
+              </NavLink>
             </ul>
-            <Link
-              href="/offers/push-button-micro-combo"
-              className="group inline-flex items-center gap-2 text-[13px] font-semibold text-ink"
-            >
-              <span className="rounded-md bg-primary-600 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">Offer</span>
-              Push Button + Micro combo
-              <IconArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-            </Link>
+          </nav>
 
-            <AnimatePresence>
-              {menu && (
-                <motion.div
-                  key={menu}
-                  {...hover(menu)}
-                  initial={{ opacity: 0, y: -6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4, transition: { duration: 0.12 } }}
-                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute left-4 right-4 top-full z-50 mt-px sm:left-6 sm:right-6 lg:left-8 lg:right-8"
-                >
-                  <div className="overflow-hidden rounded-b-2xl border border-t-0 border-line bg-elevated shadow-lg">
-                    {menu === "shop" && <ShopMenu />}
-                    {menu === "solutions" && <SolutionsMenu />}
-                    {menu === "resources" && <ResourcesMenu />}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+          {/* Actions */}
+          <div className="ml-auto flex items-center gap-1">
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              aria-label="Search products"
+              className="group inline-flex h-10 items-center gap-2 rounded-full px-2.5 text-sm text-muted transition-colors hover:bg-subtle hover:text-ink xl:border xl:border-line xl:pl-3.5 xl:pr-2"
+            >
+              <IconSearch className="h-[18px] w-[18px]" />
+              <span className="hidden xl:inline">Search</span>
+              <kbd className="hidden rounded-md border border-line bg-canvas px-1.5 py-0.5 text-[10px] font-semibold text-muted xl:inline">Ctrl K</kbd>
+            </button>
+            <ThemeToggle />
+            <CartButton />
           </div>
-        </nav>
+
+          {/* Mega menus */}
+          <AnimatePresence>
+            {menu && (
+              <motion.div
+                key={menu}
+                {...hover(menu)}
+                initial={{ opacity: 0, y: -8, scale: 0.985 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -6, scale: 0.99, transition: { duration: 0.12 } }}
+                transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-x-0 top-[calc(100%+10px)] z-50 mx-auto hidden w-[min(64rem,calc(100vw-2rem))] lg:block"
+              >
+                <div className="overflow-hidden rounded-[24px] border border-line bg-elevated shadow-[0_30px_80px_-24px_rgba(15,23,42,0.35)] dark:shadow-[0_30px_80px_-24px_rgba(0,0,0,0.9)]">
+                  {menu === "shop" && <ShopMenu />}
+                  {menu === "solutions" && <SolutionsMenu />}
+                  {menu === "resources" && <ResourcesMenu />}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </header>
 
-      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} onSearch={() => setSearchOpen(true)} />
     </>
   );
 }
@@ -259,24 +226,28 @@ function NavLink({ href, active, children }: { href: string; active?: boolean; c
       <Link
         href={href}
         aria-current={active ? "page" : undefined}
-        className={`inline-flex h-9 items-center rounded-lg px-3 transition-colors hover:bg-subtle hover:text-ink ${active ? "text-ink" : ""}`}
+        className={`relative inline-flex h-10 items-center rounded-full px-4 transition-colors hover:bg-subtle hover:text-ink ${active ? "text-ink" : "text-body"}`}
       >
         {children}
+        {active && <span className="absolute bottom-1.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-primary-600" />}
       </Link>
     </li>
   );
 }
 
-function MenuTrigger({ open, onClick, children }: { open: boolean; onClick: () => void; children: React.ReactNode }) {
+function MenuTrigger({ open, active, onClick, children }: { open: boolean; active?: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
     <button
       type="button"
       aria-expanded={open}
       onClick={onClick}
-      className={`inline-flex h-9 items-center gap-1 rounded-lg px-3 transition-colors hover:bg-subtle hover:text-ink ${open ? "bg-subtle text-ink" : ""}`}
+      className={`relative inline-flex h-10 items-center gap-1 rounded-full px-4 transition-colors hover:bg-subtle hover:text-ink ${
+        open ? "bg-subtle text-ink" : active ? "text-ink" : "text-body"
+      }`}
     >
       {children}
-      <IconChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`} />
+      <IconChevronDown className={`h-3.5 w-3.5 opacity-60 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+      {active && !open && <span className="absolute bottom-1.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-primary-600" />}
     </button>
   );
 }
@@ -284,11 +255,7 @@ function MenuTrigger({ open, onClick, children }: { open: boolean; onClick: () =
 function CartButton() {
   const { items } = useCart();
   const { bySlug } = useCatalog();
-  const lines = Object.entries(items).flatMap(([slug, qty]) => {
-    const p = bySlug.get(slug);
-    return p ? [{ price: p.price, category: p.category, qty }] : [];
-  });
-  const { subtotal } = computeTotals(lines);
+  // Napkin packs count as one line, not 100 items.
   const units = Object.entries(items).reduce((n, [slug, q]) => n + (bySlug.get(slug)?.category === "napkin" ? 1 : q), 0);
 
   return (
@@ -296,29 +263,24 @@ function CartButton() {
       type="button"
       onClick={openCart}
       aria-label={units > 0 ? `Open cart, ${units} item${units === 1 ? "" : "s"}` : "Open cart"}
-      className="group flex items-center gap-3 rounded-full py-1 pl-1 pr-1 transition-colors hover:bg-subtle sm:pr-3"
+      className="relative ml-1 inline-flex h-11 items-center gap-2 rounded-full bg-ink pl-3.5 pr-4 text-sm font-semibold text-canvas transition-transform hover:scale-[1.03] active:scale-[0.98]"
     >
-      <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-ink text-canvas">
-        <IconBag className="h-[18px] w-[18px]" />
-        <AnimatePresence>
-          {units > 0 && (
-            <motion.span
-              key={units}
-              initial={{ scale: 0.4, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.4, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 520, damping: 22 }}
-              className="absolute -right-1 -top-1 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-primary-600 px-1 text-[10.5px] font-bold text-white ring-2 ring-canvas"
-            >
-              {units > 99 ? "99+" : units}
-            </motion.span>
-          )}
-        </AnimatePresence>
-      </span>
-      <span className="hidden text-left leading-tight sm:block">
-        <span className="block text-[11px] font-medium uppercase tracking-wider text-muted">Cart</span>
-        <span className="block text-sm font-semibold text-ink tabular">{inr(subtotal)}</span>
-      </span>
+      <IconBag className="h-[18px] w-[18px]" />
+      <span className="hidden sm:inline">Cart</span>
+      <AnimatePresence mode="popLayout">
+        {units > 0 && (
+          <motion.span
+            key={units}
+            initial={{ scale: 0.4, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.4, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 520, damping: 22 }}
+            className="flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-primary-600 px-1.5 text-[11px] font-bold text-white"
+          >
+            {units > 99 ? "99+" : units}
+          </motion.span>
+        )}
+      </AnimatePresence>
     </button>
   );
 }
@@ -329,8 +291,8 @@ function ShopMenu() {
   const incinerators = catalog.filter((p) => p.category === "incinerator");
   const napkins = catalog.filter((p) => p.category === "napkin");
   return (
-    <div className="grid grid-cols-[1fr_1fr_17rem]">
-      <div className="border-r border-line p-6">
+    <div className="grid grid-cols-[1.35fr_1fr_17rem]">
+      <div className="p-6">
         <MenuHeading href="/products/sanitary-napkin-vending-machines">Vending machines</MenuHeading>
         <ul className="mt-3 grid grid-cols-2 gap-1">
           {machines.map((p) => (
@@ -338,7 +300,7 @@ function ShopMenu() {
           ))}
         </ul>
       </div>
-      <div className="border-r border-line p-6">
+      <div className="border-l border-line p-6">
         <MenuHeading href="/products/sanitary-napkin-incinerators">Incinerators</MenuHeading>
         <ul className="mt-3 grid gap-1">
           {incinerators.map((p) => (
@@ -353,15 +315,15 @@ function ShopMenu() {
             <MenuProduct key={p.slug} slug={p.slug} name={p.name} image={p.image} meta={`${inr(p.price)} / pc`} />
           ))}
         </ul>
+        <Link href="/products" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:underline">
+          Shop all products <IconArrowRight className="h-3.5 w-3.5" />
+        </Link>
       </div>
-      <Link
-        href="/products/vending-incinerator-bundle"
-        className="group relative flex flex-col justify-between overflow-hidden bg-night p-6 text-white"
-      >
+      <Link href="/products/vending-incinerator-bundle" className="theme-light group relative m-3 flex flex-col justify-between overflow-hidden rounded-[18px] bg-night p-6 text-white">
         <div aria-hidden className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-primary-600/40 blur-3xl" />
         <div className="relative">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-400">Complete washroom kit</p>
-          <p className="mt-3 font-display text-xl font-semibold leading-snug">Vending machine + incinerator bundle</p>
+          <p className="mt-3 font-display text-xl font-semibold leading-snug text-white">Vending machine + incinerator bundle</p>
           <p className="mt-2 text-sm text-white/60">Dispense and dispose in one order, one invoice, one install visit.</p>
         </div>
         <span className="relative mt-6 inline-flex items-center gap-2 text-sm font-semibold">
@@ -385,7 +347,7 @@ function MenuProduct({ slug, name, image, meta }: { slug: string; name: string; 
   return (
     <li>
       <Link href={`/products/${slug}`} className="group flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-subtle">
-        <span className="relative h-11 w-11 flex-none overflow-hidden rounded-lg bg-subtle">
+        <span className="relative h-11 w-11 flex-none overflow-hidden rounded-lg bg-subtle transition-colors group-hover:bg-surface">
           <Image src={image} alt="" fill sizes="44px" className="object-contain p-1" />
         </span>
         <span className="min-w-0">
@@ -399,29 +361,46 @@ function MenuProduct({ slug, name, image, meta }: { slug: string; name: string; 
 
 function SolutionsMenu() {
   return (
-    <div className="grid grid-cols-4 gap-px bg-line">
-      {solutions.map((s) => (
-        <Link key={s.href} href={s.href} className="group bg-elevated p-6 transition-colors hover:bg-subtle">
-          <p className="font-display text-base font-semibold text-ink">{s.label}</p>
-          <p className="mt-1 text-sm text-muted">{s.note}</p>
-          <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
-            Explore <IconArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-          </span>
+    <div className="grid grid-cols-[1fr_18rem]">
+      <ul className="grid grid-cols-2 gap-1 p-4">
+        {solutions.map(({ label, href, note, icon: Icon }) => (
+          <li key={href}>
+            <Link href={href} className="group flex items-start gap-4 rounded-2xl p-4 transition-colors hover:bg-subtle">
+              <span className="flex h-11 w-11 flex-none items-center justify-center rounded-xl border border-line bg-canvas text-brand transition-colors group-hover:border-primary-200">
+                <Icon className="h-5 w-5" />
+              </span>
+              <span>
+                <span className="block font-display text-[15px] font-semibold text-ink">{label}</span>
+                <span className="mt-0.5 block text-sm text-muted">{note}</span>
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <div className="border-l border-line bg-subtle p-6">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">Not sure where to start?</p>
+        <p className="mt-2 font-display text-lg font-semibold text-ink">See every sector side by side</p>
+        <p className="mt-1.5 text-sm text-muted">Recommended machines, capacity and disposal for each kind of institution.</p>
+        <Link href="/solutions" className="btn btn-secondary mt-4 w-full">
+          All solutions
         </Link>
-      ))}
+      </div>
     </div>
   );
 }
 
 function ResourcesMenu() {
   return (
-    <div className="grid grid-cols-[1fr_20rem]">
-      <ul className="grid grid-cols-2 gap-1 p-5">
+    <div className="grid grid-cols-[1fr_18rem]">
+      <ul className="grid grid-cols-2 gap-1 p-4">
         {resources.map((r) => (
           <li key={r.href}>
-            <Link href={r.href} className="flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-ink transition-colors hover:bg-subtle">
-              {r.label}
-              <IconArrowRight className="h-3.5 w-3.5 text-muted" />
+            <Link href={r.href} className="group flex items-center justify-between gap-3 rounded-2xl px-4 py-3.5 transition-colors hover:bg-subtle">
+              <span>
+                <span className="block text-[15px] font-semibold text-ink">{r.label}</span>
+                <span className="block text-sm text-muted">{r.note}</span>
+              </span>
+              <IconArrowRight className="h-4 w-4 flex-none text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-brand" />
             </Link>
           </li>
         ))}
@@ -438,9 +417,9 @@ function ResourcesMenu() {
   );
 }
 
-function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
+function MobileMenu({ open, onClose, onSearch }: { open: boolean; onClose: () => void; onSearch: () => void }) {
   const { catalog } = useCatalog();
-  const [section, setSection] = useState<string | null>("shop");
+  const [section, setSection] = useState<string | null>("machines");
   const groups = [
     { key: "machines", label: "Vending machines", items: catalog.filter((p) => p.category === "vending-machine") },
     { key: "incinerators", label: "Incinerators", items: catalog.filter((p) => p.category === "incinerator") },
@@ -480,6 +459,17 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
             </div>
 
             <div className="flex-1 overflow-y-auto px-4 py-4">
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  onSearch();
+                }}
+                className="mb-4 flex h-12 w-full items-center gap-3 rounded-2xl border border-line bg-surface px-4 text-left text-[15px] text-muted"
+              >
+                <IconSearch className="h-[18px] w-[18px]" /> Search products…
+              </button>
+
               {groups.map((g) => (
                 <div key={g.key} className="border-b border-line">
                   <button
@@ -545,7 +535,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
             </div>
 
             <div className="grid grid-cols-2 gap-2 border-t border-line p-4">
-              <a href={`tel:${PHONE}`} className="btn btn-secondary">
+              <a href={`tel:${PHONE}`} className="btn btn-secondary" aria-label={`Call ${PHONE_DISPLAY}`}>
                 <IconPhone className="h-4 w-4" /> Call
               </a>
               <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn bg-[#25D366] text-white hover:bg-[#1fb457]">

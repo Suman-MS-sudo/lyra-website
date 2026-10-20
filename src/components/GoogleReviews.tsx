@@ -16,7 +16,7 @@ export default function GoogleReviews({ limit = 4 }: { limit?: number }) {
         </div>
         <div className={`grid gap-4 sm:grid-cols-2 ${limit > 2 ? "lg:grid-cols-4" : ""}`}>
           {testimonials.slice(0, limit).map((t) => (
-            <figure key={t.author} className="m-0 flex h-full flex-col rounded-[20px] border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-lift">
+            <figure key={t.author} className="spotlight m-0 flex h-full flex-col rounded-[20px] border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-lift">
               <div className="flex gap-0.5 text-amber-400" aria-label="5 out of 5 stars">
                 {[0, 1, 2, 3, 4].map((k) => (
                   <IconStar key={k} className="h-4 w-4" />

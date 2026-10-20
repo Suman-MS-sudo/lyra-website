@@ -15,7 +15,7 @@ export default function ProductPicks({ items, columns = 4 }: { items: Pick[]; co
         const p = getProductBySlug(slug);
         if (!p) return null;
         return (
-          <li key={slug} className="group relative flex flex-col overflow-hidden rounded-[22px] border border-line bg-surface transition-shadow duration-300 hover:shadow-lift">
+          <li key={slug} className="spotlight group relative flex flex-col overflow-hidden rounded-[22px] border border-line bg-surface transition-shadow duration-300 hover:shadow-lift">
             <Link href={`/products/${p.slug}`} className="relative block aspect-[5/4] overflow-hidden bg-subtle" tabIndex={-1} aria-hidden>
               <span aria-hidden className="absolute inset-x-8 bottom-4 top-1/3 rounded-full bg-[radial-gradient(closest-side,rgb(var(--brand)/0.14),transparent)]" />
               <Image

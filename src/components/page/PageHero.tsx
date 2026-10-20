@@ -23,12 +23,20 @@ type Props = {
 export default function PageHero({ crumbs, eyebrow, tags, title, lead, actions, points, images, aside, children }: Props) {
   const hasSide = Boolean(images?.length || aside);
   return (
-    <section className="relative overflow-hidden border-b border-line bg-subtle">
+    // Always-dark cinematic header: the `dark` class switches every design token inside to the dark palette.
+    <section className="dark relative -mt-[76px] overflow-hidden border-b border-line bg-canvas pt-[76px]">
+      <div aria-hidden className="aurora opacity-80">
+        <span />
+        <span />
+        <span />
+      </div>
       <div
         aria-hidden
-        className="grid-lines pointer-events-none absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_60%_70%_at_80%_30%,#000_10%,transparent_70%)]"
+        className="grid-lines pointer-events-none absolute inset-0 opacity-[0.12] [mask-image:radial-gradient(ellipse_60%_70%_at_75%_30%,#000_10%,transparent_70%)]"
       />
-      <div className="lyra-container relative pb-14 pt-6 sm:pb-16 sm:pt-8 lg:pb-20">
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.5)_100%)]" />
+      <div aria-hidden className="grain pointer-events-none absolute inset-0 overflow-hidden" />
+      <div className="lyra-container relative z-[2] pb-14 pt-8 sm:pb-16 sm:pt-10 lg:pb-24">
         <Breadcrumb crumbs={crumbs} />
         <div className={`mt-8 grid gap-10 lg:mt-10 ${hasSide ? "lg:grid-cols-[1.25fr_0.75fr] lg:items-center lg:gap-14" : ""}`}>
           <div className={hasSide ? "" : "max-w-4xl"}>
@@ -63,7 +71,7 @@ export default function PageHero({ crumbs, eyebrow, tags, title, lead, actions, 
           {aside}
           {!aside && images && images.length > 0 && (
             <div className="relative mx-auto w-full max-w-md">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-line bg-surface">
+              <div className="spotlight relative aspect-[4/5] overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] backdrop-blur-sm">
                 <div aria-hidden className="absolute inset-x-[12%] bottom-[12%] top-[20%] rounded-full bg-[radial-gradient(closest-side,rgb(var(--brand)/0.18),transparent)]" />
                 <div aria-hidden className="absolute bottom-[9%] left-1/2 h-6 w-[60%] -translate-x-1/2 rounded-[100%] bg-ink/10 blur-xl dark:bg-black/60" />
                 <Image

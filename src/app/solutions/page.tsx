@@ -144,7 +144,7 @@ export default function SolutionsHub() {
                   <Link
                     key={s.href}
                     href={s.href}
-                    className="group flex flex-col rounded-[22px] border border-line bg-surface p-7 transition-[border-color,box-shadow] duration-300 hover:border-line-strong hover:shadow-lift"
+                    className="spotlight group flex flex-col rounded-[22px] border border-line bg-surface p-7 transition-[border-color,box-shadow] duration-300 hover:border-line-strong hover:shadow-lift"
                   >
                     <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-soft text-brand">
                       <Icon className="h-6 w-6" />

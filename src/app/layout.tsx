@@ -9,6 +9,7 @@ import LeadClickTracker from "@/components/LeadClickTracker";
 import ClarityInit from "@/components/ClarityInit";
 import StoreProvider from "@/components/store/StoreProvider";
 import CartDrawer from "@/components/store/CartDrawer";
+import PointerSpotlight from "@/components/store/PointerSpotlight";
 import { themeInitScript } from "@/lib/theme";
 import { getCatalog } from "@/lib/catalog";
 
@@ -208,11 +209,12 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${sora.variable} font-sans antialiased bg-canvas text-body overflow-x-hidden`}
+        className={`${inter.variable} ${sora.variable} font-sans antialiased bg-canvas text-body overflow-x-clip`}
       >
         <StoreProvider catalog={getCatalog()}>
           {children}
           <CartDrawer />
+          <PointerSpotlight />
         </StoreProvider>
         <FloatingActionButtons />
         <LeadClickTracker />

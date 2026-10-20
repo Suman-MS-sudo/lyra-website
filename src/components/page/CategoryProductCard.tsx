@@ -7,7 +7,7 @@ import { IconCheck } from "@/components/store/icons";
 /** Large catalogue card for category pages: keeps each product's H2, description and top features. */
 export default function CategoryProductCard({ p, priority = false }: { p: Product; priority?: boolean }) {
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-[24px] border border-line bg-surface transition-[border-color,box-shadow] duration-300 hover:border-line-strong hover:shadow-lift">
+    <article className="spotlight group relative flex flex-col overflow-hidden rounded-[24px] border border-line bg-surface transition-[border-color,box-shadow] duration-300 hover:border-line-strong hover:shadow-lift">
       <Link href={`/products/${p.slug}`} className="relative block aspect-[4/3] overflow-hidden bg-subtle" tabIndex={-1} aria-hidden>
         <span aria-hidden className="absolute inset-x-10 bottom-6 top-1/4 rounded-full bg-[radial-gradient(closest-side,rgb(var(--brand)/0.15),transparent)] transition-opacity duration-500 group-hover:opacity-100" />
         <Image

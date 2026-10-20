@@ -29,7 +29,7 @@ export default function ProductCard({ product: p, index = 0, priority = false, h
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.55, delay: (index % 4) * 0.06, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-line bg-surface transition-[border-color,box-shadow] duration-300 hover:border-line-strong hover:shadow-lift"
+      className="spotlight group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-line bg-surface transition-[border-color,box-shadow] duration-300 hover:border-line-strong hover:shadow-lift"
     >
       <Link href={`/products/${p.slug}`} className="relative block aspect-[4/5] overflow-hidden bg-subtle" tabIndex={-1} aria-hidden>
         <span
