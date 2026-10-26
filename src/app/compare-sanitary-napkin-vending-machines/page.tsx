@@ -1,3 +1,4 @@
+import { RentalBand } from "@/components/rental/RentalCallout";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
@@ -183,6 +184,7 @@ export default function ComparePage() {
           </p>
         </Section>
 
+        <RentalBand />
         <CtaBand
           title="Need help choosing?"
           body="Describe your facility and footfall. We will recommend the right model and quantity."

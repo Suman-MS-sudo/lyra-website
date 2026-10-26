@@ -373,6 +373,7 @@ export default function Contact() {
                     >
                       <option value="">Select a product</option>
                       <option value="vending-machine">Sanitary Napkin Vending Machine</option>
+                      <option value="rental">Vending Machine on Rent (from ₹999/month)</option>
                       <option value="incinerator">Sanitary Napkin Incinerator</option>
                       <option value="combo">Complete Solution (Vending + Incinerator)</option>
                       <option value="quote">Get a Quote</option>

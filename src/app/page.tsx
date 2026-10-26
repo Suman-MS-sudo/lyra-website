@@ -5,6 +5,7 @@ import CategoryRail from "@/components/home/CategoryRail";
 import LogoMarquee from "@/components/home/LogoMarquee";
 import Spotlight from "@/components/home/Spotlight";
 import WordBand from "@/components/home/WordBand";
+import RentalShowcase from "@/components/rental/RentalShowcase";
 import About from "@/components/About";
 import Products from "@/components/Products";
 import HowItWorks from "@/components/HowItWorks";
@@ -35,6 +36,7 @@ export default function Home() {
       <main className="relative">
         <HomeHero videoSrc={HERO_VIDEO} />
         <ServiceStrip />
+        <RentalShowcase />
         <CategoryRail />
         <LogoMarquee />
         <Products />

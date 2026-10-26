@@ -1,3 +1,4 @@
+import { RentalBand } from "@/components/rental/RentalCallout";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
@@ -207,6 +208,7 @@ export default function SolutionsHub() {
           </div>
         </section>
 
+        <RentalBand />
         <CtaBand title="Not sure which sector fits?" body="Tell us about your site and we will recommend the right machines, quantity and disposal setup." primary={{ href: "/contact", label: "Talk to sales" }} />
       </main>
       <PageFooter />

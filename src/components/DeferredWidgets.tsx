@@ -15,8 +15,8 @@ export function HomePopup() {
       trigger="immediate"
       delayMs={10000}
       eyebrow="Price list + free callback"
-      title="Vending machines from ₹12,000 + GST"
-      body="Leave your number and we'll call back with prices for UPI, coin, RFID and push-button models. GeM registered, GST invoice on every order, 1-year warranty."
+      title="Buy from ₹12,000 or rent from ₹999/month"
+      body="Leave your number and we'll call back with purchase prices and the new rental plans for IoT WiFi, Ethernet and RFID machines. GeM registered, GST invoice on every order."
       cta="Get the Price List"
       quickContact
     />

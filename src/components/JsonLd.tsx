@@ -108,11 +108,17 @@ const organizationSchema = {
     itemListElement: [
       { "@type": "OfferCatalog", name: "Sanitary Napkin Vending Machines" },
       { "@type": "OfferCatalog", name: "Sanitary Napkin Incinerators" },
+      {
+        "@type": "OfferCatalog",
+        name: "Sanitary Napkin Vending Machine Rental",
+        url: "https://lyraenterprise.co.in/sanitary-napkin-vending-machine-on-rent",
+      },
     ],
   },
   // Business categories
   knowsAbout: [
     "Sanitary Napkin Vending Machines",
+    "Sanitary Napkin Vending Machine Rental",
     "Menstrual Hygiene Solutions",
     "Sanitary Waste Incinerators",
     "IoT Vending Machines",

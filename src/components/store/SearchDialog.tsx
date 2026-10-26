@@ -13,12 +13,13 @@ import { IconArrowRight, IconSearch, IconX } from "@/components/store/icons";
 type Scope = "all" | ProductCategory;
 
 const QUICK_LINKS: [string, string][] = [
+  ["Rental plans · from ₹999/month", "/sanitary-napkin-vending-machine-on-rent"],
   ["Price list 2026", "/sanitary-napkin-vending-machine-price-india"],
   ["Compare all models", "/compare-sanitary-napkin-vending-machines"],
   ["Government schemes & funding", "/government-schemes-menstrual-hygiene"],
   ["Vending + incinerator bundle", "/products/vending-incinerator-bundle"],
 ];
-const SUGGESTIONS = ["UPI", "Coin", "IoT", "RFID", "Touchless", "Incinerator"];
+const SUGGESTIONS = ["Rent", "UPI", "Coin", "IoT", "RFID", "Incinerator"];
 
 /** Full-screen product search (opened from the header or with Ctrl/⌘ + K). */
 export default function SearchDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -137,6 +138,19 @@ export default function SearchDialog({ open, onClose }: { open: boolean; onClose
                 </div>
               )}
 
+              {/^(r(e(n(t)?)?)?|lea|leas|lease|hire|month|monthly|rental)/i.test(q.trim()) && q.trim().length >= 2 && (
+                <Link
+                  href="/sanitary-napkin-vending-machine-on-rent"
+                  onClick={onClose}
+                  className="mx-1 mt-2 flex items-center justify-between gap-3 rounded-xl border border-primary-200 bg-brand-soft px-3 py-3 text-sm"
+                >
+                  <span>
+                    <span className="block font-semibold text-ink">Rent a vending machine</span>
+                    <span className="block text-xs text-muted">IoT WiFi, Ethernet or RFID · from ₹999/month + GST</span>
+                  </span>
+                  <IconArrowRight className="h-4 w-4 flex-none text-brand" />
+                </Link>
+              )}
               <p className="px-3 pb-1 pt-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">{q ? "Products" : "Popular"}</p>
               {results.length === 0 ? (
                 <p className="px-3 py-8 text-center text-sm text-muted">No products match “{q}”. Try “coin”, “UPI” or “incinerator”.</p>

@@ -17,6 +17,7 @@ import ProductCard from "@/components/store/ProductCard";
 import { toCatalogItem } from "@/lib/catalog";
 import { products, vendingMachines, getProductBySlug, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
 import { offerPolicies } from "@/lib/offer-schema";
+import { RENTAL_FROM, RENTAL_PATH, RENTAL_PLANS, RENTAL_SLUGS, RENTAL_TERMS_TEXT, rupees } from "@/lib/rental";
 import { IconArrowRight, IconCheck, IconDownload, IconHeadset, IconLock, IconPhone, IconReceipt, IconShield, IconStar, IconTruck, IconWhatsApp } from "@/components/store/icons";
 
 /* ─── Static params for all product pages ─────────────────── */
@@ -165,7 +166,16 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     ...products.filter((p) => p.category === product.category && p.slug !== product.slug),
     ...products.filter((p) => p.category !== product.category && p.category !== "napkin"),
   ].slice(0, 4);
-  const faqs = getFaqs(product.slug);
+  const isRentable = RENTAL_SLUGS.has(product.slug);
+  const faqs = isRentable
+    ? [
+        {
+          q: `Can I rent the ${product.fullName}?`,
+          a: `Yes. The ${product.name} is available on Lyra's monthly rental plans: ${rupees(RENTAL_PLANS[0].price)} per month for 25-napkin capacity, ${rupees(RENTAL_PLANS[1].price)} for 50 napkins and ${rupees(RENTAL_PLANS[2].price)} for 100 napkins, plus 18% GST. ${RENTAL_TERMS_TEXT} See ${SITE.url}${RENTAL_PATH} for details.`,
+        },
+        ...getFaqs(product.slug),
+      ]
+    : getFaqs(product.slug);
   const isNapkin = product.category === "napkin";
 
   /* Pricing — pricelist MRP is ex-GST; GST 18% extra, freight additional */
@@ -391,6 +401,25 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   <IconLock className="h-3.5 w-3.5" /> Pay securely online with UPI, cards, net banking or wallets.
                 </p>
               </div>
+
+              {isRentable && (
+                <Link
+                  href={`${RENTAL_PATH}?plan=r25#enquire`}
+                  className="theme-light group mt-3 flex items-center justify-between gap-4 rounded-[18px] bg-night px-5 py-4 text-white"
+                >
+                  <span>
+                    <span className="block text-[10.5px] font-semibold uppercase tracking-[0.16em] text-primary-300">New · Or rent it</span>
+                    <span className="mt-0.5 block font-display text-[15px] font-semibold">
+                      Rent the {product.name} from {rupees(RENTAL_FROM)}/month + GST
+                    </span>
+                    <span className="block text-xs text-white/60">
+                      {RENTAL_PLANS.map((p) => `${p.capacity} napkins ${rupees(p.price)}`).join(" · ")}
+                    </span>
+                    <span className="block text-xs text-white/60">Installation, servicing, parts and monitoring included</span>
+                  </span>
+                  <IconArrowRight className="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" />
+                </Link>
+              )}
 
               <ul className="mt-5 grid gap-3 text-sm text-body sm:grid-cols-2">
                 {[

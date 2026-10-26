@@ -128,10 +128,18 @@ export default function HomeHero({ videoSrc }: { videoSrc?: string }) {
               Shop the range
               <IconArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="#contact" className="btn h-12 border-white/15 bg-white/[0.06] px-7 text-[15px] text-white backdrop-blur hover:bg-white/10">
-              Get a Free Quote
+            <Link href="#rent" className="btn h-12 border-white/15 bg-white/[0.06] px-6 text-[15px] text-white backdrop-blur hover:bg-white/10">
+              <span className="rounded-full bg-primary-600 px-1.5 py-px text-[10px] font-bold uppercase tracking-wider">New</span>
+              Rent from ₹999/month
             </Link>
           </motion.div>
+          <p className="mt-4 text-sm text-white/55">
+            Or{" "}
+            <Link href="#contact" className="font-medium text-white/80 underline-offset-4 hover:text-white hover:underline">
+              get a free quote
+            </Link>{" "}
+            for your site.
+          </p>
 
           <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-7">
             {stats.map((stat, k) => (

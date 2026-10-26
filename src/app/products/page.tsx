@@ -4,6 +4,7 @@ import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import Breadcrumb from "@/components/Breadcrumb";
 import ShopGrid from "@/components/store/ShopGrid";
+import RentalCallout from "@/components/rental/RentalCallout";
 import { vendingMachines, incinerators, SITE, formatINR } from "@/lib/data";
 import { offerPolicies } from "@/lib/offer-schema";
 
@@ -49,6 +50,10 @@ const faqs = [
   {
     q: "What is the price range of Lyra sanitary napkin vending machines?",
     a: `Lyra Enterprises sanitary napkin vending machines range from ${formatINR(vmMin)} for the Push Button model to ${formatINR(vmMax)} for the Solo Ethernet IoT model, ex-works Chennai plus 18% GST and freight.`,
+  },
+  {
+    q: "Can I rent a Lyra vending machine instead of buying?",
+    a: "Yes. The Solo WiFi, Solo Ethernet and Solo RFID vending machines are available on monthly rental plans: ₹999 per month for 25-napkin capacity, ₹1,499 for 50 napkins and ₹1,999 for 100 napkins, plus 18% GST. Installation, regular servicing, parts replacement, breakdown support and live monitoring with alerts are included; napkin refills are purchased from Lyra. A 3-year minimum agreement applies and rent starts from month 1: at signing you pay a refundable ₹4,999 deposit plus the first month's rent, or 3 months' rent in advance, plus 18% GST.",
   },
   {
     q: "What is the price range of Lyra sanitary napkin incinerators?",
@@ -159,6 +164,10 @@ export default function ProductsPage() {
 
         <section className="lyra-container py-10 sm:py-14" aria-label="Product catalogue">
           <ShopGrid />
+        </section>
+
+        <section className="lyra-container pb-14">
+          <RentalCallout />
         </section>
 
         {/* FAQ */}

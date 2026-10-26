@@ -9,6 +9,8 @@ import FaqList from "@/components/page/FaqList";
 import { Callout, CtaBand, StatRow } from "@/components/page/Blocks";
 import { SITE, vendingMachines, incinerators, formatINR, priceInclGst, type Product } from "@/lib/data";
 import AddToCartButton from "@/components/AddToCartButton";
+import RentalPlanCards from "@/components/rental/RentalPlanCards";
+import { RENTAL_PATH } from "@/lib/rental";
 
 const URL = `${SITE.url}/sanitary-napkin-vending-machine-price-india`;
 const TITLE = "Sanitary Napkin Vending Machine Price in India (2026)";
@@ -55,6 +57,10 @@ const faqs = [
     a: `Lyra Enterprises sanitary napkin vending machines cost ${formatINR(lowest)} to ${formatINR(highest)} ex-GST. The Push Button model starts at ${formatINR(lowest)} and the Solo Ethernet IoT model is ${formatINR(highest)}. GST at 18% and freight are extra.`,
   },
   {
+    q: "What is the monthly rent for a sanitary napkin vending machine?",
+    a: "Lyra rents its IoT WiFi, IoT Ethernet and RFID vending machines at ₹999 per month for 25-napkin capacity, ₹1,499 per month for 50 napkins and ₹1,999 per month for 100 napkins, plus 18% GST. Installation, regular servicing, parts replacement, breakdown support and live monitoring with alerts are included; napkin refills are purchased from Lyra. A 3-year minimum agreement applies and rent starts from month 1: at signing you pay a refundable ₹4,999 deposit plus the first month's rent, or 3 months' rent in advance, plus 18% GST.",
+  },
+  {
     q: "Are these prices inclusive of GST?",
     a: "No. All listed prices are ex-GST pricelist MRP. GST at 18% is added at billing. The GST-inclusive amount is shown next to each price in the table above.",
   },
@@ -97,7 +103,7 @@ const schema = {
       isPartOf: { "@id": `${SITE.url}/#website` },
       publisher: { "@id": `${SITE.url}/#organization` },
       datePublished: "2026-09-25",
-      dateModified: "2026-09-25",
+      dateModified: "2026-10-26",
     },
     {
       "@type": "ItemList",
@@ -212,7 +218,18 @@ export default function PricePage() {
           <PriceTable items={vendingMachines} withSpecs />
         </Section>
 
-        <Section tone="subtle" kicker="Incinerators" title="Sanitary napkin incinerator price list">
+        <Section
+          id="rental"
+          tone="subtle"
+          kicker="Rental plans"
+          title="Sanitary napkin vending machine rent per month"
+          lead="Prefer a monthly cost? IoT WiFi, IoT Ethernet and RFID machines are available on rent, priced by napkin capacity."
+          action={{ href: RENTAL_PATH, label: "Rental details" }}
+        >
+          <RentalPlanCards />
+        </Section>
+
+        <Section kicker="Incinerators" title="Sanitary napkin incinerator price list">
           <PriceTable items={incinerators} />
           <div className="mt-8">
             <Callout

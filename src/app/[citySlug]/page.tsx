@@ -1,3 +1,4 @@
+import { RentalBand } from "@/components/rental/RentalCallout";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -404,6 +405,7 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
           </section>
         )}
 
+        <RentalBand />
         <CtaBand
           title={<>Need help choosing the right machine for {city.state}?</>}
           body={<>Our team will recommend the perfect model for your facility and coordinate delivery to {city.capital} and beyond. Free consultation, no obligation.</>}

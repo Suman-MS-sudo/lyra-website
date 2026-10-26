@@ -49,14 +49,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   return [
-    { url: SITE_URL, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
+    { url: SITE_URL, lastModified: "2026-10-26T00:00:00.000Z", changeFrequency: "weekly", priority: 1.0 },
     // Product hub pages
     { url: `${SITE_URL}/service-areas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/government-schemes-menstrual-hygiene`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/products`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/products/sanitary-napkin-vending-machines`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/products/sanitary-napkin-incinerators`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${SITE_URL}/sanitary-napkin-vending-machine-price-india`, lastModified: "2026-09-25T00:00:00.000Z", changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/sanitary-napkin-vending-machine-price-india`, lastModified: "2026-10-26T00:00:00.000Z", changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/rental-agreement`, lastModified: "2026-10-26T00:00:00.000Z", changeFrequency: "yearly", priority: 0.4 },
+    { url: `${SITE_URL}/sanitary-napkin-vending-machine-on-rent`, lastModified: "2026-10-26T00:00:00.000Z", changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/compare-sanitary-napkin-vending-machines`, lastModified: "2026-09-25T00:00:00.000Z", changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/solutions`, lastModified: "2026-09-25T00:00:00.000Z", changeFrequency: "monthly", priority: 0.8 },
     // Individual product pages

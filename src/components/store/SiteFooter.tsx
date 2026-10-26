@@ -12,6 +12,9 @@ const columns: { title: string; links: [string, string][] }[] = [
     links: [
       ["All products", "/products"],
       ["Vending machines", "/products/sanitary-napkin-vending-machines"],
+      ["Rent a machine (from ₹999/mo)", "/sanitary-napkin-vending-machine-on-rent"],
+      ["Recharge rental rent", "/rental/recharge"],
+      ["Rental agreement", "/rental-agreement"],
       ["Push Button", "/products/push-button-vending-machine"],
       ["Solo Coin", "/products/solo-coin-vending-machine"],
       ["Solo QR (UPI)", "/products/solo-qr-vending-machine"],

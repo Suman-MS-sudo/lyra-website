@@ -8,6 +8,10 @@ export const homeFaqs: { q: string; a: string }[] = [
     a: "Lyra Enterprises machines start at ₹12,000 for the Push Button model, then ₹13,500 Solo Coin, ₹15,500 Solo Multi-Coin, ₹16,000 Solo RFID, ₹19,500 Solo QR (UPI), ₹23,000 Solo Wave, ₹24,500 Solo WiFi and ₹26,500 Solo Ethernet. Prices are ex-works Chennai, plus 18% GST and freight.",
   },
   {
+    q: "Can I rent a sanitary napkin vending machine instead of buying one?",
+    a: "Yes. Lyra Enterprises rents its IoT WiFi, IoT Ethernet and RFID sanitary napkin vending machines on monthly plans: ₹999 per month for 25-napkin capacity, ₹1,499 for 50 napkins and ₹1,999 for 100 napkins, plus 18% GST. Installation, regular servicing, parts replacement, breakdown support and live monitoring with alerts are included; napkin refills are purchased from Lyra. A 3-year minimum agreement applies and rent starts from month 1: at signing you pay a refundable ₹4,999 deposit plus the first month's rent, or 3 months' rent in advance, plus 18% GST. See lyraenterprise.co.in/sanitary-napkin-vending-machine-on-rent or call +91-81223 78860.",
+  },
+  {
     q: "Which is the best sanitary napkin vending machine in India?",
     a: "It depends on the facility. For most institutions the Lyra Solo WiFi is the best all-round choice: UPI QR and coin payment, server-side payment verification, a touch display and a live cloud dashboard. Free-issue welfare schemes are better served by the touchless Solo Wave, and budget-first schools do well with the Push Button or Solo Coin.",
   },
@@ -25,7 +29,7 @@ export const homeFaqs: { q: string; a: string }[] = [
   },
   {
     q: "What is the capacity of a Lyra sanitary napkin vending machine?",
-    a: "Most Lyra models hold 25 napkins per load. The stainless-steel Solo Wave holds up to 35.",
+    a: "Most Lyra models hold 25 napkins per load and the stainless-steel Solo Wave holds up to 35. On the monthly rental plans, IoT WiFi, Ethernet and RFID machines come in 25, 50 and 100-napkin capacities.",
   },
   {
     q: "What does a sanitary napkin incinerator cost?",

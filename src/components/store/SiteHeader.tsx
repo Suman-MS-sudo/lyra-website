@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { openCart, useCart } from "@/lib/cart";
 import { inr } from "@/lib/pricing";
+import { RENTAL_PATH } from "@/lib/rental";
 import { useCatalog } from "@/components/store/StoreProvider";
 import ThemeToggle from "@/components/store/ThemeToggle";
 import SearchDialog from "@/components/store/SearchDialog";
@@ -37,6 +38,8 @@ const solutions = [
 ];
 
 const resources = [
+  { label: "Rental plans", href: RENTAL_PATH, note: "From ₹999/month + GST" },
+  { label: "Recharge rent", href: "/rental/recharge", note: "For rental customers" },
   { label: "Price list 2026", href: "/sanitary-napkin-vending-machine-price-india", note: "Every model, ex-GST" },
   { label: "Compare all models", href: "/compare-sanitary-napkin-vending-machines", note: "Side-by-side specs" },
   { label: "Government schemes", href: "/government-schemes-menstrual-hygiene", note: "Funding and subsidies" },
@@ -106,13 +109,13 @@ export default function SiteHeader() {
       {/* One-line announcement (scrolls away) */}
       <div className="bg-night">
         <Link
-          href="/offers/push-button-micro-combo"
+          href={RENTAL_PATH}
           className="lyra-container group flex h-9 items-center justify-center gap-2 text-[12.5px] text-white/70 transition-colors hover:text-white"
         >
           <span className="rounded-full bg-primary-600 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">New</span>
           <span className="truncate">
-            Push Button + Micro Incinerator combo at <strong className="font-semibold text-white">₹19,999</strong>
-            <span className="hidden sm:inline"> · GST invoice · pan-India dispatch</span>
+            Rent a smart vending machine from <strong className="font-semibold text-white">₹999/month</strong>
+            <span className="hidden sm:inline"> · IoT WiFi, Ethernet &amp; RFID · 25, 50 or 100 napkins</span>
           </span>
           <IconArrowRight className="h-3.5 w-3.5 flex-none transition-transform group-hover:translate-x-0.5" />
         </Link>
@@ -165,6 +168,16 @@ export default function SiteHeader() {
                 >
                   Resources
                 </MenuTrigger>
+              </li>
+              <li>
+                <Link
+                  href={RENTAL_PATH}
+                  aria-current={pathname === RENTAL_PATH ? "page" : undefined}
+                  className={`relative inline-flex h-10 items-center gap-1.5 rounded-full px-4 transition-colors hover:bg-subtle hover:text-ink ${pathname === RENTAL_PATH ? "text-ink" : "text-body"}`}
+                >
+                  Rent
+                  <span className="rounded-full bg-primary-600 px-1.5 py-px text-[9.5px] font-bold uppercase tracking-wider text-white">New</span>
+                </Link>
               </li>
               <NavLink href="/about" active={pathname === "/about"}>
                 About
@@ -469,6 +482,18 @@ function MobileMenu({ open, onClose, onSearch }: { open: boolean; onClose: () =>
               >
                 <IconSearch className="h-[18px] w-[18px]" /> Search products…
               </button>
+
+              <Link
+                href={RENTAL_PATH}
+                onClick={onClose}
+                className="theme-light mb-4 flex items-center justify-between gap-3 rounded-2xl bg-night px-4 py-3.5 text-white"
+              >
+                <span>
+                  <span className="block text-[10.5px] font-semibold uppercase tracking-[0.16em] text-primary-300">New · Rental plans</span>
+                  <span className="mt-0.5 block font-display text-[15px] font-semibold">Rent a machine from ₹999/month</span>
+                </span>
+                <IconArrowRight className="h-4 w-4 flex-none" />
+              </Link>
 
               {groups.map((g) => (
                 <div key={g.key} className="border-b border-line">

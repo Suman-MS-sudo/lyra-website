@@ -1,3 +1,4 @@
+import { RentalBand } from "@/components/rental/RentalCallout";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
 import PageHero from "@/components/page/PageHero";
@@ -71,6 +72,7 @@ export default function SolutionPage(p: Props) {
           <FaqList items={p.faqs.map((q) => ({ q: q.name, a: q.acceptedAnswer.text }))} />
         </Section>
 
+        <RentalBand />
         <CtaBand title={p.ctaTitle} body={p.ctaBody} primary={{ href: "/contact", label: "Get a free quote" }} />
       </main>
       <PageFooter />

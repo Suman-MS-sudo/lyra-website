@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { RentalBand } from "@/components/rental/RentalCallout";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import PageFooter from "@/components/PageFooter";
@@ -176,6 +177,7 @@ export default function VendingMachinesPage() {
           </div>
         </Section>
 
+        <RentalBand />
         <CtaBand
           title="Not sure which model to choose?"
           body="Tell us your facility type and budget — our team will recommend the right machine within 30 minutes."

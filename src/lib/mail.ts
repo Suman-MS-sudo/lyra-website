@@ -67,20 +67,27 @@ export function teamRecipients(): string[] {
   return all.filter((a, i) => all.findIndex((b) => b.toLowerCase() === a.toLowerCase()) === i);
 }
 
+/** A file attached to an email (e.g. the rental agreement PDF). */
+export type MailAttachment = { filename: string; content: Buffer | Uint8Array; contentType?: string };
+
+const toNodemailer = (a?: MailAttachment[]) =>
+  a?.map((x) => ({ filename: x.filename, content: Buffer.from(x.content), contentType: x.contentType }));
+
 /** Notification to the team: from the website mailbox, to the mailbox and the extra inbox. */
-export async function sendToTeam(opts: { subject: string; html: string; replyTo?: string }) {
+export async function sendToTeam(opts: { subject: string; html: string; replyTo?: string; attachments?: MailAttachment[] }) {
   await transporter().sendMail({
     from: fromAddress(),
     to: teamRecipients(),
     replyTo: opts.replyTo,
     subject: opts.subject,
     html: opts.html,
+    attachments: toNodemailer(opts.attachments),
   });
 }
 
 /** Confirmation to a customer, from the website mailbox. */
-export async function sendToCustomer(opts: { to: string; subject: string; html: string }) {
-  await transporter().sendMail({ from: fromAddress(), to: opts.to, subject: opts.subject, html: opts.html });
+export async function sendToCustomer(opts: { to: string; subject: string; html: string; attachments?: MailAttachment[] }) {
+  await transporter().sendMail({ from: fromAddress(), to: opts.to, subject: opts.subject, html: opts.html, attachments: toNodemailer(opts.attachments) });
 }
 
 /** Pulls the useful parts out of a mail error for the server logs. */

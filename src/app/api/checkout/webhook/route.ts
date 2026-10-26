@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { formatINR } from "@/lib/data";
 import { describeMailError, esc, missingMailSettings, sendToTeam } from "@/lib/mail";
-import { verifyWebhookSignature } from "@/lib/razorpay";
+import { fetchOrder, verifyWebhookSignature } from "@/lib/razorpay";
+import { recordRentalSignup } from "@/lib/rental-db";
+import { confirmPaidRecharge } from "@/lib/rental-recharge-mail";
 
 export const runtime = "nodejs";
 
@@ -23,10 +25,24 @@ export async function POST(req: NextRequest) {
     const p = event.payload?.payment?.entity;
     if (event.event !== "payment.captured" || !p) return NextResponse.json({ ok: true });
 
-    const n = p.notes ?? {};
+    // Rentals and recharges: make sure the database reflects the payment even if the buyer closed the tab.
+    // The order's own notes (written by our server) are the source of truth; payment notes are browser-set.
+    let n: Record<string, string> = p.notes ?? {};
+    if (p.order_id) {
+      try {
+        const order = await fetchOrder(p.order_id);
+        n = { ...n, ...(order.notes ?? {}) };
+        if (order.notes?.kind === "rental") await recordRentalSignup(order, p.id);
+        if (order.notes?.kind === "recharge") await confirmPaidRecharge(order, p.id);
+      } catch (e) {
+        console.error("Webhook rental/recharge sync error:", e instanceof Error ? e.message : e);
+        // Fall through: the team still gets the backup email below.
+      }
+    }
     if (!missingMailSettings().length) {
       const rows = [
         ["Reference", n.ref],
+        ["Type", n.kind === "rental" ? "Rental signup payment" : n.kind === "recharge" ? `Rental recharge (${n.period ?? ""})` : "Product order"],
         ["Amount", formatINR(p.amount / 100)],
         ["Method", p.method],
         ["Payment ID", p.id],

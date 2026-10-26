@@ -1,3 +1,4 @@
+import { RentalBand } from "@/components/rental/RentalCallout";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
@@ -140,6 +141,7 @@ export default function ServiceAreasPage() {
           );
         })}
 
+        <RentalBand />
         <CtaBand
           title="Not sure if we deliver to your location?"
           body={<>We ship to every pincode in India. Tell us your city and facility type — we&apos;ll confirm delivery time and quote freight.</>}
