@@ -46,7 +46,7 @@ const articleSchema = {
     logo: { "@type": "ImageObject", url: `${SITE.url}/images/logo.png`, width: 442, height: 454 },
   },
   datePublished: "2026-09-23",
-  dateModified: "2026-09-23",
+  dateModified: "2026-10-27",
   image: [`${SITE.url}/images/og-image.jpg`],
   mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/blog/iot-vending-machine-technology-india` },
   url: `${SITE.url}/blog/iot-vending-machine-technology-india`,
@@ -140,7 +140,7 @@ export default function IoTTechnologyPost() {
 
             <h2 className="text-2xl font-bold text-gray-900">Which model fits your network</h2>
             <p>
-              <strong>Open WiFi available, standard offices/campuses:</strong> <Link href="/products/solo-wifi-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo WiFi</Link> — no SIM, 2.4GHz connection, touch display.
+              <strong>Open WiFi available, standard offices/campuses:</strong> <Link href="/products/solo-wifi-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo WiFi</Link> — no SIM, 2.4GHz connection, display.
             </p>
             <p>
               <strong>Restricted wireless policy, hospitals, government buildings:</strong> <Link href="/products/solo-ethernet-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo Ethernet</Link> — same IoT stack over wired LAN.

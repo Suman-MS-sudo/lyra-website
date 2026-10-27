@@ -149,7 +149,7 @@ Lyra Enterprise is a Chennai-based manufacturer and supplier of:
 | upi qr code vending machine india | /products/solo-wifi-vending-machine |
 | iot vending machine india | /products/solo-wifi-vending-machine |
 | cloud vending machine india | /products/solo-wifi-vending-machine |
-| touch screen vending machine india | /products/solo-wifi-vending-machine |
+| display vending machine india | /products/solo-wifi-vending-machine |
 | ethernet vending machine india | /products/solo-ethernet-vending-machine |
 | wired vending machine hospital | /products/solo-ethernet-vending-machine |
 | micro incinerator india | /products/lyra-micro-incinerator |
@@ -279,7 +279,7 @@ Lyra Enterprise is a Chennai-based manufacturer and supplier of:
 **Headline 1:** WiFi UPI Vending Machine — ₹23,500
 **Headline 2:** Cloud Reports + IoT Monitoring
 **Headline 3:** Lyra Enterprise | Chennai Manufacturer
-**Description 1:** UPI QR + ₹5 coin. Touch display. Real-time cloud analytics. Best for IT parks, hospitals & smart campuses.
+**Description 1:** UPI QR + ₹5 coin. Display. Real-time cloud analytics. Best for IT parks, hospitals & smart campuses.
 **Description 2:** 1-year warranty. Pan-India delivery. WhatsApp enquiry: +91-8122378860.
 **Final URL:** https://www.lyraenterprise.co.in/products/solo-wifi-vending-machine
 

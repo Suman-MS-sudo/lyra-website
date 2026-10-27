@@ -17,6 +17,7 @@ import ProductCard from "@/components/store/ProductCard";
 import { toCatalogItem } from "@/lib/catalog";
 import { products, vendingMachines, getProductBySlug, SITE, GST_RATE, priceInclGst, formatINR } from "@/lib/data";
 import { offerPolicies } from "@/lib/offer-schema";
+import { galleryLabel } from "@/lib/gallery";
 import { RENTAL_FROM, RENTAL_PATH, RENTAL_PLANS, RENTAL_SLUGS, RENTAL_TERMS_TEXT, rupees } from "@/lib/rental";
 import { IconArrowRight, IconCheck, IconDownload, IconHeadset, IconLock, IconPhone, IconReceipt, IconShield, IconStar, IconTruck, IconWhatsApp } from "@/components/store/icons";
 
@@ -60,11 +61,10 @@ export async function generateMetadata({
 }
 
 /* ─── Comparison table rows (VMs only) — driven by product.compare ── */
-const comparisonRows: { label: string; key: "payment" | "connectivity" | "cloudReports" | "touchDisplay" | "iotMonitoring" }[] = [
+const comparisonRows: { label: string; key: "payment" | "connectivity" | "cloudReports" | "iotMonitoring" }[] = [
   { label: "Payment", key: "payment" },
   { label: "Connectivity", key: "connectivity" },
   { label: "Cloud Reports", key: "cloudReports" },
-  { label: "Touch Display", key: "touchDisplay" },
   { label: "IoT Monitoring", key: "iotMonitoring" },
 ];
 
@@ -214,7 +214,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               "@type": "ImageObject",
               url: `${SITE.url}${g.src}`,
               contentUrl: `${SITE.url}${g.src}`,
-              name: `${product.fullName} — features and specifications`,
+              name: galleryLabel(g.kind, product.fullName),
               width: g.width,
               height: g.height,
             })),

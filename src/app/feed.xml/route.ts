@@ -1,3 +1,4 @@
+import { WEBSITE_ONLY_KINDS } from "@/lib/gallery";
 import { products, SITE, type Product } from "@/lib/data";
 
 /**
@@ -73,8 +74,9 @@ function item(p: Product): string {
   // Feed images are white-background 1000x1000 JPEG copies of the product PNGs
   // (public/images/feed/), since the originals are transparent and some are under 800 px.
   const image = `${SITE.url}/images/feed/${p.image.split("/").pop()!.replace(/\.png$/, ".jpg")}?v=${IMAGE_VERSION}`;
-  // Gallery posters (feature/spec sheets) go in as additional images, as JPG copies in public/images/feed/.
+  // Gallery images (feature/spec posters and extra photos) go in as additional images, as JPG copies in public/images/feed/.
   const extraImages = (p.gallery ?? [])
+    .filter((g) => !g.kind || !WEBSITE_ONLY_KINDS.has(g.kind))
     .slice(0, 10)
     .map((g) => {
       const file = g.src.split("/").pop()!.replace(/\.webp$/, ".jpg");

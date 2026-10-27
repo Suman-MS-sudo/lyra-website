@@ -115,7 +115,7 @@ export default function ComparePage() {
               <table className="w-full min-w-[960px] text-sm">
                 <thead className="bg-subtle text-left">
                   <tr>
-                    {["Model", "Payment", "Connectivity", "Cloud reports", "Touch display", "Capacity", "Price (ex-GST)"].map((h, k) => (
+                    {["Model", "Payment", "Connectivity", "Cloud reports", "Capacity", "Price (ex-GST)"].map((h, k) => (
                       <th key={h} className={`px-5 py-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted ${k === 3 || k === 4 ? "text-center" : ""} ${k === 6 ? "text-right" : ""}`}>
                         {h}
                       </th>
@@ -140,7 +140,6 @@ export default function ComparePage() {
                       <td className="px-5 py-4 text-body">{p.compare?.payment ?? "—"}</td>
                       <td className="px-5 py-4 text-body">{p.compare?.connectivity ?? "—"}</td>
                       <td className="px-5 py-4 text-center"><YesNo v={p.compare?.cloudReports} /></td>
-                      <td className="px-5 py-4 text-center"><YesNo v={p.compare?.touchDisplay} /></td>
                       <td className="px-5 py-4 text-body">{capacity(p)}</td>
                       <td className="px-5 py-4 text-right">
                         <span className="font-display text-base font-semibold text-ink tabular">{formatINR(p.price)}</span>

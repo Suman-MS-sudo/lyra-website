@@ -1,9 +1,10 @@
 "use client";
 
+import { galleryLabel, type GalleryKind } from "@/lib/gallery";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-type Img = { src: string; width: number; height: number };
+type Img = { src: string; width: number; height: number; kind?: GalleryKind };
 
 type Props = {
   fullName: string;
@@ -20,7 +21,7 @@ type Props = {
  * open it full size. Slide 0 is the product photo; the rest are the feature posters.
  */
 export default function ProductImageGallery({ fullName, code, image, imageSize, gallery = [] }: Props) {
-  const slides: (Img & { alt: string; kind: "photo" | "poster" })[] = [
+  const slides: (Img & { alt: string; kind: GalleryKind })[] = [
     {
       src: image,
       width: imageSize?.width ?? 853,
@@ -30,8 +31,8 @@ export default function ProductImageGallery({ fullName, code, image, imageSize, 
     },
     ...gallery.map((g) => ({
       ...g,
-      alt: `${fullName} (${code}): features, specifications and ideal uses`,
-      kind: "poster" as const,
+      alt: galleryLabel(g.kind, fullName, code),
+      kind: g.kind ?? ("poster" as const),
     })),
   ];
 

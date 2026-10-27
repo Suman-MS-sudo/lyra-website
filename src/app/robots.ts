@@ -19,6 +19,11 @@ const AI_CRAWLERS = [
   "Bytespider",
   "Amazonbot",
   "meta-externalagent",
+  "Claude-SearchBot",
+  "Claude-User",
+  "DuckAssistBot",
+  "MistralAI-User",
+  "cohere-ai",
 ];
 
 export default function robots(): MetadataRoute.Robots {
@@ -26,13 +31,14 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
+        // The public rental agreement PDF is the one API route worth reading.
+        allow: ["/", "/api/rental/agreement"],
         // Only the API is off-limits. /_next/ stays crawlable so Google and
         // Merchant Center can fetch next/image-optimised product images.
         disallow: ["/api/"],
       },
       // Google Merchant Center quality & policy checks
-      { userAgent: "Googlebot", allow: "/", disallow: ["/api/"] },
+      { userAgent: "Googlebot", allow: ["/", "/api/rental/agreement"], disallow: ["/api/"] },
       { userAgent: "Googlebot-Image", allow: "/" },
       { userAgent: "Storebot-Google", allow: "/" },
       // Google Shopping ads
@@ -41,7 +47,7 @@ export default function robots(): MetadataRoute.Robots {
       // AI answer engines
       ...AI_CRAWLERS.map((userAgent) => ({
         userAgent,
-        allow: "/",
+        allow: ["/", "/api/rental/agreement"],
         disallow: ["/api/"],
       })),
     ],

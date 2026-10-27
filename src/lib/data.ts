@@ -25,6 +25,7 @@ export const SITE = {
 };
 
 import { GST_RATE } from "./pricing";
+import type { GalleryKind } from "./gallery";
 
 /** GST rate applied to all machine prices. Pricelist MRP is quoted ex-GST. */
 export { GST_RATE };
@@ -42,7 +43,6 @@ export type CompareRow = {
   payment: string;
   connectivity: string;
   cloudReports: "Yes" | "No";
-  touchDisplay: "Yes" | "No";
   iotMonitoring: "Yes" | "No";
 };
 
@@ -67,8 +67,8 @@ export type Product = {
   useCases: string[];
   accent: string;
   image: string;
-  /** Extra product images (feature / spec sheets) shown in the product-page gallery section. */
-  gallery?: { src: string; width: number; height: number }[];
+  /** Extra product images shown in the product-page gallery: feature / spec posters, extra photos (`kind: "photo"`) a to-scale size guide (`kind: "size"`), or website-only info graphics (`callouts`, `steps`, `specs`). */
+  gallery?: { src: string; width: number; height: number; kind?: GalleryKind }[];
   /** Public path to a downloadable product booklet/spec-sheet PDF, if available. */
   booklet?: string;
   /** Optional "what sets this apart at this price" callouts — only set when genuinely differentiated vs. typical machines in this price band. */
@@ -172,7 +172,7 @@ export const products: Product[] = [
     ],
     accent: "from-gray-600 to-gray-800",
     image: "/images/products/push-button-vm.png",
-    gallery: [{ src: "/images/products/gallery/push-button-vending-machine-2.webp", width: 1024, height: 1024 }],
+    gallery: [{ src: "/images/products/gallery/push-button-vending-machine-2.webp", width: 1024, height: 1024 }, { src: "/images/products/gallery/push-button-vending-machine-3.webp", width: 1200, height: 1200, kind: "photo" }, { src: "/images/products/gallery/push-button-vending-machine-4.webp", width: 1200, height: 1200, kind: "size" }, { src: "/images/products/gallery/push-button-vending-machine-5.webp", width: 1200, height: 1200, kind: "callouts" }, { src: "/images/products/gallery/push-button-vending-machine-6.webp", width: 1200, height: 1200, kind: "steps" }, { src: "/images/products/gallery/push-button-vending-machine-7.webp", width: 1200, height: 1200, kind: "specs" }],
     booklet: "/downloads/lyra-push-button-booklet.pdf",
     differentiators: [
       {
@@ -193,7 +193,7 @@ export const products: Product[] = [
       },
     ],
     weightKg: 10,
-    compare: { payment: "Push Button", connectivity: "Offline WiFi (reports only)", cloudReports: "No", touchDisplay: "No", iotMonitoring: "No" },
+    compare: { payment: "Push Button", connectivity: "Offline WiFi (reports only)", cloudReports: "No", iotMonitoring: "No" },
     keywords: [
       "push button sanitary napkin vending machine india",
       "sanitary napkin vending machine price india",
@@ -253,9 +253,9 @@ export const products: Product[] = [
     ],
     accent: "from-primary-500 to-primary-700",
     image: "/images/products/solo-coin.png",
-    gallery: [{ src: "/images/products/gallery/solo-coin-vending-machine-2.webp", width: 842, height: 1264 }],
+    gallery: [{ src: "/images/products/gallery/solo-coin-vending-machine-2.webp", width: 842, height: 1264 }, { src: "/images/products/gallery/solo-coin-vending-machine-3.webp", width: 1200, height: 1200, kind: "photo" }, { src: "/images/products/gallery/solo-coin-vending-machine-4.webp", width: 1200, height: 1200, kind: "size" }, { src: "/images/products/gallery/solo-coin-vending-machine-5.webp", width: 1200, height: 1200, kind: "callouts" }, { src: "/images/products/gallery/solo-coin-vending-machine-6.webp", width: 1200, height: 1200, kind: "steps" }, { src: "/images/products/gallery/solo-coin-vending-machine-7.webp", width: 1200, height: 1200, kind: "specs" }],
     weightKg: 10,
-    compare: { payment: "₹5 Coin", connectivity: "None", cloudReports: "No", touchDisplay: "No", iotMonitoring: "No" },
+    compare: { payment: "₹5 Coin", connectivity: "None", cloudReports: "No", iotMonitoring: "No" },
     keywords: [
       "coin operated sanitary napkin vending machine india",
       "5 rupee coin napkin vending machine",
@@ -316,9 +316,9 @@ export const products: Product[] = [
     ],
     accent: "from-amber-500 to-primary-600",
     image: "/images/products/solo-multi.png",
-    gallery: [{ src: "/images/products/gallery/solo-multi-coin-vending-machine-2.webp", width: 842, height: 1264 }],
+    gallery: [{ src: "/images/products/gallery/solo-multi-coin-vending-machine-2.webp", width: 842, height: 1264 }, { src: "/images/products/gallery/solo-multi-coin-vending-machine-3.webp", width: 1200, height: 1200, kind: "photo" }, { src: "/images/products/gallery/solo-multi-coin-vending-machine-4.webp", width: 1200, height: 1200, kind: "size" }, { src: "/images/products/gallery/solo-multi-coin-vending-machine-5.webp", width: 1200, height: 1200, kind: "callouts" }, { src: "/images/products/gallery/solo-multi-coin-vending-machine-6.webp", width: 1200, height: 1200, kind: "steps" }, { src: "/images/products/gallery/solo-multi-coin-vending-machine-7.webp", width: 1200, height: 1200, kind: "specs" }],
     weightKg: 10,
-    compare: { payment: "₹1 / ₹2 / ₹5 Coin", connectivity: "None", cloudReports: "No", touchDisplay: "No", iotMonitoring: "No" },
+    compare: { payment: "₹1 / ₹2 / ₹5 Coin", connectivity: "None", cloudReports: "No", iotMonitoring: "No" },
     keywords: [
       "multi coin sanitary napkin vending machine india",
       "1 2 5 rupee coin napkin vending machine",
@@ -410,9 +410,9 @@ export const products: Product[] = [
     ],
     accent: "from-teal-500 to-cyan-700",
     image: "/images/products/solo-rfid.png",
-    gallery: [{ src: "/images/products/gallery/solo-rfid-vending-machine-2.webp", width: 842, height: 1200 }],
+    gallery: [{ src: "/images/products/gallery/solo-rfid-vending-machine-2.webp", width: 842, height: 1200 }, { src: "/images/products/gallery/solo-rfid-vending-machine-3.webp", width: 1200, height: 1200, kind: "photo" }, { src: "/images/products/gallery/solo-rfid-vending-machine-4.webp", width: 1200, height: 1200, kind: "size" }, { src: "/images/products/gallery/solo-rfid-vending-machine-5.webp", width: 1200, height: 1200, kind: "callouts" }, { src: "/images/products/gallery/solo-rfid-vending-machine-6.webp", width: 1200, height: 1200, kind: "steps" }, { src: "/images/products/gallery/solo-rfid-vending-machine-7.webp", width: 1200, height: 1200, kind: "specs" }],
     weightKg: 10,
-    compare: { payment: "RFID Card (Prepaid/Postpaid)", connectivity: "Wired network + offline cache", cloudReports: "Yes", touchDisplay: "Yes", iotMonitoring: "Yes" },
+    compare: { payment: "RFID Card (Prepaid/Postpaid)", connectivity: "Wired network + offline cache", cloudReports: "Yes", iotMonitoring: "Yes" },
     keywords: [
       "rfid sanitary napkin vending machine india",
       "rfid napkin dispenser india",
@@ -467,9 +467,9 @@ export const products: Product[] = [
     ],
     accent: "from-blue-500 to-blue-700",
     image: "/images/products/solo-qr.png",
-    gallery: [{ src: "/images/products/gallery/solo-qr-vending-machine-2.webp", width: 768, height: 1342 }],
+    gallery: [{ src: "/images/products/gallery/solo-qr-vending-machine-2.webp", width: 768, height: 1342 }, { src: "/images/products/gallery/solo-qr-vending-machine-3.webp", width: 1200, height: 1200, kind: "photo" }, { src: "/images/products/gallery/solo-qr-vending-machine-4.webp", width: 1200, height: 1200, kind: "size" }, { src: "/images/products/gallery/solo-qr-vending-machine-5.webp", width: 1200, height: 1200, kind: "callouts" }, { src: "/images/products/gallery/solo-qr-vending-machine-6.webp", width: 1200, height: 1200, kind: "steps" }, { src: "/images/products/gallery/solo-qr-vending-machine-7.webp", width: 1200, height: 1200, kind: "specs" }],
     weightKg: 10,
-    compare: { payment: "UPI QR", connectivity: "SIM-based", cloudReports: "No", touchDisplay: "No", iotMonitoring: "No" },
+    compare: { payment: "UPI QR", connectivity: "SIM-based", cloudReports: "No", iotMonitoring: "No" },
     keywords: [
       "qr code sanitary napkin vending machine india",
       "upi sanitary napkin machine india",
@@ -530,9 +530,9 @@ export const products: Product[] = [
     ],
     accent: "from-slate-600 to-slate-800",
     image: "/images/products/solo-wave.png",
-    gallery: [{ src: "/images/products/gallery/solo-wave-vending-machine-2.webp", width: 842, height: 1236 }],
+    gallery: [{ src: "/images/products/gallery/solo-wave-vending-machine-2.webp", width: 842, height: 1236 }, { src: "/images/products/gallery/solo-wave-vending-machine-3.webp", width: 1200, height: 1200, kind: "photo" }, { src: "/images/products/gallery/solo-wave-vending-machine-4.webp", width: 1200, height: 1200, kind: "size" }, { src: "/images/products/gallery/solo-wave-vending-machine-5.webp", width: 1200, height: 1200, kind: "callouts" }, { src: "/images/products/gallery/solo-wave-vending-machine-6.webp", width: 1200, height: 1200, kind: "steps" }, { src: "/images/products/gallery/solo-wave-vending-machine-7.webp", width: 1200, height: 1200, kind: "specs" }],
     weightKg: 15,
-    compare: { payment: "Wave Sensor (free)", connectivity: "None", cloudReports: "No", touchDisplay: "No", iotMonitoring: "No" },
+    compare: { payment: "Wave Sensor (free)", connectivity: "None", cloudReports: "No", iotMonitoring: "No" },
     keywords: [
       "touchless sanitary napkin vending machine india",
       "wave sensor napkin vending machine india",
@@ -557,11 +557,11 @@ export const products: Product[] = [
     discountedPrice: 24500,
     badge: "Most Popular",
     popular: true,
-    tagline: "Smart IoT UPI + coin machine with touch display & cloud analytics",
+    tagline: "Smart IoT UPI + coin machine with display & cloud analytics",
     description:
-      "WiFi-enabled IoT sanitary napkin vending machine with UPI QR code & coin payment. Touch display, centralised cloud reports — no SIM card needed.",
+      "WiFi-enabled IoT sanitary napkin vending machine with UPI QR code & coin payment. Display, centralised cloud reports — no SIM card needed.",
     longDescription:
-      "The Lyra Solo WiFi is India's most advanced IoT-enabled sanitary napkin vending machine — combining UPI QR code payments, ₹5 coin backup, 2.4GHz WiFi connectivity and a touch display in one compact unit. Every dispense is verified server-side before the pad is released, blocking spoofed or fake payment attempts, and payment confirmation is pushed to the machine in real time with an automatic fallback check so a transaction is never missed even if the instant push fails. If the WiFi drops, the machine keeps accepting and queuing transactions offline — nothing is lost, and queued sales sync automatically the moment connectivity is restored. Facility managers get a live cloud dashboard showing stock levels, sales and machine status from any browser, automatic low-stock alerts, and usage analytics/reporting. Firmware updates are delivered over the air with automatic rollback if an update ever fails, so there's no technician visit needed, and the machine self-resets automatically if it ever hangs. All machine-to-cloud communication is encrypted. This is the #1 choice for technology-forward hospitals, IT parks, premium malls and smart campuses across India.",
+      "The Lyra Solo WiFi is India's most advanced IoT-enabled sanitary napkin vending machine — combining UPI QR code payments, ₹5 coin backup, 2.4GHz WiFi connectivity and a display in one compact unit. Every dispense is verified server-side before the pad is released, blocking spoofed or fake payment attempts, and payment confirmation is pushed to the machine in real time with an automatic fallback check so a transaction is never missed even if the instant push fails. If the WiFi drops, the machine keeps accepting and queuing transactions offline — nothing is lost, and queued sales sync automatically the moment connectivity is restored. Facility managers get a live cloud dashboard showing stock levels, sales and machine status from any browser, automatic low-stock alerts, and usage analytics/reporting. Firmware updates are delivered over the air with automatic rollback if an update ever fails, so there's no technician visit needed, and the machine self-resets automatically if it ever hangs. All machine-to-cloud communication is encrypted. This is the #1 choice for technology-forward hospitals, IT parks, premium malls and smart campuses across India.",
     features: [
       "UPI QR code payment (GPay, PhonePe, Paytm, BHIM — any NPCI-standard UPI app)",
       "₹5 coin acceptor as backup payment method",
@@ -576,7 +576,7 @@ export const products: Product[] = [
       "Remote OTA firmware updates with automatic rollback",
       "Automatic fault recovery / self-reset — no manual reboot",
       "Encrypted machine-to-cloud communication",
-      "Touch display",
+      "Status display",
       "25 napkins capacity",
     ],
     specs: [
@@ -586,7 +586,7 @@ export const products: Product[] = [
       { label: "Payment Verification", value: "Server-side, before every dispense" },
       { label: "Connectivity", value: "2.4GHz WiFi — no SIM card needed" },
       { label: "Offline Mode", value: "Queues transactions, auto-syncs on reconnect" },
-      { label: "Display", value: "Touch display" },
+      { label: "Display", value: "Status display" },
       { label: "Data", value: "Live dashboard, usage analytics & reports" },
       { label: "Cloud", value: "Centralised dashboard — stock, sales, status" },
       { label: "Alerts", value: "Automatic low-stock alerts" },
@@ -608,9 +608,9 @@ export const products: Product[] = [
     ],
     accent: "from-blue-500 to-primary-600",
     image: "/images/products/solo-wifi.png",
-    gallery: [{ src: "/images/products/gallery/solo-wifi-vending-machine-2.webp", width: 842, height: 1264 }],
+    gallery: [{ src: "/images/products/gallery/solo-wifi-vending-machine-2.webp", width: 842, height: 1264 }, { src: "/images/products/gallery/solo-wifi-vending-machine-3.webp", width: 1200, height: 1200, kind: "photo" }, { src: "/images/products/gallery/solo-wifi-vending-machine-4.webp", width: 1200, height: 1200, kind: "size" }, { src: "/images/products/gallery/solo-wifi-vending-machine-5.webp", width: 1200, height: 1200, kind: "callouts" }, { src: "/images/products/gallery/solo-wifi-vending-machine-6.webp", width: 1200, height: 1200, kind: "steps" }, { src: "/images/products/gallery/solo-wifi-vending-machine-7.webp", width: 1200, height: 1200, kind: "specs" }],
     weightKg: 10,
-    compare: { payment: "UPI QR + Coin", connectivity: "WiFi 2.4GHz", cloudReports: "Yes", touchDisplay: "Yes", iotMonitoring: "Yes" },
+    compare: { payment: "UPI QR + Coin", connectivity: "WiFi 2.4GHz", cloudReports: "Yes", iotMonitoring: "Yes" },
     keywords: [
       "wifi upi sanitary napkin vending machine india",
       "upi qr napkin vending machine india",
@@ -618,7 +618,6 @@ export const products: Product[] = [
       "smart iot napkin vending machine india",
       "iot sanitary napkin machine india",
       "cloud connected napkin vending machine",
-      "touch display sanitary napkin dispenser india",
       "sanitary napkin vending machine price india",
       "gpay phonepe napkin machine india",
       "wifi napkin machine for it park india",
@@ -626,7 +625,7 @@ export const products: Product[] = [
     ],
     metaTitle: "Smart IoT Sanitary Napkin Vending Machine ₹24,500",
     metaDescription:
-      "Lyra Solo WiFi IoT napkin vending machine, ₹24,500 + GST. UPI QR + ₹5 coin, touch display, cloud reports, no SIM. Chennai manufacturer.",
+      "Lyra Solo WiFi IoT napkin vending machine, ₹24,500 + GST. UPI QR + ₹5 coin, display, cloud reports, no SIM. Chennai manufacturer.",
   },
   {
     slug: "solo-ethernet-vending-machine",
@@ -639,7 +638,7 @@ export const products: Product[] = [
     badge: "Premium",
     tagline: "Wired IoT reliability for high-traffic institutions",
     description:
-      "Ethernet-connected IoT UPI QR + coin vending machine for hospitals and large institutions requiring stable wired connectivity, with touch display and cloud analytics.",
+      "Ethernet-connected IoT UPI QR + coin vending machine for hospitals and large institutions requiring stable wired connectivity, with display and cloud analytics.",
     longDescription:
       "The Lyra Solo Ethernet sanitary napkin vending machine carries every feature of the Solo WiFi — UPI QR + ₹5 coin backup payment with server-side verification, instant dispense, live cloud dashboard, low-stock alerts, usage analytics, OTA firmware updates with auto-rollback and automatic fault recovery — but connects over a wired LAN instead of WiFi. It's built for hospitals, government buildings and large institutions where wireless signal is unreliable or restricted by IT policy, delivering a stable, low-latency connection well suited to environments with strict network segmentation. The same encrypted, verified communication channel as the WiFi model runs over the wire — nothing is ever sent in the open — and the machine plugs straight into existing network infrastructure with no WiFi router or SIM card dependency at all.",
     features: [
@@ -657,7 +656,7 @@ export const products: Product[] = [
       "Remote OTA firmware updates with automatic rollback",
       "Automatic fault recovery / self-reset — no manual reboot",
       "Encrypted machine-to-cloud communication over LAN",
-      "Touch display",
+      "Status display",
       "25 napkins capacity",
     ],
     specs: [
@@ -667,7 +666,7 @@ export const products: Product[] = [
       { label: "Payment Verification", value: "Server-side, before every dispense" },
       { label: "Connectivity", value: "Wired Ethernet (LAN) — no WiFi/SIM needed" },
       { label: "Offline Mode", value: "Queues transactions, auto-syncs on reconnect" },
-      { label: "Display", value: "Touch display" },
+      { label: "Display", value: "Status display" },
       { label: "Data", value: "Live dashboard, usage analytics & reports" },
       { label: "Cloud", value: "Centralised dashboard — stock, sales, status" },
       { label: "Alerts", value: "Automatic low-stock alerts" },
@@ -689,9 +688,9 @@ export const products: Product[] = [
     ],
     accent: "from-sky-500 to-primary-700",
     image: "/images/products/solo-ethernet.png",
-    gallery: [{ src: "/images/products/gallery/solo-ethernet-vending-machine-2.webp", width: 842, height: 1264 }],
+    gallery: [{ src: "/images/products/gallery/solo-ethernet-vending-machine-2.webp", width: 842, height: 1264 }, { src: "/images/products/gallery/solo-ethernet-vending-machine-3.webp", width: 1200, height: 1200, kind: "photo" }, { src: "/images/products/gallery/solo-ethernet-vending-machine-4.webp", width: 1200, height: 1200, kind: "size" }, { src: "/images/products/gallery/solo-ethernet-vending-machine-5.webp", width: 1200, height: 1200, kind: "callouts" }, { src: "/images/products/gallery/solo-ethernet-vending-machine-6.webp", width: 1200, height: 1200, kind: "steps" }, { src: "/images/products/gallery/solo-ethernet-vending-machine-7.webp", width: 1200, height: 1200, kind: "specs" }],
     weightKg: 10,
-    compare: { payment: "UPI QR + Coin", connectivity: "Ethernet/LAN", cloudReports: "Yes", touchDisplay: "Yes", iotMonitoring: "Yes" },
+    compare: { payment: "UPI QR + Coin", connectivity: "Ethernet/LAN", cloudReports: "Yes", iotMonitoring: "Yes" },
     keywords: [
       "ethernet upi sanitary napkin vending machine india",
       "wired napkin vending machine india",
@@ -706,7 +705,7 @@ export const products: Product[] = [
     ],
     metaTitle: "Ethernet Sanitary Pad Vending Machine ₹26,500 | Lyra",
     metaDescription:
-      "Lyra Solo Ethernet napkin vending machine, ₹26,500 + GST. Wired IoT, UPI QR + ₹5 coin, touch display, cloud reports. Chennai manufacturer.",
+      "Lyra Solo Ethernet napkin vending machine, ₹26,500 + GST. Wired IoT, UPI QR + ₹5 coin, display, cloud reports. Chennai manufacturer.",
   },
 
   // ─── INCINERATORS ────────────────────────────────────────────
@@ -761,7 +760,7 @@ export const products: Product[] = [
     ],
     accent: "from-primary-600 to-primary-800",
     image: "/images/products/lyra-micro.png",
-    gallery: [{ src: "/images/products/gallery/lyra-micro-incinerator-2.webp", width: 842, height: 1264 }],
+    gallery: [{ src: "/images/products/gallery/lyra-micro-incinerator-2.webp", width: 842, height: 1264 }, { src: "/images/products/gallery/lyra-micro-incinerator-3.webp", width: 1200, height: 1200, kind: "photo" }, { src: "/images/products/gallery/lyra-micro-incinerator-4.webp", width: 1200, height: 1200, kind: "size" }, { src: "/images/products/gallery/lyra-micro-incinerator-5.webp", width: 1200, height: 1200, kind: "callouts" }, { src: "/images/products/gallery/lyra-micro-incinerator-6.webp", width: 1200, height: 1200, kind: "steps" }, { src: "/images/products/gallery/lyra-micro-incinerator-7.webp", width: 1200, height: 1200, kind: "specs" }],
     weightKg: 15,
     keywords: [
       "sanitary napkin incinerator india",
@@ -834,7 +833,7 @@ export const products: Product[] = [
     ],
     accent: "from-primary-500 to-primary-700",
     image: "/images/products/lyra-mini.png",
-    gallery: [{ src: "/images/products/gallery/lyra-mini-incinerator-2.webp", width: 1024, height: 1024 }],
+    gallery: [{ src: "/images/products/gallery/lyra-mini-incinerator-2.webp", width: 1024, height: 1024 }, { src: "/images/products/gallery/lyra-mini-incinerator-3.webp", width: 1200, height: 1200, kind: "photo" }, { src: "/images/products/gallery/lyra-mini-incinerator-4.webp", width: 1200, height: 1200, kind: "size" }, { src: "/images/products/gallery/lyra-mini-incinerator-5.webp", width: 1200, height: 1200, kind: "callouts" }, { src: "/images/products/gallery/lyra-mini-incinerator-6.webp", width: 1200, height: 1200, kind: "steps" }, { src: "/images/products/gallery/lyra-mini-incinerator-7.webp", width: 1200, height: 1200, kind: "specs" }],
     weightKg: 23,
     keywords: [
       "sanitary napkin incinerator for colleges india",
@@ -908,7 +907,7 @@ export const products: Product[] = [
     ],
     accent: "from-blue-600 to-primary-800",
     image: "/images/products/lyra-maxi.png",
-    gallery: [{ src: "/images/products/gallery/lyra-maxi-incinerator-2.webp", width: 843, height: 1264 }],
+    gallery: [{ src: "/images/products/gallery/lyra-maxi-incinerator-2.webp", width: 843, height: 1264 }, { src: "/images/products/gallery/lyra-maxi-incinerator-3.webp", width: 1200, height: 1200, kind: "photo" }, { src: "/images/products/gallery/lyra-maxi-incinerator-4.webp", width: 1200, height: 1200, kind: "size" }, { src: "/images/products/gallery/lyra-maxi-incinerator-5.webp", width: 1200, height: 1200, kind: "callouts" }, { src: "/images/products/gallery/lyra-maxi-incinerator-6.webp", width: 1200, height: 1200, kind: "steps" }, { src: "/images/products/gallery/lyra-maxi-incinerator-7.webp", width: 1200, height: 1200, kind: "specs" }],
     weightKg: 50,
     keywords: [
       "high capacity sanitary napkin incinerator india",
@@ -968,6 +967,7 @@ export const products: Product[] = [
     ],
     accent: "from-blue-600 to-blue-700",
     image: "/images/products/xl-napkin.png",
+    gallery: [{ src: "/images/products/gallery/xl-sanitary-napkin-3.webp", width: 1200, height: 1200, kind: "photo" }, { src: "/images/products/gallery/xl-sanitary-napkin-5.webp", width: 1200, height: 1200, kind: "callouts" }, { src: "/images/products/gallery/xl-sanitary-napkin-6.webp", width: 1200, height: 1200, kind: "steps" }, { src: "/images/products/gallery/xl-sanitary-napkin-7.webp", width: 1200, height: 1200, kind: "specs" }],
     keywords: [
       "xl sanitary napkin india",
       "sanitary napkin 280mm india",
@@ -1021,6 +1021,7 @@ export const products: Product[] = [
     ],
     accent: "from-sky-600 to-blue-700",
     image: "/images/products/xxl-napkin.png",
+    gallery: [{ src: "/images/products/gallery/xxl-sanitary-napkin-3.webp", width: 1200, height: 1200, kind: "photo" }, { src: "/images/products/gallery/xxl-sanitary-napkin-5.webp", width: 1200, height: 1200, kind: "callouts" }, { src: "/images/products/gallery/xxl-sanitary-napkin-6.webp", width: 1200, height: 1200, kind: "steps" }, { src: "/images/products/gallery/xxl-sanitary-napkin-7.webp", width: 1200, height: 1200, kind: "specs" }],
     keywords: [
       "xxl sanitary napkin india",
       "sanitary napkin 320mm india",

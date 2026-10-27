@@ -5,7 +5,7 @@ const SITE_URL = "https://lyraenterprise.co.in";
 
 // Bump when site content is meaningfully updated so <lastmod> stays honest
 // (an always-"now" lastmod trains crawlers to ignore it).
-const LAST_UPDATED = "2026-09-08T00:00:00.000Z";
+const LAST_UPDATED = "2026-10-27T00:00:00.000Z";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = LAST_UPDATED;
@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const citySlugs = cities.map((c) => c.slug);
 
-  // Real publish dates (match each post's BlogPosting datePublished).
+  // Last-modified dates (publish date, or the latest content edit).
   const blogPosts: [string, string][] = [
     ["why-every-school-needs-napkin-vending-machine", "2026-01-15"],
     ["upi-vs-coin-vending-machine", "2026-01-28"],
@@ -36,8 +36,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["manual-vs-automatic-napkin-vending-machine", "2026-02-20"],
     ["solid-waste-management-rules-2016-india-guide", "2026-03-01"],
     ["lnt-manapakkam-case-study", "2026-09-15"],
-    ["best-sanitary-napkin-vending-machine-india", "2026-09-23"],
-    ["iot-vending-machine-technology-india", "2026-09-23"],
+    ["best-sanitary-napkin-vending-machine-india", "2026-10-27"],
+    ["iot-vending-machine-technology-india", "2026-10-27"],
     ["gem-tender-sanitary-napkin-vending-machine-guide", "2026-09-25"],
     ["sanitary-napkin-vending-machine-rental-guide", "2026-10-27"],
   ];
@@ -60,7 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/sanitary-napkin-vending-machine-price-india`, lastModified: "2026-10-26T00:00:00.000Z", changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/rental-agreement`, lastModified: "2026-10-26T00:00:00.000Z", changeFrequency: "yearly", priority: 0.4 },
     { url: `${SITE_URL}/sanitary-napkin-vending-machine-on-rent`, lastModified: "2026-10-27T00:00:00.000Z", changeFrequency: "monthly", priority: 0.9 },
-    { url: `${SITE_URL}/compare-sanitary-napkin-vending-machines`, lastModified: "2026-09-25T00:00:00.000Z", changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/compare-sanitary-napkin-vending-machines`, lastModified: "2026-10-27T00:00:00.000Z", changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/solutions`, lastModified: "2026-09-25T00:00:00.000Z", changeFrequency: "monthly", priority: 0.8 },
     // Individual product pages
     ...productSlugs.map((slug) => ({

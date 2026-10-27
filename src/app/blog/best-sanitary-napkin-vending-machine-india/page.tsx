@@ -46,7 +46,7 @@ const articleSchema = {
     logo: { "@type": "ImageObject", url: `${SITE.url}/images/logo.png`, width: 442, height: 454 },
   },
   datePublished: "2026-09-23",
-  dateModified: "2026-09-23",
+  dateModified: "2026-10-27",
   image: [`${SITE.url}/images/og-image.jpg`],
   mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE.url}/blog/best-sanitary-napkin-vending-machine-india` },
   url: `${SITE.url}/blog/best-sanitary-napkin-vending-machine-india`,
@@ -55,7 +55,7 @@ const articleSchema = {
 const faqs: Faq[] = [
   {
     q: "Which is the best sanitary napkin vending machine in India?",
-    a: "For most institutions, the Lyra Solo WiFi is the best all-round choice — it combines UPI QR and coin payment, server-side payment verification, a touch display and a live cloud dashboard with offline resilience, so transactions are never lost even during a network outage. Government-run free-issue programmes are better served by the touchless Solo Wave, and budget-conscious schools do well with the Solo Coin or Solo Multi-Coin.",
+    a: "For most institutions, the Lyra Solo WiFi is the best all-round choice — it combines UPI QR and coin payment, server-side payment verification, a display and a live cloud dashboard with offline resilience, so transactions are never lost even during a network outage. Government-run free-issue programmes are better served by the touchless Solo Wave, and budget-conscious schools do well with the Solo Coin or Solo Multi-Coin.",
   },
   {
     q: "Which company makes the best sanitary napkin vending machines in India?",
@@ -164,7 +164,7 @@ export default function BestVendingMachineIndiaPost() {
             <h2 className="text-2xl font-bold text-gray-900">By use case</h2>
             <p><strong>Schools & government institutions on a budget:</strong> The <Link href="/products/push-button-vending-machine" className="text-primary-600 font-semibold hover:underline">Push Button</Link> or <Link href="/products/solo-multi-coin-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo Multi-Coin</Link> keep costs down while remaining fully offline and low-maintenance.</p>
             <p><strong>Corporate campuses & hostels with access cards:</strong> The <Link href="/products/solo-rfid-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo RFID</Link> integrates with existing ISO 14443/15693 ID cards and gives a full per-card audit trail.</p>
-            <p><strong>IT parks, premium hospitals & smart campuses:</strong> The <Link href="/products/solo-wifi-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo WiFi</Link> is our most-installed IoT model — UPI + coin, touch display, live dashboard, and offline resilience baked in.</p>
+            <p><strong>IT parks, premium hospitals & smart campuses:</strong> The <Link href="/products/solo-wifi-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo WiFi</Link> is our most-installed IoT model — UPI + coin, display, live dashboard, and offline resilience baked in.</p>
             <p><strong>Hospitals & government buildings with locked-down WiFi:</strong> The <Link href="/products/solo-ethernet-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo Ethernet</Link> delivers identical IoT capability over a wired LAN, built for strict network-segmented environments.</p>
             <p><strong>Welfare schemes & free-issue programmes:</strong> The touchless, stainless-steel <Link href="/products/solo-wave-vending-machine" className="text-primary-600 font-semibold hover:underline">Solo Wave</Link> dispenses on a single wave — no payment, no contact.</p>
 

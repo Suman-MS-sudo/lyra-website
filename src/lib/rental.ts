@@ -31,7 +31,7 @@ export const RENTAL_MODELS = [
     slug: "solo-wifi-vending-machine",
     name: "Solo WiFi",
     tech: "IoT · WiFi",
-    summary: "UPI QR and coin payment, touch display and a live cloud dashboard over your WiFi.",
+    summary: "UPI QR and coin payment, display and a live cloud dashboard over your WiFi.",
   },
   {
     slug: "solo-ethernet-vending-machine",

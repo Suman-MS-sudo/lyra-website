@@ -286,7 +286,7 @@ const vendingMachineProducts = [
     image: "solo-wifi.png",
     price: 24500,
     description:
-      "Smart WiFi-enabled sanitary napkin vending machine with UPI QR code and ₹5 coin backup payment. Server-side payment verification, offline transaction queuing with auto-sync, live cloud dashboard, low-stock alerts, OTA firmware updates with auto-rollback and encrypted communication. Touch display. Best seller across India.",
+      "Smart WiFi-enabled sanitary napkin vending machine with UPI QR code and ₹5 coin backup payment. Server-side payment verification, offline transaction queuing with auto-sync, live cloud dashboard, low-stock alerts, OTA firmware updates with auto-rollback and encrypted communication. Display. Best seller across India.",
     keywords: "UPI vending machine, QR code vending machine, WiFi vending machine India, smart vending machine, offline queue napkin vending machine, server verified payment vending machine, OTA firmware update vending machine",
   },
   {
@@ -296,7 +296,7 @@ const vendingMachineProducts = [
     image: "solo-ethernet.png",
     price: 26500,
     description:
-      "Ethernet-connected sanitary napkin vending machine with UPI QR code and ₹5 coin backup payment. Wired LAN connectivity, server-side payment verification, offline transaction queuing, live cloud dashboard, OTA firmware updates with auto-rollback and encrypted communication. Touch display. Ideal for hospitals and large offices with strict IT/network policies.",
+      "Ethernet-connected sanitary napkin vending machine with UPI QR code and ₹5 coin backup payment. Wired LAN connectivity, server-side payment verification, offline transaction queuing, live cloud dashboard, OTA firmware updates with auto-rollback and encrypted communication. Display. Ideal for hospitals and large offices with strict IT/network policies.",
     keywords: "ethernet vending machine, UPI vending machine, cloud vending machine India, wired lan napkin vending machine, hospital napkin vending machine encrypted",
   },
 ];

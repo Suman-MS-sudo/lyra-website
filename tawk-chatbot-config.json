@@ -25,7 +25,7 @@
         "message_contains": ["hospital", "clinic", "medical", "healthcare"]
       },
       "delay": 1,
-      "message": "🏥 **Hospital-Grade Solutions:**\n\n**Recommended: Solo Ethernet - ₹24,500**\n✅ 99.9% uptime (wired connection)\n✅ UPI + coin payments\n✅ Cloud monitoring\n✅ Touch screen\n\n**+ Lyra Mini Incinerator - ₹12,500**\n✅ 5-15 napkins/cycle\n✅ Digital controls\n✅ SWM Rules compliant\n\n📞 Hospital packages available!"
+      "message": "🏥 **Hospital-Grade Solutions:**\n\n**Recommended: Solo Ethernet - ₹24,500**\n✅ 99.9% uptime (wired connection)\n✅ UPI + coin payments\n✅ Cloud monitoring\n✅ Display\n\n**+ Lyra Mini Incinerator - ₹12,500**\n✅ 5-15 napkins/cycle\n✅ Digital controls\n✅ SWM Rules compliant\n\n📞 Hospital packages available!"
     },
     {
       "name": "Office Inquiry Auto-Response",

@@ -92,11 +92,10 @@ const breadcrumbSchema = {
   ],
 };
 
-const comparisonRows: { label: string; key: "payment" | "connectivity" | "cloudReports" | "touchDisplay" | "iotMonitoring" }[] = [
+const comparisonRows: { label: string; key: "payment" | "connectivity" | "cloudReports" | "iotMonitoring" }[] = [
   { label: "Payment", key: "payment" },
   { label: "Connectivity", key: "connectivity" },
   { label: "Cloud Reports", key: "cloudReports" },
-  { label: "Touch Display", key: "touchDisplay" },
   { label: "IoT Monitoring", key: "iotMonitoring" },
 ];
 

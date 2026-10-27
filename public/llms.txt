@@ -34,7 +34,7 @@
 - [Solo RFID](https://lyraenterprise.co.in/products/solo-rfid-vending-machine): ₹16,000 — RFID card/tag, prepaid/postpaid, wired network, cloud dashboard
 - [Solo QR](https://lyraenterprise.co.in/products/solo-qr-vending-machine): ₹19,500 — UPI QR only, SIM-based, no coin acceptor
 - [Solo Wave](https://lyraenterprise.co.in/products/solo-wave-vending-machine): ₹23,000 — touchless wave sensor, stainless steel, up to 35 napkins, free issue
-- [Solo WiFi](https://lyraenterprise.co.in/products/solo-wifi-vending-machine): ₹24,500 — UPI QR + ₹5 coin, WiFi, touch display, cloud dashboard, offline queue
+- [Solo WiFi](https://lyraenterprise.co.in/products/solo-wifi-vending-machine): ₹24,500 — UPI QR + ₹5 coin, WiFi, display, cloud dashboard, offline queue
 - [Solo Ethernet](https://lyraenterprise.co.in/products/solo-ethernet-vending-machine): ₹26,500 — as Solo WiFi but wired LAN
 
 ## All-inclusive machine rental (sanitary napkin vending machine on rent)
