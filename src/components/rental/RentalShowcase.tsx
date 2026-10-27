@@ -38,15 +38,15 @@ export default function RentalShowcase({ id = "rent" }: { id?: string }) {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-400 opacity-70" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary-400" />
               </span>
-              New · Special rental plans
+              New · All-inclusive rental
             </p>
             <h2 id={`${id}-title`} className="mt-5 text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl lg:text-[3.3rem]">
-              Rent a smart napkin vending machine from <span className="text-gradient">{rupees(RENTAL_FROM)} a month</span>
+              All-inclusive napkin vending machine rental. <span className="text-gradient">You only refill the napkins.</span>
             </h2>
             <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-body">
-              Put an IoT WiFi, Ethernet or RFID vending machine in your washroom for a fixed monthly rent instead of buying one
-              outright. Installation, regular servicing, parts replacement and live monitoring are all included. Pick the capacity
-              that matches your footfall: 25, 50 or 100 napkins per fill.
+              From {rupees(RENTAL_FROM)} a month + GST, Lyra supplies an IoT WiFi, Ethernet or RFID vending machine, installs it, services it, repairs it,
+              replaces parts and monitors it online, and supplies the napkins too. Nothing to buy, maintain or manage: just refill when the
+              alert comes. Choose 25, 50 or 100 napkins per fill.
             </p>
             <div className="mt-6">
               <RentalIncluded compact />

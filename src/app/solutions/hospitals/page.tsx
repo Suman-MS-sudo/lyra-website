@@ -58,6 +58,14 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
+      name: "Can a hospital rent a sanitary napkin vending machine with maintenance included?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Hospitals can rent a Lyra Solo Ethernet (wired LAN, suited to hospital IT policies), Solo WiFi or Solo RFID on Lyra's all-inclusive plan for ₹999 (25 napkins), ₹1,499 (50 napkins) or ₹1,999 (100 napkins) per month plus GST. Lyra installs, services, repairs, replaces parts, monitors the machine online and supplies the napkins; staff only refill it. See lyraenterprise.co.in/sanitary-napkin-vending-machine-on-rent.",
+      },
+    },
+    {
+      "@type": "Question",
       name: "Which Lyra incinerator is best for hospitals?",
       acceptedAnswer: {
         "@type": "Answer",

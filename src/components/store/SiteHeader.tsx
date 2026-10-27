@@ -114,8 +114,8 @@ export default function SiteHeader() {
         >
           <span className="rounded-full bg-primary-600 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">New</span>
           <span className="truncate">
-            Rent a smart vending machine from <strong className="font-semibold text-white">₹999/month</strong>
-            <span className="hidden sm:inline"> · IoT WiFi, Ethernet &amp; RFID · 25, 50 or 100 napkins</span>
+            All-inclusive machine rental from <strong className="font-semibold text-white">₹999/month</strong>
+            <span className="hidden sm:inline"> · we install, service &amp; monitor, you just refill</span>
           </span>
           <IconArrowRight className="h-3.5 w-3.5 flex-none transition-transform group-hover:translate-x-0.5" />
         </Link>
@@ -490,7 +490,7 @@ function MobileMenu({ open, onClose, onSearch }: { open: boolean; onClose: () =>
               >
                 <span>
                   <span className="block text-[10.5px] font-semibold uppercase tracking-[0.16em] text-primary-300">New · Rental plans</span>
-                  <span className="mt-0.5 block font-display text-[15px] font-semibold">Rent a machine from ₹999/month</span>
+                  <span className="mt-0.5 block font-display text-[15px] font-semibold">All-inclusive rental from ₹999/month</span>
                 </span>
                 <IconArrowRight className="h-4 w-4 flex-none" />
               </Link>

@@ -60,6 +60,7 @@ const columns: { title: string; links: [string, string][] }[] = [
       ["Your cart", "/cart"],
       ["Privacy policy", "/privacy-policy"],
       ["Terms & conditions", "/terms-and-conditions"],
+      ["Return policy", "/return-policy"],
       ["Cancellation & refund", "/cancellation-refund-policy"],
       ["Shipping & delivery", "/shipping-delivery-policy"],
     ],

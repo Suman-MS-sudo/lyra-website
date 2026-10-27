@@ -58,6 +58,14 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
+      name: "Can an office rent a sanitary napkin vending machine instead of buying one?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Offices, IT parks and factories can rent a Lyra Solo WiFi, Solo Ethernet or Solo RFID (works with employee ID cards) on Lyra's all-inclusive plan for ₹999 (25 napkins), ₹1,499 (50 napkins) or ₹1,999 (100 napkins) per month plus GST. Lyra installs, services, repairs, replaces parts, monitors the machine online and supplies the napkins; staff only refill it. See lyraenterprise.co.in/sanitary-napkin-vending-machine-on-rent.",
+      },
+    },
+    {
+      "@type": "Question",
       name: "Which vending machine is best for a corporate office?",
       acceptedAnswer: {
         "@type": "Answer",

@@ -53,7 +53,7 @@ const faqs = [
   },
   {
     q: "Can I rent a Lyra vending machine instead of buying?",
-    a: "Yes. The Solo WiFi, Solo Ethernet and Solo RFID vending machines are available on monthly rental plans: ₹999 per month for 25-napkin capacity, ₹1,499 for 50 napkins and ₹1,999 for 100 napkins, plus 18% GST. Installation, regular servicing, parts replacement, breakdown support and live monitoring with alerts are included; napkin refills are purchased from Lyra. A 3-year minimum agreement applies and rent starts from month 1: at signing you pay a refundable ₹4,999 deposit plus the first month's rent, or 3 months' rent in advance, plus 18% GST.",
+    a: "Yes. Lyra Enterprises rents IoT WiFi, IoT Ethernet and RFID sanitary napkin vending machines across India as an all-inclusive bundle: ₹999 per month for 25-napkin capacity, ₹1,499 for 50 napkins and ₹1,999 for 100 napkins, plus 18% GST. Lyra installs, services, repairs, replaces parts, monitors the machine online and supplies the napkins; the customer only refills the machine. A 3-year minimum agreement applies, with a refundable ₹4,999 deposit plus the first month's rent (or 3 months' rent in advance) at signing.",
   },
   {
     q: "What is the price range of Lyra sanitary napkin incinerators?",

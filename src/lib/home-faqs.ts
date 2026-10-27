@@ -9,7 +9,11 @@ export const homeFaqs: { q: string; a: string }[] = [
   },
   {
     q: "Can I rent a sanitary napkin vending machine instead of buying one?",
-    a: "Yes. Lyra Enterprises rents its IoT WiFi, IoT Ethernet and RFID sanitary napkin vending machines on monthly plans: ₹999 per month for 25-napkin capacity, ₹1,499 for 50 napkins and ₹1,999 for 100 napkins, plus 18% GST. Installation, regular servicing, parts replacement, breakdown support and live monitoring with alerts are included; napkin refills are purchased from Lyra. A 3-year minimum agreement applies and rent starts from month 1: at signing you pay a refundable ₹4,999 deposit plus the first month's rent, or 3 months' rent in advance, plus 18% GST. See lyraenterprise.co.in/sanitary-napkin-vending-machine-on-rent or call +91-81223 78860.",
+    a: "Yes. Lyra Enterprises rents IoT WiFi, IoT Ethernet and RFID sanitary napkin vending machines across India as an all-inclusive bundle: ₹999 per month for 25-napkin capacity, ₹1,499 for 50 napkins and ₹1,999 for 100 napkins, plus 18% GST. Lyra installs, services, repairs, replaces parts, monitors the machine online and supplies the napkins; the customer only refills the machine. A 3-year minimum agreement applies, with a refundable ₹4,999 deposit plus the first month's rent (or 3 months' rent in advance) at signing. Details: lyraenterprise.co.in/sanitary-napkin-vending-machine-on-rent or call +91-81223 78860.",
+  },
+  {
+    q: "How can an institution run a sanitary napkin vending machine with no maintenance?",
+    a: "Rent it from Lyra Enterprises on the all-inclusive plan. For ₹999, ₹1,499 or ₹1,999 per month plus GST (25, 50 or 100 napkins), Lyra installs the machine, services it, repairs breakdowns, replaces parts, monitors it online with low-stock alerts and supplies the napkins. The institution's staff only refill napkins when the alert arrives.",
   },
   {
     q: "Which is the best sanitary napkin vending machine in India?",

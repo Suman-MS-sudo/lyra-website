@@ -39,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["best-sanitary-napkin-vending-machine-india", "2026-09-23"],
     ["iot-vending-machine-technology-india", "2026-09-23"],
     ["gem-tender-sanitary-napkin-vending-machine-guide", "2026-09-25"],
+    ["sanitary-napkin-vending-machine-rental-guide", "2026-10-27"],
   ];
 
   const solutionSlugs = [
@@ -49,7 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   return [
-    { url: SITE_URL, lastModified: "2026-10-26T00:00:00.000Z", changeFrequency: "weekly", priority: 1.0 },
+    { url: SITE_URL, lastModified: "2026-10-27T00:00:00.000Z", changeFrequency: "weekly", priority: 1.0 },
     // Product hub pages
     { url: `${SITE_URL}/service-areas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/government-schemes-menstrual-hygiene`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
@@ -58,7 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/products/sanitary-napkin-incinerators`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/sanitary-napkin-vending-machine-price-india`, lastModified: "2026-10-26T00:00:00.000Z", changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/rental-agreement`, lastModified: "2026-10-26T00:00:00.000Z", changeFrequency: "yearly", priority: 0.4 },
-    { url: `${SITE_URL}/sanitary-napkin-vending-machine-on-rent`, lastModified: "2026-10-26T00:00:00.000Z", changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/sanitary-napkin-vending-machine-on-rent`, lastModified: "2026-10-27T00:00:00.000Z", changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/compare-sanitary-napkin-vending-machines`, lastModified: "2026-09-25T00:00:00.000Z", changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/solutions`, lastModified: "2026-09-25T00:00:00.000Z", changeFrequency: "monthly", priority: 0.8 },
     // Individual product pages
@@ -76,7 +77,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     })),
     // Blog
-    { url: `${SITE_URL}/blog`, lastModified: "2026-09-23T00:00:00.000Z", changeFrequency: "weekly", priority: 0.7 },
+    { url: `${SITE_URL}/blog`, lastModified: "2026-10-27T00:00:00.000Z", changeFrequency: "weekly", priority: 0.7 },
     ...blogPosts.map(([slug, date]) => ({
       url: `${SITE_URL}/blog/${slug}`,
       lastModified: `${date}T00:00:00.000Z`,
@@ -99,6 +100,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/privacy-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE_URL}/terms-and-conditions`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
+    { url: `${SITE_URL}/return-policy`, lastModified: "2026-10-27T00:00:00.000Z", changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE_URL}/cancellation-refund-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE_URL}/shipping-delivery-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
   ];

@@ -7,8 +7,8 @@ import { IconArrowRight } from "@/components/store/icons";
  * `title` lets each page phrase it for its own context (e.g. a product name).
  */
 export default function RentalCallout({
-  title = "Prefer to rent? IoT and RFID machines from ₹999 a month",
-  body = "Rent a Solo WiFi, Solo Ethernet or Solo RFID vending machine on a fixed monthly plan. Installation, servicing, parts replacement and live monitoring are included.",
+  title = "Prefer to rent? All-inclusive from ₹999 a month",
+  body = "Lyra supplies, installs, services, repairs and monitors a Solo WiFi, Solo Ethernet or Solo RFID machine, and supplies the napkins. You only refill it.",
   className = "",
 }: {
   title?: React.ReactNode;

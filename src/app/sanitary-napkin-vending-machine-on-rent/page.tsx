@@ -12,6 +12,8 @@ import RentalPlanCards from "@/components/rental/RentalPlanCards";
 import RentalCheckout from "@/components/rental/RentalCheckout";
 import { SITE, cities, formatINR, getProductBySlug, type Product } from "@/lib/data";
 import RentalIncluded from "@/components/rental/RentalIncluded";
+import RentalBundle from "@/components/rental/RentalBundle";
+import RentalSummary from "@/components/rental/RentalSummary";
 import { AGREEMENT_PATH, AGREEMENT_TITLE, AGREEMENT_VERSION, EARLY_TERMINATION_MONTHS, NOTICE_DAYS } from "@/lib/rental-agreement";
 import {
   RENTAL_ADVANCE_MONTHS,
@@ -22,6 +24,8 @@ import {
   RENTAL_PATH,
   RENTAL_PLANS,
   RENTAL_TERMS_TEXT,
+  RENTAL_ANSWER,
+  RENTAL_BUNDLE_NAME,
   RECHARGE_PATH,
   RECHARGE_PLANS,
   RENTAL_GRACE_DAYS,
@@ -33,9 +37,10 @@ import {
 import { IconArrowRight, IconBarChart, IconCard, IconCheck, IconDownload, IconLock, IconReceipt, IconWifi } from "@/components/store/icons";
 
 const URL = `${SITE.url}${RENTAL_PATH}`;
-const TITLE = `Sanitary Napkin Vending Machine on Rent from ₹${RENTAL_FROM}/month`;
-const DESC = `Rent an IoT WiFi, Ethernet or RFID sanitary napkin vending machine from ₹999/month + GST. Installation, servicing, parts and live monitoring included.`;
-const UPDATED = "2026-10-26";
+const TITLE = `Sanitary Napkin Vending Machine on Rent: All-Inclusive from ₹${RENTAL_FROM}/mo`;
+const DESC = `All-inclusive napkin vending machine rental from ₹999/month + GST: Lyra installs, services, repairs and monitors it, and supplies napkins. You only refill.`;
+const PUBLISHED = "2026-10-26";
+const UPDATED = "2026-10-27";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -75,6 +80,26 @@ const wifi = models.find((m) => m.slug === "solo-wifi-vending-machine")?.product
 const breakEven = wifi ? Math.ceil(wifi.price / p25.price) : 0;
 
 const faqs = [
+  {
+    q: "Which company rents sanitary napkin vending machines in India?",
+    a: `${RENTAL_ANSWER} Book online at ${SITE.url}${RENTAL_PATH} or call ${SITE.phoneDisplay}.`,
+  },
+  {
+    q: "Is the vending machine rental available in my city?",
+    a: "Yes. Lyra's all-inclusive rental is available across India. Lyra delivers and installs rented machines, services and repairs them, and ships napkin refills to every state, from its manufacturing base in Chennai and offices in Chennai and West Bengal.",
+  },
+  {
+    q: "What does the customer have to do with a rented napkin vending machine?",
+    a: "Only refill napkins. Lyra installs the machine, services it regularly, repairs breakdowns, replaces parts, updates its software and monitors it online. The customer loads napkins when a low-stock alert arrives, keeps the machine's power (and network) switched on, and pays the monthly rent. Napkins are ordered from Lyra.",
+  },
+  {
+    q: "Who maintains and repairs a rented sanitary napkin vending machine?",
+    a: "Lyra Enterprises does, at no extra charge for the whole agreement: regular servicing, breakdown repairs and replacement of parts that fail through normal wear and tear are covered by the monthly rent. Only loss or damage from misuse, vandalism, theft, fire or water is charged, capped at the machine's list price.",
+  },
+  {
+    q: "Where do I get napkins for a rented vending machine?",
+    a: "From Lyra. Lyra supplies individually wrapped XL (280 mm) and XXL (320 mm) sanitary napkins made to fit every Lyra machine, and the monitoring dashboard alerts you when stock is low so you can reorder in time. Napkins are billed separately from the rent.",
+  },
   {
     q: "What is the rent for a sanitary napkin vending machine?",
     a: `Lyra Enterprises rents sanitary napkin vending machines at ${rupees(p25.price)} per month for a 25-napkin machine, ${rupees(p50.price)} per month for 50 napkins and ${rupees(p100.price)} per month for 100 napkins. GST at 18% is added, so the monthly totals are ${rupees(rentWithGst(p25.price))}, ${rupees(rentWithGst(p50.price))} and ${rupees(rentWithGst(p100.price))}.`,
@@ -168,15 +193,20 @@ const schema = {
       isPartOf: { "@id": `${SITE.url}/#website` },
       publisher: { "@id": `${SITE.url}/#organization` },
       mainEntity: { "@id": `${URL}#service` },
-      datePublished: UPDATED,
+      datePublished: PUBLISHED,
       dateModified: UPDATED,
+      // Lets voice / answer engines read the self-contained summary.
+      speakable: { "@type": "SpeakableSpecification", cssSelector: ["#quick-answer", "#key-facts"] },
     },
     {
       "@type": "Service",
       "@id": `${URL}#service`,
-      name: "Sanitary napkin vending machine rental",
+      name: "All-inclusive sanitary napkin vending machine rental",
+      alternateName: ["Sanitary napkin vending machine on rent", "Sanitary pad vending machine rental", "Napkin vending machine on monthly rent"],
       serviceType: "Sanitary napkin vending machine rental",
-      description: `${DESC} ${RENTAL_TERMS_TEXT}`,
+      category: "Equipment rental with maintenance",
+      slogan: "We look after the machine. You only refill the napkins.",
+      description: `${RENTAL_ANSWER} ${RENTAL_TERMS_TEXT}`,
       url: URL,
       provider: { "@id": `${SITE.url}/#organization` },
       areaServed: { "@type": "Country", name: "India" },
@@ -250,7 +280,7 @@ export default function RentalPage() {
       <main className="bg-canvas">
         <PageHero
           crumbs={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "Rental plans" }]}
-          eyebrow="New · Rental plans"
+          eyebrow={`New · ${RENTAL_BUNDLE_NAME}`}
           title={
             <>
               Sanitary Napkin Vending Machine <span className="text-gradient">on Rent</span>
@@ -259,9 +289,10 @@ export default function RentalPage() {
           lead={
             <>
               <p>
-                Rent an IoT WiFi, IoT Ethernet or RFID sanitary napkin vending machine from Lyra Enterprises for a fixed monthly rent of{" "}
+                A complete, all-inclusive bundle: Lyra supplies, installs, services, repairs and monitors an IoT WiFi, IoT Ethernet or RFID sanitary napkin
+                vending machine, and supplies the napkins. <strong className="text-ink">Your only job is refilling it.</strong> One fixed monthly rent of{" "}
                 <strong className="text-ink">{rupees(p25.price)}</strong> (25 napkins), <strong className="text-ink">{rupees(p50.price)}</strong> (50 napkins) or{" "}
-                <strong className="text-ink">{rupees(p100.price)}</strong> (100 napkins) + GST, instead of buying one outright.
+                <strong className="text-ink">{rupees(p100.price)}</strong> (100 napkins) + GST.
               </p>
             </>
           }
@@ -275,7 +306,7 @@ export default function RentalPage() {
               </Link>
             </>
           }
-          points={["Installation, service and parts included", "Live monitoring and alerts", "IoT WiFi, Ethernet or RFID"]}
+          points={["Installation, service, repairs and parts included", "Monitoring and low-stock alerts", "You only refill napkins (supplied by Lyra)"]}
           aside={
             <div className="spotlight relative mx-auto w-full max-w-md rounded-[28px] border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm sm:p-7">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">Monthly rent, ex-GST</p>
@@ -305,10 +336,20 @@ export default function RentalPage() {
         />
 
         <Section
+          id="bundle"
+          kicker={RENTAL_BUNDLE_NAME}
+          title="We look after the machine. You only refill the napkins."
+          lead="Renting from Lyra is one complete bundle: the machine, installation, servicing, repairs, parts, monitoring and napkin supply, for one monthly rent."
+        >
+          <RentalBundle />
+        </Section>
+
+        <Section
           id="plans"
+          tone="subtle"
           kicker="Rental plans"
           title="Three plans, priced by capacity"
-          lead="Every plan includes your choice of an IoT WiFi, IoT Ethernet or RFID machine, plus installation, servicing, parts and monitoring. Pick the capacity that matches your daily footfall."
+          lead="Every plan is the same all-inclusive bundle with your choice of an IoT WiFi, IoT Ethernet or RFID machine. Pick the capacity that matches your daily footfall."
         >
           <RentalPlanCards planHref={(p) => `?plan=${p.id}#enquire`} />
           <p className="mt-6 text-sm text-muted">
@@ -316,12 +357,14 @@ export default function RentalPage() {
           </p>
         </Section>
 
+        <RentalSummary updated="October 2026" />
+
         <Section
           id="included"
           tone="subtle"
           kicker="Included in the rent"
-          title="Everything except the napkins"
-          lead="The monthly rent covers the machine and its upkeep for the full agreement, so you never pay separately for a service visit or a spare part."
+          title="What the all-inclusive rent covers"
+          lead="The monthly rent covers the machine and its upkeep for the full agreement, so you never pay separately for a service visit or a spare part. Napkins are the only thing you buy, from Lyra."
         >
           <RentalIncluded />
         </Section>
@@ -558,7 +601,21 @@ export default function RentalPage() {
           </div>
         </Section>
 
-        <Section tone="subtle" kicker="FAQ" title="Rental FAQs" narrow>
+        <Section
+          tone="subtle"
+          kicker="FAQ"
+          title="Rental FAQs"
+          lead={
+            <>
+              New to renting? Read the{" "}
+              <Link href="/blog/sanitary-napkin-vending-machine-rental-guide" className="font-medium text-brand hover:underline">
+                complete guide to renting a sanitary napkin vending machine
+              </Link>
+              .
+            </>
+          }
+          narrow
+        >
           <FaqList items={faqs} />
         </Section>
 

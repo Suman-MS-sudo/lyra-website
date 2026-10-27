@@ -27,7 +27,7 @@ export default function CancellationRefundPolicyPage() {
 
       <h2>Post-Delivery Returns and Warranty</h2>
       <p>
-        <strong>In short:</strong> a defective or damaged unit can be returned within 10 days of delivery, and Lyra Enterprises pays the return shipping. After that, the 1-year warranty covers manufacturing defects through repair or replacement. We do not accept change-of-mind returns, and transit damage must be reported within 48 hours of delivery.
+        <strong>In short:</strong> a defective or damaged unit can be returned within 10 days of delivery, and Lyra Enterprises pays the return shipping (see our dedicated <a href="/return-policy">Return Policy</a>). After that, the 1-year warranty covers manufacturing defects through repair or replacement. We do not accept change-of-mind returns, and transit damage must be reported within 48 hours of delivery.
       </p>
       <p>
         Because our vending machines and incinerators are installed institutional equipment rather than everyday consumer goods, we do not offer &ldquo;change of mind&rdquo; returns after delivery. Instead, every machine is covered by our <strong>1-year manufacturer warranty</strong> against manufacturing defects, as follows:

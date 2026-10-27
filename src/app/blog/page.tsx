@@ -75,6 +75,7 @@ const CATEGORY_IMAGE: Record<string, string> = {
   Compliance: "/images/products/lyra-maxi.png",
   "Case Study": "/images/products/solo-ethernet.png",
   Technology: "/images/products/solo-rfid.png",
+  Rental: "/images/products/solo-wifi.png",
 };
 const imageFor = (c: string) => CATEGORY_IMAGE[c] ?? "/images/products/solo-qr.png";
 const fmtDate = (d: string) => new Date(d).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });

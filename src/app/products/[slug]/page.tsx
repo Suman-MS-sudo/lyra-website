@@ -415,7 +415,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                     <span className="block text-xs text-white/60">
                       {RENTAL_PLANS.map((p) => `${p.capacity} napkins ${rupees(p.price)}`).join(" · ")}
                     </span>
-                    <span className="block text-xs text-white/60">Installation, servicing, parts and monitoring included</span>
+                    <span className="block text-xs text-white/60">All-inclusive: Lyra installs, services and monitors it; you only refill napkins</span>
                   </span>
                   <IconArrowRight className="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" />
                 </Link>

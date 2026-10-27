@@ -8,6 +8,7 @@
 import { cities } from "@/lib/data";
 import { offerPolicies } from "@/lib/offer-schema";
 import { homeFaqs } from "@/lib/home-faqs";
+import { RENTAL_ANSWER, RENTAL_PATH, RENTAL_PLANS } from "@/lib/rental";
 
 const SITE_URL = "https://lyraenterprise.co.in";
 
@@ -32,7 +33,27 @@ const organizationSchema = {
   },
   image: `${SITE_URL}/images/og-image.jpg`,
   description:
-    "India's #1 manufacturer of sanitary napkin vending machines and incinerators. Coin operated, UPI/QR, WiFi and IoT-enabled models for schools, hospitals, offices and colleges. Based in Chennai, Tamil Nadu.",
+    "India's #1 manufacturer of sanitary napkin vending machines and incinerators. Coin operated, UPI/QR, WiFi and IoT-enabled models for schools, hospitals, offices and colleges, sold outright or rented as an all-inclusive bundle from ₹999/month (installation, servicing, repairs, monitoring and napkin supply by Lyra; the customer only refills). Based in Chennai, Tamil Nadu.",
+  // The all-inclusive rental, as offers the organisation makes (prices per machine per month, ex-GST).
+  makesOffer: RENTAL_PLANS.map((p) => ({
+    "@type": "Offer",
+    name: `All-inclusive sanitary napkin vending machine rental, ${p.capacity}-napkin capacity`,
+    url: `${SITE_URL}${RENTAL_PATH}`,
+    businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: p.price,
+      priceCurrency: "INR",
+      valueAddedTaxIncluded: false,
+      unitCode: "MON",
+      unitText: "month",
+    },
+    itemOffered: {
+      "@type": "Service",
+      name: "All-inclusive sanitary napkin vending machine rental",
+      description: RENTAL_ANSWER,
+    },
+  })),
   foundingDate: "2018",
   numberOfEmployees: { "@type": "QuantitativeValue", value: "20" },
   areaServed: areaServedIndia,

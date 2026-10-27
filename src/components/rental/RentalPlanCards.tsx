@@ -88,11 +88,11 @@ export default function RentalPlanCards({
             </li>
             <li className="flex items-start gap-2.5">
               <IconCheck className="mt-0.5 h-4 w-4 flex-none text-brand" strokeWidth={2.2} />
-              Installation, servicing and parts included
+              All-inclusive: installation, service, repairs and parts
             </li>
             <li className="flex items-start gap-2.5">
               <IconCheck className="mt-0.5 h-4 w-4 flex-none text-brand" strokeWidth={2.2} />
-              Live monitoring and alerts on the Lyra website
+              Monitoring and alerts; you only refill napkins
             </li>
           </ul>
           <p className="mt-4 text-[12px] leading-relaxed text-muted">

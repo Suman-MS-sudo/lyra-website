@@ -20,6 +20,7 @@ const INFO_LINKS: [string, string][] = [
   ["About us", "/about"],
   ["Contact", "/contact"],
   ["Shipping & delivery", "/shipping-delivery-policy"],
+  ["Return policy", "/return-policy"],
   ["Cancellation & refund", "/cancellation-refund-policy"],
   ["Terms & conditions", "/terms-and-conditions"],
   ["Privacy policy", "/privacy-policy"],

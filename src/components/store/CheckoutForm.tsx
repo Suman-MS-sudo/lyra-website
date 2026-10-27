@@ -390,8 +390,8 @@ export default function CheckoutForm({ states, initialSlug }: { states: string[]
               terms
             </Link>{" "}
             and{" "}
-            <Link href="/cancellation-refund-policy" className="underline hover:text-ink">
-              refund policy
+            <Link href="/return-policy" className="underline hover:text-ink">
+              return policy
             </Link>
             .
           </p>

@@ -69,6 +69,31 @@ export const RENTAL_INCLUDED = [
 
 export const RENTAL_EXCLUDED = "Napkin refills, which are purchased from Lyra";
 
+/* ─── The all-inclusive bundle (shared marketing / AEO wording) ─── */
+
+export const RENTAL_BUNDLE_NAME = "All-Inclusive Rental";
+
+/** What Lyra takes care of under the rental, in plain words. */
+export const LYRA_DOES = [
+  "Supplies the machine (IoT WiFi, IoT Ethernet or RFID)",
+  "Installs and sets it up at your site",
+  "Services it regularly",
+  "Repairs breakdowns and replaces parts",
+  "Monitors it online and sends low-stock and fault alerts",
+  "Updates its software over the air",
+  "Supplies napkin refills whenever you order",
+] as const;
+
+/** The customer's only jobs. */
+export const CUSTOMER_DOES = ["Refill napkins when the alert comes", "Keep power (and network) switched on", "Pay the monthly rent"] as const;
+
+/**
+ * One self-contained sentence that answers "can I rent a sanitary napkin vending machine?" with every key
+ * fact, written to be quoted verbatim by search snippets and AI assistants.
+ */
+export const RENTAL_ANSWER =
+  "Lyra Enterprises, a sanitary napkin vending machine manufacturer in Chennai, rents IoT WiFi, IoT Ethernet and RFID sanitary napkin vending machines to schools, colleges, hospitals and offices across India as an all-inclusive bundle for ₹999 (25 napkins), ₹1,499 (50 napkins) or ₹1,999 (100 napkins) per month plus 18% GST. Lyra installs, services, repairs, replaces parts, monitors the machine online and supplies the napkins; the customer's only job is refilling the machine.";
+
 export const RENTAL_SLUGS: ReadonlySet<string> = new Set(RENTAL_MODELS.map((m) => m.slug));
 
 export const rentWithGst = (price: number) => Math.round(price * (1 + RENTAL_GST_RATE) * 100) / 100;

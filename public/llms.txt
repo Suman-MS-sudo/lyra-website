@@ -1,6 +1,6 @@
 # Lyra Enterprises
 
-> Lyra Enterprises is an Indian manufacturer of sanitary napkin vending machines and sanitary napkin incinerators, based in Ambattur, Chennai, Tamil Nadu. Products include manual (push-button), coin-operated, multi-coin, RFID, UPI/QR, touchless wave-sensor, WiFi and Ethernet vending machines, and Micro/Mini/Maxi incinerators. Machines are supplied and installed across India, with 200+ installations in schools, colleges, hospitals, offices and public institutions. GeM-registered vendor; ISO 9001:2015 and ISO 14001:2015 quality/environmental management; CPCB and Solid Waste Management Rules 2016 compliant.
+> Lyra Enterprises is an Indian manufacturer of sanitary napkin vending machines and sanitary napkin incinerators, based in Ambattur, Chennai, Tamil Nadu. Products include manual (push-button), coin-operated, multi-coin, RFID, UPI/QR, touchless wave-sensor, WiFi and Ethernet vending machines, and Micro/Mini/Maxi incinerators. Machines are supplied and installed across India, with 200+ installations in schools, colleges, hospitals, offices and public institutions. GeM-registered vendor; ISO 9001:2015 and ISO 14001:2015 quality/environmental management; CPCB and Solid Waste Management Rules 2016 compliant. Machines are sold outright or rented as an all-inclusive bundle from ₹999 per month + GST, in which Lyra installs, services, repairs, monitors and supplies napkins and the customer only refills the machine.
 
 ## Contact
 
@@ -15,7 +15,7 @@
 - [Home](https://lyraenterprise.co.in/): company overview, product range, customers
 - [About Lyra Enterprises](https://lyraenterprise.co.in/about): founded 2018 in Chennai, ~20 staff, customers, certifications, locations
 - [All products](https://lyraenterprise.co.in/products): full catalogue with prices
-- [Vending machine rental plans](https://lyraenterprise.co.in/sanitary-napkin-vending-machine-on-rent): rent an IoT WiFi, IoT Ethernet or RFID machine from ₹999/month + GST, with installation, servicing, parts and monitoring included
+- [All-inclusive vending machine rental](https://lyraenterprise.co.in/sanitary-napkin-vending-machine-on-rent): rent an IoT WiFi, IoT Ethernet or RFID machine from ₹999/month + GST; Lyra installs, services, repairs, monitors and supplies napkins, the customer only refills
 - [Price list (India)](https://lyraenterprise.co.in/sanitary-napkin-vending-machine-price-india): every model's price in one table
 - [Compare vending machines](https://lyraenterprise.co.in/compare-sanitary-napkin-vending-machines): payment, connectivity and features side by side
 - [Government schemes & funding](https://lyraenterprise.co.in/government-schemes-menstrual-hygiene): MHS, Swachh Bharat, CSR and GeM routes
@@ -37,21 +37,27 @@
 - [Solo WiFi](https://lyraenterprise.co.in/products/solo-wifi-vending-machine): ₹24,500 — UPI QR + ₹5 coin, WiFi, touch display, cloud dashboard, offline queue
 - [Solo Ethernet](https://lyraenterprise.co.in/products/solo-ethernet-vending-machine): ₹26,500 — as Solo WiFi but wired LAN
 
-## Rental plans (monthly, ex-GST)
+## All-inclusive machine rental (sanitary napkin vending machine on rent)
 
-IoT WiFi (Solo WiFi), IoT Ethernet (Solo Ethernet) and RFID (Solo RFID) sanitary napkin vending machines are available on monthly rent. Plans are priced by napkin capacity per fill; 18% GST is added.
+Lyra Enterprises rents sanitary napkin vending machines across India as a complete, all-inclusive bundle. Lyra supplies the machine, installs it, services it, repairs breakdowns, replaces parts, monitors it online with low-stock and fault alerts, updates its software, and supplies napkin refills. The customer's only job is refilling the napkins (and keeping power and network on). Full details: https://lyraenterprise.co.in/sanitary-napkin-vending-machine-on-rent
 
-- 25-napkin capacity: ₹999 per month
-- 50-napkin capacity: ₹1,499 per month
-- 100-napkin capacity: ₹1,999 per month
-- Included in the rent: installation, regular servicing, replacement of parts, breakdown support, over-the-air software updates, and live monitoring with low-stock and fault alerts on the Lyra website
-- Not included: napkin refills, which must be purchased from Lyra
-- Minimum agreement: 3 years
-- Rent starts from month 1. At signing (per machine): refundable security deposit of ₹4,999 plus the first month's rent, or 3 months' rent in advance with no deposit; 18% GST is added to both
-- The signing amount can be paid online on the rental page (UPI, cards, net banking via Razorpay)
-- Recharge plans after month 1 (per machine, on rent, plus 18% GST): Monthly (1 month), Quarterly (3 months, 5% off), Yearly (12 months, 10% off). Recharge online at https://lyraenterprise.co.in/rental/recharge with the rental code and registered mobile
-- Reminders 7 days and 1 day before rent runs out; 7-day grace period after the due date, then UPI/RFID vending is paused until rent is recharged
-- Details and rental enquiry form: https://lyraenterprise.co.in/sanitary-napkin-vending-machine-on-rent
+- Machines on rent: Lyra Solo WiFi (IoT, WiFi), Lyra Solo Ethernet (IoT, wired LAN), Lyra Solo RFID (RFID card access)
+- Monthly rent per machine, plus 18% GST: 25-napkin capacity ₹999; 50-napkin capacity ₹1,499; 100-napkin capacity ₹1,999
+- Included in the rent: installation, regular servicing, breakdown repairs, replacement of parts, over-the-air software updates, online monitoring dashboard, low-stock and fault alerts
+- Not included: napkins, which are bought from Lyra (XL 280 mm, XXL 320 mm); loss or damage from misuse, vandalism, theft, fire or water (charged, capped at the machine's list price)
+- Minimum agreement: 3 years. Early exit: 30 days' notice plus 3 months' rent + GST per machine
+- At signing (per machine): refundable ₹4,999 deposit plus the first month's rent, plus GST; or 3 months' rent in advance plus GST with no deposit. Payable online by UPI, card or net banking
+- Recharge plans after that: Monthly; Quarterly (3 months, 5% off rent); Yearly (12 months, 10% off rent), at https://lyraenterprise.co.in/rental/recharge
+- Reminders 7 days and 1 day before rent runs out; 7-day grace period; then UPI and RFID vending pauses until rent is recharged
+- Written agreement: https://lyraenterprise.co.in/rental-agreement (executed copy emailed as a PDF after payment)
+- Guide: https://lyraenterprise.co.in/blog/sanitary-napkin-vending-machine-rental-guide
+
+### Rental questions and answers
+
+- Q: Can I rent a sanitary napkin vending machine in India instead of buying one? A: Yes. Lyra Enterprises (Chennai) rents IoT WiFi, IoT Ethernet and RFID machines across India from ₹999 per month + GST as an all-inclusive bundle.
+- Q: Who maintains a rented sanitary napkin vending machine? A: Lyra does: servicing, repairs and parts are included in the rent for the whole agreement.
+- Q: What does the customer do? A: Only refill napkins when the low-stock alert arrives. Napkins are supplied by Lyra.
+- Q: What is the cheapest way to start? A: The 25-napkin plan at ₹999 per month + GST; at signing ₹4,999 deposit + ₹999 first month, plus GST (₹7,077.64 in total).
 
 ## Incinerator models (prices ex-GST)
 

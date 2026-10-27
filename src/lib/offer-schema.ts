@@ -19,7 +19,7 @@ export const offerPolicies = {
       transitTime: { "@type": "QuantitativeValue", minValue: 2, maxValue: 7, unitCode: "DAY" },
     },
   },
-  // Matches /cancellation-refund-policy: defective or damaged units only, 10 days, we pay return shipping.
+  // Matches /return-policy (and Merchant Center): India, defective or damaged units only, 10 days, free return shipping, no exchanges.
   hasMerchantReturnPolicy: {
     "@type": "MerchantReturnPolicy",
     applicableCountry: "IN",
@@ -27,6 +27,6 @@ export const offerPolicies = {
     merchantReturnDays: 10,
     returnMethod: "https://schema.org/ReturnByMail",
     returnFees: "https://schema.org/FreeReturn",
-    merchantReturnLink: `${SITE.url}/cancellation-refund-policy`,
+    merchantReturnLink: `${SITE.url}/return-policy`,
   },
 };

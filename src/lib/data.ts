@@ -2153,4 +2153,21 @@ export const blogPosts = [
       "sanitary napkin vending machine tender specification",
     ],
   },
+  {
+    slug: "sanitary-napkin-vending-machine-rental-guide",
+    title: "Sanitary Napkin Vending Machine on Rent in India: Cost, What's Included and How It Works",
+    excerpt:
+      "Renting a napkin vending machine: monthly rent from ₹999 + GST, what an all-inclusive rental covers, signing costs, rent vs buy and contract terms.",
+    date: "2026-10-27",
+    readTime: "8 min read",
+    category: "Rental",
+    metaTitle: "Sanitary Napkin Vending Machine on Rent: 2026 Guide & Cost",
+    metaDescription:
+      "Renting a sanitary napkin vending machine in India: monthly rent from ₹999 + GST, what an all-inclusive rental covers, signing costs, rent vs buy and contract terms.",
+    keywords: [
+      "sanitary napkin vending machine on rent",
+      "sanitary napkin vending machine rental cost india",
+      "napkin vending machine rental with maintenance",
+    ],
+  },
 ];
