@@ -10,8 +10,9 @@ import { products, SITE, type Product } from "@/lib/data";
  * is stated in the feed description and product pages instead.
  */
 
-export const dynamic = "force-static";
-export const revalidate = 86400;
+// Rendered per request and cached at the CDN for an hour only: a long-lived static copy
+// outlived new deployments, so Merchant Center kept fetching a stale feed.
+export const dynamic = "force-dynamic";
 
 function esc(s: string): string {
   return s
@@ -127,7 +128,7 @@ ${products.map(item).join("\n")}
   return new Response(xml, {
     headers: {
       "Content-Type": "application/xml; charset=utf-8",
-      "Cache-Control": "public, max-age=3600, s-maxage=86400",
+      "Cache-Control": "public, max-age=0, s-maxage=3600, stale-while-revalidate=600",
     },
   });
 }
