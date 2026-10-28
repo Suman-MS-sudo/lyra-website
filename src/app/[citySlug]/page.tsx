@@ -7,6 +7,7 @@ import PageFooter from "@/components/PageFooter";
 import PageHero from "@/components/page/PageHero";
 import Section from "@/components/page/Section";
 import FaqList from "@/components/page/FaqList";
+import { stateFacts } from "@/lib/state-facts";
 import ProductCard from "@/components/store/ProductCard";
 import { CtaBand, StatRow } from "@/components/page/Blocks";
 import { IconArrowRight } from "@/components/store/icons";
@@ -64,7 +65,7 @@ export async function generateMetadata({
 
 /* ─── State-specific FAQ content ───────────────────────────── */
 function getStateFaqs(city: StateLocation) {
-  const [c1, c2, c3] = city.cities;
+  const facts = stateFacts(city.stateCode, city.region);
   const coverage =
     city.kind === "union territory"
       ? "the whole territory"
@@ -80,7 +81,9 @@ function getStateFaqs(city: StateLocation) {
     },
     {
       q: `Do you provide on-site installation and service in ${city.state}?`,
-      a: `Yes. Installation guidance, staff training and after-sales support are included with every order in ${city.state}${c1 ? ` — on-site in ${c1}, ${c2} and ${c3}` : ""} and by remote support elsewhere. Every machine carries a 1-year manufacturer warranty.`,
+      a: facts.onsite
+        ? `Yes. Lyra installs purchased machines on-site in ${city.state}, trains your staff and provides after-sales service. Every machine carries a 1-year manufacturer warranty, and rented machines are installed and serviced by Lyra.`
+        : `For machines bought outright, Lyra provides installation guidance and remote support in ${city.state}; the machines wall-mount on standard 230V mains. Every machine carries a 1-year manufacturer warranty. If you want Lyra to install and look after the machine, choose the all-inclusive rental, which Lyra installs and services across India.`,
     },
     {
       q: `Are Lyra machines compliant for schools, colleges and hospitals in ${city.state}?`,
@@ -89,6 +92,26 @@ function getStateFaqs(city: StateLocation) {
     {
       q: `How long does delivery to ${city.capital} take?`,
       a: `Dispatch from our Chennai facility to ${city.state} is typically ${city.dispatch}; ${city.capital} and nearby districts are usually at the faster end of that window. We confirm an exact timeline when you send an enquiry.`,
+    },
+    {
+      q: `What GST applies to a Lyra machine delivered to ${city.state}?`,
+      a: `${facts.taxNote}. ${city.state}'s GST state code is ${facts.gstCode}; add your GSTIN at checkout to claim input tax credit. Sanitary napkins are GST-exempt.`,
+    },
+    {
+      q: `Which Lyra office serves ${city.state}?`,
+      a: `${city.state} is served by Lyra's ${facts.office.name} in ${facts.office.place}, with machines manufactured and dispatched from Chennai. Call +91-81223 78860 or WhatsApp for a quote.`,
+    },
+    ...(facts.scheme
+      ? [
+          {
+            q: `Does ${city.state} have a government scheme for sanitary napkins?`,
+            a: `Yes. The ${facts.scheme.name} provides ${facts.scheme.note}. Institutions distributing napkins under such programmes often use free-issue machines such as the Lyra Push Button or the touchless Solo Wave. See all central and CSR funding routes on our government schemes page.`,
+          },
+        ]
+      : []),
+    {
+      q: `Can we rent a sanitary napkin vending machine in ${city.state}?`,
+      a: `Yes. Lyra's all-inclusive rental is available in ${city.state}: an IoT WiFi, IoT Ethernet or RFID machine from ₹999 per month plus GST, with installation, servicing, repairs, parts and online monitoring included. You only refill napkins, which Lyra supplies.`,
     },
     {
       q: `Can we order in bulk for multiple locations across ${city.state}?`,
@@ -131,6 +154,7 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
   const at = regionStates.findIndex((c) => c.slug === city.slug);
   const nearby = [...regionStates.slice(at + 1), ...regionStates.slice(0, at)].slice(0, 6);
   const faqs = getStateFaqs(city);
+  const facts = stateFacts(city.stateCode, city.region);
   const priceValidUntil = `${new Date().getFullYear() + 1}-12-31`;
 
   const breadcrumbSchema = {
@@ -293,6 +317,21 @@ export default function CityPage({ params }: { params: { citySlug: string } }) {
                   {city.cities.slice(0, 4).join(", ")} and beyond. Every machine ships with a 1-year manufacturer
                   warranty and GST invoice, and complies with Solid Waste Management Rules 2016 and CPCB guidelines for menstrual waste disposal.
                 </p>
+                <dl className="mt-6 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+                  {[
+                    ["GST state code", `${facts.gstCode} · ${facts.taxNote.split(":")[0]}`],
+                    ["Serving office", `${facts.office.name}, ${facts.office.place}`],
+                    ["Typical dispatch", `${city.dispatch} from Chennai`],
+                    ["Installation", facts.onsite ? "On-site installation and service" : "Guided installation + remote support"],
+                    ["Rental", "All-inclusive rental available, from ₹999/month + GST"],
+                    ["State scheme", facts.scheme ? facts.scheme.name : "Central schemes and CSR funding apply"],
+                  ].map(([k, v]) => (
+                    <div key={k} className="bg-surface px-4 py-3">
+                      <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">{k}</dt>
+                      <dd className="mt-1 text-sm font-medium text-ink">{v}</dd>
+                    </div>
+                  ))}
+                </dl>
                 <p className="mt-4 text-sm text-muted">
                   Machine prices start at ₹12,000 (+18% GST); freight to {city.state} is quoted separately based on destination.{" "}
                   <Link href="/products/sanitary-napkin-vending-machines" className="font-semibold text-brand hover:underline">See all models and prices →</Link>
