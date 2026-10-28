@@ -65,9 +65,10 @@ function productType(p: Product): string {
   return "Sanitary Napkin Vending Machines";
 }
 
-// Bump when feed images are regenerated: Merchant Center caches images by URL and
-// would otherwise keep showing the old picture.
-const IMAGE_VERSION = "20261014";
+// Bump when feed images are regenerated or added: Merchant Center caches images by URL
+// (including failed fetches, e.g. a 404 while a deploy is still rolling out) and would
+// otherwise keep showing the old picture or none at all.
+const IMAGE_VERSION = "20261028";
 
 function item(p: Product): string {
   const link = `${SITE.url}/products/${p.slug}`;
